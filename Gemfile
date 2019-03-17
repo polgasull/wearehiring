@@ -34,6 +34,7 @@ gem 'carrierwave', '~> 1.3', '>= 1.3.1'
 gem 'mini_magick', '~> 4.9', '>= 4.9.3'
 gem 'stripe', '~> 4.9'
 gem 'trix', '~> 0.11.1'
+gem 'pry', '~> 0.12.2'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
