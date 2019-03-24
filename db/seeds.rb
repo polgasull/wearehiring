@@ -91,13 +91,13 @@ Job.create!([{
 {
   title: "Writer",
   description: "Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur. Donec sed odio dui. Venenatis dapibus posuere. Nullam id dolor id nibh ultricies vehicula ut id elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur blandit tempus porttitor. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Nullam id dolor id nibh ultricies vehicula ut id elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nulla vitae elit libero, a pharetra augue. Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper. Maecenas faucibus mollis interdum. Maecenas sed diam eget risus varius blandit sit amet non magna.",
-  url: "https://web-crunch.com",
-  apply_url: "https://web-crunch.com/apply",
+  url: "https://ironhack.com",
+  apply_url: "https://ironhack.com/apply",
   job_type: "Full-time",
   location: "St.Louis, Missouri",
   job_author: "Web-Crunch",
   user_id: user.id,
-  avatar: Rails.root.join("app/assets/images/web-crunch.jpg").open,
+  avatar: Rails.root.join("app/assets/images/ih.jpg").open,
   remote_ok: true
 }
 ])
