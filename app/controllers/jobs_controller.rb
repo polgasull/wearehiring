@@ -1,10 +1,14 @@
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, except: [:index, :show]
   # GET /jobs
   # GET /jobs.json
   def index
-    @jobs = Job.all
+    if (params.has_key?(:job_type))
+      @jobs = Job.where(job_type: params[:job_type]).order('created_at desc')
+    else
+      @jobs = Job.all.order('created_at desc')
+    end
   end
 
   # GET /jobs/1
@@ -25,15 +29,43 @@ class JobsController < ApplicationController
   # POST /jobs.json
   def create
     @job = current_user.jobs.build(job_params)
+
+    token = params[:stripeToken]
+    job_type = params[:job_type]
+    job_title = params[:title]
+    card_brand = params[:user][:card_brand]
+    card_exp_month = params[:user][:card_exp_month]
+    card_exp_year = params[:user][:card_exp_year]
+    card_last4 = params[:user][:card_last4]
+
+    charge = Stripe::Charge.create(
+      :amount => 10000,
+      :currency => 'eur',
+      :description => job_type,
+      :statement_descriptor => job_title,
+      :source => token
+    )
+
+    current_user.stripe_id = charge.id
+    current_user.card_brand = card_brand
+    current_user.card_exp_month = card_exp_month
+    current_user.card_exp_year = card_exp_year
+    current_user.card_last4 = card_last4
+    current_user.save!
+
     respond_to do |format|
       if @job.save
-        format.html { redirect_to @job, notice: 'Job was successfully created.' }
+        format.html { redirect_to @job, notice: 'Publicación creada y pagada satisfactoriamente!' }
         format.json { render :show, status: :created, location: @job }
       else
         format.html { render :new }
         format.json { render json: @job.errors, status: :unprocessable_entity }
       end
     end
+
+  rescue Stripe::CardError => e
+    flash.alert = e.message
+    render action: :new
   end
 
   # PATCH/PUT /jobs/1
@@ -68,6 +100,6 @@ class JobsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_params
-      params.require(:job).permit(:title, :description, :url, :job_type, :location, :job_author, :remote_ok, :apply_url)
+      params.require(:job).permit(:title, :description, :url, :job_type, :location, :job_author, :remote_ok, :apply_url, :avatar)
     end
 end

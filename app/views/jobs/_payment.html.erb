@@ -1,0 +1,43 @@
+<% if !@job.persisted? %>
+  <h4 class="substile is-4"> <%= t('payment') %> </h4>
+
+  <div class="notification is-light has-text-centered">
+    <%= icon('fas', 'credit-card') %>
+    <strong> 100€ </strong> <%= t('payments.monthly') %>.
+    <span class="block mb4"></span>
+  </div>
+
+  <div class="form-row">
+    <label for="card-element" class="label">
+      <%= t('payments.enter_credit_card') %>
+    </label>
+
+    <div id="card-element" class="form-control">
+
+    </div>
+
+    <div id="card-errors" role="alert"></div>
+  </div>
+
+  <% if current_user.stripe_id.present? %>
+    <div class="last-card bg-light pa4 border-radius-3 mt4">
+      <h5 class="is-6 title pt2">
+        <%= t('payments.previously_card') %>
+      </h5>
+      <table class="table is-narrow bg-light is-fullwidth">
+        <thead>
+          <th> <%= t('payments.card_brand') %> </th>
+          <th> <%= t('payments.card_last4') %> </th>
+          <th> <%= t('payments.card_exp_month') %> </th>
+          <th> <%= t('payments.card_exp_year') %> </th>
+        </thead>
+        <tr>
+          <td> <%= current_user.card_brand %> </td>
+          <td> <%= current_user.card_last4 %> </td>
+          <td> <%= current_user.card_exp_month %> </td>
+          <td> <%= current_user.card_exp_year %> </td>
+        </tr>
+      </table>
+    </div>
+  <% end %>
+<% end %>
