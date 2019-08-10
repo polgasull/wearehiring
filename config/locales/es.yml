@@ -233,3 +233,4 @@ es:
     card_last4: "Últimos 4 dígitos"
     card_exp_month: "Mes de expiración"
     card_exp_year: "Año de expiración"
+  you_must_sign_in: "Debes inciar sesión"

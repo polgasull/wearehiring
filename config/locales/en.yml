@@ -229,3 +229,4 @@ en:
     card_last4: "Last 4 digits"
     card_exp_month: "Expiration month"
     card_exp_year: "Expiration year"
+  you_must_sign_in: "You must be signed in"
