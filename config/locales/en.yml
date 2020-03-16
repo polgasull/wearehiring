@@ -221,6 +221,13 @@ en:
     new_job: "New job"
     edit_job: "Edit job"
     edit: "Edit"
+    messages:
+      job_created: "Job posted and paid successfully"
+      job_not_created: "Job was not able to be posted"
+      job_updated: "Job was successfully updated"
+      job_not_updated: "Job was not able to be updated"
+      job_deleted: "Job was successfully deleted"
+      job_not_deleted: "Job was not able to be deleted"
   payments:
     monthly: "para 30 días"
     enter_credit_card: "Enter credit or debit card"
