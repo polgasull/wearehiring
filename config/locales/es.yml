@@ -225,6 +225,7 @@ es:
     new_job: "Nueva oferta"
     edit_job: "Editar oferta"
     edit: "Editar"
+    published_jobs: "Ofertas de empleo"
     messages:
       job_created: "Oferta publicada y pagada satisfactoriamente"
       job_not_created: "No se pudo publicar la oferta"

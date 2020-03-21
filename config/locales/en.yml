@@ -221,6 +221,7 @@ en:
     new_job: "New job"
     edit_job: "Edit job"
     edit: "Edit"
+    published_jobs: "Job offers"
     messages:
       job_created: "Job posted and paid successfully"
       job_not_created: "Job was not able to be posted"

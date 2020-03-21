@@ -8,6 +8,7 @@ class JobsController < ApplicationController
     else
       @jobs = Job.all.order('created_at desc')
     end
+    @job_count = Job.all.count
   end
 
   def show
