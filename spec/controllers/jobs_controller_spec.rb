@@ -37,7 +37,6 @@ RSpec.describe JobsController, type: :controller do
       let(:valid_params) { FactoryBot.attributes_for(:job) }
 
       it 'creates a new Job' do
-        binding.pry
         expect do
           post :create, params: { job: valid_params }
         end.to change(Job, :count).by(1)
@@ -52,7 +51,7 @@ RSpec.describe JobsController, type: :controller do
 
   describe 'PATCH #update' do
     let(:current_user) { FactoryBot.create(:user) }
-    let!(:job) { FactoryBot.create(:job) }
+    let!(:job) { FactoryBot.create(:job, user_id: current_user.id ) }
     let(:valid_params) { { title: 'general job' } }
 
     before do
@@ -74,7 +73,7 @@ RSpec.describe JobsController, type: :controller do
 
   describe 'DELETE #destroy' do
     let(:current_user) { FactoryBot.create(:user) }
-    let!(:job) { FactoryBot.create(:job) }
+    let!(:job) { FactoryBot.create(:job, user_id: current_user.id ) }
 
     before do
       sign_in current_user
