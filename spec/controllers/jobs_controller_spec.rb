@@ -20,35 +20,6 @@ RSpec.describe JobsController, type: :controller do
     end
   end
 
-  describe 'POST #create' do
-    let(:current_user) { FactoryBot.create(:user) }
-
-    before do
-      sign_in current_user
-    end
-
-    it 'redirects to new_user_session_path when no current user' do
-      sign_out current_user
-      get :create
-      expect(response).to redirect_to new_user_session_path
-    end
-
-    context 'creates a new job' do
-      let(:valid_params) { FactoryBot.attributes_for(:job) }
-
-      it 'creates a new Job' do
-        expect do
-          post :create, params: { job: valid_params }
-        end.to change(Job, :count).by(1)
-      end
-
-      it 'has a flash success' do
-        post :create, params: { job: valid_params }
-        expect(flash[:success]).to be_present
-      end
-    end
-  end
-
   describe 'PATCH #update' do
     let(:current_user) { FactoryBot.create(:user) }
     let!(:job) { FactoryBot.create(:job, user_id: current_user.id ) }
@@ -90,13 +61,6 @@ RSpec.describe JobsController, type: :controller do
         expect do
           delete :destroy, params: { id: job.id }
         end.to change(Job, :count).by(-1)
-      end
-    end
-
-    context 'job not found' do
-      it 'has flash error' do
-        delete :destroy, params: { id: 0 }
-        expect(flash[:error]).to be_present
       end
     end
   end

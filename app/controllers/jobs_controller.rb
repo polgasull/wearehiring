@@ -32,6 +32,8 @@ class JobsController < ApplicationController
     card_exp_year = params[:user][:card_exp_year]
     card_last4 = params[:user][:card_last4]
 
+    binding.pry
+
     charge = Stripe::Charge.create(
       :amount => 10000,
       :currency => 'eur',
