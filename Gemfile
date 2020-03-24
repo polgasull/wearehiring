@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.5.1'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -37,6 +38,8 @@ gem 'mini_magick', '~> 4.9', '>= 4.9.3'
 gem 'stripe', '~> 4.9'
 gem 'trix', '~> 0.11.1'
 gem 'pry', '~> 0.12.2'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
