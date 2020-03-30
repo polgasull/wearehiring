@@ -1,18 +1,42 @@
-<div class="claim hero is-fullheight is-home is-mb-background" data-aos="fade-in" data-aos-duration="1000" style="background:url('<%=asset_path('home_bg.jpg')%>') 0 0 / cover">
-	<div class="hero-body">
-		<div class="container">
-			<div class="columns">
-				<div class="column is-5">
-					<h1 class="title title-mb"><%=t('home_h1').html_safe%></h1>
-					<p class="is-hidden-mobile"><%=t('home_subtitle')%></p>
-					<div class="is-margin">
-            <%= link_to jobs_path, class: "button is-link pa4" do %>
-              <%= icon('fas', 'arrow-right pr2') %>
-							<%= t('go_to_jobs') %>
-						<% end %>
-					</div>
-				</div>
+<%= render 'claim' %>
+
+<section class="has-text-centered is-section-white has-text-left-mobile">
+	<div class="container">
+		<div class="columns">
+			<div class="column is-three-fifths is-offset-one-fifth">
+				<h2 class="title"> Some title here! </h2>
+				<p> Algún text marketinero aquí! (no miro a nadie ;)) </p>
 			</div>
 		</div>
 	</div>
-</div>
+</section>
+
+<section class="has-text-centered is-section-white is-features">
+	<div class="container">
+		<div class="columns">
+			<article class="column is-3 has-text-centered">
+				<img src="<%=asset_path('actualizar.svg')%>" width="210" height="210" class="is-blank is-mobile-img" alt="Ofertas de empleo actualizadas diariamente | JobHub">
+				<div class="content has-text-left-mobile">
+					<h3><%=t('feature_1')%></h3>
+					<p><%=t('feature_1_text')%></p>
+				</div>
+			</article>
+			<div class="column"></div>
+			<article class="column is-3 has-text-centered">
+				<img src="<%=asset_path('puzzle.svg')%>" width="210" height="210" class="is-blank" alt="Las mejores empresas | JobHub">
+				<div class="content has-text-left-mobile">
+					<h3><%=t('feature_2')%></h3>
+					<p><%=t('feature_2_text')%></p>
+				</div>
+			</article>
+			<div class="column"></div>
+			<article class="column is-3 has-text-centered">
+				<img src="<%=asset_path('rocket.svg')%>" width="210" height="210" class="is-blank" alt="Sin registros | JobHub">
+				<div class="content has-text-left-mobile">
+					<h3><%=t('feature_3')%></h3>
+					<p><%=t('feature_3_text')%></p>
+				</div>
+			</article>
+		</div>
+	</div>
+</section>

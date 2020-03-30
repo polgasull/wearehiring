@@ -9,7 +9,7 @@
 			position: relative;
 			top: 80px;
 		}
-	}
+  }
 
 	.brands {
 		width: 93%;
@@ -34,16 +34,40 @@
 		&:last-child, &:first-child {
 			margin: 0;
 		}
-	}
+  }
+  
+  &.is-fullheight {
+    height: 90vh !important;
+    min-height: 90vh !important;  
+
+    &.hero-body {
+      padding: 10rem 0rem;
+    }
+  }
+
+  &.is-medium {
+    height: 50vh !important;
+    min-height: 50vh !important;  
+
+    &.hero-body {
+      padding: 10rem 0rem;
+    }
+  }
+
+  &.is-little {
+    height: 35vh !important;
+    min-height: 35vh !important;  
+  }
 
 	.hero-body {
-		position: relative;
-	}
+    position: relative;
+  }
 }
 
 @media(max-width: 500px) {
 
-	.claim.is-mb-background {
+	.claim.is-mb-bg {
+    height: 100vh;
 		background-position: -460px 0px !important;
 	}
 
@@ -53,17 +77,6 @@
 
 	.claim.is-provider {
 		background-position: -160px 0px !important;
-	}
-}
-
-@media (min-width: 500px) and (max-width: 1023px) {
-
-
-	.claim.hero.is-fullheight {
-
-		height: auto !important;
-		min-height: 0 !important;
-
 	}
 }
 
@@ -81,4 +94,11 @@
     	padding-right: 15px;
 		}
 	}
+}
+
+@media(max-width: 768px) {
+
+  .hero-body {
+    padding: 10rem 1.5rem;
+  }
 }
