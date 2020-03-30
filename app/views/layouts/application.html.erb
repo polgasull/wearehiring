@@ -10,6 +10,7 @@
     <%= tag :meta, name: "stripe-public-key", content: Figaro.env.stripe_publishable_key %>
     <%= javascript_include_tag 'application', "https://js.stripe.com/v3/", 'data-turbolinks-track': 'reload' %>
     <%= yield :head %>
+    <link rel="stylesheet" href="<%=asset_path('aos.css')%>" />
   </head>
 
   <body class="<%= yield (:body_class) %>">
@@ -25,11 +26,36 @@
       </div>
     <% end %>
 
-    <%= render "layouts/navbar" %>
+    <%= render "header" %>
 
     <%= yield %>
 
-    <%= render "layouts/footer" %>
+    <%= render "footer" %>
+
+    <script src="<%=asset_path('aos.js')%>"></script>
+    <script>
+      $(document).ready(function() {
+
+        AOS.init();
+
+        $(window).scroll(function (event) {
+          var scroll = $(window).scrollTop();
+          if(scroll >= (50)) {
+            $('.header').addClass("active");
+          } else {
+            $('.header').removeClass("active");
+          }
+        });
+
+        $('.open-menu').click(function(){
+          document.getElementById("mySidenav").style.width = "100%";
+        });
+
+         $('.close-menu').click(function(){
+          document.getElementById("mySidenav").style.width = "0";
+        });
+      });
+    </script>
 
     <%= yield :footer %>
 

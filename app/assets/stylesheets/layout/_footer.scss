@@ -1,0 +1,154 @@
+.footer {
+
+	background: $secondary;
+	position: relative;
+	margin-top: 15rem; 
+	padding-bottom: 0;
+	color: $text_footer;
+	font-size: 0.9rem;
+	
+	.is-footer {
+
+		padding-bottom: 2.5rem;
+	}
+	
+	a {
+
+		color: $text_footer;
+
+		&:hover {
+
+			color: $primary;
+		}
+	}
+
+	li {
+
+		list-style: none;
+		
+	}
+
+
+	.footer-bg {
+
+		position: absolute;
+		top:0;
+		left:0;
+		width:100%;
+	}
+
+	.footer-animated-photo {
+
+		width: 160px;
+		height: 160px;
+		background-size: cover !important;
+        margin-top: -107px;
+		animation-duration: 5s;
+  		animation-delay: 0s;
+
+  		@media(max-width: 758px) {
+
+  			width: 200px;
+  			height: 68px;
+  			margin-top: -42px;
+  		}
+	}
+
+	nav.navbar {
+
+		background: none;
+		background: none;
+	}
+
+	.navbar-brand {
+
+		display: block;
+	}
+
+	nav .i{
+
+		display: none;
+	} 
+
+	.fab {
+
+		color: $primary;
+		font-size: 1rem;
+	    display: inline-block;
+	    margin-right: 18px;
+	}
+
+	.social-buttons {
+
+		margin-top: 1rem;
+	}
+
+	hr {
+
+		background-color: $footer_color;
+		margin-bottom: 4rem;
+	}
+
+	.is-copy {
+
+		color:$footer_color;
+		font-size: 0.8rem;
+	}
+
+	.is-copy a {
+
+		color: $footer_color;
+		margin-right: 2rem;
+	}
+
+	input {
+
+		background: #323231;
+		color: $text_footer;
+		padding-left: 30px;
+		border-color: transparent;
+		width: 100%;
+		border-radius: 30px;
+		height: 45px;
+
+		&:focus {
+			outline: 0;
+		}
+
+	}
+
+	label {
+
+		color: $text_footer;
+		font-weight: lighter;
+	}
+
+	button {
+
+		position: absolute;
+		right: 0;
+		top: 2px;
+	    font-size: 1.5rem;
+	    padding: 0.4rem 1.5rem;
+	    color: $primary;
+	    background: none;
+	    border-color: transparent;
+	    cursor: pointer;
+
+	    &:focus{
+	    	outline: 0;
+	    } 
+	}
+
+	.field {
+
+		margin-bottom: 0;
+	}
+
+	.notification {
+		
+		padding: 0.5rem;
+	}
+
+
+}

@@ -1,0 +1,63 @@
+<footer class="footer">
+  <div class="footer-bg">
+    <div class="container">
+      <div class="footer-animated-photo" data-aos="slide-right" data-aos-duration="2000" style="background: url(<%=asset_path('computer_with_code.svg')%>)">
+      </div>
+    </div>
+  </div>
+  <section class="is-footer">
+      <div class="container">
+    <div class="columns">
+      <div class="column is-3 is-hidden-mobile">
+        <div class="content">
+          <ol class="is-lower-alpha">
+            <li><%= link_to t('show_jobs'), jobs_path(locale:params[:locale] || 'es') %></li>
+            <li><%= link_to t('jobs.post_job'), new_job_path, class: "" %></li>
+          </ol>
+        </div>
+      </div>
+      <div class="column is-3">
+        <a href="mailto:fake@email.com"> fake@email.com </a>
+        <br>
+        <a href="tel:+34935221174"> +34 666 66 66 66 </a>
+          <div class="social-buttons">
+             <a href="" target="_blank">
+              <span class="social-icon fab fa-facebook-f"></span>
+             </a>
+             <a href="" target="_blank">
+              <span class="social-icon fab fa-linkedin-in"></span>
+             </a>
+             <a href="" target="_blank">
+              <span class="social-icon fab fa-google-plus-g"></span>
+             </a>
+             <a href="" target="_blank">
+                <span class="social-icon fab fa-twitter"></span>
+             </a>
+             <a href="" target="_blank">
+              <span class="social-icon fab fa-instagram"></span>
+             </a>
+          </div>
+          <div class="blog">
+             Blog
+          </div>
+      </div>
+      <div class="column is-2"></div>
+      <div class="column is-3">
+        Newsletter subscription (TODO link to somewhere)
+      </div>
+      <div class="column is-1"></div>
+    </div>
+    <hr class="is-hidden-mobile">
+    <div class="columns is-copy is-hidden-mobile">
+      <div class="column is-6">
+        <%= link_to t('legal_note'), '', {rel:"nofollow"} %>
+        <%= link_to t('terms_and_conditions_footer'), '', {rel:"nofollow"} %>
+        <%= link_to t('privacy_policy_footer'), '', {rel:"nofollow"} %>
+      </div>
+      <div class="column is 6 has-text-right">
+        Copyright &copy; 2020 - <%=Time.now.year%> - Job Hub SL
+      </div>
+    </div>
+  </div>
+  </section>
+</footer>

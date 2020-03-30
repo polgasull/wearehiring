@@ -1,0 +1,84 @@
+.claim {
+	color: $white;
+
+	.btn {
+		font-size: 0.8125rem;
+
+		@media (max-width: 500px) {
+			font-size: 1rem;
+			position: relative;
+			top: 80px;
+		}
+	}
+
+	.brands {
+		width: 93%;
+		position: absolute;
+		bottom: 1.5rem;
+		text-align: center;
+	}
+
+	.brands .brands-wrapper {
+		height: 60px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+	}
+
+	.brands a {
+
+		display: inline-block;
+		flex-grow: 1;
+
+		&:last-child, &:first-child {
+			margin: 0;
+		}
+	}
+
+	.hero-body {
+		position: relative;
+	}
+}
+
+@media(max-width: 500px) {
+
+	.claim.is-mb-background {
+		background-position: -460px 0px !important;
+	}
+
+	.claim.is-solution {
+		background-position: -160px 0px !important;
+	}
+
+	.claim.is-provider {
+		background-position: -160px 0px !important;
+	}
+}
+
+@media (min-width: 500px) and (max-width: 1023px) {
+
+
+	.claim.hero.is-fullheight {
+
+		height: auto !important;
+		min-height: 0 !important;
+
+	}
+}
+
+@media (max-width: 500px) {
+
+	h1.title-mb {
+		font-size: 2rem;
+		margin-top: 0rem;
+	}
+
+	.claim {
+
+		.column {
+			padding-left: 15px;
+    	padding-right: 15px;
+		}
+	}
+}

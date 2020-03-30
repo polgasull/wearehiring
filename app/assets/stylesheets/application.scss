@@ -1,11 +1,22 @@
 // *= require trix
 
 @import "bulma";
-@import "functions";
 @import "jobs";
 @import "stripe";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import 'abstracts/variables';
+
+@import 'base/typography',
+        'base/functions',
+        'base/base';
+
+@import 'layout/header',
+        'layout/footer';
+
+@import 'components/buttons',
+        'components/menu',
+        'components/claim';
 
 .notification {
   border-radius: 0;

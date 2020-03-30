@@ -1,0 +1,26 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+	<div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+					<%= link_to jobs_path(locale:params[:locale] || 'es'), class: "button is-link" do %>
+            <%= t('show_jobs') %>
+          <% end %>
+					<%= link_to new_job_path, class: "button is-primary" do %>
+						<%= t('jobs.post_job') %>
+					<% end %>
+        </div>
+      </div>
+    </div>
+	<% if user_signed_in? %>
+		<div class="navbar-brand">
+			<%= link_to edit_user_registration_path, class: "navbar-item" do %>
+				<%= t('company_profile') %>
+			<% end %> 
+		</div>
+		<div class="navbar-brand">
+			<%= link_to destroy_user_session_path, method: :delete, class: "navbar-item" do %>
+				<%= t('logout') %>
+			<% end %> 
+		</div>
+	<% end %>
+</nav>

@@ -1,0 +1,47 @@
+<form>
+  <div class="columns">
+    <div class="column">
+      <div class="field has-addons">
+        <div class="control">
+          <input 
+            class="input" 
+            type="text" 
+            placeholder="Find a Job" 
+            id="search-info" 
+            name="search"
+            value="<%= params[:search_for] ? params[:search_for] : ''%>">
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="field has-addons">
+        <div class="control is-expanded">
+          <div class="select is-fullwidth">
+            <select name="search" value="<%=params[:by_job_type]%>">
+              <%= options_for_select(["All types", "Full-time", "Part-time", "Freelance", "Contract"], params[:by_job_type]) %>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <button type="submit" class="button is-primary"> Submit </button>
+    </div>
+  </div>
+</form>
+
+<% content_for :footer do %>
+
+  <script>
+
+    $('#search-info').keypress(function (e) {
+      var key = e.which;
+      if (key == 13)
+        {
+        $('#search-submit').click();
+        return false;
+      }
+    });
+  </script>
+
+<% end %>
