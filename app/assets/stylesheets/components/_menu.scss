@@ -10,9 +10,20 @@
   background: #111;
   padding-top: 15px;
 
+  .buttons {
+    display: block;
+
+    a {
+      padding: none;
+      max-width: 200px;
+    }
+
+    a:last-of-type {
+      margin-top: 2rem;
+    }
+  }
 
   a {
-    padding: 11px 15px 11px 35px;
     text-decoration: none;
     display: block;
     transition: 0.3s;
@@ -32,7 +43,6 @@
   }
 
   .mobile-menu-logo img {
-    width: 210px;
     padding-left: 42px;
     padding-top: 9px;
   }
@@ -80,4 +90,5 @@
 
 .navbar-item {
   -webkit-font-smoothing: auto;
+  padding: 11px 15px 11px 35px;
 }
