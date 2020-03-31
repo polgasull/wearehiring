@@ -24,18 +24,3 @@
 	</div>
   <%= render "menu" %>
 </div>
-
-<% content_for :footer do %>
-
-	<script>
-		$(".dropdown .button").click(function (){
-			var dropdown = $(this).parents('.dropdown');
-			dropdown.toggleClass('is-active');
-			dropdown.focusout(function() {
-					$(this).removeClass('is-active');
-			});
-		});
-	
-	</script>
-
-<% end %>
