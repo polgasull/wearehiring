@@ -37,23 +37,6 @@
 		width:100%;
 	}
 
-	.footer-animated-photo {
-
-		width: 160px;
-		height: 160px;
-		background-size: cover !important;
-        margin-top: -107px;
-		animation-duration: 5s;
-  		animation-delay: 0s;
-
-  		@media(max-width: 758px) {
-
-  			width: 200px;
-  			height: 68px;
-  			margin-top: -42px;
-  		}
-	}
-
 	nav.navbar {
 
 		background: none;

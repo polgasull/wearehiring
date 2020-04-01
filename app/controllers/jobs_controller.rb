@@ -28,8 +28,6 @@ class JobsController < ApplicationController
     card_exp_year = params[:user][:card_exp_year]
     card_last4 = params[:user][:card_last4]
 
-    binding.pry
-
     charge = Stripe::Charge.create(
       :amount => 10000,
       :currency => 'eur',
@@ -38,6 +36,8 @@ class JobsController < ApplicationController
       :source => token
     )
 
+    binding.pry 
+    
     current_user.stripe_id = charge.id
     current_user.card_brand = card_brand
     current_user.card_exp_month = card_exp_month
@@ -67,6 +67,6 @@ class JobsController < ApplicationController
     end
 
     def job_params
-      params.require(:job).permit(:title, :description, :url, :job_type, :location, :job_author, :remote_ok, :apply_url, :avatar)
+      params.require(:job).permit(:title, :description, :url, :job_type, :location, :job_author, :remote_ok, :apply_url, :avatar, :budget, :open)
     end
 end

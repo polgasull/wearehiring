@@ -124,14 +124,6 @@ section {
 		}
 
 	}
-
-	.is-animated.animated {
-
-	    animation-duration: 2s ;
-  		animation-delay: .5s;
-
-	}
-
 }
 
 .is-section-white {
@@ -140,22 +132,6 @@ section {
 
 		color: $grey;
 	}
-
-	@media (max-width: 500px) {
-
-		html:not(.no-js) [data-aos^=fade][data-aos^=fade] {
-			opacity: 1;
-		}
-
-		[data-aos][data-aos][data-aos-duration="3000"], body[data-aos-duration="3000"] [data-aos] {
-			transition-duration: 0s;
-		}
-
-		[data-aos][data-aos][data-aos-duration="400"], body[data-aos-duration="400"] [data-aos] {
-			transition-duration: 0s;
-		}
-	}
-
 }
 
 @media(max-width: 768px) {
@@ -194,20 +170,4 @@ section {
 	    margin-top: -0.75rem;
 	}
 
-}
-
-@media (max-width: 500px) {
-
-	.is-section-white [data-aos][data-aos][data-aos-duration="3000"], .is-section-white body[data-aos-duration="3000"] [data-aos] {
-		transition-duration: inherit;
-	}
-
-	html:not(.no-js) [data-aos^=fade][data-aos^=fade] {
-		opacity: inherit;
-    transition-property: inherit;
-	}
-
-	[data-aos][data-aos][data-aos-duration="2000"], body[data-aos-duration="2000"] [data-aos] {
-		transition-duration: inherit;
-	}
 }

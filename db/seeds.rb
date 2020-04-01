@@ -7,97 +7,33 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-user = User.new(
-  id: 2,
-  name: "Andy Leverenz",
-  email: "andy@example.com",
-  password: "password",
-  password_confirmation: "password"
-)
-user.save!
+Category.where(name: "Web development").first_or_create(name: "Web development")
+Category.where(name: "Design").first_or_create(name: "Design")
+Category.where(name: "Product").first_or_create(name: "Product")
 
-Job.create!([{
-  title: "React Engineer",
-  description: "Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur. Donec sed odio dui. Venenatis dapibus posuere. Nullam id dolor id nibh ultricies vehicula ut id elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur blandit tempus porttitor. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Nullam id dolor id nibh ultricies vehicula ut id elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nulla vitae elit libero, a pharetra augue. Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper. Maecenas faucibus mollis interdum. Maecenas sed diam eget risus varius blandit sit amet non magna.",
-  url: "https://facebook.com",
-  apply_url: "https://facebook.com/apply",
-  job_type: "Full-time",
-  location: "San Francisco, CA",
-  job_author: "Facebook",
-  user_id: user.id,
-  avatar: Rails.root.join("app/assets/images/facebook.jpg").open,
-  remote_ok: false
-},
-{
-  title: "Product Designer",
-  description: "Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur. Donec sed odio dui. Venenatis dapibus posuere. Nullam id dolor id nibh ultricies vehicula ut id elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur blandit tempus porttitor. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Nullam id dolor id nibh ultricies vehicula ut id elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nulla vitae elit libero, a pharetra augue. Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper. Maecenas faucibus mollis interdum. Maecenas sed diam eget risus varius blandit sit amet non magna.",
-  url: "https://slack.com",
-  apply_url: "https://slack.com/apply",
-  job_type: "Contract",
-  location: "San Francisco, CA",
-  job_author: "Slack",
-  user_id: user.id,
-  avatar: Rails.root.join("app/assets/images/slack.jpg").open,
-  remote_ok: false
-},
-{
-  title: "UI/UX Designer",
-  description: "Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur. Donec sed odio dui. Venenatis dapibus posuere. Nullam id dolor id nibh ultricies vehicula ut id elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur blandit tempus porttitor. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Nullam id dolor id nibh ultricies vehicula ut id elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nulla vitae elit libero, a pharetra augue. Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper. Maecenas faucibus mollis interdum. Maecenas sed diam eget risus varius blandit sit amet non magna.",
-  url: "https://trello.com",
-  apply_url: "https://trello.com/apply",
-  job_type: "Full-time",
-  location: "Anywhere",
-  job_author: "Trello",
-  user_id: user.id,
-  avatar: Rails.root.join("app/assets/images/trello.jpg").open,
-  remote_ok: true
-},
-{
-  title: "Platform Engineer",
-  description: "Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur. Donec sed odio dui. Venenatis dapibus posuere. Nullam id dolor id nibh ultricies vehicula ut id elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur blandit tempus porttitor. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Nullam id dolor id nibh ultricies vehicula ut id elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nulla vitae elit libero, a pharetra augue. Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper. Maecenas faucibus mollis interdum. Maecenas sed diam eget risus varius blandit sit amet non magna.",
-  url: "https://wordpress.org",
-  apply_url: "https://wordpress.org/apply",
-  job_type: "Freelance",
-  location: "Anywhere",
-  job_author: "WordPress",
-  user_id: user.id,
-  avatar: Rails.root.join("app/assets/images/wordpress.jpg").open,
-  remote_ok: true
-},
-{
-  title: "Rails Engineer",
-  description: "Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur. Donec sed odio dui. Venenatis dapibus posuere. Nullam id dolor id nibh ultricies vehicula ut id elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur blandit tempus porttitor. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Nullam id dolor id nibh ultricies vehicula ut id elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nulla vitae elit libero, a pharetra augue. Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper. Maecenas faucibus mollis interdum. Maecenas sed diam eget risus varius blandit sit amet non magna.",
-  url: "https://basecamp.com",
-  apply_url: "https://basecamp.com/apply",
-  job_type: "Full-time",
-  location: "Chicago",
-  job_author: "Basecamp",
-  user_id: user.id,
-  avatar: Rails.root.join("app/assets/images/basecamp.jpg").open,
-  remote_ok: true
-},
-{
-  title: "Product Manager",
-  description: "Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur. Donec sed odio dui. Venenatis dapibus posuere. Nullam id dolor id nibh ultricies vehicula ut id elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur blandit tempus porttitor. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Nullam id dolor id nibh ultricies vehicula ut id elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nulla vitae elit libero, a pharetra augue. Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper. Maecenas faucibus mollis interdum. Maecenas sed diam eget risus varius blandit sit amet non magna.",
-  url: "https://twitter.com",
-  apply_url: "https://twitter.com/apply",
-  job_type: "Part-time",
-  location: "California",
-  job_author: "Twitter",
-  user_id: user.id,
-  avatar: Rails.root.join("app/assets/images/twitter.jpg").open,
-  remote_ok: true
-},
-{
-  title: "Writer",
-  description: "Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur. Donec sed odio dui. Venenatis dapibus posuere. Nullam id dolor id nibh ultricies vehicula ut id elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur blandit tempus porttitor. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Nullam id dolor id nibh ultricies vehicula ut id elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Nulla vitae elit libero, a pharetra augue. Nulla vitae elit libero, a pharetra augue. Vestibulum id ligula porta felis euismod semper. Maecenas faucibus mollis interdum. Maecenas sed diam eget risus varius blandit sit amet non magna.",
-  url: "https://ironhack.com",
-  apply_url: "https://ironhack.com/apply",
-  job_type: "Full-time",
-  location: "St.Louis, Missouri",
-  job_author: "Web-Crunch",
-  user_id: user.id,
-  avatar: Rails.root.join("app/assets/images/ih.jpg").open,
-  remote_ok: true
-}
-])
+location = [
+  "Sabadell", 
+  "Sant Cugat", 
+  "Barcelona", 
+  "Terrassa", 
+  "Mataró"
+]
+
+User.where(email: "test@email.com").first_or_create(name: "Pol", password: "123456")
+
+10.times do 
+  User.create(email: Faker::Internet.email, password: "123456")
+end
+
+100.times do 
+ Job.create(title: Faker::Job.title,
+            description: Faker::Lorem.paragraph(sentence_count: 2),
+            budget: rand(20000..60000),
+            location: location.sample,
+            url: "https://www.google.com",
+            apply_url: "https://www.google.com",
+            job_author: Faker::Name.name,
+            user_id: 1,
+            category_id: rand(1..2)
+          )
+end

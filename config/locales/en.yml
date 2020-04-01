@@ -217,6 +217,8 @@ en:
   show: "Show"
   payment: "Payment"
   jobs:
+    budget: "Anual Salary"
+    location: "Location"
     post_job: "Post Job"
     new_job: "New job"
     edit_job: "Edit job"

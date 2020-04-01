@@ -221,6 +221,8 @@ es:
   show: "Ver"
   payment: "Pago"
   jobs:
+    budget: "Salario anual"
+    location: "Localización"
     post_job: "Publicar empleo"
     new_job: "Nueva oferta"
     edit_job: "Editar oferta"

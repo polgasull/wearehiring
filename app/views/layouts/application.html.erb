@@ -10,7 +10,6 @@
     <%= tag :meta, name: "stripe-public-key", content: Figaro.env.stripe_publishable_key %>
     <%= javascript_include_tag 'application', "https://js.stripe.com/v3/", 'data-turbolinks-track': 'reload' %>
     <%= yield :head %>
-    <link rel="stylesheet" href="<%=asset_path('aos.css')%>" />
   </head>
 
   <body class="<%= yield (:body_class) %>">
@@ -36,11 +35,8 @@
 
     <%= render "footer" %>
 
-    <script src="<%=asset_path('aos.js')%>"></script>
     <script>
       $(document).ready(function() {
-
-        AOS.init();
 
         $(window).scroll(function (event) {
           var scroll = $(window).scrollTop();
