@@ -3,11 +3,15 @@ class JobsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @jobs = Job.all.filter(params).order('created_at desc')
+    @jobs = Job.all.filter(params).order('created_at desc').page(params[:page]).per(25)
     @job_count = Job.all.count
   end
 
   def show
+  end
+
+  def search
+    @jobs = Job.search(params)&.page(params[:page])&.per(25)
   end
 
   def new
@@ -37,7 +41,7 @@ class JobsController < ApplicationController
     )
 
     binding.pry 
-    
+
     current_user.stripe_id = charge.id
     current_user.card_brand = card_brand
     current_user.card_exp_month = card_exp_month

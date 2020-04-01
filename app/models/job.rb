@@ -9,23 +9,11 @@ class Job < ApplicationRecord
 
   JOB_TYPES = ["Full-time", "Part-time", "Contract", "Freelance"]
   
-  scope :search_for, -> (query) { 
-    where('LOWER(jobs.title) LIKE :query OR 
-          LOWER(jobs.job_author) LIKE :query or 
-          LOWER(jobs.location) LIKE :query', 
-          query: "%#{query.downcase}%") 
-  }
 
-  scope :by_job_type, -> (query) { 
-    where('LOWER(jobs.job_type) LIKE :query', 
-          query: "%#{query.downcase}%") 
-  }
-
-  scope :search, -> (param={}) {
-    relation = all
-    relation = relation.by_job_type(param[:by_job_type]) if param[:by_job_type].present?
-    relation = relation.search_for(param[:search_for]) if param[:search_for].present?
-    relation
-  }
-  
+  def self.search(params)
+    jobs = Job.where("
+      jobs.title LIKE :search OR description LIKE :search", search: "%#{params[:search]}%"
+    ) if params[:search].present?
+    jobs
+  end
 end
