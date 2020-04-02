@@ -1,4 +1,20 @@
-<%= form_for :search, url: search_jobs_path, method: :get do |f| %>
-  <%= f.text_field :query, class: "", placeholder: t('search'), value: params[:search][:query]  %>   
-  <%= f.submit t('search'), class: "btn btn-primary" %>
+ <%= form_for jobs_path, method: :get do |f| %>
+  <div class="field is-grouped">
+    <p class="control is-expanded">
+      <input 
+        type="text" 
+        class="" 
+        placeholder="<%=t('search')%>" 
+        name="search_for" 
+        value="<%=params[:search_for] ? params[:search_for] : ''%>">
+    </p>
+    <%= select_tag :by_category, 
+      options_from_collection_for_select(Category.all, :id, :name, params[:by_category].to_i), 
+      :include_blank => true %>
+    <p class="control">
+      <%= f.submit t('search'), class: "button is-info is-large" %>
+    </p>
+  </div>
 <% end %>
+
+

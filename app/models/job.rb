@@ -7,13 +7,22 @@ class Job < ApplicationRecord
   has_many :skills, through: :abilities
   mount_uploader :avatar, AvatarUploader
 
+  geocoded_by :location
+  after_validation :geocode
+
   JOB_TYPES = ["Full-time", "Part-time", "Contract", "Freelance"]
   
-  scope :search, -> (query) { 
+  scope :search_for, -> (query) { 
     where('LOWER(jobs.title) LIKE :query OR 
-          LOWER(jobs.job_author) LIKE :query or 
-          LOWER(jobs.description) LIKE :query', 
+          LOWER(jobs.job_author) LIKE :query OR 
+          LOWER(jobs.description) LIKE :query OR
+          LOWER(jobs.location) LIKE :query', 
           query: "%#{query.downcase}%") 
+  }
+
+  scope :by_category, -> (category) {
+    joins(:category).
+    where('categories.id = ?', category)
   }
 
 end

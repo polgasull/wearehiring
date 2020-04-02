@@ -3,16 +3,11 @@ class JobsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @jobs = Job.all.order('created_at desc').page(params[:page]).per(25)
-    @job_count = Job.all.count
+    @jobs = Job.all.filter(params).order('created_at desc').page(params[:page]).per(25)
+    @job_count = Job.all.filter(params).count
   end
 
   def show
-  end
-
-  def search
-    @jobs_search = Job.search(params[:search][:query]).page(params[:page]).per(25)
-    @search_count = Job.search(params[:search][:query]).count
   end
 
   def new
@@ -40,8 +35,6 @@ class JobsController < ApplicationController
       :statement_descriptor => job_title,
       :source => token
     )
-
-    binding.pry 
 
     current_user.stripe_id = charge.id
     current_user.card_brand = card_brand
