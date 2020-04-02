@@ -3,7 +3,7 @@ class JobsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @jobs = Job.all.filter(params).order('created_at desc').page(params[:page]).per(25)
+    @jobs = Job.all.order('created_at desc').page(params[:page]).per(25)
     @job_count = Job.all.count
   end
 
@@ -11,7 +11,8 @@ class JobsController < ApplicationController
   end
 
   def search
-    @jobs = Job.search(params)&.page(params[:page])&.per(25)
+    @jobs_search = Job.search(params[:search][:query]).page(params[:page]).per(25)
+    @search_count = Job.search(params[:search][:query]).count
   end
 
   def new

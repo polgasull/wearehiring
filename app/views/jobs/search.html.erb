@@ -13,18 +13,18 @@
           <%= render partial: 'search' %>
         </div>
       </div>
-
+   
       <div class="columns">
         <div class="column mt2">
-          <span><b> <%= @job_count %> <%= t('published_jobs') %> </b></span>
+          <span><b> <%= @search_count %> <%= t('published_jobs') %> </b></span>
         </div>
       </div>
-
-      <%= render @jobs %>
+      
+      <%= render @jobs_search %>
 
       <div class="columns">
         <div class="column is-4 is-offset-8">
-          <%= paginate @jobs %>
+          <%= paginate @jobs_search %>
         </div>
       </div>
 
