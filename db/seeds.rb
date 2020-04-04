@@ -14,6 +14,10 @@ Category.where(name: "Engineering").first_or_create(name: "Engineering")
 Category.where(name: "Sales").first_or_create(name: "Sales")
 Category.where(name: "Administrative").first_or_create(name: "Administrative")
 
+JobType.where(name: "Full-time").first_or_create(name: "Full-time")
+JobType.where(name: "Part-time").first_or_create(name: "Part-time")
+JobType.where(name: "Freelance").first_or_create(name: "Freelance")
+
 location = [
   "Denver, CO", 
   "San Francisco, CA", 
@@ -40,7 +44,9 @@ end
             url: "https://www.google.com",
             apply_url: "https://www.google.com",
             job_author: Faker::Name.name,
+            remote_ok: false,
             user_id: rand(1..10),
-            category_id: rand(1..2)
+            category_id: rand(1..6),
+            job_type_id: rand(1..3)
           )
 end

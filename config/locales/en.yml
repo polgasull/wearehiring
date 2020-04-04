@@ -217,6 +217,7 @@ en:
   show: "Show"
   payment: "Payment"
   jobs:
+    tags: "Tags"
     budget: "Anual Salary"
     location: "Location"
     post_job: "Post Job"
@@ -256,3 +257,10 @@ en:
   feature_3: "No login needed"
   feature_3_text: "Fusce malesuada massa nibh, a condimentum sem aliquam eget. Nunc id tellus quam. Fusce pretium est ac odio porta tincidunt. Nunc imperdiet scelerisque lorem."
   search: "Search"
+  category: "Category"
+  tags_form_small_text: "Add tags separated by comma"
+  is_looking_for: "Is looking for"
+  is_looking_for_one: "Is looking for one"
+  at: "At"
+  admin_controls: "Admin controls"
+  view: "View"

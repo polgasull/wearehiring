@@ -5,6 +5,7 @@ class JobsController < ApplicationController
   def index
     @jobs = Job.all.filter(params).order('created_at desc').page(params[:page]).per(25)
     @job_count = Job.all.filter(params).count
+    @my_jobs = User.where(id: current_user&.id)
   end
 
   def show
@@ -65,6 +66,6 @@ class JobsController < ApplicationController
     end
 
     def job_params
-      params.require(:job).permit(:title, :description, :url, :job_type, :location, :job_author, :remote_ok, :apply_url, :avatar, :budget, :open)
+      params.require(:job).permit(:title, :description, :url, :job_type, :location, :job_author, :remote_ok, :apply_url, :avatar, :budget, :open, :tag_list, :category_id, :job_type_id)
     end
 end

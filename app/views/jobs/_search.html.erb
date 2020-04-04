@@ -3,14 +3,20 @@
     <p class="control is-expanded">
       <input 
         type="text" 
-        class="" 
+        class="input is-large" 
         placeholder="<%=t('search')%>" 
         name="search_for" 
         value="<%=params[:search_for] ? params[:search_for] : ''%>">
     </p>
     <%= select_tag :by_category, 
       options_from_collection_for_select(Category.all, :id, :name, params[:by_category].to_i), 
-      :include_blank => true %>
+      :include_blank => true, class: "select is-large" %>
+    <%= select_tag :by_job_type, 
+      options_from_collection_for_select(JobType.all, :id, :name, params[:by_job_type].to_i), 
+      :include_blank => true, class: "select is-large" %>
+    <%= select_tag :my_jobs, 
+      options_from_collection_for_select(@my_jobs, :id, :name, params[:my_jobs].to_i), 
+      :include_blank => true, class: "select is-large" %>
     <p class="control">
       <%= f.submit t('search'), class: "button is-info is-large" %>
     </p>

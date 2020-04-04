@@ -1,17 +1,15 @@
-<div class="claim hero is-fullheight is-mb-bg" style="background:url('<%=asset_path('home_bg.jpg')%>') 0 0 / cover">
+<div class="claim hero is-fullheight is-mb-bg home-bg">
 	<div class="hero-body">
 		<div class="container">
-			<div class="columns">
-				<div class="column is-5">
-					<h1 class="title title-mb"><%=t('home_h1').html_safe%></h1>
-					<p class="is-hidden-mobile"><%=t('home_subtitle')%></p>
-					<div class="is-margin">
-            <%= link_to jobs_path, class: "button is-link pa4" do %>
-              <%= icon('fas', 'arrow-right pr2') %>
-							<%= t('go_to_jobs') %>
-						<% end %>
-					</div>
+			<div class="columns has-text-centered">
+				<div class="column is-4"></div>
+				<div class="column is-4">
+					<h1 class="title title-mb is-size-1">
+						<%=t('home_h1').html_safe%> 
+						<%= link_to 'Barcelona', jobs_path %>
+					</h1>
 				</div>
+				<div class="column is-4"></div>
 			</div>
 		</div>
 	</div>

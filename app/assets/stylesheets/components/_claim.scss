@@ -1,6 +1,10 @@
 .claim {
 	color: $white;
 
+	&.home-bg {
+		background-color: #b30000;
+	}
+
 	.btn {
 		font-size: 0.8125rem;
 
@@ -37,8 +41,6 @@
   }
   
   &.is-fullheight {
-    height: 90vh !important;
-    min-height: 90vh !important;  
 
     &.hero-body {
       padding: 10rem 0rem;

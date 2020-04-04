@@ -26,9 +26,9 @@
     <% end %>
     
     <% if current_page?(root_path) %>
-      <%= render "header", bg_color: '' %>
+      <%= render "claim_header" %>
     <% else %>
-      <%= render "header", bg_color: 'bg-color' %>
+      <%= render "header" %>
     <% end %>
 
     <%= yield %>
@@ -42,8 +42,12 @@
           var scroll = $(window).scrollTop();
           if(scroll >= (50)) {
             $('.header').addClass("active");
+            $('.logo-size').width(50)
+            $('.logo-size').height(50)
           } else {
             $('.header').removeClass("active");
+            $('.logo-size').width(100)
+            $('.logo-size').height(100)
           }
         });
 

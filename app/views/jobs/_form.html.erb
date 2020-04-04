@@ -2,7 +2,6 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-
   <div class="columns">
     <div class="column">
       <div class="field">
@@ -27,10 +26,13 @@
     <div class="column">
         <div class="field">
         <div class="control">
-          <label class="label"> Job Type </label>
+          <label class="label"> 
+            <abbr title="required">*</abbr>
+            Job Type 
+          </label>
           <div class="control has-icons-left">
             <span class="select">
-              <%= f.input_field :job_type, collection: Job::JOB_TYPES, promt: "Select a job type" %>
+              <%= f.input_field :job_type_id, collection: JobType.all, promt: "Select Job Type", required: true %>
             </span>
             <span class="icon is-small is-left">
               <%= icon('fas', 'briefcase') %>
@@ -39,7 +41,7 @@
         </div>
       </div>
     </div>
-    <div class="column">
+    <div class="column is-three-fifths-desktop">
       <div class="field">
         <div class="control">
           <%= f.input :location, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }, hint: 'Examples: "Oviedo, Asturias", "Sevilla", "Cualquiera"' %>
@@ -52,7 +54,37 @@
     <div class="column is-one-quarter-desktop">
       <div class="field">
         <div class="control">
-          <%= f.input :budget, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }, label: t('jobs.budget'), hint: 'Example: "30000€"' %>
+          <%= f.input :budget, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }, label: t('jobs.budget'), hint: 'Example: "30000"' %>
+        </div>
+      </div>
+    </div>
+    <div class="column is-one-quarter-desktop">
+      <div class="field">
+        <div class="control">
+          <label class="label"> 
+            <abbr title="required">*</abbr>
+            <%= t('category') %> 
+          </label>
+          <div class="control has-icons-left">
+            <span class="select">
+              <%= f.input_field :category_id, collection: Category.all, promt: "Select a Category", required: true %>
+            </span>
+            <span class="icon is-small is-left">
+              <%= icon('fas', 'globe') %>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="columns">
+    <div class="column">
+      <div class="field">
+        <div class="control">
+          <label class="label"> <%= t('jobs.tags') %> </label>
+          <%= f.text_area :tag_list, rows: 3, class: "textarea" %>
+          <small> <%= t('tags_form_small_text') %> </small>
         </div>
       </div>
     </div>

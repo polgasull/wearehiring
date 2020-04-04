@@ -1,6 +1,4 @@
 h1.title {
-
-	color:white;
 	font-size: 3rem;
 	font-weight: lighter;
 
@@ -31,10 +29,16 @@ h1.title {
 	}
 }
 
-section {
+.main-section {
+	padding-top: 8rem;
+	padding-bottom: 2.5rem;
 
-	padding-top: 7.5rem;
-	padding-bottom: 7.5rem;
+	&.bg-grey {
+		background-color: $light_grey;
+	}
+}
+
+section {
 	line-height: 35px;
 
 	@media(max-width: 1023px) {

@@ -10,19 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200402101851) do
+ActiveRecord::Schema.define(version: 20200403123924) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "abilities", force: :cascade do |t|
-    t.bigint "job_id"
-    t.bigint "skill_id"
-    t.index ["job_id"], name: "index_abilities_on_job_id"
-    t.index ["skill_id"], name: "index_abilities_on_skill_id"
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
   end
 
-  create_table "categories", force: :cascade do |t|
+  create_table "job_types", force: :cascade do |t|
     t.string "name"
   end
 
@@ -45,10 +42,19 @@ ActiveRecord::Schema.define(version: 20200402101851) do
     t.bigint "category_id"
     t.float "latitude"
     t.float "longitude"
+    t.bigint "job_type_id"
     t.index ["category_id"], name: "index_jobs_on_category_id"
+    t.index ["job_type_id"], name: "index_jobs_on_job_type_id"
   end
 
-  create_table "skills", force: :cascade do |t|
+  create_table "taggings", force: :cascade do |t|
+    t.bigint "job_id"
+    t.bigint "tag_id"
+    t.index ["job_id"], name: "index_taggings_on_job_id"
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
     t.string "name"
   end
 
@@ -77,7 +83,8 @@ ActiveRecord::Schema.define(version: 20200402101851) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "abilities", "jobs"
-  add_foreign_key "abilities", "skills"
   add_foreign_key "jobs", "categories"
+  add_foreign_key "jobs", "job_types"
+  add_foreign_key "taggings", "jobs"
+  add_foreign_key "taggings", "tags"
 end
