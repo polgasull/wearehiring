@@ -23,15 +23,15 @@
           </div>
           <div class="dropdown-menu" id="dropdown-menu4" role="menu">
             <div class="dropdown-content">
-              <div class="dropdown-item">
-                <p>You can insert <strong>any type of content</strong> within the dropdown menu.</p>
-              </div>
+              <%= link_to t('oldest'), jobs_path(sort_by: "oldest"), class: "dropdown-item" %>
+              <%= link_to t('newest'), jobs_path(sort_by: "newest"), class: "dropdown-item" %>
+              <%= link_to t('title'), jobs_path(sort_by: "title"), class: "dropdown-item" %>
             </div>
           </div>
         </div>
       </div>
     </div>
-  
+
     <%= render @jobs %>
 
     <div class="columns">

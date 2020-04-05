@@ -3,8 +3,13 @@ class JobsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @jobs = Job.all.filter(params).order('created_at desc').page(params[:page]).per(25)
-    @job_count = Job.all.filter(params).count
+    if params[:sort_by]
+      @jobs = Job.all.order_list(params[:sort_by]).page(params[:page]).per(25)
+      @job_count = Job.all.count
+    else 
+      @jobs = Job.all.filter(params).order('created_at DESC').page(params[:page]).per(25)
+      @job_count = Job.all.filter(params).count
+    end
     @my_jobs = User.where(id: current_user&.id)
   end
 

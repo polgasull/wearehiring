@@ -264,3 +264,6 @@ en:
   at: "At"
   admin_controls: "Admin controls"
   view: "View"
+  oldest: "Oldest"
+  newest: "Newest"
+  by_title: "By title"

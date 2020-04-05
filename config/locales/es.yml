@@ -268,3 +268,6 @@ es:
   at: "En"
   admin_controls: "Admin controls"
   view: "Ver"
+  oldest: "Más antiguo"
+  newest: "Más reciente"
+  by_title: "Por puesto"
