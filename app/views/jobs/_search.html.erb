@@ -1,6 +1,6 @@
 <%= form_for jobs_path, method: :get do |f| %>
-  <div class="columns is-search">
-    <div class="column is-4">
+  <div class="columns is-search is-vertical-center">
+    <div class="column is-4-desktop">
      <input 
       type="text" 
       class="input is-medium" 
@@ -9,28 +9,34 @@
       value="<%=params[:search_for] ? params[:search_for] : ''%>">
     </div>
     <div class="column">
-          <div class="select is-medium">
-            <%= select_tag :by_category, 
-              options_from_collection_for_select(Category.all, :id, :name, params[:by_category].to_i), 
-              :include_blank => true %>
-          </div>
+      <div class="select is-medium">
+        <%= select_tag :by_category, 
+          options_from_collection_for_select(Category.all, :id, :name, params[:by_category].to_i), 
+          :include_blank => true %>
+      </div>
     </div>
     <div class="column">
-          <div class="select is-medium">
-            <%= select_tag :by_job_type, 
-              options_from_collection_for_select(JobType.all, :id, :name, params[:by_job_type].to_i), 
-              :include_blank => true %>
-          </div>
+      <div class="select is-medium">
+        <%= select_tag :by_job_type, 
+          options_from_collection_for_select(JobType.all, :id, :name, params[:by_job_type].to_i), 
+          :include_blank => true %>
+      </div>
     </div>
     <div class="column">
-          <div class="select is-medium">
-            <%= select_tag :my_jobs, 
-              options_from_collection_for_select(@my_jobs, :id, :name, params[:my_jobs].to_i), 
-              :include_blank => true %>
-          </div>
+      <div class="select is-medium">
+        <%= select_tag :my_jobs, 
+          options_from_collection_for_select(@my_jobs, :id, :name, params[:my_jobs].to_i), 
+          :include_blank => true %>
+      </div>
+    </div>
+    <div class="column white-color fw5">
+      <%= label_tag do %>
+        <%= check_box_tag :is_remote, true, params[:is_remote] %>
+        <%= t('remote') %>
+      <% end %>
     </div>
     <div class="column has-text-right">
-          <%= f.submit t('search'), class: "button is-info is-medium" %>
+      <%= f.submit t('search'), class: "button is-info is-medium" %>
     </div>
   </div>
 <% end %>
