@@ -14,3 +14,10 @@
     </div>
   </div>
 </section>
+
+<%= content_for :footer do %>
+
+  <%= javascript_include_tag "jobs/stripe.js" %>
+  <%= javascript_include_tag "jobs/jobs.js" %>
+
+<% end %>

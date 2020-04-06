@@ -49,7 +49,7 @@ class JobsController < ApplicationController
     current_user.card_last4 = card_last4
     current_user.save!
 
-    @job.save ? redirect_to_response(t('jobs.messages.job_created'), root_path) : redirect_back_response(t('jobs.messages.job_not_created'), false)
+    @job.save ? redirect_to_response(t('jobs.messages.job_created'), @job) : redirect_back_response(t('jobs.messages.job_not_created'), false)
 
     rescue Stripe::CardError => e
       flash.alert = e.message
