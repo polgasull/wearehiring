@@ -16,11 +16,11 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
-gem 'simple_form'
+gem "simple_form", ">= 5.0.0"
 gem 'carrierwave', '~> 1.3', '>= 1.3.1'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'font-awesome-sass', '~> 5.8.1'
-gem 'mini_magick', '~> 4.9', '>= 4.9.3'
+gem 'mini_magick', '~> 4.9', '>= 4.9.4'
 gem 'stripe', '~> 4.9'
 gem 'trix', '~> 0.11.1'
 gem 'pry', '~> 0.12.2'
@@ -56,7 +56,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'devise'
+gem "devise", ">= 4.7.1"
 gem 'bulma-rails'
 gem 'sidekiq'
 group :development, :test do
