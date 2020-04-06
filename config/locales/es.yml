@@ -221,7 +221,7 @@ es:
   show: "Ver"
   payment: "Pago"
   jobs:
-    tags: "Habilidades"
+    tags: "Tags"
     budget: "Salario anual"
     location: "Localización"
     post_job: "Publicar empleo"
@@ -262,7 +262,7 @@ es:
   feature_3_text: "Fusce malesuada massa nibh, a condimentum sem aliquam eget. Nunc id tellus quam. Fusce pretium est ac odio porta tincidunt. Nunc imperdiet scelerisque lorem."
   search: "Buscar"
   category: "Categoría"
-  tags_form_small_text: "Añade habilidades separadas por coma"
+  tags_form_small_text: "Añade habilidades separadas por coma. (Ejemplo: Programming, Gaming, Mobile, UX)"
   is_looking_for: "Está buscando"
   is_looking_for_one: "Está buscando un"
   at: "En"
