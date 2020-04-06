@@ -8,8 +8,8 @@
       <% end %>
     </div>
     <div class="column">
-      <div class="columns">
-        <div class="column is-hidden-touch">
+      <div class="columns is-hidden-touch">
+        <div class="column">
           <%= job.job_author %> <%= t('is_looking_for_one').downcase %> <%= job.title %> <%= t('at').downcase %> <%= job.location %>
         </div>
         <div class="column is-3-desktop has-text-right">
@@ -30,7 +30,10 @@
             <%= icon('fas', 'coins mr1') %> <%= number_to_currency(job.budget) %>
           </div>
           <div class="pv1 pl2 pr2 mt2 bg-light">
-            <%= icon('far', 'clock mr1') %> <%= job.job_type.name %>
+            <span class="mr2"> <%= icon('far', 'clock mr1') %> <%= job.job_type.name %>  </span>
+            <% if job.remote_ok? %>
+              <%= icon('fas', 'wifi') %> <%= t('remote') %> 
+            <% end %>
           </div>
         </div>
         <div class="column">

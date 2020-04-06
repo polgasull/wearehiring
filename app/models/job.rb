@@ -52,7 +52,7 @@ class Job < ApplicationRecord
   def self.order_list(sort_order)
     if sort_order == "newest" || sort_order.blank?
       order(created_at: :desc)
-    elsif sort_order == "title"
+    elsif sort_order == "by_title"
       order(title: :asc)
     else 
       order(created_at: :asc)
