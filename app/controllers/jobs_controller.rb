@@ -4,11 +4,11 @@ class JobsController < ApplicationController
 
   def index
     if params[:sort_by]
-      @jobs = Job.all.order_list(params[:sort_by]).page(params[:page]).per(25)
-      @job_count = Job.all.count
+      @jobs = Job.not_expired.order_list(params[:sort_by]).page(params[:page]).per(25)
+      @job_count = Job.not_expired.count
     else 
-      @jobs = Job.all.filter(params).order('created_at DESC').page(params[:page]).per(25)
-      @job_count = Job.all.filter(params).count
+      @jobs = Job.not_expired.filter(params).order('created_at DESC').page(params[:page]).per(25)
+      @job_count = Job.not_expired.filter(params).count
     end
     @my_jobs = User.where(id: current_user&.id)
   end
@@ -71,6 +71,6 @@ class JobsController < ApplicationController
     end
 
     def job_params
-      params.require(:job).permit(:title, :description, :url, :job_type, :location, :job_author, :remote_ok, :apply_url, :avatar, :budget, :open, :tag_list, :category_id, :job_type_id)
+      params.require(:job).permit(:title, :description, :url, :job_type, :location, :job_author, :remote_ok, :apply_url, :avatar, :budget, :open, :tag_list, :expiry_date, :category_id, :job_type_id)
     end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200403123924) do
+ActiveRecord::Schema.define(version: 20200407140326) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 20200403123924) do
     t.string "title"
     t.text "description"
     t.string "url"
-    t.string "job_type"
     t.string "location"
     t.string "job_author"
     t.boolean "remote_ok"
@@ -43,6 +42,7 @@ ActiveRecord::Schema.define(version: 20200403123924) do
     t.float "latitude"
     t.float "longitude"
     t.bigint "job_type_id"
+    t.datetime "expiry_date"
     t.index ["category_id"], name: "index_jobs_on_category_id"
     t.index ["job_type_id"], name: "index_jobs_on_job_type_id"
   end

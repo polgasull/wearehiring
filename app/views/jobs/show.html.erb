@@ -3,6 +3,7 @@
     <div class="column is-7 is-offset-1">
 
       <p class="f7"> <%= icon('fas', 'clock') %> Publiado hace <%= time_ago_in_words(@job.created_at) %> </p>
+      <p> Remaining days: <%= (@job.expiry_date.to_date - @job.created_at.to_date).to_i %> </p>
       <h2 class="title is-2"><%= @job.title %></h2>
 
       <ul class="pb4">

@@ -45,6 +45,7 @@ end
             apply_url: "https://www.google.com",
             job_author: Faker::Name.name,
             remote_ok: false,
+            expiry_date: Faker::Date.between(from: 2.days.ago, to: 30.days.from_now),
             user_id: rand(1..10),
             category_id: rand(1..6),
             job_type_id: rand(1..3)
