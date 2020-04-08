@@ -28,6 +28,7 @@ gem 'jquery-ui-rails'
 gem 'kaminari'
 gem 'geocoder'
 gem 'binding_of_caller'
+gem 'rails_12factor', group: :production
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -41,6 +42,9 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'better_errors'
+  gem 'guard'
+  gem 'guard-livereload'
 end
 
 group :development do
@@ -58,8 +62,3 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "devise", ">= 4.7.1"
 gem 'bulma-rails'
 gem 'sidekiq'
-group :development, :test do
-  gem 'better_errors'
-  gem 'guard'
-  gem 'guard-livereload'
-end
