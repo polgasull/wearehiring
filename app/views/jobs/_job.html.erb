@@ -37,13 +37,12 @@
           </div>
         </div>
         <div class="column">
-          <%= job.tag_list %>
+          <% job.tags.each do |tag| %>
+            <span class='tag is-success is-normal'> <%= tag.name %> </span>
+          <% end %>
         </div>
         <div class="column has-text-right is-2">
           <%= link_to t('view'), job, class: 'button is-large is-link' %>
-          <% if current_user.try(:admin) || job_author(job) %>
-          <p> Remaining days: <%= (job.expiry_date.to_date - job.created_at.to_date).to_i %> </p>
-          <% end %>
         </div>
       </div>
       <% if current_user.try(:admin) || job_author(job) %>
@@ -56,7 +55,13 @@
             <li class="inline-block">
               <%= link_to 'Edit', edit_job_path(job), class: 'button is-small is-link is-outlined' %></li>
             <li class="inline-block">
-              <%= link_to 'Delete', job, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-small is-link is-outlined is-danger' %></li>
+              <%= link_to 'Delete', job, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-small is-link is-outlined is-danger' %>
+            </li>
+            <li class=inline-block>
+              <% if current_user.try(:admin) || job_author(job) %>
+                <p> <%= t('expire_at') %>: <%= (job.expiry_date.to_date - job.created_at.to_date).to_i %> </p>
+              <% end %>
+            </li>
             </ul>
         </div>
       </div>

@@ -22,13 +22,6 @@
           :include_blank => true %>
       </div>
     </div>
-    <div class="column is-hidden-touch">
-      <div class="select is-medium">
-        <%= select_tag :my_jobs, 
-          options_from_collection_for_select(@my_jobs, :id, :name, params[:my_jobs].to_i), 
-          :include_blank => true %>
-      </div>
-    </div>
     <div class="column is-hidden-touch white-color fw5">
       <%= label_tag do %>
         <%= check_box_tag :is_remote, true, params[:is_remote] %>

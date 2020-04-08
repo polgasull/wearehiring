@@ -5,4 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :trackable
 
   has_many :jobs
+
+  def my_jobs
+    Job.where(user_id: id)
+  end
 end

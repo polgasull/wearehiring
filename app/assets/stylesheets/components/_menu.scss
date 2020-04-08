@@ -76,10 +76,15 @@
 }
 
 .navbar-item.active {
-  color: $primary;
+  color: $red;
+  font-weight: bold;
 }
 
 .navbar-item {
   -webkit-font-smoothing: auto;
   padding: 11px 15px 11px 35px;
+}
+
+a.navbar-item:hover {
+  color: $red;
 }

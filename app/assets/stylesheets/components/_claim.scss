@@ -3,6 +3,20 @@
 
 	&.home-bg {
 		background-color: #b30000;
+		background: url(asset_path('home_white_bg.jpg')) 0 0 / cover;
+	}
+
+	.title {
+		font-size: 4rem;
+		background-color: white;
+	}
+
+	.home-link {
+		color: $red;
+
+		&:hover {
+			color: darken($red, 10%);
+		}
 	}
 
 	.btn {

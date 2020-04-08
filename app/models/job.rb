@@ -38,11 +38,11 @@ class Job < ApplicationRecord
   }
 
   def self.not_expired
-    where('expiry_date > ?', Date.today)
+    where('expiry_date >= ?', Date.today)
   end
 
   def self.expired
-    !self.expiry_date.future?
+    where('expiry_date < ?', Date.today)
   end
 
   def tag_list=(tags_string)
