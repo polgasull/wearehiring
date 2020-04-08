@@ -2,13 +2,13 @@
   <ul>
     <li class="<%= 'is-active' if current_page?(user_jobs_jobs_path) %>">
       <%= link_to user_jobs_jobs_path do %>
-        <span class="icon is-small"><i class="fas fa-music" aria-hidden="true"></i></span>
+        <span class="icon is-small"><%= icon('fas', 'briefcase') %></span>
         <span> My jobs </span>
       <% end %>
     </li>
     <li class="<%= 'is-active' if current_page?(edit_user_registration_path) %>">
       <%= link_to edit_user_registration_path do %>
-        <span class="icon is-small"><i class="fas fa-image" aria-hidden="true"></i></span>
+        <span class="icon is-small"><%= icon('fas', 'user') %></span>
         <span> Edit my account </span>
       <% end %>
     </li>
