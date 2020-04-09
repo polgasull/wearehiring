@@ -80,6 +80,21 @@
   }
 }
 
+@media(max-width: 768px) {
+
+  .hero-body {
+    padding: 10rem 1.5rem;
+	}
+	
+	.claim {
+
+		h1.title-mb {
+			font-size: 3rem;
+			margin-top: 0rem;
+		}
+	}
+}
+
 @media(max-width: 500px) {
 
 	.claim.is-mb-bg {
@@ -98,23 +113,16 @@
 
 @media (max-width: 500px) {
 
-	h1.title-mb {
-		font-size: 2rem;
-		margin-top: 0rem;
-	}
-
 	.claim {
+
+		h1.title-mb {
+			font-size: 2rem;
+			margin-top: 0rem;
+		}
 
 		.column {
 			padding-left: 15px;
     	padding-right: 15px;
 		}
 	}
-}
-
-@media(max-width: 768px) {
-
-  .hero-body {
-    padding: 10rem 1.5rem;
-  }
 }
