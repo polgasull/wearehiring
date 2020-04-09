@@ -8,6 +8,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'aws-sdk-rails'
 gem 'binding_of_caller'
 gem 'coffee-rails', '~> 4.2'
 gem 'geocoder'
@@ -17,6 +18,7 @@ gem 'jquery-ui-rails'
 gem 'kaminari'
 gem "simple_form", ">= 5.0.0"
 gem 'carrierwave', '~> 1.3', '>= 1.3.1'
+gem 'carrierwave-aws'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'font-awesome-sass', '~> 5.8.1'
 gem 'mini_magick', '~> 4.9', '>= 4.9.4'
@@ -26,7 +28,6 @@ gem 'pry', '~> 0.12.2'
 gem 'sass-rails', '~> 5.0'
 gem 'stripe', '~> 4.9'
 gem 'rails', '~> 5.1.6', '>= 5.1.6.1'
-gem 'rails_12factor', group: :production
 gem 'trix', '~> 0.11.1'
 gem 'uglifier', '>= 1.3.0'
 
