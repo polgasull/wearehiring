@@ -10,13 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200413190754) do
+ActiveRecord::Schema.define(version: 20200413214000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
+  end
+
+  create_table "inscriptions", force: :cascade do |t|
+    t.bigint "job_id"
+    t.bigint "user_id"
+    t.index ["job_id"], name: "index_inscriptions_on_job_id"
+    t.index ["user_id"], name: "index_inscriptions_on_user_id"
   end
 
   create_table "job_types", force: :cascade do |t|
@@ -34,7 +41,6 @@ ActiveRecord::Schema.define(version: 20200413190754) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "avatar"
-    t.integer "user_id"
     t.integer "budget"
     t.boolean "open"
     t.integer "awarded_proposal"
@@ -43,8 +49,10 @@ ActiveRecord::Schema.define(version: 20200413190754) do
     t.float "longitude"
     t.bigint "job_type_id"
     t.datetime "expiry_date"
+    t.bigint "user_id"
     t.index ["category_id"], name: "index_jobs_on_category_id"
     t.index ["job_type_id"], name: "index_jobs_on_job_type_id"
+    t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -85,8 +93,11 @@ ActiveRecord::Schema.define(version: 20200413190754) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "inscriptions", "jobs"
+  add_foreign_key "inscriptions", "users"
   add_foreign_key "jobs", "categories"
   add_foreign_key "jobs", "job_types"
+  add_foreign_key "jobs", "users"
   add_foreign_key "taggings", "jobs"
   add_foreign_key "taggings", "tags"
 end

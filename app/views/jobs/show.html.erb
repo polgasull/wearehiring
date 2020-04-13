@@ -24,6 +24,10 @@
       <% else %>
         <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
       <% end %>
+
+      <%= form_for :inscription, url: job_inscriptions_path(@job) do |f| %>
+        <%= f.submit %>
+      <% end %>
     </div>
 
     <div class="column is-2 is-offset-1 has-text-centered">

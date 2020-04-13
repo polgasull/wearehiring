@@ -5,7 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :trackable, :omniauthable, :omniauth_providers => [:linkedin]
 
   has_many :jobs
-
+  has_many :inscriptions
+  
   def my_jobs
     Job.where(user_id: id)
   end

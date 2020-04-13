@@ -2,6 +2,7 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
   resources :jobs do
+    resource :inscriptions, except: :index
     collection do
       get :search
       get :user_jobs

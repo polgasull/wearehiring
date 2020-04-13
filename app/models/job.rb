@@ -6,6 +6,7 @@ class Job < ApplicationRecord
   belongs_to :job_type
   has_many :taggings
   has_many :tags, through: :taggings
+  has_many :inscriptions
   mount_uploader :avatar, AvatarUploader
 
   geocoded_by :location
