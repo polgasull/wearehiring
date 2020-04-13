@@ -19,7 +19,11 @@
       </div>
 
       <%= link_to 'Apply to this job', @job.apply_url, class:"button is-rounded is-large is-fullwidth is-link" %>
-
+      <% unless current_user %>
+        <%= link_to 'Sign in with Linkedin', user_linkedin_omniauth_authorize_path %>
+      <% else %>
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+      <% end %>
     </div>
 
     <div class="column is-2 is-offset-1 has-text-centered">
