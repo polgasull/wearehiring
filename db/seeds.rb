@@ -36,7 +36,7 @@ User.where(email: "test@email.com").first_or_create(name: "Pol", password: "1234
 end
 
 50.times do 
-  sleep 0.25
+  sleep 0.5
   Job.create(title: Faker::Job.title,
             description: Faker::Lorem.paragraph(sentence_count: 2),
             budget: rand(20000..60000),

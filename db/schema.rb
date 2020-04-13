@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200407140326) do
+ActiveRecord::Schema.define(version: 20200413093704) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,19 @@ ActiveRecord::Schema.define(version: 20200407140326) do
     t.datetime "expiry_date"
     t.index ["category_id"], name: "index_jobs_on_category_id"
     t.index ["job_type_id"], name: "index_jobs_on_job_type_id"
+  end
+
+  create_table "oauth_accounts", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "provider"
+    t.string "uid"
+    t.string "image_url"
+    t.string "profile_url"
+    t.string "access_token"
+    t.text "raw_data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_oauth_accounts_on_user_id"
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -85,6 +98,7 @@ ActiveRecord::Schema.define(version: 20200407140326) do
 
   add_foreign_key "jobs", "categories"
   add_foreign_key "jobs", "job_types"
+  add_foreign_key "oauth_accounts", "users"
   add_foreign_key "taggings", "jobs"
   add_foreign_key "taggings", "tags"
 end
