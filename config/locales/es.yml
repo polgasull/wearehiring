@@ -236,6 +236,10 @@ es:
       job_not_updated: "No se pudo actualizar la oferta"
       job_deleted: "Oferta eliminada satisfactoriamente"
       job_not_deleted: "No se pudo eliminar la oferta"
+  inscriptions:
+    messages:
+      inscription_created: "Te has inscrito satisfactoriamente"
+      inscription_not_created: "Algo ha ido mal durante la inscripción"
   payments:
     monthly: "para 30 días"
     enter_credit_card: "Número de tarjeta de crédito o débito"

@@ -18,6 +18,7 @@ class JobsController < ApplicationController
   end
 
   def show
+    @inscriptions_count = @job.inscriptions.count
   end
 
   def new

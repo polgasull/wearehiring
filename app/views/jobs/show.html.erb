@@ -18,6 +18,10 @@
         <%= @job.description.html_safe %>
       </div>
 
+      <div class="has-text-centered">
+        <%= @inscriptions_count %> se han inscrito a esta oferta
+      </div>
+
       <%= link_to 'Apply to this job', @job.apply_url, class:"button is-rounded is-large is-fullwidth is-link" %>
       <% unless current_user %>
         <%= link_to 'Sign in with Linkedin', user_linkedin_omniauth_authorize_path %>
@@ -25,7 +29,8 @@
         <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
       <% end %>
 
-      <%= form_for :inscription, url: job_inscriptions_path(@job) do |f| %>
+      <%= form_for :inscription, url: job_inscriptions_path(@job.id) do |f| %>
+        <%= f.hidden_field :user_id, value: @job.user_id %>
         <%= f.submit %>
       <% end %>
     </div>

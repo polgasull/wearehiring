@@ -232,6 +232,10 @@ en:
       job_not_updated: "Job was not able to be updated"
       job_deleted: "Job was successfully deleted"
       job_not_deleted: "Job was not able to be deleted"
+  inscriptions:
+    messages:
+      inscription_created: "You have registered successfully"
+      inscription_not_created: "Something went wrong during your inscription"
   payments:
     monthly: "para 30 días"
     enter_credit_card: "Enter credit or debit card"
