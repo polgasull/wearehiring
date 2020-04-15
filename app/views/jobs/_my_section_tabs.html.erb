@@ -4,7 +4,7 @@
       <%= link_to user_jobs_jobs_path do %>
         <span class="icon is-small"><%= icon('fas', 'briefcase') %></span>
         <span> <%= t('my_jobs') %> </span>
-      <% end %>
+      <% end if current_user.is_company? %>
     </li>
     <li class="<%= 'is-active' if current_page?(edit_user_registration_path) %>">
       <%= link_to edit_user_registration_path do %>

@@ -278,3 +278,9 @@ en:
   your_name: "Name"
   edit_password: "Change Password"
   my_jobs: "My jobs"
+  sign_up_as_company: "Sign up as Company"
+  forms: 
+    company_name: "Company Name"
+    email: "Email"
+    password: "Password"
+    password_confirmation: "Confirm Password"

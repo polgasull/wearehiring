@@ -18,6 +18,9 @@ JobType.where(name: "Full-time").first_or_create(name: "Full-time")
 JobType.where(name: "Part-time").first_or_create(name: "Part-time")
 JobType.where(name: "Freelance").first_or_create(name: "Freelance")
 
+UserType.where(name: "Candidate").first_or_create(name: "Candidate")
+UserType.where(name: "Company").first_or_create(name: "Company")
+
 location = [
   "Denver, CO", 
   "San Francisco, CA", 
@@ -29,14 +32,14 @@ location = [
   "Boston, MA"
 ]
 
-User.where(email: "test@email.com").first_or_create(name: "Pol", password: "123456")
+User.where(email: "test@email.com").first_or_create(name: "Pol", password: "123456", user_type_id: 2)
 
 10.times do 
-  User.create(email: Faker::Internet.email, password: "123456")
+  User.create(email: Faker::Internet.email, password: "123456", user_type_id: 2)
 end
 
 50.times do 
-  sleep 0.25
+  sleep 0.4
   Job.create(title: Faker::Job.title,
             description: Faker::Lorem.paragraph(sentence_count: 2),
             budget: rand(20000..60000),
@@ -48,6 +51,6 @@ end
             expiry_date: Faker::Date.between(from: 2.days.ago, to: 30.days.from_now),
             user_id: rand(1..10),
             category_id: rand(1..6),
-            job_type_id: rand(1..3)
+            job_type_id: rand(1..3),
           )
 end

@@ -1,5 +1,7 @@
 class InscriptionsController < ApplicationController
   before_action :set_job, only: [:create]
+  before_action :authenticate_user!
+  before_action :validate_is_candidate!
 
   def create
     @inscription = @job.inscriptions.build(inscription_params)

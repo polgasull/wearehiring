@@ -1,6 +1,7 @@
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :validate_is_company!, except: [:index, :show]
 
   def index
     if params[:sort_by]

@@ -8,6 +8,12 @@ class User < ApplicationRecord
   has_many :jobs
   has_many :inscriptions
 
+  %w[candidate company].each do |user_type_name|
+    define_method "is_#{user_type_name}?" do
+      user_type&.name == user_type_name.capitalize
+    end
+  end
+
   def my_jobs
     Job.where(user_id: id)
   end

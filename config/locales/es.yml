@@ -282,3 +282,9 @@ es:
   your_name: "Nombre"
   edit_password: "Cambiar contraseña"
   my_jobs: "Mis publicaciones"
+  sign_up_as_company: "Registrarse como Empresa"
+  forms: 
+    company_name: "Nombre de la empresa"
+    email: "Correo electrónico"
+    password: "Contraseña"
+    password_confirmation: "Repetir contraseña"
