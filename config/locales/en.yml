@@ -274,3 +274,7 @@ en:
   remote: "Remote"
   sort_by: "Sort by"
   expire_at: "Expire at"
+  your_email: "Email provided"
+  your_name: "Name"
+  edit_password: "Change Password"
+  my_jobs: "My jobs"

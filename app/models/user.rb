@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable, :omniauthable, :omniauth_providers => [:linkedin]
 
+  belongs_to :user_type
   has_many :jobs
   has_many :inscriptions
 
@@ -25,7 +26,8 @@ class User < ApplicationRecord
     binding.pry
     user.password = Devise.friendly_token[0,20]
     user.name = auth.info.name # assuming the user model has a name
-    user.location = auth.info.location
+    user.last_name = auth.info.last_name
+    user.picture_url = auth.info&.picture_url
     end
   end
 end
