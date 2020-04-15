@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200413214000) do
+ActiveRecord::Schema.define(version: 20200415102905) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,15 @@ ActiveRecord::Schema.define(version: 20200413214000) do
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 
+  create_table "sessions", force: :cascade do |t|
+    t.string "session_id", null: false
+    t.text "data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["session_id"], name: "index_sessions_on_session_id", unique: true
+    t.index ["updated_at"], name: "index_sessions_on_updated_at"
+  end
+
   create_table "taggings", force: :cascade do |t|
     t.bigint "job_id"
     t.bigint "tag_id"
@@ -78,6 +87,10 @@ ActiveRecord::Schema.define(version: 20200413214000) do
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
     t.string "name"
+    t.string "last_name"
+    t.string "picture_url"
+    t.string "profile_url"
+    t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "stripe_id"

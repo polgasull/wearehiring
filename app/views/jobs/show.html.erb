@@ -29,9 +29,11 @@
         <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
       <% end %>
 
-      <%= form_for :inscription, url: job_inscriptions_path(@job.id) do |f| %>
-        <%= f.hidden_field :user_id, value: @job.user_id %>
-        <%= f.submit %>
+      <% if current_user %>
+        <%= form_for :inscription, url: job_inscriptions_path(@job.id) do |f| %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= f.submit %>
+        <% end %>
       <% end %>
     </div>
 

@@ -8,6 +8,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'activerecord-session_store'
 gem 'aws-sdk-rails'
 gem 'binding_of_caller'
 gem 'coffee-rails', '~> 4.2'
