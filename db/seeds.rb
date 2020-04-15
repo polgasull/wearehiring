@@ -18,8 +18,8 @@ JobType.where(name: "Full-time").first_or_create(name: "Full-time")
 JobType.where(name: "Part-time").first_or_create(name: "Part-time")
 JobType.where(name: "Freelance").first_or_create(name: "Freelance")
 
-UserType.where(name: "Candidate").first_or_create(name: "Candidate")
-UserType.where(name: "Company").first_or_create(name: "Company")
+UserType.where(internal_name: "candidate").first_or_create(name: "Candidate", internal_name: "candidate")
+UserType.where(internal_name: "company").first_or_create(name: "Company", internal_name: "company")
 
 location = [
   "Denver, CO", 

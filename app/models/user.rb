@@ -28,8 +28,8 @@ class User < ApplicationRecord
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+    user.user_type_id = UserType.where(internal_name: 'candidate').first.id
     user.email = auth.info.email
-    binding.pry
     user.password = Devise.friendly_token[0,20]
     user.name = auth.info.name # assuming the user model has a name
     user.last_name = auth.info.last_name

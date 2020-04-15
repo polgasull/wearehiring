@@ -22,19 +22,30 @@
         <%= @inscriptions_count %> se han inscrito a esta oferta
       </div>
 
-      <%= link_to 'Apply to this job', @job.apply_url, class:"button is-rounded is-large is-fullwidth is-link" %>
-      <% unless current_user %>
-        <%= link_to 'Sign in with Linkedin', user_linkedin_omniauth_authorize_path %>
-      <% else %>
-        <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+      <% if @job.apply_url.present? %>
+        <%= link_to t('external_link'), @job.apply_url %>
       <% end %>
 
-      <% if current_user %>
-        <%= form_for :inscription, url: job_inscriptions_path(@job.id) do |f| %>
-          <%= f.hidden_field :user_id, value: current_user.id %>
-          <%= f.submit %>
+      <% unless user_signed_in? || current_user&.is_company? %>
+        <%= link_to t('send_job_inscription'), user_linkedin_omniauth_authorize_path, class: "button is-rounded is-block is-link is-large" %>
+      <% end %>
+
+      <% if user_signed_in? && current_user&.is_candidate? %>
+        <% unless @job.inscriptions.any? {|u| u[:user_id] == current_user.id} %>
+            <%= form_for :inscription, url: job_inscriptions_path(@job.id) do |f| %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.submit t('send_job_inscription'), class: "button is-rounded is-fullwidth is-link is-large" %>
+          <% end %>
+        <% else %>
+          <div class="has-text-centered">
+            <button disabled class="button is-rounded is-light is-large">  
+              <%= t('inscribed') %> <%= icon('fas', 'check ml2') %>
+            </button>
+          </div>
         <% end %>
       <% end %>
+
+
     </div>
 
     <div class="column is-2 is-offset-1 has-text-centered">

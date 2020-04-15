@@ -288,3 +288,6 @@ es:
     email: "Correo electrónico"
     password: "Contraseña"
     password_confirmation: "Repetir contraseña"
+  send_job_inscription: "Inscribirse"
+  external_link: "Visitar link externo"
+  inscribed: "Inscrito"

@@ -5,11 +5,13 @@
 					jobs_path(locale:params[:locale] || 'es'), 
 					class: "navbar-item #{ 'active' if current_page?(jobs_path)}" %>
 		</div>
+		<% unless current_user&.is_candidate? %>
 		<div class="navbar-brand">
 			<%= link_to t('jobs.post_job'), 
 					new_job_path, 
 					class: "navbar-item #{ 'active' if current_page?(new_job_path)}" %>
 		</div>
+		<% end %>
 	<% if user_signed_in? %>
 		<div class="navbar-brand">
 			<%= link_to t('company_profile'), 

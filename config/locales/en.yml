@@ -284,3 +284,6 @@ en:
     email: "Email"
     password: "Password"
     password_confirmation: "Confirm Password"
+  send_job_inscription: "Apply"
+  external_link: "Visit external link"
+  inscribed: "Inscribed"

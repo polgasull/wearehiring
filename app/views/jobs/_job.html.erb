@@ -43,6 +43,11 @@
         </div>
         <div class="column has-text-right is-2">
           <%= link_to t('view'), job, class: 'button is-large is-link' %>
+          <% if current_user %>
+            <% if job.inscriptions.any? {|u| u[:user_id] == current_user.id} %>
+              <%= t('inscribed') %>
+            <% end %>
+          <% end %>
         </div>
       </div>
       <% if current_user.try(:admin) || job_author(job) %>

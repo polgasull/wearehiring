@@ -9,7 +9,7 @@
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
 
-    <%= f.hidden_field :user_type_id, value: 2 %>
+    <%= f.hidden_field :user_type_id, value: UserType.where(internal_name: 'company').first.id %>
 
     <div class="field">
       <div class="control">
