@@ -22,10 +22,6 @@
         <%= @inscriptions_count %> se han inscrito a esta oferta
       </div>
 
-      <% if @job.apply_url.present? %>
-        <%= link_to t('external_link'), @job.apply_url %>
-      <% end %>
-
       <% unless user_signed_in? || current_user&.is_company? %>
         <%= link_to t('send_job_inscription'), user_linkedin_omniauth_authorize_path, class: "button is-rounded is-block is-link is-large" %>
       <% end %>
@@ -54,15 +50,11 @@
         <%= link_to image_tag(@job.avatar_url(:thumb), alt: @job.job_author, class: "has-text-centered"), @job.url %>
       <% end %>
 
-      <h5 class="is-5 has-text-centered"><%= link_to @job.job_author, @job.url %></h5>
+      <h5 class="is-5 has-text-centered"><%= @job.job_author %></h5>
 
-      <div class="mt2 mb4">
-      <%= link_to @job.url do %>
-        <i class="fa fa-globe"></i>
+      <% if @job.apply_url.present? %>
+        <%= link_to t('external_link'), @job.apply_url %>
       <% end %>
-      </div>
-
-      <%= link_to 'Apply to this job', @job.apply_url, class:"button is-rounded is-fullwidth is-link" %>
 
       <% if current_user.try(:admin) || job_author(@job) %>
         <ul class="pv3">
