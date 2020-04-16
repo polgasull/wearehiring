@@ -282,6 +282,7 @@ es:
   your_name: "Nombre"
   edit_password: "Cambiar contraseña"
   my_jobs: "Mis publicaciones"
+  my_inscriptions: "Mis inscripciones"
   sign_up_as_company: "Registrarse como Empresa"
   forms: 
     company_name: "Nombre de la empresa"
@@ -291,3 +292,4 @@ es:
   send_job_inscription: "Inscribirse"
   external_link: "Visitar link externo"
   inscribed: "Inscrito"
+  profile: "Perfil"

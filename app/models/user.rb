@@ -18,6 +18,10 @@ class User < ApplicationRecord
     Job.where(user_id: id)
   end
 
+  def my_inscriptions
+    Inscription.where(user_id: id)
+  end
+
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session['devise.linkedin_data'] && session['devise.linkedin_data']['extra']['raw_info']

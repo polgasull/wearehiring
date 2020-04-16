@@ -1,28 +1,57 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
 	<div class="navbar-end">
-		<div class="navbar-brand">
+		<div class="navbar-brand has-text-weight-bold">
 			<%= link_to t('show_jobs'), 
 					jobs_path(locale:params[:locale] || 'es'), 
-					class: "navbar-item #{ 'active' if current_page?(jobs_path)}" %>
+					class: "navbar-item text-uppercase  #{ 'active' if current_page?(jobs_path)}" %>
 		</div>
 		<% unless current_user&.is_candidate? %>
-		<div class="navbar-brand">
+		<div class="navbar-brand has-text-weight-bold">
 			<%= link_to t('jobs.post_job'), 
 					new_job_path, 
-					class: "navbar-item #{ 'active' if current_page?(new_job_path)}" %>
+					class: "navbar-item text-uppercase #{ 'active' if current_page?(new_job_path)}" %>
 		</div>
 		<% end %>
 	<% if user_signed_in? %>
 		<div class="navbar-brand">
-			<%= link_to t('company_profile'), 
-									edit_user_registration_path, 
-									class: "navbar-item #{ 'active' if current_page?(edit_user_registration_path) || current_page?(user_jobs_jobs_path)}" %>
-		</div>
-		<div class="navbar-brand">
-			<%= link_to t('logout'), 
-									destroy_user_session_path, 
-									method: :delete, 
-									class: "navbar-item" %>
+			<div class="dropdown navbar-item is-right">
+				<div class="dropdown-trigger">
+					<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+						<span><%= icon('fas', 'user') %></span>
+						<span class="icon is-small">
+							<i class="fas fa-angle-down" aria-hidden="true"></i>
+						</span>
+					</button>
+				</div>
+				<div class="dropdown-menu" id="dropdown-menu" role="menu">
+					<div class="dropdown-content">
+						<% if current_user.is_candidate? %>
+							<%= link_to user_inscriptions_inscriptions_path, 
+							class: "dropdown-item #{ 'active' if current_page?(user_inscriptions_inscriptions_path) }" do %>
+								<span class="icon is-small"><%= icon('fas', 'file-import') %></span>
+								<span> <%= t('my_inscriptions') %> </span>
+							<% end %>
+						<% end %>
+						<% if current_user.is_company? %>
+							<%= link_to user_jobs_jobs_path, 
+							class: "dropdown-item #{ 'active' if current_page?(user_jobs_jobs_path) }" do %>
+								<span class="icon is-small"><%= icon('fas', 'briefcase') %></span>
+								<span> <%= t('my_jobs') %> </span>
+							<% end %>
+						<% end %>
+						<%= link_to edit_user_registration_path, 
+						class: "dropdown-item #{ 'active' if current_page?(edit_user_registration_path) }" do %> 
+							<span class="icon is-small"><%= icon('fas', 'key') %></span>
+							<span> <%= current_user.is_company? ? t('edit_password') : t('profile') %> </span>
+						<% end %>
+						<hr class="dropdown-divider">
+						<%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do %>
+							<span class="icon is-small"><%= icon('fas', 'sign-out-alt') %></span>
+							<span> <%= t('logout') %> </span>
+						<% end %>
+					</div>
+				</div>
+			</div>
 		</div>
 	<% end %>
 	</div>

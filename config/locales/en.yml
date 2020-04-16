@@ -278,6 +278,7 @@ en:
   your_name: "Name"
   edit_password: "Change Password"
   my_jobs: "My jobs"
+  my_inscriptions: "My inscriptions"
   sign_up_as_company: "Sign up as Company"
   forms: 
     company_name: "Company Name"
@@ -287,3 +288,4 @@ en:
   send_job_inscription: "Apply"
   external_link: "Visit external link"
   inscribed: "Inscribed"
+  profile: "Profile"

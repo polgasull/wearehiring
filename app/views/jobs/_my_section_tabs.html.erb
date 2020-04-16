@@ -1,11 +1,14 @@
 <div class="tabs is-centered">
   <ul>
+    <% if current_user.is_company? %>
     <li class="<%= 'is-active' if current_page?(user_jobs_jobs_path) %>">
       <%= link_to user_jobs_jobs_path do %>
         <span class="icon is-small"><%= icon('fas', 'briefcase') %></span>
         <span> <%= t('my_jobs') %> </span>
-      <% end if current_user.is_company? %>
+      <% end %>
     </li>
+    <% end %>
+   
     <li class="<%= 'is-active' if current_page?(edit_user_registration_path) %>">
       <%= link_to edit_user_registration_path do %>
         <span class="icon is-small"><%= icon('fas', 'user') %></span>
