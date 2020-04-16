@@ -77,6 +77,7 @@ GEM
     bindex (0.5.0)
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
+    browser (4.0.0)
     builder (3.2.3)
     bulma-rails (0.7.4)
       sass (~> 3.5)
@@ -233,7 +234,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
     public_suffix (3.0.3)
-    puma (3.12.1)
+    puma (3.12.4)
     rack (2.0.6)
     rack-protection (2.0.5)
       rack
@@ -365,6 +366,7 @@ DEPENDENCIES
   aws-sdk-rails
   better_errors
   binding_of_caller
+  browser (~> 4.0)
   bulma-rails
   byebug
   capybara (~> 2.13)
@@ -389,7 +391,7 @@ DEPENDENCIES
   omniauth-linkedin-oauth2 (~> 1.0)
   pg (>= 0.18, < 2.0)
   pry (~> 0.12.2)
-  puma (~> 3.7)
+  puma (~> 3.12)
   rails (~> 5.1.6, >= 5.1.6.1)
   rails-controller-testing
   rb-readline (~> 0.5.3)
