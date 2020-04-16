@@ -1,0 +1,40 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+	<div class="navbar-end">
+		<div class="navbar-brand has-text-weight-bold">
+			<%= link_to t('show_jobs'), 
+					jobs_path(locale:params[:locale] || 'es'), 
+					class: "navbar-item text-uppercase  #{ 'active' if current_page?(jobs_path)}" %>
+		</div>
+		<% unless current_user&.is_candidate? %>
+		<div class="navbar-brand has-text-weight-bold">
+			<%= link_to t('jobs.post_job'), 
+					new_job_path, 
+					class: "navbar-item text-uppercase #{ 'active' if current_page?(new_job_path)}" %>
+		</div>
+		<% end %>
+    <% if user_signed_in? %>
+      <% if current_user.is_candidate? %>
+      <div class="navbar-brand">
+        <%= link_to t('my_inscriptions'), user_inscriptions_inscriptions_path, 
+          class: "navbar-item text-uppercase #{ 'active' if current_page?(user_inscriptions_inscriptions_path) }" %>
+        </div>
+      <% end %>  
+      <% if current_user.is_company? %>
+        <div class="navbar-brand">
+          <%= link_to t('my_jobs'), user_jobs_jobs_path, 
+          class: "navbar-item text-uppercase #{ 'active' if current_page?(user_jobs_jobs_path) }" %>
+        </div>
+      <% end %> 
+      <div class="navbar-brand">
+        <%= link_to edit_user_registration_path, 
+        class: "navbar-item text-uppercase #{ 'active' if current_page?(edit_user_registration_path) }" do %> 
+          <span> <%= current_user.is_company? ? t('edit_password') : t('profile') %> </span>
+        <% end %>
+      </div>
+      <hr />
+      <div class="navbar-brand">
+        <%= link_to t('logout'), destroy_user_session_path, method: :delete, class: "navbar-item text-uppercase" %>
+      </div>
+    <% end %>
+	</div>
+</nav>

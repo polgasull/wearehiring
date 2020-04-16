@@ -62,14 +62,14 @@ es:
   datetime:
     distance_in_words:
       about_x_hours:
-        one: alrededor de 1 hora
-        other: alrededor de %{count} horas
+        one: hace 1 hora
+        other: hace %{count} horas
       about_x_months:
-        one: alrededor de 1 mes
-        other: alrededor de %{count} meses
+        one: hace 1 mes
+        other: hace %{count} meses
       about_x_years:
-        one: alrededor de 1 año
-        other: alrededor de %{count} años
+        one: hace 1 año
+        other: hace %{count} años
       almost_x_years:
         one: casi 1 año
         other: casi %{count} años
@@ -293,3 +293,4 @@ es:
   external_link: "Visitar link externo"
   inscribed: "Inscrito"
   profile: "Perfil"
+  you_have_inscribed: "Te has inscrito en"
