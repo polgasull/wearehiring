@@ -26,7 +26,7 @@
 
   <div class="columns">
     <div class="column">
-        <div class="field">
+      <div class="field">
         <div class="control">
           <label class="label"> 
             <abbr title="required">*</abbr>
@@ -53,14 +53,32 @@
   </div>
 
   <div class="columns">
+    <div class="column"> 
+      <abbr title="required">*</abbr>
+      <%= t('jobs.salary_range') %> 
+    </div>
+  </div>
+
+  <div class="columns">
     <div class="column is-one-quarter-desktop">
       <div class="field">
         <div class="control">
-          <%= f.input :budget, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }, label: t('jobs.budget'), hint: 'Example: "30000"' %>
+          <%= f.input_field :salary_from, required: true, class: 'input' %>
+          <small> Example: 30000 </small>
         </div>
       </div>
     </div>
     <div class="column is-one-quarter-desktop">
+      <div class="field">
+        <div class="control">
+          <%= f.input_field :salary_to, required: true, class: 'input' %>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="columns">
+    <div class="column">
       <div class="field">
         <div class="control">
           <label class="label"> 
@@ -158,7 +176,9 @@
   <hr>
 
   <%= render 'payment' %>
-
-  <%= f.button :submit, class: "is-large btn-green mt3" %>
+  
+  <div class="has-text-centered">
+    <%= f.button :submit, class: "button is-large primary mt3" %>   
+  </div>
 
 <% end %>

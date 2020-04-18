@@ -42,7 +42,8 @@ end
   sleep 0.4
   Job.create(title: Faker::Job.title,
             description: Faker::Lorem.paragraph(sentence_count: 2),
-            budget: rand(20000..60000),
+            salary_from: rand(20000..30000),
+            salary_to: rand(40000..80000),
             location: location.sample,
             url: "https://www.google.com",
             apply_url: "https://www.google.com",

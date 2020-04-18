@@ -41,9 +41,9 @@ ActiveRecord::Schema.define(version: 20200415120107) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "avatar"
-    t.integer "budget"
+    t.integer "salary_from"
+    t.integer "salary_to"
     t.boolean "open"
-    t.integer "awarded_proposal"
     t.bigint "category_id"
     t.float "latitude"
     t.float "longitude"

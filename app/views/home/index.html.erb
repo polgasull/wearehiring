@@ -8,7 +8,7 @@
 			</div>
 		</div>
 		<div class="columns">
-			<div class="column">
+			<div class="column boxes-wrapper">
 				<%= render partial: '/jobs/job', collection: @jobs %>
 			</div>
 		</div>
@@ -24,11 +24,23 @@
 	<div class="container">
 		<div class="columns">
 			<div class="column">
-				<h2 class="title"> Company section! </h2>
-				<p> Body text here </p>
-				<div class="mt4">
-					<%= link_to t('create_account'), edit_user_registration_path, class: 'button is-medium is-rounded' %>
-				</div>
+				<% if user_signed_in? %>
+					<h2 class="title"> Welcome <%= current_user.name %> </h2>
+					<p> Body text here </p>
+					<div class="mt4">
+						<% if current_user.is_company? %>
+							<%= link_to t('jobs.post_job'), new_job_path, class: 'button is-medium is-rounded' %>
+						<% else %>
+							<%= link_to t('my_inscriptions'), user_inscriptions_inscriptions_path, class: 'button is-medium is-rounded' %>
+						<% end %>
+					</div>
+				<% else %>
+					<h2 class="title"> Company section! </h2>
+					<p> Body text here </p>
+					<div class="mt4">
+						<%= link_to t('create_account'), new_user_registration_path, class: 'button is-medium is-rounded' %>
+					</div>
+				<% end %>
 			</div>
 			<div class="column is-vertical-center has-text-centered">
 				<%= icon('far', 'building f1') %>

@@ -222,7 +222,7 @@ es:
   payment: "Pago"
   jobs:
     tags: "Tags"
-    budget: "Salario anual"
+    salary_range: "Rango salario anual"
     location: "Localización"
     post_job: "Publicar Job"
     new_job: "Nueva oferta"

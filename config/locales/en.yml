@@ -218,7 +218,7 @@ en:
   payment: "Payment"
   jobs:
     tags: "Tags"
-    budget: "Anual Salary"
+    salary_range: "Anual salary range"
     location: "Location"
     post_job: "Post Job"
     new_job: "New job"

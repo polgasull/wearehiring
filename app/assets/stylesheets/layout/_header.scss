@@ -18,8 +18,9 @@
 		}
 	}
 
-	&.bg-color {
-		background: $secondary;
+	&.bg-primary {
+		background: $primary;
+		color: $white;
 	}
 
 	.button {

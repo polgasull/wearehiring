@@ -18,7 +18,8 @@
     </div>
     <div class="columns">
       <div class="column">
-        <%= icon('fas', 'coins mr1') %> <%= number_to_currency(job.budget) %>        
+        <%= icon('fas', 'coins mr1') %> 
+        <%= number_to_currency(job.salary_from) %> - <%= number_to_currency(job.salary_to) %>       
       </div>
       <div class="column">
       <%= job.category.name %>
