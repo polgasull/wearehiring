@@ -28,9 +28,9 @@
 
       <% if user_signed_in? && current_user&.is_candidate? %>
         <% unless @job.inscriptions.any? {|u| u[:user_id] == current_user.id} %>
-            <%= form_for :inscription, url: job_inscriptions_path(@job.id) do |f| %>
-              <%= f.hidden_field :user_id, value: current_user.id %>
-              <%= f.submit t('send_job_inscription'), class: "button is-rounded is-fullwidth is-link is-large" %>
+          <%= form_for :inscription, url: job_inscriptions_path(@job.id) do |f| %>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.submit t('send_job_inscription'), class: "button is-rounded is-fullwidth is-link is-large" %>
           <% end %>
         <% else %>
           <div class="has-text-centered">
