@@ -1,4 +1,13 @@
 .button {
+	background-color: $white;
+	border-color: $white;
+	color: $black;
+	font-weight: 400;
+
+	&:hover {
+		background-color: darken($white, 10%);
+		color: $black;
+	}
 
 	&.primary {
 

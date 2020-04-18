@@ -1,14 +1,14 @@
 <%= render 'claim' %>
 
-<section class="section has-text-centered is-section-white has-text-left-mobile">
+<section class="section is-section-white has-text-left-mobile">
 	<div class="container">
 		<div class="columns">
-			<div class="column is-four-fifths is-offset-1 has-text-left">
+			<div class="column has-text-left">
 				<strong> <%= t('showing_10_of') %> <%= @jobs_count %>	</strong>
 			</div>
 		</div>
 		<div class="columns">
-			<div class="column is-four-fifths is-offset-1">
+			<div class="column">
 				<%= render partial: '/jobs/job', collection: @jobs %>
 			</div>
 		</div>
@@ -20,11 +20,28 @@
 	</div>
 </section>
 
+<section class="section has-text-left-mobile is-section-primary">
+	<div class="container">
+		<div class="columns">
+			<div class="column">
+				<h2 class="title"> Company section! </h2>
+				<p> Body text here </p>
+				<div class="mt4">
+					<%= link_to t('create_account'), edit_user_registration_path, class: 'button is-medium is-rounded' %>
+				</div>
+			</div>
+			<div class="column is-vertical-center has-text-centered">
+				<%= icon('far', 'building f1') %>
+			</div>
+		</div>
+	</div>
+</section>
+
 <section class="section has-text-centered is-section-white has-text-left-mobile">
 	<div class="container">
 		<div class="columns">
 			<div class="column is-three-fifths is-offset-one-fifth">
-				<h2 class="title"> Some title here! </h2>
+				<h2 class="title"> About us! </h2>
 				<p> Algún text marketinero aquí! (no miro a nadie ;)) </p>
 			</div>
 		</div>

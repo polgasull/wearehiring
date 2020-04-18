@@ -1,3 +1,7 @@
+body {
+	background-color: $body_grey;
+}
+
 h1.title {
 	font-size: 3rem;
 	font-weight: lighter;
@@ -127,6 +131,15 @@ section {
 			margin-left: 0;
 		}
 
+	}
+}
+
+.is-section-primary {
+	background-color: $primary;
+	color: $white;
+
+	h2.title {
+		color: $white;
 	}
 }
 
