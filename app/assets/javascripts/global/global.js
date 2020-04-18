@@ -5,5 +5,9 @@ $(document).ready(function () {
         event.stopPropagation();
         dropdown.classList.toggle('is-active');
     });  
+
+    window.onclick = function(event) {
+      document.getElementById("profileDropdown").classList.remove("is-active");
+    }
   }
 });

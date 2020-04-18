@@ -3,6 +3,26 @@
 <section class="section has-text-centered is-section-white has-text-left-mobile">
 	<div class="container">
 		<div class="columns">
+			<div class="column is-four-fifths is-offset-1 has-text-left">
+				<strong> <%= t('showing_10_of') %> <%= @jobs_count %>	</strong>
+			</div>
+		</div>
+		<div class="columns">
+			<div class="column is-four-fifths is-offset-1">
+				<%= render partial: '/jobs/job', collection: @jobs %>
+			</div>
+		</div>
+		<div class="columns">
+			<div class="column has-text-centered">
+				<%= link_to t('show_all_jobs'), jobs_path, class: 'button is-rounded primary is-large' %>
+			</div>		
+		</div>
+	</div>
+</section>
+
+<section class="section has-text-centered is-section-white has-text-left-mobile">
+	<div class="container">
+		<div class="columns">
 			<div class="column is-three-fifths is-offset-one-fifth">
 				<h2 class="title"> Some title here! </h2>
 				<p> Algún text marketinero aquí! (no miro a nadie ;)) </p>
