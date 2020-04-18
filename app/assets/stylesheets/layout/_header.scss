@@ -21,10 +21,6 @@
 	&.bg-color {
 		background: $secondary;
 	}
-	
-	&.active {
-		background: $secondary;
-	}
 
 	.button {
 		text-transform: capitalize;
@@ -95,6 +91,8 @@
 }
 
 .claim-header {
+
+	position: relative;
 
 	.navbar-item {
 		color: $red;

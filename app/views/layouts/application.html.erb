@@ -42,21 +42,19 @@
         $(window).scroll(function (event) {
           var scroll = $(window).scrollTop();
           if(scroll >= (50)) {
-            $('.header').addClass("active");
             $('.logo-size').width(50)
             $('.logo-size').height(50)
           } else {
-            $('.header').removeClass("active");
             $('.logo-size').width(100)
             $('.logo-size').height(100)
           }
         });
 
-        $('.open-menu').click(function(){
+        $(document).on("click", ".open-menu", function() {
           document.getElementById("mySidenav").style.width = "100%";
         });
 
-        $('.close-menu').click(function(){
+        $(document).on("click", ".close-menu", function() {
           document.getElementById("mySidenav").style.width = "0";
         });
       });
