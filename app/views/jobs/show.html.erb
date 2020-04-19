@@ -3,24 +3,52 @@
     <div class="column is-7 is-offset-1">
 
       <p class="f7"> <%= icon('fas', 'clock') %> Publiado <%= time_ago_in_words(@job.created_at) %> </p>
-      <p> Remaining days: <%= (@job.expiry_date.to_date - @job.created_at.to_date).to_i %> </p>
+
+      <% if job_author(@job) %>
+        <p> 
+          <%= t('remaining_days') %>: 
+          <strong> <%= (@job.expiry_date.to_date - @job.created_at.to_date).to_i %> </strong> 
+        </p>
+      <% end %>
+
       <h2 class="title is-2"><%= @job.title %></h2>
 
-      <ul class="pb4">
-        <li class="inline-block f6 pr2"><%= job_type(@job.job_type) %></li>
-        <li class="inline-block f6 ph2"><i class="fa fa-pin"></i> <%= @job.location %></li>
+      <ul class="pb2">
+        <li class="inline-block pr2"><%= icon('fas', 'clock') %> <%= @job.job_type.name %></li>
+        <li class="inline-block ph2"><i class="fa fa-pin"></i> <%= @job.location %></li>
         <% if @job.remote_ok? %>
-          <li class="inline-block f6 ph2"><i class="fa fa-wifi"></i> Remote Job</li>
+          <li class="inline-block ph2"><i class="fa fa-wifi"></i> Remote Job</li>
         <% end %>
       </ul>
 
+      <div class="pb3">
+        <span class='tag is-warning is-normal'> <%= @job.category.name %> </span>
+        <% @job.tags.each do |tag| %>
+          <span class='tag is-success is-normal'> <%= tag.name %> </span>
+        <% end %>      
+      </div>
+
       <div class="content text-serif f4">
+        <p class="title is-5"> <%= t('jobs.salary_range') %> </p>
+        <%= number_to_currency(@job.salary_from) %> - <%= number_to_currency(@job.salary_to) %>
+      </div>
+
+      <div class="content text-serif f4">
+        <h5> <%= t('job_description') %> </h5>
         <%= @job.description.html_safe %>
       </div>
 
       <div class="has-text-centered">
         <%= @inscriptions_count %> se han inscrito a esta oferta
       </div>
+
+      <div class="mb4"></div>
+
+      <% if job_author(@job) %>
+        <% @job_inscriptions.each do |i| %>
+          <%= render partial: 'job_inscription', locals: { i: i } %>
+        <% end %>
+      <% end %>
 
       <% unless user_signed_in? || current_user&.is_company? %>
         <%= link_to t('send_job_inscription'), user_linkedin_omniauth_authorize_path, class: "button is-rounded is-block is-link is-large" %>
@@ -40,20 +68,20 @@
           </div>
         <% end %>
       <% end %>
-
-
     </div>
 
     <div class="column is-2 is-offset-1 has-text-centered">
 
-      <% if !@job.avatar.file.nil? %>
-        <%= link_to image_tag(@job.avatar_url(:thumb), alt: @job.job_author, class: "has-text-centered"), @job.url %>
-      <% end %>
+      <div class="pb4">
+        <% if !@job.avatar.file.nil? %>
+          <%= link_to image_tag(@job.avatar_url(:thumb), alt: @job.job_author, class: "has-text-centered"), @job.url %>
+        <% end %>
+      </div>
 
-      <h5 class="is-5 has-text-centered"><%= @job.job_author %></h5>
+      <h5 class="title is-5 has-text-centered"> <%= @job.job_author %> </h5>
 
-      <% if @job.apply_url.present? %>
-        <%= link_to t('external_link'), @job.apply_url %>
+      <% if @job.url.present? %>
+        <%= link_to t('website'), @job.url %>
       <% end %>
 
       <% if current_user.try(:admin) || job_author(@job) %>

@@ -20,6 +20,7 @@ class JobsController < ApplicationController
 
   def show
     @inscriptions_count = @job.inscriptions.count
+    @job_inscriptions = @job.inscriptions.all
   end
 
   def new
