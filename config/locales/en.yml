@@ -296,7 +296,9 @@ en:
   website: "Company Website"
   job_description: "Job description"
   select: 
-    job_type: "Select Job type"
-    category: "Select Category"
+    job_type: "By Job type"
+    category: "By Category"
+    category: "By Level"
   already_inscribed: "You are already inscribed"
   share_with: "Share with"
+  exp_level: "Experience level"

@@ -28,17 +28,24 @@
           <div class="pv1 pl2 pr2 mt2 bg-light">
             <%= icon('fas', 'globe mr1') %> <%= job.category.name %>
           </div>
+          <div class="pv1 pl2 pr2 mt2 bg-light">
+            <%= icon('fas', 'coins mr1') %> 
+            <%= number_to_currency(job.salary_from) %> - <%= number_to_currency(job.salary_to) %>
+          </div>        
         </div>
         <div class="column">
           <div class="pv1 pl2 pr2 bg-light">
-            <%= icon('fas', 'coins mr1') %> 
-            <%= number_to_currency(job.salary_from) %> - <%= number_to_currency(job.salary_to) %>
+            <%= icon('fas', 'level-up-alt mr1') %> <%= job.level.name %>
+          </div>           
+          <div class="pv1 pl2 pr2 mt2 bg-light">
+            <%= icon('far', 'clock mr2') %> <%= job.job_type.name %>
           </div>
           <div class="pv1 pl2 pr2 mt2 bg-light">
-            <span class="mr2"> <%= icon('far', 'clock mr1') %> <%= job.job_type.name %>  </span>
             <% if job.remote_ok? %>
               <%= icon('fas', 'wifi') %> <%= t('remote') %> 
-            <% end %>
+            <% else %>
+              <%= icon('fas', 'laptop') %> Oficina
+            <% end %>     
           </div>
         </div>
         <div class="column">

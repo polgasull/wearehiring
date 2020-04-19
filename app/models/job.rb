@@ -4,6 +4,7 @@ class Job < ApplicationRecord
   belongs_to :user
   belongs_to :category
   belongs_to :job_type
+  belongs_to :level
   has_many :taggings
   has_many :tags, through: :taggings
   has_many :inscriptions
@@ -28,6 +29,11 @@ class Job < ApplicationRecord
   scope :by_job_type, -> (job_type) {
     joins(:job_type).
     where('job_types.id = ?', job_type)
+  }
+
+  scope :by_level, -> (level) {
+    joins(:level).
+    where('levels.id = ?', level)
   }
 
   scope :my_jobs, -> (current_user_id) {

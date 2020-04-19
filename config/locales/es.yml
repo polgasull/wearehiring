@@ -300,7 +300,9 @@ es:
   website: "Página web empresa"
   job_description: "Descripción de la oferta"
   select: 
-    job_type: "Elige Jornada"
-    category: "Elige Categoría"
+    job_type: "Por Jornada"
+    category: "Por Categoría"
+    level: "Por Nivel"
   already_inscribed: "Ya estás inscrito"
   share_with: "Comparte con"
+  exp_level: "Nivel de experiencia"

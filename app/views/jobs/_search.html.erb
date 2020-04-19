@@ -22,6 +22,13 @@
           :include_blank => t('select.job_type') %>
       </div>
     </div>
+    <div class="column is-hidden-touch">
+      <div class="select">
+        <%= select_tag :by_level, 
+          options_from_collection_for_select(Level.all, :id, :name, params[:by_level].to_i), 
+          :include_blank => t('select.level') %>
+      </div>
+    </div>
     <div class="column is-hidden-touch fw5">
       <%= label_tag do %>
         <%= check_box_tag :is_remote, true, params[:is_remote] %>

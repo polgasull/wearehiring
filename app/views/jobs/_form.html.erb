@@ -78,7 +78,7 @@
   </div>
   
   <div class="columns">
-    <div class="column">
+    <div class="column is-one-quarter-desktop">
       <div class="field">
         <div class="control">
           <label class="label"> 
@@ -88,6 +88,24 @@
           <div class="control has-icons-left">
             <span class="select">
               <%= f.input_field :category_id, collection: Category.all, promt: "Select a Category", required: true %>
+            </span>
+            <span class="icon is-small is-left">
+              <%= icon('fas', 'globe') %>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column is-one-quarter-desktop">
+      <div class="field">
+        <div class="control">
+          <label class="label"> 
+            <abbr title="required">*</abbr>
+            <%= t('exp_level') %> 
+          </label>
+          <div class="control has-icons-left">
+            <span class="select">
+              <%= f.input_field :level_id, collection: Level.all, promt: "Select Level", required: true %>
             </span>
             <span class="icon is-small is-left">
               <%= icon('fas', 'globe') %>
