@@ -299,3 +299,6 @@ es:
   remaining_days: "Días de publicación restantes"
   website: "Página web empresa"
   job_description: "Descripción de la oferta"
+  select: 
+    job_type: "Elige Jornada"
+    category: "Elige Categoría"

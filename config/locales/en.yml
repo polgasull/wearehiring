@@ -295,3 +295,6 @@ en:
   remaining_days: "Remaining days"
   website: "Company Website"
   job_description: "Job description"
+  select: 
+    job_type: "Select Job type"
+    category: "Select Category"
