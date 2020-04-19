@@ -298,3 +298,5 @@ en:
   select: 
     job_type: "Select Job type"
     category: "Select Category"
+  already_inscribed: "You are already inscribed"
+  share_with: "Share with"

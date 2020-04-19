@@ -22,6 +22,10 @@ class User < ApplicationRecord
     Inscription.where(user_id: id)
   end
 
+  def is_already_inscribed(job)
+    inscriptions.any? {|u| u[:job_id] == job.id}
+  end
+
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session['devise.linkedin_data'] && session['devise.linkedin_data']['extra']['raw_info']

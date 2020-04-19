@@ -4,6 +4,9 @@ class InscriptionsController < ApplicationController
   before_action :validate_is_candidate!
 
   def create
+
+    return redirect_back_response(t('already_inscribed'), false) if current_user.is_already_inscribed(@job)
+
     @inscription = @job.inscriptions.build(inscription_params)
     if @inscription.save  
       redirect_to_response(t('inscriptions.messages.inscription_created'), @inscription.job)

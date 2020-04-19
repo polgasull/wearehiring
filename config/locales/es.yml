@@ -302,3 +302,5 @@ es:
   select: 
     job_type: "Elige Jornada"
     category: "Elige Categoría"
+  already_inscribed: "Ya estás inscrito"
+  share_with: "Comparte con"

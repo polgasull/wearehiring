@@ -5,6 +5,7 @@
 @import "stripe";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "social-share-button";
 @import 'abstracts/variables';
 
 @import 'base/typography',
@@ -22,6 +23,7 @@
 
 .notification {
   border-radius: 0;
+  z-index: 99999;
 }
 
 .notification:not(:last-child) {
@@ -35,4 +37,14 @@
 .tag {
   text-transform: uppercase;
   font-weight: bold;
+}
+
+$size: 34px;
+
+.social-share-button {
+  .ssb-icon {
+    background-size: $size $size;
+    height: $size;
+    width: $size;
+  }
 }

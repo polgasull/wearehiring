@@ -33,6 +33,7 @@ gem 'rails', '~> 5.1.6', '>= 5.1.6.1'
 gem 'trix', '~> 0.11.1'
 gem 'uglifier', '>= 1.3.0'
 gem 'browser', '~> 4.0'
+gem 'social-share-button'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -55,17 +55,17 @@
       <% end %>
 
       <% if user_signed_in? && current_user&.is_candidate? %>
-        <% unless @job.inscriptions.any? {|u| u[:user_id] == current_user.id} %>
-          <%= form_for :inscription, url: job_inscriptions_path(@job.id) do |f| %>
-            <%= f.hidden_field :user_id, value: current_user.id %>
-            <%= f.submit t('send_job_inscription'), class: "button is-rounded is-fullwidth is-link is-large" %>
-          <% end %>
-        <% else %>
+        <% if user_inscribed_to(@job) %>
           <div class="has-text-centered">
-            <button disabled class="button is-rounded is-light is-large">  
+            <button disabled class="button is-rounded is-success is-large">  
               <%= t('inscribed') %> <%= icon('fas', 'check ml2') %>
             </button>
           </div>
+        <% else %>
+          <%= form_for :inscription, url: job_inscriptions_path(@job.id) do |f| %>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.submit t('send_job_inscription'), class: "button is-rounded is-fullwidth is-link is-large" %>
+          <% end %>        
         <% end %>
       <% end %>
     </div>
@@ -95,6 +95,12 @@
             <%= link_to 'Delete', @job, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-small is-link is-outlined' %></li>
         </ul>
       <% end %>
+
+      <div class="pt4">
+        <p> <%= t('share_with') %>:</p>
+        <%= social_share_button_tag(@job.title, :allow_sites => %w(twitter facebook linkedin email whatsapp_app)) %>
+      </div>
+
     </div>
   </div>
 </section>
