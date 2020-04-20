@@ -29,14 +29,14 @@
           :include_blank => t('select.level') %>
       </div>
     </div>
-    <div class="column is-hidden-touch fw5">
+    <div class="column is-hidden-touch is-hidden-desktop-only">
       <%= label_tag do %>
         <%= check_box_tag :is_remote, true, params[:is_remote] %>
         <%= t('remote') %>
       <% end %>
     </div>
     <div class="column has-text-right">
-      <%= f.submit t('search'), class: "button primary is-medium" %>
+      <%= f.submit t('search'), class: "button primary" %>
     </div>
   </div>
 <% end %>

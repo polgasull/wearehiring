@@ -17,7 +17,7 @@
           <%= job.location %>
         </div>
         <div class="column is-3-desktop has-text-right">
-          <p class="f7"> <%= icon('fas', 'clock') %> Publicado <%= time_ago_in_words(job.created_at) %> </p>
+          <p class="f7"> <%= icon('fas', 'clock primary-color') %> Publicado <%= time_ago_in_words(job.created_at) %> </p>
         </div>
       </div>
       <div class="columns">
@@ -54,17 +54,17 @@
           <% end %>
         </div>
         <% if current_user&.is_candidate? %>
-          <div class="column has-text-right is-2">
-            <% if job.inscriptions.any? {|u| u[:user_id] == current_user.id} %>
+          <div class="column has-text-right is-1">
+            <% if user_inscribed_to(job) %>
               <%= t('inscribed') %>
             <% end %>
           </div>
         <% end %>
-        <div class="column is-1">
-          <% if job_author(job) %>
-            Editar
-          <% end %>
-        </div>
+        <% if job_author(job) %>
+          <div class="column is-1">
+              <%= t('enter_for_edit') %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

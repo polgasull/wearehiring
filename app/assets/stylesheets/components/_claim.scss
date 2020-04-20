@@ -17,60 +17,13 @@
 		}
 	}
 
-	.btn {
-		font-size: 0.8125rem;
-
-		@media (max-width: 500px) {
-			font-size: 1rem;
-			position: relative;
-			top: 80px;
-		}
-  }
-
-	.brands {
-		width: 93%;
-		position: absolute;
-		bottom: 1.5rem;
-		text-align: center;
-	}
-
-	.brands .brands-wrapper {
-		height: 60px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-
-	}
-
-	.brands a {
-
-		display: inline-block;
-		flex-grow: 1;
-
-		&:last-child, &:first-child {
-			margin: 0;
-		}
-  }
-  
-  &.is-fullheight {
-
-    &.hero-body {
-      padding: 10rem 0rem;
-    }
-  }
-
   &.is-medium {
     height: 50vh !important;
     min-height: 50vh !important;  
 
-    &.hero-body {
-      padding: 10rem 0rem;
+    .hero-body {
+      padding: 5rem 0rem;
     }
-  }
-
-  &.is-little {
-    height: 35vh !important;
-    min-height: 35vh !important;  
   }
 
 	.hero-body {
@@ -98,14 +51,6 @@
 	.claim.is-mb-bg {
     height: 100vh;
 		background-position: -460px 0px !important;
-	}
-
-	.claim.is-solution {
-		background-position: -160px 0px !important;
-	}
-
-	.claim.is-provider {
-		background-position: -160px 0px !important;
 	}
 }
 

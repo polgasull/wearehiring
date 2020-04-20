@@ -21,18 +21,6 @@ h1.title {
 
 }
 
-.is-margin {
-
-	margin-top: 4rem;
-	margin-bottom: 4rem;
-
-	@media(max-width: 768px) {
-
-		margin-top: 3rem;
-		margin-bottom: 0.5rem;
-	}
-}
-
 .main-section {
 	padding-top: 3rem;
 	padding-bottom: 2.5rem;
@@ -45,18 +33,6 @@ section {
 
 		padding-top: 3rem;
 		padding-bottom: 3rem;
-	}
-
-	&.is-section-large {
-
-		padding-top: 12rem;
-		padding-bottom: 12rem;
-
-		@media(max-width: 1023px) {
-
-			padding-top: 3rem;
-			padding-bottom: 3rem;
-		}
 	}
 
 	h2.title {
@@ -73,60 +49,17 @@ section {
 		}
 	}
 
-		img {
-
-		box-shadow: 10px 52px 70px -6px #ccc;
-
+	img {
+	box-shadow: 10px 52px 70px -6px #ccc;
 
 		@media(max-width: 768px) {
-
 			box-shadow: none;
 			margin-top: 0;
 		}
 
-
-	    &.is-blank {
-
+		&.is-blank {
 			box-shadow: none;
-
-	    }
-
-	    &.is-large-margin {
-
-
-
-			@media(max-width: 768px) {
-
-				margin-top: 0;
-			}
-	    }
-
-	     &.is-no-margin {
-
-			margin: 0;
-	    }
-	}
-
-	.img-left {
-
-		margin-left: -100px;
-
-		@media(max-width: 768px) {
-
-			margin-left: 0;
 		}
-
-	}
-
-	.img-right {
-
-		margin-left: 100px;
-
-		@media(max-width: 768px) {
-
-			margin-left: 0;
-		}
-
 	}
 }
 
@@ -142,7 +75,6 @@ section {
 .is-section-white {
 
 	h1,h2,h3,h4 {
-
 		color: $grey;
 	}
 }
