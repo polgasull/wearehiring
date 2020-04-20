@@ -23,66 +23,66 @@
 
 @font-face {
   font-family: 'archiathin';
-  src: url('./fonts/archia-thin-webfont.eot');
-  src: url('./fonts/archia-thin-webfont.eot?#iefix') format('embedded-opentype'),
-        url('./fonts/archia-thin-webfont.woff2') format('woff2'),
-        url('./fonts/archia-thin-webfont.woff') format('woff'),
-        url('./fonts/archia-thin-webfont.ttf') format('truetype');
+  src: url(asset_path('./fonts/archia-thin-webfont.eot'));
+  src: url(asset_path('./fonts/archia-thin-webfont.eot?#iefix')) format('embedded-opentype'),
+        url(asset_path('./fonts/archia-thin-webfont.woff2')) format('woff2'),
+        url(asset_path('./fonts/archia-thin-webfont.woff')) format('woff'),
+        url(asset_path('./fonts/archia-thin-webfont.ttf')) format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'archialight';
-  src: url('./fonts/archia-light-webfont.eot');
-  src: url('./fonts/archia-light-webfont.eot?#iefix') format('embedded-opentype'),
-        url('./fonts/archia-light-webfont.woff2') format('woff2'),
-        url('./fonts/archia-light-webfont.woff') format('woff'),
-        url('./fonts/archia-light-webfont.ttf') format('truetype');
+  src: url(asset_path('./fonts/archia-light-webfont.eot'));
+  src: url(asset_path('./fonts/archia-light-webfont.eot?#iefix')) format('embedded-opentype'),
+        url(asset_path('./fonts/archia-light-webfont.woff2')) format('woff2'),
+        url(asset_path('./fonts/archia-light-webfont.woff')) format('woff'),
+        url(asset_path('./fonts/archia-light-webfont.ttf')) format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'archiaregular';
-  src: url('./fonts/archia-regular-webfont.eot');
-  src: url('./fonts/archia-regular-webfont.eot?#iefix') format('embedded-opentype'),
-        url('./fonts/archia-regular-webfont.woff2') format('woff2'),
-        url('./fonts/archia-regular-webfont.woff') format('woff'),
-        url('./fonts/archia-regular-webfont.ttf') format('truetype');
+  src: url(asset_path('./fonts/archia-regular-webfont.eot'));
+  src: url(asset_path('./fonts/archia-regular-webfont.eot?#iefix')) format('embedded-opentype'),
+        url(asset_path('./fonts/archia-regular-webfont.woff2')) format('woff2'),
+        url(asset_path('./fonts/archia-regular-webfont.woff')) format('woff'),
+        url(asset_path('./fonts/archia-regular-webfont.ttf')) format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'archiamedium';
-  src: url('./fonts/archia-medium-webfont.eot');
-  src: url('./fonts/archia-medium-webfont.eot?#iefix') format('embedded-opentype'),
-        url('./fonts/archia-medium-webfont.woff2') format('woff2'),
-        url('./fonts/archia-medium-webfont.woff') format('woff'),
-        url('./fonts/archia-medium-webfont.ttf') format('truetype');
+  src: url(asset_path('./fonts/archia-medium-webfont.eot'));
+  src: url(asset_path('./fonts/archia-medium-webfont.eot?#iefix')) format('embedded-opentype'),
+        url(asset_path('./fonts/archia-medium-webfont.woff2')) format('woff2'),
+        url(asset_path('./fonts/archia-medium-webfont.woff')) format('woff'),
+        url(asset_path('./fonts/archia-medium-webfont.ttf')) format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'archiasemibold';
-  src: url('./fonts/archia-semibold-webfont.eot');
-  src: url('./fonts/archia-semibold-webfont.eot?#iefix') format('embedded-opentype'),
-        url('./fonts/archia-semibold-webfont.woff2') format('woff2'),
-        url('./fonts/archia-semibold-webfont.woff') format('woff'),
-        url('./fonts/archia-semibold-webfont.ttf') format('truetype');
+  src: url(asset_path('./fonts/archia-semibold-webfont.eot'));
+  src: url(asset_path('./fonts/archia-semibold-webfont.eot?#iefix')) format('embedded-opentype'),
+        url(asset_path('./fonts/archia-semibold-webfont.woff2')) format('woff2'),
+        url(asset_path('./fonts/archia-semibold-webfont.woff')) format('woff'),
+        url(asset_path('./fonts/archia-semibold-webfont.ttf')) format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'archiabold';
-  src: url('./fonts/archia-bold-webfont.eot');
-  src: url('./fonts/archia-bold-webfont.eot?#iefix') format('embedded-opentype'),
-        url('./fonts/archia-bold-webfont.woff2') format('woff2'),
-        url('./fonts/archia-bold-webfont.woff') format('woff'),
-        url('./fonts/archia-bold-webfont.ttf') format('truetype');
+  src: url(asset_path('./fonts/archia-bold-webfont.eot'));
+  src: url(asset_path('./fonts/archia-bold-webfont.eot?#iefix')) format('embedded-opentype'),
+        url(asset_path('./fonts/archia-bold-webfont.woff2')) format('woff2'),
+        url(asset_path('./fonts/archia-bold-webfont.woff')) format('woff'),
+        url(asset_path('./fonts/archia-bold-webfont.ttf')) format('truetype');
   font-weight: normal;
   font-style: normal;
 }
