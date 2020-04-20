@@ -1,12 +1,12 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
 	<div class="navbar-end">
-		<div class="navbar-brand has-text-weight-bold">
+		<div class="navbar-brand">
 			<%= link_to t('show_jobs'), 
 					jobs_path(locale:params[:locale] || 'es'), 
 					class: "navbar-item text-uppercase  #{ 'active' if current_page?(jobs_path)}" %>
 		</div>
 		<% unless current_user&.is_candidate? %>
-		<div class="navbar-brand has-text-weight-bold">
+		<div class="navbar-brand">
 			<%= link_to t('jobs.post_job'), 
 					new_job_path, 
 					class: "navbar-item text-uppercase #{ 'active' if current_page?(new_job_path)}" %>

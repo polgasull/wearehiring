@@ -78,7 +78,7 @@
   </div>
   
   <div class="columns">
-    <div class="column is-one-quarter-desktop">
+    <div class="column is-one-third-desktop">
       <div class="field">
         <div class="control">
           <label class="label"> 
@@ -96,7 +96,7 @@
         </div>
       </div>
     </div>
-    <div class="column is-one-quarter-desktop">
+    <div class="column is-one-third-desktop">
       <div class="field">
         <div class="control">
           <label class="label"> 
@@ -196,7 +196,7 @@
   <%= render 'payment' %>
   
   <div class="has-text-centered">
-    <%= f.button :submit, class: "button is-large primary mt3" %>   
+    <%= f.button :submit, class: "button is-large primary mt3", data: { disable_with: icon('fas', 'spinner fa-spin m-r-5', t('posting')) } %>   
   </div>
 
 <% end %>

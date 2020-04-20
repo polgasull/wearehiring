@@ -1,8 +1,5 @@
 .header {
-
-	width:100%;
-	position: fixed;
-	top: 0;
+	width: 100%;
 	padding: 1rem;
 	z-index: 10;
 
@@ -18,9 +15,8 @@
 		}
 	}
 
-	&.bg-primary {
-		background: $primary;
-		color: $white;
+	.navbar-item {
+		color: $black;
 	}
 
 	.button {
@@ -50,24 +46,6 @@
 		}
 	}
 
-	.i {
-		display: none;
-	}
-
-	.btn {
-
-		width: 9.375rem;
-		display: inline-block;
-		font-size: 0.75rem;
-		top: 3px;
-		margin-left: 1rem;
-		-webkit-font-smoothing: auto;
-
-		&.btn-white:hover {
-			color: $primary;
-		}
-	}
-
 	img {
 
 		max-width: 170px;
@@ -88,14 +66,5 @@
 		@media (max-width: 500px) {
 			left: 24px;
 		}
-	}
-}
-
-.claim-header {
-
-	position: relative;
-
-	.navbar-item {
-		color: $red;
 	}
 }
