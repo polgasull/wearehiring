@@ -3,7 +3,7 @@
 <%= t('remaining_days') %>: 
 <strong> <%= (@job.expiry_date.to_date - @job.created_at.to_date).to_i %> </strong> 
 <p>
-  <%= @job.tile %>
+  <%= @job.title %>
 </p>
 <p>
   <%= @job.location %>

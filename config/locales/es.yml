@@ -224,11 +224,13 @@ es:
     tags: "Tags"
     salary_range: "Rango salario anual"
     location: "Localización"
-    post_job: "Publicar Job"
+    post_job: "Publicar empleo"
     new_job: "Nueva oferta"
     edit_job: "Editar oferta"
     edit: "Editar"
     published_jobs: "Ofertas activas"
+    job_type: "Tipo de contrato"
+    logo_image: "Imagen empresa"
     messages:
       job_created: "Oferta publicada y pagada satisfactoriamente"
       job_not_created: "No se pudo publicar la oferta"
@@ -241,6 +243,7 @@ es:
       inscription_created: "Te has inscrito satisfactoriamente"
       inscription_not_created: "Algo ha ido mal durante la inscripción"
   payments:
+    price: "Precio"
     monthly: "para 30 días"
     enter_credit_card: "Número de tarjeta de crédito o débito"
     previously_card: "Tarjeta usada anteriormente"
@@ -253,18 +256,22 @@ es:
   logout: "Cerrar sesión"
   create_account: "Crear cuenta"
   forgot_password: "Has olvidado la contraseña?"
-  home_h1: "Empresas están hiring en"
+  home_h1: "están buscando perfiles digitales"
   home_subtitle: "Encuentra nuevas oportunidades para tu carrera tecnológica"
   go_to_jobs: "Ver empleos"
   companies: "Empresas"
   company_profile: "Mi sección"
-  show_jobs: "Hiring Jobs"
-  feature_1: "Actualización diaria"
-  feature_1_text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris rutrum lectus ut ultrices venenatis. In sodales elit tempor nunc ullamcorper posuere"
-  feature_2: "Mejores empresas"
-  feature_2_text: "Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum consectetur in tortor id sodales."
-  feature_3: "Registro rápido"
-  feature_3_text: "Fusce malesuada massa nibh, a condimentum sem aliquam eget. Nunc id tellus quam. Fusce pretium est ac odio porta tincidunt. Nunc imperdiet scelerisque lorem."
+  show_jobs: "Ver empleos"
+  about_us_title: "¿Qué es We Are Hiring?"
+  about_us_subtitle: "El portal de empleo donde las empresas encuentran al mejor talento digital"
+  feature_1: "Only Digital Jobs"
+  feature_1_text: "Encuentra todas las ofertas de empleo digital dentro del mundo startup en España: Marketing Digital, Web Development, Product Management, UX/UI Designers, Growth Hacking... Only Digital Jobs"
+  feature_2: "¡Regístrate rápido!"
+  feature_2_text: "Cuando buscas trabajo en portales de empleo te obligan a registrarte en formularios que no se acaban nunca… Pues bien: aquí te registras con un solo clic cuando aplicas al Job que más te gusta: ¡TA-CHÁN!"
+  feature_3: "¡Digital Pros para todos!"
+  feature_3_text_1: "Para startups que buscan developers, cracks en marketing digital, genios designers, etc"
+  feature_3_text_2: "Para compañías que buscan Freelancers que aporten experiencia"
+  feature_3_text_3: "Para empresas que necesitan profesionales a tiempo parcial o en remoto"
   search: "Buscar"
   category: "Categoría"
   tags_form_small_text: "Añade habilidades separadas por coma. (Ejemplo: Programming, Gaming, Mobile, UX)"
@@ -286,6 +293,8 @@ es:
   my_inscriptions: "Mis inscripciones"
   sign_up_as_company: "Registrarse como Empresa"
   forms: 
+    from: "Desde"
+    to: "Hasta"
     company_name: "Nombre de la empresa"
     email: "Correo electrónico"
     password: "Contraseña"
@@ -316,16 +325,30 @@ es:
         username: 'Nombre de usuario'
         password: 'Contraseña'
         remember_me: "Recuérdame"
+        title: "Posición"
+        location: "Localización"
+        description: "Descripción"
+        apply_url: "Enlace original"
+        job_author: "Nombre empresa"
         new:
           username: 'Elige un nombre de usuario'
     hints:
       defaults:
         username: 'Nombre de usuario para iniciar sesión.'
-        password: 'Por favor, mínimo 6 letras.'
+        password: 'Por favor, mínimo 6 carácteres.'
     placeholders:
       defaults:
         username: 'Tu nombre de usuario'
         email: 'tucorreo@ejemplo.com'
-        password: '****'
+        password: '******'
         name: "Ejemplo SL"
-  
+  will_be_visible_by_candidates: "Será visible para los candidatos"
+  work_can_be_done_remotely: "Podrá hacerse en remoto"
+  last: "Últimas"
+  digital_job_offers: "Ofertas de empleo digital"
+  company_section_title: "Publica tu Job por 99€"
+  company_section_body: "Developers, Digital Marketers, Product Managers, UX/UI Designers, Growth Hackers, Data Scientists… Consigue el mejor talento digital y haz crecer tu empresa"
+  create_company_account: "Registrarse como empresa"
+  seo:
+    jobs_title: "Ver Todas las Ofertas de Empleo Digital"
+    jobs_description: "Encuentra todas las Ofertas de Empleo Digital: Marketing Digital, Developers, UX/UI Designer, Digital Product Managers, ¡Solicita tu empleo ya!"

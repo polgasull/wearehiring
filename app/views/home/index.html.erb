@@ -4,7 +4,7 @@
 	<div class="container">
 		<div class="columns">
 			<div class="column has-text-left">
-				<strong> <%= t('showing_10_of') %> <%= @jobs_count %>	</strong>
+				<strong> <%= t('last') %> <%= @jobs_count %> <%= t('digital_job_offers') %>	</strong>
 			</div>
 		</div>
 		<div class="columns">
@@ -35,10 +35,10 @@
 						<% end %>
 					</div>
 				<% else %>
-					<h2 class="title"> Company section! </h2>
-					<p> Body text here </p>
+					<h2 class="title"> <%= t('company_section_title') %> </h2>
+					<p> <%= t('company_section_body') %> </p>
 					<div class="mt4">
-						<%= link_to t('create_account'), new_user_registration_path, class: 'button is-medium is-rounded' %>
+						<%= link_to t('create_company_account'), new_user_registration_path, class: 'button is-medium is-rounded' %>
 					</div>
 				<% end %>
 			</div>
@@ -60,30 +60,32 @@
 	</div>
 </section>
 
-<section class="section has-text-centered is-section-white is-features">
+<section class="section is-section-white is-features">
 	<div class="container">
 		<div class="columns">
-			<article class="column is-3 has-text-centered">
+			<article class="column has-text-centered">
 				<img src="<%=asset_path('actualizar.svg')%>" width="210" height="210" class="is-blank is-mobile-img" alt="Ofertas de empleo actualizadas diariamente | JobHub">
 				<div class="content has-text-left-mobile">
-					<h3><%=t('feature_1')%></h3>
-					<p><%=t('feature_1_text')%></p>
+					<h3> <%=t('feature_1')%> </h3>
+					<p class="has-text-left"> <%=t('feature_1_text')%> </p>
 				</div>
 			</article>
-			<div class="column"></div>
-			<article class="column is-3 has-text-centered">
+			<article class="column has-text-centered">
 				<img src="<%=asset_path('puzzle.svg')%>" width="210" height="210" class="is-blank" alt="Las mejores empresas | JobHub">
 				<div class="content has-text-left-mobile">
-					<h3><%=t('feature_2')%></h3>
-					<p><%=t('feature_2_text')%></p>
+					<h3> <%=t('feature_2')%> </h3>
+					<p class="has-text-left"> <%=t('feature_2_text')%> </p>
 				</div>
 			</article>
-			<div class="column"></div>
-			<article class="column is-3 has-text-centered">
+			<article class="column has-text-centered">
 				<img src="<%=asset_path('rocket.svg')%>" width="210" height="210" class="is-blank" alt="Sin registros | JobHub">
 				<div class="content has-text-left-mobile">
-					<h3><%=t('feature_3')%></h3>
-					<p><%=t('feature_3_text')%></p>
+					<h3> <%=t('feature_3')%> </h3>
+					<ul class="has-text-left">
+						<li> <%= t('feature_3_text_1') %> </li>
+						<li> <%= t('feature_3_text_2') %> </li>
+						<li> <%= t('feature_3_text_3') %> </li>
+					</ul>
 				</div>
 			</article>
 		</div>

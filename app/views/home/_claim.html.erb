@@ -5,8 +5,10 @@
 				<div class="column is-3"></div>
 				<div class="column is-6">
 					<h1 class="title title-mb">
-						<%= Job.not_expired.count %> <%= t('home_h1') %> 
-						<%= link_to 'Barcelona', jobs_path, class: 'home-link' %>
+						<%= link_to jobs_path, class: 'home-link' do %>
+							<%= Job.not_expired.count %> <%= t('companies') %>
+						<% end %>
+						<%= t('home_h1') %> 
 					</h1>
 				</div>
 				<div class="column is-3"></div>

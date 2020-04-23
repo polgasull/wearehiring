@@ -225,6 +225,8 @@ en:
     edit_job: "Edit job"
     edit: "Edit"
     published_jobs: "Job offers"
+    job_type: "Contract Type"
+    logo_image: "Imagen empresa"
     messages:
       job_created: "Job posted and paid successfully"
       job_not_created: "Job was not able to be posted"
@@ -237,7 +239,8 @@ en:
       inscription_created: "You have registered successfully"
       inscription_not_created: "Something went wrong during your inscription"
   payments:
-    monthly: "para 30 días"
+    price: "Price"
+    monthly: "for 30 days"
     enter_credit_card: "Enter credit or debit card"
     previously_card: "Previously used card"
     card_brand: "Card brand"
@@ -249,18 +252,22 @@ en:
   logout: "Log out"
   create_account: "Create Account"
   forgot_password: "Forgot your password?"
-  home_h1: "Companies are looking for"
+  home_h1: "are looking for digital profiles"
   home_subtitle: "Find new tech career opportunities"
   go_to_jobs: "View current Jobs!"
   companies: "Companies"
   company_profile: "My section"
-  show_jobs: "Hiring Jobs"
-  feature_1: "Daily updated"
-  feature_1_text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris rutrum lectus ut ultrices venenatis. In sodales elit tempor nunc ullamcorper posuere"
-  feature_2: "Best companies"
-  feature_2_text: "Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum consectetur in tortor id sodales."
-  feature_3: "Fast Login"
-  feature_3_text: "Fusce malesuada massa nibh, a condimentum sem aliquam eget. Nunc id tellus quam. Fusce pretium est ac odio porta tincidunt. Nunc imperdiet scelerisque lorem."
+  show_jobs: "Show Jobs"
+  about_us_title: "¿Qué es We Are Hiring?"
+  about_us_subtitle: "Somos la 1ª web para encontrar Digital Jobs dentro del Ecosistema Startup en España"
+  feature_1: "Only Digital Jobs"
+  feature_1_text: "Encuentra todas las ofertas de empleo digital dentro del mundo startup en España: Marketing Digital, Web Development, Product Management, UX/UI Designers, Growth Hacking... Only Digital Jobs"
+  feature_2: "¡Regístrate rápido!"
+  feature_2_text: "Cuando buscas trabajo en portales de empleo te obligan a registrarte en formularios que no se acaban nunca… Pues bien: aquí te registras con un solo clic cuando aplicas al Job que más te gusta: ¡TA-CHÁN!"
+  feature_3: "¡Digital Pros para todos!"
+  feature_3_text_1: "Para startups que buscan developers, cracks en marketing digital, genios designers, etc"
+  feature_3_text_2: "Para compañías que buscan Freelancers que aporten experiencia"
+  feature_3_text_3: "Para empresas que necesitan profesionales a tiempo parcial o en remoto"
   search: "Search"
   category: "Category"
   tags_form_small_text: "Add tags separated by comma. (Example: Programming, Gaming, Mobile, UX)"
@@ -282,6 +289,8 @@ en:
   my_inscriptions: "My inscriptions"
   sign_up_as_company: "Sign up as Company"
   forms: 
+    from: "From"
+    to: "To"
     company_name: "Company Name"
     email: "Email"
     password: "Password"
@@ -312,6 +321,11 @@ en:
         username: 'User name'
         password: 'Password'
         remember_me: "Remember me"
+        title: "Position"
+        location: "Location"
+        description: "Description"
+        apply_url: "Original Job link"
+        job_author: "Company Name"
         new:
           username: 'Choose a user name'
     hints:
@@ -324,3 +338,13 @@ en:
         username: 'Your username'
         password: '****'
         name: "Example SL"
+  will_be_visible_by_candidates: "Will be visible by candidates"
+  work_can_be_done_remotely: "Work can be done remotely"
+  last: "Last"
+  digital_job_offers: "Digital job offers"
+  company_section_title: "Post your job for 99€"
+  company_section_body: "Developers, Digital Marketers, Product Managers, UX/UI Designers, Growth Hackers, Data Scientists… Consigue el mejor talento digital y haz crecer tu empresa"
+  create_company_account: "Sign up as company"
+  seo:
+    jobs_title: "Ver Todas las Ofertas de Empleo Digital"
+    jobs_description: "Encuentra todas las Ofertas de Empleo Digital: Marketing Digital, Developers, UX/UI Designer, Digital Product Managers, ¡Solicita tu empleo ya!"

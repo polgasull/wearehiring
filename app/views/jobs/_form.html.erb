@@ -18,10 +18,10 @@
     <div class="column">
       <div class="field">
         <div class="control">
-          <%= f.input :apply_url, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }  %>
+          <%= f.input :job_author, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }, placeholder: t('will_be_visible_by_candidates') %>
         </div>
-      </div>  
-    </div>
+      </div>
+    </div>  
   </div>
 
   <div class="columns">
@@ -30,7 +30,7 @@
         <div class="control">
           <label class="label"> 
             <abbr title="required">*</abbr>
-            Job Type 
+            <%= t('jobs.job_type') %>
           </label>
           <div class="control has-icons-left">
             <span class="select">
@@ -46,7 +46,7 @@
     <div class="column is-three-fifths-desktop">
       <div class="field">
         <div class="control">
-          <%= f.input :location, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }, hint: 'Examples: "Oviedo, Asturias", "Sevilla", "Cualquiera"' %>
+          <%= f.input :location, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }, hint: 'Examples: "Oviedo, Asturias", "Sevilla", "Cualquiera"', placeholder: "Barcelona" %>
         </div>
       </div>
     </div>
@@ -54,8 +54,10 @@
 
   <div class="columns">
     <div class="column"> 
-      <abbr title="required">*</abbr>
-      <%= t('jobs.salary_range') %> 
+      <strong>
+        <abbr title="required">*</abbr>
+        <%= t('jobs.salary_range') %>  
+      </strong>
     </div>
   </div>
 
@@ -63,15 +65,16 @@
     <div class="column is-one-quarter-desktop">
       <div class="field">
         <div class="control">
-          <%= f.input_field :salary_from, required: true, class: 'input' %>
-          <small> Example: 30000 </small>
+          <%= f.input_field :salary_from, required: true, class: 'input', placeholder: '30000' %>
+          <small> <%= t('forms.from') %> </small>
         </div>
       </div>
     </div>
     <div class="column is-one-quarter-desktop">
       <div class="field">
         <div class="control">
-          <%= f.input_field :salary_to, required: true, class: 'input' %>
+          <%= f.input_field :salary_to, required: true, class: 'input', placeholder: '40000' %>
+          <small> <%= t('forms.to') %> </small>
         </div>
       </div>
     </div>
@@ -122,7 +125,7 @@
         <div class="control">
           <label class="label"> <%= t('jobs.tags') %> </label>
           <small> <%= t('tags_form_small_text') %> </small>
-          <%= f.text_area :tag_list, rows: 3, class: "textarea" %>
+          <%= f.text_area :tag_list, rows: 2, class: "textarea", placeholder: "UX, UI, Frontend, React, API" %>
         </div>
       </div>
     </div>
@@ -144,7 +147,7 @@
         <div class="control">
           <label for="job[remote_ok]">
             <%= f.input :remote_ok, required: false, input_html: { class: "checkbox" }, wrapper: false, label: false %>
-            Work can be done remotely
+            <%= t('work_can_be_done_remotely') %>
           </label>
           <%= icon('fas', 'wifi') %>
         </div>
@@ -152,18 +155,26 @@
     </div>
   </div>
 
+  <hr>
+
+  <div class="columns">
+    <div class="column">
+      <p class="f4"> Campos opcionales </p>
+    </div>
+  </div>
+
   <div class="columns">
     <div class="column">
       <div class="field">
         <div class="control">
-          <%= f.input :job_author, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }, label: 'Company' %>
+          <%= f.input :apply_url, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }  %>
         </div>
-      </div>
+      </div>  
     </div>
     <div class="column">
       <div class="field">
         <div class="control">
-          <%= f.input :url, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }, label: 'Company website', placeholder: 'http://company.com' %>
+          <%= f.input :url, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }, label: 'Company website', placeholder: 'http://company.com' %>
         </div>
       </div>
     </div>
@@ -173,7 +184,7 @@
     <div class="column">
       <div class="field">
         <div class="control">
-          <label class="label">Logo Image</label>
+          <label class="label"> <%= t('jobs.logo_image') %> </label>
           <div class="file">
             <label class="file-label">
               <%= f.input :avatar, as: :file, required: false, input_html: { class: "file-input job-avatar" }, label: false, wrapper: false %>
@@ -192,6 +203,12 @@
   </div>
 
   <hr>
+
+  <div class="columns">
+    <div class="column">
+      <p class="f4"> Detalles para el pago </p>
+    </div>
+  </div>
 
   <%= render 'payment' %>
   

@@ -44,3 +44,6 @@
   </div>
 </section>
 
+<%= content_for :head do %>
+  <%= render "seo", title: t('seo.jobs_title') , description: t('seo.jobs_description')%>
+<% end %>
