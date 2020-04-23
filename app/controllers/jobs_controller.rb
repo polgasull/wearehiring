@@ -57,7 +57,7 @@ class JobsController < ApplicationController
     current_user.save!
 
     if @job.save
-      ModelMailer.new_job(current_user).deliver
+      ModelMailer.new_job(current_user, @job).deliver
       redirect_to_response(t('jobs.messages.job_created'), @job) 
     else 
       redirect_back_response(t('jobs.messages.job_not_created'), false)

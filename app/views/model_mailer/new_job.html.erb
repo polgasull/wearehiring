@@ -1,5 +1,29 @@
 <h1>Job published successfully</h1>
 
+<%= t('remaining_days') %>: 
+<strong> <%= (@job.expiry_date.to_date - @job.created_at.to_date).to_i %> </strong> 
 <p>
-  It works!
+  <%= @job.tile %>
 </p>
+<p>
+  <%= @job.location %>
+</p>
+<p>
+  <%= @job.location %>
+</p>
+<p>
+  <%= @job.job_author %>
+</p>
+<p>
+  <%= @job.salary_from %> - <%= @job.salary_to %>
+</p>
+<p>
+  <%= @job.category&.name %>
+</p>
+<p>
+  <%= @job.level&.name %>
+</p>
+<p>
+  <%= @job.job_type&.name %>
+</p>
+<%= link_to 'Ver publicación', @job %>

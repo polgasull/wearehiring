@@ -248,6 +248,7 @@ en:
   login: "Login"
   logout: "Log out"
   create_account: "Create Account"
+  forgot_password: "Forgot your password?"
   home_h1: "Companies are looking for"
   home_subtitle: "Find new tech career opportunities"
   go_to_jobs: "View current Jobs!"
@@ -304,3 +305,22 @@ en:
   exp_level: "Experience level"
   posting: "Posting"
   enter_for_edit: "Enter for edit"
+  simple_form:
+    labels:
+      defaults:
+        email: "Email"
+        username: 'User name'
+        password: 'Password'
+        remember_me: "Remember me"
+        new:
+          username: 'Choose a user name'
+    hints:
+      defaults:
+        username: 'User name to sign in.'
+        password: 'Minimum 6 digits, please.'
+    placeholders:
+      defaults:
+        email: 'youremail@example.com'
+        username: 'Your username'
+        password: '****'
+        name: "Example SL"

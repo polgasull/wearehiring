@@ -11,8 +11,9 @@ class ModelMailer < ApplicationMailer
     mail to: "to@example.org"
   end
 
-  def new_job(user)
+  def new_job(user, job)
     @user = user
+    @job = job
 
     mail( 
       :to => @user.email,
@@ -20,11 +21,11 @@ class ModelMailer < ApplicationMailer
     )
   end
 
-  def new_inscription(user)
+  def new_inscription(user, job)
     @user = user
 
     mail( 
-      :to => @user.email,
+      :to => job.user.email,
       :subject => 'You received a new inscription!' 
     )  
   end

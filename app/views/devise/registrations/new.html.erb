@@ -11,19 +11,19 @@
 
     <%= f.hidden_field :user_type_id, value: UserType.where(internal_name: 'company').first.id %>
 
-    <div class="field">
+    <div class="field mb5">
       <div class="control">
-      <%= f.input :name, required: true, autofocus: true, input_html: { class:"input" }, wrapper: false, label_html: { class: "label" }, label: t('forms.company_name')  %>
+        <%= f.input :name, required: true, autofocus: true, input_html: { class:"input" }, wrapper: false, label_html: { class: "label" }, label: t('forms.company_name') %>
       </div>
     </div>
 
-    <div class="field">
+    <div class="field mb2">
       <div class="control">
-      <%= f.input :email, required: true, input_html: { class:"input" }, wrapper: false, label_html: { class:"label" }, label: t('forms.email') %>
+        <%= f.input :email, required: true, input_html: { class:"input" }, wrapper: false, label_html: { class:"label" }, label: t('forms.email') %>
       </div>
     </div>
 
-    <div class="field">
+    <div class="field mb2">
       <div class="control">
         <%= f.input :password, required: true, input_html: { class:"input" }, wrapper: false, label_html: { class:"label" }, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), label: t('forms.password')  %>
       </div>
@@ -37,7 +37,7 @@
 
     <div class="field">
       <div class="control">
-        <%= f.button :submit, "Sign up", class:"button is-primary" %>
+        <%= f.button :submit, t('create_account'), class:"button primary is-medium mt3" %>
       </div>
     </div>
 

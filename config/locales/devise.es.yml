@@ -12,7 +12,7 @@ es:
       last_attempt: "Tienes un último intento hasta bloquear tu cuenta."
       not_found_in_database: "Datos inválidos %{authentication_keys} o contraseña."
       timeout: "La sesión ha expirado. Por favor, logueate otra vez."
-      unauthenticated: ""
+      unauthenticated: "Debes iniciar sesión antes de publicar un Job"
       unconfirmed: "Tienes que confirmar tu email antes de continuar."
     mailer:
       confirmation_instructions:

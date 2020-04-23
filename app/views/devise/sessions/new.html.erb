@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="columns is-centered">
 			<div class="column is-4">
-				<h2 class="title is-2">Log in</h2>
+				<h2 class="title is-2"> <%= t('login') %> </h2>
 				<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
 				  <div class="field">
@@ -23,7 +23,7 @@
 				  	</div>
 					</div>
 
-				  <%= f.button :submit, "Log in", class:"button is-outlined is-medium" %>
+				  <%= f.button :submit, t('login'), class:"button primary is-outlined is-medium mt3" %>
 				<% end %>
 				<br/>
 				<%= render "devise/shared/links" %>

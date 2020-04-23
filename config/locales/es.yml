@@ -84,17 +84,17 @@ es:
         one: más de 1 año
         other: más de %{count} años
       x_seconds:
-        one: 1 segundo
-        other: "%{count} segundos"
+        one: hace 1 segundo
+        other: "hace %{count} segundos"
       x_minutes:
-        one: 1 minuto
-        other: "%{count} minutos"
+        one: hace 1 minuto
+        other: "hace %{count} minutos"
       x_days:
-        one: 1 día
-        other: "%{count} días"
+        one: hace 1 día
+        other: "hace %{count} días"
       x_months:
-        one: 1 mes
-        other: "%{count} meses"
+        one: hace 1 mes
+        other: "hace %{count} meses"
       x_years:
         one: 1 año
         other: "%{count} años"
@@ -249,9 +249,10 @@ es:
     card_exp_month: "Mes de expiración"
     card_exp_year: "Año de expiración"
   you_must_sign_in: "Debes inciar sesión"
-  login: "Acceder"
+  login: "Iniciar sesión"
   logout: "Cerrar sesión"
   create_account: "Crear cuenta"
+  forgot_password: "Has olvidado la contraseña?"
   home_h1: "Empresas están hiring en"
   home_subtitle: "Encuentra nuevas oportunidades para tu carrera tecnológica"
   go_to_jobs: "Ver empleos"
@@ -308,3 +309,23 @@ es:
   exp_level: "Nivel de experiencia"
   posting: "Publicando"
   enter_for_edit: "Entra para editar"
+  simple_form:
+    labels:
+      defaults:
+        email: "Correo electrónico"
+        username: 'Nombre de usuario'
+        password: 'Contraseña'
+        remember_me: "Recuérdame"
+        new:
+          username: 'Elige un nombre de usuario'
+    hints:
+      defaults:
+        username: 'Nombre de usuario para iniciar sesión.'
+        password: 'Por favor, mínimo 6 letras.'
+    placeholders:
+      defaults:
+        username: 'Tu nombre de usuario'
+        email: 'tucorreo@ejemplo.com'
+        password: '****'
+        name: "Ejemplo SL"
+  
