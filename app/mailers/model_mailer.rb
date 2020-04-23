@@ -5,11 +5,6 @@ class ModelMailer < ApplicationMailer
   #
   #   en.model_mailer.new_user_notification.subject
   #
-  def new_user_notification
-    @greeting = "Hi"
-
-    mail to: "to@example.org"
-  end
 
   def new_job(user, job)
     @user = user
@@ -27,6 +22,15 @@ class ModelMailer < ApplicationMailer
     mail( 
       :to => job.user.email,
       :subject => 'You received a new inscription!' 
+    )  
+  end
+
+  def welcome_email(user)
+    @user = user
+
+    mail( 
+      :to => user.email,
+      :subject => 'Welcome to We Are Hiring!' 
     )  
   end
 end

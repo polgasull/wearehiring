@@ -7,6 +7,7 @@ class User < ApplicationRecord
   belongs_to :user_type
   has_many :jobs
   has_many :inscriptions
+  after_create :send_welcome_mail
 
   %w[candidate company].each do |user_type_name|
     define_method "is_#{user_type_name}?" do
@@ -43,5 +44,9 @@ class User < ApplicationRecord
     user.last_name = auth.info.last_name
     user.picture_url = auth.info&.picture_url
     end
+  end
+
+  def send_welcome_mail
+    ModelMailer.welcome_email(self).deliver
   end
 end
