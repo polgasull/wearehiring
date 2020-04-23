@@ -9,6 +9,7 @@ class InscriptionsController < ApplicationController
 
     @inscription = @job.inscriptions.build(inscription_params)
     if @inscription.save  
+      ModelMailer.new_inscription(current_user).deliver
       redirect_to_response(t('inscriptions.messages.inscription_created'), @inscription.job)
     else 
       redirect_back_response(t('inscriptions.messages.inscription_not_created'), false)

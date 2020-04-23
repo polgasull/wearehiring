@@ -2,7 +2,7 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <%= f.input_field :expiry_date, as: :date, as: :hidden, html5: true, value: DateTime.now() + 30.days %>
+  <%= f.input_field :expiry_date, as: :hidden, html5: true, value: DateTime.now() + 30.days %>
 
   <div class="columns">
     <div class="column">
@@ -196,7 +196,7 @@
   <%= render 'payment' %>
   
   <div class="has-text-centered">
-    <%= f.button :submit, class: "button is-large primary mt3", data: { disable_with: icon('fas', 'spinner fa-spin m-r-5', t('posting')) } %>   
+    <%= f.button :submit, class: "button is-large primary mt3" %>   
   </div>
 
 <% end %>

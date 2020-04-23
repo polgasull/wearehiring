@@ -1,5 +1,4 @@
 Rails.application.configure do
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -28,9 +27,26 @@ Rails.application.configure do
   end
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
+
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.default_url_options = { host: ENV['APP_HOST_NAME'] }
+
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = { 
+    port: ENV['SENDGRID_SMTP_PORT'],
+    address: ENV['SENDGRID_SMTP_SERVER'],
+    user_name: ENV['SENDGRID_SMTP_LOGIN'],
+    password: ENV['SENDGRID_SMTP_PASSWORD'],
+    domain: ENV['SENDGRID_SMTP_PASSWORD'],
+    authentication: :login,
+    enable_starttls_auto: true
+  }   
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
