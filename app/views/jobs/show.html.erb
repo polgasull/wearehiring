@@ -104,3 +104,9 @@
     </div>
   </div>
 </section>
+
+<%= content_for :head do %>
+  <%= render "seo", 
+      title: "Empleo #{ @job.title } en #{ @job.job_author } en #{ @job.location } | WeAreHiring.io", 
+      description: "#{ @job.job_author } está buscando a un #{ @job.title } en #{ @job.location }. Solicita este empleo en WeAreHiring.io" %>
+<% end %>

@@ -20,19 +20,15 @@
 	</div>
 </section>
 
-<section class="section has-text-left-mobile is-section-primary">
+<section class="section has-text-left-mobile is-section-primary mv5">
 	<div class="container">
 		<div class="columns">
 			<div class="column">
-				<% if user_signed_in? %>
-					<h2 class="title"> Welcome <%= current_user.name %> </h2>
-					<p> Body text here </p>
+				<% if user_signed_in? && current_user.is_company? %>
+					<h2 class="title"> <%= t('welcome') %>, <%= current_user.name %> </h2>
+					<p> <%= t('company_section_body') %> </p>
 					<div class="mt4">
-						<% if current_user.is_company? %>
-							<%= link_to t('jobs.post_job'), new_job_path, class: 'button is-medium is-rounded' %>
-						<% else %>
-							<%= link_to t('my_inscriptions'), user_inscriptions_inscriptions_path, class: 'button is-medium is-rounded' %>
-						<% end %>
+						<%= link_to t('jobs.post_job_with_price'), new_job_path, class: 'button is-medium is-rounded' %>
 					</div>
 				<% else %>
 					<h2 class="title"> <%= t('company_section_title') %> </h2>
@@ -42,8 +38,8 @@
 					</div>
 				<% end %>
 			</div>
-			<div class="column is-vertical-center has-text-centered">
-				<%= icon('far', 'building f1') %>
+			<div class="column is-vertical-center justify-center">
+				<img src="<%=asset_path('encontrar_profile.svg')%>" width="180" height="180" class="is-blank" alt="Crear cuenta empresa y publicar empleo digital | Wearehiring.io">			
 			</div>
 		</div>
 	</div>
@@ -53,8 +49,8 @@
 	<div class="container">
 		<div class="columns">
 			<div class="column is-three-fifths is-offset-one-fifth">
-				<h2 class="title"> About us! </h2>
-				<p> Algún text marketinero aquí! (no miro a nadie ;)) </p>
+				<h2 class="title"> <%= t('about_us_title') %> </h2>
+				<p> <%= t('about_us_subtitle') %> </p>
 			</div>
 		</div>
 	</div>
@@ -64,22 +60,22 @@
 	<div class="container">
 		<div class="columns">
 			<article class="column has-text-centered">
-				<img src="<%=asset_path('actualizar.svg')%>" width="210" height="210" class="is-blank is-mobile-img" alt="Ofertas de empleo actualizadas diariamente | JobHub">
-				<div class="content has-text-left-mobile">
+				<img src="<%=asset_path('digital_profile.svg')%>" width="180" height="180" class="is-blank is-mobile-img" alt="Only Digital Jobs | Wearehiring.io">
+				<div class="content has-text-left-mobile mt4">
 					<h3> <%=t('feature_1')%> </h3>
 					<p class="has-text-left"> <%=t('feature_1_text')%> </p>
 				</div>
 			</article>
 			<article class="column has-text-centered">
-				<img src="<%=asset_path('puzzle.svg')%>" width="210" height="210" class="is-blank" alt="Las mejores empresas | JobHub">
-				<div class="content has-text-left-mobile">
+				<img src="<%=asset_path('velocidad.svg')%>" width="180" height="180" class="is-blank" alt="Rápido regístro | Wearehiring.io">
+				<div class="content has-text-left-mobile mt4">
 					<h3> <%=t('feature_2')%> </h3>
 					<p class="has-text-left"> <%=t('feature_2_text')%> </p>
 				</div>
 			</article>
 			<article class="column has-text-centered">
-				<img src="<%=asset_path('rocket.svg')%>" width="210" height="210" class="is-blank" alt="Sin registros | JobHub">
-				<div class="content has-text-left-mobile">
+				<img src="<%=asset_path('only_digital_people.svg')%>" width="180" height="180" class="is-blank" alt="Digital Pros para todos | Wearehiring.io">
+				<div class="content has-text-left-mobile mt4">
 					<h3> <%=t('feature_3')%> </h3>
 					<ul class="has-text-left">
 						<li> <%= t('feature_3_text_1') %> </li>
@@ -91,3 +87,7 @@
 		</div>
 	</div>
 </section>
+
+<%= content_for :head do %>
+  <%= render "seo", title: t('seo.home_title') , description: t('seo.home_description')%>
+<% end %>

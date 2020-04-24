@@ -1,6 +1,6 @@
 .claim {
 	color: $white;
-
+	
 	.title {
 		font-size: 4rem;
 	}
@@ -31,7 +31,7 @@
   }
 }
 
-@media(max-width: 768px) {
+@media(max-width: 1200px) {
 
   .hero-body {
     padding: 6rem 1.5rem;
@@ -46,17 +46,23 @@
 	}
 }
 
-@media(max-width: 500px) {
-
-	.claim.is-mb-bg {
-    height: 100vh;
-		background-position: -460px 0px !important;
-	}
-}
-
 @media (max-width: 500px) {
 
 	.claim {
+
+		&.is-medium {
+			min-height: 40vh !important;
+			height: 40vh !important;
+			
+			.hero-body {
+				padding: 3rem 0rem;			
+			}
+		}
+
+		&.is-mb-bg {
+			height: 100vh;
+			background-position: -460px 0px !important;
+		}
 
 		h1.title-mb {
 			font-size: 2rem;

@@ -295,3 +295,14 @@
 /* Position Helpers */
 .is-relative { position: relative }
 .is-absolute { position: relative }
+
+
+/* Flex Helpers */
+.is-vertical-center {
+  display: flex;
+	align-items: center;
+	
+	&.justify-center {
+		justify-content: center;
+	}
+}
