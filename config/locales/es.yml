@@ -147,6 +147,8 @@ es:
     select:
       prompt: Por favor seleccione
     submit:
+      job: 
+        create: "Pagar y publicar"
       create: Crear %{model}
       submit: Guardar %{model}
       update: Actualizar %{model}
@@ -352,3 +354,5 @@ es:
   seo:
     jobs_title: "Ver Todas las Ofertas de Empleo Digital"
     jobs_description: "Encuentra todas las Ofertas de Empleo Digital: Marketing Digital, Developers, UX/UI Designer, Digital Product Managers, ¡Solicita tu empleo ya!"
+  show_all_digital_offers: "Ver Todas las Ofertas de Empleo Digital"
+  you_posted: "Tu publicación"

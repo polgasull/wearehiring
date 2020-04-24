@@ -10,11 +10,11 @@
     <div class="column bg-white">
       <div class="columns is-hidden-touch">
         <div class="column">
-          <%= job.job_author %> 
+          <strong> <%= job.job_author %> </strong> 
           <%= t('is_looking_for_one').downcase %> 
-          <%= job.title %> 
+          <strong> <%= job.title %>  </strong>
           <%= t('at').downcase %> 
-          <%= job.location %>
+          <strong> <%= job.location %> </strong>
         </div>
         <div class="column is-3-desktop has-text-right">
           <p class="f7"> <%= icon('fas', 'clock primary-color') %> Publicado <%= time_ago_in_words(job.created_at) %> </p>
@@ -48,23 +48,17 @@
             <% end %>     
           </div>
         </div>
-        <div class="column">
+        <div class="column is-relative">
           <% job.tags.each do |tag| %>
             <span class='tag is-success is-normal'> <%= tag.name %> </span>
+          <% end %>  
+          <% if job_author(job) %>
+            <span class='tag is-info my-tag'> <%= t('you_posted') %> </span>
           <% end %>
+          <% if current_user&.is_candidate? && user_inscribed_to(job) %>
+            <span class='tag is-danger my-tag'> <%= t('inscribed') %> </span>
+          <% end %> 
         </div>
-        <% if current_user&.is_candidate? %>
-          <div class="column has-text-right is-1">
-            <% if user_inscribed_to(job) %>
-              <%= t('inscribed') %>
-            <% end %>
-          </div>
-        <% end %>
-        <% if job_author(job) %>
-          <div class="column is-1">
-              <%= t('enter_for_edit') %>
-          </div>
-        <% end %>
       </div>
     </div>
   </div>

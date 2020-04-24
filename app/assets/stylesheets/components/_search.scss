@@ -1,0 +1,24 @@
+.search-hero {
+
+  &.bg-primary {
+    background-color: $primary;
+  }
+
+  .hero-body {
+    @media (max-width: 768px) {
+      padding: 0rem 1.5rem;
+    }
+  }
+
+  .is-white {
+    color: $white;
+  }
+
+  .select select {
+    color: $grey;
+  }
+
+  label {
+    color: $white
+  }
+}

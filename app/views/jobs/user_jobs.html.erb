@@ -1,11 +1,24 @@
-<section class="section main-section">
+<section class="hero is-info mb3 mt3 search-hero">
   <div class="container">
-    <div class="columns">
-      <div class="column mt4">
-        <%= render 'search' %>
+    <div class="hero-body">
+      <div class="columns">
+        <div class="column">
+          <h1 class="title is-white">
+            <%= t('my_jobs') %>
+          </h1>
+        </div>
       </div>
+      <div class="columns">
+        <div class="column">
+          <%= render 'search' %>
+        </div>
+      </div>      
     </div>
+  </div>
+</section>
 
+<section class="section pb5 pt2">
+  <div class="container">
     <div class="columns">
       <div class="column mt2">
         <span><b> <%= @jobs_count %> <%= t('jobs.published_jobs') %> </b></span>

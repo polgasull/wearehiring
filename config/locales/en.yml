@@ -147,6 +147,8 @@ en:
     select:
       prompt: Please select
     submit:
+      job:
+        create: "Pay and post"
       create: Create %{model}
       submit: Save %{model}
       update: Update %{model}
@@ -346,5 +348,7 @@ en:
   company_section_body: "Developers, Digital Marketers, Product Managers, UX/UI Designers, Growth Hackers, Data Scientists… Consigue el mejor talento digital y haz crecer tu empresa"
   create_company_account: "Sign up as company"
   seo:
-    jobs_title: "Ver Todas las Ofertas de Empleo Digital"
+    jobs_title: "Show all digital offers"
     jobs_description: "Encuentra todas las Ofertas de Empleo Digital: Marketing Digital, Developers, UX/UI Designer, Digital Product Managers, ¡Solicita tu empleo ya!"
+  show_all_digital_offers: "Show all digital offers"
+  you_posted: "You posted"

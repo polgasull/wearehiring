@@ -39,14 +39,20 @@ $(document).ready(function () {
     event.preventDefault();
 
     const {token, error} = await stripe.createToken(card);
+    const submitButton = document.getElementById('postJobSubmit');
+    const spinner = document.getElementById('submitSpinnerIcon');
 
     if (error) {
       // Inform the customer that there was an error.
       const errorElement = document.getElementById('card-errors');
       errorElement.textContent = error.message;
+      submitButton.removeAttribute("disabled");
+      submitButton.removeAttribute("data-disable-with")
     } else {
       // Send the token to your server.
       stripeTokenHandler(token);
+      submitButton.classList.add("is-hidden");
+      spinner.classList.remove('is-hidden');
     }
   });
 
