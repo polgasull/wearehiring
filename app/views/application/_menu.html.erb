@@ -3,13 +3,13 @@
 		<div class="navbar-brand">
 			<%= link_to t('show_jobs'), 
 					jobs_path(locale:params[:locale] || 'es'), 
-					class: "navbar-item text-uppercase  #{ 'active' if current_page?(jobs_path)}" %>
+					class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(jobs_path)}" %>
 		</div>
 		<% unless current_user&.is_candidate? %>
 		<div class="navbar-brand">
 			<%= link_to t('jobs.post_job'), 
 					new_job_path, 
-					class: "navbar-item text-uppercase #{ 'active' if current_page?(new_job_path)}" %>
+					class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(new_job_path)}" %>
 		</div>
 		<% end %>
 	<% if user_signed_in? %>

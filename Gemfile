@@ -34,6 +34,12 @@ gem 'trix', '~> 0.11.1'
 gem 'uglifier', '>= 1.3.0'
 gem 'browser', '~> 4.0'
 gem 'social-share-button'
+gem "devise", ">= 4.7.1"
+gem 'bulma-rails'
+gem 'sidekiq'
+
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -44,6 +50,7 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'database_cleaner'
   gem 'rb-readline', '~> 0.5.3'
+  gem "letter_opener"
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
@@ -60,10 +67,3 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-gem "devise", ">= 4.7.1"
-gem 'bulma-rails'
-gem 'sidekiq'
