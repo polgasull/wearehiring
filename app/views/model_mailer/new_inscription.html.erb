@@ -1,6 +1,92 @@
-<h1>You received a new Candidate!</h1>
-
-<p style="text-align: center">
-  <%= @user.name %>
-  <%= @user.email %>
-</p>
+<table>
+  <tr>
+    <td style="text-align:center">             
+      <h1> <strong> Tu Job está despertando mucho interés </strong> </h1>
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:center">
+      Un candidato acaba de aplicar en tu oferta. 
+    </td>
+  </tr>
+  <tr>
+    <td width="111" style="font-size:1px;line-height:30px;">&nbsp;</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">
+      <%= image_tag(@user.picture_url, size: 50) %>
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:center">
+      <%= @user.name %>
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:center">
+      <%= @user.email %>
+    </td>
+  </tr>
+  <tr>
+    <td width="111" style="font-size:1px;line-height:30px;">&nbsp;</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">
+      Puedes ver si cumple con todos los requisitos que estás buscando ahora mismo.
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:center">
+      ¡Vamos!
+    </td>
+  </tr>
+  <tr>
+    <td width="111" style="font-size:1px;line-height:30px;">&nbsp;</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">
+      <%= link_to '¡Ver Candidatos!', 
+          @job, 
+          style: 'background-color: #cc0022;
+                  border-color: #dbdbdb;
+                  border-width: 1px;
+                  color: #fff;
+                  cursor: pointer;
+                  justify-content: center;
+                  text-align: center;
+                  white-space: nowrap;
+                  border-radius: 6px;
+                  padding: 1rem 2rem;
+                  text-decoration: none;' %>
+    </td>
+  </tr>
+  <tr>
+    <td width="111" style="font-size:1px;line-height:50px;">&nbsp;</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">
+      ¡Síguenos en RRSS!
+    </td>
+  </tr>
+  <tr>
+    <td width="111" style="font-size:1px;line-height:20px;">&nbsp;</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">
+      <a href="https://twitter.com/WeAreHiring_io" target="_blank">
+        <%= image_tag(attachments['twitter.png'].url) %>      
+      </a>  
+      <a href="https://www.linkedin.com/company/we-are-hiring-startup" target="_blank">
+        <%= image_tag(attachments['linkedin.png'].url) %>
+      </a>    
+    </td>
+  </tr>
+  <tr>
+    <td width="111" style="font-size:1px;line-height:30px;">&nbsp;</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">
+      <%= image_tag(attachments['logo_black.jpg'].url, size: 100) %>
+    </td>
+  </tr>
+</table>

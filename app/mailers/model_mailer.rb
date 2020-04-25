@@ -18,7 +18,11 @@ class ModelMailer < ApplicationMailer
 
   def new_inscription(user, job)
     @user = user
+    @job = job
 
+    attachments.inline["logo_black.jpg"] = File.read("#{Rails.root}/app/assets/images/logo_black.jpg")
+    attachments.inline["twitter.png"] = File.read("#{Rails.root}/app/assets/images/twitter.png")
+    attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
     mail( 
       :to => job.user.email,
       :subject => 'You received a new inscription!' 
