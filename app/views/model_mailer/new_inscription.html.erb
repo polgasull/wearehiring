@@ -1,43 +1,27 @@
 <table>
   <tr>
     <td style="text-align:center">             
-      <h1> <strong> Tu Job está despertando mucho interés </strong> </h1>
+      <h2> <strong> ¡Felicidades! Tu solicitud se ha enviado correctamente </strong> </h2>
     </td>
   </tr>
   <tr>
     <td style="text-align:center">
-      Un candidato acaba de aplicar en tu oferta. 
-    </td>
-  </tr>
-  <tr>
-    <td width="111" style="font-size:1px;line-height:30px;">&nbsp;</td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      <%= image_tag(@user.picture_url, size: 50) %>
+      <%= @job.title %>
     </td>
   </tr>
   <tr>
     <td style="text-align:center">
-      <%= @user.name %>
+      <%= @job.job_author %>
     </td>
   </tr>
   <tr>
     <td style="text-align:center">
-      <%= @user.email %>
-    </td>
-  </tr>
-  <tr>
-    <td width="111" style="font-size:1px;line-height:30px;">&nbsp;</td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      Puedes ver si cumple con todos los requisitos que estás buscando ahora mismo.
+      <%= @job.location %>
     </td>
   </tr>
   <tr>
     <td style="text-align:center">
-      ¡Vamos!
+      <%= number_to_currency(@job.salary_from) %> - <%= number_to_currency(@job.salary_to) %>
     </td>
   </tr>
   <tr>
@@ -45,8 +29,16 @@
   </tr>
   <tr>
     <td style="text-align:center">
-      <%= link_to '¡Ver Candidatos!', 
-          @job, 
+      La oferta estará activa durante al menos 30 días en total. Mientras tanto, puedes ver otros Digital Jobs adecuados para ti: 
+    </td>
+  </tr>
+  <tr>
+    <td width="111" style="font-size:1px;line-height:30px;">&nbsp;</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">
+      <%= link_to '¡Ver más Jobs!', 
+          jobs_url, 
           style: 'background-color: #cc0022;
                   border-color: #dbdbdb;
                   border-width: 1px;

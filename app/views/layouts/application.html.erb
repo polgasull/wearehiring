@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <%= render "gtm_script" if (Rails.env.production?) %>
+    <%= render "google_analytics" if (Rails.env.production?) %>
     <link rel='icon' href='<%= asset_path('favicon.ico') %>' type='image/x-icon'/ >
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %>
@@ -12,6 +14,7 @@
   </head>
 
   <body class="<%= yield (:body_class) %>">
+    <%= render "gtm_iframe" if (Rails.env.production?) %>
 
     <% if flash[:notice] %>
       <div class="notification is-success global-notification">

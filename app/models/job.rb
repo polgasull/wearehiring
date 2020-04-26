@@ -10,6 +10,8 @@ class Job < ApplicationRecord
   has_many :inscriptions
   mount_uploader :avatar, AvatarUploader
 
+  validates :reference, uniqueness: true
+
   geocoded_by :location
   after_validation :geocode
   

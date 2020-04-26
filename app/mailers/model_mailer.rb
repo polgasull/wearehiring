@@ -10,13 +10,16 @@ class ModelMailer < ApplicationMailer
     @user = user
     @job = job
 
+    attachments.inline["logo_black.jpg"] = File.read("#{Rails.root}/app/assets/images/logo_black.jpg")
+    attachments.inline["twitter.png"] = File.read("#{Rails.root}/app/assets/images/twitter.png")
+    attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
     mail( 
       :to => @user.email,
-      :subject => 'You published a new Job!' 
+      :subject => 'Congrats! Nuevo Job Publicado! 🥳' 
     )
   end
 
-  def new_inscription(user, job)
+  def new_candidate(user, job)
     @user = user
     @job = job
 
@@ -25,16 +28,32 @@ class ModelMailer < ApplicationMailer
     attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
     mail( 
       :to => job.user.email,
-      :subject => 'You received a new inscription!' 
+      :subject => 'Tienes un nuevo candidato ✅' 
+    )  
+  end
+  
+  def new_inscription(user, job)
+    @user = user
+    @job = job
+
+    attachments.inline["logo_black.jpg"] = File.read("#{Rails.root}/app/assets/images/logo_black.jpg")
+    attachments.inline["twitter.png"] = File.read("#{Rails.root}/app/assets/images/twitter.png")
+    attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
+    mail( 
+      :to => user.email,
+      :subject => 'Has solicitado el Job correctamente 💪' 
     )  
   end
 
   def welcome_email(user)
     @user = user
 
+    attachments.inline["logo_black.jpg"] = File.read("#{Rails.root}/app/assets/images/logo_black.jpg")
+    attachments.inline["twitter.png"] = File.read("#{Rails.root}/app/assets/images/twitter.png")
+    attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
     mail( 
       :to => user.email,
-      :subject => 'Welcome to We Are Hiring!' 
+      :subject => 'Gracias por registrarte a We Are Hiring 🚀' 
     )  
   end
 end

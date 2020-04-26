@@ -47,6 +47,8 @@ class User < ApplicationRecord
   end
 
   def send_welcome_mail
-    ModelMailer.welcome_email(self).deliver
+    if self.is_company?
+      ModelMailer.welcome_email(self).deliver
+    end
   end
 end

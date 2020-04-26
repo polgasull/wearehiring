@@ -1,25 +1,12 @@
 <table>
   <tr>
     <td style="text-align:center">             
-      <h2> <strong> Hola <%= @user.name %> </strong> </h2>
+      <h2> <strong> Tu Job está despertando mucho interés </strong> </h2>
     </td>
   </tr>
   <tr>
     <td style="text-align:center">
-      Gracias por registrarte a WAH. Estamos aquí para lo que necesites. 
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      Esta no es una newsletter de confirmación cualquiera. Quiero saber más de ti.      
-    </td>
-  </tr>
-  <tr>
-    <td width="111" style="font-size:1px;line-height:30px;">&nbsp;</td>
-  </tr>  
-  <tr>
-    <td style="text-align:center">
-      Sigue leyendo. Gracias. Quiero saber qué es lo que más te interesa en el mundo. Sí, alucinante. Una empresa que te pregunta qué te gusta. ¿Por qué? Porque quiero darte SOLO lo que quieres. Nada más. Quiero empezar esta relación con buen pie y deseo conocer los temas qué más te entusiasman para ofrecerte SOLO contenidos de valor. No Sp*m. No Bulls**t. Solo contenido de valor para ti.    
+      Un candidato acaba de aplicar en tu oferta. 
     </td>
   </tr>
   <tr>
@@ -27,7 +14,17 @@
   </tr>
   <tr>
     <td style="text-align:center">
-      ¿Fácil no? Rellena este formulario con solo 3 preguntas. Y ya estará. Easy.    
+      <%= image_tag(@user.picture_url, size: 50) %>
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:center">
+      <%= @user.name %>
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:center">
+      <%= @user.email %>
     </td>
   </tr>
   <tr>
@@ -35,8 +32,21 @@
   </tr>
   <tr>
     <td style="text-align:center">
-      <%= link_to '¡Acceder a cuestionario!', 
-          root_url, 
+      Puedes ver si cumple con todos los requisitos que estás buscando ahora mismo.
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:center">
+      ¡Vamos!
+    </td>
+  </tr>
+  <tr>
+    <td width="111" style="font-size:1px;line-height:30px;">&nbsp;</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">
+      <%= link_to '¡Ver Candidatos!', 
+          @job, 
           style: 'background-color: #cc0022;
                   border-color: #dbdbdb;
                   border-width: 1px;
