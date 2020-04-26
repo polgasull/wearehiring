@@ -1,5 +1,5 @@
 class ModelMailer < ApplicationMailer
-  default :from => 'wearehiringstartup@gmail.com'
+  default :from => 'hello@wearehiring.io'
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
