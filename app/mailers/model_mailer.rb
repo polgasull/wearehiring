@@ -10,7 +10,7 @@ class ModelMailer < ApplicationMailer
     @user = user
     @job = job
 
-    attachments.inline["logo_black.jpg"] = File.read("#{Rails.root}/app/assets/images/logo_black.jpg")
+    attachments.inline["logo_beta.png"] = File.read("#{Rails.root}/app/assets/images/logo_beta.png")
     attachments.inline["twitter.png"] = File.read("#{Rails.root}/app/assets/images/twitter.png")
     attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
     mail( 
@@ -23,7 +23,7 @@ class ModelMailer < ApplicationMailer
     @user = user
     @job = job
 
-    attachments.inline["logo_black.jpg"] = File.read("#{Rails.root}/app/assets/images/logo_black.jpg")
+    attachments.inline["logo_beta.png"] = File.read("#{Rails.root}/app/assets/images/logo_beta.png")
     attachments.inline["twitter.png"] = File.read("#{Rails.root}/app/assets/images/twitter.png")
     attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
     mail( 
@@ -36,7 +36,7 @@ class ModelMailer < ApplicationMailer
     @user = user
     @job = job
 
-    attachments.inline["logo_black.jpg"] = File.read("#{Rails.root}/app/assets/images/logo_black.jpg")
+    attachments.inline["logo_beta.png"] = File.read("#{Rails.root}/app/assets/images/logo_beta.png")
     attachments.inline["twitter.png"] = File.read("#{Rails.root}/app/assets/images/twitter.png")
     attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
     mail( 
@@ -48,7 +48,7 @@ class ModelMailer < ApplicationMailer
   def welcome_email(user)
     @user = user
 
-    attachments.inline["logo_black.jpg"] = File.read("#{Rails.root}/app/assets/images/logo_black.jpg")
+    attachments.inline["logo_beta.png"] = File.read("#{Rails.root}/app/assets/images/logo_beta.png")
     attachments.inline["twitter.png"] = File.read("#{Rails.root}/app/assets/images/twitter.png")
     attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
     mail( 

@@ -21,7 +21,7 @@
   </tr>
   <tr>
     <td style="text-align:center">
-      <%= number_to_currency(@job.salary_from) %> - <%= number_to_currency(@job.salary_to) %>
+      <%= number_to_currency(@job.salary_from, precision: 0) %> - <%= number_to_currency(@job.salary_to, precision: 0) %>
     </td>
   </tr>
   <tr>
@@ -78,7 +78,7 @@
   </tr>
   <tr>
     <td style="text-align:center">
-      <%= image_tag(attachments['logo_black.jpg'].url, size: 100) %>
+      <%= image_tag(attachments['logo_beta.png'].url, size: 100) %>
     </td>
   </tr>
 </table>

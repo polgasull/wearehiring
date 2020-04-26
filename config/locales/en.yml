@@ -219,6 +219,7 @@ en:
   show: "Show"
   payment: "Payment"
   jobs:
+    reference: "Reference"
     tags: "Tags"
     salary_range: "Anual salary range"
     location: "Location"
@@ -356,3 +357,5 @@ en:
   show_all_digital_offers: "Show all digital offers"
   you_posted: "You posted"
   welcome: "Welcome"
+  i_want_this_job: "¡I want this Job!"
+  this_job_is_mine: "¡This Job is mine!"

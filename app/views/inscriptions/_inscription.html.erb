@@ -19,7 +19,7 @@
     <div class="columns">
       <div class="column">
         <%= icon('fas', 'coins mr1') %> 
-        <%= number_to_currency(job.salary_from) %> - <%= number_to_currency(job.salary_to) %>       
+        <%= number_to_currency(job.salary_from, precision: 0) %> - <%= number_to_currency(job.salary_to, precision: 0) %>       
       </div>
       <div class="column">
       <%= job.category.name %>

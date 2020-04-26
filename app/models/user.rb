@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   %w[candidate company].each do |user_type_name|
     define_method "is_#{user_type_name}?" do
-      user_type&.name == user_type_name.capitalize
+      user_type&.internal_name == user_type_name
     end
   end
 

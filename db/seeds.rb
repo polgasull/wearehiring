@@ -44,7 +44,8 @@ end
 
 50.times do 
   sleep 0.4
-  Job.create(title: Faker::Job.title,
+  Job.create(reference: "wah#{DateTime.now.year}#{SecureRandom.hex(3)}",
+            title: Faker::Job.title,
             description: Faker::Lorem.paragraph(sentence_count: 2),
             salary_from: rand(20000..30000),
             salary_to: rand(40000..80000),

@@ -277,6 +277,23 @@
 
 .border-radius-3 { border-radius: 3px; }
 
+@for $i from 1 through 20 {
+	.radius-left-#{$i} {
+		border-top-left-radius: #{$i}px;
+		border-bottom-left-radius: #{$i}px;
+	}
+
+	.radius-right-#{$i} {
+		border-top-right-radius: #{$i}px;
+		border-bottom-right-radius: #{$i}px;
+	}
+
+	.radius-#{$i} {
+		border-radius: #{$i}px;
+	}
+}
+
+
 .justify-center { justify-content: center; }
 .align-items-center { align-items: center; }
 
@@ -294,8 +311,27 @@
 
 /* Position Helpers */
 .is-relative { position: relative }
-.is-absolute { position: relative }
+.is-absolute { 
+	position: absolute; 
 
+	@for $i from 1 through 50 {
+		&.top-#{$i} {
+			top: #{$i}px;
+		}
+
+		&.right-#{$i} {
+			right: #{$i}px;
+		}
+
+		&.bottom-#{$i} {
+			bottom: #{$i}px;
+		}
+
+		&.left-#{$i} {
+			left: #{$i}px;
+		}
+	}
+}
 
 /* Flex Helpers */
 .is-vertical-center {

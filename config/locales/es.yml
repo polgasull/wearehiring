@@ -223,6 +223,7 @@ es:
   show: "Ver"
   payment: "Pago"
   jobs:
+    reference: "Referencia"
     tags: "Tags"
     salary_range: "Rango salario anual"
     location: "Localización"
@@ -360,3 +361,5 @@ es:
   show_all_digital_offers: "Ver Todas las Ofertas de Empleo Digital"
   you_posted: "Tu publicación"
   welcome: "Bienvenido"
+  i_want_this_job: "¡Quiero este Job!"
+  this_job_is_mine: "¡Este Job es mío!"

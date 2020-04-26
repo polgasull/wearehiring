@@ -1,107 +1,174 @@
-<section class="section main-section">
-  <div class="columns pt4 pb7">
-    <div class="column is-7 is-offset-1">
-
-      <p class="f7"> <%= icon('fas', 'clock') %> Publiado <%= time_ago_in_words(@job.created_at) %> </p>
-
-      <% if job_author(@job) %>
-        <p> 
-          <%= t('remaining_days') %>: 
-          <strong> <%= (@job.expiry_date.to_date - @job.created_at.to_date).to_i %> </strong> 
-        </p>
-      <% end %>
-
-      <h2 class="title is-2"><%= @job.title %></h2>
-
-      <ul class="pb2">
-        <li class="inline-block pr2"><%= icon('fas', 'clock') %> <%= @job.job_type.name %></li>
-        <li class="inline-block ph2"><i class="fa fa-pin"></i> <%= @job.location %></li>
-        <% if @job.remote_ok? %>
-          <li class="inline-block ph2"><i class="fa fa-wifi"></i> Remote Job</li>
-        <% end %>
-      </ul>
-
-      <div class="pb3">
-        <span class='tag is-warning is-normal'> <%= @job.category.name %> </span>
-        <% @job.tags.each do |tag| %>
-          <span class='tag is-success is-normal'> <%= tag.name %> </span>
-        <% end %>      
+<% if job_author(@job) %>
+  <div class="container pt4">
+    <%= t('jobs.reference') %>: #<%= @job.reference %>
+  </div>
+  <section class="section pb0 pt1">
+    <div class="container is-wrapper bg-white radius-8">
+      <div class="columns">
+        <div class="column">
+          <strong class="f3"> <%= (@job.expiry_date.to_date - @job.created_at.to_date).to_i %> </strong> 
+          <%= t('remaining_days') %>
+        </div>
+        <div class="column has-text-right is-2">
+          <%# TODO Candidates view %>
+          <%= link_to '14 Inscritos', "#", class: 'button is-info' %>
+        </div>
+        <div class="column has-text-right is-2">
+          <%= link_to 'Editar', edit_job_path(@job), class: 'button is-link' %>
+        </div>
       </div>
+    </div>
+  </section>
+<% end %>
 
-      <div class="content text-serif f4">
-        <p class="title is-5"> <%= t('jobs.salary_range') %> </p>
-        <%= number_to_currency(@job.salary_from) %> - <%= number_to_currency(@job.salary_to) %>
+<section class="section">
+  <div class="container is-wrapper bg-white radius-8">
+    <div class="columns">
+      <div class="column pb0">
+        <p class="f7"> <%= icon('fas', 'clock') %> Publicado <%= time_ago_in_words(@job.created_at) %> </p>
+        <h2 class="f2 mb0"><%= @job.title %></h2>
+        <p> <%= @job.job_author %> en <%= @job.location %> </p>
       </div>
-
-      <div class="content text-serif f4">
-        <h5> <%= t('job_description') %> </h5>
-        <%= @job.description.html_safe %>
+    </div>
+    <div class="ma4"></div>  
+    <div class="columns">
+      <div class="column is-2 is-vertical-center justify-center">
+        <div>
+          <% if !@job.avatar.file.nil? %>
+            <%= image_tag(@job.avatar_url(:thumb), alt: @job.job_author, size: 140) %>
+          <% else %>
+            <%= icon('far', 'image', style: 'font-size: 50px') %>
+          <% end %>
+        </div>
       </div>
-
-      <div class="has-text-centered">
-        <%= @inscriptions_count %> se han inscrito a esta oferta
-      </div>
-
-      <div class="mb4"></div>
-
-      <% if job_author(@job) %>
-        <% @job_inscriptions.each do |i| %>
-          <%= render partial: 'job_inscription', locals: { i: i } %>
-        <% end %>
-      <% end %>
-
-      <% unless user_signed_in? || current_user&.is_company? %>
-        <%= link_to t('send_job_inscription'), user_linkedin_omniauth_authorize_path, class: "button is-rounded is-block is-link is-large" %>
-      <% end %>
-
-      <% if user_signed_in? && current_user&.is_candidate? %>
-        <% if user_inscribed_to(@job) %>
-          <div class="has-text-centered">
-            <button disabled class="button is-rounded is-success is-large">  
-              <%= t('inscribed') %> <%= icon('fas', 'check ml2') %>
-            </button>
+      <div class="column bg-light radius-10 mr4">
+        <div class="columns">
+          <div class="column">
+            <div class="pv1 pl2 pr2">
+              <strong> <%= @job.title %> </strong>
+            </div>
+            <div class="pv1 pl2 pr2 mt2">
+              <%= icon('fas', 'globe mr1') %> <%= @job.category.name %>
+            </div>
+            <div class="pv1 pl2 pr2 mt2">
+              <%= icon('fas', 'coins mr1') %> 
+              <%= number_to_currency(@job.salary_from, precision: 0) %> - <%= number_to_currency(@job.salary_to, precision: 0) %>
+            </div>        
           </div>
-        <% else %>
-          <%= form_for :inscription, url: job_inscriptions_path(@job.id) do |f| %>
-            <%= f.hidden_field :user_id, value: current_user.id %>
-            <%= f.submit t('send_job_inscription'), class: "button is-rounded is-fullwidth is-link is-large" %>
-          <% end %>        
-        <% end %>
-      <% end %>
-    </div>
-
-    <div class="column is-2 is-offset-1 has-text-centered">
-
-      <div class="pb4">
-        <% if !@job.avatar.file.nil? %>
-          <%= link_to image_tag(@job.avatar_url(:thumb), alt: @job.job_author, class: "has-text-centered"), @job.url %>
-        <% end %>
+          <div class="column">
+            <div class="pv1 pl2 pr2">
+              <%= icon('fas', 'level-up-alt mr1') %> <%= @job.level.name %>
+            </div>           
+            <div class="pv1 pl2 pr2 mt2">
+              <%= icon('far', 'clock mr2') %> <%= @job.job_type.name %>
+            </div>
+            <div class="pv1 pl2 pr2 mt2">
+              <% if @job.remote_ok? %>
+                <%= icon('fas', 'wifi') %> <%= t('remote') %> 
+              <% else %>
+                <%= icon('fas', 'laptop') %> Oficina
+              <% end %>     
+            </div>
+          </div>
+          <div class="column">
+            <% @job.tags.each do |tag| %>
+              <span class='tag is-success is-normal'> <%= tag.name %> </span>
+            <% end %>  
+          </div>
+          <div class="column is-relative">
+            <div class="is-absolute bottom-10 right-20">
+              <p> ¡Comparte este Job! </p>
+              <%= social_share_button_tag(@job.title, :allow_sites => %w(twitter linkedin email whatsapp_app)) %>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <h5 class="title is-5 has-text-centered"> <%= @job.job_author %> </h5>
-
-      <% if @job.url.present? %>
-        <%= link_to t('website'), @job.url %>
-      <% end %>
-
-      <% if current_user.try(:admin) || job_author(@job) %>
-        <ul class="pv3">
-          <li class="pv1 f6">Admin controls: </li>
-          <li class="pv1 inline-block">
-            <%= link_to 'View', @job, class: 'button is-small is-link is-outlined' %></li>
-          <li class="pv1 inline-block">
-            <%= link_to 'Edit', edit_job_path(@job), class: 'button is-small is-link is-outlined' %></li>
-          <li class="pv1 inline-block">
-            <%= link_to 'Delete', @job, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-small is-link is-outlined' %></li>
-        </ul>
-      <% end %>
-
-      <div class="pt4">
-        <p> <%= t('share_with') %>:</p>
-        <%= social_share_button_tag(@job.title, :allow_sites => %w(twitter facebook linkedin email whatsapp_app)) %>
-      </div>
-
     </div>
+    <div class="ma4"></div>  
+
+    <div class="columns">
+      <div class="column has-text-centered">
+        <div class="mb2">
+          <%# TODO: FORM for @user action UPDATE accept_legal = true %>
+          <label for="legal">
+            <abbr title="required primary-color">*</abbr>
+            <%= check_box_tag "legal", required: false %>
+            <small>Estoy de acuerdo con los términos y condiciones legales de WeAreHiring, condiciones legales de use y política de privacidad</small>
+          </label>
+        </div>
+
+        <% unless user_signed_in? || current_user&.is_company? %>
+          <%= link_to t('i_want_this_job'), 
+                      user_linkedin_omniauth_authorize_path, 
+                      class: 'button is-rounded primary is-large' %>
+        <% end %>
+
+        <% if user_signed_in? && current_user&.is_candidate? %>
+          <% if user_inscribed_to(@job) %>
+            <div class="has-text-centered">
+              <button disabled class="button is-rounded is-success is-large">  
+                <%= t('inscribed') %> <%= icon('fas', 'check ml2') %>
+              </button>
+            </div>
+          <% else %>
+            <%= form_for :inscription, url: job_inscriptions_path(@job.id) do |f| %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.submit t('i_want_this_job'), class: "button is-rounded primary is-large" %>
+            <% end %>        
+          <% end %>
+        <% end %>      
+
+        <p> <%= @inscriptions_count %> se han inscrito a esta oferta </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section pt0">
+  <div class="container is-wrapper bg-white radius-8">
+    <div class="columns">
+      <div class="column">
+        <h3 class="f3 mb2"> <%= t('job_description') %> </h3>
+        <div class="pr4 pl4 pb4"> 
+          <%= @job.description.html_safe %>
+        </div>
+      </div>
+    </div>
+    <div class="columns">
+      <div class="column has-text-centered">
+        <div class="mb2">
+          <%# TODO: FORM for @user action UPDATE accept_legal = true %>
+          <label for="legal">
+            <abbr title="required primary-color">*</abbr>
+            <%= check_box_tag "legal", required: false %>
+            <small>Estoy de acuerdo con los términos y condiciones legales de WeAreHiring, condiciones legales de use y política de privacidad</small>
+          </label>
+        </div>
+
+        <% unless user_signed_in? || current_user&.is_company? %>
+          <%= link_to t('this_job_is_mine'), 
+                      user_linkedin_omniauth_authorize_path, 
+                      class: 'button is-rounded primary is-large' %>
+        <% end %>
+
+        <% if user_signed_in? && current_user&.is_candidate? %>
+          <% if user_inscribed_to(@job) %>
+            <div class="has-text-centered">
+              <button disabled class="button is-rounded is-success is-large">  
+                <%= t('inscribed') %> <%= icon('fas', 'check ml2') %>
+              </button>
+            </div>
+          <% else %>
+            <%= form_for :inscription, url: job_inscriptions_path(@job.id) do |f| %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.submit t('this_job_is_mine'), class: "button is-rounded primary is-large" %>
+            <% end %>        
+          <% end %>
+        <% end %>      
+
+        <p> <%= @inscriptions_count %> se han inscrito a esta oferta </p>
+      </div>
+    </div>  
   </div>
 </section>
 

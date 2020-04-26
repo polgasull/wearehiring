@@ -50,7 +50,8 @@ section {
 	}
 
 	img {
-	box-shadow: 10px 52px 70px -6px #ccc;
+	box-shadow: 8px 6px 10px -6px #ccc;
+	border-radius: 50%;
 
 		@media(max-width: 768px) {
 			box-shadow: none;
@@ -83,5 +84,16 @@ section {
 
 	img.is-rounded {
 		max-width: 185px;
+	}
+}
+
+.container {
+
+	&.is-wrapper {
+		padding: .75rem;
+
+		.columns:not(:last-child) {
+			margin-bottom: 0px;
+		}
 	}
 }

@@ -1,13 +1,6 @@
 <%= link_to job do %>
-  <div class="columns box-link">
-    <div class="column is-1 is-vertical-center">
-      <% if !job.avatar.file.nil? %>
-        <%= image_tag(job.avatar_url(:thumb), alt: job.job_author) %>
-      <% else %>
-        <%= icon('far', 'image', style: 'font-size: 50px') %>
-      <% end %>
-    </div>
-    <div class="column bg-white">
+  <div class="columns box-link radius-8">
+    <div class="column bg-white radius-right-8">
       <div class="columns is-hidden-touch">
         <div class="column">
           <strong> <%= job.job_author %> </strong> 
@@ -21,6 +14,15 @@
         </div>
       </div>
       <div class="columns">
+        <div class="column is-1 is-vertical-center justify-center">
+          <div>
+            <% if !job.avatar.file.nil? %>
+              <%= image_tag(job.avatar_url(:thumb), alt: job.job_author) %>
+            <% else %>
+              <%= icon('far', 'image', style: 'font-size: 50px') %>
+            <% end %>
+          </div>
+        </div>
         <div class="column">
           <div class="pv1 pl2 pr2 bg-light">
             <strong> <%= job.title %> </strong>
@@ -30,7 +32,7 @@
           </div>
           <div class="pv1 pl2 pr2 mt2 bg-light">
             <%= icon('fas', 'coins mr1') %> 
-            <%= number_to_currency(job.salary_from) %> - <%= number_to_currency(job.salary_to) %>
+            <%= number_to_currency(job.salary_from, precision: 0) %> - <%= number_to_currency(job.salary_to, precision: 0) %>
           </div>        
         </div>
         <div class="column">
