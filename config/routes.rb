@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resource :inscriptions, except: :index
     collection do
       get :search
-      get :user_jobs
+      get :my_jobs
     end
   end
   resources :inscriptions do

@@ -1,0 +1,86 @@
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <h1 class="f2"> <%= t('my_jobs') %> </h1>
+      </div>
+    </div>
+  <%= form_for my_jobs_jobs_path, method: :get do |f| %>
+    <div class="columns is-search is-vertical-center">
+      <div class="column">
+      <input 
+        type="text" 
+        class="input" 
+        placeholder="<%=t('search')%>" 
+        name="search_my_jobs" 
+        value="<%=params[:search_my_jobs] ? params[:search_my_jobs] : ''%>">
+      </div>
+      <div class="column has-text-left">
+        <%= f.submit t('search'), class: "button is-dark" %>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</section>
+
+<section class="section pb5 pt2">
+  <div class="container">
+    <div class="columns">
+      <div class="column mt2">
+        <span><b> <%= @my_jobs_count %> <%= t('jobs.published_jobs') %> </b></span>
+      </div>
+
+      <div class="column has-text-right is-hidden-touch">
+        <div class="dropdown is-hoverable">
+          <div class="dropdown-trigger">
+            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+              <span> <%= params[:sort_by] ? t(params[:sort_by]) : t('sort_by') %> </span>
+              <span class="icon is-small">
+                <i class="fas fa-angle-down" aria-hidden="true"></i>
+              </span>
+            </button>
+          </div>
+          <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+            <div class="dropdown-content">
+              <%= link_to t('oldest'), jobs_path(sort_by: "oldest"), class: "dropdown-item" %>
+              <%= link_to t('newest'), jobs_path(sort_by: "newest"), class: "dropdown-item" %>
+              <%= link_to t('by_title'), jobs_path(sort_by: "by_title"), class: "dropdown-item" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns listhead">
+      <div class="column">
+        Nb
+      </div>
+      <div class="column">
+        <%= t('reference') %>
+      </div>
+      <div class="column">
+        <%= t('jobs.company') %>
+      </div>
+      <div class="column">
+        <%= t('jobs.position') %>
+      </div>
+      <div class="column">
+        <%= t('jobs.tags') %>
+      </div>
+      <div class="column">
+        <%= t('jobs.candidates') %>
+      </div>
+    </div>
+
+		<%= render partial: 'my_job', collection: @my_jobs, as: :job %>
+
+    <div class="columns">
+      <div class="column is-4 is-offset-8">
+      </div>
+    </div>
+  </div>
+</section>
+
+<%= content_for :head do %>
+  <%= render "seo", title: t('seo.my_jobs_title') , description: t('seo.my_jobs_description')%>
+<% end %>

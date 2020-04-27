@@ -1,0 +1,13 @@
+.listhead {
+  font-weight: bold;
+  background-color: white;
+  border-bottom: 2px solid darkgrey;
+}
+
+.listrow {
+  border-bottom: 1px solid darkgrey;
+}
+
+.listrow:nth-child(even) {
+  background-color: white;
+}

@@ -13,9 +13,9 @@ class JobsController < ApplicationController
     end
   end
 
-  def user_jobs
-    @jobs = current_user.my_jobs.filter(params).order('created_at DESC').page(params[:page]).per(50)
-    @jobs_count = current_user.jobs.count
+  def my_jobs
+    @my_jobs = current_user.jobs.filter(params).order('created_at DESC')
+    @my_jobs_count = current_user.jobs.count
   end
 
   def show

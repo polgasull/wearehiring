@@ -33,8 +33,8 @@
 							<% end %>
 						<% end %>
 						<% if current_user.is_company? %>
-							<%= link_to user_jobs_jobs_path, 
-							class: "dropdown-item #{ 'active' if current_page?(user_jobs_jobs_path) }" do %>
+							<%= link_to my_jobs_jobs_path, 
+							class: "dropdown-item #{ 'active' if current_page?(my_jobs_jobs_path) }" do %>
 								<span class="icon is-small"><%= icon('fas', 'briefcase') %></span>
 								<span> <%= t('my_jobs') %> </span>
 							<% end %>

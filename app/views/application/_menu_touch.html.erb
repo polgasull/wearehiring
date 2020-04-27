@@ -21,8 +21,8 @@
       <% end %>  
       <% if current_user.is_company? %>
         <div class="navbar-brand">
-          <%= link_to t('my_jobs'), user_jobs_jobs_path, 
-          class: "navbar-item text-uppercase #{ 'active' if current_page?(user_jobs_jobs_path) }" %>
+          <%= link_to t('my_jobs'), my_jobs_jobs_path, 
+          class: "navbar-item text-uppercase #{ 'active' if current_page?(my_jobs_jobs_path) }" %>
         </div>
       <% end %> 
       <div class="navbar-brand">

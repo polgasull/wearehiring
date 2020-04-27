@@ -23,6 +23,15 @@ class Job < ApplicationRecord
           query: "%#{query.downcase}%") 
   }
 
+  scope :search_my_jobs, -> (query) { 
+    where('LOWER(jobs.title) LIKE :query OR 
+          LOWER(jobs.reference) LIKE :query OR 
+          LOWER(jobs.job_author) LIKE :query OR 
+          LOWER(jobs.description) LIKE :query OR
+          LOWER(jobs.location) LIKE :query', 
+          query: "%#{query.downcase}%") 
+  }
+
   scope :by_category, -> (category) {
     joins(:category).
     where('categories.id = ?', category)

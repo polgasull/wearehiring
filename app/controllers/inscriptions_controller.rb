@@ -18,7 +18,7 @@ class InscriptionsController < ApplicationController
   end
 
   def user_inscriptions
-    @inscriptions = current_user.my_inscriptions
+    @inscriptions = current_user.inscriptions
     @inscriptions_count = current_user.inscriptions.count
   end
 

@@ -15,14 +15,6 @@ class User < ApplicationRecord
     end
   end
 
-  def my_jobs
-    Job.where(user_id: id)
-  end
-
-  def my_inscriptions
-    Inscription.where(user_id: id)
-  end
-
   def is_already_inscribed(job)
     inscriptions.any? {|u| u[:job_id] == job.id}
   end

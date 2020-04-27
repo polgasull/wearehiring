@@ -1,0 +1,24 @@
+<div class="columns listrow">
+  <div class="column">
+    <%= job_counter + 1 %>
+  </div>
+  <div class="column">
+    <%= job.reference %>
+  </div>
+  <div class="column">
+    <%= job.job_author %>
+  </div>
+  <div class="column">
+    <%= link_to job.title, job %>
+  </div>
+  <div class="column">
+    <% job.tags.each do |tag| %>
+      <span> <%= tag.name %>, </span>
+    <% end %>  
+  </div>
+  <div class="column">
+  <%= link_to "#" do %>
+    <%= job.inscriptions.count %> inscritos
+  <% end %>
+  </div>
+</div>
