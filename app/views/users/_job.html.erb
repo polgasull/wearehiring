@@ -1,17 +1,17 @@
-<div class="columns listrow">
-  <div class="column is-1">
+<div class="columns listrow is-mobile">
+  <div class="column is-1 is-hidden-touch">
     <%= job_counter + 1 %>
   </div>
-  <div class="column">
+  <div class="column is-hidden-touch">
     <%= job.reference %>
   </div>
-  <div class="column">
+  <div class="column is-hidden-mobile">
     <%= job.job_author %>
   </div>
   <div class="column">
     <%= link_to job.title, job %>
   </div>
-  <div class="column">
+  <div class="column is-hidden-touch">
     <% job.tags.each do |tag| %>
       <span> <%= tag.name %>, </span>
     <% end %>  

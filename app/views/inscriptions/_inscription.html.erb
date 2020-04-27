@@ -1,20 +1,20 @@
-<div class="columns listrow">
-  <div class="column is-1">
+<div class="columns listrow is-mobile">
+  <div class="column is-1 is-hidden-touch">
     <%= inscription_counter + 1 %>
   </div>
-  <div class="column">
+  <div class="column is-hidden-mobile">
     <%= image_tag(inscription.user.picture_url, size: 50) %>
   </div>
   <div class="column">
     <%= inscription.user.name %>
   </div>
-  <div class="column">
+  <div class="column is-hidden-touch">
     Backend Developer
   </div>
-  <div class="column">
+  <div class="column is-hidden-mobile">
     <%= inscription.user.email %>
   </div>
-  <div class="column">
+  <div class="column is-hidden-touch">
     666-XXX-XXX
   </div>
   <div class="column">

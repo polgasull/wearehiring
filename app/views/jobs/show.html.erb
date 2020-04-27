@@ -6,17 +6,17 @@
   </section>
   <section class="section pb0 pt1">
     <div class="container is-wrapper bg-white radius-8">
-      <div class="columns">
-        <div class="column">
+      <div class="columns is-multiline is-mobile">
+        <div class="column is-full-mobile is-half-tablet">
           <strong class="f3"> <%= (@job.expiry_date.to_date - Date.today).to_i %> </strong> 
           <%= t('remaining_days') %>
         </div>
-        <div class="column has-text-right is-2">
+        <div class="column has-text-right is-2-desktop is-half-mobile has-text-left-mobile">
           <%= link_to job_inscriptions_path(@job), class: 'button is-info' do %>
             <%= @job.inscriptions.count %> inscritos
           <% end %>
         </div>
-        <div class="column has-text-right is-2">
+        <div class="column has-text-right is-2-desktop is-half-mobile">
           <%= link_to 'Editar', edit_job_path(@job), class: 'button is-link' %>
         </div>
       </div>
@@ -33,7 +33,7 @@
         <p> <%= @job.job_author %> en <%= @job.location %> </p>
       </div>
     </div>
-    <div class="ma4"></div>  
+    <div class="ma4 is-hidden-mobile"></div>  
     <div class="columns pr4 wrapper-content">
       <div class="column is-2 is-vertical-center justify-center">
         <div class="thumbnail">

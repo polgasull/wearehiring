@@ -13,12 +13,6 @@ h1.title {
 	@media(max-width: 1200px) {
 		font-size: 1.5rem;
 	}
-
-	@media(max-width: 1023px) {
-
-		margin-top: 4rem;
-	}
-
 }
 
 .main-section {
@@ -29,8 +23,23 @@ h1.title {
 section {
 	line-height: 35px;
 
-	@media(max-width: 1023px) {
+	.column {
+		@media(max-width: 768px) {
+			padding: .75rem;
+		}
+	}
 
+	.title {
+		@media(max-width: 768px) {
+			margin-top: 0;
+		}
+
+		@media(min-width: 769px) and (max-width: 1200px) {
+			margin-top: 0;
+		}
+	}
+
+	@media(max-width: 768px) {
 		padding-top: 3rem;
 		padding-bottom: 3rem;
 	}
@@ -42,20 +51,19 @@ section {
 		line-height: 56px;
 
 		@media(max-width: 1023px) {
-
 			font-size: 1.5rem;
 			line-height: 35px;
-
 		}
 	}
 
 	img {
-	box-shadow: 8px 6px 10px -6px #ccc;
-	border-radius: 50%;
+		box-shadow: 8px 6px 10px -6px #ccc;
+		border-radius: 50%;
 
 		@media(max-width: 768px) {
-			box-shadow: none;
 			margin-top: 0;
+			width: 100px;
+			height: 100px;
 		}
 
 		&.is-blank {
