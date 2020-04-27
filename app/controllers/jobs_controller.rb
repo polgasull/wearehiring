@@ -2,6 +2,7 @@ class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :validate_is_company!, except: [:index, :show]
+  before_action :validate_is_expired!, only: [:show]
 
   def index
     if params[:sort_by]
@@ -13,14 +14,8 @@ class JobsController < ApplicationController
     end
   end
 
-  def my_jobs
-    @my_jobs = current_user.jobs.filter(params).order('created_at DESC')
-    @my_jobs_count = current_user.jobs.count
-  end
-
   def show
     @inscriptions_count = @job.inscriptions.count
-    @job_inscriptions = @job.inscriptions.all
   end
 
   def new
@@ -85,5 +80,12 @@ class JobsController < ApplicationController
 
     def job_params
       params.require(:job).permit(:title, :description, :url, :job_type, :location, :job_author, :remote_ok, :apply_url, :avatar, :salary_from, :salary_to, :open, :tag_list, :expiry_date, :category_id, :job_type_id, :level_id)
+    end
+
+    def validate_is_expired!
+      @job = Job.find(params[:id])
+      if @job.is_expired? && !@job.user_creator(current_user&.id)
+        redirect_to_response(t('jobs.messages.job_expired'), root_path, false) 
+      end
     end
 end

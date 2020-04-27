@@ -95,5 +95,12 @@ section {
 		.columns:not(:last-child) {
 			margin-bottom: 0px;
 		}
+
+		.wrapper-content {
+			
+			@media (max-width: 768px) {
+				padding: 0rem 1rem;
+			}
+		}
 	}
 }

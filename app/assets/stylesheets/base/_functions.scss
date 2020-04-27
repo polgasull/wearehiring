@@ -331,6 +331,13 @@
 			left: #{$i}px;
 		}
 	}
+
+	@media (max-width: 768px) {
+		position: relative;
+		text-align: center;
+		right: 0px !important;
+		bottom: 0px !important;
+	}
 }
 
 /* Flex Helpers */

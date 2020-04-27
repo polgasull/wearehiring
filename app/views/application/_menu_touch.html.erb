@@ -15,14 +15,14 @@
     <% if user_signed_in? %>
       <% if current_user.is_candidate? %>
       <div class="navbar-brand">
-        <%= link_to t('my_inscriptions'), user_inscriptions_inscriptions_path, 
-          class: "navbar-item text-uppercase #{ 'active' if current_page?(user_inscriptions_inscriptions_path) }" %>
+        <%= link_to t('my_inscriptions'), inscriptions_user_path(current_user), 
+          class: "navbar-item text-uppercase #{ 'active' if current_page?(inscriptions_user_path(current_user)) }" %>
         </div>
       <% end %>  
       <% if current_user.is_company? %>
         <div class="navbar-brand">
-          <%= link_to t('my_jobs'), my_jobs_jobs_path, 
-          class: "navbar-item text-uppercase #{ 'active' if current_page?(my_jobs_jobs_path) }" %>
+          <%= link_to t('my_jobs'), jobs_user_path(current_user), 
+          class: "navbar-item text-uppercase #{ 'active' if current_page?(jobs_user_path(current_user)) }" %>
         </div>
       <% end %> 
       <div class="navbar-brand">

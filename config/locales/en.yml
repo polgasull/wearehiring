@@ -235,6 +235,8 @@ en:
     published_jobs: "Job offers"
     job_type: "Contract Type"
     logo_image: "Imagen empresa"
+    total: "Total"
+    expired: "Expired"
     messages:
       job_created: "Job posted and paid successfully"
       job_not_created: "Job was not able to be posted"
@@ -243,6 +245,12 @@ en:
       job_deleted: "Job was successfully deleted"
       job_not_deleted: "Job was not able to be deleted"
   inscriptions:
+    picture: "Image"
+    name: "Name"
+    current_job: "Current position"
+    email: "Email"
+    phone: "Phone"
+    linkedin_url: "Linkedin URL"    
     messages:
       inscription_created: "You have registered successfully"
       inscription_not_created: "Something went wrong during your inscription"
@@ -365,3 +373,4 @@ en:
   welcome: "Welcome"
   i_want_this_job: "¡I want this Job!"
   this_job_is_mine: "¡This Job is mine!"
+  access_forbidden: "Access forbidden"

@@ -5,7 +5,7 @@
         <h1 class="f2"> <%= t('my_jobs') %> </h1>
       </div>
     </div>
-  <%= form_for my_jobs_jobs_path, method: :get do |f| %>
+  <%= form_for jobs_user_path(current_user), method: :get do |f| %>
     <div class="columns is-search is-vertical-center">
       <div class="column">
       <input 
@@ -27,7 +27,9 @@
   <div class="container">
     <div class="columns">
       <div class="column mt2">
-        <span><b> <%= @my_jobs_count %> <%= t('jobs.published_jobs') %> </b></span>
+        <span class="tag is-light"><b> <%= @jobs_count %> <%= t('jobs.total') %> </b></span>
+        <span class="tag is-success"><b> <%= @jobs_active_count %> <%= t('jobs.published_jobs') %> </b></span>
+        <span class="tag is-danger"><b> <%= @jobs_expired_count %> <%= t('jobs.expired') %> </b></span>
       </div>
 
       <div class="column has-text-right is-hidden-touch">
@@ -40,19 +42,12 @@
               </span>
             </button>
           </div>
-          <div class="dropdown-menu" id="dropdown-menu4" role="menu">
-            <div class="dropdown-content">
-              <%= link_to t('oldest'), jobs_path(sort_by: "oldest"), class: "dropdown-item" %>
-              <%= link_to t('newest'), jobs_path(sort_by: "newest"), class: "dropdown-item" %>
-              <%= link_to t('by_title'), jobs_path(sort_by: "by_title"), class: "dropdown-item" %>
-            </div>
-          </div>
         </div>
       </div>
     </div>
 
     <div class="columns listhead">
-      <div class="column">
+      <div class="column is-1">
         Nb
       </div>
       <div class="column">
@@ -70,9 +65,12 @@
       <div class="column">
         <%= t('jobs.candidates') %>
       </div>
+      <div class="column">
+        Días restantes
+      </div>
     </div>
 
-		<%= render partial: 'my_job', collection: @my_jobs, as: :job %>
+		<%= render partial: 'job', collection: @jobs, as: :job %>
 
     <div class="columns">
       <div class="column is-4 is-offset-8">

@@ -1,5 +1,5 @@
 <div class="columns listrow">
-  <div class="column">
+  <div class="column is-1">
     <%= job_counter + 1 %>
   </div>
   <div class="column">
@@ -17,8 +17,11 @@
     <% end %>  
   </div>
   <div class="column">
-  <%= link_to "#" do %>
+  <%= link_to job_inscriptions_path(job) do %>
     <%= job.inscriptions.count %> inscritos
   <% end %>
+  </div>
+  <div class="column">
+    <strong> <%= job_expired(job) %> </strong> 
   </div>
 </div>

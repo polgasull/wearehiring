@@ -1,7 +1,7 @@
 class InscriptionsController < ApplicationController
-  before_action :set_job, only: [:create]
+  before_action :set_job, only: [:create, :show]
   before_action :authenticate_user!
-  before_action :validate_is_candidate!
+  before_action :validate_is_candidate!, except: [:show]
 
   def create
 
@@ -17,9 +17,11 @@ class InscriptionsController < ApplicationController
     end
   end
 
-  def user_inscriptions
-    @inscriptions = current_user.inscriptions
-    @inscriptions_count = current_user.inscriptions.count
+  def show
+    return redirect_to_response(t('access_forbidden'), root_path, false) unless @job.user_creator(current_user.id)
+
+    @inscriptions = @job.inscriptions
+    @inscriptions_count = @job.inscriptions.count
   end
 
   private

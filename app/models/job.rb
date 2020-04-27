@@ -63,6 +63,18 @@ class Job < ApplicationRecord
     where('expiry_date < ?', Date.today)
   end
 
+  def is_active?
+    expiry_date >= Date.today
+  end
+
+  def is_expired?
+    expiry_date < Date.today
+  end
+
+  def user_creator(current_user_id)
+    user_id == current_user_id
+  end
+
   def tag_list=(tags_string)
     tag_names = tags_string.split(",").collect{ |s| s.strip.downcase }.uniq
     new_or_found_tags = tag_names.collect{ |name| Tag.find_or_create_by(name: name) }

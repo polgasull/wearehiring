@@ -1,0 +1,13 @@
+
+<section class="section">
+  <div class="container">
+    <h1 class="f2"> <%= t('my_inscriptions') %> </h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <%= render partial: 'inscription', collection: @inscriptions, as: :inscription %>
+  </div>
+</section>
+

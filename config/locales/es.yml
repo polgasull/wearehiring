@@ -239,6 +239,8 @@ es:
     published_jobs: "Ofertas activas"
     job_type: "Tipo de contrato"
     logo_image: "Imagen empresa"
+    total: "Total"
+    expired: "Expirado"
     messages:
       job_created: "Oferta publicada y pagada satisfactoriamente"
       job_not_created: "No se pudo publicar la oferta"
@@ -246,7 +248,14 @@ es:
       job_not_updated: "No se pudo actualizar la oferta"
       job_deleted: "Oferta eliminada satisfactoriamente"
       job_not_deleted: "No se pudo eliminar la oferta"
+      job_expired: "Lo sentimos la oferta ha expirado"
   inscriptions:
+    picture: "Imagen"
+    name: "Nombre"
+    current_job: "Cargo actual"
+    email: "Email"
+    phone: "Teléfono"
+    linkedin_url: "Linkedin URL"
     messages:
       inscription_created: "Te has inscrito satisfactoriamente"
       inscription_not_created: "Algo ha ido mal durante la inscripción"
@@ -369,3 +378,4 @@ es:
   welcome: "Bienvenido"
   i_want_this_job: "¡Quiero este Job!"
   this_job_is_mine: "¡Este Job es mío!"
+  access_forbidden: "No tienes acceso"

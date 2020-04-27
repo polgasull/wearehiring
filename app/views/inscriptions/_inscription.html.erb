@@ -1,43 +1,23 @@
-<% job = inscription.job %>
-
-<div class="columns bg-white border-bottom">
-  <div class="column is-1 is-vertical-center">
-    <% if !job.avatar.file.nil? %>
-      <%= link_to image_tag(job.avatar_url(:thumb), alt: job.job_author, width: 100, height: 100), job.url %>
-    <% else %>
-      <%= icon('far', 'image', style: 'font-size: 50px') %>
-    <% end %>
+<div class="columns listrow">
+  <div class="column is-1">
+    <%= inscription_counter + 1 %>
   </div>
-  <div class="column is-11">
-    <div class="columns">
-      <div class="column is-vertical-center">
-        <%= link_to job do %>
-          <span class="pr2"> <%= job.job_author %> </span> <strong> <%= job.title %> </strong>
-        <% end %>
-      </div>
-    </div>
-    <div class="columns">
-      <div class="column">
-        <%= icon('fas', 'coins mr1') %> 
-        <%= number_to_currency(job.salary_from, precision: 0) %> - <%= number_to_currency(job.salary_to, precision: 0) %>       
-      </div>
-      <div class="column">
-      <%= job.category.name %>
-      </div>
-      <div class="column">
-        <%= icon('far', 'clock mr1') %> <%= job.job_type.name %>
-      </div>
-      <div class="column">
-        <% if job.remote_ok? %>
-          <%= icon('fas', 'wifi') %> <%= t('remote') %> 
-        <% end %>
-      </div>
-      <div class="column">
-        <% job.tags.each do |tag| %>
-          <span class='tag is-success is-normal'> <%= tag.name %> </span>
-        <% end %>
-      </div>
-    </div>
+  <div class="column">
+    <%= image_tag(inscription.user.picture_url, size: 50) %>
+  </div>
+  <div class="column">
+    <%= inscription.user.name %>
+  </div>
+  <div class="column">
+    Backend Developer
+  </div>
+  <div class="column">
+    <%= inscription.user.email %>
+  </div>
+  <div class="column">
+    666-XXX-XXX
+  </div>
+  <div class="column">
+    <%= link_to 'Visitar', "https://www.linkedin.com/in/pol-gasull-navarro/", class: 'button is-link' %>
   </div>
 </div>
-<div class="mb4"></div>

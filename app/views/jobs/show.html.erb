@@ -1,17 +1,20 @@
 <% if job_author(@job) %>
-  <div class="container pt4">
-    <%= t('jobs.reference') %>: #<%= @job.reference %>
-  </div>
+  <section class="section pv0">
+    <div class="container pt4">
+      <%= t('jobs.reference') %>: #<%= @job.reference %>
+    </div>
+  </section>
   <section class="section pb0 pt1">
     <div class="container is-wrapper bg-white radius-8">
       <div class="columns">
         <div class="column">
-          <strong class="f3"> <%= (@job.expiry_date.to_date - @job.created_at.to_date).to_i %> </strong> 
+          <strong class="f3"> <%= (@job.expiry_date.to_date - Date.today).to_i %> </strong> 
           <%= t('remaining_days') %>
         </div>
         <div class="column has-text-right is-2">
-          <%# TODO Candidates view %>
-          <%= link_to '14 Inscritos', "#", class: 'button is-info' %>
+          <%= link_to job_inscriptions_path(@job), class: 'button is-info' do %>
+            <%= @job.inscriptions.count %> inscritos
+          <% end %>
         </div>
         <div class="column has-text-right is-2">
           <%= link_to 'Editar', edit_job_path(@job), class: 'button is-link' %>
@@ -31,7 +34,7 @@
       </div>
     </div>
     <div class="ma4"></div>  
-    <div class="columns">
+    <div class="columns pr4 wrapper-content">
       <div class="column is-2 is-vertical-center justify-center">
         <div class="thumbnail">
           <% if !@job.avatar.file.nil? %>
@@ -41,7 +44,7 @@
           <% end %>
         </div>
       </div>
-      <div class="column bg-light radius-10 mr4">
+      <div class="column bg-light radius-10">
         <div class="columns">
           <div class="column">
             <div class="pv1 pl2 pr2">

@@ -26,15 +26,15 @@
 				<div class="dropdown-menu" id="dropdown-menu" role="menu">
 					<div class="dropdown-content">
 						<% if current_user.is_candidate? %>
-							<%= link_to user_inscriptions_inscriptions_path, 
-							class: "dropdown-item #{ 'active' if current_page?(user_inscriptions_inscriptions_path) }" do %>
+							<%= link_to inscriptions_user_path(current_user), 
+							class: "dropdown-item #{ 'active' if current_page?(inscriptions_user_path(current_user)) }" do %>
 								<span class="icon is-small"><%= icon('fas', 'file-import') %></span>
 								<span> <%= t('my_inscriptions') %> </span>
 							<% end %>
 						<% end %>
 						<% if current_user.is_company? %>
-							<%= link_to my_jobs_jobs_path, 
-							class: "dropdown-item #{ 'active' if current_page?(my_jobs_jobs_path) }" do %>
+							<%= link_to jobs_user_path(current_user), 
+							class: "dropdown-item #{ 'active' if current_page?(jobs_user_path(current_user)) }" do %>
 								<span class="icon is-small"><%= icon('fas', 'briefcase') %></span>
 								<span> <%= t('my_jobs') %> </span>
 							<% end %>
