@@ -3,7 +3,7 @@
     <%= inscription_counter + 1 %>
   </div>
   <div class="column is-hidden-mobile">
-    <%= image_tag(inscription.user.picture_url, size: 50) %>
+    <%= image_tag(inscription.user.picture_url, size: 50, class: 'rounded-img') %>
   </div>
   <div class="column">
     <%= inscription.user.name %>

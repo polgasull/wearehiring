@@ -38,7 +38,7 @@
       <div class="column is-2 is-vertical-center justify-center">
         <div class="thumbnail">
           <% if !@job.avatar.file.nil? %>
-            <%= image_tag(@job.avatar_url(:thumb), alt: @job.job_author, class: 'portrait') %>
+            <%= image_tag(@job.avatar_url(:thumb), alt: @job.job_author, class: 'rounded-img') %>
           <% else %>
             <%= icon('far', 'image', style: 'font-size: 50px') %>
           <% end %>
