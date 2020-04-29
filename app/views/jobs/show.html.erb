@@ -36,7 +36,7 @@
     <div class="ma4 is-hidden-mobile"></div>  
     <div class="columns pr4 wrapper-content">
       <div class="column is-2 is-vertical-center justify-center">
-        <div class="thumbnail">
+        <div>
           <% if !@job.avatar.file.nil? %>
             <%= image_tag(@job.avatar_url(:thumb), alt: @job.job_author, class: 'rounded-img') %>
           <% else %>
@@ -133,7 +133,7 @@
       <div class="column">
         <h3 class="f3 mb2"> <%= t('job_description') %> </h3>
         <div class="pr4 pl4 pb4"> 
-          <%= sanitize @job.description.html_safe %>
+          <%= simple_format(@job.description) %>
         </div>
       </div>
     </div>
