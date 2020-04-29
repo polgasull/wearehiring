@@ -285,6 +285,7 @@ en:
   feature_3_text_2: "Para compañías que buscan Freelancers que aporten experiencia"
   feature_3_text_3: "Para empresas que necesitan profesionales a tiempo parcial o en remoto"
   search: "Search"
+  search_placeholder: "Position, city, company..."
   category: "Category"
   tags_form_small_text: "Add tags separated by comma. (Example: Programming, Gaming, Mobile, UX)"
   is_looking_for: "Is looking for"
