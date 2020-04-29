@@ -159,16 +159,10 @@
 
   <div class="columns">
     <div class="column">
-      <p class="f4"> ¡Sube una Imagen de la empresa! </p>
-    </div>
-  </div>
-
-  <div class="columns">
-    <div class="column">
       <div class="field">
         <div class="control">
-          <label class="label"> <%= t('jobs.logo_image') %> </label>
-          <div class="file">
+          <label class="label f4"> <%= t('jobs.logo_image') %> </label>
+          <div class="file is-info">
             <label class="file-label">
               <%= f.input :avatar, as: :file, required: false, input_html: { class: "file-input job-avatar" }, label: false, wrapper: false %>
               <span class="file-cta">
