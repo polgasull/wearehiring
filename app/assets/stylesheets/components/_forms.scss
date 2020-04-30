@@ -20,3 +20,17 @@
 		}
 	}
 }
+
+.input {
+
+	&.is-disabled {	
+		color: transparent;
+		background-color: $red;
+	}
+}
+
+
+.switch[type=checkbox]:checked + label::before, 
+.switch[type=checkbox]:checked + label:before {
+	background-color: $red;
+}

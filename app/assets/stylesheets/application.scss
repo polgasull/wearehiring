@@ -1,6 +1,7 @@
 // *= require trix
 
 @import "bulma";
+@import 'bulma-extensions';
 @import "stripe";
 @import "jobs";
 @import "font-awesome-sprockets";
@@ -16,7 +17,7 @@
 @import 'layout/header',
         'layout/footer';
 
-@import 'components/buttons',
+@import 'components/forms',
         'components/menu',
         'components/claim',
         'components/search',

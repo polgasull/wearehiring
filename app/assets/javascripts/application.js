@@ -4,6 +4,7 @@
 //= require jquery-ui
 //= require social-share-button
 //= require trix
+//= require bulma-extensions
 //= require_tree ./global
 
 SITENAME = {

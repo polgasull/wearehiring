@@ -21,7 +21,12 @@ h1.title {
 }
 
 section {
-	line-height: 35px;
+
+	&.section {
+		@media(min-width: 1200px) {
+			padding: 3rem 5.5rem;
+		}
+	}
 
 	.column {
 		@media(max-width: 768px) {

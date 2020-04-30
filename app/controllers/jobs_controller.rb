@@ -27,6 +27,7 @@ class JobsController < ApplicationController
 
   def create
     @job = current_user.jobs.build(job_params)
+    binding.pry
     reference = @job.reference = "wah#{DateTime.now.year}#{SecureRandom.hex(3)}"
 
     token = params[:stripeToken]

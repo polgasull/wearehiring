@@ -32,7 +32,7 @@
           </div>
           <div class="pv1 pl2 pr2 mt2 bg-light">
             <%= icon('fas', 'coins mr1') %> 
-            <%= number_to_currency(job.salary_from, precision: 0) %> - <%= number_to_currency(job.salary_to, precision: 0) %>
+            <%= job_salary(job.salary_from, job.salary_to) %>          
           </div>        
         </div>
         <div class="column">

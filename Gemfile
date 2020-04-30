@@ -36,6 +36,7 @@ gem 'browser', '~> 4.0'
 gem 'social-share-button'
 gem "devise", ">= 4.7.1"
 gem 'bulma-rails'
+gem 'bulma-extensions-rails'
 gem 'sidekiq'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
