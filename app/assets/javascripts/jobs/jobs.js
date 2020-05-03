@@ -34,15 +34,5 @@ $(document).ready(function () {
   if (instrumentImage) {
     instrumentImage.addEventListener('change', handleFileSelect, false);
   }
-
-  $(document).on("change", "#salarySwitch", function () {
-    if ($('#salarySwitch').is(":checked")) {
-      $('#job_salary_from, #job_salary_to').prop("disabled", true);
-      $('#job_salary_from, #job_salary_to').addClass("is-disabled");
-    } else {
-      $('#job_salary_from, #job_salary_to').prop("disabled", false);
-      $('#job_salary_from, #job_salary_to').removeClass("is-disabled");
-    }
-  });
-
+  
 });
