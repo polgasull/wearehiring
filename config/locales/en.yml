@@ -237,6 +237,7 @@ en:
     logo_image: "Imagen empresa"
     total: "Total"
     expired: "Expired"
+    assign_user: "Assign user"
     messages:
       job_created: "Job posted and paid successfully"
       job_not_created: "Job was not able to be posted"

@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
-module Administrators
-  class AdministratorsController < ApplicationController
-    include Rescuers::StandardErrorHandler
+module Admins
+  class AdminsController < ApplicationController
 
     before_action :authenticate_user!
-    before_action :validate_is_administrator!
+    before_action :validate_is_admin!
 
     def index
       render body: nil
@@ -13,7 +12,7 @@ module Administrators
 
     private
 
-    def validate_is_administrator!
+    def validate_is_admin!
       return redirect_to root_path unless current_user.is_admin?
     end
   end

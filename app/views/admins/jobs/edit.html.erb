@@ -1,6 +1,6 @@
 <section class="section main-section">
   <div class="container">
-    <%= link_to job_path(@job), class: "button" do %>
+    <%= link_to admins_jobs_path, class: "button" do %>
       <span class="icon is-small">
         <%= icon('fas', 'arrow-left') %>
       </span>
@@ -14,7 +14,7 @@
   <div class="container">
     <div class="columns">
       <div class="column is-8 is-offset-2">
-        <h1 class="title is-3"> <%= t('jobs.edit_job') %> </h1>
+        <h1 class="title is-3"> <%= t('jobs.edit_job') %> Admin </h1>
         <%= render 'form', job: @job %>
       </div>
     </div>

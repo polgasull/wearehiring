@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :inscriptions
   after_create :send_welcome_mail
 
-  %w[candidate company].each do |user_type_name|
+  %w[candidate company admin].each do |user_type_name|
     define_method "is_#{user_type_name}?" do
       user_type&.internal_name == user_type_name
     end
