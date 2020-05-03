@@ -14,7 +14,7 @@ module JobsHelper
 end
 
 def job_salary(from, to)
-  if (from && to).present?
+  if (from && to) != 0
     "#{number_to_currency(from, precision: 0)} - #{number_to_currency(to, precision: 0)}"               
   else
     'A consultar'

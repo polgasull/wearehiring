@@ -53,6 +53,20 @@
   </div>
 
   <div class="columns">
+    <div class="column">
+      <div class="field">
+        <div class="control">
+          <label for="job[remote_ok]">
+            <%= f.input :remote_ok, required: false, input_html: { class: "checkbox" }, wrapper: false, label: false %>
+            <%= t('work_can_be_done_remotely') %>
+          </label>
+          <%= icon('fas', 'wifi') %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="columns">
     <div class="column"> 
       <strong>
         <abbr title="required">*</abbr>
@@ -147,20 +161,6 @@
     </div>
   </div>
 
-  <div class="columns">
-    <div class="column">
-      <div class="field">
-        <div class="control">
-          <label for="job[remote_ok]">
-            <%= f.input :remote_ok, required: false, input_html: { class: "checkbox" }, wrapper: false, label: false %>
-            <%= t('work_can_be_done_remotely') %>
-          </label>
-          <%= icon('fas', 'wifi') %>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <hr>
 
   <div class="columns">
@@ -201,15 +201,15 @@
 
 <script>  
 
-$(document).on("change", "#salarySwitch", function () {
-  if ($('#salarySwitch').is(":checked")) {
-    $('#job_salary_from, #job_salary_to').prop("disabled", true);
-    $('#job_salary_from, #job_salary_to').addClass("is-disabled");
-  } else {
-    $('#job_salary_from, #job_salary_to').prop("disabled", false);
-    $('#job_salary_from, #job_salary_to').removeClass("is-disabled");
-  }
-});
+  $(document).on("change", "#salarySwitch", function () {
+    if ($('#salarySwitch').is(":checked")) {
+      $('#job_salary_from, #job_salary_to').val(0);
+      $('#job_salary_from, #job_salary_to').prop("type", "hidden");
+    } else {
+      $('#job_salary_from, #job_salary_to').val("");
+      $('#job_salary_from, #job_salary_to').prop("type", "number");
+    }
+  });
 
 </script>
 
