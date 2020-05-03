@@ -24,6 +24,7 @@ Level.where(internal_name: "senior").first_or_create(name: "Senior", internal_na
 
 UserType.where(internal_name: "candidate").first_or_create(name: "Candidate", internal_name: "candidate")
 UserType.where(internal_name: "company").first_or_create(name: "Company", internal_name: "company")
+UserType.where(internal_name: "administrator").first_or_create(name: "Administrator", internal_name: "administrator")
 
 location = [
   "Denver, CO", 
