@@ -1,0 +1,21 @@
+<div class="columns listrow is-mobile">
+  <div class="column is-1 is-hidden-touch">
+    <%= user_counter + 1 %>
+  </div>
+  <div class="column is-1 is-hidden-touch">
+    <%= image_tag(user.picture_url, size: 30) if user.picture_url %>
+  </div>
+  <div class="column is-2 is-hidden-mobile">
+    <%= user.name %>
+  </div>
+  <div class="column is-3">
+    <%= user.email %>
+  </div>
+  <div class="column is-2 is-hidden-touch">
+    <%= user.profile_url %>
+  </div>
+  <div class="column is-2">
+    <%= user.user_type.name %>
+  </div>
+  <div class="column is-1"></div>
+</div>

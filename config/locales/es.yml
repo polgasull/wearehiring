@@ -381,3 +381,12 @@ es:
   i_want_this_job: "¡Quiero este Job!"
   this_job_is_mine: "¡Este Job es mío!"
   access_forbidden: "No tienes acceso"
+  users: 
+    name: "Nombre"
+    last_name: "Apellido"
+    picture_url: "Imagen"
+    profile_url: "Perfil Linkedin"
+    email: "Email"
+    phone: "Teléfono"
+    position: "Cargo"
+    user_type: "Tipo"

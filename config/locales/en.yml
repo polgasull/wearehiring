@@ -376,3 +376,12 @@ en:
   i_want_this_job: "¡I want this Job!"
   this_job_is_mine: "¡This Job is mine!"
   access_forbidden: "Access forbidden"
+  users: 
+    name: "Name"
+    last_name: "Surname"
+    picture_url: "Image"
+    profile_url: "Linkedin Profile"
+    email: "Email"
+    phone: "Phone"
+    position: "Position"
+    user_type: "Type"

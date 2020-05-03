@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resources :jobs, except: [:show]
-    resources :inscriptions, only: [:index]
+    resources :users, only: [:index]
   end
 
   resources :jobs do
