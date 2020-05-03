@@ -241,6 +241,7 @@ es:
     logo_image: "Imagen empresa"
     total: "Total"
     expired: "Expirado"
+    assign_user: "Asignar usuario"
     messages:
       job_created: "Oferta publicada y pagada satisfactoriamente"
       job_not_created: "No se pudo publicar la oferta"
@@ -380,3 +381,12 @@ es:
   i_want_this_job: "¡Quiero este Job!"
   this_job_is_mine: "¡Este Job es mío!"
   access_forbidden: "No tienes acceso"
+  users: 
+    name: "Nombre"
+    last_name: "Apellido"
+    picture_url: "Imagen"
+    profile_url: "Perfil Linkedin"
+    email: "Email"
+    phone: "Teléfono"
+    position: "Cargo"
+    user_type: "Tipo"

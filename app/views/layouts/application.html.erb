@@ -28,11 +28,7 @@
       </div>
     <% end %>
     
-    <% if current_page?(root_path) %>
-      <%= render "claim_header" %>
-    <% else %>
-      <%= render "header" %>
-    <% end %>
+    <%= render "header" %>
 
     <%= yield %>
 

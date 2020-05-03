@@ -1,0 +1,36 @@
+<div class="columns listrow is-mobile">
+  <div class="column is-1 is-hidden-touch">
+    <%= job_counter + 1 %>
+  </div>
+  <div class="column is-hidden-touch">
+    <%= job.reference %>
+  </div>
+  <div class="column is-hidden-mobile">
+    <%= job.job_author %>
+  </div>
+  <div class="column">
+    <%= link_to job.title, job %>
+  </div>
+  <div class="column is-hidden-touch">
+    <% job.tags.each do |tag| %>
+      <span> <%= tag.name %>, </span>
+    <% end %>  
+  </div>
+  <div class="column">
+  <%= link_to job_inscriptions_path(job) do %>
+    <%= job.inscriptions.count %> inscritos
+  <% end %>
+  </div>
+  <div class="column">
+    <strong> <%= job_expired(job) %> </strong> 
+  </div>
+  <div class="column is-flex">
+    <%= form_for job, url: admins_job_path(job.id), :action => 'destroy', method: :delete do |f| %>
+      <button type="submit" class="inn-btn-action mr2" data-confirm="Estás seguro, esta acción no se puede deshacer"><%= icon('fas', 'trash-alt') %></button>
+    <% end %>
+
+    <%= link_to edit_admins_job_path(job.id) do %>
+      <%= icon('fas', 'edit') %>
+    <% end %>
+  </div>
+</div>

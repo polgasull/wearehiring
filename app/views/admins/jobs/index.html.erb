@@ -1,0 +1,83 @@
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <h1 class="f2"> Panel Jobs Admin </h1>
+      </div>
+    </div>
+  <%= form_for admins_jobs_path, method: :get do |f| %>
+    <div class="columns is-search is-vertical-center">
+      <div class="column">
+      <input 
+        type="text" 
+        class="input" 
+        placeholder="<%=t('search')%>" 
+        name="search_my_jobs" 
+        value="<%= params[:search_my_jobs] ? params[:search_my_jobs] : '' %>">
+      </div>
+      <div class="column has-text-left">
+        <%= f.submit t('search'), class: "button is-dark" %>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</section>
+
+<section class="section pb5 pt2">
+  <div class="container">
+    <div class="columns">
+      <div class="column mt2">
+        <span class="tag is-light"><b> <%= @jobs_count %> <%= t('jobs.total') %> </b></span>
+        <span class="tag is-success"><b> <%= @jobs_active_count %> <%= t('jobs.published_jobs') %> </b></span>
+        <span class="tag is-danger"><b> <%= @jobs_expired_count %> <%= t('jobs.expired') %> </b></span>
+      </div>
+
+      <div class="column has-text-right is-hidden-touch">
+        <div class="dropdown is-hoverable">
+          <div class="dropdown-trigger">
+            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+              <span> <%= params[:sort_by] ? t(params[:sort_by]) : t('sort_by') %> </span>
+              <span class="icon is-small">
+                <i class="fas fa-angle-down" aria-hidden="true"></i>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns listhead is-mobile">
+      <div class="column is-1 is-hidden-touch">
+        Nb
+      </div>
+      <div class="column is-hidden-touch">
+        <%= t('reference') %>
+      </div>
+      <div class="column is-hidden-mobile">
+        <%= t('jobs.company') %>
+      </div>
+      <div class="column">
+        <%= t('jobs.position') %>
+      </div>
+      <div class="column is-hidden-touch">
+        <%= t('jobs.tags') %>
+      </div>
+      <div class="column">
+        <%= t('jobs.candidates') %>
+      </div>
+      <div class="column">
+        Estado
+      </div>
+      <div class="column">
+        Acciones
+      </div>
+    </div>
+
+    <%= render @jobs %>
+
+    <div class="columns">
+      <div class="column is-4 is-offset-8">
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,27 +1,27 @@
 <% if job_author(@job) %>
-  <section class="section pv0">
-    <div class="container pt4">
-      <%= t('jobs.reference') %>: #<%= @job.reference %>
-    </div>
-  </section>
-  <section class="section pb0 pt1">
+  <div class="section pb0 pt1 mr5 ml5">
     <div class="container is-wrapper bg-white radius-8">
-      <div class="columns is-multiline is-mobile">
-        <div class="column is-full-mobile is-half-tablet">
-          <strong class="f3"> <%= (@job.expiry_date.to_date - Date.today).to_i %> </strong> 
-          <%= t('remaining_days') %>
+      <div class="columns">
+        <div class="column">    
+          <%= t('jobs.reference') %>: #<%= @job.reference %>
         </div>
-        <div class="column has-text-right is-2-desktop is-half-mobile has-text-left-mobile">
+        <div class="column has-text-right">
           <%= link_to job_inscriptions_path(@job), class: 'button is-info' do %>
-            <%= @job.inscriptions.count %> inscritos
+            <%= icon('fas', 'user mr2') %> <%= @job.inscriptions.count %> inscritos
           <% end %>
         </div>
-        <div class="column has-text-right is-2-desktop is-half-mobile">
+      </div>
+      <div class="columns is-multiline is-mobile">
+        <div class="column is-full-mobile is-half-tablet">
+          <strong class="f3"> <%= job_expired(@job) %> </strong> 
+          <%= t('remaining_days') %>
+        </div>
+        <div class="column has-text-right">
           <%= link_to 'Editar', edit_job_path(@job), class: 'button is-link' %>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 <% end %>
 
 <section class="section">

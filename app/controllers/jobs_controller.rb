@@ -75,18 +75,18 @@ class JobsController < ApplicationController
 
   private
 
-    def set_job
-      @job = Job.find(params[:id])
-    end
+  def set_job
+    @job = Job.find(params[:id])
+  end
 
-    def job_params
-      params.require(:job).permit(:title, :description, :url, :job_type, :location, :job_author, :remote_ok, :apply_url, :avatar, :salary_from, :salary_to, :open, :tag_list, :expiry_date, :category_id, :job_type_id, :level_id)
-    end
+  def job_params
+    params.require(:job).permit(:title, :description, :url, :job_type, :location, :job_author, :remote_ok, :apply_url, :avatar, :salary_from, :salary_to, :open, :tag_list, :expiry_date, :category_id, :job_type_id, :level_id)
+  end
 
-    def validate_is_expired!
-      @job = Job.find(params[:id])
-      if @job.is_expired? && !@job.user_creator(current_user&.id)
-        redirect_to_response(t('jobs.messages.job_expired'), root_path, false) 
-      end
+  def validate_is_expired!
+    @job = Job.find(params[:id])
+    if @job.is_expired? && !@job.user_creator(current_user&.id)
+      redirect_to_response(t('jobs.messages.job_expired'), root_path, false) 
     end
+  end
 end

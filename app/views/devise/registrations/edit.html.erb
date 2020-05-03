@@ -5,6 +5,9 @@
       <div class="column is-6">
 
       <h2 class="title is-2"> <%= current_user.is_company? ? t('edit_password') : t('profile') %> </h2>
+      <% if current_user.is_admin? %>
+        <h3 class="title is-4"> Admin Account </h3>
+      <% end %>
       <div class="columns">
         <% if current_user.is_candidate? %>
         <div class="column is-4">

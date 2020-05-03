@@ -1,8 +1,32 @@
-<%= simple_form_for(@job, html: { multipart: true }) do |f| %>
+<%= simple_form_for([:admins, @job], html: { multipart: true }) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <%= f.input_field :expiry_date, as: :hidden, html5: true, value: DateTime.now() + 30.days %>
+
+  <div class="columns">
+    <div class="column">
+      <div class="field">
+        <div class="control">
+          <label class="label"> 
+            <abbr title="required">*</abbr>
+            <%= t('jobs.assign_user') %>
+          </label>
+          <div class="control has-icons-left">
+            <span class="select">
+              <%= f.input_field :user_id, 
+                collection: User.where(user_type_id: 2).all, 
+                promt: "Select a User", 
+                required: true %>
+            </span>
+            <span class="icon is-small is-left">
+              <%= icon('fas', 'user') %>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="columns">
     <div class="column">
@@ -187,11 +211,9 @@
   </div>
 
   <hr>
-
-  <%= render 'payment' %>
   
   <div class="has-text-centered submit-box">
-    <%= f.button :submit, class: "is-rounded is-large primary mt3", id: "postJobSubmit" %>   
+    <%= f.button :submit, 'Publicar como admin', class: "is-rounded is-large primary mt3" %>   
     <%= icon('fas', 'circle-notch fa-spin is-hidden f1', id: 'submitSpinnerIcon') %>
   </div>
 
