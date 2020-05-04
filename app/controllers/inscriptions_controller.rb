@@ -18,7 +18,7 @@ class InscriptionsController < ApplicationController
   end
 
   def show
-    return redirect_to_response(t('access_forbidden'), root_path, false) unless @job.user_creator(current_user.id)
+    return redirect_to_response(t('access_forbidden'), root_path, false) unless @job.user_creator(current_user)
 
     @inscriptions = @job.inscriptions
     @inscriptions_count = @job.inscriptions.count

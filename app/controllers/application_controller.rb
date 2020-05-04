@@ -12,6 +12,14 @@ class ApplicationController < ActionController::Base
     redirect_to root_path if current_user.user_type.name != 'Company'
   end
 
+  def validate_is_company_or_admin!
+    redirect_to root_path if !current_user.is_company? && !current_user.is_admin?
+  end
+
+  def validate_is_candidate_or_admin!
+    redirect_to root_path if !current_user.is_company? && !current_user.is_admin?
+  end
+
   protected
 
   def configure_permitted_parameters

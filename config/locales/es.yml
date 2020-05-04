@@ -316,7 +316,7 @@ es:
     to: "Hasta"
     company_name: "Nombre de la empresa"
     email: "Correo electrónico"
-    password: "Contraseña"
+    password: "Nueva Contraseña"
     password_confirmation: "Repetir contraseña"
   send_job_inscription: "Inscribirse"
   external_link: "Visitar link externo"

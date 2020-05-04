@@ -4,6 +4,7 @@
 
   <%= f.input_field :expiry_date, as: :hidden, html5: true, value: DateTime.now() + 30.days %>
 
+  <% if edit_page %>
   <div class="columns">
     <div class="column">
       <div class="field">
@@ -27,6 +28,7 @@
       </div>
     </div>
   </div>
+  <% end %>
 
   <div class="columns">
     <div class="column">

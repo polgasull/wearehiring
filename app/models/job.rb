@@ -71,8 +71,8 @@ class Job < ApplicationRecord
     expiry_date < Date.today
   end
 
-  def user_creator(current_user_id)
-    user_id == current_user_id
+  def user_creator(current_user)
+    current_user.is_admin? || user_id == current_user.id
   end
 
   def tag_list=(tags_string)
