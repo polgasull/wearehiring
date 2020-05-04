@@ -390,3 +390,6 @@ es:
     phone: "Teléfono"
     position: "Cargo"
     user_type: "Tipo"
+  legal_note: "Aviso legal"
+  terms_and_conditions_footer: "Términos y condiciones"
+  privacy_policy_footer: "Política de privacidad y cookies"

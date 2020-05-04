@@ -385,3 +385,6 @@ en:
     phone: "Phone"
     position: "Position"
     user_type: "Type"
+  legal_note: "Legal note"
+  terms_and_conditions_footer: "Terms and conditions"
+  privacy_policy_footer: "Privacy policy and cookies"
