@@ -8,6 +8,8 @@ Bundler.require(*Rails.groups)
 
 module JobApp
   class Application < Rails::Application
+
+    config.ignored_paths = %W(/users /users/sign_in /users/sign_up /users/password /users/sign_out /users/confirm_password)
     config.time_zone = 'Madrid'
     config.active_record.default_timezone = :utc
     config.active_record.time_zone_aware_types = %i[datetime time]
