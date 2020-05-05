@@ -14,7 +14,7 @@
 		</div>
 		<div class="columns">
 			<div class="column has-text-centered">
-				<%= link_to t('show_all_jobs'), jobs_path, class: 'button is-rounded primary is-large' %>
+				<%= link_to t('show_all_jobs'), jobs_path, class: 'button is-rounded primary is-large shadow' %>
 			</div>		
 		</div>
 	</div>
@@ -34,7 +34,7 @@
 					<h2 class="title"> <%= t('company_section_title') %> </h2>
 					<p> <%= t('company_section_body') %> </p>
 					<div class="mt4">
-						<%= link_to t('create_company_account'), new_user_registration_path, class: 'button is-medium is-rounded' %>
+						<%= link_to t('jobs.post_job'), new_user_registration_path, class: 'button is-medium is-rounded' %>
 					</div>
 				<% end %>
 			</div>

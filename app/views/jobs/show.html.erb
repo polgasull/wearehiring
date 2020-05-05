@@ -103,7 +103,7 @@
         <% unless user_signed_in? || current_user&.is_company? %>
           <%= link_to t('i_want_this_job'), 
                       user_linkedin_omniauth_authorize_path, 
-                      class: 'button is-rounded primary is-large' %>
+                      class: 'button is-rounded primary is-large shadow mv3' %>
         <% end %>
 
         <% if user_signed_in? && current_user&.is_candidate? %>
@@ -116,7 +116,7 @@
           <% else %>
             <%= form_for :inscription, url: job_inscriptions_path(@job.id) do |f| %>
               <%= f.hidden_field :user_id, value: current_user.id %>
-              <%= f.submit t('i_want_this_job'), class: "button is-rounded primary is-large" %>
+              <%= f.submit t('i_want_this_job'), class: "button is-rounded primary is-large shadow mv3" %>
             <% end %>        
           <% end %>
         <% end %>      
@@ -151,7 +151,7 @@
         <% unless user_signed_in? || current_user&.is_company? %>
           <%= link_to t('this_job_is_mine'), 
                       user_linkedin_omniauth_authorize_path, 
-                      class: 'button is-rounded primary is-large' %>
+                      class: 'button is-rounded primary is-large shadow mv3' %>
         <% end %>
 
         <% if user_signed_in? && current_user&.is_candidate? %>
@@ -164,7 +164,7 @@
           <% else %>
             <%= form_for :inscription, url: job_inscriptions_path(@job.id) do |f| %>
               <%= f.hidden_field :user_id, value: current_user.id %>
-              <%= f.submit t('this_job_is_mine'), class: "button is-rounded primary is-large" %>
+              <%= f.submit t('this_job_is_mine'), class: "button is-rounded primary is-large shadow mv3" %>
             <% end %>        
           <% end %>
         <% end %>      

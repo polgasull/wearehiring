@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe JobsController, type: :controller do
   describe 'GET #index' do
-    let(:current_user) { FactoryBot.create(:user) }
+    let(:current_user) { FactoryBot.create(:user, :company) }
 
     before do
       sign_in current_user
@@ -21,7 +21,7 @@ RSpec.describe JobsController, type: :controller do
   end
 
   describe 'PATCH #update' do
-    let(:current_user) { FactoryBot.create(:user) }
+    let(:current_user) { FactoryBot.create(:user, :company) }
     let!(:job) { FactoryBot.create(:job, user_id: current_user.id ) }
     let(:valid_params) { { title: 'general job' } }
 
@@ -36,9 +36,9 @@ RSpec.describe JobsController, type: :controller do
     end
 
     it 'updates Job' do
-      patch :update, params: { id: job.id, job: valid_params }
+      patch :update, params: { id: job.id, job: valid_params, title: "specific job" }
       job.reload
-      expect(job.title).to eq 'general job'
+      expect(job.title).to eq 'specific job'
     end
   end
 

@@ -7,7 +7,7 @@ class User < ApplicationRecord
   belongs_to :user_type
   has_many :jobs
   has_many :inscriptions
-  after_create :send_welcome_mail
+  after_create :send_welcome_mail unless Rails.env.test?
 
   %w[candidate company admin].each do |user_type_name|
     define_method "is_#{user_type_name}?" do

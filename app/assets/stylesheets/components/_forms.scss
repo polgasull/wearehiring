@@ -4,6 +4,10 @@
 	color: $black;
 	font-weight: 400;
 
+	&.shadow {
+		box-shadow: 9px 9px 10px -8px rgba(163,160,163,1);
+	}
+
 	&:hover {
 		background-color: darken($white, 10%);
 		color: $black;
