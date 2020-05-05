@@ -1,20 +1,17 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
-  factory :user_type do
-    trait :admin_type do 
-      internal_name { 'admin' }
-      name          { 'Admin' }  
+  factory :job_type do
+    trait :full_time_type do 
+      name { 'Full-time' }  
     end 
 
-    trait :candidate_type do
-      internal_name { 'candidate' }
-      name { 'Candidate' }
+    trait :part_time_type do
+      name { 'Part-time' }
     end
 
-    trait :company_type do
-      internal_name { 'company' }
-      name { 'Company' }
+    trait :freelance_type do
+      name { 'Freelance' }
     end
   end
 end

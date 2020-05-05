@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  before_action :set_job, only: [:show, :edit, :update, :destroy]
+  before_action :set_job, only: [:show, :edit, :update]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :validate_is_company_or_admin!, except: [:index, :show]
   before_action :validate_is_expired!, only: [:show]
@@ -67,10 +67,6 @@ class JobsController < ApplicationController
 
   def update
     @job.update(job_params) ? redirect_to_response(t('jobs.messages.job_updated'), @job) : redirect_back_response(t('jobs.messages.job_not_updated'), false)
-  end
-
-  def destroy
-    @job.destroy ? redirect_back_response(t('job_deleted')) : redirect_back_response(t('job_not_deleted'), false)
   end
 
   private
