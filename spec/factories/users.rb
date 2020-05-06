@@ -2,6 +2,8 @@ FactoryBot.define do
   factory :user do
     name { Faker::Name.first_name }
     email { Faker::Internet.email }
+    picture_url { Faker::Internet.url }
+    profile_url { Faker::Internet.url }
     password { Faker::Internet.password }
     stripe_id { 'ch_1GNHkYAHewiMFJ6ipCLLEPTu' }
     card_brand { 'Visa' }

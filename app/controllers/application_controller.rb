@@ -5,11 +5,11 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def validate_is_candidate!
-    redirect_to root_path if current_user.user_type.name != 'Candidate'
+    redirect_to root_path unless current_user.is_candidate?
   end
 
   def validate_is_company!
-    redirect_to root_path if current_user.user_type.name != 'Company'
+    redirect_to root_path unless current_user.is_company?
   end
 
   def validate_is_company_or_admin!

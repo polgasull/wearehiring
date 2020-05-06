@@ -1,7 +1,7 @@
 class JobsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_job, only: [:show]
-  before_action :current_user_job, only: [:edit, :update]
+  before_action :set_current_user_job, only: [:edit, :update]
   before_action :validate_is_company_or_admin!, except: [:index, :show]
   before_action :validate_is_expired!, only: [:show]
 
@@ -77,7 +77,7 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
   end
 
-  def current_user_job
+  def set_current_user_job
     @job = current_user.jobs.find_by_id(params[:id])
   end
 
