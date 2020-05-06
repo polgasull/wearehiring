@@ -1,6 +1,7 @@
 class JobsController < ApplicationController
-  before_action :set_job, only: [:show, :edit, :update]
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_job, only: [:show]
+  before_action :current_user_job, only: [:edit, :update]
   before_action :validate_is_company_or_admin!, except: [:index, :show]
   before_action :validate_is_expired!, only: [:show]
 
@@ -23,6 +24,7 @@ class JobsController < ApplicationController
   end
 
   def edit
+    return redirect_to_response(t('not_found'), root_path, false) unless @job
   end
 
   def create
@@ -66,13 +68,17 @@ class JobsController < ApplicationController
   end
 
   def update
-    @job.update(job_params) ? redirect_to_response(t('jobs.messages.job_updated'), @job) : redirect_back_response(t('jobs.messages.job_not_updated'), false)
+    @job&.update(job_params) ? redirect_to_response(t('jobs.messages.job_updated'), @job) : redirect_back_response(t('jobs.messages.job_not_updated'), false)
   end
 
   private
 
   def set_job
     @job = Job.find(params[:id])
+  end
+
+  def current_user_job
+    @job = current_user.jobs.find_by_id(params[:id])
   end
 
   def job_params
