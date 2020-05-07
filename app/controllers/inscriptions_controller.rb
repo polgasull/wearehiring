@@ -6,10 +6,10 @@ class InscriptionsController < ApplicationController
   before_action :validate_is_company!, only: [:show]
 
   def create
-    return redirect_to_response(t('not_found'), root_path, false) unless @job
     return redirect_back_response(t('already_inscribed'), false) if current_user.is_already_inscribed(@job)
 
     @inscription = @job.inscriptions.build(inscription_params)
+    
     if @inscription.save  
       ModelMailer.new_candidate(current_user, @job).deliver unless Rails.env.test?
       ModelMailer.new_inscription(current_user, @job).deliver unless Rails.env.test?
@@ -29,7 +29,7 @@ class InscriptionsController < ApplicationController
   private
 
   def set_job
-    @job = Job.find_by_id(params[:inscription][:job_id])
+    @job = Job.find_by_id(params[:job_id])
   end
 
   def set_current_user_job

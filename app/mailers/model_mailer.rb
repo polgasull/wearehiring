@@ -53,7 +53,7 @@ class ModelMailer < ApplicationMailer
     attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
     mail( 
       :to => user.email,
-      :subject => 'Gracias por registrarte a We Are Hiring 🚀' 
+      :subject => 'Bienvenido a We Are Hiring 🚀' 
     )  
   end
 end

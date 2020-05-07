@@ -16,6 +16,7 @@ class JobsController < ApplicationController
   end
 
   def show
+    return redirect_to_response(t('not_found'), root_path, false) unless @job
     @inscriptions_count = @job.inscriptions.count
   end
 

@@ -14,6 +14,10 @@ RSpec.describe JobsController, type: :controller do
     end
   end
 
+  describe 'GET #show' do
+    
+  end
+
   describe 'GET #edit' do
     let(:company_type) { FactoryBot.create(:user_type, :company_type) }
     let(:current_user) { FactoryBot.create(:user, user_type: company_type) }
