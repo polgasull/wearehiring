@@ -3,15 +3,14 @@ require 'sidekiq/web'
 Rails.application.routes.draw do
 
   namespace :admins do
-    resources :jobs, except: [:show]
+    resources :jobs, except: [:show] do
+      resource :inscriptions, except: :index
+    end
     resources :users, only: [:index]
   end
 
   resources :jobs do
     resource :inscriptions, except: :index
-    collection do
-      get :search
-    end
   end
     
   resources :users, only: [] do
