@@ -31,7 +31,8 @@ class JobsController < ApplicationController
   def create
     @job = current_user.jobs.build(job_params)
 
-    reference = @job.reference = "wah#{DateTime.now.year}#{SecureRandom.hex(3)}"
+    @job.reference = "wah#{DateTime.now.year}#{SecureRandom.hex(3)}"
+    @job.expiry_date = DateTime.now() + 30.days
 
     token = params[:stripeToken]
     job_type = params[:job_type]
@@ -83,7 +84,7 @@ class JobsController < ApplicationController
   end
 
   def job_params
-    params.require(:job).permit(:title, :description, :url, :job_type, :location, :job_author, :remote_ok, :apply_url, :avatar, :salary_from, :salary_to, :open, :tag_list, :expiry_date, :category_id, :job_type_id, :level_id)
+    params.require(:job).permit(:title, :description, :url, :job_type, :location, :job_author, :remote_ok, :apply_url, :avatar, :salary_from, :salary_to, :open, :tag_list, :category_id, :job_type_id, :level_id)
   end
 
   def validate_is_expired!

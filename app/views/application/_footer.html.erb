@@ -5,7 +5,7 @@
       <div class="column is-3 is-hidden-mobile">
         <div class="content">
           <ol class="is-lower-alpha">
-            <li><%= link_to t('show_jobs'), jobs_path(locale:params[:locale] || 'es') %></li>
+            <li><%= link_to t('show_jobs'), jobs_path %></li>
             <li><%= link_to t('jobs.post_job'), new_job_path, class: "" %></li>
           </ol>
         </div>

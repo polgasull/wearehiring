@@ -2,7 +2,7 @@
 	<div class="navbar-end">
 		<div class="navbar-brand has-text-weight-bold">
 			<%= link_to t('show_jobs'), 
-					jobs_path(locale:params[:locale] || 'es'), 
+					jobs_path, 
 					class: "navbar-item text-uppercase  #{ 'active' if current_page?(jobs_path)}" %>
 		</div>
 		<% unless current_user&.is_candidate? %>

@@ -20,7 +20,8 @@ module Admins
     def create
       @job = current_user.jobs.build(job_params)
       
-      reference = @job.reference = "wah#{DateTime.now.year}#{SecureRandom.hex(3)}"
+      @job.reference = "wah#{DateTime.now.year}#{SecureRandom.hex(3)}"
+      @job.expiry_date = DateTime.now() + 30.days
     
       if @job.save
         redirect_to_response(t('jobs.messages.job_created'), @job) 
