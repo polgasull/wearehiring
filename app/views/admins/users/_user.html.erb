@@ -14,16 +14,20 @@
     <%= user.email %>
   </div>
   <div class="column is-hidden-touch">
+    <% if user.is_candidate? %>
     <%= f.input :current_position, label: false, input_html: { class: "input" }, wrapper: false, placeholder: t('users.position') %>
+    <% end %>
   </div>
   <div class="column is-hidden-touch">
+    <% if user.is_candidate? %>
     <%= f.input :profile_url, label: false, input_html: { class: "input" }, wrapper: false, placeholder: t('users.profile_url') %>
+    <% end %>
   </div>
   <div class="column">
     <%= user.user_type.name %>
   </div>
   <div class="column is-1">
-    <%= f.submit t('save'), class: 'button is-info f6' %>
+    <%= f.submit t('save'), class: 'button is-info f6' if user.is_candidate? %>
   </div>
 </div>
 
