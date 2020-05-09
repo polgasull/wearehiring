@@ -1,21 +1,30 @@
-<div class="columns listrow is-mobile">
+<%= simple_form_for(user, method: :patch, url: admins_user_path(user.id), html: { multipart: true }) do |f| %>
+
+<div class="columns f7 is-vertical-center listrow is-mobile">
   <div class="column is-1 is-hidden-touch">
     <%= user_counter + 1 %>
   </div>
   <div class="column is-1 is-hidden-touch">
     <%= image_tag(user.picture_url, size: 30) if user.picture_url %>
   </div>
-  <div class="column is-2 is-hidden-mobile">
+  <div class="column is-hidden-mobile">
     <%= user.name %>
   </div>
-  <div class="column is-3">
+  <div class="column is-2">
     <%= user.email %>
   </div>
-  <div class="column is-2 is-hidden-touch">
-    <%= user.profile_url %>
+  <div class="column is-hidden-touch">
+    <%= f.input :current_position, label: false, input_html: { class: "input" }, wrapper: false, placeholder: t('users.position') %>
   </div>
-  <div class="column is-2">
+  <div class="column is-hidden-touch">
+    <%= f.input :profile_url, label: false, input_html: { class: "input" }, wrapper: false, placeholder: t('users.profile_url') %>
+  </div>
+  <div class="column">
     <%= user.user_type.name %>
   </div>
-  <div class="column is-1"></div>
+  <div class="column is-1">
+    <%= f.submit t('save'), class: 'button is-info f6' %>
+  </div>
 </div>
+
+<% end %>

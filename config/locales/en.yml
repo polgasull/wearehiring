@@ -245,6 +245,7 @@ en:
       job_not_updated: "Job was not able to be updated"
       job_deleted: "Job was successfully deleted"
       job_not_deleted: "Job was not able to be deleted"
+      job_expired: "Sorry Job has expired"
   inscriptions:
     picture: "Image"
     name: "Name"
@@ -385,6 +386,15 @@ en:
     phone: "Phone"
     position: "Position"
     user_type: "Type"
+    
+    messages:
+      user_created: "Job posted and paid successfully"
+      user_not_created: "Job was not able to be posted"
+      user_updated: "Job was successfully updated"
+      user_not_updated: "Job was not able to be updated"
+      user_deleted: "Job was successfully deleted"
+      user_not_deleted: "Job was not able to be deleted"
   legal_note: "Legal note"
   terms_and_conditions_footer: "Terms and conditions"
   privacy_policy_footer: "Privacy policy and cookies"
+  save: "Guardar"

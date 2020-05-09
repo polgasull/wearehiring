@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :jobs, except: [:show] do
       resource :inscriptions, except: :index
     end
-    resources :users, only: [:index]
+    resources :users, only: [:index, :update]
   end
 
   resources :jobs do
