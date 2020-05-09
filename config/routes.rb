@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :update]
   end
 
-  resources :jobs do
+  resources :jobs, :path => 'ofertas-empleo-digital' do
     resource :inscriptions, except: :index
   end
     
