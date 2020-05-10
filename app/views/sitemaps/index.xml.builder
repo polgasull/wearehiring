@@ -9,6 +9,10 @@ xml.tag! 'sitemapindex', 'xmlns' => "http://www.sitemaps.org/schemas/sitemap/0.9
     xml.tag! 'loc', jobs_url
   end
 
+  xml.tag! 'url' do
+    xml.tag! 'loc', new_job_url
+  end
+
   @jobs.each do |job|
     xml.tag! 'url' do
       xml.tag! 'loc', jobs_url(job)
