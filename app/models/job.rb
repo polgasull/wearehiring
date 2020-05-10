@@ -1,5 +1,6 @@
 class Job < ApplicationRecord
   extend Filter
+  extend FriendlyId
 
   belongs_to :user
   belongs_to :category
@@ -14,6 +15,7 @@ class Job < ApplicationRecord
 
   geocoded_by :location
   after_validation :geocode
+  friendly_id :title_location_author_reference, use: :slugged
   
   scope :search_for, -> (query) { 
     where('LOWER(jobs.title) LIKE :query OR 
@@ -54,6 +56,10 @@ class Job < ApplicationRecord
   scope :is_remote, -> (value) {
     where(remote_ok: value)
   }
+
+  def title_location_author_reference
+    "Empleo de #{title} en #{location} #{job_author} #{reference}"
+  end
 
   def self.not_expired
     where('expiry_date >= ?', Date.today)

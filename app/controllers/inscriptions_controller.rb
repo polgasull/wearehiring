@@ -29,11 +29,11 @@ class InscriptionsController < ApplicationController
   private
 
   def set_job
-    @job = Job.find_by_id(params[:job_id])
+    @job = Job.friendly.find(params[:job_id])
   end
 
   def set_current_user_job
-    @job = current_user.jobs.find_by_id(params[:id])
+    @job = current_user.jobs.friendly.find(params[:job_id])
   end
 
   def inscription_params

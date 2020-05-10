@@ -15,14 +15,25 @@ RSpec.describe JobsController, type: :controller do
   end
 
   describe 'GET #show' do
-    
+    let(:company_type) { FactoryBot.create(:user_type, :company_type) }
+    let(:current_user) { FactoryBot.create(:user, user_type: company_type) }
+    let(:job) { FactoryBot.create(:job, :full_time, :junior, :product, user_id: current_user.id, expiry_date: DateTime.now() + 30.days )}
+
+    before do
+      sign_in current_user
+    end
+
+    it 'returns http success' do
+      get :show, params: { id: job.id }
+      expect(response).to have_http_status(:success)
+    end
   end
 
   describe 'GET #edit' do
     let(:company_type) { FactoryBot.create(:user_type, :company_type) }
     let(:current_user) { FactoryBot.create(:user, user_type: company_type) }
-    let(:another_user) { FactoryBot.create(:user, user_type: company_type) }
     let(:job) { FactoryBot.create(:job, :full_time, :junior, :product, user_id: current_user.id )}
+    let(:another_user) { FactoryBot.create(:user, user_type: company_type) }
     let(:another_job) { FactoryBot.create(:job, :full_time, :junior, :product, user_id: another_user.id )}
 
     before do
@@ -48,7 +59,7 @@ RSpec.describe JobsController, type: :controller do
     context "user is candidate" do
       let(:candidate_type) { FactoryBot.create(:user_type, :candidate_type) }
       let(:candidate_user) { FactoryBot.create(:user, user_type: candidate_type) }
-      let(:candidate_job) { FactoryBot.create(:job, :full_time, :junior, :product, user_id: candidate_user.id )}
+      let!(:candidate_job) { FactoryBot.create(:job, :full_time, :junior, :product, user_id: candidate_user.id )}
 
       it 'redirects to root_path when user is not company' do
         get :edit, params: { id: candidate_job.id }

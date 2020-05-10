@@ -21,6 +21,7 @@ gem "simple_form", ">= 5.0.0"
 gem 'carrierwave', '~> 1.3', '>= 1.3.1'
 gem 'carrierwave-aws'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
+gem 'friendly_id', '~> 5.3'
 gem 'font-awesome-sass', '~> 5.8.1'
 gem 'mini_magick', '~> 4.9', '>= 4.9.4'
 gem 'omniauth-linkedin-oauth2', '~> 1.0'
