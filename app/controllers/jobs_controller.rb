@@ -88,7 +88,7 @@ class JobsController < ApplicationController
 
   def validate_is_expired!
     @job = Job.friendly.find(params[:id])
-    if @job.is_expired? && !@job.user_creator(current_user)
+    if @job.is_expired? && !@job.user_owner_or_admin(current_user)
       redirect_to_response(t('jobs.messages.job_expired'), root_path, false) 
     end
   end
