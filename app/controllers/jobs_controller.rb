@@ -42,7 +42,7 @@ class JobsController < ApplicationController
     card_last4 = params[:user][:card_last4]
 
     charge = Stripe::Charge.create(
-      :amount => 9900,
+      :amount => 11286,
       :currency => 'eur',
       :description => job_type,
       :statement_descriptor => job_title,
@@ -91,5 +91,11 @@ class JobsController < ApplicationController
     if @job.is_expired? && !@job.user_owner_or_admin(current_user)
       redirect_to_response(t('jobs.messages.job_expired'), root_path, false) 
     end
+  end
+
+  def calculate_price(price, iva, irpf)
+    percent_iva = iva.to_f / 100.0
+    percent_irpf = irpf.to_f / 100.0
+    (price - (price * percent_iva)).to_f.round(2)
   end
 end

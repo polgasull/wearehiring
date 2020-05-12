@@ -8,8 +8,13 @@
   <h4 class="substile is-4"> <%= t('payments.price') %> </h4>
 
   <div class="is-light has-text-centered">
-    <%= icon('fas', 'credit-card') %>
-    <strong> 99€ </strong> <%= t('payments.monthly') %>.
+    <p>
+      <%= icon('fas', 'credit-card') %>
+      <strong> Subtotal: 99€ + Impuestos </strong> <%= t('payments.monthly') %>.
+    </p>
+    <p class="has-text-centered">
+      <small> Total: 112.86€ </small>
+    </p>
     <span class="block mb4"></span>
   </div>
 

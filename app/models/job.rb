@@ -16,6 +16,10 @@ class Job < ApplicationRecord
   geocoded_by :location
   after_validation :geocode
   friendly_id :title_location_author_reference, use: :slugged
+
+  PRICE = 9900
+  IVA = 2100
+  IRPF = 700
   
   scope :search_for, -> (query) { 
     where('LOWER(jobs.title) LIKE :query OR 
