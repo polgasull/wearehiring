@@ -25,6 +25,12 @@ Rails.application.routes.draw do
   get '/sitemap.xml' => 'sitemaps#index', defaults: { format: 'xml' }
   get "/robots.:format", to: "pages#robots"
 
+  match "/404", to: "errors#not_found", via: :all
+  match "/422", to: "errors#unacceptable", via: :all
+  match "/500", to: "errors#internal_server_error", via: :all
+  get "/jobs/:id", to: redirect("/ofertas-empleo-digital/%{id}")
+  get "/jobs", to: redirect("/ofertas-empleo-digital")
+
   root to: 'home#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

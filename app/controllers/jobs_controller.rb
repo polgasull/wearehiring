@@ -76,6 +76,8 @@ class JobsController < ApplicationController
 
   def set_job
     @job = Job.friendly.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      redirect_to controller: :errors, action: :not_found
   end
 
   def validate_is_job_owner
@@ -87,7 +89,6 @@ class JobsController < ApplicationController
   end
 
   def validate_is_expired!
-    @job = Job.friendly.find(params[:id])
     if @job.is_expired? && !@job.user_owner_or_admin(current_user)
       redirect_to_response(t('jobs.messages.job_expired'), root_path, false) 
     end

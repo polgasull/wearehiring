@@ -23,6 +23,7 @@ module JobApp
     config.i18n.default_locale = :es
     config.assets.initialize_on_precompile = false
     config.serve_static_assets = true
+    config.exceptions_app = self.routes
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
