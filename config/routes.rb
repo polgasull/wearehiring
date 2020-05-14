@@ -33,4 +33,9 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  constraints(host: /^(?!www\.)/i) do
+    get '(*any)' => redirect { |params, request|
+      URI.parse(request.url).tap { |uri| uri.host = "www.#{uri.host}" }.to_s
+    }
+  end
 end
