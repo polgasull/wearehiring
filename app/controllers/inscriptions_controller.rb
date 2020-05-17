@@ -6,8 +6,6 @@ class InscriptionsController < ApplicationController
   before_action :validate_is_company!, only: [:show]
 
   def create
-    return redirect_back_response(t('already_inscribed'), false) if current_user.is_already_inscribed(@job)
-
     @inscription = @job.inscriptions.build(inscription_params)
     
     if @inscription.save  
@@ -15,7 +13,7 @@ class InscriptionsController < ApplicationController
       ModelMailer.new_inscription(current_user, @job).deliver unless Rails.env.test?
       redirect_to_response(t('inscriptions.messages.inscription_created'), @inscription.job)
     else 
-      redirect_back_response(t('inscriptions.messages.inscription_not_created'), false)
+      redirect_back_response(t('already_inscribed'), false)
     end
   end
 

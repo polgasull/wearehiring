@@ -102,7 +102,7 @@
 
         <% unless user_signed_in? || current_user&.is_company? %>
           <%= link_to t('i_want_this_job'), 
-                      user_linkedin_omniauth_authorize_path, 
+                      user_linkedin_omniauth_authorize_path(job_id: @job.id), 
                       class: 'button is-rounded primary is-large shadow mv3' %>
         <% end %>
 
