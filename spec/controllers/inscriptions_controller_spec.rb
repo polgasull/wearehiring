@@ -52,7 +52,7 @@ RSpec.describe InscriptionsController, type: :controller do
         end.to change(inscribed_job.inscriptions, :count).by(0)
       end
 
-      it 'redirects to job page' do
+      it 'redirects to Job page' do
         create_inscription
         expect(response).to redirect_to(root_path)
       end
