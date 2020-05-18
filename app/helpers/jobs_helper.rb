@@ -14,9 +14,9 @@ module JobsHelper
 end
 
 def job_salary(from, to)
-  if (from && to) != 0
-    "#{number_to_currency(from, precision: 0)} - #{number_to_currency(to, precision: 0)}"               
-  else
+  if (from && to) == 0 || (from && to) == nil
     'A consultar'
+  else
+    "#{number_to_currency(from, precision: 0)} - #{number_to_currency(to, precision: 0)}"               
   end
 end
