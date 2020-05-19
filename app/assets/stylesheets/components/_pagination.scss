@@ -1,0 +1,22 @@
+.pagination {
+
+  .page a {
+    padding: 8px 16px;
+    background-color: $white;
+    border-radius: 6px;
+    box-shadow: 0px 0px 5px 0px #d8d7d7bf;
+
+    &:hover {
+      background-color: #3273dc;
+      color: white;
+    }
+  }
+
+  .page.current {
+    padding: 6px 16px;
+    background-color: #3273dc;
+    color: white;
+    border-radius: 6px;
+    box-shadow: 0px 0px 5px 0px #d8d7d7bf;
+  }
+}

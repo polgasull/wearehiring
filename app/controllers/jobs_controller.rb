@@ -7,10 +7,10 @@ class JobsController < ApplicationController
 
   def index
     if params[:sort_by]
-      @jobs = Job.not_expired.order_list(params[:sort_by]).page(params[:page]).per(50)
+      @jobs = Job.not_expired.order_list(params[:sort_by]).page(params[:page]).per(25)
       @jobs_count = Job.not_expired.count
     else 
-      @jobs = Job.not_expired.filter(params).order('created_at DESC').page(params[:page]).per(50)
+      @jobs = Job.not_expired.filter(params).order('created_at DESC').page(params[:page]).per(25)
       @jobs_count = Job.not_expired.filter(params).count
     end
   end
