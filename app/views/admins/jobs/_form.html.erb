@@ -15,7 +15,6 @@
               <span class="select">
                 <%= f.input_field :user_id, 
                   collection: User.where(user_type_id: [2, 3]).all, 
-                  :include_blank => 'Assign user' 
                 %>
               </span>
               <span class="icon is-small is-left">
