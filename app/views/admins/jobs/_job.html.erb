@@ -1,4 +1,4 @@
-<div class="columns listrow is-mobile">
+<div class="columns listrow is-mobile f6">
   <div class="column is-1 is-hidden-touch">
     <%= job.id %>
   </div>
@@ -11,11 +11,6 @@
   <div class="column">
     <%= link_to job.title, job %>
   </div>
-  <div class="column is-hidden-touch">
-    <% job.tags.each do |tag| %>
-      <span> <%= tag.name %>, </span>
-    <% end %>  
-  </div>
   <div class="column">
   <%= link_to admins_job_inscriptions_path(job.id) do %>
     <%= job.inscriptions.count %> inscritos
@@ -23,6 +18,9 @@
   </div>
   <div class="column">
     <strong> <%= job_expired(job) %> </strong> 
+  </div>
+  <div class="column">
+    <%= link_to t('simple_form.labels.defaults.apply_url'), job.apply_url, target: "_blank" if job.apply_url.present? %>
   </div>
   <div class="column is-flex">
     <%= form_for job, url: admins_job_path(job.id), :action => 'destroy', method: :delete do |f| %>

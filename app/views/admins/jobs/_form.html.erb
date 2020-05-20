@@ -3,30 +3,40 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <% if edit_page %>
-  <div class="columns">
-    <div class="column">
-      <div class="field">
-        <div class="control">
-          <label class="label"> 
-            <abbr title="required">*</abbr>
-            <%= t('jobs.assign_user') %>
-          </label>
-          <div class="control has-icons-left">
-            <span class="select">
-              <%= f.input_field :user_id, 
-                collection: User.where(user_type_id: 2).all, 
-                promt: "Select a User", 
-                required: true %>
-            </span>
-            <span class="icon is-small is-left">
-              <%= icon('fas', 'user') %>
-            </span>
+    <div class="columns">
+      <div class="column">
+        <div class="field">
+          <div class="control">
+            <label class="label"> 
+              <abbr title="required">*</abbr>
+              <%= t('jobs.assign_user') %>
+            </label>
+            <div class="control has-icons-left">
+              <span class="select">
+                <%= f.input_field :user_id, 
+                  collection: User.where(user_type_id: [2, 3]).all, 
+                  :include_blank => 'Assign user' 
+                %>
+              </span>
+              <span class="icon is-small is-left">
+                <%= icon('fas', 'user') %>
+              </span>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
   <% end %>
+
+  <div class="columns">
+    <div class="column">
+      <div class="field">
+        <div class="control">
+          <%= f.input :apply_url, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }, placeholder: "Añade el enlace original de la oferta" %>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="columns">
     <div class="column">
@@ -212,8 +222,9 @@
 
   <hr>
   
+  <% post_as = edit_page ? 'Editar como admin' : 'Publicar como admin' %>
   <div class="has-text-centered submit-box">
-    <%= f.button :submit, 'Publicar como admin', class: "is-rounded is-large primary mt3" %>   
+    <%= f.button :submit, post_as, class: "is-rounded is-large primary mt3" %>   
     <%= icon('fas', 'circle-notch fa-spin is-hidden f1', id: 'submitSpinnerIcon') %>
   </div>
 
