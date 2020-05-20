@@ -1,3 +1,28 @@
+<% if current_user.is_admin? %>
+  <div class="section pb0 pt1 mr5 ml5">
+    <div class="container is-wrapper bg-white radius-8">
+      <div class="columns admin-block">
+        <div class="column is-vertical-center is-flex">
+          <span class="has-text-weight-bold f3 pr4"> Admin controls </span>
+          <%= link_to admins_job_inscriptions_path(@job.id) do %>
+            <%= icon('fas', 'user mr2') %> <%= @job.inscriptions.count %> inscritos
+          <% end %>
+          <%= link_to edit_admins_job_path(@job.id), class: 'ml5' do %>
+            <%= icon('fas', 'edit') %> Editar
+          <% end %> 
+        </div>
+        <div class="column is-2 is-flex justify-end">
+          <%= form_for @job, url: admins_job_path(@job.id), :action => 'destroy', method: :delete do |f| %>
+            <button type="submit" class="button is-danger ml5" data-confirm="Estás seguro, esta acción no se puede deshacer"><%= icon('fas', 'trash-alt') %> Eliminar</button>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+<% end %>
+
 <% if job_author(@job) %>
   <div class="section pb0 pt1 mr5 ml5">
     <div class="container is-wrapper bg-white radius-8">

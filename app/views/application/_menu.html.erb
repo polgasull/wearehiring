@@ -13,14 +13,15 @@
 		</div>
 		<% end %>
 		<% if current_user&.is_admin? %>
+		<div class="navbar-brand is-vertical-center has-text-weight-bold ml3 f2">|</div>
 		<div class="navbar-brand is-vertical-center">
-			<%= link_to "New Job", new_admins_job_path, class: "button is-primary" %>
+			<%= link_to "New Job", new_admins_job_path, class: 'navbar-item text-uppercase f6' %>
 		</div>
 		<div class="navbar-brand is-vertical-center">
-			<%= link_to "Jobs", admins_jobs_path, class: "button is-info" %>		
+			<%= link_to "Jobs", admins_jobs_path, class: 'navbar-item text-uppercase f6' %>		
 		</div>
 		<div class="navbar-brand is-vertical-center">
-			<%= link_to "Users", admins_users_path, class: "button is-info" %>		
+			<%= link_to "Users", admins_users_path, class: 'navbar-item text-uppercase f6' %>		
 		</div>
 		<% end %>
 		<% if user_signed_in? %>

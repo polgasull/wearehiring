@@ -295,6 +295,7 @@
 
 
 .justify-center { justify-content: center; }
+.justify-end { justify-content: flex-end; }
 .align-items-center { align-items: center; }
 
 /* Display */
@@ -302,7 +303,7 @@
 .block { display: block; }
 
 /* Background */
-.bg-white { background-color: white; }
+.bg-white { background-color: $white; }
 .bg-light { background-color: whitesmoke; }
 
 /* Font Color */
