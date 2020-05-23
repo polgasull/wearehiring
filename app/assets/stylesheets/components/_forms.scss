@@ -33,6 +33,9 @@
 	}
 }
 
+.terms_checkbox {
+	transform: scale(1.5);
+}
 
 .switch[type=checkbox]:checked + label::before, 
 .switch[type=checkbox]:checked + label:before {
