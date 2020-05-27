@@ -9,3 +9,4 @@ Disallow: /404
 Disallow: /api/*
 Disallow: /inscriptions*
 Disallow: /inscriptions/*
+Disallow: /legal/*

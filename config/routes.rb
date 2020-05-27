@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks' }
 
+  get '/legal/terminos_y_condiciones', to: 'legal#terms_and_conditions', as: 'terms_and_conditions'
+  get '/legal/politicas_privacidad', to: 'legal#privacy_policy', as: 'privacy_policy'
   get '/sitemap.xml' => 'sitemaps#index', defaults: { format: 'xml' }
   get "/robots.:format", to: "pages#robots"
 
