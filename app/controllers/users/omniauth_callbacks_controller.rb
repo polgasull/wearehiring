@@ -26,7 +26,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def create_inscription(job, user)
     @inscription = Inscription.create(job_id: job.id, user_id: user.id)
-    if @inscription.save  
+    if @inscription.save
+      @inscription.user.update(accepted_terms: true) unless @inscription.user.accepted_terms
       flash[:notice] = t('inscription_created')
       ModelMailer.new_candidate(user, job).deliver unless Rails.env.test?
       ModelMailer.new_inscription(user, job).deliver unless Rails.env.test?

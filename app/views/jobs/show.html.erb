@@ -116,37 +116,7 @@
 
     <div class="columns">
       <div class="column has-text-centered">
-        <div class="mb2">
-          <%# TODO: FORM for @user action UPDATE accept_legal = true %>
-          <label for="legal">
-            <abbr title="required primary-color">*</abbr>
-            <%= check_box_tag "legal", required: false %>
-            <small>Estoy de acuerdo con los términos y condiciones legales de WeAreHiring, condiciones legales de use y política de privacidad</small>
-          </label>
-        </div>
-
-        <% unless user_signed_in? || current_user&.is_company? %>
-          <%= link_to t('i_want_this_job'), 
-                      user_linkedin_omniauth_authorize_path(job_id: @job.id), 
-                      class: 'button is-rounded primary is-large shadow mv3' %>
-        <% end %>
-
-        <% if user_signed_in? && current_user&.is_candidate? %>
-          <% if user_inscribed_to(@job) %>
-            <div class="has-text-centered">
-              <button disabled class="button is-rounded is-success is-large">  
-                <%= t('inscribed') %> <%= icon('fas', 'check ml2') %>
-              </button>
-            </div>
-          <% else %>
-            <%= form_for :inscription, url: job_inscriptions_path(@job.id) do |f| %>
-              <%= f.hidden_field :user_id, value: current_user.id %>
-              <%= f.submit t('i_want_this_job'), class: "button is-rounded primary is-large shadow mv3" %>
-            <% end %>        
-          <% end %>
-        <% end %>      
-
-        <p> <%= @inscriptions_count %> se han inscrito a esta oferta </p>
+        <%= render partial: '/jobs/partials/submit_form', locals: { job: @job } %>
       </div>
     </div>
   </div>
@@ -164,44 +134,40 @@
     </div>
     <div class="columns">
       <div class="column has-text-centered">
-        <div class="mb2">
-          <%# TODO: FORM for @user action UPDATE accept_legal = true %>
-          <label for="legal">
-            <abbr title="required primary-color">*</abbr>
-            <%= check_box_tag "legal", required: false %>
-            <small>Estoy de acuerdo con los términos y condiciones legales de WeAreHiring, condiciones legales de use y política de privacidad</small>
-          </label>
-        </div>
-
-        <% unless user_signed_in? || current_user&.is_company? %>
-          <%= link_to t('this_job_is_mine'), 
-                      user_linkedin_omniauth_authorize_path, 
-                      class: 'button is-rounded primary is-large shadow mv3' %>
-        <% end %>
-
-        <% if user_signed_in? && current_user&.is_candidate? %>
-          <% if user_inscribed_to(@job) %>
-            <div class="has-text-centered">
-              <button disabled class="button is-rounded is-success is-large">  
-                <%= t('inscribed') %> <%= icon('fas', 'check ml2') %>
-              </button>
-            </div>
-          <% else %>
-            <%= form_for :inscription, url: job_inscriptions_path(@job.id) do |f| %>
-              <%= f.hidden_field :user_id, value: current_user.id %>
-              <%= f.submit t('this_job_is_mine'), class: "button is-rounded primary is-large shadow mv3" %>
-            <% end %>        
-          <% end %>
-        <% end %>      
-
-        <p> <%= @inscriptions_count %> se han inscrito a esta oferta </p>
+        <%= render partial: '/jobs/partials/submit_form', locals: { job: @job } %>
       </div>
     </div>  
   </div>
 </section>
 
+<% unless current_user&.accepted_terms? %>
+  <%= render partial: '/jobs/partials/accept_terms_modal' %>
+<% end %>
+
 <%= content_for :head do %>
   <%= render "seo", 
       title: "Empleo #{ @job.title } en #{ @job.job_author } en #{ @job.location } | WeAreHiring.io", 
       description: "#{ @job.job_author } está buscando a un #{ @job.title } en #{ @job.location }. Solicita este empleo en WeAreHiring.io" %>
+<% end %>
+
+<%= content_for :footer do %>
+  <script>
+
+    $(document).on("click", ".submit-inscription", function() {
+      if(!$('.terms_checkbox').is(':checked')) {
+        $('.modal').addClass('is-active');
+        return false
+      }
+    });
+
+    $(document).on("click", ".delete", function() {
+      $('.modal').removeClass('is-active');
+    });
+
+    $(document).on("click", ".accept-terms", function() {
+      $('.modal').removeClass('is-active');
+      $('.terms_checkbox').prop('checked', true);
+    });
+
+  </script>
 <% end %>

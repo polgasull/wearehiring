@@ -1,0 +1,38 @@
+<% if !current_user&.is_company? && !current_user&.accepted_terms? %>
+<div class="mb2">
+  <div class="accept-terms-message"></div>
+  <label for="legal">
+    <abbr title="required">*</abbr>
+    <%= check_box_tag "legal", 'accepted_terms', false, class: 'terms_checkbox' %>
+    <small class="accept-terms-text pl2">
+      Estoy de acuerdo con los 
+      <%= link_to 'términos y condiciones', terms_and_conditions_path, target: '_blank' %>, y
+      <%= link_to 'condiciones legales de uso y política de privacidad', privacy_policy_path, target: '_blank' %>
+      de Wearehiring
+    </small>
+  </label>
+</div>
+<% end %>
+
+<% unless user_signed_in? || current_user&.is_company? %>
+  <%= link_to t('i_want_this_job'), 
+              user_linkedin_omniauth_authorize_path(job_id: job.id), 
+              class: "button is-rounded primary is-large shadow mv3 #{'submit-inscription' unless current_user&.accepted_terms?}" %>
+<% end %>
+
+<% if user_signed_in? && current_user&.is_candidate? %>
+  <% if user_inscribed_to(job) %>
+    <div class="has-text-centered">
+      <button disabled class="button is-rounded is-success is-large">  
+        <%= t('inscribed') %> <%= icon('fas', 'check ml2') %>
+      </button>
+    </div>
+  <% else %>
+    <%= form_for :inscription, url: job_inscriptions_path(job.id) do |f| %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.submit t('i_want_this_job'), class: "button is-rounded primary is-large shadow mv3 #{'submit-inscription' unless current_user&.accepted_terms?}" %>
+    <% end %>        
+  <% end %>
+<% end %>      
+
+<p> <%= @inscriptions_count %> se han inscrito a esta oferta </p>
