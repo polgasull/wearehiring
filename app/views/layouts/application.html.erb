@@ -3,6 +3,7 @@
   <head>
     <%= render "gtm_script" if (Rails.env.production?) %>
     <%= render "google_analytics" if (Rails.env.production?) %>
+    <%= render "hotjar" if (Rails.env.production?) %>
     <link rel='icon' href='<%= asset_path('favicon.ico') %>' type='image/x-icon'/ >
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %>
