@@ -1,3 +1,14 @@
+<section class="section pv2">
+  <div class="container">
+    <div class="columns">
+      <div class="column"> 
+        <p> Empresas: <%= @companies %> </p>
+        <p> Candidatos: <%= @candidates %> </p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="section pb5 pt2">
   <div class="container">
     <div class="columns listhead is-mobile">
@@ -7,22 +18,25 @@
       <div class="column is-1 is-hidden-touch">
         <%= t('users.image') %>
       </div>
-      <div class="column is-hidden-mobile">
+      <div class="column">
         <%= t('users.name') %>
       </div>
-      <div class="column is-2">
+      <div class="column is-2-desktop">
         <%= t('users.email') %>
       </div>
-      <div class="column">
+      <div class="column is-hidden-mobile">
         <%= t('jobs.position') %>
       </div>
-      <div class="column is-hidden-touch">
+      <div class="column is-hidden-mobile">
         <%= t('users.profile_url') %>
       </div>
-      <div class="column">
+      <div class="column is-hidden-mobile">
         <%= t('users.user_type') %>
       </div>
-      <div class="column is-1">
+      <div class="column">
+        <%= t('inscribed') %>
+      </div>
+      <div class="column is-1 is-hidden-mobile">
         Guardar
       </div>
     </div>

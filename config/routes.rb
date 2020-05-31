@@ -6,7 +6,11 @@ Rails.application.routes.draw do
     resources :jobs, except: [:show] do
       resource :inscriptions, except: :index
     end
-    resources :users, only: [:index, :update]
+    resources :users, only: [:index, :update] do
+      member do
+        get :inscriptions
+      end
+    end 
   end
 
   resources :jobs, :path => 'ofertas-empleo-digital' do

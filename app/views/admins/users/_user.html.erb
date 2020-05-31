@@ -7,26 +7,29 @@
   <div class="column is-1 is-hidden-touch">
     <%= image_tag(user.picture_url, size: 30) if user.picture_url %>
   </div>
-  <div class="column is-hidden-mobile">
+  <div class="column">
     <%= user.name %>
   </div>
-  <div class="column is-2">
+  <div class="column is-2-desktop">
     <%= user.email %>
   </div>
-  <div class="column is-hidden-touch">
+  <div class="column is-hidden-mobile">
     <% if user.is_candidate? %>
     <%= f.input :current_position, label: false, input_html: { class: "input f7" }, wrapper: false, placeholder: t('users.position') %>
     <% end %>
   </div>
-  <div class="column is-hidden-touch">
+  <div class="column is-hidden-mobile">
     <% if user.is_candidate? %>
     <%= f.input :profile_url, label: false, input_html: { class: "input f7" }, wrapper: false, placeholder: t('users.profile_url') %>
     <% end %>
   </div>
-  <div class="column">
+  <div class="column is-hidden-mobile">
     <%= user.user_type.name %>
   </div>
-  <div class="column is-1">
+  <div class="column">
+    <%= link_to user.inscriptions.count, inscriptions_admins_user_path(user.id), target: "_blank" if user.is_candidate? %>
+  </div>
+  <div class="column is-1 is-hidden-mobile">
     <%= f.submit t('save'), class: 'button is-info f6' if user.is_candidate? %>
   </div>
 </div>

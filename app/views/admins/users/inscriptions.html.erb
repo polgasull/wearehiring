@@ -1,6 +1,6 @@
 <section class="section">
   <div class="container">
-    <h1 class="f2"> <%= t('my_inscriptions') %>: <%= @inscriptions_count %> </h1>
+    <h1 class="f2"> <%= @user.name %>: <%= @inscriptions_count %> </h1>
   </div>
 </section>
 
@@ -9,4 +9,3 @@
     <%= render partial: 'inscription', collection: @inscriptions, as: :inscription %>
   </div>
 </section>
-
