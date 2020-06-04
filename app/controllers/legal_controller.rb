@@ -1,6 +1,8 @@
 class LegalController < ApplicationController
 
-  def terms_and_conditions; end
+  def legal_terms; end
 
   def privacy_policy; end
+
+  def cookies_policy; end
 end

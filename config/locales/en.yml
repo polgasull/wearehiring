@@ -403,5 +403,6 @@ en:
       user_not_deleted: "Job was not able to be deleted"
   legal_note: "Legal note"
   terms_and_conditions_footer: "Terms and conditions"
-  privacy_policy_footer: "Privacy policy and cookies"
+  privacy_policy_footer: "Política de privacidad"
+  cookies_policy_footer: "Política de cookies"
   save: "Guardar"

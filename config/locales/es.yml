@@ -406,5 +406,6 @@ es:
       user_not_deleted: "No se pudo eliminar la oferta"
   legal_note: "Aviso legal"
   terms_and_conditions_footer: "Términos y condiciones"
-  privacy_policy_footer: "Política de privacidad y cookies"
+  privacy_policy_footer: "Política de privacidad"
+  cookies_policy_footer: "Política de cookies"
   save: "Guardar"
