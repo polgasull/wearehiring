@@ -25,6 +25,14 @@ class InscriptionsController < ApplicationController
 
     @inscriptions = @job.inscriptions
     @inscriptions_count = @job.inscriptions.count
+
+    respond_to do |format|
+      format.html
+      format.csv do
+        headers['Content-Disposition'] = "attachment; filename=\"inscriptions-list.csv\""
+        headers['Content-Type'] ||= 'text/csv'
+      end
+    end
   end
 
   private

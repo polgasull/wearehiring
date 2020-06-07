@@ -2,30 +2,30 @@
   <div class="container">
     <div class="columns">
       <div class="column">
-        <h1 class="f2"> <%= t('my_inscriptions') %> </h1>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section pb2 pt1">
-  <div class="container is-wrapper bg-white radius-8">
-    <div class="columns">
-      <div class="column pb0">
-        <p class="f7"> <%= icon('fas', 'clock') %> Publicado <%= time_ago_in_words(@job.created_at) %> </p>
-        <h2 class="f2 mb0"><%= @job.title %></h2>
+        <h1 class="f2"> <%= job_inscriptions_counter(@job) %> </h1>
+        <p class="f2"> <%= @job.title %> </p>
         <p> <%= @job.job_author %> en <%= @job.location %> </p>
       </div>
-      <div class="column is-2-desktop has-text-right has-text-centered-mobile">
-        <%= link_to 'Ver publicación', @job, class: 'button is-link' %>
+      <div class="column has-text-right-desktop">
+        <p class="f6"> <%= icon('fas', 'clock') %> Publicado <%= time_ago_in_words(@job.created_at) %> </p>
+        <p> <%= t('jobs.reference') %>: <%= @job.reference %> </p>
       </div>
     </div>
-    <div class="ma2"></div>  
+    <div class="columns">
+      <div class="column is-2-desktop">
+        <%= link_to t('show_post'), @job, class: 'button is-link pr3' %>
+      </div>
+      <div class="column is-vertical-center">
+        <%= link_to job_inscriptions_path(format: :csv), class: 'is-normal-link' do %>
+          <%= icon('fas', 'file-download pr2') %> <%= t('download_candidates_csv') %>
+        <% end %>
+      </div>    
+    </div>
   </div>
 </section>
 
 <section class="section">
-  <div class="container is-wrapper">
+  <div class="container">
     <div class="columns listhead is-mobile">
       <div class="column is-1 is-hidden-touch">
         Nb

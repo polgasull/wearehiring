@@ -11,3 +11,15 @@ h1, h2, h3, h4, h5 {
 small {
   font-family: 'archiathin';
 }
+
+a {
+
+  &.is-normal-link {
+    color: $black; 
+    text-decoration: underline;
+    
+    &:hover {
+      color: #276DDA;
+    }
+  }
+}

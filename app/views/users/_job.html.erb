@@ -18,7 +18,7 @@
   </div>
   <div class="column">
   <%= link_to job_inscriptions_path(job) do %>
-    <%= job.inscriptions.count %> inscritos
+    <%= job_inscriptions_counter(job) %>
   <% end %>
   </div>
   <div class="column">

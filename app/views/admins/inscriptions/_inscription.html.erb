@@ -1,4 +1,4 @@
-<div class="columns listrow is-mobile">
+<div class="columns listrow is-mobile is-vertical-center">
   <div class="column is-1 is-hidden-touch">
     <%= inscription_counter + 1 %>
   </div>
@@ -15,6 +15,8 @@
     <%= inscription.user.email %>
   </div>
   <div class="column">
-    <%= link_to 'Ver perfil', inscription.user.profile_url, target: "_blank", class: 'button is-link' %>
+    <%= link_to inscription.user.profile_url, target: "_blank", class: 'is-normal-link' do %>
+      <%= t('view_profile') %> <%= icon('fas', 'external-link-alt pl2') %>
+    <% end %>
   </div>
 </div>

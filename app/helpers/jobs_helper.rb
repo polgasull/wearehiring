@@ -20,3 +20,8 @@ def job_salary(from, to)
     "#{number_to_currency(from, precision: 0)} - #{number_to_currency(to, precision: 0)}"               
   end
 end
+
+def job_inscriptions_counter(job)
+  count = job.inscriptions.count
+  (count > 1) ? "#{count} Candidatos" : "#{count} Candidato"
+end

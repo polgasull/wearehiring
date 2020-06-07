@@ -406,3 +406,8 @@ en:
   privacy_policy_footer: "Política de privacidad"
   cookies_policy_footer: "Política de cookies"
   save: "Guardar"
+  download_csv: "Download to CSV"
+  download_candidates_csv: "Download inscribeds to CSV"
+  view_profile: "View profile"
+  show_post: "Show post"
+

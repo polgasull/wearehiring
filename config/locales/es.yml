@@ -409,3 +409,7 @@ es:
   privacy_policy_footer: "Política de privacidad"
   cookies_policy_footer: "Política de cookies"
   save: "Guardar"
+  download_csv: "Descargar CSV"
+  download_candidates_csv: "Descargar candidatos en CSV"
+  view_profile: "Ver perfil"
+  show_post: "Ver publicación"
