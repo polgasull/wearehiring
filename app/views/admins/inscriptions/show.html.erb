@@ -12,13 +12,13 @@
       </div>
     </div>
     <div class="columns">
-      <div class="column is-2-desktop">
-        <%= link_to t('show_post'), @job, class: 'button is-link' %>
-      </div>
-      <div class="column is-vertical-center">
-        <%= link_to job_inscriptions_path(format: :csv), class: 'is-normal-link pl3' do %>
+      <div class="column is-3-desktop">
+        <%= link_to admins_job_inscriptions_path(format: :csv), class: 'button primary pl3' do %>
           <%= icon('fas', 'file-download pr2') %> <%= t('download_candidates_csv') %>
         <% end %>
+      </div>
+      <div class="column is-vertical-center">
+        <%= link_to t('show_post'), @job, class: 'is-normal-link' %>
       </div>
     </div>
   </div>
