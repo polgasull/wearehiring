@@ -1,5 +1,5 @@
 <% headers = ['Name', 'Cargo actual', 'Email', 'Linkedin URL'] %>
-<%= CSV.generate_line headers %>
+<%= raw CSV.generate_line headers %>
 <% @inscriptions.each do |inscription| %>
-  <%= CSV.generate_line([inscription.user.name, inscription.user.current_position, inscription.user.email, inscription.user.profile_url]) %>
+  <%= raw CSV.generate_line([inscription.user.name, inscription.user.current_position, inscription.user.email, inscription.user.profile_url]) %>
 <% end %>
