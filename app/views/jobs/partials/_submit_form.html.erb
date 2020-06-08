@@ -5,9 +5,10 @@
     <abbr title="required">*</abbr>
     <%= check_box_tag "legal", 'accepted_terms', false, class: 'terms_checkbox' %>
     <small class="accept-terms-text pl2">
-      Estoy de acuerdo con los 
-      <%= link_to 'términos y condiciones', legal_terms_path, target: '_blank' %>, y
-      <%= link_to 'condiciones legales de uso y política de privacidad', privacy_policy_path, target: '_blank' %>
+      Estoy de acuerdo con la
+      <%= link_to 'política de privacidad', privacy_policy_path, target: '_blank' %>, 
+      <%= link_to 'aviso legal', legal_terms_path, target: '_blank' %> y 
+      <%= link_to 'política de cookies', cookies_policy_path, target: '_blank' %>
       de Wearehiring
     </small>
   </label>
