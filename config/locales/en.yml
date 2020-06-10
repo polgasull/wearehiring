@@ -395,12 +395,12 @@ en:
     user_type: "Type"
     
     messages:
-      user_created: "Job posted and paid successfully"
-      user_not_created: "Job was not able to be posted"
-      user_updated: "Job was successfully updated"
-      user_not_updated: "Job was not able to be updated"
-      user_deleted: "Job was successfully deleted"
-      user_not_deleted: "Job was not able to be deleted"
+      user_created: "User created successfully"
+      user_not_created: "User was not able to be created"
+      user_updated: "User was successfully updated"
+      user_not_updated: "User was not able to be updated"
+      user_deleted: "User was successfully deleted"
+      user_not_deleted: "User was not able to be deleted"
   legal_note: "Legal note"
   terms_and_conditions_footer: "Terms and conditions"
   privacy_policy_footer: "Política de privacidad"

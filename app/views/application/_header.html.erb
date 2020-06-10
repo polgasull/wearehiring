@@ -12,6 +12,18 @@
 			<%= render "menu" %>
 		</div>
 	</div>
+	<% if current_user.phone.blank? && current_user.is_candidate? %>
+	<div class="columns has-background-info is-vertical-center pa2">
+		<div class="column is-hidden-touch">
+			<span class="f6 white-color"> Añade tu <strong class="white-color"> teléfono </strong> y aumenta las posibilidades de ser contactado </span>
+		</div>
+		<div class="column has-text-right">
+			<%= link_to edit_user_registration_path, class: "button is-rounded is-link f6" do %> 
+				Actualizar teléfono <%= icon('fas', 'arrow-right pl2') %>
+			<% end %>
+		</div>
+	</div>
+	<% end %>
 </header>
 <div id="mySidenav" class="sidenav">
 	<a href="<%=root_path%>" class="mobile-menu-logo">
