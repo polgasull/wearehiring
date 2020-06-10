@@ -12,19 +12,25 @@
 			<%= render "menu" %>
 		</div>
 	</div>
-	<% if current_user.phone.blank? && current_user.is_candidate? %>
-	<div class="columns has-background-info is-vertical-center pa2">
-		<div class="column is-hidden-touch">
-			<span class="f6 white-color"> Añade tu <strong class="white-color"> teléfono </strong> y aumenta las posibilidades de ser contactado </span>
-		</div>
-		<div class="column has-text-right">
-			<%= link_to edit_user_registration_path, class: "button is-rounded is-link f6" do %> 
-				Actualizar teléfono <%= icon('fas', 'arrow-right pl2') %>
-			<% end %>
+</header>
+<% if current_user.phone.blank? && current_user.is_candidate? %>
+	<div class="has-background-warning">
+		<div class="container">
+			<div class="columns is-vertical-center pv2">
+				<div class="column is-hidden-touch">
+					<span class="f6"> Añade tu <strong>teléfono</strong>. 
+						Los perfiles de candidato completados tienen un <strong> +86% de probabilidades</strong> de ser contactados 
+					</span>
+				</div>
+				<div class="column is-3 has-text-right">
+					<%= link_to edit_user_registration_path, class: "button is-rounded primary f6" do %> 
+						Quiero que me llamen <%= icon('fas', 'arrow-right pl2') %>
+					<% end %>
+				</div>
+			</div>
 		</div>
 	</div>
-	<% end %>
-</header>
+<% end %>
 <div id="mySidenav" class="sidenav">
 	<a href="<%=root_path%>" class="mobile-menu-logo">
 		<img src="<%=asset_path('logo_beta.png')%>" alt="Ofertas de empleo para equipos tecnológicos – jobHub" width="100" height="50">
