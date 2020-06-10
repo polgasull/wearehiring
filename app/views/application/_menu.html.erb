@@ -34,7 +34,7 @@
 			<div class="navbar-brand is-vertical-center">
 				<%= link_to edit_user_registration_path, class: "button is-rounded is-link" do %> 
 					<span class="f6"> Añade tu <strong> teléfono </strong> y aumenta las posibilidades de ser contactado <%= icon('fas', 'arrow-right') %></span>
-				<% end if current_user.phone.blank? %>				
+				<% end if current_user.phone.blank? && current_user.is_candidate? %>				
 			</div>
 			<div class="navbar-brand">
 				<div class="dropdown navbar-item is-right" id="profileDropdown">
