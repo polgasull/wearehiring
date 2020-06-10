@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resource :inscriptions, except: :index
   end
     
-  resources :users, only: [] do
+  resources :users, only: [:update] do
     member do
       get :jobs
       get :inscriptions
