@@ -2,7 +2,7 @@
   <div class="column is-1 is-hidden-touch">
     <%= inscription_counter + 1 %>
   </div>
-  <div class="column is-hidden-mobile">
+  <div class="column is-hidden-touch">
     <%= image_tag(inscription.user.picture_url, size: 50, class: 'rounded-img') %>
   </div>
   <div class="column">
@@ -10,6 +10,9 @@
   </div>
   <div class="column is-hidden-touch">
     <%= inscription.user.current_position %>
+  </div>
+  <div class="column">
+    <%= inscription.user.phone %>
   </div>
   <div class="column is-hidden-mobile">
     <%= inscription.user.email %>
