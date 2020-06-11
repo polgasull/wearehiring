@@ -13,7 +13,7 @@
 		</div>
 	</div>
 </header>
-<% if current_user&.phone&.blank? && current_user&.is_candidate? %>
+<% if current_user && current_user.phone.blank? && current_user.is_candidate? %>
 	<div class="has-background-warning">
 		<div class="container">
 			<div class="columns is-vertical-center pv2">
