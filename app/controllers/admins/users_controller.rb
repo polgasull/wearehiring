@@ -5,7 +5,7 @@ module Admins
     before_action :set_user, only: [:update, :inscriptions]
 
     def index
-      @users = User.all.order('created_at DESC')
+      @users = User.all.order('created_at DESC').page(params[:page]).per(50)
       @companies = User.where(user_type: 2).count
       @candidates = User.where(user_type: 1).count
     end 

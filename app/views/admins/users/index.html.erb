@@ -46,5 +46,11 @@
 
     <%= render @users %>
 
+    <div class="columns mt3">
+      <div class="column is-4 is-offset-one-third-desktop">
+        <%= paginate @users %>
+      </div>
+    </div>
+
   </div>
 </section>
