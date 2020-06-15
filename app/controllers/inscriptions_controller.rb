@@ -29,7 +29,7 @@ class InscriptionsController < ApplicationController
     respond_to do |format|
       format.html
       format.csv do
-        headers['Content-Disposition'] = "attachment; filename=\"inscriptions-list.csv\""
+        headers['Content-Disposition'] = "attachment; filename=\"#{@job.title}.csv\""
         headers['Content-Type'] ||= 'text/csv'
       end
     end
