@@ -393,7 +393,7 @@ en:
     phone: "Phone"
     position: "Position"
     user_type: "Type"
-    
+    current_position: "Current position"
     messages:
       user_created: "User created successfully"
       user_not_created: "User was not able to be created"

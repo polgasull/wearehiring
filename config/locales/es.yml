@@ -397,6 +397,7 @@ es:
     phone: "Teléfono"
     position: "Cargo"
     user_type: "Tipo"
+    current_position: "Cargo actual"
     messages:
       user_created: "Usuario creado satisfactoriamente"
       user_not_created: "No se pudo crear el Usuario"

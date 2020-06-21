@@ -28,6 +28,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:phone)
+    params.require(:user).permit(:phone, :profile_url, :current_position)
   end
 end
