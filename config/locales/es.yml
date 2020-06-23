@@ -257,6 +257,9 @@ es:
       job_deleted: "Oferta eliminada satisfactoriamente"
       job_not_deleted: "No se pudo eliminar la oferta"
       job_expired: "Lo sentimos la oferta ha expirado"
+    summary:
+      thanks_title: "¡Muchas gracias por promover el talento digital!"
+      job: "Resumen de tu publicación"
   inscriptions:
     picture: "Imagen"
     name: "Nombre"

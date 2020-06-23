@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :thanks]
   before_action :set_job, only: [:show, :edit, :update]
   before_action :validate_is_job_owner, only: [:edit, :update]
   before_action :validate_is_company_or_admin!, except: [:index, :show]
@@ -58,7 +58,7 @@ class JobsController < ApplicationController
 
     if @job.save
       ModelMailer.new_job(current_user, @job).deliver
-      redirect_to_response(t('jobs.messages.job_created'), @job) 
+      redirect_to_response(t('jobs.messages.job_created'), thanks_job_path(@job.id)) 
     else 
       redirect_back_response(t('jobs.messages.job_not_created'), false)
     end
@@ -70,6 +70,10 @@ class JobsController < ApplicationController
 
   def update
     @job&.update(job_params) ? redirect_to_response(t('jobs.messages.job_updated'), @job) : redirect_back_response(t('jobs.messages.job_not_updated'), false)
+  end
+
+  def thanks
+    @job = current_user.jobs.last
   end
 
   private

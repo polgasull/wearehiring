@@ -1,0 +1,39 @@
+<section class="section">
+  <div class="container has-text-centered">
+    <div class="columns">
+        <div class="column">
+          <h1 class="title f2"> <%= t('jobs.summary.thanks_title') %> </h1>
+          <p class="f3"> <%= t('jobs.summary.job') %></p>
+        </div>
+      </div>
+    </div>
+    <div class="columns mt4">
+      <div class="column has-text-centered">
+        <%= @job.title %>
+        <%= @job.job_author %> en <%= @job.location %>
+        <% if !@job.avatar.file.nil? %>
+          <%= image_tag(@job.avatar_url(:thumb), alt: @job.job_author, class: 'rounded-img') %>
+        <% else %>
+          <%= icon('far', 'image', style: 'font-size: 50px') %>
+        <% end %>
+                      <%= icon('fas', 'globe mr1') %> <%= @job.category.name %>
+                      <%= job_salary(@job.salary_from, @job.salary_to) %>
+              <%= icon('fas', 'level-up-alt mr1') %> <%= @job.level.name %>
+              <%= icon('far', 'clock mr2') %> <%= @job.job_type.name %>
+              <% if @job.remote_ok? %>
+                <%= icon('fas', 'wifi') %> <%= t('remote') %> 
+              <% else %>
+                <%= icon('fas', 'laptop') %> Oficina
+              <% end %>     
+                    <% @job.tags.each do |tag| %>
+              <span class='tag is-success is-normal'> <%= tag.name %> </span>
+            <% end %>  
+      </div>
+    </div>
+    <div class="columns mt4">
+      <div class="column has-text-centered">
+        <%= link_to t('show_all_jobs'), @job, class: 'button is-rounded primary is-large shadow' %>
+      </div>
+    </div>
+  </div>
+</section>

@@ -253,6 +253,9 @@ en:
       job_deleted: "Job was successfully deleted"
       job_not_deleted: "Job was not able to be deleted"
       job_expired: "Sorry Job has expired"
+    summary:
+      thanks_title: "Thank you for helping digital talent"
+      job: "Job summary"
   inscriptions:
     picture: "Image"
     name: "Name"
@@ -410,4 +413,3 @@ en:
   download_candidates_csv: "Download inscribeds to CSV"
   view_profile: "View profile"
   show_post: "Show post"
-

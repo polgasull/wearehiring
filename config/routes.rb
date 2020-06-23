@@ -13,8 +13,11 @@ Rails.application.routes.draw do
     end 
   end
 
-  resources :jobs, :path => 'ofertas-empleo-digital' do
+  resources :jobs, path: 'ofertas-empleo-digital' do
     resource :inscriptions, except: :index
+    member do
+      get :thanks, path: 'gracias-por-publicar'
+    end
   end
     
   resources :users, only: [:update] do
