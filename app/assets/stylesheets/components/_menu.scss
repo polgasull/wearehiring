@@ -72,7 +72,11 @@
 
 .navbar-item {
   -webkit-font-smoothing: auto;
-  padding: 11px 15px 11px 35px;
+  padding: 11px 15px;
+
+  @media (max-width: 1023px) {
+    padding: 11px 15px 11px 35px;
+  }
 }
 
 a.navbar-item:hover {

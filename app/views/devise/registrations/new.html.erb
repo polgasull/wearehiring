@@ -1,51 +1,75 @@
 <div class="section main-section">
   <div class="container">
-  <div class="columns is-centered">
+    <div class="columns is-centered">
+      <div class="column is-4">
+        <h2 class="title is-2"> <%= t('sign_up_as_company') %> </h2>
 
-    <div class="column is-4">
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= f.error_notification %>
 
-    <h2 class="title is-2"> <%= t('sign_up_as_company') %> </h2>
+        <%= f.hidden_field :user_type_id, value: UserType.where(internal_name: 'company').first.id %>
 
-    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= f.error_notification %>
+        <div class="field mb5">
+          <div class="control">
+            <%= f.input :name, 
+                required: true, 
+                autofocus: true, 
+                input_html: { class:"input" }, 
+                wrapper: false, 
+                label_html: { class: "label" }, 
+                label: t('forms.company_name') %>
+          </div>
+        </div>
 
-    <%= f.hidden_field :user_type_id, value: UserType.where(internal_name: 'company').first.id %>
+        <div class="field mb2">
+          <div class="control">
+            <%= f.input :email,
+                required: true,
+                input_html: { class:"input" },
+                wrapper: false,
+                label_html: { class:"label" },
+                label: t('forms.email') %>
+          </div>
+        </div>
 
-    <div class="field mb5">
-      <div class="control">
-        <%= f.input :name, required: true, autofocus: true, input_html: { class:"input" }, wrapper: false, label_html: { class: "label" }, label: t('forms.company_name') %>
+        <div class="field mb2">
+          <div class="control">
+            <%= f.input :password,
+                required: true,
+                input_html: { class:"input" },
+                wrapper: false,
+                label_html: { class:"label" },
+                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                label: t('forms.password')  %>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <%= f.input :password_confirmation,
+                required: true,
+                input_html: { class: "input" },
+                wrapper: false,
+                label_html: { class: "label" },
+                label: t('forms.password_confirmation')  %>
+          </div>
+        </div>
+
+        <div class="field mt3">
+          <div class="control has-text-centered">
+            <%= f.button :submit,
+                t('create_company_account'),
+                class:"button is-primary is-medium is-rounded" %>
+          </div>
+        </div>
+        <% end %>
+
+        <div class="field mt4">
+          <div class="control has-text-centered">
+            <%= render "devise/shared/links" %>
+          </div>
+        </div>
       </div>
-    </div>
-
-    <div class="field mb2">
-      <div class="control">
-        <%= f.input :email, required: true, input_html: { class:"input" }, wrapper: false, label_html: { class:"label" }, label: t('forms.email') %>
-      </div>
-    </div>
-
-    <div class="field mb2">
-      <div class="control">
-        <%= f.input :password, required: true, input_html: { class:"input" }, wrapper: false, label_html: { class:"label" }, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), label: t('forms.password')  %>
-      </div>
-    </div>
-
-    <div class="field">
-      <div class="control">
-        <%= f.input :password_confirmation, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }, label: t('forms.password_confirmation')  %>
-      </div>
-    </div>
-
-    <div class="field">
-      <div class="control">
-        <%= f.button :submit, t('create_account'), class:"button primary is-medium mt3" %>
-      </div>
-    </div>
-
-    <% end %>
-      <br />
-      <hr>
-      <%= render "devise/shared/links" %>
-    </div>
     </div>
   </div>
 </div>

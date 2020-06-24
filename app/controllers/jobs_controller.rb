@@ -1,8 +1,8 @@
 class JobsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :thanks]
   before_action :set_job, only: [:show, :edit, :update]
-  before_action :validate_is_job_owner, only: [:edit, :update]
-  before_action :validate_is_company_or_admin!, except: [:index, :show]
+  before_action :validate_is_job_owner, only: [:edit, :update, :thanks]
+  before_action :validate_is_company_or_admin!, except: [:index, :show, :thanks]
   before_action :validate_is_expired!, only: [:show]
 
   def index

@@ -279,7 +279,10 @@ en:
   login: "Login"
   logout: "Log out"
   create_account: "Create Account"
+  create_company_account: "Create company account"
   forgot_password: "Forgot your password?"
+  already_account: "Already an account?"
+  dont_have_account: "¿Don't have an account?"
   home_h1: "are looking for digital profiles"
   home_subtitle: "Find new tech career opportunities"
   go_to_jobs: "View current Jobs!"
@@ -317,6 +320,9 @@ en:
   my_jobs: "My jobs"
   my_inscriptions: "My inscriptions"
   sign_up_as_company: "Sign up as Company"
+  sign_in_as_company: "Sign in as Company"
+  company_access: "Company access"
+  candidate_access: "Candidate access"
   forms: 
     from: "From"
     to: "To"
@@ -374,7 +380,6 @@ en:
   digital_job_offers: "Digital job offers"
   company_section_title: "Post your job for 99€"
   company_section_body: "Developers, Digital Marketers, Product Managers, UX/UI Designers, Growth Hackers, Data Scientists… Consigue el mejor talento digital y haz crecer tu empresa"
-  create_company_account: "Sign up as company"
   seo:
     jobs_title: "Show all digital offers"
     jobs_description: "Encuentra todas las Ofertas de Empleo Digital: Marketing Digital, Developers, UX/UI Designer, Digital Product Managers, ¡Solicita tu empleo ya!"

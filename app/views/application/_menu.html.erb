@@ -5,13 +5,27 @@
 					jobs_path, 
 					class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(jobs_path)}" %>
 		</div>
-		<% unless current_user&.is_candidate? || current_user&.is_candidate? %>
-		<div class="navbar-brand">
-			<%= link_to t('jobs.post_job'), 
-					new_job_path, 
-					class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(new_job_path)}" %>
-		</div>
+		<% unless current_user&.is_candidate? %>
+			<div class="navbar-brand">
+				<%= link_to t('jobs.post_job'), 
+						new_job_path, 
+						class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(new_job_path)}" %>
+			</div>
 		<% end %>
+		<div class="navbar-brand">
+			<div class="navbar-item">
+				<%= link_to 'Acceso candidatos', 
+					user_linkedin_omniauth_authorize_path, 
+					class: "text-uppercase f6 button is-rounded primary" %>
+			</div>
+		</div>
+		<div class="navbar-brand">
+			<div class="navbar-item">
+				<%= link_to 'Acceso empresas', 
+					new_user_session_path, 
+					class: "text-uppercase f6 button is-rounded is-primary" %>
+			</div>
+		</div>
 		<% if current_user&.is_admin? %>
 			<div class="navbar-brand is-vertical-center has-text-weight-bold ml3 f2">|</div>
 			<div class="navbar-brand is-vertical-center">
