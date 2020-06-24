@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
-  before_action :set_user
+  before_action :authenticate_user!, except: [:candidate_access]
+  before_action :set_user, except: [:candidate_access]
   before_action :validate_is_company!, only: [:jobs]
   before_action :validate_is_candidate!, only: [:inscriptions]
 
@@ -19,6 +19,8 @@ class UsersController < ApplicationController
   def update
     @user.update(user_params) ? redirect_to_response(t('users.messages.user_updated'), edit_user_registration_path) : redirect_back_response(t('users.messages.user_not_updated'), false)
   end
+
+  def candidate_access;end
 
   private
 

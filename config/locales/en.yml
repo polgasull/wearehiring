@@ -320,9 +320,13 @@ en:
   my_jobs: "My jobs"
   my_inscriptions: "My inscriptions"
   sign_up_as_company: "Sign up as Company"
-  sign_in_as_company: "Sign in as Company"
   company_access: "Company access"
   candidate_access: "Candidate access"
+  candidate: 
+    benefit_1: "Signin with Linkedin"
+    benefit_2: "No CV required"
+    benefit_3: "Complete your profile after"
+    benefit_4: "Apply with one click"
   forms: 
     from: "From"
     to: "To"

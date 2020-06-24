@@ -14,14 +14,14 @@
 		<% end %>
 		<div class="navbar-brand">
 			<div class="navbar-item">
-				<%= link_to 'Acceso candidatos', 
-					user_linkedin_omniauth_authorize_path, 
+				<%= link_to t('candidate_access'), 
+					candidate_access_path,
 					class: "text-uppercase f6 button is-rounded primary" %>
 			</div>
 		</div>
 		<div class="navbar-brand">
 			<div class="navbar-item">
-				<%= link_to 'Acceso empresas', 
+				<%= link_to t('company_access'), 
 					new_user_session_path, 
 					class: "text-uppercase f6 button is-rounded is-primary" %>
 			</div>

@@ -324,9 +324,13 @@ es:
   my_jobs: "Mis publicaciones"
   my_inscriptions: "Mis inscripciones"
   sign_up_as_company: "Registrarse como Empresa"
-  sign_in_as_company: "Acceso empresas"
-  company_access: "Acceso empresa"
-  candidate_access: "Acceso candidato"
+  company_access: "Acceso empresas"
+  candidate_access: "Acceso candidatos"
+  candidate: 
+    benefit_1: "Accede con Linkedin"
+    benefit_2: "Sin necesidad de subir CV"
+    benefit_3: "Completa tu perfil a posteriori"
+    benefit_4: "Aplica con un solo click"
   forms: 
     from: "Desde"
     to: "Hasta"
