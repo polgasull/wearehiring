@@ -16,7 +16,7 @@
 <% if current_user && current_user.phone.blank? && current_user.is_candidate? %>
 	<div class="has-background-warning">
 		<div class="container">
-			<div class="columns is-vertical-center pv2">
+			<div class="columns is-vertical-center pv2 is-marginless">
 				<div class="column is-hidden-touch">
 					<span class="f6"> Añade tu <strong>teléfono</strong>. 
 						Los perfiles de candidato completados tienen un <strong> +86% de probabilidades</strong> de ser contactados 
@@ -24,7 +24,11 @@
 				</div>
 				<div class="column is-3 has-text-right">
 					<%= link_to edit_user_registration_path, class: "button is-rounded primary f6" do %> 
-						Quiero que me llamen <%= icon('fas', 'arrow-right pl2') %>
+						<% if browser.device.mobile? || browser.device.tablet? %>
+							Completa tu perfil <%= icon('fas', 'arrow-right pl2') %>
+						<% else %>
+							Quiero que me llamen <%= icon('fas', 'arrow-right pl2') %>
+						<% end %>
 					<% end %>
 				</div>
 			</div>
