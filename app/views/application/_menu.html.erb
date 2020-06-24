@@ -12,6 +12,7 @@
 						class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(new_job_path)}" %>
 			</div>
 		<% end %>
+		<% unless user_signed_in? %>
 		<div class="navbar-brand">
 			<div class="navbar-item">
 				<%= link_to t('candidate_access'), 
@@ -26,6 +27,7 @@
 					class: "text-uppercase f6 button is-rounded is-primary" %>
 			</div>
 		</div>
+		<% end %>
 		<% if current_user&.is_admin? %>
 			<div class="navbar-brand is-vertical-center has-text-weight-bold ml3 f2">|</div>
 			<div class="navbar-brand is-vertical-center">
