@@ -254,7 +254,7 @@ en:
       job_not_deleted: "Job was not able to be deleted"
       job_expired: "Sorry Job has expired"
     summary:
-      thanks_title: "Thank you for helping digital talent"
+      thanks_title: "Your Job is posted successfully"
       job: "Job summary"
   inscriptions:
     picture: "Image"

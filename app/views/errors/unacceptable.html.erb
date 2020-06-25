@@ -1,0 +1,20 @@
+<section class="section">
+  <div class="container has-text-centered">
+    <div class="columns">
+        <div class="column">
+          <h1 class="title f2"> <%= t('not_found') %> </h1>
+        </div>
+      </div>
+    </div>
+    <div class="columns mt4">
+      <div class="column has-text-centered">
+        <%= image_tag(asset_path('construccion.svg'), width: 350, height: 350) %>
+      </div>
+    </div>
+    <div class="columns mt4">
+      <div class="column has-text-centered">
+        <%= link_to t('show_all_jobs'), jobs_path, class: 'button is-rounded primary is-large shadow' %>
+      </div>
+    </div>
+  </div>
+</section>

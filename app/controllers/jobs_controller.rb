@@ -1,7 +1,7 @@
 class JobsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show, :thanks]
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_job, only: [:show, :edit, :update]
-  before_action :validate_is_job_owner, only: [:edit, :update, :thanks]
+  before_action :validate_is_job_owner, only: [:edit, :update]
   before_action :validate_is_company_or_admin!, except: [:index, :show, :thanks]
   before_action :validate_is_expired!, only: [:show]
 
@@ -21,7 +21,7 @@ class JobsController < ApplicationController
   end
 
   def new
-    @job = current_user.jobs.build
+    @job = current_user.jobs.build 
   end
 
   def edit
@@ -58,7 +58,7 @@ class JobsController < ApplicationController
 
     if @job.save
       ModelMailer.new_job(current_user, @job).deliver
-      redirect_to_response(t('jobs.messages.job_created'), thanks_job_path(@job.id)) 
+      redirect_to_response(t('jobs.messages.job_created'), thanks_job_page_path) 
     else 
       redirect_back_response(t('jobs.messages.job_not_created'), false)
     end
@@ -73,7 +73,11 @@ class JobsController < ApplicationController
   end
 
   def thanks
-    @job = current_user.jobs.last
+    if current_user.jobs.any?
+      @job = current_user.jobs.last
+    else 
+      redirect_to root_path
+    end
   end
 
   private

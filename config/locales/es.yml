@@ -258,7 +258,7 @@ es:
       job_not_deleted: "No se pudo eliminar la oferta"
       job_expired: "Lo sentimos la oferta ha expirado"
     summary:
-      thanks_title: "¡Muchas gracias por promover el talento digital!"
+      thanks_title: "¡Tu Job se ha publicado correctamente!"
       job: "Resumen de tu publicación"
   inscriptions:
     picture: "Imagen"
@@ -344,7 +344,7 @@ es:
   profile: "Perfil"
   you_have_inscribed: "Te has inscrito en"
   show_all_jobs: "Ver todos los Jobs"
-  go_to_job: "Ver publicación"
+  go_to_job: "Ver mi Job"
   showing_10_of: "Mostrando 10 de"
   remaining_days: "Días de publicación restantes"
   website: "Página web empresa"
