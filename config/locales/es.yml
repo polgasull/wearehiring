@@ -418,6 +418,14 @@ es:
       user_not_updated: "No se pudo actualizar el Usuario"
       user_deleted: "Usuario eliminado satisfactoriamente"
       user_not_deleted: "No se pudo eliminar el Usuario"
+  posts: 
+    messages: 
+      post_created: "Post creado satisfactoriamente"
+      post_not_created: "No se pudo crear el Post"
+      post_updated: "Post actualizado satisfactoriamente"
+      post_not_updated: "No se pudo actualizar el Post"
+      post_deleted: "Post eliminado satisfactoriamente"
+      post_not_deleted: "No se pudo eliminar el Post"
   legal_note: "Aviso legal"
   terms_and_conditions_footer: "Términos y condiciones"
   privacy_policy_footer: "Política de privacidad"

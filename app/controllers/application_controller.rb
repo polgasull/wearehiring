@@ -4,12 +4,13 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  def validate_is_candidate!
-    redirect_to root_path unless current_user.is_candidate?
-  end
-
-  def validate_is_company!
-    redirect_to root_path unless current_user.is_company?
+  # def validate_is_candidate!
+  # def validate_is_company!
+  # def validate_is_admin!
+  %w[candidate company admin].each do |user_type_name|
+    define_method "validate_is_#{user_type_name}!" do
+      redirect_to root_path unless current_user.send("is_#{user_type_name}?")
+    end
   end
 
   def validate_is_company_or_admin!

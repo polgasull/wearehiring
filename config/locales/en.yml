@@ -414,6 +414,14 @@ en:
       user_not_updated: "User was not able to be updated"
       user_deleted: "User was successfully deleted"
       user_not_deleted: "User was not able to be deleted"
+  posts: 
+    messages: 
+      post_created: "Post created successfully"
+      post_not_created: "Post was not able to be created"
+      post_updated: "Post was successfully updated"
+      post_not_updated: "Post was not able to be updated"
+      post_deleted: "Post was successfully deleted"
+      post_not_deleted: "Post was not able to be deleted"
   legal_note: "Legal note"
   terms_and_conditions_footer: "Terms and conditions"
   privacy_policy_footer: "Política de privacidad"
