@@ -10,13 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200609142557) do
+ActiveRecord::Schema.define(version: 20200626064523) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "name"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "post_id"
+    t.index ["post_id"], name: "index_comments_on_post_id"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -76,6 +85,14 @@ ActiveRecord::Schema.define(version: 20200609142557) do
   create_table "levels", force: :cascade do |t|
     t.string "name"
     t.string "internal_name"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -141,6 +158,7 @@ ActiveRecord::Schema.define(version: 20200609142557) do
     t.index ["user_type_id"], name: "index_users_on_user_type_id"
   end
 
+  add_foreign_key "comments", "posts"
   add_foreign_key "inscriptions", "jobs"
   add_foreign_key "inscriptions", "users"
   add_foreign_key "jobs", "categories"

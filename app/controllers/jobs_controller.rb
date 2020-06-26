@@ -101,10 +101,4 @@ class JobsController < ApplicationController
       redirect_to_response(t('jobs.messages.job_expired'), root_path, false) 
     end
   end
-
-  def calculate_price(price, iva, irpf)
-    percent_iva = iva.to_f / 100.0
-    percent_irpf = irpf.to_f / 100.0
-    (price - (price * percent_iva)).to_f.round(2)
-  end
 end

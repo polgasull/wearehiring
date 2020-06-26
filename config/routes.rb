@@ -24,6 +24,8 @@ Rails.application.routes.draw do
     end
   end 
 
+  resources :posts, path: 'blog'
+
   devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   get '/ofertas-empleo-digital/empleo/gracias-por-publicar', to: 'jobs#thanks', as: 'thanks_job_page'
