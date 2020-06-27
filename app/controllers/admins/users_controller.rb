@@ -6,6 +6,7 @@ module Admins
 
     def index
       @users = User.all.order('created_at DESC').page(params[:page]).per(50)
+      @all_users = User.all
       @companies = User.where(user_type: 2).count
       @candidates = User.where(user_type: 1).count
 
