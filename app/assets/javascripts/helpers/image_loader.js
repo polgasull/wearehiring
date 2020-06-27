@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-  var instrumentImage = document.querySelector('.job-avatar');
+  var instrumentImage = document.querySelector('.load-image');
 
   function handleFileSelect(evt) {
     var files = evt.target.files; // FileList object
@@ -20,7 +20,7 @@ $(document).ready(function () {
         return function(e) {
           // Render thumbnail.
           var span = document.createElement('span');
-          span.innerHTML = ['<img class="avatar-preview-thumb border-light" src="', e.target.result,
+          span.innerHTML = ['<img class="image-preview-thumb border-light" src="', e.target.result,
             '" title="', escape(theFile.name), '"/>'
           ].join('');
           document.getElementById('list').insertBefore(span, null);

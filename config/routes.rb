@@ -24,7 +24,9 @@ Rails.application.routes.draw do
     end
   end 
 
-  resources :posts, path: 'blog'
+  resources :posts, path: 'blog' do
+    resources :comments
+  end
 
   devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks' }
 

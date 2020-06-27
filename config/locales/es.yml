@@ -344,6 +344,7 @@ es:
   profile: "Perfil"
   you_have_inscribed: "Te has inscrito en"
   show_all_jobs: "Ver todos los Jobs"
+  show_all_posts: "Ver todos los Posts"
   go_to_job: "Ver mi Job"
   showing_10_of: "Mostrando 10 de"
   remaining_days: "Días de publicación restantes"
@@ -419,6 +420,8 @@ es:
       user_deleted: "Usuario eliminado satisfactoriamente"
       user_not_deleted: "No se pudo eliminar el Usuario"
   posts: 
+    blog: "Blog"
+    all_posts: "Ver todos los Posts"
     messages: 
       post_created: "Post creado satisfactoriamente"
       post_not_created: "No se pudo crear el Post"
@@ -435,3 +438,10 @@ es:
   download_candidates_csv: "Descargar candidatos en CSV"
   view_profile: "Ver perfil"
   show_post: "Ver publicación"
+  last_jobs: "Últimos empleos digitales"
+  last_posts: "Últimos Posts"
+  comments:
+    singular: "Comentario"
+    plural: "Comentarios"
+    leave_a_comment: "Dejar un comentario"
+    post: "Publicar comentario"

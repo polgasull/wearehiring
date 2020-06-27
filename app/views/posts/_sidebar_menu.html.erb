@@ -1,0 +1,17 @@
+<% %w[posts jobs].each do |items| %>
+  <div>
+    <p class="title f5"> <%= t("last_#{items}") %> </p>
+  </div>
+  <hr class="mv3">
+  <% instance_variable_get("@last_#{items}".to_sym).each do |item| %>
+    <div class="mb2">
+      <p> <%= link_to item.title %> </p>
+      <small> <%= time_ago_in_words(item.created_at) %> </small>
+    </div>
+  <% end %> 
+  <div class="mb3">
+    <%= link_to send("#{items}_path") do %>
+      <%= t("show_all_#{items}") %> <%= icon('fas', 'arrow-right ml2') %>
+    <% end %>  
+  </div>
+<% end %>

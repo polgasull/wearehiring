@@ -1,0 +1,10 @@
+.crop {
+  height: 350px; 
+  overflow: hidden;
+  margin: 0;
+
+  img {
+    display: block;
+    width: 100%;
+  }
+}

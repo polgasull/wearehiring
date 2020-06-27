@@ -340,6 +340,7 @@ en:
   profile: "Profile"
   you_have_inscribed: "You have inscribed to"
   show_all_jobs: "Show all Jobs"
+  show_all_posts: "Show all Posts"
   go_to_job: "View Job"
   showing_10_of: "Showing 10 of"
   remaining_days: "Remaining days"
@@ -415,6 +416,8 @@ en:
       user_deleted: "User was successfully deleted"
       user_not_deleted: "User was not able to be deleted"
   posts: 
+    blog: "Blog"
+    all_posts: "View all Posts"
     messages: 
       post_created: "Post created successfully"
       post_not_created: "Post was not able to be created"
@@ -431,3 +434,10 @@ en:
   download_candidates_csv: "Download inscribeds to CSV"
   view_profile: "View profile"
   show_post: "Show post"
+  last_jobs: "Last digital jobs"
+  last_posts: "Last Posts"
+  comments:
+    singular: "Comment"
+    plural: "Comments"
+    leave_a_comment: "Leave a comment"
+    post: "Post comment"

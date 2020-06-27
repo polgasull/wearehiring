@@ -1,18 +1,30 @@
-<div class="card">
+<div class="card mb3">
+  <div class="card-image">
+    <figure class="image crop">
+      <% if !post.image.file.nil? %>
+        <%= image_tag(post.image_url) %>
+      <% else %>
+        <%= icon('far', 'image', style: 'font-size: 50px') %>
+      <% end %>    
+    </figure>
+  </div>
   <div class="card-content">
     <div class="media">
       <div class="media-content">
         <p class="title is-4">
-          <%= link_to post.title, post %>
+          <%= post.title %>
         </p>
       </div>
     </div>
     <div class="content">
-      <%= post.description %>
-      <%= post.created_at %>
+      <small> <%= time_ago_in_words(post.created_at) %> </small>
+      <p> <%= post.description.truncate(150) %> </p>
     </div>
     <div class="comment-count">
-      <span class="tag is-rounded"> <%= post.comments.count %></span>
+      <span class="tag is-rounded"> <%= post.comments.count %> Comentarios </span>
+    </div>
+    <div class="has-text-right"> 
+      <%= link_to 'Ir al Post', post, class: "button primary" %>
     </div>
   </div>
 </div>

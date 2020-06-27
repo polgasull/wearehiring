@@ -1,0 +1,15 @@
+<%= simple_form_for([@post, @post.comments.build]) do |f| %>
+<div class="field">
+  <div class="control">
+    <label class="label"> <%= t('your_name') %> </label>
+    <%= f.input :name, input_html: {class: "input"}, wrapper: false, label: false, placeholder: 'Nombre Apellido' %>
+  </div>
+</div>
+<div class="field">
+  <div class="control">
+    <label class="label"> <%= t('comments.singular') %> </label>
+    <%= f.input :comment, input_html: {class: "textarea"}, wrapper: false, label: false %>
+  </div>
+</div>
+<%= f.button :submit, t('comments.post'), class: "button is-primary" %>
+<% end %>

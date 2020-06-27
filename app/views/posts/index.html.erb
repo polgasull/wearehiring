@@ -1,5 +1,27 @@
 <section class="section">
   <div class="container">
-    <%= render @posts %>
+    <div class="columns">
+      <div class="column">
+        <% if current_user&.is_admin? %>
+          <nav class="level">
+            <div class="level-left">
+              <p class="level-item">
+                <strong>Actions</strong>
+              </p>
+            </div>
+            <div class="level-right">
+              <p class="level-item">
+                <%= link_to "New", new_post_path, class: "button is-primary", method: :delete, data: {confirm: "Are you sure?"}  %>
+              </p>
+            </div>
+          </nav>  
+          <hr>   
+        <% end %>
+        <%= render @posts %>
+      </div>
+      <div class="column is-3">
+        <%= render 'sidebar_menu' %>
+      </div>
+    </div>
   </div>
 </section>

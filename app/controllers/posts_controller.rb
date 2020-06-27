@@ -3,6 +3,8 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all.order("created_at DESC")
+    @last_jobs = Job.not_expired.order('created_at DESC').take(10);
+    @last_posts = Post.all.order('created_at DESC').take(3);
   end 
 
   def new
@@ -19,7 +21,11 @@ class PostsController < ApplicationController
     end
   end
 
-  def show;end 
+  def show
+    @last_jobs = Job.not_expired.order('created_at DESC').take(10);
+    @last_posts = Post.all.order('created_at DESC').take(3);
+    @post_comments = @post.comments.order('created_at DESC');
+  end 
 
   def update
     if @post.update(post_params)
