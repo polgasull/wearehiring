@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   # def validate_is_admin!
   %w[candidate company admin].each do |user_type_name|
     define_method "validate_is_#{user_type_name}!" do
-      redirect_to root_path unless current_user.send("is_#{user_type_name}?")
+      redirect_to root_path unless current_user&.send("is_#{user_type_name}?")
     end
   end
 

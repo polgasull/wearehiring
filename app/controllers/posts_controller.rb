@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :update, :edit, :destroy]
+  before_action :validate_is_admin!, except: [:index, :show]
 
   def index
     @posts = Post.all.order("created_at DESC")
