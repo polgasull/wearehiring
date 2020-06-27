@@ -436,6 +436,7 @@ es:
   save: "Guardar"
   download_csv: "Descargar CSV"
   download_candidates_csv: "Descargar candidatos en CSV"
+  download_users_csv: "Descargar usuarios en CSV"
   view_profile: "Ver perfil"
   show_post: "Ver publicación"
   last_jobs: "Últimos empleos digitales"

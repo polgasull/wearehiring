@@ -5,6 +5,11 @@
         <p> Empresas: <%= @companies %> </p>
         <p> Candidatos: <%= @candidates %> </p>
       </div>
+      <div class="column has-text-right">
+        <%= link_to admins_users_path(format: :csv), class: 'button primary pl3' do %>
+          <%= icon('fas', 'file-download pr2') %> <%= t('download_users_csv') %>
+        <% end %>
+      </div>
     </div>
   </div>
 </section>

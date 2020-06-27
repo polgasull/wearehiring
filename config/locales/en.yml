@@ -432,6 +432,7 @@ en:
   save: "Guardar"
   download_csv: "Download to CSV"
   download_candidates_csv: "Download inscribeds to CSV"
+  download_users_csv: "Download users to CSV"
   view_profile: "View profile"
   show_post: "Show post"
   last_jobs: "Last digital jobs"

@@ -8,6 +8,14 @@ module Admins
       @users = User.all.order('created_at DESC').page(params[:page]).per(50)
       @companies = User.where(user_type: 2).count
       @candidates = User.where(user_type: 1).count
+
+      respond_to do |format|
+        format.html
+        format.csv do
+          headers['Content-Disposition'] = "attachment; filename=\"wah_users_#{Date.today}.csv\""
+          headers['Content-Type'] ||= 'text/csv'
+        end
+      end
     end 
 
     def update
