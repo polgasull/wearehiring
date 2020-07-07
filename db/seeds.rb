@@ -17,6 +17,7 @@ Category.where(name: "Administrative").first_or_create(name: "Administrative")
 JobType.where(name: "Full-time").first_or_create(name: "Full-time")
 JobType.where(name: "Part-time").first_or_create(name: "Part-time")
 JobType.where(name: "Freelance").first_or_create(name: "Freelance")
+JobType.where(name: "Internship").first_or_create(name: "Internship")
 
 Level.where(internal_name: "junior").first_or_create(name: "Junior", internal_name: "junior")
 Level.where(internal_name: "intermediate").first_or_create(name: "Intermediate", internal_name: "intermediate")

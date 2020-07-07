@@ -29,13 +29,13 @@
         <p class="alert"><%= alert %></p>
       </div>
     <% end %>
-    
-    <%= render "header" %>
+    <div id="mainWrapper">
+      <%= render "header" %>
 
-    <%= yield %>
+      <%= yield %>
 
-    <%= render "footer" %>
-
+      <%= render "footer" %>
+    </div>
     <script>
       $(document).ready(function() {
 

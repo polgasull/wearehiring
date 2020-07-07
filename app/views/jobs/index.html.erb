@@ -45,14 +45,12 @@
       </div>
     </div>
 
-    <div class="boxes-wrapper">
-        <%= render @jobs %>
+    <div class="boxes-wrapper" id="pagination-list">
+      <%= render partial: "job", collection: @jobs %>
     </div>
 
-    <div class="columns mt2 is-centered">
-      <div class="column is-half-desktop">
-        <%= paginate @jobs %>
-      </div>
+    <div class="has-text-centered">
+      <%= infinite_scroll @jobs %>
     </div>
   </div>
 </section>

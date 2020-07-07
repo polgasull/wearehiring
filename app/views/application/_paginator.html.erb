@@ -1,0 +1,9 @@
+<div id='pagination-loader' class='text-center' style='display: none;'>
+  <img src='<%=asset_path('loading-gif.gif')%>' width='50'>
+</div>
+<div class='text-center' id='pagination'>
+  <%= link_to_next_page collection, 'Next Page' %>
+</div>
+<div class='no-more text-center' style='display: none;'>
+  <%= t('no_more_records') %>
+</div>
