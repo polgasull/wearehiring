@@ -10,7 +10,7 @@
   "image": {
     "@type": "ImageObject",
     <% if !job.avatar.file.nil? %>
-    "url": "<%= image_tag(job.avatar_url(:thumb)) %>",
+    "url": "<%= job.avatar_url(:thumb) %>",
     "height": 250,
     "width": 250
     <% end %>
