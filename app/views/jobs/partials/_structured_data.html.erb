@@ -6,11 +6,11 @@
     "@type": "WebPage",
     "@id": "https://google.com/article"
   },
-  "headline": "<%= job.title %> en <%= job.location %>",
+  "headline": "<%= job.title %> en <%= job.job_author %> en <%= job.location %>",
   "image": {
     "@type": "ImageObject",
     <% if !job.avatar.file.nil? %>
-    "url": "<%= image_tag(job.avatar_url(:thumb), alt: job.job_author) %>",
+    "url": "<%= image_tag(job.avatar_url(:thumb)) %>",
     "height": 250,
     "width": 250
     <% end %>
@@ -31,6 +31,6 @@
       "height": 200
     }
   },
-  "description": "<%= job.category.name %>, <%= job.job_type.name %>, <%= job.level.name %>"
+  "description": "Nivel <%= job.level.name %> categoría <%= job.category.name %> con tipo de contrato <%= job.job_type.name %>"
 }
 </script>
