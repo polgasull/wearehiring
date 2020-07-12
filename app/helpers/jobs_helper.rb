@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module JobsHelper
 
   def job_author(job)

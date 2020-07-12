@@ -6,9 +6,9 @@ class Job < ApplicationRecord
   belongs_to :category
   belongs_to :job_type
   belongs_to :level
-  has_many :taggings
+  has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
-  has_many :inscriptions
+  has_many :inscriptions, dependent: :destroy
   mount_uploader :avatar, AvatarUploader
 
   validates :reference, uniqueness: true

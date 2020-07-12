@@ -1,4 +1,5 @@
 class JobsController < ApplicationController
+  include PaymentHelper
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_job, only: [:show, :edit, :update]
   before_action :validate_is_job_owner, only: [:edit, :update]
@@ -37,29 +38,8 @@ class JobsController < ApplicationController
 
     @job.reference = "wah#{DateTime.now.year}#{SecureRandom.hex(3)}"
     @job.expiry_date = DateTime.now() + 30.days
-
-    token = params[:stripeToken]
-    job_type = params[:job_type]
-    job_title = params[:title]
-    card_brand = params[:user][:card_brand]
-    card_exp_month = params[:user][:card_exp_month]
-    card_exp_year = params[:user][:card_exp_year]
-    card_last4 = params[:user][:card_last4]
-
-    charge = Stripe::Charge.create(
-      :amount => 11286,
-      :currency => 'eur',
-      :description => job_type,
-      :statement_descriptor => job_title,
-      :source => token
-    )
-
-    current_user.stripe_id = charge.id
-    current_user.card_brand = card_brand
-    current_user.card_exp_month = card_exp_month
-    current_user.card_exp_year = card_exp_year
-    current_user.card_last4 = card_last4
-    current_user.save!
+    
+    stripe_process unless current_user.jobs.first.id.blank?
 
     if @job.save
       ModelMailer.new_job(current_user, @job).deliver
