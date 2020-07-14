@@ -35,27 +35,7 @@
 <section class="section">
 	<div class="container">
 		<div class="columns is-vcentered">
-			<div class="column has-text-centered">
-			  <%= image_tag(asset_path('esade.jpg'), width: 120, height: 120) %>
-			</div>			
-			<div class="column has-text-centered">
-			  <%= image_tag(asset_path('epitech.jpg'), width: 120, height: 120) %>
-			</div>
-			<div class="column has-text-centered">
-			  <%= image_tag(asset_path('esdi.png'), width: 120, height: 120) %>
-			</div>
-			<div class="column has-text-centered">
-			  <%= image_tag(asset_path('ironhack.png'), width: 100, height: 100) %>
-			</div>			
-			<div class="column has-text-centered">
-			  <%= image_tag(asset_path('elisava.png'), width: 120, height: 120) %>
-			</div>
-			<div class="column has-text-centered">
-			  <%= image_tag(asset_path('codehouse_academy.png'), width: 120, height: 120) %>
-			</div>				
-			<div class="column has-text-centered">
-			  <%= image_tag(asset_path('gse_bcn.jpg'), width: 120, height: 120) %>
-			</div>
+			<%= render 'partners' %>
 		</div>
 	</div>
 </section>
@@ -73,7 +53,14 @@
 						<%= link_to t('jobs.post_job_with_price'), new_job_path, class: 'button is-medium is-rounded' %>
 					</div>
 				<% else %>
-					<h2 class="title"> <%= t('company_section_title') %> </h2>
+					<h2 class="title"> 
+						<span> <%= t('company_section_title') %> </span> 
+						<span 
+							class="has-text-success"
+							data-aos="fade-up" 
+							data-aos-duration="1500"> <%= t('free').upcase %> </span> <br>
+						<span> <%= t('company_section_subtitle') %>
+ 					</h2>
 					<p> <%= t('company_section_body') %> </p>
 					<div class="mt4">
 						<%= link_to t('jobs.post_job'), new_user_registration_path, class: 'button is-medium is-rounded' %>
@@ -102,21 +89,42 @@
 	<div class="container">
 		<div class="columns">
 			<article class="column has-text-centered">
-				<img src="<%=asset_path('digital_profile.svg')%>" width="180" height="180" class="is-blank is-mobile-img" alt="Only Digital Jobs | Wearehiring.io">
+				<img 
+					src="<%=asset_path('digital_profile.svg')%>" 
+					width="180" 
+					height="180" 
+					class="is-blank is-mobile-img" 
+					alt="Only Digital Jobs | Wearehiring.io"
+					data-aos="fade-up" 
+					data-aos-duration="1500">
 				<div class="content has-text-left-mobile mt4">
 					<h3> <%=t('feature_1')%> </h3>
 					<p class="has-text-left"> <%=t('feature_1_text')%> </p>
 				</div>
 			</article>
 			<article class="column has-text-centered">
-				<img src="<%=asset_path('velocidad.svg')%>" width="180" height="180" class="is-blank" alt="Rápido regístro | Wearehiring.io">
+				<img 
+					src="<%=asset_path('velocidad.svg')%>"
+					width="180"
+					height="180"
+					class="is-blank"
+					alt="Rápido regístro | Wearehiring.io"
+					data-aos="fade-up" 
+					data-aos-duration="1500">
 				<div class="content has-text-left-mobile mt4">
 					<h3> <%=t('feature_2')%> </h3>
 					<p class="has-text-left"> <%=t('feature_2_text')%> </p>
 				</div>
 			</article>
 			<article class="column has-text-centered">
-				<img src="<%=asset_path('only_digital_people.svg')%>" width="180" height="180" class="is-blank" alt="Digital Pros para todos | Wearehiring.io">
+				<img 
+					src="<%=asset_path('only_digital_people.svg')%>"
+					width="180"
+					height="180"
+					class="is-blank"
+					alt="Digital Pros para todos | Wearehiring.io"
+					data-aos="fade-up" 
+					data-aos-duration="1500">
 				<div class="content has-text-left-mobile mt4">
 					<h3> <%=t('feature_3')%> </h3>
 					<ul class="has-text-left">
@@ -134,4 +142,12 @@
 
 <%= content_for :head do %>
   <%= render "seo", title: t('seo.home_title') , description: t('seo.home_description')%>
+<% end %>
+
+<%= content_for :footer do %>
+
+	<script>
+	  AOS.init();
+	</script>
+
 <% end %>
