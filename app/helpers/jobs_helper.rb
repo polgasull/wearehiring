@@ -27,3 +27,7 @@ def job_inscriptions_counter(job)
   count = job.inscriptions.count
   (count > 1) ? "#{count} Candidatos" : "#{count} Candidato"
 end
+
+def first_job_publication(user)
+  user && user.jobs.first.id.blank?
+end

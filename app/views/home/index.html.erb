@@ -46,11 +46,13 @@
 	<div class="container">
 		<div class="columns">
 			<div class="column">
-				<% if user_signed_in? && current_user.is_company? %>
+				<% if current_user&.is_company? %>
 					<h2 class="title"> <%= t('welcome') %>, <%= current_user.name %> </h2>
 					<p> <%= t('company_section_body') %> </p>
 					<div class="mt4">
-						<%= link_to t('jobs.post_job_with_price'), new_job_path, class: 'button is-medium is-rounded' %>
+						<%= link_to new_user_registration_path, class: 'button is-medium is-rounded' do %>
+							<%= t('jobs.post_job_with_price') %> <%= icon('fas', 'arrow-right ml3') %>
+						<% end %>
 					</div>
 				<% else %>
 					<h2 class="title"> 
@@ -63,7 +65,9 @@
  					</h2>
 					<p> <%= t('company_section_body') %> </p>
 					<div class="mt4">
-						<%= link_to t('jobs.post_job'), new_user_registration_path, class: 'button is-medium is-rounded' %>
+						<%= link_to new_user_registration_path, class: 'button is-medium is-rounded' do %>
+							<%= t('jobs.post_job') %> <%= icon('fas', 'arrow-right ml3') %>
+						<% end %>
 					</div>
 				<% end %>
 			</div>
