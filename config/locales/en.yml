@@ -235,7 +235,7 @@ en:
     salary_range: "Anual salary range"
     location: "Location"
     post_job: "Post Job"
-    post_job_with_price: "Post job for 99€"
+    post_job_with_price: "Post job for"
     new_job: "New job"
     edit_job: "Edit job"
     edit: "Edit"

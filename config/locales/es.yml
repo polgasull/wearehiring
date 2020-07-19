@@ -239,7 +239,7 @@ es:
     salary_range: "Rango salario anual"
     location: "Localización"
     post_job: "Publicar empleo"
-    post_job_with_price: "Publicar empleo por 99€"
+    post_job_with_price: "Publicar Job por"
     new_job: "Nueva oferta"
     edit_job: "Editar oferta"
     edit: "Editar"

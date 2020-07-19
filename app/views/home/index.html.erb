@@ -47,20 +47,22 @@
 		<div class="columns">
 			<div class="column">
 				<% if current_user&.is_company? %>
-					<h2 class="title"> <%= t('welcome') %>, <%= current_user.name %> </h2>
+					<h2 class="title"> 
+						<%= t('welcome') %>, <%= current_user.name %> 
+						<p> <%= 'Publica GRATIS'.html_safe if first_job_publication(current_user) %> </p>
+					</h2>
 					<p> <%= t('company_section_body') %> </p>
 					<div class="mt4">
 						<%= link_to new_job_path, class: 'button is-medium is-rounded' do %>
-							<%= t('jobs.post_job_with_price') %> <%= icon('fas', 'arrow-right ml3') %>
+							<%= t('jobs.post_job_with_price') %> 
+							<%= first_job_publication(current_user) ? '0€' : '99€' %>
+							<%= icon('fas', 'arrow-right ml3') %>
 						<% end %>
 					</div>
 				<% else %>
 					<h2 class="title"> 
 						<span> <%= t('company_section_title') %> </span> 
-						<span 
-							class="has-text-success"
-							data-aos="fade-up" 
-							data-aos-duration="1500"> <%= t('free').upcase %> </span> <br>
+						<span class="has-text-success"> <%= t('free').upcase %> </span> <br>
 						<span> <%= t('company_section_subtitle') %>
  					</h2>
 					<p> <%= t('company_section_body') %> </p>

@@ -29,5 +29,5 @@ def job_inscriptions_counter(job)
 end
 
 def first_job_publication(user)
-  user && user.jobs.first.id.blank?
+  user && (user.jobs.empty? || user.jobs.first.id.blank?)
 end
