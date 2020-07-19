@@ -11,3 +11,9 @@
 .listrow:nth-child(even) {
   background-color: white;
 }
+
+.candidate-benefits__list {
+  display: inline-block; 
+  list-style-type: none; 
+  text-align: left;
+}

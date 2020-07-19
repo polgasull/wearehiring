@@ -2,14 +2,24 @@
 <section class="section main-section">
 	<div class="container">
 		<div class="columns is-centered">
-			<div class="column is-4">
+      <div class="column is-4">
+        <h2 class="title"> Trabaja de lo que más te gusta </h2>
+        <img 
+          src="<%=asset_path('growth.svg')%>"
+          width="180"
+          height="180"
+          alt="Digital Pros para todos | Wearehiring.io"
+          data-aos="fade-up" 
+          data-aos-duration="1500">
+      </div>
+			<div class="column is-4 has-text-centered"">
 				<h2 class="title is-2"> <%= t('candidate_access') %> </h2>
-
-        <% %w[benefit_1 benefit_2 benefit_3 benefit_4].each do |benefit| %>
-          <p class="mb2"> <%= icon('fa', 'check has-text-success') %> <%= t("candidate.#{benefit}") %> </p>
-        <% end %>
-        
-        <div class="mt4 has-text-centered">
+        <ul class="candidate-benefits__list">
+          <% %w[benefit_1 benefit_2 benefit_3 benefit_4].each do |benefit| %>
+            <li class="mb2"> <%= icon('fa', 'check has-text-success') %> <%= t("candidate.#{benefit}") %> </li>
+          <% end %>
+        </ul>
+        <div class="mt4">
           <%= link_to user_linkedin_omniauth_authorize_path, class: "button primary is-medium is-rounded" do %>
             <%= icon('fab', 'linkedin mr2') %> <%= t('login') %> 
           <% end %>
@@ -17,7 +27,7 @@
 
 			</div>
 		</div>
-    <div class="columns">
+    <div class="columns mt4">
       <div class="column">
         <section class="section has-text-centered">
           <div class="container">
@@ -39,3 +49,11 @@
     </div>
 	</div>
 </section>
+
+<%= content_for :footer do %>
+
+	<script>
+	  AOS.init();
+	</script>
+
+<% end %>
