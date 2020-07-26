@@ -400,6 +400,9 @@ en:
   welcome: "Welcome"
   i_want_this_job: "¡I want this Job!"
   this_job_is_mine: "¡This Job is mine!"
+  if_you_liked_jobs_about: "If you are interested in"
+  you_will_also_like: "you will also like"
+  show_more_jobs: "Show more jobs"
   not_found: "Access forbidden"
   users: 
     name: "Name"
