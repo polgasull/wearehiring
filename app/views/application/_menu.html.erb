@@ -7,7 +7,7 @@
 		</div>
 		<% unless current_user&.is_candidate? %>
 			<div class="navbar-brand">
-				<%= link_to t('jobs.post_job'), 
+				<%= link_to t(post_job_toggle_title), 
 						new_job_path, 
 						class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(new_job_path)}" %>
 			</div>
@@ -23,10 +23,26 @@
 		<div class="navbar-brand">
 			<div class="navbar-item">
 				<%= link_to t('company_access'), 
-					new_user_session_path, 
+					new_user_registration_path, 
 					class: "text-uppercase f6 button is-rounded is-primary" %>
 			</div>
 		</div>
+		<% end %>
+		<% if current_user&.is_company? %>
+			<div class="navbar-brand is-vertical-center has-text-weight-bold ml3 f2">|</div>
+			<div class="navbar-brand is-vertical-center">
+				<%= link_to t('my_jobs'), 
+						jobs_user_path(current_user), 
+						class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(jobs_user_path(current_user))}" %>
+			</div>
+		<% end %>
+		<% if current_user&.is_candidate? %>
+			<div class="navbar-brand is-vertical-center has-text-weight-bold ml3 f2">|</div>
+			<div class="navbar-brand is-vertical-center">
+				<%= link_to t('my_inscriptions'), 
+						inscriptions_user_path(current_user), 
+						class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(inscriptions_user_path(current_user))}" %>
+			</div>
 		<% end %>
 		<% if current_user&.is_admin? %>
 			<div class="navbar-brand is-vertical-center has-text-weight-bold ml3 f2">|</div>
@@ -47,7 +63,7 @@
 			</div>
 		<% end %>
 		<% if user_signed_in? %>
-			<div class="navbar-brand">
+			<div class="navbar-brand has-text-left">
 				<div class="dropdown navbar-item is-right" id="profileDropdown">
 					<div class="dropdown-trigger">
 						<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
@@ -59,20 +75,6 @@
 					</div>
 					<div class="dropdown-menu" id="dropdown-menu" role="menu">
 						<div class="dropdown-content">
-							<% if current_user.is_candidate? %>
-								<%= link_to inscriptions_user_path(current_user), 
-								class: "dropdown-item #{ 'active' if current_page?(inscriptions_user_path(current_user)) }" do %>
-									<span class="icon is-small"><%= icon('fas', 'file-import') %></span>
-									<span> <%= t('my_inscriptions') %> </span>
-								<% end %>
-							<% end %>
-							<% if current_user.is_company? %>
-								<%= link_to jobs_user_path(current_user), 
-								class: "dropdown-item #{ 'active' if current_page?(jobs_user_path(current_user)) }" do %>
-									<span class="icon is-small"><%= icon('fas', 'briefcase') %></span>
-									<span> <%= t('my_jobs') %> </span>
-								<% end %>
-							<% end %>
 							<%= link_to edit_user_registration_path, 
 							class: "dropdown-item #{ 'active' if current_page?(edit_user_registration_path) }" do %> 
 								<span class="icon is-small"><%= icon('fas', 'key') %></span>

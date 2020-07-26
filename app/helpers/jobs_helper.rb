@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module JobsHelper
 
   def job_author(job)
@@ -24,4 +26,12 @@ end
 def job_inscriptions_counter(job)
   count = job.inscriptions.count
   (count > 1) ? "#{count} Candidatos" : "#{count} Candidato"
+end
+
+def first_job_publication(user)
+  user && (user.jobs.empty? || user.jobs.first.id.blank?)
+end
+
+def post_job_toggle_title
+  current_user&.jobs&.any? ? 'jobs.post_job' : 'jobs.post_job_free'
 end

@@ -7,7 +7,7 @@
 		</div>
 		<% unless current_user&.is_candidate? %>
 		<div class="navbar-brand has-text-weight-bold">
-			<%= link_to t('jobs.post_job'), 
+			<%= link_to t(post_job_toggle_title), 
 					new_job_path, 
 					class: "navbar-item text-uppercase #{ 'active' if current_page?(new_job_path)}" %>
 		</div>
@@ -20,8 +20,8 @@
       </div>
       <div class="navbar-brand">
         <%= link_to t('company_access'), 
-          new_user_session_path,
-          class: "navbar-item text-uppercase #{ 'active' if current_page?(new_user_session_path)}" %>
+          new_user_registration_path,
+          class: "navbar-item text-uppercase #{ 'active' if current_page?(new_user_registration_path)}" %>
       </div>
 		<% end %>
     <% if user_signed_in? %>

@@ -188,10 +188,12 @@
 
   <hr>
 
-  <%= render 'payment' %>
+  <%= first_job_publication(current_user) ? (render '/jobs/partials/first_publication_message') : (render 'payment')  %>
   
   <div class="has-text-centered submit-box">
-    <%= f.button :submit, class: "is-rounded is-large primary mt3", id: "postJobSubmit" %>   
+    <%= button_tag(type: 'submit', class: "button is-rounded is-large primary mt3", id: "postJobSubmit") do %>
+      <%= first_job_publication(current_user) ? 'Publicar Gratis' : 'Pagar y publicar' %>
+    <% end %>
     <%= icon('fas', 'circle-notch fa-spin is-hidden f1', id: 'submitSpinnerIcon') %>
   </div>
 

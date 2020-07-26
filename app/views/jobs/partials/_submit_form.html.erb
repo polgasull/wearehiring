@@ -16,7 +16,7 @@
 <% end %>
 
 <% unless user_signed_in? || current_user&.is_company? %>
-  <%= link_to t('i_want_this_job'), 
+  <%= link_to t(cta_text), 
               user_linkedin_omniauth_authorize_path(job_id: job.id), 
               class: "button is-rounded primary is-large shadow mv3 #{'submit-inscription' unless current_user&.accepted_terms?}" %>
 <% end %>
@@ -31,7 +31,7 @@
   <% else %>
     <%= form_for :inscription, url: job_inscriptions_path(job.id) do |f| %>
       <%= f.hidden_field :user_id, value: current_user.id %>
-      <%= f.submit t('i_want_this_job'), class: "button is-rounded primary is-large shadow mv3 #{'submit-inscription' unless current_user&.accepted_terms?}" %>
+      <%= f.submit t(cta_text), class: "button is-rounded primary is-large shadow mv3 #{'submit-inscription' unless current_user&.accepted_terms?}" %>
     <% end %>        
   <% end %>
 <% end %>      

@@ -116,7 +116,7 @@
 
     <div class="columns">
       <div class="column has-text-centered">
-        <%= render partial: '/jobs/partials/submit_form', locals: { job: @job } %>
+        <%= render partial: '/jobs/partials/submit_form', locals: { job: @job, cta_text: 'i_want_this_job' } %>
       </div>
     </div>
   </div>
@@ -134,11 +134,27 @@
     </div>
     <div class="columns">
       <div class="column has-text-centered">
-        <%= render partial: '/jobs/partials/submit_form', locals: { job: @job } %>
+        <%= render partial: '/jobs/partials/submit_form', locals: { job: @job, cta_text: 'this_job_is_mine' } %>
       </div>
     </div>  
   </div>
 </section>
+
+<% if @same_category_jobs.any? %>
+  <section class="section">
+    <h3 class="f3 mb4"> 
+      <%= t('if_you_liked_jobs_about') %> 
+      <span class="primary-color"> <%= @job.title %>  </span> 
+      <%= t('you_will_also_like') %> 
+    </h3>
+    <div class="boxes-wrapper">
+      <%= render partial: "job", collection: @same_category_jobs %>
+    </div>
+    <div class="has-text-centered">
+      <%= link_to t("show_more_jobs"), jobs_path(by_category: @job.category_id), class: 'button is-rounded primary is-large shadow' %>
+    </div>	
+  </section>
+<% end %>
 
 <% unless current_user&.accepted_terms? %>
   <%= render partial: '/jobs/partials/accept_terms_modal' %>
