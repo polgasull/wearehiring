@@ -57,6 +57,10 @@ class Job < ApplicationRecord
     where(remote_ok: value)
   }
 
+  scope :same_category, -> (job) {
+    where('jobs.category_id = ? AND jobs.id != ?', job.category_id, job.id)
+  }
+
   def title_location_author_reference
     "Empleo de #{title} en #{location} #{job_author} #{reference}"
   end
