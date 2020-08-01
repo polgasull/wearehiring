@@ -424,6 +424,7 @@ en:
   posts: 
     blog: "Blog"
     all_posts: "View all Posts"
+    main_image: "Main image"
     messages: 
       post_created: "Post created successfully"
       post_not_created: "Post was not able to be created"

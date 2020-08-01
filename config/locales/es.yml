@@ -428,6 +428,7 @@ es:
   posts: 
     blog: "Blog"
     all_posts: "Ver todos los Posts"
+    main_image: "Imagen principal"
     messages: 
       post_created: "Post creado satisfactoriamente"
       post_not_created: "No se pudo crear el Post"
