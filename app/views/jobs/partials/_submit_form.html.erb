@@ -36,4 +36,8 @@
   <% end %>
 <% end %>      
 
-<p> <%= @inscriptions_count %> se han inscrito a esta oferta </p>
+<% if @inscriptions_count.zero? %>
+  <p> ¡Sé el primero en aplicar! </p>
+<% else %>
+  <p> <%= @inscriptions_count %> se han inscrito a esta oferta </p>
+<% end %>
