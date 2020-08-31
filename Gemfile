@@ -20,6 +20,7 @@ gem 'kaminari'
 gem "simple_form", ">= 5.0.0"
 gem 'carrierwave', '~> 1.3', '>= 1.3.1'
 gem 'carrierwave-aws'
+gem 'cookies_eu'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'friendly_id', '~> 5.3'
 gem 'font-awesome-sass', '~> 5.8.1'

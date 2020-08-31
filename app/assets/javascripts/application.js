@@ -5,6 +5,7 @@
 //= require social-share-button
 //= require trix
 //= require bulma-extensions
+//= require cookies_eu
 //= require_tree ./global
 
 SITENAME = {
