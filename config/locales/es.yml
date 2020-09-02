@@ -273,7 +273,7 @@ es:
       inscription_not_created: "Algo ha ido mal durante la inscripción"
   payments:
     price: "Precio"
-    monthly: "para 30 días"
+    monthly: "para 60 días"
     enter_credit_card: "Número de tarjeta de crédito o débito"
     previously_card: "Tarjeta usada anteriormente"
     card_brand: "Marca de la tarjeta"

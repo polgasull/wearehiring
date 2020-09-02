@@ -269,7 +269,7 @@ en:
       inscription_not_created: "Something went wrong during your inscription"
   payments:
     price: "Price"
-    monthly: "for 30 days"
+    monthly: "for 60 days"
     enter_credit_card: "Enter credit or debit card"
     previously_card: "Previously used card"
     card_brand: "Card brand"

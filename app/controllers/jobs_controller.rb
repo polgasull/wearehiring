@@ -38,7 +38,7 @@ class JobsController < ApplicationController
     @job = current_user.jobs.build(job_params)
 
     @job.reference = "wah#{DateTime.now.year}#{SecureRandom.hex(3)}"
-    @job.expiry_date = DateTime.now() + 30.days
+    @job.expiry_date = DateTime.now() + 60.days
     
     stripe_process unless current_user.jobs.first.id.blank?
 

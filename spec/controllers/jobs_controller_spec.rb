@@ -17,7 +17,7 @@ RSpec.describe JobsController, type: :controller do
   describe 'GET #show' do
     let(:company_type) { FactoryBot.create(:user_type, :company_type) }
     let(:current_user) { FactoryBot.create(:user, user_type: company_type) }
-    let(:job) { FactoryBot.create(:job, :full_time, :junior, :product, user_id: current_user.id, expiry_date: DateTime.now() + 30.days )}
+    let(:job) { FactoryBot.create(:job, :full_time, :junior, :product, user_id: current_user.id, expiry_date: DateTime.now() + 60.days )}
 
     before do
       sign_in current_user
