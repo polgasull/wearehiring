@@ -14,10 +14,10 @@ Category.where(internal_name: "engineering").first_or_create(name: "Engineering"
 Category.where(internal_name: "sales").first_or_create(name: "Sales", internal_name: "sales")
 Category.where(internal_name: "administrative").first_or_create(name: "Administrative", internal_name: "administrative")
 
-JobType.where(name: "Full-time").first_or_create(name: "Full-time")
-JobType.where(name: "Part-time").first_or_create(name: "Part-time")
-JobType.where(name: "Freelance").first_or_create(name: "Freelance")
-JobType.where(name: "Internship").first_or_create(name: "Internship")
+JobType.where(internal_name: "full_time").first_or_create(name: "Full-time", internal_name: "full_time")
+JobType.where(internal_name: "part_time").first_or_create(name: "Part-time", internal_name: "part_time")
+JobType.where(internal_name: "freelance").first_or_create(name: "Freelance", internal_name: "freelance")
+JobType.where(internal_name: "internship").first_or_create(name: "Internship", internal_name: "internship")
 
 Level.where(internal_name: "junior").first_or_create(name: "Junior", internal_name: "junior")
 Level.where(internal_name: "intermediate").first_or_create(name: "Intermediate", internal_name: "intermediate")

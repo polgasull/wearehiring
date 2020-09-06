@@ -1,0 +1,16 @@
+<%= simple_form_for(level, method: :patch, url: admins_level_path(level.id), html: { multipart: true }) do |f| %>
+  <div class="columns is-vertical-center listrow">
+    <div class="column has-text-centered">
+      <%= level.id %>
+    </div>
+    <div class="column">
+      <%= f.input :name, label: false, input_html: { class: "input" }, wrapper: false, placeholder: t('categories.name') %>
+    </div>
+    <div class="column">
+      <%= level.internal_name %>
+    </div>
+    <div class="column">
+      <%= f.submit t('save'), class: 'button is-info' %>
+    </div>
+  </div>
+<% end %>

@@ -462,3 +462,25 @@ en:
       category_not_updated: "Category was not able to be updated"
       category_deleted: "Category was successfully deleted"
       category_not_deleted: "Category was not able to be deleted"
+  job_types:
+    title: "Tipos de Contrato"
+    name: "Nombre"
+    internal_name: "Identificador"
+    messages:
+      job_type_created: "Job Type created successfully"
+      job_type_not_created: "Job Type was not able to be created"
+      job_type_updated: "Job Type was successfully updated"
+      job_type_not_updated: "Job Type was not able to be updated"
+      job_type_deleted: "Job Type was successfully deleted"
+      job_type_not_deleted: "Job Type was not able to be deleted"
+  levels:
+    title: "Niveles"
+    name: "Nombre"
+    internal_name: "Identificador"
+    messages:
+      level_created: "Level created successfully"
+      level_not_created: "Level was not able to be created"
+      level_updated: "Level was successfully updated"
+      level_not_updated: "Level was not able to be updated"
+      level_deleted: "Level was successfully deleted"
+      level_not_deleted: "Level was not able to be deleted"

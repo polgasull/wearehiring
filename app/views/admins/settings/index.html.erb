@@ -1,19 +1,21 @@
 
-<div class="container mb4">
-  <div class="columns has-text-centered">
-    <div class="column">
-      <p class="title f3"> <%= t('categories.title') %> </p>
+<% %w[categories job_types levels].each do |settings| %>
+  <div class="container mb5">
+    <div class="columns has-text-centered">
+      <div class="column">
+        <p class="title f3"> <%= t("#{settings}.title") %> </p>
+      </div>
     </div>
-  </div>
 
-  <div class="columns has-text-centered listhead">
-    <div class="column"> <%= t('categories.id') %> </div>
-    <div class="column"> <%= t('categories.name') %> </div>
-    <div class="column"> <%= t('categories.internal_name') %> </div>
-    <div class="column"></div>
-  </div>
+    <div class="columns has-text-centered listhead">
+      <div class="column"> <%= t("#{settings}.id") %> </div>
+      <div class="column"> <%= t("#{settings}.name") %> </div>
+      <div class="column"> <%= t("#{settings}.internal_name") %> </div>
+      <div class="column"></div>
+    </div>
 
-  <% @categories.each do |category| %>
-    <%= render partial: '/admins/settings/category', locals: { category: category } %>
-  <% end %>
-</div>
+    <% instance_variable_get("@#{settings}".to_sym).each do |setting| %>
+      <%= render partial: "/admins/settings/#{settings.singularize}", locals: { "#{settings.singularize}": setting } %>
+    <% end %>
+  </div>
+<% end %>

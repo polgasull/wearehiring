@@ -466,3 +466,25 @@ es:
       category_not_updated: "No se pudo actualizar la Categoría"
       category_deleted: "Categoría eliminada satisfactoriamente"
       category_not_deleted: "No se pudo eliminar la Categoría"
+  job_types:
+    title: "Tipos de Contrato"
+    name: "Nombre"
+    internal_name: "Identificador"
+    messages:
+      job_type_created: "Tipo de Contrato creado satisfactoriamente"
+      job_type_not_created: "No se pudo crear el Tipo de Contrato"
+      job_type_updated: "Tipo de Contrato actualizado satisfactoriamente"
+      job_type_not_updated: "No se pudo actualizar el Tipo de Contrato"
+      job_type_deleted: "Tipo de Contrato eliminado satisfactoriamente"
+      job_type_not_deleted: "No se pudo eliminar el Tipo de Contrato"
+  levels:
+    title: "Niveles"
+    name: "Nombre"
+    internal_name: "Identificador"
+    messages:
+      level_created: "Nivel creado satisfactoriamente"
+      level_not_created: "No se pudo crear el Nivel"
+      level_updated: "Nivel actualizado satisfactoriamente"
+      level_not_updated: "No se pudo actualizar el Nivel"
+      level_deleted: "Nivel eliminado satisfactoriamente"
+      level_not_deleted: "No se pudo eliminar el Nivel"

@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     end
     resources :settings, only: [:index]
     resources :categories, only: [:update]
+    resources :job_types, only: [:update]
+    resources :levels, only: [:update]
   end
 
   resources :jobs, path: 'ofertas-empleo-digital' do
