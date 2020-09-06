@@ -7,12 +7,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Category.where(name: "Web development").first_or_create(name: "Web development")
-Category.where(name: "Design").first_or_create(name: "Design")
-Category.where(name: "Product").first_or_create(name: "Product")
-Category.where(name: "Engineering").first_or_create(name: "Engineering")
-Category.where(name: "Sales").first_or_create(name: "Sales")
-Category.where(name: "Administrative").first_or_create(name: "Administrative")
+Category.where(internal_name: "web_development").first_or_create(name: "Web development", internal_name: "web_development")
+Category.where(internal_name: "design").first_or_create(name: "Design", internal_name: "design")
+Category.where(internal_name: "product").first_or_create(name: "Product", internal_name: "product")
+Category.where(internal_name: "engineering").first_or_create(name: "Engineering", internal_name: "engineering")
+Category.where(internal_name: "sales").first_or_create(name: "Sales", internal_name: "sales")
+Category.where(internal_name: "administrative").first_or_create(name: "Administrative", internal_name: "administrative")
 
 JobType.where(name: "Full-time").first_or_create(name: "Full-time")
 JobType.where(name: "Part-time").first_or_create(name: "Part-time")

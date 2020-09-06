@@ -1,0 +1,16 @@
+<%= simple_form_for(category, method: :patch, url: admins_category_path(category.id), html: { multipart: true }) do |f| %>
+  <div class="columns is-vertical-center listrow">
+    <div class="column has-text-centered">
+      <%= category.id %>
+    </div>
+    <div class="column">
+      <%= f.input :name, label: false, input_html: { class: "input" }, wrapper: false, placeholder: t('categories.name') %>
+    </div>
+    <div class="column">
+      <%= category.internal_name %>
+    </div>
+    <div class="column">
+      <%= f.submit t('save'), class: 'button is-info' %>
+    </div>
+  </div>
+<% end %>

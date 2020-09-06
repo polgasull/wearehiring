@@ -455,3 +455,14 @@ es:
     leave_a_comment: "Dejar un comentario"
     post: "Publicar comentario"
   no_more_records: "No hay más registros"
+  categories:
+    title: "Categorias"
+    name: "Nombre"
+    internal_name: "Identificador"
+    messages:
+      category_created: "Categoría creada satisfactoriamente"
+      category_not_created: "No se pudo crear la Categoría"
+      category_updated: "Categoría actualizada satisfactoriamente"
+      category_not_updated: "No se pudo actualizar la Categoría"
+      category_deleted: "Categoría eliminada satisfactoriamente"
+      category_not_deleted: "No se pudo eliminar la Categoría"

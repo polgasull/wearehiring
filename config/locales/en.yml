@@ -451,3 +451,14 @@ en:
     leave_a_comment: "Leave a comment"
     post: "Post comment"
   no_more_records: "There are no more records"
+  categories:
+    title: "Categories"
+    name: "Name"
+    internal_name: "Internal name"
+    messages:
+      category_created: "Category created successfully"
+      category_not_created: "Category was not able to be created"
+      category_updated: "Category was successfully updated"
+      category_not_updated: "Category was not able to be updated"
+      category_deleted: "Category was successfully deleted"
+      category_not_deleted: "Category was not able to be deleted"

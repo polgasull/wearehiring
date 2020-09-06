@@ -1,0 +1,19 @@
+
+<div class="container mb4">
+  <div class="columns has-text-centered">
+    <div class="column">
+      <p class="title f3"> <%= t('categories.title') %> </p>
+    </div>
+  </div>
+
+  <div class="columns has-text-centered listhead">
+    <div class="column"> <%= t('categories.id') %> </div>
+    <div class="column"> <%= t('categories.name') %> </div>
+    <div class="column"> <%= t('categories.internal_name') %> </div>
+    <div class="column"></div>
+  </div>
+
+  <% @categories.each do |category| %>
+    <%= render partial: '/admins/configs/category', locals: { category: category } %>
+  <% end %>
+</div>

@@ -10,7 +10,9 @@ Rails.application.routes.draw do
       member do
         get :inscriptions
       end
-    end 
+    end
+    resources :configs, only: [:index]
+    resources :categories, only: [:update]
   end
 
   resources :jobs, path: 'ofertas-empleo-digital' do
