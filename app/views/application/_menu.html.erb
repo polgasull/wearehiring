@@ -62,6 +62,11 @@
 						class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(admins_users_path)}" %>		
 			</div>
 			<div class="navbar-brand is-vertical-center">
+				<%= link_to "Settings", 
+						admins_settings_path, 
+						class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(admins_settings_path)}" %>		
+			</div>
+			<div class="navbar-brand is-vertical-center">
 				<%= link_to "Blog", 
 						posts_path, 
 						class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(posts_path)}" %>		
