@@ -7,6 +7,7 @@ class User < ApplicationRecord
   belongs_to :user_type
   has_many :jobs
   has_many :inscriptions
+  mount_uploader :picture_url, AvatarUploader
   after_create :send_welcome_mail unless Rails.env.test?
 
   %w[candidate company admin].each do |user_type_name|

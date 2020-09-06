@@ -2,98 +2,26 @@
 
   <div class="container">
     <div class="columns is-centered">
-      <div class="column is-6">
+      <div class="column is-8">
 
-      <h2 class="title is-2"> <%= current_user.is_company? ? t('edit_password') : t('profile') %> </h2>
+      <h2 class="title is-2"> <%= current_user.is_company? ? t('edit_password') : t('my_profile') %> </h2>
       <% if current_user.is_admin? %>
         <h3 class="title is-4"> Admin Account </h3>
       <% end %>
-      <div class="columns">
-        <% if current_user.is_candidate? %>
-        <div class="column is-4">
-          <img src="<%= current_user.picture_url %>" width="150" height="150" alt="Imagen usuario del perfil de Linkedin | Wearehiring.io">
-        </div>
-        <% end %>
-        <div class="column is-8">
-          <div class='has-text-weight-bold mb2'><%= t('your_email') %></div>
-          <div class="mb2"> <%= current_user.email %> </div>
-          <div class='has-text-weight-bold mb2'><%= t('your_name') %></div>
-          <div class="mb2"> <%= current_user.name %> </div>
-          <% if current_user.is_candidate? %>
-            <%= simple_form_for(@user, method: :patch, url: user_path(@user), html: { multipart: true }) do |f| %>
-              <div class='has-text-weight-bold mb2'><%= t('users.phone') %></div>
-            <% if current_user.phone.blank? %>
-              <span class="f6 primary-color"> Añade tu <strong class="primary-color"> teléfono </strong> y aumenta las posibilidades de ser contactado</span>
-            <% end %>              
-            <div class="field">
-                <div class="control">
-                  <%= f.input :phone, 
-                    label: false,
-                    hint: "Visible solo para las empresas dónde apliques", 
-                    input_html: { class: "input" }, 
-                    wrapper: false, 
-                    placeholder: "+34 666555444" %>
-                </div>
-              </div>
-              <div class='has-text-weight-bold mb2'><%= t('users.profile_url') %></div>
-              <div class="field">
-                <div class="control">
-                  <%= f.input :profile_url, 
-                    label: false,
-                    input_html: { class: "input" }, 
-                    wrapper: false, 
-                    placeholder: "https://www.linkedin.com/in/your-profile-url/" %>
-                </div>
-              </div>
-              <div class='has-text-weight-bold mb2'><%= t('users.current_position') %></div>
-              <div class="field">
-                <div class="control">
-                  <%= f.input :current_position, 
-                    label: false,
-                    input_html: { class: "input" }, 
-                    wrapper: false, 
-                    placeholder: "Marketing digital" %>
-                </div>
-              </div>
-              <%= f.button :submit, t('save'), class:"button is-info" %>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-        
+
       <% if current_user.is_candidate? %>
-        Logged with <%= icon('fab', 'linkedin') %>
-      <% else %>
-        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-          <%= f.error_notification %>
-
-            <div class="field">
-              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-                <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-              <% end %>
-            </div>
-
-            <div class="field">
-              <div class="control">
-              <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
-              </div>
-            </div>
-
-            <div class="field">
-              <div class="control">
-              <%= f.input :password_confirmation, required: false, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
-              </div>
-            </div>
-
-            <div class="field">
-              <div class="control">
-                <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
-              </div>
-            </div>
-
-            <%= f.button :submit, t('save'), class:"button primary" %>
-        <% end %>
+        <%= render 'candidate_form' %>
+      <% end %>
+        
+      <% unless current_user.is_candidate? %>
+        <%= render 'form' %>
       <% end %>
     </div>
   </div>
 </section>
+
+<%= content_for :footer do %>
+
+  <%= javascript_include_tag "helpers/image_loader.js" %>
+
+<% end %>

@@ -1,0 +1,65 @@
+<%= simple_form_for(@user, method: :patch, url: user_path(@user), html: { multipart: true }) do |f| %>
+  <div class="columns">
+    <div class="column">
+      <img 
+        src="<%= current_user.picture_url %>" 
+        width="150" 
+        height="150"
+        class="rounded-image"
+        alt="Imagen usuario del perfil de Linkedin | Wearehiring.io">
+      <div class="file is-primary mt3">
+        <label class="file-label">
+          <%= f.input :picture_url, as: :file, required: false, input_html: { class: "file-input load-image" }, label: false, wrapper: false %>
+          <span class="file-cta">
+            <span class="file-icon"> <%= icon('fas', 'upload') %> </span>
+            <span class="file-label"> Cambiar imagen... </span>
+          </span>
+        </label>
+      </div>
+      <small> Tamaño mínimo recomendado 200x200 </small>
+      <output id="list"></output>
+    </div>
+    <div class="column">
+      <p class="title f3"> <%= current_user.name %> </p>
+      <p> <%= current_user.email %> </p>
+      <p class="mt4">
+        Logged with <%= icon('fab', 'linkedin') %>
+      </p>
+    </div>
+  </div>
+  <div class='has-text-weight-bold mb2'><%= t('users.phone') %></div>
+  <% if current_user.phone.blank? %>
+    <span class="f6 primary-color"> Añade tu <strong class="primary-color"> teléfono </strong> y aumenta las posibilidades de ser contactado </span>
+  <% end %>
+  <div class="field">
+    <div class="control">
+      <%= f.input :phone, 
+        label: false,
+        hint: "Visible solo para las empresas dónde apliques", 
+        input_html: { class: "input" }, 
+        wrapper: false, 
+        placeholder: "+34 666555444" %>
+    </div>
+  </div>
+  <div class='has-text-weight-bold mb2'><%= t('users.profile_url') %></div>
+  <div class="field">
+    <div class="control">
+      <%= f.input :profile_url, 
+        label: false,
+        input_html: { class: "input" }, 
+        wrapper: false, 
+        placeholder: "https://www.linkedin.com/in/your-profile-url/" %>
+    </div>
+  </div>
+  <div class='has-text-weight-bold mb2'><%= t('users.current_position') %></div>
+  <div class="field">
+    <div class="control">
+      <%= f.input :current_position, 
+        label: false,
+        input_html: { class: "input" }, 
+        wrapper: false, 
+        placeholder: "Marketing digital" %>
+    </div>
+  </div>
+  <%= f.button :submit, t('save'), class:"button is-info" %>
+<% end %>
