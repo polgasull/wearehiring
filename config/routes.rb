@@ -11,7 +11,7 @@ Rails.application.routes.draw do
         get :inscriptions
       end
     end
-    resources :configs, only: [:index]
+    resources :settings, only: [:index]
     resources :categories, only: [:update]
   end
 
