@@ -130,26 +130,8 @@
       </div>    
     </div>
   </div>
-  
+
   <div class="columns">
-    <div class="column is-one-third-desktop">
-      <div class="field">
-        <div class="control">
-          <label class="label"> 
-            <abbr title="required">*</abbr>
-            <%= t('category') %> 
-          </label>
-          <div class="control has-icons-left">
-            <span class="select">
-              <%= f.input_field :category_id, collection: Category.all, promt: "Select a Category", required: true %>
-            </span>
-            <span class="icon is-small is-left">
-              <%= icon('fas', 'globe') %>
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="column is-one-third-desktop">
       <div class="field">
         <div class="control">
@@ -164,6 +146,27 @@
             <span class="icon is-small is-left">
               <%= icon('fas', 'globe') %>
             </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="columns">
+    <div class="column">
+      <div class="field">
+        <div class="control">
+          <label class="label"> 
+            <abbr title="required">*</abbr>
+            <%= t('category') %> 
+          </label>
+          <div class="control is-flex wrap mt3">
+            <% Category.all.each do |category| %>
+              <div class="ma3 radio-collection">
+                <%= f.radio_button :category_id, category.id %>
+                <label for="job_category_id_<%=category.id%>"> <%= category.name %> </label>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>

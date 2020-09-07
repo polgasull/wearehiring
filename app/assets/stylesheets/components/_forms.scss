@@ -41,3 +41,28 @@
 .switch[type=checkbox]:checked + label:before {
 	background-color: $red;
 }
+
+.radio-collection {
+
+	input[type="radio"] {
+		display: none;
+	}
+
+	label {
+		padding: 10px;
+		margin: 15px;
+		border: 1px solid #ccc;
+		border-radius: 6px;
+		cursor: pointer;
+
+		&:hover {
+			border: 1px solid $primary;
+			color: $primary;
+		}
+	}
+
+	input[type="radio"]:checked + label {
+		background-color: $primary;
+		color: $white;
+	}
+}
