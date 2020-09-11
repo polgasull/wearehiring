@@ -4,6 +4,26 @@
       <div class="column"> 
         <p> Empresas: <%= @companies %> </p>
         <p> Candidatos: <%= @candidates %> </p>
+        <%= form_for admins_users_path, method: :get, html: {class: "mt3"} do |f| %>
+          <div class="columns is-search is-vertical-center">
+            <div class="column">
+              <input 
+                type="text" 
+                class="input" 
+                placeholder="<%=t('search')%>" 
+                name="search_users" 
+                value="<%= params[:search_users] ? params[:search_users] : '' %>">
+            </div>
+            <div class="select">
+              <%= select_tag :by_user_type, 
+                options_from_collection_for_select(UserType.all, :id, :name, params[:by_user_type].to_i), 
+                :include_blank => t('select.user_type') %>
+            </div>
+            <div class="column has-text-left">
+              <%= f.submit t('search'), class: "button is-dark" %>
+            </div>
+          </div>
+        <% end %>
       </div>
       <div class="column has-text-right">
         <%= link_to admins_users_path(format: :csv), class: 'button primary pl3' do %>

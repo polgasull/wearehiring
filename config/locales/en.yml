@@ -349,6 +349,7 @@ en:
   website: "Company Website"
   job_description: "Job description"
   select: 
+    user_type: "Tipo de Usuario"
     job_type: "By Job type"
     category: "By Category"
     category: "By Level"

@@ -354,6 +354,7 @@ es:
   job_description: "Descripción de la oferta"
   select: 
     job_type: "Por Jornada"
+    user_type: "Tipo de Usuario"
     category: "Por Categoría"
     level: "Por Nivel"
   already_inscribed: "Ya estás inscrito"
