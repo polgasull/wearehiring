@@ -1,12 +1,15 @@
 <%= simple_form_for(@user, method: :patch, url: user_path(@user), html: { multipart: true }) do |f| %>
   <div class="columns">
     <div class="column">
-      <img 
-        src="<%= current_user.picture_url %>" 
-        width="150" 
-        height="150"
-        class="rounded-image"
-        alt="Imagen usuario del perfil de Linkedin | Wearehiring.io">
+      <% if !current_user.picture_url.file.nil? %>
+        <%= image_tag(current_user.picture_url, 
+            alt: "Imagen usuario del perfil de Linkedin | Wearehiring.io",
+            class: 'rounded-img',
+            height: 150,
+            width: 159) %>
+      <% else %>
+        <%= icon('far', 'user-circle', style: 'font-size: 100px') %>
+      <% end %>
       <div class="file is-primary mt3">
         <label class="file-label">
           <%= f.input :picture_url, as: :file, required: false, input_html: { class: "file-input load-image" }, label: false, wrapper: false %>
