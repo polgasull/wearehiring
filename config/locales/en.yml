@@ -485,3 +485,4 @@ en:
       level_not_updated: "Level was not able to be updated"
       level_deleted: "Level was successfully deleted"
       level_not_deleted: "Level was not able to be deleted"
+  no_inscriptions_yet: "No inscriptions yet"

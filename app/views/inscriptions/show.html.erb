@@ -12,11 +12,13 @@
       </div>
     </div>
     <div class="columns">
-      <div class="column is-3-desktop">
-        <%= link_to job_inscriptions_path(format: "xlsx"), class: 'button is-success pl3' do %>
-          <%= icon('fas', 'file-download pr2') %> <%= t('download_candidates_excel') %>
-        <% end %>
-      </div>
+      <% if @inscriptions.any? %>
+        <div class="column is-3-desktop">
+          <%= link_to job_inscriptions_path(format: "xlsx"), class: 'button is-success pl3' do %>
+            <%= icon('fas', 'file-download pr2') %> <%= t('download_candidates_excel') %>
+          <% end %>
+        </div>
+      <% end %>
       <div class="column is-vertical-center">
         <%= link_to t('show_post'), @job, class: 'is-normal-link' %>
       </div> 
@@ -50,7 +52,14 @@
       </div>
     </div>
 
-    <%= render partial: 'inscription', collection: @inscriptions, as: :inscription %>
+    <% if @inscriptions_count.zero? %>
+      <div class="has-text-centered mt4">
+        <p> <%= t('no_inscriptions_yet') %> </p>
+        <%= image_tag(asset_path('empty.svg'), width: 350, height: 350) %>
+      </div>
+    <% else %>
+      <%= render partial: 'inscription', collection: @inscriptions, as: :inscription %>
+    <% end %>
   </div>
 </section>
 

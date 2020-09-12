@@ -489,3 +489,4 @@ es:
       level_not_updated: "No se pudo actualizar el Nivel"
       level_deleted: "Nivel eliminado satisfactoriamente"
       level_not_deleted: "No se pudo eliminar el Nivel"
+  no_inscriptions_yet: "Aún hay candidatos"
