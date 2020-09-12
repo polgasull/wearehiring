@@ -23,6 +23,16 @@
 			background-color: darken($primary, 10%);
 		}
 	}
+
+	&.linkedin {
+		background-color: #0072b1;
+		border-color: #0072b1;
+		color: $white;
+
+		&:hover {
+			background-color: darken(#0072b1, 10%);
+		}
+	}
 }
 
 .input {
