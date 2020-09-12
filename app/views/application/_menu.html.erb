@@ -76,6 +76,9 @@
 			<div class="navbar-brand is-vertical-center">
 				<%= link_to t('my_profile'), edit_user_registration_path, 
 						class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(edit_user_registration_path) }" %> 
+				<% if !profile_is_completed(current_user) %>
+					<span class='tag is-danger'> Sin completar </span>
+				<% end %>
 			</div>
 			<div class="navbar-brand has-text-left">
 				<div class="dropdown navbar-item is-right" id="profileDropdown">
