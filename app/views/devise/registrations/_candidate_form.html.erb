@@ -1,14 +1,14 @@
 <%= simple_form_for(@user, method: :patch, url: user_path(@user), html: { multipart: true }) do |f| %>
   <div class="columns">
     <div class="column">
-      <% if !current_user.picture_url.file.nil? %>
-        <%= image_tag(current_user.picture_url, 
-            alt: "Imagen usuario del perfil de Linkedin | Wearehiring.io",
-            class: 'rounded-img',
-            height: 150,
-            width: 159) %>
-      <% else %>
+      <% if current_user.picture_url.file.nil? %>
         <%= icon('far', 'user-circle', style: 'font-size: 100px') %>
+      <% else %>
+        <%= image_tag(current_user.picture_url, 
+          alt: "Imagen usuario del perfil de Linkedin | Wearehiring.io",
+          class: 'rounded-img',
+          height: 150,
+          width: 159) %>
       <% end %>
       <div class="file is-primary mt3">
         <label class="file-label">

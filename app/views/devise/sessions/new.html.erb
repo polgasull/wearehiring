@@ -1,41 +1,92 @@
-<section class="section main-section">
-	<div class="container">
-		<div class="columns is-centered">
-			<div class="column is-4">
+<div class="section main-section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-5">
+        <h2 class="title"> 
+					<span> <%= t('company_section_title') %> </span> 
+					<span class="has-text-success"> <%= t('free').upcase %> </span> <br>
+          <span> <%= t('company_section_subtitle') %>
+        </h2>
+        <p> Encuenta al mejor talento digital en una sola plataforma </p>
+        <div class="mt3">
+          <p> <%= icon('fas', 'check') %> Notificación a tiempo real </p>
+          <p> <%= icon('fas', 'check') %> Descarga y ordena tus candidatos </p>
+          <p> <%= icon('fas', 'check') %> Haz crecer tu empresa </p>
+        </div>
+        <div class="mt4 has-text-centered">
+          <img 
+            src="<%=asset_path('publicidad-digital.svg')%>"
+            width="180"
+            height="180"
+            alt="Digital Pros para todos | Wearehiring.io"
+            data-aos="fade-up" 
+            data-aos-duration="1500">
+        </div>
+      </div>
+      <div class="column is-1"></div>
+      <div class="column is-4">
 				<h2 class="title is-2"> <%= t('company_access') %> </h2>
-				<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+					<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-				  <div class="field">
-				  	<div class="control">
-				    	<%= f.input :email, required: false, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
-				    </div>
-				  </div>
-
-				  <div class="field">
-				  	<div class="control">
-				    <%= f.input :password, required: false, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
+						<div class="field">
+							<div class="control">
+								<%= f.input :email, required: false, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
+							</div>
 						</div>
-					</div>
 
-					<div class="field">
-				  	<div class="control">
-				    <%= f.input :remember_me, wrapper: false, as: :boolean if devise_mapping.rememberable? %>
-				  	</div>
-					</div>
-
-					<div class="field">
-						<div class="control has-text-centered">
-							<%= f.button :submit, t('login'), class:"button is-primary is-medium is-rounded mt3" %>
+						<div class="field">
+							<div class="control">
+							<%= f.input :password, required: false, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
+							</div>
 						</div>
-					</div>
-				<% end %>
-				<br/>
-				<div class="field mt4">
-					<div class="control has-text-centered">	
-						<%= render "devise/shared/links" %>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
+
+						<div class="field">
+							<div class="control">
+							<%= f.input :remember_me, wrapper: false, as: :boolean if devise_mapping.rememberable? %>
+							</div>
+						</div>
+
+						<div class="field">
+							<div class="control has-text-centered">
+								<%= f.button :submit, t('login'), class:"button is-primary is-medium is-rounded mt3" %>
+							</div>
+						</div>
+					<% end %>
+
+        <div class="field mt4">
+          <div class="control has-text-centered">
+            <%= render "devise/shared/links" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="columns">
+      <div class="column">
+        <section class="section has-text-centered">
+          <div class="container">
+            <div class="columns">
+              <div class="column is-three-fifths is-offset-one-fifth">
+                <h2 class="title"> Colaboramos con </h2>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="section">
+          <div class="container">
+            <div class="columns is-vcentered">
+              <%= render '/home/partners', animation: false %>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= content_for :footer do %>
+
+	<script>
+	  AOS.init();
+	</script>
+
+<% end %>
