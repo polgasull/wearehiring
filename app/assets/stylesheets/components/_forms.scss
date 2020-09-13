@@ -76,3 +76,11 @@
 		color: $white;
 	}
 }
+
+.dot-notification {
+	height: 12px;
+	width: 12px;
+	background-color: $primary;
+	border-radius: 50%;
+	display: inline-block;
+}

@@ -30,7 +30,10 @@
       </p>
     </div>
   </div>
-  <div class='has-text-weight-bold mb2'><%= t('users.phone') %></div>
+  <div class='has-text-weight-bold mb2'>
+    <%= t('users.phone') %>
+    <%= content_tag(:span, nil, class: 'dot-notification') if current_user.phone.blank? %>
+  </div>
   <% if current_user.phone.blank? %>
     <span class="f6 primary-color"> Añade tu <strong class="primary-color"> teléfono </strong> y aumenta las posibilidades de ser contactado </span>
   <% end %>
@@ -44,7 +47,10 @@
         placeholder: "+34 666555444" %>
     </div>
   </div>
-  <div class='has-text-weight-bold mb2'><%= t('users.profile_url') %></div>
+  <div class='has-text-weight-bold mb2'>
+    <%= t('users.profile_url') %>
+    <%= content_tag(:span, nil, class: 'dot-notification') if current_user.profile_url.blank? %>
+  </div>
   <div class="field">
     <div class="control">
       <%= f.input :profile_url, 
@@ -54,7 +60,10 @@
         placeholder: "https://www.linkedin.com/in/your-profile-url/" %>
     </div>
   </div>
-  <div class='has-text-weight-bold mb2'><%= t('users.current_position') %></div>
+  <div class='has-text-weight-bold mb2'>
+    <%= t('users.current_position') %>
+    <%= content_tag(:span, nil, class: 'dot-notification') if current_user.current_position.blank? %>
+  </div>
   <div class="field">
     <div class="control">
       <%= f.input :current_position, 
