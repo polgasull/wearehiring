@@ -1,21 +1,21 @@
-<% if !current_user&.is_company? && !current_user&.accepted_terms? %>
-<div class="mb2">
-  <div class="accept-terms-message"></div>
-  <label for="legal">
-    <abbr title="required">*</abbr>
-    <%= check_box_tag "legal", 'accepted_terms', false, class: 'terms_checkbox' %>
-    <small class="accept-terms-text pl2">
-      Estoy de acuerdo con la
-      <%= link_to 'política de privacidad', privacy_policy_path, target: '_blank' %>, 
-      <%= link_to 'aviso legal', legal_terms_path, target: '_blank' %> y 
-      <%= link_to 'política de cookies', cookies_policy_path, target: '_blank' %>
-      de Wearehiring
-    </small>
-  </label>
-</div>
+<% if !current_user&.accepted_terms? && !current_user&.is_company? && !current_user&.is_ambassador? %>
+  <div class="mb2">
+    <div class="accept-terms-message"></div>
+    <label for="legal">
+      <abbr title="required">*</abbr>
+      <%= check_box_tag "legal", 'accepted_terms', false, class: 'terms_checkbox' %>
+      <small class="accept-terms-text pl2">
+        Estoy de acuerdo con la
+        <%= link_to 'política de privacidad', privacy_policy_path, target: '_blank' %>, 
+        <%= link_to 'aviso legal', legal_terms_path, target: '_blank' %> y 
+        <%= link_to 'política de cookies', cookies_policy_path, target: '_blank' %>
+        de Wearehiring
+      </small>
+    </label>
+  </div>
 <% end %>
 
-<% unless user_signed_in? || current_user&.is_company? %>
+<% if !user_signed_in? && !current_user&.is_company? && !current_user&.is_ambassador? %>
   <%= link_to t(cta_text), 
               user_linkedin_omniauth_authorize_path(job_id: job.id), 
               class: "button is-rounded primary is-large shadow mv3 #{'submit-inscription' unless current_user&.accepted_terms?}" %>

@@ -31,7 +31,7 @@
             class: "navbar-item text-uppercase #{ 'active' if current_page?(inscriptions_user_path(current_user)) }" %>
         </div>
       <% end %>  
-      <% if current_user.is_company? %>
+      <% if current_user.is_company? || current_user.is_ambassador? %>
         <div class="navbar-brand">
           <%= link_to t('my_jobs'), jobs_user_path(current_user), 
           class: "navbar-item text-uppercase #{ 'active' if current_page?(jobs_user_path(current_user)) }" %>
@@ -40,7 +40,7 @@
       <div class="navbar-brand">
         <%= link_to edit_user_registration_path, 
         class: "navbar-item text-uppercase #{ 'active' if current_page?(edit_user_registration_path) }" do %> 
-          <span> <%= current_user.is_company? ? t('edit_password') : t('profile') %> </span>
+          <span> <%= current_user.is_company? || current_user.is_ambassador? ? t('edit_password') : t('profile') %> </span>
         <% end %>
       </div>
       <% if current_user.is_admin? %>

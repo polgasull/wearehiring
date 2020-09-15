@@ -3,7 +3,7 @@ class JobsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_job, only: [:show, :edit, :update]
   before_action :validate_is_job_owner, only: [:edit, :update]
-  before_action :validate_is_company_or_admin!, except: [:index, :show, :thanks]
+  before_action :validate_is_company_ambassador_or_admin!, except: [:index, :show, :thanks]
   before_action :validate_is_expired!, only: [:show]
 
   def index
@@ -40,7 +40,9 @@ class JobsController < ApplicationController
     @job.reference = "wah#{DateTime.now.year}#{SecureRandom.hex(3)}"
     @job.expiry_date = DateTime.now() + 60.days
     
-    stripe_process unless current_user.jobs.first.id.blank?
+    if !current_user.is_ambassador? && !current_user.jobs.first.id.blank?
+      stripe_process
+    end
 
     if @job.save
       ModelMailer.new_job(current_user, @job).deliver

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:candidate_access]
   before_action :set_user, except: [:candidate_access]
-  before_action :validate_is_company!, only: [:jobs]
+  before_action :validate_is_company_or_ambassador!, only: [:jobs]
   before_action :validate_is_candidate!, only: [:inscriptions]
 
   def jobs

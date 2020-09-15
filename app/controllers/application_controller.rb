@@ -7,18 +7,24 @@ class ApplicationController < ActionController::Base
   # def validate_is_candidate!
   # def validate_is_company!
   # def validate_is_admin!
-  %w[candidate company admin].each do |user_type_name|
+  %w[candidate company admin ambassador].each do |user_type_name|
     define_method "validate_is_#{user_type_name}!" do
       redirect_to root_path unless current_user&.send("is_#{user_type_name}?")
     end
   end
 
-  def validate_is_company_or_admin!
-    redirect_to root_path if !current_user.is_company? && !current_user.is_admin?
+  def validate_is_company_ambassador_or_admin!
+    if !current_user.is_company? && !current_user.is_ambassador? && !current_user.is_admin?
+      redirect_to root_path
+    end
   end
 
   def validate_is_candidate_or_admin!
     redirect_to root_path if !current_user.is_company? && !current_user.is_admin?
+  end
+
+  def validate_is_company_or_ambassador!
+    redirect_to root_path if !current_user.is_company? && !current_user.is_ambassador?
   end
 
   protected

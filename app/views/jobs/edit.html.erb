@@ -1,13 +1,7 @@
 <section class="section main-section">
   <div class="container">
-    <%= link_to job_path(@job), class: "button" do %>
-      <span class="icon is-small">
-        <%= icon('fas', 'arrow-left') %>
-      </span>
-      <span> <%= t('back') %> </span>
-    <% end %>
-    <%= link_to job_path(@job), class: "button" do %>
-      <span> <%= t('show') %> </span>
+    <%= link_to job_path(@job), class: "button is-info" do %>
+      <span> Ver publicación </span>
     <% end %>
   </div>
   <div class="mv4 is-mobile-only"></div>
@@ -15,7 +9,7 @@
     <div class="columns">
       <div class="column is-8 is-offset-2">
         <h1 class="title is-3"> <%= t('jobs.edit_job') %> </h1>
-        <%= render 'form', job: @job %>
+        <%= render 'form', job: @job, edit_page: true %>
       </div>
     </div>
   </div>

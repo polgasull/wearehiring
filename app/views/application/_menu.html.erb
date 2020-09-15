@@ -13,22 +13,22 @@
 			</div>
 		<% end %>
 		<% unless user_signed_in? %>
-		<div class="navbar-brand">
-			<div class="navbar-item">
-				<%= link_to t('candidate_access'), 
-					candidate_access_path,
-					class: "text-uppercase f6 button is-rounded primary" %>
+			<div class="navbar-brand">
+				<div class="navbar-item">
+					<%= link_to t('candidate_access'), 
+						candidate_access_path,
+						class: "text-uppercase f6 button is-rounded primary" %>
+				</div>
 			</div>
-		</div>
-		<div class="navbar-brand">
-			<div class="navbar-item">
-				<%= link_to t('company_access'), 
-					new_user_session_path, 
-					class: "text-uppercase f6 button is-rounded is-primary" %>
+			<div class="navbar-brand">
+				<div class="navbar-item">
+					<%= link_to t('company_access'), 
+						new_user_session_path, 
+						class: "text-uppercase f6 button is-rounded is-primary" %>
+				</div>
 			</div>
-		</div>
 		<% end %>
-		<% if current_user&.is_company? %>
+		<% if current_user&.is_company? || current_user&.is_ambassador? %>
 			<div class="navbar-brand is-vertical-center has-text-weight-bold ml3 f2">|</div>
 			<div class="navbar-brand is-vertical-center">
 				<%= link_to t('my_jobs'), 
