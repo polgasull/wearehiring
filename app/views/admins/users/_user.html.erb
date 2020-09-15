@@ -11,29 +11,41 @@
     <%= user.name %>
   </div>
   <div class="column">
-    <%= f.input :phone, label: false, input_html: { class: "input f7" }, wrapper: false, placeholder: t('users.phone') %>
+    <%= f.input :phone, 
+        label: false, 
+        input_html: { class: "input f7" }, 
+        wrapper: false, 
+        placeholder: t('users.phone') if user.is_candidate? %>
   </div>
   <div class="column is-2-desktop">
     <%= user.email %>
   </div>
   <div class="column is-hidden-mobile">
-    <% if user.is_candidate? %>
-    <%= f.input :current_position, label: false, input_html: { class: "input f7" }, wrapper: false, placeholder: t('users.position') %>
-    <% end %>
+    <%= f.input :current_position, 
+        label: false, 
+        input_html: { class: "input f7" }, 
+        wrapper: false, 
+        placeholder: t('users.position') if user.is_candidate? %>
   </div>
   <div class="column is-hidden-mobile">
-    <% if user.is_candidate? %>
-    <%= f.input :profile_url, label: false, input_html: { class: "input f7" }, wrapper: false, placeholder: t('users.profile_url') %>
-    <% end %>
+      <%= f.input :profile_url, 
+          label: false, 
+          input_html: { class: "input f7" }, 
+          wrapper: false, 
+          placeholder: t('users.profile_url') if user.is_candidate? %>
   </div>
   <div class="column is-hidden-mobile">
-    <%= user.user_type.name %>
+    <% if user.is_candidate? || user.is_admin? %>
+      <%= user.user_type.name %>
+    <% else %>
+      <%= f.select(:user_type_id, UserType.where(id: [2,4]).collect {|u| [ u.name, u.id ] }, { include_blank: false }) %>
+    <% end %>
   </div>
   <div class="column">
     <%= link_to user.inscriptions.count, inscriptions_admins_user_path(user.id), target: "_blank" if user.is_candidate? %>
   </div>
   <div class="column is-1 is-hidden-mobile">
-    <%= f.submit t('save'), class: 'button is-info f6' if user.is_candidate? %>
+    <%= f.submit t('save'), class: 'button is-info f6' %>
   </div>
 </div>
 
