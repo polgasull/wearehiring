@@ -87,11 +87,8 @@
 
 $heart: "\f004";
 $openheart: "\f08a";
-$star: "\f005";
-$openstar: "\f006";
   
-.heart-checkbox-liked {
-
+.checkbox-heart {
   visibility: hidden;
   
   & + label {
@@ -101,11 +98,14 @@ $openstar: "\f006";
 	}
 	
   &:checked + label:before {    
+		cursor: pointer;
     content: $heart;
-    color: $primary;
+		color: $primary;
+		font-size: 30px;
 	}
 	
   & + label:before {
+		cursor: pointer;
 		width: 1.05*30px;
 		height: 30px;
 		content: "";
@@ -114,42 +114,13 @@ $openstar: "\f006";
 		font-family: FontAwesome;
 		content: $openheart;
     transition: all 0.3s;
-    color: #888;
+		color: #888;
+		font-size: 30px;
 	}
 	
   & + label:hover:before {
-    transform: scale(1.2);
-  }
-}
-
-.heart-checkbox-finalist {
-
-  visibility: hidden;
-  
-  & + label {
-		user-select: none;
-    padding-left: 0.5*30px;
-    transition: all 0.2s;
-	}
-	
-  &:checked + label:before {    
-    content: $star;
-    color: $primary;
-	}
-	
-  & + label:before {
-		width: 1.05*30px;
-		height: 30px;
-		content: "";
-		position: absolute;
-		margin-left: -1.6*15px;
-		font-family: FontAwesome;
-		content: $openstar;
-    transition: all 0.3s;
-    color: #888;
-	}
-	
-  & + label:hover:before {
-    transform: scale(1.2);
+		transform: scale(1.2);
+		color: $primary;
+		content: $heart;
   }
 }

@@ -1,39 +1,39 @@
-<div class="columns listrow is-mobile is-vertical-center">
-  <div class="column is-1 is-hidden-touch">
-    <%= inscription_counter + 1 %>
-  </div>
-  <div class="column is-hidden-touch">
-    <%= image_tag(inscription.user.picture_url, size: 50, class: 'rounded-img') %>
-  </div>
-  <div class="column">
-    <%= inscription.user.name %>
-  </div>
-  <div class="column is-hidden-touch">
-    <%= inscription.user.current_position %>
-  </div>
-  <div class="column">
-    <%= inscription.user.phone %>
-    <%= inscription.job_id %>
-  </div>
-  <div class="column is-hidden-mobile">
-    <%= inscription.user.email %>
-  </div>
-  <div class="column">
-    <%= link_to inscription.user.profile_url, target: "_blank", class: 'is-normal-link' do %>
-      <%= t('view_profile') %> <%= icon('fas', 'external-link-alt pl2') %>
-    <% end %>  
-  </div>
-  <div class="column">
-    <%= form_for inscription, url: admins_job_inscription_path(inscription.job_id, inscription.id), method: :patch do |f| %>
+<%= form_for inscription, url: admins_job_inscription_path(inscription.job_id, inscription.id), method: :patch do |f| %>
+  <div class="columns listrow is-mobile is-vertical-center">
+    <div class="column is-1 is-hidden-touch">
+      <%= inscription_counter + 1 %>
+    </div>
+    <div class="column is-hidden-touch">
+      <%= image_tag(inscription.user.picture_url, size: 50, class: 'rounded-img') %>
+    </div>
+    <div class="column">
+      <%= inscription.user.name %>
+    </div>
+    <div class="column is-hidden-touch">
+      <%= inscription.user.current_position %>
+    </div>
+    <div class="column">
+      <%= inscription.user.phone %>
+      <%= inscription.job_id %>
+    </div>
+    <div class="column is-hidden-mobile">
+      <%= inscription.user.email %>
+    </div>
+    <div class="column">
+      <%= link_to inscription.user.profile_url, target: "_blank", class: 'is-normal-link' do %>
+        <%= t('view_profile') %> <%= icon('fas', 'external-link-alt pl2') %>
+      <% end %>  
+    </div>
+    <div class="column">
       <div class="control is-flex wrap mt3">
-        <% Inscription.statuses.each do |key, val| %>
-          <% if (key === 'liked' ||key === 'finalist') %>
-            <%= f.radio_button :status, key, class: "heart-checkbox-#{key}" %>
-            <label for="inscription_status_<%=key%>"> <%= t("candidate.#{key}") %> </label>
-          <% end %>
-        <% end %>
+        <%= f.select :status, options_for_select(Inscription.statuses) %>
       </div>
-      <%= f.submit t('save'), class: 'button is-info' %>
-    <% end %>
+    </div>
+    <div class="column">
+      <div>
+        <%= f.check_box :favorite, class: 'checkbox-heart', id: "inscription_status_#{inscription.id}" %>
+        <label for="inscription_status_<%=inscription.id%>"> <%= t('candidate.liked') %> </label>
+      </div>
+    </div>
   </div>
-</div>
+<% end %>
