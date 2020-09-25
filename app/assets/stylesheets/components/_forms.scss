@@ -106,11 +106,7 @@ $openheart: "\f08a";
 	
   & + label:before {
 		cursor: pointer;
-		width: 1.05*30px;
-		height: 30px;
-		content: "";
-		position: absolute;
-		margin-left: -1.6*15px;
+		margin-left: -24px;
 		font-family: FontAwesome;
 		content: $openheart;
     transition: all 0.3s;
