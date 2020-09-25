@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resources :jobs, except: [:show] do
-      resource :inscriptions, except: :index
+      resources :inscriptions, except: [:show]
     end
     resources :users, only: [:index, :update] do
       member do

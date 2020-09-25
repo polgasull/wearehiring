@@ -3,7 +3,11 @@
     <div class="columns">
       <div class="column">
         <h1 class="f2"> <%= job_inscriptions_counter(@job) %> </h1>
-        <p class="f2"> <%= @job.title %> </p>
+        <p class="f2"> 
+          <%= link_to @job, class: 'is-info' do %>
+            <%= @job.title %> 
+          <% end %>
+        </p>
         <p> <%= @job.job_author %> en <%= @job.location %> </p>
       </div>
       <div class="column has-text-right">
@@ -12,13 +16,10 @@
       </div>
     </div>
     <div class="columns">
-      <div class="column is-3-desktop">
+      <div class="column">
         <%= link_to admins_job_inscriptions_path(format: "xlsx"), class: 'button is-success pl3' do %>
           <%= icon('fas', 'file-download pr2') %> <%= t('download_candidates_excel') %>
         <% end %>
-      </div>
-      <div class="column is-vertical-center">
-        <%= link_to t('show_post'), @job, class: 'is-normal-link' %>
       </div>
     </div>
   </div>
@@ -50,6 +51,7 @@
       </div>
     </div>
 
-    <%= render partial: 'inscription', collection: @inscriptions, as: :inscription %>
+    <%= render @inscriptions %>
+
   </div>
 </section>

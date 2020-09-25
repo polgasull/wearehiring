@@ -13,6 +13,7 @@
   </div>
   <div class="column">
     <%= inscription.user.phone %>
+    <%= inscription.job_id %>
   </div>
   <div class="column is-hidden-mobile">
     <%= inscription.user.email %>
@@ -21,5 +22,18 @@
     <%= link_to inscription.user.profile_url, target: "_blank", class: 'is-normal-link' do %>
       <%= t('view_profile') %> <%= icon('fas', 'external-link-alt pl2') %>
     <% end %>  
+  </div>
+  <div class="column">
+    <%= form_for inscription, url: admins_job_inscription_path(inscription.job_id, inscription.id), method: :patch do |f| %>
+      <div class="control is-flex wrap mt3">
+        <% Inscription.statuses.each do |key, val| %>
+          <% if (key === 'liked' ||key === 'finalist') %>
+            <%= f.radio_button :status, key, class: "heart-checkbox-#{key}" %>
+            <label for="inscription_status_<%=key%>"> <%= t("candidate.#{key}") %> </label>
+          <% end %>
+        <% end %>
+      </div>
+      <%= f.submit t('save'), class: 'button is-info' %>
+    <% end %>
   </div>
 </div>

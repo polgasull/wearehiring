@@ -328,6 +328,9 @@ en:
     benefit_2: "No CV required"
     benefit_3: "Complete your profile after"
     benefit_4: "Apply with one click"
+    discarded: "Discarded"
+    liked: "I like"
+    finalist: "Finalist"
   forms: 
     from: "From"
     to: "To"

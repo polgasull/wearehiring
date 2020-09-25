@@ -31,7 +31,9 @@ module Admins
     end
   
     def update
-      @job.update(job_params) ? redirect_to_response(t('jobs.messages.job_updated'), @job) : redirect_back_response(t('jobs.messages.job_not_updated'), false)
+      @job.update(job_params) ? 
+        redirect_to_response(t('jobs.messages.job_updated'), @job) : 
+        redirect_back_response(t('jobs.messages.job_not_updated'), false)
     end
   
     def destroy

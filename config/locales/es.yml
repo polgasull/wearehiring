@@ -332,6 +332,9 @@ es:
     benefit_2: "Sin necesidad de subir CV"
     benefit_3: "Completa tu perfil a posteriori"
     benefit_4: "Aplica con un solo click"
+    discarded: "Descartado"
+    liked: "Me gusta"
+    finalist: "Finalista"
   forms: 
     from: "Desde"
     to: "Hasta"
