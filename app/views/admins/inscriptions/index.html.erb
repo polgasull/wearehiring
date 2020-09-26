@@ -25,36 +25,24 @@
   </div>
 </section>
 
-<section class="section">
-  <div class="container">
-    <div class="columns listhead is-mobile">
-      <div class="column is-1 is-hidden-mobile">
-        <%= t('inscriptions.picture') %>
-      </div>
-      <div class="column is-1">
-        <%= t('inscriptions.name') %>
-      </div>
-      <div class="column is-2 is-hidden-touch">
-        <%= t('inscriptions.current_job') %>
-      </div>
-      <div class="column is-2 is-hidden-mobile">
-        <%= t('inscriptions.phone') %>
-      </div>
-      <div class="column is-3 is-hidden-mobile">
-        <%= t('inscriptions.email') %>
-      </div>
-      <div class="column is-1">
-        <%= t('inscriptions.linkedin_url') %>
-      </div>
-      <div class="column is-1 has-text-centered is-hidden-mobile">
-        Status
-      </div>
-      <div class="column is-1 has-text-centered is-hidden-mobile">
-        Favoritos
-      </div>
+<% %w[finalists in_process inscribeds].each do |inscriptions_status| %>
+  <section class="section pt0">
+    <div class="container">
+      <p class="f3"> 
+        <%= t("inscriptions.#{inscriptions_status}") %> 
+        <%= instance_variable_get("@#{inscriptions_status}".to_sym).count %>
+      </p>
+      <%= render 'header' %>
+
+      <% if instance_variable_get("@#{inscriptions_status}".to_sym).count.zero? %>
+        <div class="columns is-mobile is-vertical-center">
+          <div class="column has-text-centered">
+            <%= t("inscriptions.any_#{inscriptions_status}") %>
+          </div>
+        </div>
+      <% else %>
+        <%= render instance_variable_get("@#{inscriptions_status}".to_sym) %>
+      <% end %>
     </div>
-
-    <%= render @inscriptions %>
-
-  </div>
-</section>
+  </section>
+<% end %>

@@ -12,7 +12,8 @@ Category.where(internal_name: "design").first_or_create(name: "Design", internal
 Category.where(internal_name: "product").first_or_create(name: "Product", internal_name: "product")
 Category.where(internal_name: "engineering").first_or_create(name: "Engineering", internal_name: "engineering")
 Category.where(internal_name: "sales").first_or_create(name: "Sales", internal_name: "sales")
-Category.where(internal_name: "administrative").first_or_create(name: "Administrative", internal_name: "administrative")
+Category.where(internal_name: "management").first_or_create(name: "Management", internal_name: "management")
+Category.where(internal_name: "marketing").first_or_create(name: "Marketing", internal_name: "marketing")
 
 JobType.where(internal_name: "full_time").first_or_create(name: "Full-time", internal_name: "full_time")
 JobType.where(internal_name: "part_time").first_or_create(name: "Part-time", internal_name: "part_time")
@@ -40,6 +41,7 @@ location = [
 ]
 
 User.where(email: "test@email.com").first_or_create(name: "Pol", password: "123456", user_type_id: 2)
+User.where(email: "admin@email.com").first_or_create(name: "Pol", password: "123456", user_type_id: 3)
 
 10.times do 
   User.create(email: Faker::Internet.email, password: "123456", user_type_id: 2)
@@ -59,7 +61,7 @@ end
             remote_ok: false,
             expiry_date: Faker::Date.between(from: 2.days.ago, to: 60.days.from_now),
             user_id: rand(1..10),
-            category_id: rand(1..6),
+            category_id: rand(1..7),
             job_type_id: rand(1..3),
             level_id: rand(1..3)
           )

@@ -7,7 +7,9 @@ module Admins
     def index
       return redirect_to_response(t('not_found'), root_path, false) unless @job
   
-      @inscriptions = @job.inscriptions
+      @inscribeds = @job.inscriptions.where(status: [nil, 0])
+      @in_process = @job.inscriptions.where(status: [1])
+      @finalists = @job.inscriptions.where(status: [2])
       @inscriptions_count = @job.inscriptions.count
 
       respond_to do |format|

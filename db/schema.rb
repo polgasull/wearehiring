@@ -46,7 +46,6 @@ ActiveRecord::Schema.define(version: 20200925230456) do
     t.bigint "job_id"
     t.bigint "user_id"
     t.integer "status"
-    t.boolean "favorite"
     t.index ["job_id"], name: "index_inscriptions_on_job_id"
     t.index ["user_id"], name: "index_inscriptions_on_user_id"
   end
