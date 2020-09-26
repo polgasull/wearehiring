@@ -28,7 +28,7 @@
 <% %w[finalists in_process inscribeds].each do |inscriptions_status| %>
   <section class="section pt0">
     <div class="container">
-      <p class="f3"> 
+      <p class="f3 mb2"> 
         <%= t("inscriptions.#{inscriptions_status}") %> 
         <%= instance_variable_get("@#{inscriptions_status}".to_sym).count %>
       </p>

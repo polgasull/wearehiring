@@ -87,29 +87,3 @@ $openheart: "\f08a";
 	border-radius: 50%;
 	display: inline-block;
 }
-  
-.checkbox-heart {
-  visibility: hidden;
-  
-  & + label {
-		user-select: none;
-    padding-left: 0.5*30px;
-	}
-	
-  &:checked + label:before {    
-		cursor: pointer;
-    content: $heart;
-		color: $primary;
-		font-size: 30px;
-	}
-	
-  & + label:before {
-		cursor: pointer;
-		margin-left: -24px;
-		font-family: FontAwesome;
-		content: $openheart;
-    transition: all 0.3s;
-		color: #888;
-		font-size: 30px;
-	}
-}

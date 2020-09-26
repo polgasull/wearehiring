@@ -12,7 +12,6 @@
     </div>
     <div class="column is-2-desktop">
       <%= inscription.user.phone %>
-      <%= inscription.job_id %>
     </div>
     <div class="column is-3-desktop is-hidden-mobile">
       <%= inscription.user.email %>
@@ -20,7 +19,7 @@
     <div class="column is-1-desktop">
       <%= link_to inscription.user.profile_url, target: "_blank", class: 'button is-link' do %>
         <%= icon('fab', 'linkedin') %>
-      <% end %>  
+      <% end if inscription.user.profile_url.present? %>  
     </div>
     <div class="column is-2-desktop has-text-centered">
       <div class="select">  
