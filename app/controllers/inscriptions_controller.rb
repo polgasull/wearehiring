@@ -2,8 +2,8 @@ class InscriptionsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_job, only: [:create]
   before_action :validate_is_candidate!, only: [:create]
-  before_action :set_current_user_job, only: [:show]
-  before_action :validate_is_company_ambassador_or_admin!, only: [:show]
+  before_action :set_current_user_job, only: [:index, :update]
+  before_action :validate_is_company_ambassador_or_admin!, only: [:index, :update]
 
   def create
     return redirect_back_response(t('already_inscribed'), false) if current_user.is_already_inscribed(@job)
@@ -20,9 +20,12 @@ class InscriptionsController < ApplicationController
     end
   end
 
-  def show
+  def index
     return redirect_to_response(t('not_found'), root_path, false) unless @job
 
+    @inscribeds = @job.inscriptions.where(status: [nil, 0])
+    @in_process = @job.inscriptions.where(status: [1])
+    @finalists = @job.inscriptions.where(status: [2])
     @inscriptions = @job.inscriptions
     @inscriptions_count = @job.inscriptions.count
 
@@ -30,6 +33,13 @@ class InscriptionsController < ApplicationController
       format.html
       format.xlsx
     end
+  end
+
+  def update
+    @inscription = @job.inscriptions.find(params[:id])
+    @inscription.update(inscription_params) ? 
+      redirect_back_response(t('users.messages.user_updated')) : 
+      redirect_back_response(t('users.messages.user_not_updated'), false)
   end
 
   private
@@ -47,6 +57,6 @@ class InscriptionsController < ApplicationController
   end
 
   def inscription_params
-    params.require(:inscription).permit(:job_id, :user_id)
+    params.require(:inscription).permit(:job_id, :user_id, :status)
   end
 end

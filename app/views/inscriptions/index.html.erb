@@ -1,0 +1,51 @@
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <h1 class="f2"> <%= job_inscriptions_counter(@job) %> </h1>
+        <p class="f2">
+          <%= link_to @job, class: 'is-info' do %>
+            <%= @job.title %> </p>
+          <% end %>
+        </p>
+        <p> <%= @job.job_author %> en <%= @job.location %> </p>
+      </div>
+      <div class="column has-text-right-desktop">
+        <p class="f6"> <%= icon('fas', 'clock') %> Publicado <%= time_ago_in_words(@job.created_at) %> </p>
+        <p> <%= t('jobs.reference') %>: <%= @job.reference %> </p>
+      </div>
+    </div>
+    <div class="columns">
+      <% if !@inscriptions_count.zero? %>
+        <div class="column is-3-desktop">
+          <%= link_to job_inscriptions_path(format: "xlsx"), class: 'button is-success pl3' do %>
+            <%= icon('fas', 'file-download pr2') %> <%= t('download_candidates_excel') %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<% %w[finalists in_process inscribeds].each do |inscriptions_status| %>
+  <section class="section pt0">
+    <div class="container">
+      <p class="f3 mb2"> 
+        <%= t("inscriptions.#{inscriptions_status}") %> 
+        <%= instance_variable_get("@#{inscriptions_status}".to_sym).count %>
+      </p>
+      <%= render 'header' %>
+
+      <% if instance_variable_get("@#{inscriptions_status}".to_sym).count.zero? %>
+        <div class="columns is-mobile is-vertical-center">
+          <div class="column has-text-centered">
+            <%= t("inscriptions.any_#{inscriptions_status}") %>
+          </div>
+        </div>
+      <% else %>
+        <%= render instance_variable_get("@#{inscriptions_status}".to_sym) %>
+      <% end %>
+    </div>
+  </section>
+<% end %>
+

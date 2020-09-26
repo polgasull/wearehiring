@@ -8,7 +8,7 @@
       <%= icon('far', 'image', style: 'font-size: 50px') %>
     <% end %>
   </div>
-  <div class="column is-11">
+  <div class="column is-10">
     <div class="columns">
       <div class="column is-vertical-center">
         <%= link_to job do %>
@@ -38,6 +38,13 @@
         <% end %>
       </div>
     </div>
+  </div>
+  <div class="column is-vertical-center">
+  <% if inscription.status.nil? %>
+    <%= t("inscriptions.discarded") %>
+  <% else %>
+    <%= t("inscriptions.#{inscription.status}") %>
+  <% end %>
   </div>
 </div>
 <div class="mb4"></div>

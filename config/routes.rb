@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   end
 
   resources :jobs, path: 'ofertas-empleo-digital' do
-    resource :inscriptions, except: :index
+    resources :inscriptions, except: [:show]
   end
     
   resources :users, only: [:update] do

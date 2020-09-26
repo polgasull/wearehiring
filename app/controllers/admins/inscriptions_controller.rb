@@ -10,6 +10,7 @@ module Admins
       @inscribeds = @job.inscriptions.where(status: [nil, 0])
       @in_process = @job.inscriptions.where(status: [1])
       @finalists = @job.inscriptions.where(status: [2])
+      @inscriptions = @job.inscriptions
       @inscriptions_count = @job.inscriptions.count
 
       respond_to do |format|
