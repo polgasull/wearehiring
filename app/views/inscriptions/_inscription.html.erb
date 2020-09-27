@@ -23,7 +23,10 @@
     </div>
     <div class="column is-2-desktop has-text-centered">
       <div class="select">  
-        <%= f.select(:status, Inscription.statuses.keys.map {|status, id| [t("inscriptions.#{status}"), status]}, {}, {onchange: 'this.form.submit();'}) %>
+        <%= f.select(:status, 
+            Inscription.statuses.keys.map {|status, id| [t("inscriptions.#{status}"), status]}, 
+            {include_blank: t('helpers.select.select')}, 
+            {onchange: 'this.form.submit();'}) %>
       </div>
     </div>
   </div>

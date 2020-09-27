@@ -146,6 +146,7 @@ es:
   helpers:
     select:
       prompt: Por favor seleccione
+      select: Seleccionar
     submit:
       job: 
         create: "Pagar y publicar"
@@ -272,8 +273,9 @@ es:
     inscribeds: "Inscritos"
     in_process: "En proceso"
     finalists: "Finalistas"
-    discarded: "Inscrito"
+    discarded: "Descartado"
     finalist: "Finalista"
+    inscribed: "Inscrito"
     any_inscribeds: "No hay candidatos inscritos"
     any_in_process: "No dispones de ningún candidato en proceso de selección"
     any_finalists: "No has elegido a nadie como finalista"

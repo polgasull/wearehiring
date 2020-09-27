@@ -41,7 +41,7 @@
   </div>
   <div class="column is-vertical-center">
   <% if inscription.status.nil? %>
-    <%= t("inscriptions.discarded") %>
+    <%= t("inscriptions.inscribed") %>
   <% else %>
     <%= t("inscriptions.#{inscription.status}") %>
   <% end %>
