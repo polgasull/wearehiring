@@ -4,11 +4,9 @@
       <% if current_user.picture_url.file.nil? %>
         <%= icon('far', 'user-circle', style: 'font-size: 100px') %>
       <% else %>
-        <%= image_tag(current_user.picture_url, 
-          alt: "Imagen usuario del perfil de Linkedin | Wearehiring.io",
-          class: 'rounded-img',
-          height: 150,
-          width: 159) %>
+        <div class="rounded-image size-150">
+          <%= image_tag(current_user.picture_url, alt: "Imagen usuario del perfil de Linkedin | Wearehiring.io") %>
+        </div>
       <% end %>
       <div class="file is-primary mt3">
         <label class="file-label">

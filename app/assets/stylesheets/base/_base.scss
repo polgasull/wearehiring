@@ -60,21 +60,6 @@ section {
 			line-height: 35px;
 		}
 	}
-
-	.rounded-img {
-		box-shadow: 8px 6px 10px -6px #ccc;
-		border-radius: 50%;
-
-		@media(max-width: 768px) {
-			margin-top: 0;
-			width: 100px;
-			height: 100px;
-		}
-
-		&.is-blank {
-			box-shadow: none;
-		}
-	}
 }
 
 .is-section-primary {

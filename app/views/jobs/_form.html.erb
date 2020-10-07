@@ -193,7 +193,7 @@
     <%= render '/jobs/partials/first_publication_message' %>
   <% end %>
 
-  <% if current_user&.is_company? && !first_job_publication(current_user) %>
+  <% if (current_user&.is_company? || current_user&.is_admin?) && !first_job_publication(current_user) %>
     <%= render 'payment' %>
   <% end %>
 

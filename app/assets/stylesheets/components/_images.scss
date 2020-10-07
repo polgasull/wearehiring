@@ -10,23 +10,17 @@
 }
 
 .rounded-image  {
-  width: 150px;
-  height: 150px;
+  box-shadow: 8px 6px 10px -6px #ccc;
   border-radius: 50%;
-  position: relative;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  img {
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+  @for $i from 10 through 150 {
+    &.size-#{$i} {
+      height: #{$i}px;
+      width: #{$i}px;
+    }
   }
 }

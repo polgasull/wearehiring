@@ -2,7 +2,9 @@
   <div class="columns listrow is-mobile is-vertical-center is-size-7">
     <div class="column is-1-desktop is-hidden-touch is-vertical-center">
       <span class="pr3"><%= inscription_counter + 1 %></span>
-      <%= image_tag(inscription.user.picture_url, size: 50, class: 'rounded-img') %>
+      <div class="rounded-image size-50">
+        <%= image_tag(inscription.user.picture_url) %>
+      </div>
     </div>
     <div class="column is-1-desktop">
       <%= inscription.user.name %>

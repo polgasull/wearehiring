@@ -10,7 +10,9 @@
     <div class="columns is-centered mt4">
       <div class="column is-half has-text-centered">
         <% if !@job.avatar.file.nil? %>
-          <%= image_tag(@job.avatar_url(:thumb), alt: @job.job_author, class: 'rounded-img', height: 80, width: 80) %>
+          <div class="rounded-image size-100 mauto mb2">
+            <%= image_tag(@job.avatar_url(:thumb), alt: @job.job_author) %>
+          </div>
         <% else %>
           <%= icon('far', 'image', style: 'font-size: 50px') %>
         <% end %>

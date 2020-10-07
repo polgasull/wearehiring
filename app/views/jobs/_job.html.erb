@@ -15,13 +15,13 @@
       </div>
       <div class="columns">
         <div class="column is-1 is-vertical-center justify-center pr0">
-          <div>
-            <% if !job.avatar.file.nil? %>
-              <%= image_tag(job.avatar_url(:thumb), alt: job.job_author, class: 'rounded-img') %>
-            <% else %>
-              <%= icon('far', 'image', style: 'font-size: 50px') %>
-            <% end %>
-          </div>
+          <% if !job.avatar.file.nil? %>
+            <div class="rounded-image size-80">
+              <%= image_tag(job.avatar_url(:thumb), alt: job.job_author) %>
+            </div>
+          <% else %>
+            <%= icon('far', 'image', style: 'font-size: 50px') %>
+          <% end %>
         </div>
         <div class="column">
           <div class="pv1 pl2 pr2 bg-light">

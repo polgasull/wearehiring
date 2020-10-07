@@ -61,13 +61,13 @@
     <div class="ma4 is-hidden-mobile"></div>  
     <div class="columns pr4 wrapper-content">
       <div class="column is-2 is-vertical-center justify-center">
-        <div>
-          <% if !@job.avatar.file.nil? %>
-            <%= image_tag(@job.avatar_url(:thumb), alt: @job.job_author, class: 'rounded-img') %>
-          <% else %>
-            <%= icon('far', 'image', style: 'font-size: 50px') %>
-          <% end %>
-        </div>
+        <% if !@job.avatar.file.nil? %>
+          <div class="rounded-image size-150">
+            <%= image_tag(@job.avatar_url(:thumb), alt: @job.job_author) %>
+          </div>
+        <% else %>
+          <%= icon('far', 'image', style: 'font-size: 50px') %>
+        <% end %>
       </div>
       <div class="column bg-light radius-10">
         <div class="columns">
