@@ -17,7 +17,12 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update(user_params) ? redirect_to_response(t('users.messages.user_updated'), edit_user_registration_path) : redirect_back_response(t('users.messages.user_not_updated'), false)
+    if @user.update(user_params)
+      SendgridService.new.update_contact @user if Rails.env.production?
+      redirect_to_response(t('users.messages.user_updated'), edit_user_registration_path)
+    else 
+      redirect_back_response(t('users.messages.user_not_updated'), false)
+    end
   end
 
   def candidate_access;end
