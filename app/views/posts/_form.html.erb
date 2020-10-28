@@ -25,12 +25,12 @@
     </div>
     <div class="field">
       <div class="control">
-        <%= f.input :title, input_html: {class: "input"}, wrapper: false, label_html: {class: "label"} %>
+        <%= f.input :title, required: true, input_html: {class: "input"}, wrapper: false, label_html: {class: "label"} %>
       </div>
     </div>
     <div class="field">
       <div class="control">
-        <%= f.input :description, input_html: {class: "textarea"}, wrapper: false, label_html: {class: "label"} %>
+        <%= f.input :description, input_html: {class: "textarea", rows: 25}, wrapper: false, label_html: {class: "label"} %>
       </div>
     </div>
     <%= f.button :submit, class: "button is-primary" %>
@@ -38,8 +38,22 @@
   </div>
 </section>
 
+<%= content_for :head do %>
+
+  <script src="https://cdn.tiny.cloud/1/2waujryfoz8jq9ucu0b6ioeaevozjce6026p9vf6i7hpp8io/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+<% end %>
+
 <%= content_for :footer do %>
 
   <%= javascript_include_tag "helpers/image_loader.js" %>
+  <script>
+    tinymce.init({
+      selector: '.textarea',
+      plugins: 'image link',
+      menubar: 'insert',
+      toolbar: 'undo redo | styleselect | bold italic | link | alignleft aligncenter alignright alignjustify | outdent indent | image'
+    });
+  </script>
 
 <% end %>
