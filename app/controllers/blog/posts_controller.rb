@@ -51,11 +51,13 @@ module Blog
     private
 
     def post_params
-      params.require(:post).permit(:title, :description, :image)
+      params.require(:post).permit(:title, :description, :image, :custom_url, :meta_title, :meta_description)
     end
 
     def set_post
-      @post = Post.find(params[:id])
+      @post = Post.friendly.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+        redirect_to controller: :errors, action: :not_found
     end
   end
 end

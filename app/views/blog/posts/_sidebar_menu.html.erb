@@ -5,7 +5,7 @@
   <hr class="mv3">
   <% instance_variable_get("@last_#{items}".to_sym).each do |item| %>
     <div class="mb2">
-      <p> <%= link_to item.title, send("#{items.singularize}_path", item.id) %> </p>
+      <p> <%= link_to item.title, send("#{items.singularize}_path", item) %> </p>
       <small> <%= time_ago_in_words(item.created_at) %> </small>
     </div>
   <% end %> 

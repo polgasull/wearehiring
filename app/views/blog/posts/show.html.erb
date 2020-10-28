@@ -56,3 +56,9 @@
     </div>
   </div>
 </section>
+
+<%= content_for :head do %>
+  <%= render "seo", 
+      title: "#{@post.meta_title} | WeAreHiring.io", 
+      description: "#{@post.meta_description} | WeAreHiring.io" %>
+<% end %>
