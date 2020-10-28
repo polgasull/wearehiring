@@ -461,12 +461,19 @@ es:
   view_profile: "Ver perfil"
   show_post: "Ver publicación"
   last_jobs: "Últimos empleos digitales"
-  last_posts: "Últimos Posts"
+  last_blog_posts: "Últimos Posts"
   comments:
     singular: "Comentario"
     plural: "Comentarios"
     leave_a_comment: "Dejar un comentario"
     post: "Publicar comentario"
+    messages:
+      comment_created: "Comentario creado satisfactoriamente"
+      comment_not_created: "No se pudo crear el Comentario"
+      comment_updated: "Comentario actualizado satisfactoriamente"
+      comment_not_updated: "No se pudo actualizar el Comentario"
+      comment_deleted: "Comentario eliminado satisfactoriamente"
+      comment_not_deleted: "No se pudo eliminar el Comentario"
   no_more_records: "No hay más registros"
   categories:
     title: "Categorias"

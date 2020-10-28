@@ -28,8 +28,10 @@ Rails.application.routes.draw do
     end
   end 
 
-  resources :posts, path: 'blog' do
-    resources :comments
+  namespace :blog, path: '/' do
+    resources :posts, path: 'blog' do
+      resources :comments, only: [:create, :destroy]
+    end
   end
 
   devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks' }

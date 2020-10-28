@@ -456,12 +456,19 @@ en:
   view_profile: "View profile"
   show_post: "Show post"
   last_jobs: "Last digital jobs"
-  last_posts: "Last Posts"
+  last_blog_posts: "Last Posts"
   comments:
     singular: "Comment"
     plural: "Comments"
     leave_a_comment: "Leave a comment"
     post: "Post comment"
+    messages:
+      comment_created: "Comment created successfully"
+      comment_not_created: "Comment was not able to be created"
+      comment_updated: "Comment was successfully updated"
+      comment_not_updated: "Comment was not able to be updated"
+      comment_deleted: "Comment was successfully deleted"
+      comment_not_deleted: "Comment was not able to be deleted"
   no_more_records: "There are no more records"
   categories:
     title: "Categories"

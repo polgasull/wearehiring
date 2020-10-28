@@ -8,11 +8,5 @@ module Admins
     def index
       render body: nil
     end
-
-    private
-
-    def validate_is_admin!
-      return redirect_to root_path unless current_user.is_admin?
-    end
   end
 end

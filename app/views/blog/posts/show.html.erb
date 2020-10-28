@@ -11,10 +11,10 @@
             </div>
             <div class="level-right">
               <p class="level-item">
-                <%= link_to "Edit", edit_post_path(@post), class: "button" %>
+                <%= link_to "Edit", edit_blog_post_path(@post), class: "button" %>
               </p>
               <p class="level-item">
-                <%= link_to "Delete", post_path(@post), class: "button is-danger", method: :delete, data: {confirm: "Are you sure?"}  %>
+                <%= link_to "Delete", blog_post_path(@post), class: "button is-danger", method: :delete, data: {confirm: "Are you sure?"}  %>
               </p>
             </div>
           </nav>  
@@ -38,7 +38,7 @@
             <div class="comment-form">
               <hr>
               <h3 class="subtitle is-3"> <%= t('comments.leave_a_comment') %> </h3>
-              <%= render 'comments/form' %>
+              <%= render '/blog/comments/form' %>
             </div>
           </div>
         </section>
