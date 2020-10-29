@@ -128,7 +128,7 @@
       <div class="column">
         <h3 class="f3 mb2"> <%= t('job_description') %> </h3>
         <div class="pr4 pl4 pb4"> 
-          <%= simple_format(@job.description) %>
+          <%= @job.description.html_safe %>
         </div>
       </div>
     </div>

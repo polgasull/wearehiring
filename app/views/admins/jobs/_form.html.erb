@@ -189,7 +189,7 @@
     <div class="column">
       <div class="field">
         <div class="control">
-          <%= f.input :description, as: :trix_editor, required: true, input_html: { class: "textarea" }, wrapper: false, label_html: { class: "label" } %>
+          <%= f.input :description, input_html: { class: "textarea" }, wrapper: false, label_html: { class: "label" } %>
         </div>
       </div>
     </div>
@@ -230,12 +230,21 @@
 
 <% end %>
 
+<%= content_for :head do %>
+  <script src="https://cdn.tiny.cloud/1/2waujryfoz8jq9ucu0b6ioeaevozjce6026p9vf6i7hpp8io/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<% end %>
+
 <%= content_for :footer do %>
-
   <%= javascript_include_tag "helpers/image_loader.js" %>
-
+  <script>
+    tinymce.init({
+      selector: '#job_description',
+      plugins: 'image link',
+      menubar:  false,
+      toolbar: 'undo redo | styleselect | bold italic | link | alignleft aligncenter alignright alignjustify | outdent indent | image'
+    });
+  </script>
   <script>  
-
     $(document).on("change", "#salarySwitch", function () {
       if ($('#salarySwitch').is(":checked")) {
         $('#job_salary_from, #job_salary_to').val(0);
@@ -245,7 +254,5 @@
         $('#job_salary_from, #job_salary_to').prop("type", "number");
       }
     });
-
   </script>
-
 <% end %>
