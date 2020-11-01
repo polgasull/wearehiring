@@ -42,7 +42,7 @@ Rails.application.routes.draw do
   get '/legal/politicas_privacidad', to: 'legal#privacy_policy', as: 'privacy_policy'
   get '/legal/politicas_cookies', to: 'legal#cookies_policy', as: 'cookies_policy'
   get '/sitemap.xml' => 'sitemaps#index', defaults: { format: 'xml' }
-  get "/robots.:format", to: "pages#robots"
+  get "/robots.:format", to: "home#robots"
 
   match "/404", to: "errors#not_found", via: :all
   match "/422", to: "errors#unacceptable", via: :all

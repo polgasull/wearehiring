@@ -24,7 +24,7 @@
           <h1> <%= @post.title %> </h1>
           <div class="image crop">
             <% if !@post.image.file.nil? %>
-              <%= image_tag(@post.image_url) %>
+              <%= image_tag(@post.image_url, alt: @post.title) %>
             <% else %>
               <%= icon('far', 'image', style: 'font-size: 50px') %>
             <% end %>      

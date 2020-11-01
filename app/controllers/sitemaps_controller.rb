@@ -4,7 +4,8 @@ class SitemapsController < ApplicationController
   before_action :init_sitemap
 
   def index
-    @jobs = Job.not_expired
+    @jobs = Job.not_expired.order('created_at DESC')
+    @posts = Post.all.order('created_at DESC')
   end
 
   private
