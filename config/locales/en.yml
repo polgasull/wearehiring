@@ -372,6 +372,8 @@ en:
   simple_form:
     labels:
       defaults:
+        name: "Name"
+        last_name: "Last Name"
         email: "Email"
         username: 'User name'
         password: 'Password'
@@ -504,3 +506,5 @@ en:
       level_deleted: "Level was successfully deleted"
       level_not_deleted: "Level was not able to be deleted"
   no_inscriptions_yet: "No inscriptions yet"
+  important_info_for_the_recruiter: "Important information for the recruiter"
+  complementary_info: "Complementary information"

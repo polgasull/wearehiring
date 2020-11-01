@@ -377,6 +377,8 @@ es:
   simple_form:
     labels:
       defaults:
+        name: "Nombre"
+        last_name: "Apellidos"
         email: "Correo electrónico"
         username: 'Nombre de usuario'
         password: 'Contraseña'
@@ -509,3 +511,6 @@ es:
       level_deleted: "Nivel eliminado satisfactoriamente"
       level_not_deleted: "No se pudo eliminar el Nivel"
   no_inscriptions_yet: "Aún hay candidatos"
+  important_info_for_the_recruiter: "Información importante para el reclutador"
+  complementary_info: "Información complementaria"
+  
