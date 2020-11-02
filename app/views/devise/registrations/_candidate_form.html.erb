@@ -1,12 +1,12 @@
 <%= simple_form_for(@user, method: :patch, url: user_path(@user), html: { multipart: true }) do |f| %>
   <div class="columns">
-    <div class="column is-4 is-offset-1">
+    <div class="column is-4 has-text-centered">
       <h1 class="title is-5"> <%= t('my_profile') %> </h1>
       <% if current_user.picture_url.file.nil? %>
         <%= icon('far', 'user-circle', style: 'font-size: 100px') %>
       <% else %>
-        <div class="rounded-image size-120">
-          <%= image_tag(current_user.picture_url, alt: "Imagen usuario del perfil de Linkedin | Wearehiring.io") %>
+        <div class="rounded-image m-auto size-120">
+          <%= image_tag(current_user.picture_url, alt: "Imagen perfil usuario | Wearehiring.io") %>
         </div>
       <% end %>
       <p class="title f4 mt4"> 
@@ -23,7 +23,7 @@
         <%= icon('fab', 'get-pocket') %>
         <%= link_to "#{current_user.inscriptions.count} Jobs aplicados", inscriptions_user_path(current_user.id), target: "_blank" %>
       </p>
-      <div class="file is-primary mt3">
+      <div class="file justify-center is-primary mt4">
         <label class="file-label">
           <%= f.input :picture_url, as: :file, required: false, input_html: { class: "file-input load-image" }, label: false, wrapper: false %>
           <span class="file-cta">
@@ -35,20 +35,30 @@
       <small> Tamaño mínimo recomendado 200x200 </small>
       <output id="list"></output>
     </div>
-    <div class="column is-7">
+    <div class="column is-8">
+      <%= f.button :submit, t('save'), class:"button is-info is-pulled-right" %>
       <h2 class="title is-4"> <%= t('important_info_for_the_recruiter') %> </h2>
 
       <div class="columns">
         <div class="column">
-          <%= f.label :name, class: 'has-text-weight-bold' %>
-          <%= f.input :name, input_html: { class: "input mt2" }, placeholder: "Carlos", label: false, wrapper: false %>
+          <div class="field">
+            <%= f.label :name, class: 'has-text-weight-bold' %>
+            <div class="control">
+              <%= f.input :name, input_html: { class: "input mt2" }, placeholder: "Carlos", label: false, wrapper: false %>
+            </div>
+          </div>
         </div>
         <div class="column">
-          <%= f.label :last_name, class: 'has-text-weight-bold' %>
-          <%= f.input :last_name, input_html: { class: "input mt2" }, placeholder: "Hernández", label: false, wrapper: false %>
+          <div class="field">
+            <%= f.label :last_name, class: 'has-text-weight-bold' %>
+            <div class="control">
+              <%= f.input :last_name, input_html: { class: "input mt2" }, placeholder: "Hernández", label: false, wrapper: false %>
+            </div>
+          </div>
         </div>
       </div>
       <div class='has-text-weight-bold mb2'>
+        <%= icon('fas', 'phone') %>
         <%= t('users.phone') %>
         <%= content_tag(:span, nil, class: 'dot-notification') if current_user.phone.blank? %>
       </div>
@@ -66,6 +76,7 @@
         </div>
       </div>
       <div class='has-text-weight-bold mb2'>
+        <%= icon('fab', 'linkedin') %>
         <%= t('users.profile_url') %>
         <%= content_tag(:span, nil, class: 'dot-notification') if current_user.profile_url.blank? %>
       </div>
@@ -94,7 +105,46 @@
 
       <h2 class="title is-4"> <%= t('complementary_info') %> </h2>
 
-      <%= f.button :submit, t('save'), class:"button is-info" %>
+      <div class="field">
+        <%= f.label t('about_me'), class: 'has-text-weight-bold' %>
+        <div class="control">
+          <%= f.input :description, input_html: { class: "input textarea mt2" }, placeholder: "Háblanos un poco sobre ti", label: false, wrapper: false %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= icon('fab', 'github') %>
+        <%= f.label :github, class: 'has-text-weight-bold' %>
+        <div class="control">
+          <%= f.input :github, input_html: { class: "input mt2" }, placeholder: "github/yourprofile", label: false, wrapper: false %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= icon('fab', 'pinterest') %>
+        <%= f.label :pinterest, class: 'has-text-weight-bold' %>
+        <div class="control">
+          <%= f.input :pinterest, input_html: { class: "input mt2" }, placeholder: "pinterest/yourprofile", label: false, wrapper: false %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= icon('fab', 'behance-square') %>
+        <%= f.label :behance, class: 'has-text-weight-bold' %>
+        <div class="control">
+          <%= f.input :behance, input_html: { class: "input mt2" }, placeholder: "behance/yourprofile", label: false, wrapper: false %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= icon('far', 'window-restore') %>
+        <%= f.label :personal_website, class: 'has-text-weight-bold' %>
+        <div class="control">
+          <%= f.input :personal_website, input_html: { class: "input mt2" }, placeholder: "https://yourwebsite.com", label: false, wrapper: false %>
+        </div>
+      </div>
+
+      <%= f.button :submit, t('save'), class:"button is-info is-pulled-right mt3" %>
     </div>
   </div>
 <% end %>

@@ -17,6 +17,10 @@
   justify-content: center;
   align-items: center;
 
+  &.m-auto {
+    margin: 0 auto;
+  }
+
   @for $i from 10 through 150 {
     &.size-#{$i} {
       height: #{$i}px;
