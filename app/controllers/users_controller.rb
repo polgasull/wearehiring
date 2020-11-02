@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:candidate_access]
-  before_action :set_user, except: [:candidate_access]
+  before_action :set_current_user, except: [:candidate_access]
   before_action :validate_is_company_or_ambassador!, only: [:jobs]
   before_action :validate_is_candidate!, only: [:inscriptions]
 
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
   private
 
-  def set_user
+  def set_current_user
     @user = current_user
     return redirect_back_response(t('devise.failure.unauthenticated'), false) unless @user
   end

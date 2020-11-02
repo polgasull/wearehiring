@@ -2,8 +2,8 @@ class InscriptionsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_job, only: [:create]
   before_action :validate_is_candidate!, only: [:create]
-  before_action :set_current_user_job, only: [:index, :update]
-  before_action :validate_is_company_ambassador_or_admin!, only: [:index, :update]
+  before_action :set_current_user_job, only: [:index, :update, :show]
+  before_action :validate_is_company_ambassador_or_admin!, only: [:index, :update, :show]
 
   def create
     return redirect_back_response(t('already_inscribed'), false) if current_user.is_already_inscribed(@job)
@@ -40,6 +40,12 @@ class InscriptionsController < ApplicationController
     @inscription.update(inscription_params) ? 
       redirect_back_response(t('users.messages.user_updated')) : 
       redirect_back_response(t('users.messages.user_not_updated'), false)
+  end
+
+  def show
+    @inscription = @job.inscriptions.find(params[:id])
+    return redirect_to_response(t('not_found'), @job, false) unless @inscription
+    @user = @inscription.user
   end
 
   private

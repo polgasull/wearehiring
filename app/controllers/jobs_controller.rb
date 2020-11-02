@@ -24,7 +24,7 @@ class JobsController < ApplicationController
   def show
     return redirect_to_response(t('not_found'), root_path, false) unless @job
     @inscriptions_count = @job.inscriptions.count
-    @same_category_jobs = Job.same_category(@job).order('created_at DESC').take(3)
+    @same_category_jobs = Job.not_expired.same_category(@job).order('created_at DESC').take(3)
   end
 
   def new

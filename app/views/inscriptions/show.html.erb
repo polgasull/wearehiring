@@ -1,0 +1,89 @@
+
+<section class="section">
+  <div class="container"> 
+    <div class="columns">
+      <div class="column">
+        <%= link_to job_inscriptions_path(@job.id), class: 'button is-link' do %>
+          <%= icon('fas', 'arrow-left mr2') %>
+          <%= t('go_back_to_inscriptions') %>
+        <% end %>
+      </div>
+    </div>
+    <div class="columns">
+      <div class="column is-4 has-text-centered">
+        <h1 class="title is-5"> <%= t('profile') %> </h1>
+        <% if @user.picture_url.file.nil? %>
+          <%= icon('far', 'user-circle', style: 'font-size: 100px') %>
+        <% else %>
+          <div class="rounded-image m-auto size-120">
+            <%= image_tag(@user.picture_url, alt: "Imagen perfil usuario | Wearehiring.io") %>
+          </div>
+        <% end %>
+        <p class="title f4 mt4"> 
+          <%= @user.name %> 
+        </p>
+        <p> 
+          <%= @user.current_position %> 
+        </p>
+        <p> 
+          <%= icon('far', 'paper-plane') %>
+          <%= mail_to @user.email %> 
+        </p>
+        <p class="mt4 has-text-weight-bold"> <%= t('inscriptions.status') %> </p>
+        <%= form_for @inscription, url: job_inscription_path(@inscription.job_id, @inscription.id), method: :patch do |f| %>
+          <div class="select mt1">
+            <%= f.select(:status, 
+                Inscription.statuses.keys.map {|status, id| [t("inscriptions.#{status}"), status]}, 
+                {include_blank: t('helpers.select.select')}, 
+                {onchange: 'this.form.submit();'}) %>
+          </div>
+        <% end %>
+      </div>
+      <div class="column is-8">
+        <h2 class="title is-4"> <%= t('important_info') %> </h2>
+        <hr>
+        <div class="columns">
+          <div class="column">
+            <%= content_tag(:p, t('users.name'), class: 'has-text-weight-bold mb2') %>
+            <%= content_tag(:p, @user.name, class: 'box') %>
+          </div>
+          <div class="column">
+            <%= content_tag(:p, t('users.last_name'), class: 'has-text-weight-bold mb2') %>
+            <%= content_tag(:p, @user.last_name, class: 'box') %>
+          </div>
+        </div>
+        <div class='has-text-weight-bold mb2'>
+          <%= icon('fas', 'phone') %>
+          <%= t('users.phone') %>
+        </div>
+        <%= content_tag(:p, @user.phone, class: 'box') %>
+        <div class='has-text-weight-bold mb2'>
+          <%= icon('fab', 'linkedin') %>
+          <%= t('users.profile_url') %>
+        </div>
+        <%= content_tag(:p, @user.profile_url, class: 'box') %>
+        <div class='has-text-weight-bold mb2'>
+          <%= t('users.current_position') %>
+        </div>
+        <%= content_tag(:p, @user.current_position, class: 'box') %>
+
+        <h2 class="title is-4 mt4"> <%= t('complementary_info') %> </h2>
+        <hr>
+        <%= content_tag(:p, t('users.description'), class: 'has-text-weight-bold mb2') %>
+        <%= content_tag(:p,  @user.description, class: 'box') %>
+
+        <%= content_tag(:p, t('users.github'), class: 'has-text-weight-bold mb2') %>
+        <%= content_tag(:p,  @user.github, class: 'box') %>
+
+        <%= content_tag(:p, t('users.pinterest'), class: 'has-text-weight-bold mb2') %>
+        <%= content_tag(:p,  @user.pinterest, class: 'box') %>
+
+        <%= content_tag(:p, t('users.behance'), class: 'has-text-weight-bold mb2') %>
+        <%= content_tag(:p,  @user.behance, class: 'box') %>
+
+        <%= content_tag(:p, t('users.personal_website'), class: 'has-text-weight-bold mb2') %>
+        <%= content_tag(:p,  @user.personal_website, class: 'box') %>
+      </div>
+    </div>
+  </div>
+</section>

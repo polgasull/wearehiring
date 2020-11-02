@@ -2,7 +2,7 @@
 
 module Admins
   class InscriptionsController < Admins::AdminsController
-    before_action :set_job, only: [:index, :update]
+    before_action :set_job, only: [:index, :update, :show]
 
     def index
       return redirect_to_response(t('not_found'), root_path, false) unless @job
@@ -24,6 +24,12 @@ module Admins
       @inscription.update(inscription_params) ? 
         redirect_back_response(t('users.messages.user_updated')) : 
         redirect_back_response(t('users.messages.user_not_updated'), false)
+    end
+
+    def show
+      @inscription = @job.inscriptions.find(params[:id])
+      return redirect_to_response(t('not_found'), @job, false) unless @inscription
+      @user = @inscription.user  
     end
 
     private

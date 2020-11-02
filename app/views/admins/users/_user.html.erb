@@ -8,7 +8,7 @@
     <%= image_tag(user.picture_url, size: 30) if user.picture_url %>
   </div>
   <div class="column">
-    <%= user.name %>
+    <%= link_to user.name, admins_user_path(user) %>
   </div>
   <div class="column">
     <%= f.input :phone, 

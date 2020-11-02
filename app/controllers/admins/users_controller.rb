@@ -2,7 +2,7 @@
 
 module Admins
   class UsersController < Admins::AdminsController
-    before_action :set_user, only: [:update, :inscriptions]
+    before_action :set_user, only: [:update, :inscriptions, :show]
 
     def index
       @users = User.all.filter(params).order('created_at DESC').page(params[:page]).per(50)
@@ -15,6 +15,10 @@ module Admins
         format.xlsx
       end
     end 
+
+    def show
+      return redirect_to_response(t('not_found'), root_path, false) unless @user
+    end
 
     def update
       if @user.update(user_params)

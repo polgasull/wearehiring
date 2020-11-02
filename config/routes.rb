@@ -4,9 +4,9 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resources :jobs, except: [:show] do
-      resources :inscriptions, except: [:show]
+      resources :inscriptions
     end
-    resources :users, only: [:index, :update] do
+    resources :users, only: [:index, :update, :show] do
       member do
         get :inscriptions
       end
@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   end
 
   resources :jobs, path: 'ofertas-empleo-digital' do
-    resources :inscriptions, except: [:show]
+    resources :inscriptions
   end
     
   resources :users, only: [:update] do
