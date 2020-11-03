@@ -12,7 +12,11 @@ wb.add_worksheet(name: "Users") do |sheet|
       user.email, 
       user.current_position, 
       user.profile_url,
-      user.user_type.name
+      user.user_type.name,
+      user.github,
+      user.pinterest,
+      user.behance,
+      user.personal_website
     ]
   end
 end

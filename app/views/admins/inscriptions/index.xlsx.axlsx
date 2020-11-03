@@ -12,6 +12,10 @@ wb.add_worksheet(name: @job.title.truncate(25)) do |sheet|
       inscription.user.phone, 
       inscription.user.email, 
       inscription.user.profile_url,
+      inscription.user.github,
+      inscription.user.pinterest,
+      inscription.user.behance,
+      inscription.user.personal_website,
       inscription.status
     ]
   end
