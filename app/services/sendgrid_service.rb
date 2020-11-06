@@ -29,7 +29,6 @@ class SendgridService
               "e4_T": "#{user.profile_url}",
               "e5_T": "#{user.current_position}",
               "e6_T": "#{user.user_type.name}",
-              "e7_T": "#{user.description}",
               "e8_T": "#{user.personal_website}",
               "e9_T": "#{user.github}",
               "e10_T": "#{user.pinterest}",

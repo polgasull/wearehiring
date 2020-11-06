@@ -45,6 +45,7 @@ class JobsController < ApplicationController
     end
 
     if @job.save
+      slack_ping_channel_message
       ModelMailer.new_job(current_user, @job).deliver
       redirect_to_response(t('jobs.messages.job_created'), thanks_job_page_path) 
     else 
@@ -88,5 +89,12 @@ class JobsController < ApplicationController
     if @job.is_expired? && !@job.user_owner_or_admin(current_user)
       redirect_to_response(t('jobs.messages.job_expired'), root_path, false) 
     end
+  end
+
+  def slack_ping_channel_message
+    job_link = "[Puedes aplicar aquí ¡Mucha suerte!](http://localhost:3000/ofertas-empleo-digital/#{@job.slug})"
+    new_job_message = "Nuevo Job! #{@job.title} en #{@job.job_author} en #{@job.location} #{'(Remoto)' if @job.remote_ok?} 
+      #{Slack::Notifier::Util::LinkFormatter.format(job_link)}"
+    SlackService.new.ping_channel_message new_job_message, "jobs_#{@job.category.internal_name}"
   end
 end

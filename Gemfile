@@ -38,6 +38,7 @@ gem 'rails', '~> 5.1.6', '>= 5.1.6.1'
 gem 'rubyzip', '= 1.0.0'
 gem 'sass-rails', '~> 5.0'
 gem "simple_form", ">= 5.0.0"
+gem "slack-notifier"
 gem 'social-share-button'
 gem 'stripe', '~> 5.28'
 gem 'trix', '~> 0.11.1'

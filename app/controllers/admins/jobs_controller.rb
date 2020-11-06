@@ -24,6 +24,7 @@ module Admins
       @job.expiry_date = DateTime.now() + 60.days
     
       if @job.save
+        slack_ping_channel_message
         redirect_to_response(t('jobs.messages.job_created'), @job) 
       else 
         redirect_back_response(t('jobs.messages.job_not_created'), false)
@@ -51,5 +52,13 @@ module Admins
     def job_params
       params.require(:job).permit!
     end
+
+    def slack_ping_channel_message
+      job_link = "[Puedes aplicar aquí ¡Mucha suerte!](http://localhost:3000/ofertas-empleo-digital/#{@job.slug})"
+      new_job_message = "Nuevo Job! #{@job.title} en #{@job.job_author} en #{@job.location} #{'(Remoto)' if @job.remote_ok?} 
+        #{Slack::Notifier::Util::LinkFormatter.format(job_link)}"
+      SlackService.new.ping_channel_message new_job_message, "jobs_#{@job.category.internal_name}"
+    end
   end
 end
+
