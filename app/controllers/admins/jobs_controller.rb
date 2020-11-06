@@ -54,7 +54,7 @@ module Admins
     end
 
     def slack_ping_channel_message
-      job_link = "[Puedes aplicar aquí ¡Mucha suerte!](http://localhost:3000/ofertas-empleo-digital/#{@job.slug})"
+      job_link = "[Puedes aplicar aquí ¡Mucha suerte!](http://www.wearehiring.io/ofertas-empleo-digital/#{@job.slug})"
       new_job_message = "Nuevo Job! #{@job.title} en #{@job.job_author} en #{@job.location} #{'(Remoto)' if @job.remote_ok?} 
         #{Slack::Notifier::Util::LinkFormatter.format(job_link)}"
       SlackService.new.ping_channel_message new_job_message, "jobs_#{@job.category.internal_name}"
