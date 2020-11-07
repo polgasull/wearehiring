@@ -9,7 +9,7 @@ module Admins
       @all_users = User.all
       @companies_count = User.where(user_type: 2).count
       @candidates_count = User.where(user_type: 1).count
-      @ambassadors_count = User.where(user_type: 3).count
+      @ambassadors_count = User.where(user_type: 4).count
 
       respond_to do |format|
         format.html
