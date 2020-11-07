@@ -2,8 +2,9 @@
   <div class="container">
     <div class="columns">
       <div class="column"> 
-        <p> Empresas: <%= @companies %> </p>
-        <p> Candidatos: <%= @candidates %> </p>
+        <p> Candidatos: <%= @candidates_count %> </p>
+        <p> Empresas: <%= @companies_count %> </p>
+        <p> Ambassadors: <%= @ambassadors_count %> </p>
         <%= form_for admins_users_path, method: :get, html: {class: "mt3"} do |f| %>
           <div class="columns is-search is-vertical-center">
             <div class="column">
