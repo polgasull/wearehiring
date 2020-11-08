@@ -62,28 +62,24 @@
 </section>
 
 <% if @jobs.empty? %>
-<section class="section">
-  <div class="container has-text-centered">
-    <div class="columns">
-        <div class="column">
-          <h1 class="title f2"> No tienes ningún Job activo </h1>
+  <section class="section">
+    <div class="container has-text-centered">
+      <div class="columns">
+          <div class="column">
+            <h1 class="title f2"> No tienes ningún Job activo </h1>
+          </div>
+        </div>
+      </div>
+      <div class="columns mt4">
+        <div class="column has-text-centered">
+          <%= image_tag(asset_path('desert.svg'), width: 350, height: 350) %>
+        </div>
+      </div>
+      <div class="columns mt4">
+        <div class="column has-text-centered">
+          <%= link_to t('jobs.post_job_free'), new_job_path, class: 'button is-rounded primary is-large shadow' %>
         </div>
       </div>
     </div>
-    <div class="columns mt4">
-      <div class="column has-text-centered">
-        <%= image_tag(asset_path('desert.svg'), width: 350, height: 350) %>
-      </div>
-    </div>
-    <div class="columns mt4">
-      <div class="column has-text-centered">
-        <%= link_to t('jobs.post_job_free'), new_job_path, class: 'button is-rounded primary is-large shadow' %>
-      </div>
-    </div>
-  </div>
-</section>
-<% end %>
-
-<%= content_for :head do %>
-  <%= render "seo", title: t('seo.my_jobs_title') , description: t('seo.my_jobs_description')%>
+  </section>
 <% end %>

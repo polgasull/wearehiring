@@ -56,5 +56,8 @@
 </section>
 
 <%= content_for :head do %>
-  <%= render "seo", title: t('seo.jobs_title') , description: t('seo.jobs_description')%>
+  <%= render "seo", 
+      title: t('seo.jobs_title'), 
+      description: t('seo.jobs_description'),
+      image: asset_path('logo_black.png') %>
 <% end %>

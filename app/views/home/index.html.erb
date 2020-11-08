@@ -145,7 +145,10 @@
 <div class="mv5 is-hidden-touch"></div>
 
 <%= content_for :head do %>
-  <%= render "seo", title: t('seo.home_title') , description: t('seo.home_description')%>
+	<%= render "seo", 
+			title: t('seo.home_title'), 
+			description: t('seo.home_description'),
+			image: asset_path('logo_black.png') %>
 <% end %>
 
 <%= content_for :footer do %>

@@ -42,6 +42,7 @@ gem "slack-notifier"
 gem 'social-share-button'
 gem 'stripe', '~> 5.28'
 gem 'trix', '~> 0.11.1'
+gem 'twitter', '~> 7.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'sidekiq'
 
