@@ -23,7 +23,7 @@ module Admins
 
     def update
       if @user.update(user_params)
-        SendgridService.new.update_contact @user if Rails.env.production?
+        SendgridService.new.update_contact @user
         redirect_back_response(t('users.messages.user_updated'))
       else 
         redirect_back_response(t('users.messages.user_not_updated'), false)

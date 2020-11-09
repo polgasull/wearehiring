@@ -1,45 +1,27 @@
 <table>
   <tr>
     <td style="text-align:center">             
-      <h2> ¡Nueva cuenta <strong> <%= @user.name %> </strong> creada! </h2>
+      <h2> <strong> ¡Felicidades! Tu solicitud se ha enviado correctamente </strong> </h2>
     </td>
   </tr>
   <tr>
     <td style="text-align:center">
-      Bienvenido a We Are Hiring!
+      <%= @job.title %>
     </td>
   </tr>
   <tr>
     <td style="text-align:center">
-      ¿Cómo funciona?      
-    </td>
-  </tr>
-  <tr>
-    <td width="111" style="font-size:1px;line-height:30px;">&nbsp;</td>
-  </tr>  
-  <tr>
-    <td style="text-align:center">
-      - La primera publicación es GRATIS
+      <%= @job.job_author %>
     </td>
   </tr>
   <tr>
     <td style="text-align:center">
-      - Luego, publica por solo 99€
+      <%= @job.location %>
     </td>
   </tr>
   <tr>
     <td style="text-align:center">
-      - Las publicaciones expiran a los 60 días
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      - Si un candidato se inscribe, te informaremos por correo
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      - Sigue tu Job a tiempo real en "Mis publicaciones" 
+      <%= job_salary(@job.salary_from, @job.salary_to) %>    
     </td>
   </tr>
   <tr>
@@ -47,7 +29,12 @@
   </tr>
   <tr>
     <td style="text-align:center">
-      ¡Consigue al mejor talento digital y haz crecer tu empresa!   
+      La oferta estará activa durante al menos 60 días en total. 
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:center">
+      Mientras tanto, puedes ver otros Digital Jobs adecuados para ti: 
     </td>
   </tr>
   <tr>
@@ -55,9 +42,8 @@
   </tr>
   <tr>
     <td style="text-align:center">
-      <%= link_to 'Empieza hoy ¡Gratis!', 
-          new_job_url,
-          target: '_blank',
+      <%= link_to '¡Ver más Jobs!', 
+          jobs_url, 
           style: 'background-color: #cc0022;
                   border-color: #dbdbdb;
                   border-width: 1px;

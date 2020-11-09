@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :jobs
   has_many :inscriptions
   mount_uploader :picture_url, AvatarUploader
-  after_create :send_welcome_mail if Rails.env.production?
+  after_create :update_sendgrid_list
 
   %w[candidate company admin ambassador].each do |user_type_name|
     define_method "is_#{user_type_name}?" do
@@ -40,9 +40,7 @@ class User < ApplicationRecord
     end
   end
 
-  def send_welcome_mail
-    if self.is_company?
-      ModelMailer.welcome_email(self).deliver
-    end
+  def update_sendgrid_list
+    SendgridService.new.update_contact self
   end
 end

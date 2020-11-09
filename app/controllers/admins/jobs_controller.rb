@@ -24,8 +24,7 @@ module Admins
       @job.expiry_date = DateTime.now() + 60.days
     
       if @job.save
-        post_job_as_tweet
-        # slack_ping_channel_message
+        TwitterService.new.send_tweet @job
         redirect_to_response(t('jobs.messages.job_created'), @job) 
       else 
         redirect_back_response(t('jobs.messages.job_not_created'), false)
@@ -52,19 +51,6 @@ module Admins
   
     def job_params
       params.require(:job).permit!
-    end
-
-    def post_job_as_tweet
-      message = 
-        <<~END
-        #WEAREHIRING 📢
-
-        Estamos buscando a un #{@job.title} en #{@job.remote_ok? ? '(Remoto)' : @job.location}
-        https://www.wearehiring.io/ofertas-empleo-digital/#{@job.slug}
-
-        #OfertaDeEmpleo
-        END
-      TWITTER.update(message)
     end
 
     # def slack_ping_channel_message

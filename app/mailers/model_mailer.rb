@@ -15,7 +15,7 @@ class ModelMailer < ApplicationMailer
     attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
     mail( 
       :to => @user.email,
-      :subject => 'Congrats! Nuevo Job Publicado! 🥳' 
+      :subject => "Tu oferta #{@job.title} ha sido publicada! 🚀"
     )
   end
 
@@ -28,11 +28,11 @@ class ModelMailer < ApplicationMailer
     attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
     mail( 
       :to => job.user.email,
-      :subject => 'Tienes un nuevo candidato ✅' 
+      :subject => "✅ Nuevo candidato para #{@job.title}" 
     )  
   end
   
-  def new_inscription(user, job)
+  def successfully_inscribed(user, job)
     @user = user
     @job = job
 
@@ -41,19 +41,7 @@ class ModelMailer < ApplicationMailer
     attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
     mail( 
       :to => user.email,
-      :subject => 'Has solicitado el Job correctamente 💪' 
-    )  
-  end
-
-  def welcome_email(user)
-    @user = user
-
-    attachments.inline["logo_black.png"] = File.read("#{Rails.root}/app/assets/images/logo_black.png")
-    attachments.inline["twitter.png"] = File.read("#{Rails.root}/app/assets/images/twitter.png")
-    attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
-    mail( 
-      :to => user.email,
-      :subject => 'Bienvenido a We Are Hiring 🚀' 
+      :subject => "Has aplicado para #{@job.title} en #{job.remote_ok? ? '(Remoto)' : job.location}"
     )  
   end
 end

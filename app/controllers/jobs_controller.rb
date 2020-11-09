@@ -45,7 +45,7 @@ class JobsController < ApplicationController
     end
 
     if @job.save
-      post_job_as_tweet
+      TwitterService.new.send_tweet @job
       ModelMailer.new_job(current_user, @job).deliver
       redirect_to_response(t('jobs.messages.job_created'), thanks_job_page_path) 
     else 
@@ -89,19 +89,6 @@ class JobsController < ApplicationController
     if @job.is_expired? && !@job.user_owner_or_admin(current_user)
       redirect_to_response(t('jobs.messages.job_expired'), root_path, false) 
     end
-  end
-
-  def post_job_as_tweet
-    message = 
-      <<~END
-      #WEAREHIRING 📢
-
-      Estamos buscando a un #{@job.title} en #{@job.remote_ok? ? '(Remoto)' : @job.location}
-      https://www.wearehiring.io/ofertas-empleo-digital/#{@job.slug}
-
-      #OfertaDeEmpleo
-      END
-    TWITTER.update(message)
   end
 
   # def slack_ping_channel_message

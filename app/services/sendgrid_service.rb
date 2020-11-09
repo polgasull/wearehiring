@@ -8,6 +8,8 @@ class SendgridService
   end
 
   def update_contact(user)
+    return unless Rails.env.production?
+
     conn = Faraday.new(
       :url => @base_url,
       headers: {'Content-Type' => 'application/json'}
