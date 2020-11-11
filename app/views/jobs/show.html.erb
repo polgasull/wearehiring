@@ -11,11 +11,6 @@
             <%= icon('fas', 'edit') %> Editar
           <% end %> 
         </div>
-        <div class="column is-2 is-flex justify-end">
-          <%= form_for @job, url: admins_job_path(@job.id), :action => 'destroy', method: :delete do |f| %>
-            <button type="submit" class="button is-danger ml5" data-confirm="Estás seguro, esta acción no se puede deshacer"><%= icon('fas', 'trash-alt') %> Eliminar</button>
-          <% end %>
-        </div>
       </div>
     </div>
   </div>

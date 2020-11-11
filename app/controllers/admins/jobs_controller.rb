@@ -36,12 +36,6 @@ module Admins
         redirect_to_response(t('jobs.messages.job_updated'), @job) : 
         redirect_back_response(t('jobs.messages.job_not_updated'), false)
     end
-  
-    def destroy
-      @job.taggings.destroy_all
-      @job.inscriptions.destroy_all
-      @job.destroy ? redirect_back_response(t('jobs.messages.job_deleted')) : redirect_back_response(t('jobs.messages.job_not_deleted'), false)
-    end
 
     private
 
