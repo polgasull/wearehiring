@@ -18,7 +18,7 @@
     </div>
     <div class="content">
       <small> <%= time_ago_in_words(post.created_at) %> </small>
-      <p> <%= post.description.truncate(150) %> </p>
+      <p> <%= post.description.truncate(150).html_safe %> </p>
     </div>
     <div class="comment-count">
       <span class="tag is-rounded"> <%= post.comments.count %> Comentarios </span>
