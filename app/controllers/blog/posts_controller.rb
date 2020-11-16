@@ -7,7 +7,7 @@ module Blog
 
     def index
       @posts = Post.all.order("created_at DESC")
-      @last_jobs = Job.not_expired.order('created_at DESC').take(10);
+      @last_jobs = Job.active.order('created_at DESC').take(10);
       @last_blog_posts = Post.all.order('created_at DESC').take(3);
     end 
 
@@ -26,7 +26,7 @@ module Blog
     end
 
     def show
-      @last_jobs = Job.not_expired.order('created_at DESC').take(10);
+      @last_jobs = Job.active.order('created_at DESC').take(10);
       @last_blog_posts = Post.all.order('created_at DESC').take(3);
       @post_comments = @post.comments.order('created_at DESC');
     end 

@@ -240,6 +240,8 @@ en:
     new_job: "New job"
     edit_job: "Edit job"
     edit: "Edit"
+    close: "Close"
+    manage_inscriptions: "Manage inscriptions"
     published_jobs: "Job offers"
     job_type: "Contract Type"
     logo_image: "Imagen empresa"

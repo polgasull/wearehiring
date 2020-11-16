@@ -1,43 +1,43 @@
 <footer class="footer">
   <section class="section is-footer">
-      <div class="container">
-    <div class="columns">
-      <div class="column is-3 is-hidden-mobile">
-        <div class="content">
-          <ol class="is-lower-alpha">
-            <li><%= link_to t('show_jobs'), jobs_path %> </li>
-            <li><%= link_to t('jobs.post_job'), new_job_path %></li>
-            <li><%= link_to t('blog'), blog_posts_path %></li>
-          </ol>
+    <div class="container">
+      <div class="columns">
+        <div class="column is-3-desktop">
+          <div>
+            <ol>
+              <li><%= link_to t('show_jobs'), jobs_path %> </li>
+              <li><%= link_to t('jobs.post_job'), new_job_path %></li>
+              <li><%= link_to t('blog'), blog_posts_path %></li>
+            </ol>
+          </div>
+        </div>
+        <div class="column is-3">
+          <p>¡Síguenos!</p>
+          <div class="social-buttons">
+              <a href="https://www.linkedin.com/company/we-are-hiring-startup" target="_blank">
+              <span class="social-icon fab fa-linkedin-in"></span>
+              </a>
+              <a href="https://twitter.com/WeAreHiring_io" target="_blank">
+                <span class="social-icon fab fa-twitter"></span>
+              </a>
+          </div>
+        </div>
+        <div class="column is-3">
+          <a href="mailto:hello@wearehiring.io"> hello@wearehiring.io </a>
+        </div>
+        <div class="column is-3">
+          <%= link_to t('legal_note'), legal_terms_path, { rel:"nofollow", target: '_blank' } %> <br>
+          <%= link_to t('privacy_policy_footer'), privacy_policy_path, { rel:"nofollow", target: '_blank' } %> <br>
+          <%= link_to t('cookies_policy_footer'), cookies_policy_path, { rel:"nofollow", target: '_blank' } %>
         </div>
       </div>
-      <div class="column is-3">
-        <p>¡Síguenos!</p>
-        <div class="social-buttons">
-            <a href="https://www.linkedin.com/company/we-are-hiring-startup" target="_blank">
-            <span class="social-icon fab fa-linkedin-in"></span>
-            </a>
-            <a href="https://twitter.com/WeAreHiring_io" target="_blank">
-              <span class="social-icon fab fa-twitter"></span>
-            </a>
+      <hr class="is-hidden-mobile">
+      <div class="columns is-copy is-hidden-mobile">
+        <div class="column has-text-centered">
+          <p>WeAreHiring</p>
+          Copyright &copy; 2020 Made with ❤️in Barcelona
         </div>
       </div>
-      <div class="column is-3">
-        <a href="mailto:hello@wearehiring.io"> hello@wearehiring.io </a>
-      </div>
-      <div class="column is-3">
-        <%= link_to t('legal_note'), legal_terms_path, { rel:"nofollow", target: '_blank' } %> <br>
-        <%= link_to t('privacy_policy_footer'), privacy_policy_path, { rel:"nofollow", target: '_blank' } %> <br>
-        <%= link_to t('cookies_policy_footer'), cookies_policy_path, { rel:"nofollow", target: '_blank' } %>
-      </div>
     </div>
-    <hr class="is-hidden-mobile">
-    <div class="columns is-copy is-hidden-mobile">
-      <div class="column has-text-centered">
-        <p>WeAreHiring</p>
-        Copyright &copy; 2020 Made with ❤️in Barcelona
-      </div>
-    </div>
-  </div>
   </section>
 </footer>

@@ -22,20 +22,22 @@ class Job < ApplicationRecord
     "Empleo de #{title} en #{location} #{job_author} #{reference}"
   end
 
-  def self.not_expired
-    where('expiry_date >= ?', Date.today)
-  end
-
-  def self.expired
-    where('expiry_date < ?', Date.today)
-  end
-
-  def is_active?
-    expiry_date >= Date.today
-  end
+  scope :active, -> { where(open: true) }
+  scope :inactive, -> { where(open: false) }
 
   def is_expired?
     expiry_date < Date.today
+  end
+
+  def self.close_expired_jobs
+    active = Job.active
+    active.each do |job|
+      if job.is_expired?
+        job.update(
+          open: false,
+        )
+      end
+    end
   end
 
   def user_owner_or_admin(current_user)

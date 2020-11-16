@@ -8,11 +8,11 @@ class JobsController < ApplicationController
 
   def index
     if params[:sort_by]
-      @jobs = Job.not_expired.order_list(params[:sort_by]).page(params[:page]).per(10)
-      @jobs_count = Job.not_expired.count
+      @jobs = Job.active.order_list(params[:sort_by]).page(params[:page]).per(10)
+      @jobs_count = Job.active.count
     else 
-      @jobs = Job.not_expired.order('created_at DESC').filter(params).page(params[:page]).per(10)
-      @jobs_count = Job.not_expired.filter(params).count
+      @jobs = Job.active.order('created_at DESC').filter(params).page(params[:page]).per(10)
+      @jobs_count = Job.active.filter(params).count
     end
 
     respond_to do |format|
@@ -24,7 +24,7 @@ class JobsController < ApplicationController
   def show
     return redirect_to_response(t('not_found'), root_path, false) unless @job
     @inscriptions_count = @job.inscriptions.count
-    @same_category_jobs = Job.not_expired.same_category(@job).order('created_at DESC').take(3)
+    @same_category_jobs = Job.active.same_category(@job).order('created_at DESC').take(3)
   end
 
   def new
@@ -82,12 +82,14 @@ class JobsController < ApplicationController
   end
 
   def job_params
-    params.require(:job).permit(:title, :description, :url, :job_type, :location, :job_author, :remote_ok, :apply_url, :avatar, :salary_from, :salary_to, :open, :tag_list, :expiry_date, :category_id, :job_type_id, :level_id)
+    params.require(:job).permit(:title, :description, :url, :job_type, :location, :job_author, 
+      :remote_ok, :apply_url, :avatar, :salary_from, :salary_to, :open, :tag_list, :expiry_date, 
+      :category_id, :job_type_id, :level_id)
   end
 
   def validate_is_expired!
-    if @job.is_expired? && !@job.user_owner_or_admin(current_user)
-      redirect_to_response(t('jobs.messages.job_expired'), root_path, false) 
+    if !@job.open? && !@job.user_owner_or_admin(current_user)
+      return redirect_to_response(t('jobs.messages.job_expired'), root_path, false) 
     end
   end
 

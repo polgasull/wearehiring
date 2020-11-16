@@ -6,8 +6,8 @@ class UsersController < ApplicationController
 
   def jobs
     @jobs = @user.jobs.filter(params).order('created_at DESC')
-    @jobs_active_count = @jobs.not_expired.count
-    @jobs_expired_count = @jobs.expired.count
+    @jobs_active_count = @jobs.active.count
+    @jobs_expired_count = @jobs.inactive.count
     @jobs_count = @jobs.count
   end
 

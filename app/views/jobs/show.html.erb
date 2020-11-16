@@ -7,9 +7,22 @@
           <%= link_to admins_job_inscriptions_path(@job.id) do %>
             <%= icon('fas', 'user mr2') %> <%= @job.inscriptions.count %> inscritos
           <% end %>
-          <%= link_to edit_admins_job_path(@job.id), class: 'ml5' do %>
-            <%= icon('fas', 'edit') %> Editar
+        </div>
+        <div class="column is-2">
+          <%= link_to edit_admins_job_path(@job.id), class: 'button is-link' do %>
+            <%= icon('fas', 'edit mr2') %> Editar
           <% end %> 
+        </div>
+        <div class="column is-2 has-text-right">
+        <%= simple_form_for([:admins, @job], html: { multipart: true }) do |f| %>
+          <%= f.hidden_field :open, value: false %>
+          <%= f.submit(
+            t('jobs.close'),
+            class: 'button is-danger is-outlined',
+            disabled: !@job.open?, 
+            onclick: "alert('¿Estás seguro? Esta acción no se puede deshacer. 
+            El Job ya no estará visible pero la empresa podrá seguir gestionando sus candidatos')") %>
+        <% end %>
         </div>
       </div>
     </div>
@@ -23,21 +36,27 @@
     <div class="container is-wrapper bg-white radius-8">
       <div class="columns">
         <div class="column">    
-          <%= t('jobs.reference') %>: #<%= @job.reference %>
-        </div>
-        <div class="column has-text-right">
-          <%= link_to job_inscriptions_path(@job), class: 'button is-info' do %>
-            <%= icon('fas', 'user mr2') %> <%= @job.inscriptions.count %> inscritos
-          <% end %>
-        </div>
-      </div>
-      <div class="columns is-multiline is-mobile">
-        <div class="column is-full-mobile is-half-tablet">
+          <p> <%= t('jobs.reference') %>: #<%= @job.reference %> </p>
           <strong class="f3"> <%= job_expired(@job) %> </strong> 
           <%= t('remaining_days') %>
         </div>
         <div class="column has-text-right">
-          <%= link_to t('jobs.edit'), edit_job_path(@job), class: 'button is-link' %>
+          <%= link_to edit_job_path(@job), class: 'button is-link' do %>
+            <%= icon('fas', 'edit mr2') %> <%= t('jobs.edit') %>
+          <% end %>
+          <%= button_tag(type: 'button',
+            class: 'button is-danger is-outlined close-job-button',
+            'data-target': 'close-job-modal',
+            'aria-haspopup': 'true',
+            disabled: !@job.open?) do %>
+              <%= icon('fas', 'calendar-times mr2') %> <%= t('jobs.close') %> 
+          <% end %>
+        </div>
+      </div>
+      <div class="columns mt3">
+        <div class="column has-text-centered">
+          <div> <%= icon('fas', 'user mr2') %> <%= @job.inscriptions.count %> inscritos </div>
+          <%= link_to t('jobs.manage_inscriptions'), job_inscriptions_path(@job), class: 'button is-info' %>
         </div>
       </div>
     </div>
@@ -151,9 +170,8 @@
   </section>
 <% end %>
 
-<% unless current_user&.accepted_terms? %>
-  <%= render partial: '/jobs/partials/accept_terms_modal' %>
-<% end %>
+<%= render partial: '/jobs/partials/accept_terms_modal' unless current_user&.accepted_terms? %>
+<%= render partial: '/jobs/partials/close_job_modal', locals: { job: @job } %>
 
 <%= content_for :head do %>
   <%= render "seo", 
@@ -169,7 +187,7 @@
 
     $(document).on("click", ".submit-inscription", function() {
       if(!$('.terms_checkbox').is(':checked')) {
-        $('.modal').addClass('is-active');
+        $('.accept-terms-modal').addClass('is-active');
         return false
       }
     });
@@ -179,8 +197,12 @@
     });
 
     $(document).on("click", ".accept-terms", function() {
-      $('.modal').removeClass('is-active');
+      $('.accept-terms-modal').removeClass('is-active');
       $('.terms_checkbox').prop('checked', true);
+    });
+
+    $(document).on("click", ".close-job-button", function() {
+      $('.close-job-modal').addClass('is-active');
     });
 
   </script>

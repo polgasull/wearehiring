@@ -1,0 +1,31 @@
+<div class="modal close-job-modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title"> Finalizar Publicación </p>
+      <button class="delete" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body has-text-centered">
+      <p class="has-text-weight-bold mb3"> 
+        ¿Estás seguro? Esta acción no se puede deshacer 
+      </p>
+
+      <p class="mb1"> <%= job.title %> </p>
+      <p class="mb3"> <%= job.location %> </p>
+
+      <p class="mb1"> 
+        El job ya no estará visible pero podrás seguir gestionando tus candidatos. 
+      </p>
+
+      <p class="mb1"> <%= icon('fas', 'user mr1') %> <%= @job.inscriptions.count %> inscritos </p>
+    </section>
+    <footer class="modal-card-foot justify-center">
+    <%= simple_form_for(job, html: { multipart: true }) do |f| %>
+      <%= f.hidden_field :open, value: false %>
+      <%= button_tag(type: 'submit', class: "button is-danger") do %>
+        <%= icon('fas', 'calendar-times mr2') %> <%= t('jobs.close') %>
+      <% end %>
+    <% end %>
+    </footer>
+  </div>
+</div>
