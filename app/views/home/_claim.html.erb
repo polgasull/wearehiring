@@ -2,17 +2,16 @@
 	<div class="hero-body">
 		<div class="container">
 			<div class="columns has-text-centered is-marginless">
-				<div class="column is-3"></div>
-				<div class="column is-6" data-aos="fade-up" data-aos-duration="1000">
+				<div class="column is-2 is-hidden-mobile"></div>
+				<div class="column is-8" data-aos="fade-up" data-aos-duration="1000">
 					<h1 class="title title-mb">
-						<%= link_to jobs_path, class: 'home-link' do %>
-							<%= Job.active.count %> <%= t('companies') %>
-						<% end %>
-						<%= t('home_h1') %>
-						<span class="primary-color"> ¡Ahora! </span>
+						<span> Todo el </span>
+						<span class="primary-color <%= 'is-block' if browser.device.mobile? %>"> empleo digital </span>
+						<span class="is-block"> que buscabas </span>
+						<span class="primary-color is-block"> aquí y ahora </span>
 					</h1>
 				</div>
-				<div class="column is-3"></div>
+				<div class="column is-2"></div>
 			</div>
 		</div>
 	</div>

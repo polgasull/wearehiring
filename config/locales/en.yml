@@ -408,9 +408,9 @@ en:
   seo:
     jobs_title: "Show all digital offers"
     jobs_description: "Encuentra todas las Ofertas de Empleo Digital: Marketing Digital, Developers, UX/UI Designer, Digital Product Managers, ¡Solicita tu empleo ya!"
-    home_title: "Portal de Empleo Digital | WeAreHiring.io"
-    home_description: "¿Buscas trabajo en el mundo digital? Encuentra empleo con WeAreHiring.io, el principal portal de empleo digital de España."
-    my_jobs_title: "Mis ofertas publicadas | WeAreHiring.io"
+    home_title: "Encuentra todo el Empleo Digital en We Are Hiring"
+    home_description: "¿Buscas trabajo en el mundo digital? Encuentra empleo con We Are Hiring, el primer portal de empleo 100% digital de España. Aplica a los empleos digitales que mejor se adaptan a ti e impulsa tu carrera profesional"
+    my_jobs_title: "Mis ofertas publicadas en We Are Hiring"
     my_jobs_description: "Gestiona todas tus publicaciones"
   show_all_digital_offers: "Show all digital offers"
   you_posted: "You posted"
