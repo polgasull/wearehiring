@@ -13,7 +13,7 @@
 <% if !user_signed_in? && !current_user&.is_company? && !current_user&.is_ambassador? %>
   <%= link_to t(cta_text), 
               user_linkedin_omniauth_authorize_path(job_id: job.id), 
-              class: "button is-rounded primary is-large shadow mv3 #{'require-user-info' unless minimum_profile(current_user)}" %>
+              class: "button is-rounded primary is-large shadow mv3" %>
 <% end %>
 
 <% if user_signed_in? && current_user&.is_candidate? %>
