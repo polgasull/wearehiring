@@ -11,7 +11,6 @@ class InscriptionsController < ApplicationController
     @inscription = @job.inscriptions.build(inscription_params)
     
     if @inscription.save  
-      @inscription.user.update(accepted_terms: true) unless @inscription.user.accepted_terms
       ModelMailer.new_candidate(current_user, @job).deliver if Rails.env.production?
       ModelMailer.successfully_inscribed(current_user, @job).deliver if Rails.env.production?
       redirect_to_response(t('inscriptions.messages.inscription_created'), @inscription.job)

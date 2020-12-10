@@ -380,6 +380,7 @@ es:
         name: "Nombre"
         last_name: "Apellidos"
         email: "Correo electrónico"
+        phone: "Teléfono"
         username: 'Nombre de usuario'
         password: 'Contraseña'
         remember_me: "Recuérdame"
@@ -388,6 +389,7 @@ es:
         description: "Descripción"
         apply_url: "Enlace original"
         job_author: "Nombre empresa"
+        profile_url: "Perfil de Linkedin"
         new:
           username: 'Elige un nombre de usuario'
     hints:
@@ -459,6 +461,8 @@ es:
       post_not_deleted: "No se pudo eliminar el Post"
   legal_note: "Aviso legal"
   terms_and_conditions_footer: "Términos y condiciones"
+  accept_terms:
+    inscription: "We Are Hiring tratará tus datos personales para gestionar tu candidatura y para remitirte, información y comunicaciones comerciales sobre nuestros productos y servicios. Tus datos se comunicarán a la Entidad publicitada. Tienes derecho a acceder, rectificar y suprimir los datos, así como a otros derechos, como se explica en nuestra política de privacidad"
   privacy_policy_footer: "Política de privacidad"
   cookies_policy_footer: "Política de cookies"
   save: "Guardar"
@@ -521,3 +525,4 @@ es:
   complementary_info: "Información complementaria"
   about_me: "Sobre mí"
   go_back_to_inscriptions: "Volver a todos los inscritos"
+  successfully_updated: "Acción realizada correctamente"

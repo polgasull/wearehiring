@@ -18,8 +18,12 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
+      if params[:job_id]
+        @job = Job.find_by_id(params[:job_id])
+        create_inscription(@job, @user)
+      end
       SendgridService.new.update_contact @user
-      redirect_to_response(t('users.messages.user_updated'), edit_user_registration_path)
+      return redirect_back_response(t('successfully_updated'))
     else 
       redirect_back_response(t('users.messages.user_not_updated'), false)
     end
@@ -37,5 +41,16 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :last_name, :phone, :profile_url, :current_position, 
     :picture_url, :description, :github, :pinterest, :behance, :personal_website)
+  end
+
+  def create_inscription(job, user)
+    @inscription = Inscription.create(job_id: job.id, user_id: user.id)
+    if @inscription.save
+      flash[:notice] = t('inscriptions.messages.inscription_created')
+      ModelMailer.new_candidate(user, job).deliver if Rails.env.production?
+      ModelMailer.successfully_inscribed(user, job).deliver if Rails.env.production?
+    else 
+      flash[:alert] = t('already_inscribed')
+    end
   end
 end

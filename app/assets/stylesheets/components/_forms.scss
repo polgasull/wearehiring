@@ -46,10 +46,6 @@ $openheart: "\f08a";
 	}
 }
 
-.terms_checkbox {
-	transform: scale(1.5);
-}
-
 .switch[type=checkbox]:checked + label::before, 
 .switch[type=checkbox]:checked + label:before {
 	background-color: $red;

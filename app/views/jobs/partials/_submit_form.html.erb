@@ -1,24 +1,19 @@
-<% if !current_user&.accepted_terms? && !current_user&.is_company? && !current_user&.is_ambassador? %>
+<% unless current_user&.is_company? && current_user&.is_ambassador? %>
   <div class="mb2">
-    <div class="accept-terms-message"></div>
-    <label for="legal">
-      <abbr title="required">*</abbr>
-      <%= check_box_tag "legal", 'accepted_terms', false, class: 'terms_checkbox' %>
-      <small class="accept-terms-text pl2">
-        Estoy de acuerdo con la
-        <%= link_to 'política de privacidad', privacy_policy_path, target: '_blank' %>, 
-        <%= link_to 'aviso legal', legal_terms_path, target: '_blank' %> y 
-        <%= link_to 'política de cookies', cookies_policy_path, target: '_blank' %>
-        de Wearehiring
-      </small>
-    </label>
+    <small class="accept-terms-text pl2">
+      Al inscribirme, estoy de acuerdo con la
+      <%= link_to 'política de privacidad', privacy_policy_path, target: '_blank' %>, 
+      <%= link_to 'aviso legal', legal_terms_path, target: '_blank' %> y 
+      <%= link_to 'política de cookies', cookies_policy_path, target: '_blank' %>
+      de Wearehiring
+    </small>
   </div>
 <% end %>
 
 <% if !user_signed_in? && !current_user&.is_company? && !current_user&.is_ambassador? %>
   <%= link_to t(cta_text), 
               user_linkedin_omniauth_authorize_path(job_id: job.id), 
-              class: "button is-rounded primary is-large shadow mv3 #{'submit-inscription' unless current_user&.accepted_terms?}" %>
+              class: "button is-rounded primary is-large shadow mv3 #{'require-user-info' unless minimum_profile(current_user)}" %>
 <% end %>
 
 <% if user_signed_in? && current_user&.is_candidate? %>
@@ -31,7 +26,8 @@
   <% else %>
     <%= form_for :inscription, url: job_inscriptions_path(job.id) do |f| %>
       <%= f.hidden_field :user_id, value: current_user.id %>
-      <%= f.submit t(cta_text), class: "button is-rounded primary is-large shadow mv3 #{'submit-inscription' unless current_user&.accepted_terms?}" %>
+      <%= f.hidden_field :accepted_terms, value: true %>
+      <%= f.submit t(cta_text), class: "button is-rounded primary is-large shadow mv3 #{'require-user-info' unless minimum_profile(current_user)}" %>
     <% end %>        
   <% end %>
 <% end %>      

@@ -1,0 +1,118 @@
+  <div class="modal update-user-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <%= simple_form_for(user, method: :patch, url: user_path(user.id), html: { multipart: true }) do |f| %>
+        <header class="modal-card-head">
+          <p class="modal-card-title"> Hola, <%= user.name %> </p>
+        </header>
+
+        <section class="modal-card-body">
+          <p class="has-text-weight-bold"> 
+            Para conseguir este job, 
+          </p>
+          <p class="has-text-weight-bold mb3"> 
+            <%= job.job_author %> necesita que rellenes esto 👇
+          </p>
+          <div class="column">
+            <div class="field">
+              <%= f.label :email, class: 'has-text-weight-bold' %>
+              <div class="control has-icons-left has-icons-right mt2">
+                <input value="<%= user.email %>" class="input" disabled> 
+                <span class="icon is-small is-left">
+                  <%= icon('fas', 'envelope') %>
+                </span>
+                <span class="icon is-small is-right">
+                  <%= icon('fas', 'check has-text-success') %>
+                </span>   
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="field">
+              <%= f.label :name, class: 'has-text-weight-bold' %>
+              <div class="control has-icons-left has-icons-right mt2">
+                <%= f.input :name, 
+                  label: false, 
+                  wrapper: false,
+                  input_html: { class: "input #{user.name.blank? ? 'is-danger' : 'is-success'}" }, 
+                  placeholder: "José Hernández" %>
+                <span class="icon is-small is-left">
+                  <%= icon('fas', 'user') %>
+                </span>
+                <span class="icon is-small is-right">
+                  <%= icon('fas', 'check has-text-success') if user.name.present? %>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="field">
+              <%= f.label :profile_url, class: 'has-text-weight-bold' %>
+              <div class="control has-icons-left has-icons-right mt2">
+                <%= f.input :profile_url, 
+                  label: false,
+                  wrapper: false, 
+                  required: true,
+                  type: :url,
+                  input_html: { class: "input #{user.profile_url.blank? ? 'is-danger' : 'is-success'}" }, 
+                  placeholder: "https://www.linkedin.com/in/your-profile-url/" %>
+                <span class="icon is-small is-left">
+                  <%= icon('fab', 'linkedin') %>
+                </span>
+                <span class="icon is-small is-right">
+                  <%= icon('fas', 'check has-text-success') if user.profile_url.present? %>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="field">
+              <%= f.label :phone, class: 'has-text-weight-bold' %>
+              <div class="control has-icons-left has-icons-right mt2">
+                <%= f.input :phone, 
+                  label: false,
+                  wrapper: false, 
+                  required: true,
+                  hint: "Visible solo para las empresas dónde apliques", 
+                  input_html: { class: "input #{user.phone.blank? ? 'is-danger' : 'is-success'}" }, 
+                  placeholder: "+34 666555444" %>
+                <span class="icon is-small is-left">
+                  <%= icon('fas', 'phone') %>
+                </span>
+                <span class="icon is-small is-right">
+                  <%= icon('fas', 'check has-text-success') if user.phone.present? %>
+                </span>              
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <footer class="modal-card-foot justify-center">
+          <%= hidden_field_tag "job_id", @job.id %>
+          <%= f.hidden_field :accepted_terms, value: true %>
+          <%= f.button :submit, t('i_want_this_job'), class: "button is-rounded primary is-large shadow mv3" %>
+        </footer>
+      <% end %>
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+  </div>
+
+
+<% content_for :footer do %>
+  <script>
+
+    $(document).on("input", ".input", function () {
+      if( !$(this).val() ) {
+        console.log('is-danger')
+        $(this).removeClass('is-success');
+        $(this).addClass('is-danger');
+      } else {
+        console.log('is-success')
+        $(this).removeClass('is-danger');
+        $(this).addClass('is-success');
+      }
+    })
+
+  </script>
+
+<% end %>

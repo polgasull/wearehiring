@@ -43,22 +43,29 @@
         <div class="column">
           <div class="field">
             <%= f.label :name, class: 'has-text-weight-bold' %>
-            <div class="control">
-              <%= f.input :name, input_html: { class: "input mt2" }, placeholder: "Carlos", label: false, wrapper: false %>
+            <div class="control mt2">
+              <%= f.input :name, 
+                input_html: { class: "input" }, 
+                placeholder: "Carlos", 
+                label: false, 
+                wrapper: false %>
             </div>
           </div>
         </div>
         <div class="column">
           <div class="field">
             <%= f.label :last_name, class: 'has-text-weight-bold' %>
-            <div class="control">
-              <%= f.input :last_name, input_html: { class: "input mt2" }, placeholder: "Hernández", label: false, wrapper: false %>
+            <div class="control mt2">
+              <%= f.input :last_name, 
+                input_html: { class: "input" }, 
+                placeholder: "Hernández", 
+                label: false, 
+                wrapper: false %>
             </div>
           </div>
         </div>
       </div>
       <div class='has-text-weight-bold mb2'>
-        <%= icon('fas', 'phone') %>
         <%= t('users.phone') %>
         <%= content_tag(:span, nil, class: 'dot-notification') if current_user.phone.blank? %>
       </div>
@@ -66,27 +73,32 @@
         <span class="f6 primary-color"> Añade tu <strong class="primary-color"> teléfono </strong> y aumenta las posibilidades de ser contactado </span>
       <% end %>
       <div class="field">
-        <div class="control">
+        <div class="control has-icons-left">
           <%= f.input :phone, 
             label: false,
             hint: "Visible solo para las empresas dónde apliques", 
             input_html: { class: "input" }, 
             wrapper: false, 
             placeholder: "+34 666555444" %>
+          <span class="icon is-small is-left">
+            <%= icon('fas', 'phone') %>
+          </span>
         </div>
       </div>
       <div class='has-text-weight-bold mb2'>
-        <%= icon('fab', 'linkedin') %>
         <%= t('users.profile_url') %>
         <%= content_tag(:span, nil, class: 'dot-notification') if current_user.profile_url.blank? %>
       </div>
       <div class="field">
-        <div class="control">
+        <div class="control has-icons-left">
           <%= f.input :profile_url, 
             label: false,
             input_html: { class: "input" }, 
             wrapper: false, 
             placeholder: "https://www.linkedin.com/in/your-profile-url/" %>
+          <span class="icon is-small is-left">
+            <%= icon('fab', 'linkedin') %>
+          </span>
         </div>
       </div>
       <div class='has-text-weight-bold mb2'>
@@ -108,39 +120,67 @@
       <div class="field">
         <%= f.label t('about_me'), class: 'has-text-weight-bold' %>
         <div class="control">
-          <%= f.input :description, input_html: { class: "input textarea mt2" }, placeholder: "Háblanos un poco sobre ti", label: false, wrapper: false %>
+          <%= f.input :description, 
+            input_html: { class: "input textarea mt2" }, 
+            placeholder: "Háblanos un poco sobre ti", 
+            label: false, 
+            wrapper: false %>
         </div>
       </div>
 
       <div class="field">
-        <%= icon('fab', 'github') %>
         <%= f.label :github, class: 'has-text-weight-bold' %>
-        <div class="control">
-          <%= f.input :github, input_html: { class: "input mt2" }, placeholder: "github/yourprofile", label: false, wrapper: false %>
+        <div class="control has-icons-left mt2">
+          <%= f.input :github, 
+            input_html: { class: "input" }, 
+            placeholder: "github/yourprofile", 
+            label: false, 
+            wrapper: false %>
+          <span class="icon is-small is-left">
+            <%= icon('fab', 'github') %>
+          </span>
         </div>
       </div>
 
       <div class="field">
-        <%= icon('fab', 'pinterest') %>
         <%= f.label :pinterest, class: 'has-text-weight-bold' %>
-        <div class="control">
-          <%= f.input :pinterest, input_html: { class: "input mt2" }, placeholder: "pinterest/yourprofile", label: false, wrapper: false %>
+        <div class="control has-icons-left mt2">
+          <%= f.input :pinterest, 
+            input_html: { class: "input" }, 
+            placeholder: "pinterest/yourprofile", 
+            label: false, 
+            wrapper: false %>
+          <span class="icon is-small is-left">
+            <%= icon('fab', 'pinterest') %>
+          </span>           
         </div>
       </div>
 
       <div class="field">
-        <%= icon('fab', 'behance-square') %>
         <%= f.label :behance, class: 'has-text-weight-bold' %>
-        <div class="control">
-          <%= f.input :behance, input_html: { class: "input mt2" }, placeholder: "behance/yourprofile", label: false, wrapper: false %>
+        <div class="control has-icons-left mt2">
+          <%= f.input :behance, 
+            input_html: { class: "input" }, 
+            placeholder: "behance/yourprofile", 
+            label: false, 
+            wrapper: false %>
+          <span class="icon is-small is-left">
+            <%= icon('fab', 'behance-square') %>
+          </span>        
         </div>
       </div>
 
       <div class="field">
-        <%= icon('far', 'window-restore') %>
         <%= f.label :personal_website, class: 'has-text-weight-bold' %>
-        <div class="control">
-          <%= f.input :personal_website, input_html: { class: "input mt2" }, placeholder: "https://yourwebsite.com", label: false, wrapper: false %>
+        <div class="control has-icons-left mt2">
+          <%= f.input :personal_website, 
+            input_html: { class: "input" }, 
+            placeholder: "https://yourwebsite.com", 
+            label: false, 
+            wrapper: false %>
+          <span class="icon is-small is-left">
+            <%= icon('far', 'window-restore') %>
+          </span>        
         </div>
       </div>
 

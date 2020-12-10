@@ -5,6 +5,7 @@ class HomeController < ApplicationController
   end
 
   def robots
+    @inactive_jobs = Job.inactive.order('created_at DESC')
     respond_to :text
   end
 end

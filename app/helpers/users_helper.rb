@@ -9,4 +9,8 @@ module UsersHelper
   def profile_is_completed(current_user)
     %w( picture_url profile_url phone current_position ).all? { |attr| current_user[attr].present? }
   end
+
+  def minimum_profile(current_user)
+    %w( profile_url phone ).all? { |attr| current_user[attr].present? }
+  end
 end

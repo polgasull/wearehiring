@@ -45,8 +45,8 @@
             <%= icon('fas', 'edit mr2') %> <%= t('jobs.edit') %>
           <% end %>
           <%= button_tag(type: 'button',
-            class: 'button is-danger is-outlined close-job-button',
-            'data-target': 'close-job-modal',
+            class: 'button is-danger is-outlined deactivate-job-button',
+            'data-target': 'deactivate-job-modal',
             'aria-haspopup': 'true',
             disabled: !@job.open?) do %>
               <%= icon('fas', 'calendar-times mr2') %> <%= t('jobs.close') %> 
@@ -170,8 +170,8 @@
   </section>
 <% end %>
 
-<%= render partial: '/jobs/partials/accept_terms_modal' unless current_user&.accepted_terms? %>
-<%= render partial: '/jobs/partials/close_job_modal', locals: { job: @job } %>
+<%= render partial: '/jobs/partials/update_user_info_modal', locals: { user: current_user, job: @job } if current_user %>
+<%= render partial: '/jobs/partials/deactivate_job_modal', locals: { job: @job } %>
 
 <%= content_for :head do %>
   <%= render "seo", 
@@ -185,24 +185,17 @@
 <%= content_for :footer do %>
   <script>
 
-    $(document).on("click", ".submit-inscription", function() {
-      if(!$('.terms_checkbox').is(':checked')) {
-        $('.accept-terms-modal').addClass('is-active');
-        return false
-      }
-    });
-
-    $(document).on("click", ".delete", function() {
+    $(document).on("click", ".modal-close", function() {
       $('.modal').removeClass('is-active');
     });
 
-    $(document).on("click", ".accept-terms", function() {
-      $('.accept-terms-modal').removeClass('is-active');
-      $('.terms_checkbox').prop('checked', true);
+    $(document).on("click", ".deactivate-job-button", function() {
+      $('.deactivate-job-modal').addClass('is-active');
     });
 
-    $(document).on("click", ".close-job-button", function() {
-      $('.close-job-modal').addClass('is-active');
+    $(document).on("click", ".require-user-info", function() {
+      $('.update-user-modal').addClass('is-active');
+      return false
     });
 
   </script>
