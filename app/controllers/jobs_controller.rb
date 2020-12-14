@@ -28,17 +28,23 @@ class JobsController < ApplicationController
   end
 
   def new
-    @job = current_user.jobs.build 
+    @job_last = current_user.jobs.last
+    @job = current_user.jobs.build
   end
 
   def edit
   end
 
   def create
+    job_last = current_user.jobs.last
     @job = current_user.jobs.build(job_params)
 
     @job.reference = "wah#{DateTime.now.year}#{SecureRandom.hex(3)}"
     @job.expiry_date = DateTime.now() + 60.days
+
+    if params[:job][:avatar].nil? && job_last
+      @job.avatar = job_last.avatar
+    end
     
     if !current_user.is_ambassador? && !current_user.jobs.first.id.blank?
       stripe_process

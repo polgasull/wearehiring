@@ -171,10 +171,21 @@
           <label class="label f4"> <%= t('jobs.logo_image') %> </label>
           <div class="file is-primary">
             <label class="file-label">
-              <%= f.input :avatar, as: :file, required: false, input_html: { class: "file-input load-image" }, label: false, wrapper: false %>
+              <%= f.input :avatar, 
+                as: :file, 
+                required: false, 
+                input_html: { class: "file-input load-image" }, 
+                label: false, 
+                wrapper: false %>
               <span class="file-cta">
                 <span class="file-icon"> <%= icon('fas', 'upload') %> </span>
-                <span class="file-label"> Subir imagen... </span>
+                <span class="file-label"> 
+                  <% if @job_last && @job_last.avatar.file.present? %>
+                    <%= t('jobs.change_image') %>
+                  <% else %>
+                    <%= t('jobs.upload_image') %>
+                  <% end %>
+                </span>
               </span>
             </label>
           </div>
@@ -183,7 +194,13 @@
       </div>    
     </div>
     <div class="column">
-      <output id="list"></output>
+      <output id="list">
+        <% if @job_last && @job_last.avatar.file.present? %>
+          <div class="rounded-image size-150" id="prevImage">
+            <%= image_tag(@job_last.avatar_url(:thumb)) %>
+          </div>
+        <% end %>
+      </output>
     </div>
   </div>
 

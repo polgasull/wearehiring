@@ -19,11 +19,17 @@ $(document).ready(function () {
       reader.onload = (function(theFile) {
         return function(e) {
           // Render thumbnail.
-          var span = document.createElement('span');
-          span.innerHTML = ['<img class="image-preview-thumb border-light" src="', e.target.result,
+          var lastItem = document.querySelector(".rounded-image:last-child");
+          var newDiv = document.createElement('div');
+          newDiv.classList.add('rounded-image', 'size-150');
+          newDiv.innerHTML = ['<img class="image-preview-thumb border-light" src="', e.target.result,
             '" title="', escape(theFile.name), '"/>'
           ].join('');
-          document.getElementById('list').insertBefore(span, null);
+          if (lastItem) {
+            document.getElementById('list').replaceChild(newDiv, lastItem);
+          } else {
+            document.getElementById('list').insertBefore(newDiv, null);
+          }
         };
       })(f);
       // Read in the image file as a data URL.

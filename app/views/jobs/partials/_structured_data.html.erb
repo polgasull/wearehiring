@@ -9,7 +9,7 @@
   "headline": "<%= job.title %> en <%= job.job_author %> en <%= job.location %>",
   "image": {
     "@type": "ImageObject",
-    <% if !job.avatar.file.nil? %>
+    <% unless job.avatar.file.nil? %>
     "url": "<%= job.avatar_url(:thumb) %>",
     "height": 250,
     "width": 250

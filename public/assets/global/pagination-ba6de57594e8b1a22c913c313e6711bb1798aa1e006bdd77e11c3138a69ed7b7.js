@@ -1,1 +1,0 @@
-$(document).ready(function(){$(window).scroll(function(){var n;(n=$("#pagination a").attr("href"))&&$(window).scrollTop()+$(window).height()>$(document).height()-250&&($("#pagination").text("Cargando..."),$("#pagination-loader").show(),setTimeout(function(){return $.getScript(n)},1e3))})});

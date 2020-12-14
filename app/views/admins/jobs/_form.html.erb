@@ -204,10 +204,17 @@
           <label class="label f4"> <%= t('jobs.logo_image') %> </label>
           <div class="file is-primary">
             <label class="file-label">
-              <%= f.input :avatar, as: :file, required: false, input_html: { class: "file-input load-image" }, label: false, wrapper: false %>
+              <%= f.input :avatar, 
+                as: :file, 
+                required: false, 
+                input_html: { class: "file-input load-image" }, 
+                label: false, 
+                wrapper: false %>              
               <span class="file-cta">
                 <span class="file-icon"> <%= icon('fas', 'upload') %> </span>
-                <span class="file-label"> Subir imagen... </span>
+                <span class="file-label"> 
+                    <%= t('jobs.upload_image') %>
+                </span>
               </span>
             </label>
           </div>

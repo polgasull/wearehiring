@@ -9,12 +9,12 @@
     </div>
     <div class="columns is-centered mt4">
       <div class="column is-half has-text-centered">
-        <% if !@job.avatar.file.nil? %>
+        <% if @job.avatar.file.nil? %>
+          <%= icon('far', 'image', style: 'font-size: 50px') %>
+        <% else %>
           <div class="rounded-image size-100 mauto mb2">
             <%= image_tag(@job.avatar_url(:thumb), alt: @job.job_author) %>
           </div>
-        <% else %>
-          <%= icon('far', 'image', style: 'font-size: 50px') %>
         <% end %>
         <div class="mt2"></div>
         <p class="f4 has-text-weight-bold"> <%= @job.title %> </p>

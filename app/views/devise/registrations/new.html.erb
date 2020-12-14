@@ -110,6 +110,13 @@
   </div>
 </div>
 
+<%= content_for :head do %>
+	<%= render "seo", 
+			title: t('seo.company_new'), 
+			description: t('seo.company_new_description'),
+			image: asset_path('logo_black.png') %>
+<% end %>
+
 <%= content_for :footer do %>
 
 	<script>

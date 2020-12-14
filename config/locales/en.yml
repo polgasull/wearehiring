@@ -248,6 +248,8 @@ en:
     total: "Total"
     expired: "Expired"
     assign_user: "Assign user"
+    upload_image: "Upload image..."
+    change_image: "Change image..."
     messages:
       job_created: "Job posted and paid successfully"
       job_not_created: "Job was not able to be posted"
@@ -412,6 +414,8 @@ en:
     home_description: "¿Buscas trabajo en el mundo digital? Encuentra empleo con We Are Hiring, el primer portal de empleo 100% digital de España. Aplica a los empleos digitales que mejor se adaptan a ti e impulsa tu carrera profesional"
     my_jobs_title: "Mis ofertas publicadas en We Are Hiring"
     my_jobs_description: "Gestiona todas tus publicaciones"
+    company_new: "Encuentra todo el Talento Digital en We Are Hiring"
+    company_new_description: "La primera es GRATIS. Developers, Digital Marketers, Product Managers, UX/UI Designers, Growth Hackers, Data Scientists… Consigue el mejor talento digital y haz crecer tu empresa"
   show_all_digital_offers: "Show all digital offers"
   you_posted: "You posted"
   welcome: "Welcome"

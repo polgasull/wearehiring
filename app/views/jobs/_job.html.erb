@@ -15,12 +15,12 @@
       </div>
       <div class="columns">
         <div class="column is-1 is-vertical-center justify-center pr0">
-          <% if !job.avatar.file.nil? %>
+          <% if job.avatar.file.nil? %>
+            <%= icon('far', 'image', style: 'font-size: 50px') %>
+          <% else %>
             <div class="rounded-image size-80">
               <%= image_tag(job.avatar_url(:thumb), alt: "Empleo de #{job.title} en #{job.job_author}") %>
             </div>
-          <% else %>
-            <%= icon('far', 'image', style: 'font-size: 50px') %>
           <% end %>
         </div>
         <div class="column">
