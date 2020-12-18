@@ -337,7 +337,7 @@ en:
   company_access: "Company access"
   candidate_access: "Candidate access"
   candidate: 
-    benefit_1: "Signin with Linkedin"
+    benefit_1: "Apply without limit"
     benefit_2: "No CV required"
     benefit_3: "Complete your profile after"
     benefit_4: "Apply with one click"
@@ -346,7 +346,7 @@ en:
     to: "To"
     company_name: "Company Name"
     email: "Email"
-    password: "Password"
+    password: "Create Password"
     password_confirmation: "Confirm Password"
   send_job_inscription: "Apply"
   external_link: "Visit external link"
@@ -380,6 +380,7 @@ en:
         phone: "Phone"
         username: 'User name'
         password: 'Password'
+        password_confirmation: 'Password confirmation'
         remember_me: "Remember me"
         title: "Position"
         location: "Location"
@@ -414,8 +415,10 @@ en:
     home_description: "¿Buscas trabajo en el mundo digital? Encuentra empleo con We Are Hiring, el primer portal de empleo 100% digital de España. Aplica a los empleos digitales que mejor se adaptan a ti e impulsa tu carrera profesional"
     my_jobs_title: "Mis ofertas publicadas en We Are Hiring"
     my_jobs_description: "Gestiona todas tus publicaciones"
-    company_new: "Encuentra todo el Talento Digital en We Are Hiring"
-    company_new_description: "La primera es GRATIS. Developers, Digital Marketers, Product Managers, UX/UI Designers, Growth Hackers, Data Scientists… Consigue el mejor talento digital y haz crecer tu empresa"
+    company_signup: "Encuentra todo el Talento Digital en We Are Hiring"
+    company_signup_description: "La primera es GRATIS. Developers, Digital Marketers, Product Managers, UX/UI Designers, Growth Hackers, Data Scientists… Consigue el mejor talento digital y haz crecer tu empresa"
+    candidate_signup: "Encuentra todo el Empleo Digital en We Are Hiring"
+    candidate_signup_description: "¿Buscas trabajo en el mundo digital? Encuentra empleo con We Are Hiring, el primer portal de empleo 100% digital de España. Aplica a los empleos digitales que mejor se adaptan a ti e impulsa tu carrera profesional"
   show_all_digital_offers: "Show all digital offers"
   you_posted: "You posted"
   welcome: "Welcome"

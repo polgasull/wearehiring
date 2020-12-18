@@ -11,6 +11,10 @@ $openheart: "\f08a";
 		box-shadow: 9px 9px 10px -8px rgba(163,160,163,1);
 	}
 
+	&.with-border {
+		border-color: #ccc;
+	}
+
 	&:hover {
 		background-color: darken($white, 10%);
 		color: $black;

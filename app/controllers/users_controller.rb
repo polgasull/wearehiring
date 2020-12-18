@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, except: [:candidate_access]
-  before_action :set_current_user, except: [:candidate_access]
+  before_action :authenticate_user!
+  before_action :set_current_user
   before_action :validate_is_company_or_ambassador!, only: [:jobs]
   before_action :validate_is_candidate!, only: [:inscriptions]
 
@@ -28,8 +28,6 @@ class UsersController < ApplicationController
       redirect_back_response(t('users.messages.user_not_updated'), false)
     end
   end
-
-  def candidate_access;end
 
   private
 

@@ -1,0 +1,91 @@
+<div class="section main-section">
+  <div class="container">
+    <div class="columns is-centered is-variable is-8">
+      <div class="column is-7 is-hidden-mobile has-text-centered">
+        <h2 class="title is-3"> 
+					<span> <%= t('company_section_title') %> </span> 
+					<span class="has-text-success"> <%= t('free').upcase %> </span> <br>
+          <span> <%= t('company_section_subtitle') %>
+        </h2>
+        <%= image_tag(asset_path('undraw_hiring_cyhs.svg'), alt: "Encuentra todo el Talento Digital en We Are Hiring") %>
+      </div>
+      <div class="column is-4">
+				<h2 class="title is-3"> <%= t('company_access') %> </h2>
+        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="field mb2">
+            <%= f.label :email, class: 'has-text-weight-bold' %>
+            <div class="control has-icons-left">
+              <%= f.input :email,
+                  required: true,
+                  wrapper: false,
+                  label: false,
+                  input_html: { class:"input" },
+                  placeholder: "johnsmith@correo.com" %>
+              <span class="icon is-small is-left">
+                <%= icon('fas', 'envelope') %>
+              </span>
+            </div>
+          </div>
+          <div class="field mb2">
+            <%= f.label :password, class: 'has-text-weight-bold' %>
+            <div class="control has-icons-left">
+              <%= f.input :password,
+                  required: true,
+                  wrapper: false,
+                  label: false,
+                  input_html: { class: "input" },
+                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+              <span class="icon is-small is-left">
+                <%= icon('fas', 'key') %>
+              </span>
+            </div>
+          </div>
+          <div class="field">
+            <div class="control">
+            <%= f.input :remember_me, wrapper: false, as: :boolean if devise_mapping.rememberable? %>
+            </div>
+          </div>
+          <div class="field">
+            <div class="control is-grouped">
+              <%= f.button :submit, t('login'), 
+                class:"button is-primary" %>
+              <%= link_to "¿No tienes cuenta?", 
+                new_registration_path(resource_name, :company => "true"), 
+                class: "button with-border" %>
+            </div>
+          </div>
+        <% end %>
+        <div class="field mt4">
+          <div class="control has-text-centered">
+            <%= render "devise/shared/links" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="columns">
+      <div class="column">
+        <section class="section has-text-centered">
+          <div class="container">
+            <div class="columns">
+              <div class="column is-three-fifths is-offset-one-fifth">
+                <h2 class="title"> Colaboramos con </h2>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="section">
+          <div class="container">
+            <%= render 'partners', animation: false %>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= content_for :head do %>
+	<%= render "seo", 
+			title: t('seo.company_signup'), 
+			description: t('seo.company_signup_description'),
+			image: asset_path('logo_black.png') %>
+<% end %>

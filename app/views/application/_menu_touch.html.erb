@@ -15,13 +15,13 @@
     <% unless user_signed_in? %>
       <div class="navbar-brand">
         <%= link_to t('candidate_access'), 
-          candidate_access_path,
-          class: "navbar-item text-uppercase #{ 'active' if current_page?(candidate_access_path)}" %>
+          new_user_registration_path(:candidate => "true"),
+          class: "navbar-item text-uppercase #{ 'active' if current_page?(new_user_registration_path(:candidate => "true"))}" %>
       </div>
       <div class="navbar-brand">
         <%= link_to t('company_access'), 
-          new_user_registration_path,
-          class: "navbar-item text-uppercase #{ 'active' if current_page?(new_user_registration_path)}" %>
+          new_user_registration_path(:company => "true"),
+          class: "navbar-item text-uppercase #{ 'active' if current_page?(new_user_registration_path(:company => "true"))}" %>
       </div>
 		<% end %>
     <% if user_signed_in? %>

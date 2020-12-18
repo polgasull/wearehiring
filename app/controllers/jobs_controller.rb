@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
   include PaymentHelper
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :new]
   before_action :set_job, only: [:show, :edit, :update]
   before_action :validate_is_job_owner, only: [:edit, :update]
   before_action :validate_is_company_ambassador_or_admin!, except: [:index, :show, :thanks]
