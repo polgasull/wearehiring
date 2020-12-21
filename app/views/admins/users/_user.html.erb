@@ -1,10 +1,10 @@
 <%= simple_form_for(user, method: :patch, url: admins_user_path(user.id), html: { multipart: true }) do |f| %>
 
 <div class="columns f7 is-vertical-center listrow is-mobile">
-  <div class="column is-1 is-hidden-touch">
+  <div class="column is-1">
     <%= user.id %>
   </div>
-  <div class="column is-1 is-hidden-touch">
+  <div class="column is-1">
     <%= image_tag(user.picture_url, size: 30) if user.picture_url %>
   </div>
   <div class="column">
@@ -20,31 +20,29 @@
   <div class="column is-2-desktop">
     <%= user.email %>
   </div>
-  <div class="column is-hidden-mobile">
-    <%= f.input :current_position, 
-        label: false, 
-        input_html: { class: "input f7" }, 
-        wrapper: false, 
-        placeholder: t('users.position') if user.is_candidate? %>
-  </div>
-  <div class="column is-hidden-mobile">
+  <div class="column">
       <%= f.input :profile_url, 
           label: false, 
           input_html: { class: "input f7" }, 
           wrapper: false, 
           placeholder: t('users.profile_url') if user.is_candidate? %>
   </div>
-  <div class="column is-hidden-mobile">
+  <div class="column">
     <% if user.is_candidate? || user.is_admin? %>
       <%= user.user_type.name %>
     <% else %>
       <%= f.select(:user_type_id, UserType.where(id: [2,4]).collect {|u| [ u.name, u.id ] }, { include_blank: false }) %>
     <% end %>
   </div>
-  <div class="column">
+  <div class="column is-1">
+    <% if user.is_company? || user.is_ambassador? %>
+      <%= user.jobs.count %>
+    <% end %>
+  </div>
+  <div class="column is-1">
     <%= link_to user.inscriptions.count, inscriptions_admins_user_path(user.id), target: "_blank" if user.is_candidate? %>
   </div>
-  <div class="column is-1 is-hidden-mobile">
+  <div class="column is-1">
     <%= f.submit t('save'), class: 'button is-info f6' %>
   </div>
 </div>
