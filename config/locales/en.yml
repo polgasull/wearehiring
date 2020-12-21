@@ -272,6 +272,7 @@ en:
     inscribeds: "Inscribeds"
     in_process: "In process"
     finalists: "Finalists"
+    discardeds: "Discardeds"
     discarded: "Discarded"
     finalist: "Finalist"
     inscribed: "Inscrito"
@@ -450,6 +451,15 @@ en:
       user_not_updated: "User was not able to be updated"
       user_deleted: "User was successfully deleted"
       user_not_deleted: "User was not able to be deleted"
+    inscriptions:
+      any_inscribeds: "Aquí te mostraremos los Jobs dónde hayas aplicado recientemente"
+      any_discardeds: "Aquí te mostraremos los Jobs descartados"
+      any_in_process: "Aquí te mostraremos los Jobs dónde estés en proceso de selección"
+      any_finalists: "Aquí te mostraremos los Jobs dónde estés cómo finalista"
+      jobs_inscribeds: "Inscrito"
+      jobs_discardeds: "Descartado pero ¡No dejes de intentarlo!"
+      jobs_in_process: "En proceso"
+      jobs_finalists: "Finalista"
   posts: 
     blog: "Blog"
     all_posts: "View all Posts"

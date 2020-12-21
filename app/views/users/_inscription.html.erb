@@ -1,6 +1,6 @@
 <% job = inscription.job %>
 
-<div class="columns bg-white border-bottom">
+<div class="columns bg-white box">
   <div class="column is-1 is-vertical-center">
     <% if job.avatar.file.nil? %>
       <%= icon('far', 'image', style: 'font-size: 50px') %>
@@ -38,13 +38,6 @@
         <% end %>
       </div>
     </div>
-  </div>
-  <div class="column is-vertical-center">
-  <% if inscription.status.nil? %>
-    <%= t("inscriptions.inscribed") %>
-  <% else %>
-    <%= t("inscriptions.#{inscription.status}") %>
-  <% end %>
   </div>
 </div>
 <div class="mb4"></div>

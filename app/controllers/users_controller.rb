@@ -12,7 +12,10 @@ class UsersController < ApplicationController
   end
 
   def inscriptions
-    @inscriptions = @user.inscriptions
+    @inscribeds = @user.inscriptions.where(status: [nil])
+    @discardeds = @user.inscriptions.where(status: [0])
+    @in_process = @user.inscriptions.where(status: [1])
+    @finalists = @user.inscriptions.where(status: [2])
     @inscriptions_count = @user.inscriptions.count
   end
 

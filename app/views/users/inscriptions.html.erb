@@ -1,12 +1,28 @@
 <section class="section">
   <div class="container">
-    <h1 class="f2"> <%= t('my_inscriptions') %>: <%= @inscriptions_count %> </h1>
-  </div>
-</section>
+    <h1 class="f3"> <%= t('my_inscriptions') %>: <%= @inscriptions_count %> </h1>
+    <% %w[finalists in_process discardeds inscribeds].each do |inscriptions_status| %>
+      <div class="columns mt2">
+        <div class="column">
+          <p class="f4 mb2"> 
+            <%= t("users.inscriptions.jobs_#{inscriptions_status}") %> 
+          </p>
+          <hr>
+        </div>
+      </div>
 
-<section class="section">
-  <div class="container">
-    <%= render partial: 'inscription', collection: @inscriptions, as: :inscription %>
+      <% if instance_variable_get("@#{inscriptions_status}".to_sym).count.zero? %>
+        <div class="columns is-mobile is-vertical-center">
+          <div class="column has-text-centered">
+            <%= t("users.inscriptions.any_#{inscriptions_status}") %>
+          </div>
+        </div>
+      <% else %>
+        <%= render partial: 'inscription', 
+          collection: instance_variable_get("@#{inscriptions_status}".to_sym), 
+          as: :inscription %>
+      <% end %>
+    <% end %>
   </div>
 </section>
 
