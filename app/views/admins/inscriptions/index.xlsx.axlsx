@@ -1,6 +1,6 @@
 wb = xlsx_package.workbook
 
-wb.add_worksheet(name: @job.title.truncate(25)) do |sheet|
+wb.add_worksheet(name: @job.reference) do |sheet|
   # this is the head row of your spreadsheet
   sheet.add_row %w(Nombre CargoActual Teléfono Email Linkedin Github Pinterest Behance Personal_website Status)
   
