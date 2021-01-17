@@ -206,16 +206,10 @@
 
   <hr>
 
-  <% if current_user&.is_company? && first_job_publication(current_user) %>
+  <% if first_job_publication(current_user) %>
     <%= render '/jobs/partials/first_publication_message' %>
-  <% end %>
-
-  <% if (current_user&.is_company? || current_user&.is_admin?) && !first_job_publication(current_user) %>
+  <% else %>
     <%= render 'payment' %>
-  <% end %>
-
-  <% if current_user&.is_ambassador? %>
-    <%= render '/jobs/partials/ambassador_message' %>
   <% end %>
   
   <% if edit_page %>
@@ -228,7 +222,7 @@
   <% else %>
     <div class="has-text-centered submit-box">
       <%= button_tag(type: 'submit', class: "button is-rounded is-large primary mt3", id: "postJobSubmit") do %>
-        <%= (first_job_publication(current_user) || current_user&.is_ambassador?) ? 'Publicar Gratis' : 'Pagar y publicar' %>
+        <%= first_job_publication(current_user) ? 'Publicar Gratis' : 'Pagar y publicar' %>
       <% end %>
       <%= icon('fas', 'circle-notch fa-spin is-hidden f1', id: 'submitSpinnerIcon') %>
     </div>

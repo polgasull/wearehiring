@@ -7,16 +7,30 @@
 
   <h4 class="subtitle is-4"> <%= t('payments.price') %> </h4>
 
-  <div class="is-light has-text-centered">
-    <p class="f3">
-      <%= icon('fas', 'credit-card') %>
-      <strong class="has-text-success"> 99€ + IVA </strong> <%= t('payments.monthly') %>.
-    </p>
-    <p class="has-text-centered">
-      Total: 112.86€
-    </p>
-    <span class="block mb4"></span>
-  </div>
+  <% if current_user.is_ambassador? %>
+    <div class="is-light has-text-centered">
+      <p class="f3">
+        <%= icon('fas', 'credit-card') %>
+        <strong class="is-strikethrough mr1"> 99€ </strong>
+        <strong class="has-text-success"> 49€ + IVA </strong> <%= t('payments.monthly') %>
+      </p>
+      <p class="has-text-centered">
+        Total: 55.86€
+      </p>
+      <span class="block mb4"></span>
+    </div>
+  <% else %>
+    <div class="is-light has-text-centered">
+      <p class="f3">
+        <%= icon('fas', 'credit-card') %>
+        <strong class="has-text-success"> 99€ + IVA </strong> <%= t('payments.monthly') %>
+      </p>
+      <p class="has-text-centered">
+        Total: 112.86€
+      </p>
+      <span class="block mb4"></span>
+    </div>
+  <% end %>
 
   <div class="form-row">
     <label for="card-element" class="label">

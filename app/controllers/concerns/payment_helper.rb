@@ -2,7 +2,7 @@
 
 module PaymentHelper
 
-  def stripe_process
+  def stripe_process(price)
     token = params[:stripeToken]
     job_type = params[:job_type]
     job_title = params[:title]
@@ -12,7 +12,7 @@ module PaymentHelper
     card_last4 = params[:user][:card_last4]
 
     charge = Stripe::Charge.create(
-      :amount => 11286,
+      :amount => price,
       :currency => 'eur',
       :description => job_type,
       :statement_descriptor => job_title,

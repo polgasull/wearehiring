@@ -3,7 +3,7 @@ class InscriptionsController < ApplicationController
   before_action :set_job, only: [:create]
   before_action :validate_is_candidate!, only: [:create]
   before_action :set_current_user_job, only: [:index, :update, :show]
-  before_action :validate_is_company_ambassador_or_admin!, only: [:index, :update, :show]
+  before_action :validate_is_recruiter!, only: [:index, :update, :show]
 
   def create
     return redirect_back_response(t('already_inscribed'), false) if current_user.is_already_inscribed(@job)

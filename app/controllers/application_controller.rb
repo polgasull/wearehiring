@@ -13,18 +13,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def validate_is_company_ambassador_or_admin!
-    if !current_user.is_company? && !current_user.is_ambassador? && !current_user.is_admin?
-      redirect_to root_path
-    end
-  end
-
   def validate_is_candidate_or_admin!
     redirect_to root_path if !current_user.is_company? && !current_user.is_admin?
   end
 
   def validate_is_company_or_ambassador!
     redirect_to root_path if !current_user.is_company? && !current_user.is_ambassador?
+  end
+
+  def validate_is_recruiter!
+    redirect_to root_path if current_user.is_candidate?
   end
 
   protected

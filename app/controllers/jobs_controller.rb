@@ -3,8 +3,11 @@ class JobsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :new]
   before_action :set_job, only: [:show, :edit, :update]
   before_action :validate_is_job_owner, only: [:edit, :update]
-  before_action :validate_is_company_ambassador_or_admin!, except: [:index, :show, :thanks]
+  before_action :validate_is_recruiter!, except: [:index, :show]
   before_action :validate_is_expired!, only: [:show]
+
+  AMBASSADOR_PRICE = 5586
+  COMPANY_PRICE = 11286
 
   def index
     if params[:sort_by]
@@ -46,8 +49,9 @@ class JobsController < ApplicationController
       @job.avatar = job_last.avatar
     end
     
-    if !current_user.is_ambassador? && !current_user.jobs.first.id.blank?
-      stripe_process
+    if !current_user.jobs.first.id.blank?
+      price = current_user.is_ambassador? ? AMBASSADOR_PRICE : COMPANY_PRICE
+      stripe_process(price)
     end
 
     if @job.save
