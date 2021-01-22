@@ -18,6 +18,10 @@ class User < ApplicationRecord
     end
   end
 
+  def is_recruiter
+    user_type.internal_name != 'candidate'
+  end
+
   def is_already_inscribed(job)
     inscriptions.any? {|u| u[:job_id] == job.id}
   end

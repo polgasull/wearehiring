@@ -154,7 +154,7 @@
   </div>
 </section>
 
-<% if @same_category_jobs.any? %>
+<% if @same_category_jobs.any? && !current_user&.is_recruiter %>
   <section class="section">
     <h2 class="f3 mb4"> 
       <%= t('if_you_liked_jobs_about') %> 
