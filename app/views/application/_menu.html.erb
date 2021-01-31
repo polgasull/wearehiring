@@ -8,7 +8,7 @@
 		<% unless current_user&.is_candidate? %>
 			<div class="navbar-brand">
 				<%= link_to t(post_job_toggle_title), 
-						user_signed_in? ? new_job_path : new_user_session_path(:company => "true"), 
+						new_job_path, 
 						class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(new_job_path)}" %>
 			</div>
 		<% end %>

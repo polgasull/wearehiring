@@ -1,5 +1,6 @@
 class JobsController < ApplicationController
   include PaymentHelper
+  before_action :must_signin_as_company, only: [:new]
   before_action :authenticate_user!, except: [:index, :show, :new]
   before_action :set_job, only: [:show, :edit, :update]
   before_action :validate_is_job_owner, only: [:edit, :update]
@@ -97,6 +98,10 @@ class JobsController < ApplicationController
   end
 
   private
+
+  def must_signin_as_company
+    return redirect_to_response(t('devise.failure.unauthenticated'), new_user_session_path(:company => "true"), false) unless user_signed_in?
+  end
 
   def set_job
     @job = Job.friendly.find(params[:id])
