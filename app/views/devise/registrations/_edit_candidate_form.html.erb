@@ -33,11 +33,23 @@
         </label>
       </div>
       <small> Tamaño mínimo recomendado 200x200 </small>
-      <output id="list"></output>
+      <div class="is-flex justify-center">
+        <output id="list"></output>
+      </div>
     </div>
     <div class="column is-8">
       <%= f.button :submit, t('save'), class:"button is-info is-pulled-right" %>
-      <h2 class="title is-4"> <%= t('important_info_for_the_recruiter') %> </h2>
+
+      <h2 class="title is-4"> <%= t('skills.title') %> </h2>
+
+      <div class="field">
+        <div class="control">
+          <small> <%= t('skills.job_subtitle') %> </small>
+          <%= f.collection_select :skill_ids, Skill.all, :id, :name, {}, { multiple: "multiple", class: "skills-select", style: "width: 100%"} %>  
+        </div>
+      </div>
+
+      <h2 class="title is-4 mt4"> <%= t('important_info_for_the_recruiter') %> </h2>
 
       <div class="columns">
         <div class="column">
@@ -115,7 +127,7 @@
         </div>
       </div>
 
-      <h2 class="title is-4"> <%= t('complementary_info') %> </h2>
+      <h2 class="title is-4 mt4"> <%= t('complementary_info') %> </h2>
 
       <div class="field">
         <%= f.label t('about_me'), class: 'has-text-weight-bold' %>
@@ -187,4 +199,18 @@
       <%= f.button :submit, t('save'), class:"button is-info is-pulled-right mt3" %>
     </div>
   </div>
+<% end %>
+
+<%= content_for :head do %>
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+<% end %>
+
+<%= content_for :footer do %>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
+  <script>  
+    $(document).ready(function() {
+      $('.skills-select').select2();
+    });
+  </script>
 <% end %>

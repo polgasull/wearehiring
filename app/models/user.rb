@@ -7,6 +7,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :trackable, :omniauthable, :omniauth_providers => [:linkedin]
 
   belongs_to :user_type
+  has_many :user_skills
+  has_many :skills, through: :user_skills
   has_many :jobs
   has_many :inscriptions
   mount_uploader :picture_url, AvatarUploader

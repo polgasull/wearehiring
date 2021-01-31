@@ -37,7 +37,7 @@ $openheart: "\f08a";
 		color: $white;
 
 		&:hover {
-			background-color: darken(#0072b1, 10%);
+			background-color: darken(#0072b1, 20%);
 		}
 	}
 }
@@ -55,13 +55,16 @@ $openheart: "\f08a";
 	background-color: $red;
 }
 
-.radio-collection {
+.choice-collection {
+	display: inline;
 
-	input[type="radio"] {
+	input[type="radio"],
+	input[type="checkbox"] {
 		display: none;
 	}
 
-	label {
+	label label {
+		display: block;
 		padding: 10px;
 		margin: 15px;
 		border: 1px solid #ccc;
@@ -74,7 +77,8 @@ $openheart: "\f08a";
 		}
 	}
 
-	input[type="radio"]:checked + label {
+	input[type="radio"]:checked + label,
+	input[type="checkbox"]:checked + label {
 		background-color: $primary;
 		color: $white;
 	}

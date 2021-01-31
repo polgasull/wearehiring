@@ -531,6 +531,18 @@ en:
       level_not_updated: "Level was not able to be updated"
       level_deleted: "Level was successfully deleted"
       level_not_deleted: "Level was not able to be deleted"
+  skills:
+    title: "Habilidades"
+    name: "Nombre"
+    internal_name: "Identificador"
+    job_subtitle: "Search and add skills. For example: Python, SEO, Agile, Scrum, etc."
+    messages:
+      skill_created: "Skill created successfully"
+      skill_not_created: "Skill was not able to be created"
+      skill_updated: "Skill was successfully updated"
+      skill_not_updated: "Skill was not able to be updated"
+      skill_deleted: "Skill was successfully deleted"
+      skill_not_deleted: "Skill was not able to be deleted"
   no_inscriptions_yet: "No inscriptions yet"
   important_info_for_the_recruiter: "Important information for the recruiter"
   important_info: "Important information"

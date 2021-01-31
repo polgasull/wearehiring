@@ -15,9 +15,13 @@ Rails.application.routes.draw do
     resources :categories, only: [:update]
     resources :job_types, only: [:update]
     resources :levels, only: [:update]
+    resources :skills, only: [:update]
   end
 
   resources :jobs, path: 'ofertas-empleo-digital' do
+    collection do
+      post :create_inscription
+    end
     resources :inscriptions
   end
     

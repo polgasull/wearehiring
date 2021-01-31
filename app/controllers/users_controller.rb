@@ -41,7 +41,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :last_name, :phone, :profile_url, :current_position, 
-    :picture_url, :description, :github, :pinterest, :behance, :personal_website)
+    :picture_url, :description, :github, :pinterest, :behance, :personal_website, skill_ids: [])
   end
 
   def create_inscription(job, user)

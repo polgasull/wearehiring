@@ -5,6 +5,7 @@ class JobsController < ApplicationController
   before_action :validate_is_job_owner, only: [:edit, :update]
   before_action :validate_is_recruiter!, except: [:index, :show]
   before_action :validate_is_expired!, only: [:show]
+  before_action :set_candidate, only: [:create_inscription]
 
   AMBASSADOR_PRICE = 5586
   COMPANY_PRICE = 11286
@@ -28,6 +29,7 @@ class JobsController < ApplicationController
     return redirect_to_response(t('not_found'), root_path, false) unless @job
     @inscriptions_count = @job.inscriptions.count
     @same_category_jobs = Job.active.same_category(@job).order('created_at DESC').take(3)
+    @matching_candidates = @job.show_matching_candidates(@job.skills)
   end
 
   def new
@@ -71,6 +73,21 @@ class JobsController < ApplicationController
     @job&.update(job_params) ? redirect_to_response(t('jobs.messages.job_updated'), @job) : redirect_back_response(t('jobs.messages.job_not_updated'), false)
   end
 
+  def create_inscription
+    @job = current_user.jobs.friendly.find(params[:job_id])
+    return redirect_back_response(t('already_inscribed'), false) if @candidate.is_already_inscribed(@job)
+
+    @inscription = @job.inscriptions.build(job_id: @job.id, user_id: @candidate.id)
+    
+    if @inscription.save  
+      ModelMailer.new_candidate(@candidate, @job).deliver if Rails.env.production?
+      ModelMailer.successfully_inscribed(@candidate, @job).deliver if Rails.env.production?
+      redirect_to_response(t('inscriptions.messages.inscription_created'), @inscription.job)
+    else 
+      redirect_back_response(t('inscriptions.messages.inscription_not_created'), false)
+    end
+  end
+
   def thanks
     if current_user.jobs.any?
       @job = current_user.jobs.last
@@ -94,13 +111,17 @@ class JobsController < ApplicationController
   def job_params
     params.require(:job).permit(:title, :description, :url, :job_type, :location, :job_author, 
       :remote_ok, :apply_url, :avatar, :salary_from, :salary_to, :open, :tag_list, :expiry_date, 
-      :category_id, :job_type_id, :level_id)
+      :category_id, :job_type_id, :level_id, skill_ids: [])
   end
 
   def validate_is_expired!
     if !@job.open? && !@job.user_owner_or_admin(current_user)
       return redirect_to_response(t('jobs.messages.job_expired'), root_path, false) 
     end
+  end
+
+  def set_candidate
+    @candidate = User.where(user_type: 1).find(params[:user_id])
   end
 
   # def slack_ping_channel_message

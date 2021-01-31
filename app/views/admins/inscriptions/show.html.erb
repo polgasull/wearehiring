@@ -37,6 +37,16 @@
                 {onchange: 'this.form.submit();'}) %>
           </div>
         <% end %>
+        <div class="mt4">
+          <p class="mt4 has-text-weight-bold"> <%= t('skills.title') %> </p>
+          <% if @user.skills.any? %>
+            <% @user.skills.each do |skill| %>
+              <span class='tag is-success is-normal'> <%= skill.name %> </span>
+            <% end %>  
+          <% else %>
+            El usuario no ha indicado ninguna habilidad
+          <% end %>
+        </div>
       </div>
       <div class="column is-8">
         <h2 class="title is-4"> <%= t('important_info') %> </h2>

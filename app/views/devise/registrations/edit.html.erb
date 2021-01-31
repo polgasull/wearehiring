@@ -1,11 +1,9 @@
 <section class="section main-section">
   <div class="container">
     <% if current_user.is_candidate? %>
-      <%= render 'candidate_form' %>
-    <% end %>
-      
-    <% unless current_user.is_candidate? %>
-      <%= render 'form' %>
+      <%= render 'edit_candidate_form' %>
+    <% else %>
+      <%= render 'edit_form' %>
     <% end %>
   </div>
 </section>
