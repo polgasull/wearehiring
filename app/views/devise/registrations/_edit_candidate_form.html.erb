@@ -1,4 +1,4 @@
-<%= simple_form_for(@user, method: :patch, url: user_path(@user), html: { multipart: true }) do |f| %>
+<%= simple_form_for(@user, method: :patch, url: candidates_user_profile_path(@user), html: { multipart: true }) do |f| %>
   <div class="columns">
     <div class="column is-4 has-text-centered">
       <h1 class="title is-5"> <%= t('my_profile') %> </h1>
@@ -21,7 +21,7 @@
       </p>
       <p class="mt4">
         <%= icon('fab', 'get-pocket') %>
-        <%= link_to "#{current_user.inscriptions.count} Jobs aplicados", inscriptions_user_path(current_user.id), target: "_blank" %>
+        <%= link_to "#{current_user.inscriptions.count} Jobs aplicados", candidates_inscriptions_path(current_user.id), target: "_blank" %>
       </p>
       <div class="file justify-center is-primary mt4">
         <label class="file-label">

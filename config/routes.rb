@@ -18,19 +18,27 @@ Rails.application.routes.draw do
     resources :skills, only: [:update]
   end
 
+  namespace :companies do
+    resources :jobs, only: [:index] do
+      resources :inscriptions, only: [:index, :update, :show]
+    end
+  end
+
+  namespace :candidates do
+    resources :jobs, only: [:index] do
+      resources :inscriptions, only: [:create]
+    end
+    resources :inscriptions, only: [:index]
+    resources :user_profiles, only: [:update]
+  end
+
   resources :jobs, path: 'ofertas-empleo-digital' do
     collection do
       post :create_inscription
     end
-    resources :inscriptions
   end
     
-  resources :users, only: [:update] do
-    member do
-      get :jobs
-      get :inscriptions
-    end
-  end 
+  resources :users, only: [:update]
 
   namespace :blog, path: '/' do
     resources :posts, path: 'blog' do

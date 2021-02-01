@@ -1,4 +1,4 @@
-<%= form_for inscription, url: job_inscription_path(inscription.job_id, inscription.id), method: :patch do |f| %>
+<%= form_for inscription, url: companies_job_inscription_path(inscription.job_id, inscription.id), method: :patch do |f| %>
   <div class="columns listrow is-mobile is-vertical-center is-size-7">
     <div class="column is-1-desktop is-hidden-touch is-vertical-center">
       <span class="pr3"><%= inscription_counter + 1 %></span>
@@ -7,7 +7,7 @@
       </div>
     </div>
     <div class="column is-1-desktop">
-      <%= link_to job_inscription_path(inscription.job_id, inscription.id) do %>
+      <%= link_to companies_job_inscription_path(inscription.job_id, inscription.id) do %>
         <%= content_tag(:p, inscription.user.name, class: 'is-clickable') %>
       <% end %>
     </div>

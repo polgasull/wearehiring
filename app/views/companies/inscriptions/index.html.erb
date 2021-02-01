@@ -18,7 +18,7 @@
     <div class="columns">
       <% if !@inscriptions_count.zero? %>
         <div class="column is-3-desktop">
-          <%= link_to job_inscriptions_path(format: "xlsx"), class: 'button is-success pl3' do %>
+          <%= link_to companies_job_inscriptions_path(format: "xlsx"), class: 'button is-success pl3' do %>
             <%= icon('fas', 'file-download pr2') %> <%= t('download_candidates_excel') %>
           <% end %>
         </div>

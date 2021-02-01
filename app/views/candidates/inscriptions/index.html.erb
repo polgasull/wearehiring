@@ -18,7 +18,7 @@
           </div>
         </div>
       <% else %>
-        <%= render partial: 'inscription', 
+        <%= render partial: 'job', 
           collection: instance_variable_get("@#{inscriptions_status}".to_sym), 
           as: :inscription %>
       <% end %>

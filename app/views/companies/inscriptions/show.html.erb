@@ -2,7 +2,7 @@
   <div class="container"> 
     <div class="columns">
       <div class="column">
-        <%= link_to job_inscriptions_path(@job.id), class: 'button is-link' do %>
+        <%= link_to companies_job_inscriptions_path(@job.id), class: 'button is-link' do %>
           <%= icon('fas', 'arrow-left mr2') %>
           <%= t('go_back_to_inscriptions') %>
         <% end %>
@@ -29,7 +29,7 @@
           <%= mail_to @user.email %> 
         </p>
         <p class="mt4 has-text-weight-bold"> <%= t('inscriptions.status') %> </p>
-        <%= form_for @inscription, url: job_inscription_path(@inscription.job_id, @inscription.id), method: :patch do |f| %>
+        <%= form_for @inscription, url: companies_job_inscription_path(@inscription.job_id, @inscription.id), method: :patch do |f| %>
           <div class="select mt1">
             <%= f.select(:status, 
                 Inscription.statuses.keys.map {|status, id| [t("inscriptions.#{status}"), status]}, 

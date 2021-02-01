@@ -56,7 +56,7 @@
       <div class="columns mt3">
         <div class="column has-text-centered">
           <div> <%= icon('fas', 'user mr2') %> <%= @job.inscriptions.count %> inscritos </div>
-          <%= link_to t('jobs.manage_inscriptions'), job_inscriptions_path(@job), class: 'button is-info' %>
+          <%= link_to t('jobs.manage_inscriptions'), companies_job_inscriptions_path(@job), class: 'button is-info' %>
         </div>
       </div>
     </div>

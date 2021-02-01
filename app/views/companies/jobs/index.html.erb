@@ -5,7 +5,7 @@
         <h1 class="f2"> <%= t('my_jobs') %> </h1>
       </div>
     </div>
-  <%= form_for jobs_user_path(current_user), method: :get do |f| %>
+  <%= form_for companies_jobs_path(current_user), method: :get do |f| %>
     <div class="columns is-search is-vertical-center">
       <div class="column">
       <input 

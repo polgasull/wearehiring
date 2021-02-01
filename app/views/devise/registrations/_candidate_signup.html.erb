@@ -66,6 +66,15 @@
               </span>
             </div>
           </div>
+          <div class="mb2">
+            <small class="accept-terms-text pl2">
+              Al inscribirme, estoy de acuerdo con la
+              <%= link_to 'política de privacidad', privacy_policy_path, target: '_blank' %>, 
+              <%= link_to 'aviso legal', legal_terms_path, target: '_blank' %> y 
+              <%= link_to 'política de cookies', cookies_policy_path, target: '_blank' %>
+              de Wearehiring
+            </small>
+          </div>
           <div class="field mt3">
             <div class="control is-grouped">
               <%= f.button :submit,

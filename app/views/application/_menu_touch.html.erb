@@ -27,14 +27,14 @@
     <% if user_signed_in? %>
       <% if current_user.is_candidate? %>
         <div class="navbar-brand">
-          <%= link_to t('my_inscriptions'), inscriptions_user_path(current_user), 
-            class: "navbar-item text-uppercase #{ 'active' if current_page?(inscriptions_user_path(current_user)) }" %>
+          <%= link_to t('my_inscriptions'), candidates_inscriptions_path(current_user), 
+            class: "navbar-item text-uppercase #{ 'active' if current_page?(candidates_inscriptions_path(current_user)) }" %>
         </div>
       <% end %>  
       <% if current_user.is_company? || current_user.is_ambassador? %>
         <div class="navbar-brand">
-          <%= link_to t('my_jobs'), jobs_user_path(current_user), 
-          class: "navbar-item text-uppercase #{ 'active' if current_page?(jobs_user_path(current_user)) }" %>
+          <%= link_to t('my_jobs'), companies_jobs_path(current_user), 
+          class: "navbar-item text-uppercase #{ 'active' if current_page?(companies_jobs_path(current_user)) }" %>
         </div>
       <% end %> 
       <div class="navbar-brand">
