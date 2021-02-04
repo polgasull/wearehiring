@@ -5,7 +5,11 @@
     <%= user.id %>
   </div>
   <div class="column is-1">
-    <%= image_tag(user.picture_url, size: 30) if user.picture_url %>
+    <% if user.picture_url.file.nil? %>
+      <%= icon('far', 'user-circle', style: 'font-size: 30px') %>
+    <% else %>
+      <%= image_tag(user.picture_url, size: 30, alt: "Imagen perfil usuario | Wearehiring.io") %>
+    <% end %>
   </div>
   <div class="column">
     <%= link_to user.name, admins_user_path(user) %>
