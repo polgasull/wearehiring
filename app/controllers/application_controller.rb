@@ -26,6 +26,18 @@ class ApplicationController < ActionController::Base
     redirect_to root_path unless current_user.is_company? && current_user.is_ambassador? && current_user.is_admin?
   end
 
+  def not_found
+    render status: 404
+  end
+
+  def unacceptable
+    render status: 422
+  end
+
+  def internal_server_error
+    render status: 500
+  end
+
   protected
 
   def configure_permitted_parameters

@@ -1,4 +1,4 @@
-<%= simple_form_for(@job, html: { multipart: true }) do |f| %>
+<%= simple_form_for([:companies, @job], html: { multipart: true }) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
@@ -204,7 +204,7 @@
   <hr>
 
   <% if first_job_publication(current_user) %>
-    <%= render '/jobs/partials/first_publication_message' %>
+    <%= render 'first_publication_message' %>
   <% else %>
     <%= render 'payment' %>
   <% end %>

@@ -1,0 +1,67 @@
+<section class="section pb0 pt1">
+  <div class="container is-wrapper bg-white radius-8">
+    <div class="columns">
+      <div class="column">    
+        <p> <%= t('jobs.reference') %>: #<%= @job.reference %> </p>
+        <strong class="f3"> 
+          <%= icon('far', 'calendar-alt') %> <%= job_expired(@job) %> 
+        </strong> 
+        <%= t('remaining_days') %>
+        <p class="mb2">
+          <strong class="f3"> 
+            <%= icon('fas', 'user mr2') %> <%= @job.inscriptions.count %> 
+          </strong> 
+          inscritos
+        </p>
+        <%= link_to t('jobs.manage_inscriptions'), companies_job_inscriptions_path(@job), class: 'button is-link is-outlined' %>
+      </div>
+      <div class="column has-text-right">
+      </div>
+      <div class="column has-text-right">
+        <%= link_to edit_companies_job_path(@job), class: 'button is-link' do %>
+          <%= icon('fas', 'edit') %>
+        <% end %>
+        <%= button_tag(type: 'button',
+          class: 'button is-danger is-outlined deactivate-job-button',
+          'data-target': 'deactivate-job-modal',
+          'aria-haspopup': 'true',
+          disabled: !@job.open?) do %>
+            <%= icon('fas', 'calendar-times mr2') %> <%= t('jobs.close') %> 
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%= render partial: "jobs/partials/job_information", locals: { job: @job } %>
+
+<% if @job.open? %>
+<section class="section">
+  <% @matching_candidates.each do |user| %>
+    <%= render partial: "companies/jobs/candidate", locals: { user: user, job: @job } %>
+  <% end %>
+</section>
+<% end %>
+
+<%= render partial: '/jobs/partials/deactivate_job_modal', locals: { job: @job } %>
+
+<%= content_for :head do %>
+  <%= render "seo", 
+      title: "Empleo #{ @job.title } en #{ @job.job_author } en #{ @job.location } | WeAreHiring.io", 
+      description: "#{ @job.job_author } está buscando a un #{ @job.title } en #{ @job.location }. Solicita este empleo en WeAreHiring.io",
+      image: @job.avatar.file.nil? ? asset_path('logo_black.png') : image_url(@job.avatar_url(:thumb), alt: "Empleo de #{@job.title} en #{@job.job_author}") %>
+<% end %>
+
+<%= content_for :footer do %>
+  <script>
+
+    $(document).on("click", ".modal-close", function() {
+      $('.modal').removeClass('is-active');
+    });
+
+    $(document).on("click", ".deactivate-job-button", function() {
+      $('.deactivate-job-modal').addClass('is-active');
+    });
+
+  </script>
+<% end %>

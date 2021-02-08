@@ -57,7 +57,7 @@ module Blog
     def set_post
       @post = Post.friendly.find(params[:id])
       rescue ActiveRecord::RecordNotFound
-        redirect_to controller: :errors, action: :not_found
+        redirect_to not_found_url
     end
   end
 end

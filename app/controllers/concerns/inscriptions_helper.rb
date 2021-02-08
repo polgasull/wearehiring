@@ -2,7 +2,7 @@
 
 module InscriptionsHelper
 
-  def create_inscription(job, user)
+  def assign_inscription_to_job(job, user)
     return redirect_back_response(t('already_inscribed'), false) if user.is_already_inscribed(job)
       
     @inscription = job.inscriptions.build(job_id: job.id, user_id: user.id)

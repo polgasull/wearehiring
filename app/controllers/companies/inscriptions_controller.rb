@@ -2,8 +2,7 @@
 
 module Companies
   class InscriptionsController < Companies::CompaniesController
-    before_action :set_current_user
-    before_action :set_current_user_job
+    before_action :set_job
 
     def index
       return redirect_to_response(t('not_found'), root_path, false) unless @job
@@ -35,15 +34,10 @@ module Companies
   
     private
   
-    def set_current_user_job
+    def set_job
       @job = current_user.jobs.friendly.find(params[:job_id])
       rescue ActiveRecord::RecordNotFound
-        redirect_to controller: :errors, action: :not_found
-    end
-
-    def set_current_user
-      @user = current_user
-      return redirect_back_response(t('devise.failure.unauthenticated'), false) unless @user
+        redirect_to not_found_url
     end
 
     def inscription_params

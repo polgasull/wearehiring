@@ -1,0 +1,212 @@
+<section class="section">
+  <div class="container">
+    <div class="columns"> 
+      <div class="column">
+        <section class="hero is-info welcome is-small">
+          <div class="hero-body">
+            <div class="container">
+              <h1 class="title">
+                  Hello, <%= current_user.name %>
+              </h1>
+              <h2 class="subtitle">
+                ¡Espero que estés teniendo un buen día!
+              </h2>
+            </div>
+          </div>
+        </section>
+        <section class="info-tiles">
+          <div class="tile is-ancestor has-text-centered">
+            <div class="tile is-parent">
+              <article class="tile is-child box">
+                <p class="title">439k</p>
+                <p class="subtitle">Users</p>
+              </article>
+            </div>
+            <div class="tile is-parent">
+              <article class="tile is-child box">
+                <p class="title">59k</p>
+                <p class="subtitle">Products</p>
+              </article>
+            </div>
+            <div class="tile is-parent">
+              <article class="tile is-child box">
+                <p class="title">3.4k</p>
+                <p class="subtitle">Open Orders</p>
+              </article>
+            </div>
+            <div class="tile is-parent">
+              <article class="tile is-child box">
+                <p class="title">19</p>
+                <p class="subtitle">Exceptions</p>
+              </article>
+            </div>
+          </div>        </section>
+        <div class="columns">
+          <div class="column is-6">
+            <div class="card events-card">
+              <header class="card-header">
+                <p class="card-header-title">
+                  <%= t('my_inscriptions') %>
+                </p>
+              </header>
+              <div class="card-table pa2">
+                <% @candidate_inscriptions.each do |inscription| %>
+                  <div class="columns is-vcentered">
+                    <div class="column is-1">
+                      <% if inscription.job.avatar.file.nil? %>
+                        <%= icon('far', 'image', style: 'font-size: 25px') %>
+                      <% else %>
+                        <%= image_tag(inscription.job.avatar_url(:thumb), width: 35, height: 35) %>
+                      <% end %>
+                    </div>
+                    <div class="column is-size-7 is-8"><%= inscription.job.title %></div>
+                    <div class="column has-text-right is-3">
+                      <%= link_to inscription.job, class: "button is-small is-primary" do %>
+                        Ver Job
+                      <% end %>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+              <footer class="card-footer">
+                <%= link_to candidates_inscriptions_path(current_user), class: "card-footer-item" do %>
+                  Ver todas
+                <% end %>
+              </footer>
+            </div>
+          </div>
+          <div class="column is-6">
+            <div class="card">
+              <header class="card-header">
+                <p class="card-header-title">
+                    Inventory Search
+                </p>
+                <a href="#" class="card-header-icon" aria-label="more options">
+                  <span class="icon">
+                    <i class="fa fa-angle-down" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </header>
+              <div class="card-content">
+                <div class="content">
+                  <div class="control has-icons-left has-icons-right">
+                    <input class="input is-large" type="text" placeholder="">
+                    <span class="icon is-medium is-left">
+                      <i class="fa fa-search"></i>
+                    </span>
+                    <span class="icon is-medium is-right">
+                      <i class="fa fa-check"></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <header class="card-header">
+                <p class="card-header-title">
+                    User Search
+                </p>
+                <a href="#" class="card-header-icon" aria-label="more options">
+                  <span class="icon">
+                    <i class="fa fa-angle-down" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </header>
+              <div class="card-content">
+                <div class="content">
+                  <div class="control has-icons-left has-icons-right">
+                    <input class="input is-large" type="text" placeholder="">
+                    <span class="icon is-medium is-left">
+                      <i class="fa fa-search"></i>
+                    </span>
+                    <span class="icon is-medium is-right">
+                      <i class="fa fa-check"></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <!-- Start Carousel -->
+    <div id="jobs-carousel" class="carousel">
+      <% @jobs.each do |job| %>
+        <div class="card">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <figure class="image is-48x48">
+                  <% if job.avatar.file.nil? %>
+                    <%= icon('far', 'image') %>
+                  <% else %>
+                    <%= image_tag(job.avatar_url(:thumb)) %>
+                  <% end %>
+                </figure>
+              </div>
+              <div class="media-content">
+                <p class="title is-6"><%= job.title %></p>
+                <p class="subtitle is-7"><%= job.location %> </p>
+              </div>
+            </div>
+            <div class="content">
+              <span> 
+                <% if job.remote_ok? %>
+                  <%= icon('fas', 'wifi') %> <%= t('remote') %> 
+                <% end %>
+              </span>
+              <% job.skills.take(4).each do |skill| %>
+                <span class='tag is-success is-normal'> <%= skill.name %> </span>
+              <% end %>
+              <div class="">
+                <%= link_to "Ver Job", job, class: "button is-small is-link" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <!-- End Carousel -->
+  </div>
+</section>
+
+<%= content_for :head do %>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css">
+<% end %>
+
+<%= content_for :footer do %>
+  <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
+  <script>
+    bulmaCarousel.attach('#jobs-carousel', {
+      slidesToScroll: 1,
+      slidesToShow: 4,
+      infinite: true
+    });
+
+        // Initialize all div with carousel class
+    var carousels = bulmaCarousel.attach('.carousel', options);
+
+    // Loop on each carousel initialized
+    for(var i = 0; i < carousels.length; i++) {
+      // Add listener to  event
+      carousels[i].on('before:show', state => {
+        console.log(state);
+      });
+    }
+
+    // Access to bulmaCarousel instance of an element
+    var element = document.querySelector('#my-element');
+    if (element && element.bulmaCarousel) {
+      // bulmaCarousel instance is available as element.bulmaCarousel
+      element.bulmaCarousel.on('before-show', function(state) {
+        console.log(state);
+      });
+    }
+  </script>
+<% end %>

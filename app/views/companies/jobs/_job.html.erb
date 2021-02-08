@@ -9,7 +9,7 @@
     <%= job.job_author %>
   </div>
   <div class="column">
-    <%= link_to job.title, job %>
+    <%= link_to job.title, [:companies, job] %>
   </div>
   <div class="column is-hidden-touch">
     <% job.tags.each do |tag| %>

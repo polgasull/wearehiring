@@ -4,7 +4,6 @@ module Candidates
   class InscriptionsController < Candidates::CandidatesController
     include InscriptionsHelper
     before_action :set_job, only: [:create]
-    before_action :set_current_user
 
     # CANDIDATE: SHOW MY INSCRIPTIONS
     def index
@@ -16,20 +15,15 @@ module Candidates
     end
 
     def create
-      create_inscription(@job, @user)
+      assign_inscription_to_job(@job, current_user)
     end
 
     private
 
-    def set_current_user
-      @user = current_user
-      return redirect_back_response(t('devise.failure.unauthenticated'), false) unless @user
-    end
-
     def set_job
       @job = Job.friendly.find(params[:job_id])
       rescue ActiveRecord::RecordNotFound
-        redirect_to controller: :errors, action: :not_found
+        redirect_to not_found_url
     end
   end
 end
