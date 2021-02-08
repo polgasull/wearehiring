@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
   include PaymentHelper
-  before_action :authenticate_user!, except: [:index, :show, :new]
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_job, only: [:show, :edit, :update]
   before_action :validate_is_job_owner, only: [:edit, :update]
   before_action :validate_is_recruiter!, except: [:index, :show]
@@ -31,6 +31,7 @@ class JobsController < ApplicationController
   end
 
   def new
+    return redirect_to_response(t('devise.failure.unauthenticated'), new_user_session_path(:company => "true"), false) unless user_signed_in? 
     @job_last = current_user.jobs.last
     @job = current_user.jobs.build
   end

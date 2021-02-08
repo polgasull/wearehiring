@@ -20,8 +20,8 @@
             t('jobs.close'),
             class: 'button is-danger is-outlined',
             disabled: !@job.open?, 
-            onclick: "alert('¿Estás seguro? Esta acción no se puede deshacer. 
-            El Job ya no estará visible pero la empresa podrá seguir gestionando sus candidatos')") %>
+            data: { confirm: "alert('¿Estás seguro? Esta acción no se puede deshacer. 
+            El Job ya no estará visible pero la empresa podrá seguir gestionando sus candidatos')"}) %>
         <% end %>
         </div>
       </div>

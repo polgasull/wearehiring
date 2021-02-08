@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   end
 
   def validate_is_recruiter!
-    redirect_to root_path if current_user.is_candidate?
+    redirect_to root_path if !current_user.is_company? && !current_user.is_ambassador? && !current_user.is_admin?
   end
 
   protected
