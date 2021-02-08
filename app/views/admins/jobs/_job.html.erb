@@ -23,8 +23,14 @@
     <%= link_to t('simple_form.labels.defaults.apply_url'), job.apply_url, target: "_blank" if job.apply_url.present? %>
   </div>
   <div class="column is-flex">
-    <%= form_for job, url: admins_job_path(job.id), :action => 'destroy', method: :delete do |f| %>
-      <button type="submit" class="inn-btn-action mr2" data-confirm="Estás seguro, esta acción no se puede deshacer"><%= icon('fas', 'trash-alt') %></button>
+    <%= simple_form_for([:admins, job], html: { multipart: true }) do |f| %>
+      <%= f.hidden_field :open, value: false %>
+      <%= f.submit(
+        t('jobs.close'),
+        class: 'mr2',
+        disabled: !job.open?, 
+        data: { confirm: '¿Estás seguro? Esta acción no se puede deshacer. 
+        El Job ya no estará visible pero la empresa podrá seguir gestionando sus candidatos' }) %>
     <% end %>
 
     <%= link_to edit_admins_job_path(job.id) do %>
