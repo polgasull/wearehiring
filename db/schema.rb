@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201115192030) do
+ActiveRecord::Schema.define(version: 20210209210715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,15 @@ ActiveRecord::Schema.define(version: 20201115192030) do
     t.index ["user_id"], name: "index_inscriptions_on_user_id"
   end
 
+  create_table "job_skills", id: :serial, force: :cascade do |t|
+    t.integer "job_id"
+    t.integer "skill_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["job_id"], name: "index_job_skills_on_job_id"
+    t.index ["skill_id"], name: "index_job_skills_on_skill_id"
+  end
+
   create_table "job_types", force: :cascade do |t|
     t.string "name"
     t.string "internal_name"
@@ -78,6 +87,7 @@ ActiveRecord::Schema.define(version: 20201115192030) do
     t.bigint "level_id"
     t.string "reference"
     t.string "slug"
+    t.string "external_mail", default: "", null: false
     t.index ["category_id"], name: "index_jobs_on_category_id"
     t.index ["job_type_id"], name: "index_jobs_on_job_type_id"
     t.index ["level_id"], name: "index_jobs_on_level_id"
@@ -112,6 +122,13 @@ ActiveRecord::Schema.define(version: 20201115192030) do
     t.index ["updated_at"], name: "index_sessions_on_updated_at"
   end
 
+  create_table "skills", id: :serial, force: :cascade do |t|
+    t.string "internal_name"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "taggings", force: :cascade do |t|
     t.bigint "job_id"
     t.bigint "tag_id"
@@ -121,6 +138,15 @@ ActiveRecord::Schema.define(version: 20201115192030) do
 
   create_table "tags", force: :cascade do |t|
     t.string "name"
+  end
+
+  create_table "user_skills", id: :serial, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "skill_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["skill_id"], name: "index_user_skills_on_skill_id"
+    t.index ["user_id"], name: "index_user_skills_on_user_id"
   end
 
   create_table "user_types", force: :cascade do |t|
@@ -154,12 +180,12 @@ ActiveRecord::Schema.define(version: 20201115192030) do
     t.string "card_exp_month"
     t.string "card_exp_year"
     t.datetime "expires_at"
+    t.boolean "admin"
     t.string "provider"
     t.string "uid"
     t.bigint "user_type_id"
-    t.string "admin"
     t.string "current_position"
-    t.boolean "accepted_terms"
+    t.boolean "accepted_terms", default: false
     t.string "phone"
     t.text "description"
     t.string "personal_website"

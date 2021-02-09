@@ -37,6 +37,19 @@
 
   <div class="columns">
     <div class="column">
+      <label class="label"> 
+        Mail Pirata (SUUUUU) 
+      </label>
+      <div class="field">
+        <div class="control">
+          <%= f.input :external_mail, input_html: { class: "input", type: 'email' }, wrapper: false, label: false, label_html: { class: "label" }, placeholder: "Se añadirá este correo como principal para las notificaciones" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="columns">
+    <div class="column">
       <div class="field">
         <div class="control">
           <%= f.input :title, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }, placeholder: "Frontend Developer" %>
