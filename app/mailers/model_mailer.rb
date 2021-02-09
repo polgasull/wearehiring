@@ -27,7 +27,7 @@ class ModelMailer < ApplicationMailer
     attachments.inline["twitter.png"] = File.read("#{Rails.root}/app/assets/images/twitter.png")
     attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
     mail( 
-      :to => job.external_mail.present? ? job.external_mail : job.user.email,
+      :to => job.user.email,
       :subject => "✅ Nuevo candidato para #{@job.title}" 
     )  
   end
