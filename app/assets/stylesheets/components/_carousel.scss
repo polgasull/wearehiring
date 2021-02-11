@@ -1,0 +1,26 @@
+.carousel .slider {
+  outline: none;
+}
+
+.slider-container {
+  height: 250px;
+  max-height: 250px;
+  outline: none;
+
+  .slider-item .card {
+    height: 220px;
+    max-height: 220px;
+    margin-right: 2px;
+    margin-left: 2px;
+  }
+
+  .button.is-link {
+    position: absolute;
+    bottom: 15px;
+    right: 30px;
+  }
+}
+
+.slider-navigation {
+  outline: none;
+}

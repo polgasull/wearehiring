@@ -1,4 +1,4 @@
-<%= simple_form_for(@user, method: :patch, url: user_path(@user), html: { multipart: true }) do |f| %>
+<%= simple_form_for(@user, method: :patch, url: candidates_user_profile_path(@user), html: { multipart: true }) do |f| %>
   <div class="columns">
     <div class="column is-4 has-text-centered">
       <h1 class="title is-5"> <%= t('my_profile') %> </h1>
@@ -21,7 +21,7 @@
       </p>
       <p class="mt4">
         <%= icon('fab', 'get-pocket') %>
-        <%= link_to "#{current_user.inscriptions.count} Jobs aplicados", inscriptions_user_path(current_user.id), target: "_blank" %>
+        <%= link_to "#{current_user.inscriptions.count} Jobs aplicados", candidates_inscriptions_path(current_user.id), target: "_blank" %>
       </p>
       <div class="file justify-center is-primary mt4">
         <label class="file-label">
@@ -39,7 +39,17 @@
     </div>
     <div class="column is-8">
       <%= f.button :submit, t('save'), class:"button is-info is-pulled-right" %>
-      <h2 class="title is-4"> <%= t('important_info_for_the_recruiter') %> </h2>
+
+      <h2 class="title is-4"> <%= t('skills.title') %> </h2>
+
+      <div class="field">
+        <div class="control">
+          <small> <%= t('skills.job_subtitle') %> </small>
+          <%= f.collection_select :skill_ids, Skill.all, :id, :name, {}, { multiple: "multiple", class: "skills-select", style: "width: 100%"} %>  
+        </div>
+      </div>
+
+      <h2 class="title is-4 mt4"> <%= t('important_info_for_the_recruiter') %> </h2>
 
       <div class="columns">
         <div class="column">
@@ -117,7 +127,7 @@
         </div>
       </div>
 
-      <h2 class="title is-4"> <%= t('complementary_info') %> </h2>
+      <h2 class="title is-4 mt4"> <%= t('complementary_info') %> </h2>
 
       <div class="field">
         <%= f.label t('about_me'), class: 'has-text-weight-bold' %>
@@ -189,4 +199,18 @@
       <%= f.button :submit, t('save'), class:"button is-info is-pulled-right mt3" %>
     </div>
   </div>
+<% end %>
+
+<%= content_for :head do %>
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+<% end %>
+
+<%= content_for :footer do %>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
+  <script>  
+    $(document).ready(function() {
+      $('.skills-select').select2();
+    });
+  </script>
 <% end %>

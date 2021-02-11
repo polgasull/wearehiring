@@ -5,7 +5,7 @@
     <% if job.avatar.file.nil? %>
       <%= icon('far', 'image', style: 'font-size: 50px') %>
     <% else %>
-      <%= link_to image_tag(job.avatar_url(:thumb), alt: job.job_author, width: 100, height: 100), job.url %>
+      <%= image_tag(job.avatar_url(:thumb), alt: job.job_author, width: 100, height: 100) %>
     <% end %>
   </div>
   <div class="column is-10">

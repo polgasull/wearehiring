@@ -1,5 +1,5 @@
 <% if current_user&.is_admin? %>
-  <div class="section pb0 pt1 mr5 ml5">
+  <section class="section pb0 pt1">
     <div class="container is-wrapper bg-white radius-8">
       <div class="columns admin-block">
         <div class="column is-vertical-center is-flex">
@@ -26,133 +26,12 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
   <hr>
 <% end %>
 
-<% if job_author(@job) %>
-  <div class="section pb0 pt1 mr5 ml5">
-    <div class="container is-wrapper bg-white radius-8">
-      <div class="columns">
-        <div class="column">    
-          <p> <%= t('jobs.reference') %>: #<%= @job.reference %> </p>
-          <strong class="f3"> <%= job_expired(@job) %> </strong> 
-          <%= t('remaining_days') %>
-        </div>
-        <div class="column has-text-right">
-          <%= link_to edit_job_path(@job), class: 'button is-link' do %>
-            <%= icon('fas', 'edit mr2') %> <%= t('jobs.edit') %>
-          <% end %>
-          <%= button_tag(type: 'button',
-            class: 'button is-danger is-outlined deactivate-job-button',
-            'data-target': 'deactivate-job-modal',
-            'aria-haspopup': 'true',
-            disabled: !@job.open?) do %>
-              <%= icon('fas', 'calendar-times mr2') %> <%= t('jobs.close') %> 
-          <% end %>
-        </div>
-      </div>
-      <div class="columns mt3">
-        <div class="column has-text-centered">
-          <div> <%= icon('fas', 'user mr2') %> <%= @job.inscriptions.count %> inscritos </div>
-          <%= link_to t('jobs.manage_inscriptions'), job_inscriptions_path(@job), class: 'button is-info' %>
-        </div>
-      </div>
-    </div>
-  </div>
-<% end %>
-
-<section class="section">
-  <div class="container is-wrapper bg-white radius-8">
-    <div class="columns">
-      <div class="column pb0">
-        <p class="f7"> <%= icon('fas', 'clock') %> Publicado <%= time_ago_in_words(@job.created_at) %> </p>
-        <h1 class="f2 mb0"><%= "#{t('job_offer_h1')} #{@job.title} en #{@job.remote_ok? ? "Remoto" : @job.location}" %></h1>
-        <p> <%= @job.job_author %> en <%= @job.location %> </p>
-      </div>
-    </div>
-    <div class="ma4 is-hidden-mobile"></div>  
-    <div class="columns pr4 wrapper-content">
-      <div class="column is-2 is-vertical-center justify-center">
-        <% if @job.avatar.file.nil? %>
-          <%= icon('far', 'image', style: 'font-size: 50px') %>
-        <% else %>
-          <div class="rounded-image size-150">
-            <%= image_tag(@job.avatar_url(:thumb), alt: "Empleo de #{@job.title} en #{@job.job_author}") %>
-          </div>
-        <% end %>
-      </div>
-      <div class="column bg-light radius-10">
-        <div class="columns">
-          <div class="column">
-            <div class="pv1 pl2 pr2">
-              <strong> <%= @job.title %> </strong>
-            </div>
-            <div class="pv1 pl2 pr2 mt2">
-              <%= icon('fas', 'globe mr1') %> <%= @job.category.name %>
-            </div>
-            <div class="pv1 pl2 pr2 mt2">
-              <%= icon('fas', 'coins mr1') %>
-              <%= job_salary(@job.salary_from, @job.salary_to) %>
-            </div>        
-          </div>
-          <div class="column">
-            <div class="pv1 pl2 pr2">
-              <%= icon('fas', 'level-up-alt mr1') %> <%= @job.level.name %>
-            </div>           
-            <div class="pv1 pl2 pr2 mt2">
-              <%= icon('far', 'clock mr2') %> <%= @job.job_type.name %>
-            </div>
-            <div class="pv1 pl2 pr2 mt2">
-              <% if @job.remote_ok? %>
-                <%= icon('fas', 'wifi') %> <%= t('remote') %> 
-              <% else %>
-                <%= icon('fas', 'laptop') %> Oficina
-              <% end %>     
-            </div>
-          </div>
-          <div class="column">
-            <% @job.tags.each do |tag| %>
-              <span class='tag is-success is-normal'> <%= tag.name %> </span>
-            <% end %>  
-          </div>
-          <div class="column is-relative">
-            <div class="is-absolute bottom-10 right-20">
-              <p> ¡Comparte este Job! </p>
-              <%= social_share_button_tag("#{@job.title} en #{@job.location}", :image => asset_path('logo_black.png'), :allow_sites => %w(whatsapp_app twitter linkedin email)) %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="ma4"></div>  
-
-    <div class="columns">
-      <div class="column has-text-centered">
-        <%= render partial: '/jobs/partials/submit_form', locals: { job: @job, cta_text: 'i_want_this_job' } %>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section pt0">
-  <div class="container is-wrapper bg-white radius-8">
-    <div class="columns">
-      <div class="column">
-        <h2 class="f3 mb2"> <%= t('job_description') %> </h2>
-        <div class="pr4 pl4 pb4"> 
-          <%= @job.description.html_safe %>
-        </div>
-      </div>
-    </div>
-    <div class="columns">
-      <div class="column has-text-centered">
-        <%= render partial: '/jobs/partials/submit_form', locals: { job: @job, cta_text: 'this_job_is_mine' } %>
-      </div>
-    </div>  
-  </div>
-</section>
+<%= render partial: "jobs/partials/job_information", locals: { job: @job } %>
 
 <% if @same_category_jobs.any? && !current_user&.is_recruiter %>
   <section class="section">
@@ -171,7 +50,6 @@
 <% end %>
 
 <%= render partial: '/jobs/partials/update_user_info_modal', locals: { user: current_user, job: @job } if current_user %>
-<%= render partial: '/jobs/partials/deactivate_job_modal', locals: { job: @job } %>
 
 <%= content_for :head do %>
   <%= render "seo", 

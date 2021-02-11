@@ -1,4 +1,4 @@
-<%= simple_form_for(@job, html: { multipart: true }) do |f| %>
+<%= simple_form_for([:companies, @job], html: { multipart: true }) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
@@ -128,12 +128,7 @@
             <%= t('category') %> 
           </label>
           <div class="control is-flex wrap mt3">
-            <% Category.all.each do |category| %>
-              <div class="ma3 radio-collection">
-                <%= f.radio_button :category_id, category.id %>
-                <label for="job_category_id_<%=category.id%>"> <%= category.name %> </label>
-              </div>
-            <% end %>
+            <%= f.collection_radio_buttons :category_id, Category.all, :id, :name, item_wrapper_class: 'choice-collection' %>
           </div>
         </div>
       </div>
@@ -144,9 +139,11 @@
     <div class="column">
       <div class="field">
         <div class="control">
-          <label class="label"> <%= t('jobs.tags') %> </label>
-          <small> <%= t('tags_form_small_text') %> </small>
-          <%= f.text_area :tag_list, rows: 2, class: "textarea", placeholder: "UX, UI, Frontend, React, API" %>
+          <label class="label"> 
+            <%= t('skills.title') %> 
+          </label>
+          <small> <%= t('skills.job_subtitle') %> </small>
+          <%= f.collection_select :skill_ids, Skill.all, :id, :name, {}, { multiple: "multiple", class: "skills-select", style: "width: 100%"} %>  
         </div>
       </div>
     </div>
@@ -207,7 +204,7 @@
   <hr>
 
   <% if first_job_publication(current_user) %>
-    <%= render '/jobs/partials/first_publication_message' %>
+    <%= render 'first_publication_message' %>
   <% else %>
     <%= render 'payment' %>
   <% end %>
@@ -231,13 +228,12 @@
 <% end %>
 
 <%= content_for :head do %>
-
-  <script src="https://cdn.tiny.cloud/1/2waujryfoz8jq9ucu0b6ioeaevozjce6026p9vf6i7hpp8io/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 <% end %>
 
 <%= content_for :footer do %>
-
+  <script src="https://cdn.tiny.cloud/1/2waujryfoz8jq9ucu0b6ioeaevozjce6026p9vf6i7hpp8io/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
   <%= javascript_include_tag "helpers/image_loader.js" %>
 
   <script>
@@ -259,6 +255,8 @@
         $('#job_salary_from, #job_salary_to').prop("type", "number");
       }
     });
+    $(document).ready(function() {
+      $('.skills-select').select2();
+    });
   </script>
-
 <% end %>

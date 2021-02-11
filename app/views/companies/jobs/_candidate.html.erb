@@ -1,0 +1,47 @@
+<%= form_for :inscription, url: create_inscription_companies_jobs_path(job_id: job.id, user_id: user.id) do |f| %>
+  <div class="box mb3">
+    <div class="columns">
+      <div class="column is-three-quarters">
+        <article class="media">
+          <div class="media-left">
+            <figure class="image is-64x64">
+              <% image_url = user.picture_url.file.nil? ? asset_path('user_male_avatar.svg') : user.picture_url %>
+              <%= image_tag(image_url, alt: "Candidato ideal para tu empresa", class: 'is-rounded') %>
+            </figure>
+          </div>
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <strong> <%= user.name %> </strong> <small> <%= user.email %> </small> <small><%= user.phone %></small>
+                <br>
+                <% user.skills.each do |skill| %>
+                  <span class='tag is-success is-normal'> <%= skill.name %> </span>
+                <% end %>  
+              </p>
+            </div>
+            <nav class="level is-mobile">
+              <div class="level-left">
+                <%= link_to user.profile_url, target: "_blank", class: "mr2" do %>
+                  <%= icon('fab', 'linkedin') %>
+                <% end %>  
+                <%= mail_to user.email, target: "_blank" do %>
+                  <%= icon('far', 'envelope') %>
+                <% end %>
+              </div>
+            </nav>
+          </div>
+        </article>
+      </div>    
+      <div class="column is-vertical-center justify-end">
+        <% if user.is_already_inscribed(job) %>
+          <div class="tag is-outline pa3">
+            <span class="mr2"> Candidato inscrito </span>
+            <span class="has-text-success"> <%= icon('far', 'check-circle') %> </span>
+          </div>
+        <% else %>
+          <%= f.submit "Añadir al proceso de selección", class: "button is-info" %>
+        <% end %>
+      </div>
+    </div>
+  </div>    
+<% end %>        

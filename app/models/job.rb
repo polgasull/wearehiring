@@ -4,12 +4,15 @@ class Job < ApplicationRecord
   include Jobs::JobScopes
 
   belongs_to :user
-  belongs_to :category
-  belongs_to :job_type
-  belongs_to :level
+  belongs_to :category, dependent: :destroy
+  belongs_to :job_type, dependent: :destroy
+  belongs_to :level, dependent: :destroy
+  has_many :job_skills
+  has_many :skills, through: :job_skills
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
   has_many :inscriptions, dependent: :destroy
+
   mount_uploader :avatar, AvatarUploader
 
   validates :reference, uniqueness: true
@@ -64,5 +67,17 @@ class Job < ApplicationRecord
     else 
       order(created_at: :asc)
     end
+  end
+
+  def show_matching_candidates(job_skills)
+    candidates = []
+
+    job_skills.each do |skill|
+      skill.users.each do |user|
+        candidates << user if candidates.exclude?(user)
+      end
+    end
+    
+    return candidates
   end
 end

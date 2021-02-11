@@ -1,7 +1,7 @@
   <div class="modal update-user-modal">
     <div class="modal-background"></div>
     <div class="modal-card">
-      <%= simple_form_for(user, method: :patch, url: user_path(user.id), html: { multipart: true }) do |f| %>
+      <%= simple_form_for(user, method: :patch, url: candidates_user_profile_path(user.id), html: { multipart: true }) do |f| %>
         <header class="modal-card-head">
           <p class="modal-card-title"> Hola, <%= user.name %> </p>
         </header>

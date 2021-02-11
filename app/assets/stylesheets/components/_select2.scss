@@ -1,0 +1,31 @@
+.select2-container--default {
+  .select2-selection.select2-selection--multiple {
+    .select2-selection__choice {
+      background-color: $primary;
+      color: $white;
+      border: 1px solid $primary;
+      border-radius: 20px;
+      display: inline-block;
+      margin-left: 5px;
+      margin-top: 5px;
+      padding: 5px 10px;
+    }
+
+    .select2-selection__choice__remove {
+      background-color: transparent;
+      border: none;
+      color: $white;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: bold;
+      padding: 0 4px;
+    }
+
+    .select2-selection__choice__remove:hover {
+      color: $black;
+      background-color: transparent;
+      border: none;
+      box-shadow: none;
+    }
+  }
+}

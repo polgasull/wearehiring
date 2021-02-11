@@ -15,18 +15,33 @@ Rails.application.routes.draw do
     resources :categories, only: [:update]
     resources :job_types, only: [:update]
     resources :levels, only: [:update]
+    resources :skills, only: [:update]
   end
 
-  resources :jobs, path: 'ofertas-empleo-digital' do
-    resources :inscriptions
+  namespace :companies do
+    resources :jobs do
+      resources :inscriptions, only: [:index, :update, :show]
+      collection do
+        post :create_inscription
+      end
+    end
+  end
+
+  namespace :candidates do
+    resources :jobs, only: [:index] do
+      resources :inscriptions, only: [:create]
+    end
+    resources :inscriptions, only: [:index]
+    resources :user_profiles, only: [:update]
+  end
+
+  resources :jobs, path: 'ofertas-empleo-digital', only: [:index, :show] do
+    collection do
+      get :thanks, path: 'gracias-por-publicar'
+    end
   end
     
-  resources :users, only: [:update] do
-    member do
-      get :jobs
-      get :inscriptions
-    end
-  end 
+  resources :users, only: [:update]
 
   namespace :blog, path: '/' do
     resources :posts, path: 'blog' do
@@ -36,16 +51,17 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks' }
 
-  get '/ofertas-empleo-digital/empleo/gracias-por-publicar', to: 'jobs#thanks', as: 'thanks_job_page'
   get '/legal/aviso_legal', to: 'legal#legal_terms', as: 'legal_terms'
   get '/legal/politicas_privacidad', to: 'legal#privacy_policy', as: 'privacy_policy'
   get '/legal/politicas_cookies', to: 'legal#cookies_policy', as: 'cookies_policy'
   get '/sitemap.xml' => 'sitemaps#index', defaults: { format: 'xml' }
   get "/robots.:format", to: "home#robots"
 
-  match "/404", to: "errors#not_found", via: :all
-  match "/422", to: "errors#unacceptable", via: :all
-  match "/500", to: "errors#internal_server_error", via: :all
+  if Rails.env.production?
+    get "/404", to: "application#not_found", as: "not_found"
+    get "/422", to: "application#unacceptable", as: "unacceptable"
+    get "/500", to: "application#internal_server_error", as: "internal_server_error"
+  end
   get "/jobs/:id", to: redirect("/ofertas-empleo-digital/%{id}")
   get "/jobs", to: redirect("/ofertas-empleo-digital")
 

@@ -24,7 +24,11 @@
         'components/box',
         'components/lists',
         'components/pagination',
-        'components/images';
+        'components/images',
+        'components/select2',
+        'components/carousel';
+
+@import 'pages/dashboard';
 
 @font-face {
   font-family: 'archiathin';

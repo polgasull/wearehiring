@@ -537,6 +537,18 @@ es:
       level_not_updated: "No se pudo actualizar el Nivel"
       level_deleted: "Nivel eliminado satisfactoriamente"
       level_not_deleted: "No se pudo eliminar el Nivel"
+  skills:
+    title: "Habilidades"
+    name: "Nombre"
+    internal_name: "Identificador"
+    job_subtitle: "Busca y añade habilidades. Por ejemplo: Python, SEO, Agile, Scrum, etc."
+    messages:
+      skill_created: "Skill creado satisfactoriamente"
+      skill_not_created: "No se pudo crear el Skill"
+      skill_updated: "Skill actualizado satisfactoriamente"
+      skill_not_updated: "No se pudo actualizar el Skill"
+      skill_deleted: "Skill eliminado satisfactoriamente"
+      skill_not_deleted: "No se pudo eliminar el Skill"
   no_inscriptions_yet: "Aún hay candidatos"
   important_info_for_the_recruiter: "Información importante para el reclutador"
   important_info: "Información importante"

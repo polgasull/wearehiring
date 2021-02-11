@@ -14,6 +14,7 @@ Category.where(internal_name: "engineering").first_or_create(name: "Engineering"
 Category.where(internal_name: "sales").first_or_create(name: "Sales", internal_name: "sales")
 Category.where(internal_name: "management").first_or_create(name: "Management", internal_name: "management")
 Category.where(internal_name: "marketing").first_or_create(name: "Marketing", internal_name: "marketing")
+Category.where(internal_name: "data").first_or_create(name: "Data", internal_name: "data")
 
 JobType.where(internal_name: "full_time").first_or_create(name: "Full-time", internal_name: "full_time")
 JobType.where(internal_name: "part_time").first_or_create(name: "Part-time", internal_name: "part_time")
@@ -40,8 +41,9 @@ location = [
   "Boston, MA"
 ]
 
-User.where(email: "test@email.com").first_or_create(name: "Pol", password: "123456", user_type_id: 2)
-User.where(email: "admin@email.com").first_or_create(name: "Pol", password: "123456", user_type_id: 3)
+User.where(email: "candidate@email.com").first_or_create(name: "Pol Candidate", password: "123456", user_type_id: 1)
+User.where(email: "company@email.com").first_or_create(name: "Pol Company", password: "123456", user_type_id: 2)
+User.where(email: "admin@email.com").first_or_create(name: "Pol Admin", password: "123456", user_type_id: 3)
 
 10.times do 
   User.create(email: Faker::Internet.email, password: "123456", user_type_id: 2)

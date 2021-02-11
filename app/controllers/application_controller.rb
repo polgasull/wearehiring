@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   # def validate_is_candidate!
   # def validate_is_company!
   # def validate_is_admin!
+  # def validate_is_ambassador!
   %w[candidate company admin ambassador].each do |user_type_name|
     define_method "validate_is_#{user_type_name}!" do
       redirect_to root_path unless current_user&.send("is_#{user_type_name}?")
@@ -14,15 +15,27 @@ class ApplicationController < ActionController::Base
   end
 
   def validate_is_candidate_or_admin!
-    redirect_to root_path if !current_user.is_company? && !current_user.is_admin?
+    redirect_to root_path unless current_user.is_company? && current_user.is_admin?
   end
 
   def validate_is_company_or_ambassador!
-    redirect_to root_path if !current_user.is_company? && !current_user.is_ambassador?
+    redirect_to root_path unless current_user.is_company? && current_user.is_ambassador?
   end
 
   def validate_is_recruiter!
-    redirect_to root_path if !current_user.is_company? && !current_user.is_ambassador? && !current_user.is_admin?
+    redirect_to root_path unless current_user.is_company? && current_user.is_ambassador? && current_user.is_admin?
+  end
+
+  def not_found
+    render status: 404
+  end
+
+  def unacceptable
+    render status: 422
+  end
+
+  def internal_server_error
+    render status: 500
   end
 
   protected
