@@ -16,7 +16,7 @@ class Job < ApplicationRecord
 
   geocoded_by :location
   after_validation :geocode
-  friendly_id :title_location_author_reference, use: :slugged
+  friendly_id :title_location_author_reference, use: [:slugged, :history, :finders]
 
   def title_location_author_reference
     "Empleo de #{title} en #{location} #{job_author} #{reference}"

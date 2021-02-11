@@ -50,13 +50,13 @@ class InscriptionsController < ApplicationController
   private
 
   def set_job
-    @job = Job.friendly.find(params[:job_id])
+    @job = Job.find(params[:job_id])
     rescue ActiveRecord::RecordNotFound
       redirect_to controller: :errors, action: :not_found
   end
 
   def set_current_user_job
-    @job = current_user.jobs.friendly.find(params[:job_id])
+    @job = current_user.jobs.find(params[:job_id])
     rescue ActiveRecord::RecordNotFound
       redirect_to controller: :errors, action: :not_found
   end

@@ -4,7 +4,7 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy 
 
   mount_uploader :image, AvatarUploader
-  friendly_id :custom_url, use: [:slugged]
+  friendly_id :custom_url, use: [:slugged, :history, :finders]
 
   def should_generate_new_friendly_id?
     custom_url_changed? || super

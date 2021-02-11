@@ -26,6 +26,9 @@ module Blog
     end
 
     def show
+      if request.path != blog_post_path(@post)
+        return redirect_to [:blog, @post], :status => :moved_permanently
+      end
       @last_jobs = Job.active.order('created_at DESC').take(10);
       @last_blog_posts = Post.all.order('created_at DESC').take(3);
       @post_comments = @post.comments.order('created_at DESC');
@@ -55,7 +58,8 @@ module Blog
     end
 
     def set_post
-      @post = Post.friendly.find(params[:id])
+      @post = Post.find(params[:id])
+
       rescue ActiveRecord::RecordNotFound
         redirect_to controller: :errors, action: :not_found
     end

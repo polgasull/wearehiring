@@ -10,6 +10,7 @@ FactoryBot.define do
     apply_url { 'https://www.google.com' }
     avatar { Faker::Avatar.image }
     reference { "wah#{DateTime.now.year}#{SecureRandom.hex(3)}" }
+    external_mail { Faker::Internet.email }
 
     trait :full_time do
       association :job_type, :full_time_type
