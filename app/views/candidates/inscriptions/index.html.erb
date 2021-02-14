@@ -5,6 +5,15 @@
       <div class="columns mt2">
         <div class="column">
           <p class="f4 mb2"> 
+            <% if inscriptions_status == 'finalists' %>
+              <%= icon('fas', 'trophy') %>
+            <% elsif inscriptions_status == 'in_process' %> 
+              <%= icon('fas', 'user-clock') %>
+            <% elsif inscriptions_status == 'discardeds' %>
+              <%= icon('fas', 'hiking') %>
+            <% else %>
+              <%= icon('fas', 'check-circle') %>
+            <% end %>
             <%= t("users.inscriptions.jobs_#{inscriptions_status}") %> 
           </p>
           <hr>

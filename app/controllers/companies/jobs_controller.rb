@@ -67,7 +67,7 @@ module Companies
   
     def create_inscription
       @job = current_user.jobs.find(params[:job_id])
-      assign_inscription_to_job(@job, @candidate)
+      assign_inscription_to_job(@job, @candidate, companies_job_inscriptions_path(@job.id))
     end
 
     private

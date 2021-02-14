@@ -2,45 +2,37 @@
   <div class="container">
     <div class="columns"> 
       <div class="column">
-        <section class="hero is-info welcome is-small">
-          <div class="hero-body">
-            <div class="container">
-              <h1 class="title">
-                  Hello, <%= current_user.name %>
-              </h1>
-              <h2 class="subtitle">
-                ¡Espero que estés teniendo un buen día!
-              </h2>
-            </div>
-          </div>
-        </section>
+        <h1 class="title">
+            Hola, <%= current_user.name %>
+        </h1>
         <section class="info-tiles">
           <div class="tile is-ancestor has-text-centered">
             <div class="tile is-parent">
               <article class="tile is-child box">
-                <p class="title">439k</p>
-                <p class="subtitle">Users</p>
+                <p class="title"><%= @candidate_inscriptions.count %></p>
+                <p class="subtitle"><%= icon('fas', 'check-circle') %> Inscripciones</p>
               </article>
             </div>
             <div class="tile is-parent">
               <article class="tile is-child box">
-                <p class="title">59k</p>
-                <p class="subtitle">Products</p>
+                <p class="title"><%= @discardeds_count %></p>
+                <p class="subtitle"> <%= icon('fas', 'hiking') %> Descartado</p>
               </article>
             </div>
             <div class="tile is-parent">
               <article class="tile is-child box">
-                <p class="title">3.4k</p>
-                <p class="subtitle">Open Orders</p>
+                <p class="title"> <%= @in_process_count %> </p>
+                <p class="subtitle"> <%= icon('fas', 'user-clock') %> En Proceso</p>
               </article>
             </div>
             <div class="tile is-parent">
               <article class="tile is-child box">
-                <p class="title">19</p>
-                <p class="subtitle">Exceptions</p>
+                <p class="title"> <%= @finalists_count %> </p>
+                <p class="subtitle"><%= icon('fas', 'trophy') %> Finalista</p>
               </article>
             </div>
-          </div>        </section>
+          </div>
+        </section>
         <div class="columns">
           <div class="column is-6">
             <div class="card events-card">
@@ -59,7 +51,14 @@
                         <%= image_tag(inscription.job.avatar_url(:thumb), width: 35, height: 35) %>
                       <% end %>
                     </div>
-                    <div class="column is-size-7 is-8"><%= inscription.job.title %></div>
+                    <div class="column is-size-7 is-6">
+                      <%= inscription.job.title %>
+                    </div>
+                    <div class="column is-2 has-text-right">
+                      <span class="tag is-size-7 is-light">
+                        <%= inscription.status.present? ? t("inscriptions.#{inscription.status}") : 'Inscrito' %> 
+                      </span>
+                    </div>
                     <div class="column has-text-right is-3">
                       <%= link_to inscription.job, class: "button is-small is-primary" do %>
                         Ver Job
@@ -76,56 +75,6 @@
             </div>
           </div>
           <div class="column is-6">
-            <div class="card">
-              <header class="card-header">
-                <p class="card-header-title">
-                    Inventory Search
-                </p>
-                <a href="#" class="card-header-icon" aria-label="more options">
-                  <span class="icon">
-                    <i class="fa fa-angle-down" aria-hidden="true"></i>
-                  </span>
-                </a>
-              </header>
-              <div class="card-content">
-                <div class="content">
-                  <div class="control has-icons-left has-icons-right">
-                    <input class="input is-large" type="text" placeholder="">
-                    <span class="icon is-medium is-left">
-                      <i class="fa fa-search"></i>
-                    </span>
-                    <span class="icon is-medium is-right">
-                      <i class="fa fa-check"></i>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card">
-              <header class="card-header">
-                <p class="card-header-title">
-                    User Search
-                </p>
-                <a href="#" class="card-header-icon" aria-label="more options">
-                  <span class="icon">
-                    <i class="fa fa-angle-down" aria-hidden="true"></i>
-                  </span>
-                </a>
-              </header>
-              <div class="card-content">
-                <div class="content">
-                  <div class="control has-icons-left has-icons-right">
-                    <input class="input is-large" type="text" placeholder="">
-                    <span class="icon is-medium is-left">
-                      <i class="fa fa-search"></i>
-                    </span>
-                    <span class="icon is-medium is-right">
-                      <i class="fa fa-check"></i>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -135,7 +84,7 @@
 
 <section class="section">
   <div class="container">
-    <!-- Start Carousel -->
+    <h1 class="title"> Últimos Jobs publicados </h1>
     <div id="jobs-carousel" class="carousel">
       <% @jobs.each do |job| %>
         <div class="card">
@@ -165,6 +114,9 @@
                 <span class='tag is-success is-normal'> <%= skill.name %> </span>
               <% end %>
               <div class="">
+                <% if user_inscribed_to(job) %>
+                  <span class="tag is-danger inscribed-tag"> <%= t('inscribed') %> </span>
+                <% end %>
                 <%= link_to "Ver Job", job, class: "button is-small is-link" %>
               </div>
             </div>
@@ -172,7 +124,6 @@
         </div>
       <% end %>
     </div>
-    <!-- End Carousel -->
   </div>
 </section>
 

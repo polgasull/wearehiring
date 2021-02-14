@@ -9,7 +9,7 @@
                   Hello, <%= current_user.name %>
               </h1>
               <h2 class="subtitle">
-                  I hope you are having a great day!
+                Aquí tienes un resumen de tus publicaciones en We Are Hiring
               </h2>
             </div>
           </div>
@@ -47,13 +47,8 @@
             <div class="card events-card">
               <header class="card-header">
                 <p class="card-header-title">
-                    Events
+                  Últimos aplicantes
                 </p>
-                <a href="#" class="card-header-icon" aria-label="more options">
-                  <span class="icon">
-                    <i class="fa fa-angle-down" aria-hidden="true"></i>
-                  </span>
-                </a>
               </header>
               <div class="card-table pa2">
                   <% @last_inscribeds.each do |inscription| %>
@@ -65,68 +60,42 @@
                           <%= image_tag(inscription.user.picture_url, width: 35, height: 35) %>
                         <% end %>
                       </div>
-                      <div class="column is-size-7 is-8"><%= inscription.user.name %></div>
+                      <div class="column is-size-7 is-8"><%= inscription.user.name %> ha aplicado a <%= inscription.job.title %> </div>
                       <div class="column has-text-right is-3">
-                        <%= link_to companies_job_inscription_path(inscription.job_id, inscription.id), class: "button is-small is-primary" do %>
-                          Ir al proceso
+                        <%= link_to companies_job_inscription_path(inscription.job_id, inscription.id), class: "button is-small is-link" do %>
+                          <%= t('view_profile') %>
                         <% end %>
                       </div>
                     </div>
                   <% end %>
                 </div>
-                <footer class="card-footer">
-                    <a href="#" class="card-footer-item">View All</a>
-                </footer>
               </div>
             </div>
             <div class="column is-6">
-              <div class="card">
+              <div class="card events-card">
                 <header class="card-header">
                   <p class="card-header-title">
-                      Inventory Search
+                    Últimos Jobs publicados
                   </p>
-                  <a href="#" class="card-header-icon" aria-label="more options">
-                    <span class="icon">
-                      <i class="fa fa-angle-down" aria-hidden="true"></i>
-                    </span>
-                  </a>
                 </header>
-                <div class="card-content">
-                  <div class="content">
-                    <div class="control has-icons-left has-icons-right">
-                      <input class="input is-large" type="text" placeholder="">
-                      <span class="icon is-medium is-left">
-                        <i class="fa fa-search"></i>
-                      </span>
-                      <span class="icon is-medium is-right">
-                        <i class="fa fa-check"></i>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card">
-                <header class="card-header">
-                  <p class="card-header-title">
-                      User Search
-                  </p>
-                  <a href="#" class="card-header-icon" aria-label="more options">
-                    <span class="icon">
-                      <i class="fa fa-angle-down" aria-hidden="true"></i>
-                    </span>
-                  </a>
-                </header>
-                <div class="card-content">
-                  <div class="content">
-                    <div class="control has-icons-left has-icons-right">
-                      <input class="input is-large" type="text" placeholder="">
-                      <span class="icon is-medium is-left">
-                        <i class="fa fa-search"></i>
-                      </span>
-                      <span class="icon is-medium is-right">
-                        <i class="fa fa-check"></i>
-                      </span>
-                    </div>
+                <div class="card-table pa2">
+                    <% @company_jobs.each do |job| %>
+                      <div class="columns is-vcentered">
+                        <div class="column is-size-7 is-6">
+                          <%= job.title %>
+                        </div>
+                        <div class="column is-3 has-text-right"> 
+                          <span class="tag is-size-7 <%= job.open? ? 'is-success' : 'is-danger' %>">
+                            <%= job.open? ? 'En curso' : 'Finalizado' %> 
+                          </span>
+                        </div>
+                        <div class="column has-text-right is-3">
+                          <%= link_to companies_job_path(job.id), class: "button is-small is-link" do %>
+                            <%= t('view_job') %>
+                          <% end %>
+                        </div>
+                      </div>
+                    <% end %>
                   </div>
                 </div>
               </div>

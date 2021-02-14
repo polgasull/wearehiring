@@ -24,5 +24,8 @@ class HomeController < ApplicationController
 
   def candidate_variables(user)
     @candidate_inscriptions = user.inscriptions.all
+    @discardeds_count = user.inscriptions.where(status: [0]).count
+    @in_process_count = user.inscriptions.where(status: [1]).count
+    @finalists_count = user.inscriptions.where(status: [2]).count
   end
 end

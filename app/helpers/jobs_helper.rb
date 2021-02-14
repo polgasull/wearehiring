@@ -25,7 +25,7 @@ end
 
 def job_inscriptions_counter(job)
   count = job.inscriptions.count
-  (count > 1) ? "#{count} Candidatos" : "#{count} Candidato"
+  (count > 1) ? "#{count} Inscritos" : "#{count} Inscrito"
 end
 
 def first_job_publication(user)

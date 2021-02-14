@@ -40,8 +40,8 @@
         <%= render partial: "companies/jobs/job_info", locals: { job: @job } %>
       </div>
       <div class="column">
-        <h1 class="title"> Matching System </h1>
-        <h2 class="subtitle is-6"> Estos candidatos encajan con tus requisitos </h2>
+        <h1 class="title"> Matching System <span class="tag is-info"> ¡Nuevo! </span> </h1>
+        <h2 class="subtitle is-6"> Estos candidatos encajan con tus requisitos. Puedes añadirlos y ampliar el número de inscritos para el proceso. </h2>
         <% if @job.open? %>
           <% if @matching_candidates.any? %>
             <% @matching_candidates.each do |user| %>
@@ -49,7 +49,10 @@
             <% end %>
           <% else %>
             <div class="has-text-centered mt4">
-              <p> Actualmente no hay candidatos que encajen con tus requisitos </p>
+              <p> Estamos buscando perfiles que puedan encajar con tus requisitos </p>
+              <p>
+                <img src='<%=asset_path('glasses-loading.gif')%>' width='50'>
+              </p>
               <%= link_to t('jobs.edit_job'), edit_companies_job_path(@job), class: 'button is-link is-outlined mt3' %>
             </div>
           <% end %>
