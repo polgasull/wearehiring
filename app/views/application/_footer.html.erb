@@ -29,13 +29,19 @@
           <%= link_to t('legal_note'), legal_terms_path, { rel:"nofollow", target: '_blank' } %> <br>
           <%= link_to t('privacy_policy_footer'), privacy_policy_path, { rel:"nofollow", target: '_blank' } %> <br>
           <%= link_to t('cookies_policy_footer'), cookies_policy_path, { rel:"nofollow", target: '_blank' } %>
+
+          <div class="mt4"> 
+            <% %w[stripe visa mastercard amex].each do |card| %>
+              <%= icon('fab', "cc-#{card} is-size-3 has-text-white") %>
+            <% end %>
+          </div>
         </div>
       </div>
       <hr class="is-hidden-mobile">
       <div class="columns is-copy is-hidden-mobile">
         <div class="column has-text-centered">
           <p>WeAreHiring</p>
-          Copyright &copy; 2020 Made with ❤️in Barcelona
+          Copyright &copy; <%= Time.current.year %> Made with ❤️ in Barcelona
         </div>
       </div>
     </div>
