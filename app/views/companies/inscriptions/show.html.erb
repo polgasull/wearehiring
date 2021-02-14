@@ -1,13 +1,45 @@
 <section class="section">
-  <div class="container"> 
+  <div class="container">
     <div class="columns">
-      <div class="column">
-        <%= link_to companies_job_inscriptions_path(@job.id), class: 'button is-link' do %>
+      <div class="column is-3-desktop">
+        <%= link_to companies_job_inscriptions_path(@job.id), class: 'button is-normal' do %>
           <%= icon('fas', 'arrow-left mr2') %>
           <%= t('go_back_to_inscriptions') %>
         <% end %>
       </div>
     </div>
+    <div class="columns">
+      <div class="column">
+        <h1 class="f2"> <%= @user.name %> ha aplicado para: </h1>
+        <p class="f2">
+          <%= @job.title %> </p>
+        </p>
+        <p> <%= @job.job_author %> en <%= @job.location %> </p>
+      </div>
+      <div class="column has-text-right-desktop">
+        <p class="f6"> <%= icon('fas', 'clock') %> Publicado <%= time_ago_in_words(@job.created_at) %> </p>
+        <p> <%= t('jobs.reference') %>: <%= @job.reference %> </p>
+        <div class="is-flex is-vertical-center justify-end mt2">
+          <p class="has-text-weight-bold"> Estado en el proceso: <p>
+          <p class="ml3">
+            <%= form_for @inscription, url: companies_job_inscription_path(@inscription.job_id, @inscription.id), method: :patch do |f| %>
+              <div class="select">
+                <%= f.select(:status, 
+                    Inscription.statuses.keys.map {|status, id| [t("inscriptions.#{status}"), status]}, 
+                    {include_blank: t('helpers.select.select')}, 
+                    {onchange: 'this.form.submit();'}) %>
+              </div>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container"> 
     <div class="columns">
       <div class="column is-4 has-text-centered">
         <h1 class="title is-5"> <%= t('profile') %> </h1>
@@ -19,7 +51,7 @@
           </div>
         <% end %>
         <p class="title f4 mt4"> 
-          <%= @user.name %> 
+          <%= @user.name %>
         </p>
         <p> 
           <%= @user.current_position %> 
@@ -29,14 +61,7 @@
           <%= mail_to @user.email %> 
         </p>
         <p class="mt4 has-text-weight-bold"> <%= t('inscriptions.status') %> </p>
-        <%= form_for @inscription, url: companies_job_inscription_path(@inscription.job_id, @inscription.id), method: :patch do |f| %>
-          <div class="select mt1">
-            <%= f.select(:status, 
-                Inscription.statuses.keys.map {|status, id| [t("inscriptions.#{status}"), status]}, 
-                {include_blank: t('helpers.select.select')}, 
-                {onchange: 'this.form.submit();'}) %>
-          </div>
-        <% end %>
+        <p> <%= @inscription.status %> </p>
         <div class="mt4">
           <p class="mt4 has-text-weight-bold"> <%= t('skills.title') %> </p>
           <% if @user.skills.any? %>

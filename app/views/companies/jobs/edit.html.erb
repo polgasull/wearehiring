@@ -1,11 +1,13 @@
 <section class="section main-section">
   <div class="container">
-    <%= link_to job_path(@job), class: "button is-info" do %>
-      <span> Ver publicación </span>
-    <% end %>
-  </div>
-  <div class="mv4 is-mobile-only"></div>
-  <div class="container">
+    <div class="columns">
+      <div class="column is-3-desktop">
+        <%= link_to companies_job_path(@job.id), class: 'button is-normal' do %>
+          <%= icon('fas', 'arrow-left mr2') %>
+          <%= t('go_back_to_job') %>
+        <% end %>
+      </div>
+    </div>
     <div class="columns">
       <div class="column is-8 is-offset-2">
         <h1 class="title is-3"> <%= t('jobs.edit_job') %> </h1>

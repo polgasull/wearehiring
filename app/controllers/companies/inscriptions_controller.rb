@@ -35,7 +35,7 @@ module Companies
     private
   
     def set_job
-      @job = current_user.jobs.friendly.find(params[:job_id])
+      @job = current_user.jobs.find(params[:job_id])
       rescue ActiveRecord::RecordNotFound
         redirect_to not_found_url
     end

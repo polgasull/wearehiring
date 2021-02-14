@@ -62,11 +62,11 @@ module Companies
     end 
   
     def update
-      @job&.update(job_params) ? redirect_to_response(t('jobs.messages.job_updated'), @job) : redirect_back_response(t('jobs.messages.job_not_updated'), false)
+      @job&.update(job_params) ? redirect_to_response(t('jobs.messages.job_updated'), companies_job_path(@job)) : redirect_back_response(t('jobs.messages.job_not_updated'), false)
     end
   
     def create_inscription
-      @job = current_user.jobs.friendly.find(params[:job_id])
+      @job = current_user.jobs.find(params[:job_id])
       assign_inscription_to_job(@job, @candidate)
     end
 
@@ -77,7 +77,7 @@ module Companies
     end
 
     def set_job
-      @job = current_user.jobs.friendly.find(params[:id])
+      @job = current_user.jobs.find(params[:id])
       rescue ActiveRecord::RecordNotFound
         redirect_to not_found_url
     end

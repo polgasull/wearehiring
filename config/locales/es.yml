@@ -286,7 +286,7 @@ es:
     any_finalists: "No has elegido a nadie como finalista"
     status: "Estado"
     messages:
-      inscription_created: "Te has inscrito satisfactoriamente"
+      inscription_created: "Inscrito correctamente"
       inscription_not_created: "Algo ha ido mal durante la inscripción"
   payments:
     price: "Precio"
@@ -555,5 +555,6 @@ es:
   complementary_info: "Información complementaria"
   about_me: "Sobre mí"
   go_back_to_inscriptions: "Volver a todos los inscritos"
+  go_back_to_job: "Volver al Job"
   successfully_updated: "Acción realizada correctamente"
   job_offer_h1: "Oferta de empleo"

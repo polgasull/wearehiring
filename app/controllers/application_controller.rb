@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   end
 
   def validate_is_company_or_ambassador!
-    redirect_to root_path unless current_user.is_company? && current_user.is_ambassador?
+    redirect_to root_path unless current_user.is_company? || current_user.is_ambassador?
   end
 
   def validate_is_recruiter!

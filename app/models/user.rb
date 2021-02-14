@@ -49,4 +49,24 @@ class User < ApplicationRecord
   def update_sendgrid_list
     SendgridService.new.update_contact self
   end
+
+  def total_inscriptions_sum(jobs)
+    inscriptions = []
+
+    jobs.each do |job|
+      inscriptions << job.inscriptions.count
+    end
+    
+    inscriptions.inject(0){|sum,x| sum + x }
+  end
+
+  def last_inscribeds(jobs)
+    inscriptions = []
+
+    jobs.each do |job|
+      job.inscriptions.map{ |i| inscriptions << i }
+    end
+
+    inscriptions
+  end
 end

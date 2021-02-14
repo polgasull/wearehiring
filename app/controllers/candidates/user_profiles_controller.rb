@@ -6,11 +6,11 @@ module Candidates
 
     def update
       if current_user.update(user_params)
+        SendgridService.new.update_contact current_user
         if params[:job_id]
           @job = Job.find_by_id(params[:job_id])
           assign_inscription_to_job(@job, current_user) and return
         end
-        SendgridService.new.update_contact current_user
         return redirect_back_response(t('successfully_updated'))
       else 
         redirect_back_response(t('users.messages.user_not_updated'), false)

@@ -10,7 +10,7 @@ module InscriptionsHelper
     if @inscription.save  
       ModelMailer.new_candidate(user, job).deliver if Rails.env.production?
       ModelMailer.successfully_inscribed(user, job).deliver if Rails.env.production?
-      redirect_to_response(t('inscriptions.messages.inscription_created'), @inscription.job)
+      redirect_to_response(t('inscriptions.messages.inscription_created'), job)
     else 
       redirect_back_response(t('inscriptions.messages.inscription_not_created'), false)
     end

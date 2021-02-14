@@ -18,26 +18,26 @@
           <div class="tile is-ancestor has-text-centered">
             <div class="tile is-parent">
               <article class="tile is-child box">
-                <p class="title">439k</p>
-                <p class="subtitle">Users</p>
+                <p class="title"><%= @company_jobs_count %></p>
+                <p class="subtitle">Jobs</p>
               </article>
             </div>
             <div class="tile is-parent">
               <article class="tile is-child box">
-                <p class="title">59k</p>
-                <p class="subtitle">Products</p>
+                <p class="title"><%= @company_jobs_open_count %></p>
+                <p class="subtitle">Jobs Activos</p>
               </article>
             </div>
             <div class="tile is-parent">
               <article class="tile is-child box">
-                <p class="title">3.4k</p>
-                <p class="subtitle">Open Orders</p>
+                <p class="title"><%= @company_jobs_close_count %></p>
+                <p class="subtitle">Jobs Finalizados</p>
               </article>
             </div>
             <div class="tile is-parent">
               <article class="tile is-child box">
-                <p class="title">19</p>
-                <p class="subtitle">Exceptions</p>
+                <p class="title"><%= @total_inscriptions %></p>
+                <p class="subtitle">Total Inscritos</p>
               </article>
             </div>
           </div>
@@ -46,67 +46,33 @@
           <div class="column is-6">
             <div class="card events-card">
               <header class="card-header">
-                  <p class="card-header-title">
-                      Events
-                  </p>
-                  <a href="#" class="card-header-icon" aria-label="more options">
-                    <span class="icon">
-                      <i class="fa fa-angle-down" aria-hidden="true"></i>
-                    </span>
-                  </a>
-                </header>
-                <div class="card-table">
-                  <div class="content">
-                    <table class="table is-fullwidth is-striped">
-                      <tbody>
-                        <tr>
-                          <td width="5%"><i class="fa fa-bell-o"></i></td>
-                              <td>Lorum ipsum dolem aire</td>
-                          <td class="level-right"><a class="button is-small is-primary" href="#">Action</a></td>
-                        </tr>
-                        <tr>
-                          <td width="5%"><i class="fa fa-bell-o"></i></td>
-                              <td>Lorum ipsum dolem aire</td>
-                          <td class="level-right"><a class="button is-small is-primary" href="#">Action</a></td>
-                        </tr>
-                        <tr>
-                          <td width="5%"><i class="fa fa-bell-o"></i></td>
-                              <td>Lorum ipsum dolem aire</td>
-                          <td class="level-right"><a class="button is-small is-primary" href="#">Action</a></td>
-                        </tr>
-                        <tr>
-                          <td width="5%"><i class="fa fa-bell-o"></i></td>
-                              <td>Lorum ipsum dolem aire</td>
-                          <td class="level-right"><a class="button is-small is-primary" href="#">Action</a></td>
-                        </tr>
-                        <tr>
-                          <td width="5%"><i class="fa fa-bell-o"></i></td>
-                              <td>Lorum ipsum dolem aire</td>
-                          <td class="level-right"><a class="button is-small is-primary" href="#">Action</a></td>
-                        </tr>
-                        <tr>
-                          <td width="5%"><i class="fa fa-bell-o"></i></td>
-                              <td>Lorum ipsum dolem aire</td>
-                          <td class="level-right"><a class="button is-small is-primary" href="#">Action</a></td>
-                        </tr>
-                        <tr>
-                          <td width="5%"><i class="fa fa-bell-o"></i></td>
-                              <td>Lorum ipsum dolem aire</td>
-                          <td class="level-right"><a class="button is-small is-primary" href="#">Action</a></td>
-                        </tr>
-                        <tr>
-                          <td width="5%"><i class="fa fa-bell-o"></i></td>
-                              <td>Lorum ipsum dolem aire</td>
-                          <td class="level-right"><a class="button is-small is-primary" href="#">Action</a></td>
-                        </tr>
-                        <tr>
-                          <td width="5%"><i class="fa fa-bell-o"></i></td>
-                              <td>Lorum ipsum dolem aire</td>
-                          <td class="level-right"><a class="button is-small is-primary" href="#">Action</a></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
+                <p class="card-header-title">
+                    Events
+                </p>
+                <a href="#" class="card-header-icon" aria-label="more options">
+                  <span class="icon">
+                    <i class="fa fa-angle-down" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </header>
+              <div class="card-table pa2">
+                  <% @last_inscribeds.each do |inscription| %>
+                    <div class="columns is-vcentered">
+                      <div class="column is-1">
+                        <% if inscription.user.picture_url.file.nil? %>
+                          <%= icon('far', 'image', style: 'font-size: 25px') %>
+                        <% else %>
+                          <%= image_tag(inscription.user.picture_url, width: 35, height: 35) %>
+                        <% end %>
+                      </div>
+                      <div class="column is-size-7 is-8"><%= inscription.user.name %></div>
+                      <div class="column has-text-right is-3">
+                        <%= link_to companies_job_inscription_path(inscription.job_id, inscription.id), class: "button is-small is-primary" do %>
+                          Ir al proceso
+                        <% end %>
+                      </div>
+                    </div>
+                  <% end %>
                 </div>
                 <footer class="card-footer">
                     <a href="#" class="card-footer-item">View All</a>

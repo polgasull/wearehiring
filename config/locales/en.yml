@@ -146,6 +146,7 @@ en:
   helpers:
     select:
       prompt: Please select
+      select: Choose one option
     submit:
       job:
         create: "Pay and post"
@@ -549,5 +550,6 @@ en:
   complementary_info: "Complementary information"
   about_me: "About me"
   go_back_to_inscriptions: "Go back to inscribeds"
+  go_back_to_job: "Go back to Job"
   successfully_updated: "Successfully updated"
   job_offer_h1: "Job offer"

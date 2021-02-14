@@ -1,12 +1,18 @@
 <section class="section">
   <div class="container">
     <div class="columns">
+      <div class="column is-3-desktop">
+        <%= link_to companies_job_path(@job.id), class: 'button is-normal' do %>
+          <%= icon('fas', 'arrow-left mr2') %>
+          <%= t('go_back_to_job') %>
+        <% end %>
+      </div>
+    </div>
+    <div class="columns">
       <div class="column">
         <h1 class="f2"> <%= job_inscriptions_counter(@job) %> </h1>
         <p class="f2">
-          <%= link_to @job, class: 'is-info' do %>
-            <%= @job.title %> </p>
-          <% end %>
+          <%= @job.title %>
         </p>
         <p> <%= @job.job_author %> en <%= @job.location %> </p>
       </div>

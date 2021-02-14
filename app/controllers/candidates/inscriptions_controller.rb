@@ -21,7 +21,7 @@ module Candidates
     private
 
     def set_job
-      @job = Job.friendly.find(params[:job_id])
+      @job = Job.find(params[:job_id])
       rescue ActiveRecord::RecordNotFound
         redirect_to not_found_url
     end
