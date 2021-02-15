@@ -1,4 +1,5 @@
-<div class="columns">
+<%= simple_form_for(@user, method: :patch, url: candidates_user_profile_path(@user), html: { multipart: true }) do |f| %>
+<div class="columns candidate-user-form">
   <div class="column is-4 has-text-centered">
     <h1 class="title is-5"> <%= t('my_profile') %> </h1>
     <% if current_user.picture_url.file.nil? %>
@@ -22,8 +23,7 @@
       <%= icon('fab', 'get-pocket') %>
       <%= link_to "#{current_user.inscriptions.count} Jobs aplicados", candidates_inscriptions_path(current_user.id), target: "_blank" %>
     </p>
-    <%= simple_form_for(@user, method: :patch, url: candidates_user_profile_path(@user), html: { multipart: true }, namespace: 'image') do |f| %>
-    <div class="file justify-center is-primary mt4">
+    <div class="file justify-center is-normal mt4">
       <label class="file-label">
         <%= f.input :picture_url, as: :file, required: false, input_html: { class: "file-input load-image" }, label: false, wrapper: false %>
         <span class="file-cta">
@@ -36,58 +36,56 @@
     <div class="is-flex justify-center">
         <output id="list"></output>
     </div>
-    <% end %>
   </div>
   <div class="column is-8">
-    <%= simple_form_for(@user, method: :patch, url: candidates_user_profile_path(@user), html: { multipart: true }, namespace: 'matching') do |f| %>
-      <%= f.hidden_field :visible, value: current_user.visible? ? false : true %>
-      <div class="we-match-box mb3">
-        <div class="columns">
-          <div class="column">
-            <p class="title is-4"> We Match <span class="tag is-info"> ¡Nuevo! </span> </p>
-          </div>
-          <div class="column has-text-right">
-            <% activated = current_user.visible? ? 'btn--activated' : 'btn--activate' %>
-            <%= link_to '#', class:"btn #{activated }", onclick: "$('#matching_edit_user_#{current_user.id}').submit()", id: "btnActivation" do %>
-              <span class="btn__icon"></span>
-              <span class="btn__text" data-wait="Activando" data-after="Activated">Activar</span>
+    <div class="we-match-box mb3">
+      <div class="columns">
+        <div class="column">
+          <p class="title is-4"> We Match <span class="tag is-info is-light"> ¡Nuevo! </span> </p>
+        </div>
+        <div class="column">
+          <div class="toggleWrapper">
+            <%= f.check_box :visible, checked: f.object.visible, class: 'activate-we-match' %>
+            <%= f.label :visible, class: 'toggle' do %>
+              <span class="toggle__handler"></span>
             <% end %>
           </div>
         </div>
-        <div class="field">
-          <strong> <%= t('jobs.salary_range') %> </strong>  
+      </div>
+      <div class="field mt4">
+        <%= f.label t('skills.title'), class: 'has-text-weight-bold' %>
+        <div class="control">
+          <small> <%= t('skills.job_subtitle') %> </small>
+          <%= f.collection_select :skill_ids, Skill.all, :id, :name, {}, { multiple: "multiple", class: "skills-select", style: "width: 100%"} %>  
         </div>
-        <div class="columns">
-          <div class="column is-one-quarter-desktop">
-            <div class="field">
-              <div class="control">
-                <%= f.input_field :salary_from, class: 'input', placeholder: '30000' %>
-                <small> <%= t('forms.from') %> </small>
-              </div>
+      </div>
+      <div class="field mt4">
+        <strong> <%= t('users.salary_expectation') %> </strong>  
+      </div>
+      <div class="columns">
+        <div class="column is-one-quarter-desktop">
+          <div class="field">
+            <div class="control">
+              <%= f.input_field :salary_from, class: 'input', placeholder: '30000' %>
+              <small> <%= t('forms.from') %> </small>
             </div>
           </div>
-          <div class="column is-one-quarter-desktop">
-            <div class="field">
-              <div class="control">
-                <%= f.input_field :salary_to, class: 'input', placeholder: '40000' %>
-                <small> <%= t('forms.to') %> </small>
-              </div>
-            </div>
-          </div>
         </div>
-        <div class="field">
-          <%= f.label t('skills.title'), class: 'has-text-weight-bold' %>
-          <div class="control">
-            <small> <%= t('skills.job_subtitle') %> </small>
-            <%= f.collection_select :skill_ids, Skill.all, :id, :name, {}, { multiple: "multiple", class: "skills-select", style: "width: 100%"} %>  
+        <div class="column is-one-quarter-desktop">
+          <div class="field">
+            <div class="control">
+              <%= f.input_field :salary_to, class: 'input', placeholder: '40000' %>
+              <small> <%= t('forms.to') %> </small>
+            </div>
           </div>
         </div>
       </div>
-    <% end %>
+      <div class="has-text-right">
+        <%= f.button :submit, t('save'), class:"button is-info mt2" %>
+      </div>
+    </div>
     <hr>
-    <%= simple_form_for(@user, method: :patch, url: candidates_user_profile_path(@user), html: { multipart: true }, namespace: 'fields') do |f| %>
     <h2 class="title is-4 mt4"> <%= t('important_info_for_the_recruiter') %> </h2>
-    
     <div class="columns">
       <div class="column">
         <div class="field">
@@ -234,34 +232,25 @@
     </div>
 
     <%= f.button :submit, t('save'), class:"button is-info is-pulled-right mt3" %>
-    <% end %>
   </div>
 </div>
+<% end %>
 
 <%= content_for :head do %>
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 <% end %>
 
 <%= content_for :footer do %>
+  <%= javascript_include_tag "helpers/image_loader.js" %>
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
   <script>  
     $(document).ready(function() {
       $('.skills-select').select2();
-      $('#btnActivation').click(function() {
-        if(!$('#btnActivation').hasClass(('btn--activated'))) {
-          $('#btnActivation').removeClass('btn--activate');
-          $('#btnActivation').addClass('btn--waiting');
-            setTimeout(function(){
-            removeWaiting();
-          }, 3000); 
-        }
-      });
-  
-      function removeWaiting() {
-        $('#btnActivation').removeClass('btn--waiting');
-        $('#btnActivation').addClass('btn--activated');
-      }
+    });
+
+    $(".activate-we-match").change(function(){
+      $("form").submit();
     });
 
   </script>

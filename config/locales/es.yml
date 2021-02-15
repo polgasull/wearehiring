@@ -450,6 +450,7 @@ es:
     pinterest: "Pinterest"
     behance: "Behance"
     personal_website: "Web personal"
+    salary_expectation: "Expectativa salarial"
     messages:
       user_created: "Usuario creado satisfactoriamente"
       user_not_created: "No se pudo crear el Usuario"

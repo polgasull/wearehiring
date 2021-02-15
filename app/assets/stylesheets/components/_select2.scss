@@ -8,7 +8,8 @@
       display: inline-block;
       margin-left: 5px;
       margin-top: 5px;
-      padding: 5px 10px;
+      padding: 2px 10px;
+      font-size: 13px;
     }
 
     .select2-selection__choice__remove {
@@ -26,6 +27,26 @@
       background-color: transparent;
       border: none;
       box-shadow: none;
+    }
+  }
+}
+
+.candidate-user-form {
+  .select2-container--default {
+    .select2-selection.select2-selection--multiple {
+      .select2-selection__choice {
+        background-color: whitesmoke;
+        color:$black;
+        border: 1px solid whitesmoke;
+       }
+
+       .select2-selection__choice__remove {
+        color: $black;
+      }
+  
+      .select2-selection__choice__remove:hover {
+        color: $red;
+      }
     }
   }
 }
