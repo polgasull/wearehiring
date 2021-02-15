@@ -19,17 +19,14 @@ $(document).ready(function () {
       reader.onload = (function(theFile) {
         return function(e) {
           // Render thumbnail.
-          var lastItem = document.querySelector(".rounded-image:last-child");
           var newDiv = document.createElement('div');
-          newDiv.classList.add('rounded-image', 'size-150');
+          var submitButton = document.createElement('div')
+          newDiv.classList.add('rounded-image', 'size-150', 'mauto');
           newDiv.innerHTML = ['<img class="image-preview-thumb border-light" src="', e.target.result,
             '" title="', escape(theFile.name), '"/>'
           ].join('');
-          if (lastItem) {
-            document.getElementById('list').replaceChild(newDiv, lastItem);
-          } else {
-            document.getElementById('list').insertBefore(newDiv, null);
-          }
+          submitButton.innerHTML = ['<button class="button is-info mt3" type="submit">Guardar</button>']
+          document.getElementById('list').replaceWith(newDiv, submitButton);
         };
       })(f);
       // Read in the image file as a data URL.
