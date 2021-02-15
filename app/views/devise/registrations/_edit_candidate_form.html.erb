@@ -1,205 +1,242 @@
-<%= simple_form_for(@user, method: :patch, url: candidates_user_profile_path(@user), html: { multipart: true }) do |f| %>
-  <div class="columns">
-    <div class="column is-4 has-text-centered">
-      <h1 class="title is-5"> <%= t('my_profile') %> </h1>
-      <% if current_user.picture_url.file.nil? %>
-        <%= icon('far', 'user-circle', style: 'font-size: 100px') %>
-      <% else %>
-        <div class="rounded-image m-auto size-120">
-          <%= image_tag(current_user.picture_url, alt: "Imagen perfil usuario | Wearehiring.io") %>
-        </div>
-      <% end %>
-      <p class="title f4 mt4"> 
-        <%= current_user.name %> 
-      </p>
-      <p> 
-        <%= current_user.current_position %> 
-      </p>
-      <p> 
-        <%= icon('far', 'paper-plane') %>
-        <%= mail_to current_user.email %> 
-      </p>
-      <p class="mt4">
-        <%= icon('fab', 'get-pocket') %>
-        <%= link_to "#{current_user.inscriptions.count} Jobs aplicados", candidates_inscriptions_path(current_user.id), target: "_blank" %>
-      </p>
-      <div class="file justify-center is-primary mt4">
-        <label class="file-label">
-          <%= f.input :picture_url, as: :file, required: false, input_html: { class: "file-input load-image" }, label: false, wrapper: false %>
-          <span class="file-cta">
-            <span class="file-icon"> <%= icon('fas', 'upload') %> </span>
-            <span class="file-label"> Cambiar imagen... </span>
-          </span>
-        </label>
+<div class="columns">
+  <div class="column is-4 has-text-centered">
+    <h1 class="title is-5"> <%= t('my_profile') %> </h1>
+    <% if current_user.picture_url.file.nil? %>
+      <%= icon('far', 'user-circle', style: 'font-size: 100px') %>
+    <% else %>
+      <div class="rounded-image m-auto size-120">
+        <%= image_tag(current_user.picture_url, alt: "Imagen perfil usuario | Wearehiring.io") %>
       </div>
-      <small> Tamaño mínimo recomendado 200x200 </small>
-      <div class="is-flex justify-center">
+    <% end %>
+    <p class="title f4 mt4"> 
+      <%= current_user.name %> 
+    </p>
+    <p> 
+      <%= current_user.current_position %> 
+    </p>
+    <p> 
+      <%= icon('far', 'paper-plane') %>
+      <%= mail_to current_user.email %> 
+    </p>
+    <p class="mt4">
+      <%= icon('fab', 'get-pocket') %>
+      <%= link_to "#{current_user.inscriptions.count} Jobs aplicados", candidates_inscriptions_path(current_user.id), target: "_blank" %>
+    </p>
+    <%= simple_form_for(@user, method: :patch, url: candidates_user_profile_path(@user), html: { multipart: true }, namespace: 'image') do |f| %>
+    <div class="file justify-center is-primary mt4">
+      <label class="file-label">
+        <%= f.input :picture_url, as: :file, required: false, input_html: { class: "file-input load-image" }, label: false, wrapper: false %>
+        <span class="file-cta">
+          <span class="file-icon"> <%= icon('fas', 'upload') %> </span>
+          <span class="file-label"> Cambiar imagen... </span>
+        </span>
+      </label>
+    </div>
+    <small> Tamaño mínimo recomendado 200x200 </small>
+    <div class="is-flex justify-center">
         <output id="list"></output>
-      </div>
     </div>
-    <div class="column is-8">
-      <%= f.button :submit, t('save'), class:"button is-info is-pulled-right" %>
-
-      <h2 class="title is-4"> <%= t('skills.title') %> </h2>
-
-      <div class="field">
-        <div class="control">
-          <small> <%= t('skills.job_subtitle') %> </small>
-          <%= f.collection_select :skill_ids, Skill.all, :id, :name, {}, { multiple: "multiple", class: "skills-select", style: "width: 100%"} %>  
-        </div>
-      </div>
-
-      <h2 class="title is-4 mt4"> <%= t('important_info_for_the_recruiter') %> </h2>
-
-      <div class="columns">
-        <div class="column">
-          <div class="field">
-            <%= f.label :name, class: 'has-text-weight-bold' %>
-            <div class="control mt2">
-              <%= f.input :name, 
-                input_html: { class: "input" }, 
-                placeholder: "Carlos", 
-                label: false, 
-                wrapper: false %>
-            </div>
-          </div>
-        </div>
-        <div class="column">
-          <div class="field">
-            <%= f.label :last_name, class: 'has-text-weight-bold' %>
-            <div class="control mt2">
-              <%= f.input :last_name, 
-                input_html: { class: "input" }, 
-                placeholder: "Hernández", 
-                label: false, 
-                wrapper: false %>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class='has-text-weight-bold mb2'>
-        <%= t('users.phone') %>
-        <%= content_tag(:span, nil, class: 'dot-notification') if current_user.phone.blank? %>
-      </div>
-      <% if current_user.phone.blank? %>
-        <span class="f6 primary-color"> Añade tu <strong class="primary-color"> teléfono </strong> y aumenta las posibilidades de ser contactado </span>
-      <% end %>
-      <div class="field">
-        <div class="control has-icons-left">
-          <%= f.input :phone, 
-            label: false,
-            hint: "Solo las empresas donde apliques verán tu teléfono", 
-            input_html: { class: "input" }, 
-            wrapper: false, 
-            placeholder: "+34 666555444" %>
-          <span class="icon is-small is-left">
-            <%= icon('fas', 'phone') %>
-          </span>
-        </div>
-      </div>
-      <div class='has-text-weight-bold mb2'>
-        <%= t('users.profile_url') %>
-        <%= content_tag(:span, nil, class: 'dot-notification') if current_user.profile_url.blank? %>
-      </div>
-      <div class="field">
-        <div class="control has-icons-left">
-          <%= f.input :profile_url, 
-            label: false,
-            input_html: { class: "input" }, 
-            wrapper: false, 
-            placeholder: "https://www.linkedin.com/in/your-profile-url/" %>
-          <span class="icon is-small is-left">
-            <%= icon('fab', 'linkedin') %>
-          </span>
-        </div>
-      </div>
-      <div class='has-text-weight-bold mb2'>
-        <%= t('users.current_position') %>
-        <%= content_tag(:span, nil, class: 'dot-notification') if current_user.current_position.blank? %>
-      </div>
-      <div class="field">
-        <div class="control">
-          <%= f.input :current_position, 
-            label: false,
-            input_html: { class: "input" }, 
-            wrapper: false, 
-            placeholder: "Marketing digital" %>
-        </div>
-      </div>
-
-      <h2 class="title is-4 mt4"> <%= t('complementary_info') %> </h2>
-
-      <div class="field">
-        <%= f.label t('about_me'), class: 'has-text-weight-bold' %>
-        <div class="control">
-          <%= f.input :description, 
-            input_html: { class: "input textarea mt2" }, 
-            placeholder: "Háblanos un poco sobre ti", 
-            label: false, 
-            wrapper: false %>
-        </div>
-      </div>
-
-      <div class="field">
-        <%= f.label :github, class: 'has-text-weight-bold' %>
-        <div class="control has-icons-left mt2">
-          <%= f.input :github, 
-            input_html: { class: "input" }, 
-            placeholder: "github/yourprofile", 
-            label: false, 
-            wrapper: false %>
-          <span class="icon is-small is-left">
-            <%= icon('fab', 'github') %>
-          </span>
-        </div>
-      </div>
-
-      <div class="field">
-        <%= f.label :pinterest, class: 'has-text-weight-bold' %>
-        <div class="control has-icons-left mt2">
-          <%= f.input :pinterest, 
-            input_html: { class: "input" }, 
-            placeholder: "pinterest/yourprofile", 
-            label: false, 
-            wrapper: false %>
-          <span class="icon is-small is-left">
-            <%= icon('fab', 'pinterest') %>
-          </span>           
-        </div>
-      </div>
-
-      <div class="field">
-        <%= f.label :behance, class: 'has-text-weight-bold' %>
-        <div class="control has-icons-left mt2">
-          <%= f.input :behance, 
-            input_html: { class: "input" }, 
-            placeholder: "behance/yourprofile", 
-            label: false, 
-            wrapper: false %>
-          <span class="icon is-small is-left">
-            <%= icon('fab', 'behance-square') %>
-          </span>        
-        </div>
-      </div>
-
-      <div class="field">
-        <%= f.label :personal_website, class: 'has-text-weight-bold' %>
-        <div class="control has-icons-left mt2">
-          <%= f.input :personal_website, 
-            input_html: { class: "input" }, 
-            placeholder: "https://yourwebsite.com", 
-            label: false, 
-            wrapper: false %>
-          <span class="icon is-small is-left">
-            <%= icon('far', 'window-restore') %>
-          </span>        
-        </div>
-      </div>
-
-      <%= f.button :submit, t('save'), class:"button is-info is-pulled-right mt3" %>
-    </div>
+    <% end %>
   </div>
-<% end %>
+  <div class="column is-8">
+    <%= simple_form_for(@user, method: :patch, url: candidates_user_profile_path(@user), html: { multipart: true }, namespace: 'matching') do |f| %>
+      <%= f.hidden_field :visible, value: current_user.visible? ? false : true %>
+      <div class="we-match-box mb3">
+        <div class="columns">
+          <div class="column">
+            <p class="title is-4"> We Match <span class="tag is-info"> ¡Nuevo! </span> </p>
+          </div>
+          <div class="column has-text-right">
+            <% activated = current_user.visible? ? 'btn--activated' : 'btn--activate' %>
+            <%= link_to '#', class:"btn #{activated }", onclick: "$('#matching_edit_user_#{current_user.id}').submit()", id: "btnActivation" do %>
+              <span class="btn__icon"></span>
+              <span class="btn__text" data-wait="Activando" data-after="Activated">Activar</span>
+            <% end %>
+          </div>
+        </div>
+        <div class="field">
+          <strong> <%= t('jobs.salary_range') %> </strong>  
+        </div>
+        <div class="columns">
+          <div class="column is-one-quarter-desktop">
+            <div class="field">
+              <div class="control">
+                <%= f.input_field :salary_from, class: 'input', placeholder: '30000' %>
+                <small> <%= t('forms.from') %> </small>
+              </div>
+            </div>
+          </div>
+          <div class="column is-one-quarter-desktop">
+            <div class="field">
+              <div class="control">
+                <%= f.input_field :salary_to, class: 'input', placeholder: '40000' %>
+                <small> <%= t('forms.to') %> </small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <%= f.label t('skills.title'), class: 'has-text-weight-bold' %>
+          <div class="control">
+            <small> <%= t('skills.job_subtitle') %> </small>
+            <%= f.collection_select :skill_ids, Skill.all, :id, :name, {}, { multiple: "multiple", class: "skills-select", style: "width: 100%"} %>  
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <hr>
+    <%= simple_form_for(@user, method: :patch, url: candidates_user_profile_path(@user), html: { multipart: true }, namespace: 'fields') do |f| %>
+    <h2 class="title is-4 mt4"> <%= t('important_info_for_the_recruiter') %> </h2>
+    
+    <div class="columns">
+      <div class="column">
+        <div class="field">
+          <%= f.label :name, class: 'has-text-weight-bold' %>
+          <div class="control mt2">
+            <%= f.input :name, 
+              input_html: { class: "input" }, 
+              placeholder: "Carlos", 
+              label: false, 
+              wrapper: false %>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="field">
+          <%= f.label :last_name, class: 'has-text-weight-bold' %>
+          <div class="control mt2">
+            <%= f.input :last_name, 
+              input_html: { class: "input" }, 
+              placeholder: "Hernández", 
+              label: false, 
+              wrapper: false %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='has-text-weight-bold mb2'>
+      <%= t('users.phone') %>
+      <%= content_tag(:span, nil, class: 'dot-notification') if current_user.phone.blank? %>
+    </div>
+    <% if current_user.phone.blank? %>
+      <span class="f6 primary-color"> Añade tu <strong class="primary-color"> teléfono </strong> y aumenta las posibilidades de ser contactado </span>
+    <% end %>
+    <div class="field">
+      <div class="control has-icons-left">
+        <%= f.input :phone, 
+          label: false,
+          hint: "Solo las empresas donde apliques verán tu teléfono", 
+          input_html: { class: "input" }, 
+          wrapper: false, 
+          placeholder: "+34 666555444" %>
+        <span class="icon is-small is-left">
+          <%= icon('fas', 'phone') %>
+        </span>
+      </div>
+    </div>
+    <div class='has-text-weight-bold mb2'>
+      <%= t('users.profile_url') %>
+      <%= content_tag(:span, nil, class: 'dot-notification') if current_user.profile_url.blank? %>
+    </div>
+    <div class="field">
+      <div class="control has-icons-left">
+        <%= f.input :profile_url, 
+          label: false,
+          input_html: { class: "input" }, 
+          wrapper: false, 
+          placeholder: "https://www.linkedin.com/in/your-profile-url/" %>
+        <span class="icon is-small is-left">
+          <%= icon('fab', 'linkedin') %>
+        </span>
+      </div>
+    </div>
+    <div class='has-text-weight-bold mb2'>
+      <%= t('users.current_position') %>
+      <%= content_tag(:span, nil, class: 'dot-notification') if current_user.current_position.blank? %>
+    </div>
+    <div class="field">
+      <div class="control">
+        <%= f.input :current_position, 
+          label: false,
+          input_html: { class: "input" }, 
+          wrapper: false, 
+          placeholder: "Marketing digital" %>
+      </div>
+    </div>
+
+    <h2 class="title is-4 mt4"> <%= t('complementary_info') %> </h2>
+
+    <div class="field">
+      <%= f.label t('about_me'), class: 'has-text-weight-bold' %>
+      <div class="control">
+        <%= f.input :description, 
+          input_html: { class: "input textarea mt2" }, 
+          placeholder: "Háblanos un poco sobre ti", 
+          label: false, 
+          wrapper: false %>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= f.label :github, class: 'has-text-weight-bold' %>
+      <div class="control has-icons-left mt2">
+        <%= f.input :github, 
+          input_html: { class: "input" }, 
+          placeholder: "github/yourprofile", 
+          label: false, 
+          wrapper: false %>
+        <span class="icon is-small is-left">
+          <%= icon('fab', 'github') %>
+        </span>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= f.label :pinterest, class: 'has-text-weight-bold' %>
+      <div class="control has-icons-left mt2">
+        <%= f.input :pinterest, 
+          input_html: { class: "input" }, 
+          placeholder: "pinterest/yourprofile", 
+          label: false, 
+          wrapper: false %>
+        <span class="icon is-small is-left">
+          <%= icon('fab', 'pinterest') %>
+        </span>           
+      </div>
+    </div>
+
+    <div class="field">
+      <%= f.label :behance, class: 'has-text-weight-bold' %>
+      <div class="control has-icons-left mt2">
+        <%= f.input :behance, 
+          input_html: { class: "input" }, 
+          placeholder: "behance/yourprofile", 
+          label: false, 
+          wrapper: false %>
+        <span class="icon is-small is-left">
+          <%= icon('fab', 'behance-square') %>
+        </span>        
+      </div>
+    </div>
+
+    <div class="field">
+      <%= f.label :personal_website, class: 'has-text-weight-bold' %>
+      <div class="control has-icons-left mt2">
+        <%= f.input :personal_website, 
+          input_html: { class: "input" }, 
+          placeholder: "https://yourwebsite.com", 
+          label: false, 
+          wrapper: false %>
+        <span class="icon is-small is-left">
+          <%= icon('far', 'window-restore') %>
+        </span>        
+      </div>
+    </div>
+
+    <%= f.button :submit, t('save'), class:"button is-info is-pulled-right mt3" %>
+    <% end %>
+  </div>
+</div>
 
 <%= content_for :head do %>
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
@@ -211,6 +248,21 @@
   <script>  
     $(document).ready(function() {
       $('.skills-select').select2();
+      $('#btnActivation').click(function() {
+        if(!$('#btnActivation').hasClass(('btn--activated'))) {
+          $('#btnActivation').removeClass('btn--activate');
+          $('#btnActivation').addClass('btn--waiting');
+            setTimeout(function(){
+            removeWaiting();
+          }, 3000); 
+        }
+      });
+  
+      function removeWaiting() {
+        $('#btnActivation').removeClass('btn--waiting');
+        $('#btnActivation').addClass('btn--activated');
+      }
     });
+
   </script>
 <% end %>
