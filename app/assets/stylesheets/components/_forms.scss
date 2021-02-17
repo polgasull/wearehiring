@@ -91,3 +91,21 @@ $openheart: "\f08a";
 	border-radius: 50%;
 	display: inline-block;
 }
+
+.simple_form {
+
+	span.error {
+		display: block;
+		padding: 5px 10px;
+		color: $white;
+		background-color: lighten($red, 10%);
+		border-radius: 4px;
+	}
+
+	div.error_notification {
+		padding: 5px 10px;
+		color: $black; 
+		background-color: $light_gray;
+		border-radius: 4px;
+	}
+}

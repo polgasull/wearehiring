@@ -41,15 +41,15 @@ Rails.application.routes.draw do
     end
   end
     
-  resources :users, only: [:update]
-
   namespace :blog, path: '/' do
     resources :posts, path: 'blog' do
       resources :comments, only: [:create, :destroy]
     end
   end
 
-  devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, controllers: { 
+    omniauth_callbacks: 'users/omniauth_callbacks'
+  }
 
   get '/legal/aviso_legal', to: 'legal#legal_terms', as: 'legal_terms'
   get '/legal/politicas_privacidad', to: 'legal#privacy_policy', as: 'privacy_policy'
