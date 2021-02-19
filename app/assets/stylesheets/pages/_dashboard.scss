@@ -1,5 +1,4 @@
 .card-header-title {
-  color: #8F99A3;
   font-weight: 400;
 }
 
@@ -31,6 +30,7 @@
 }
 
 .events-card .card-table {
+  min-height: 250px;
   max-height: 250px;
   overflow-y: scroll;
 

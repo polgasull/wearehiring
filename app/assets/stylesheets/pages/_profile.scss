@@ -4,18 +4,22 @@
   border: 1px solid #ccc;
   padding: 25px;
 
+  &.no-border {
+    border: none;
+  }
+
   .toggleWrapper {
     position: absolute;
     top: 45px;
     right: -15px;
     overflow: hidden;
     transform: translate3d(-50%, -50%, 0);
-
+  
     input {
       position: absolute;
       left: -99em;
     }
-
+  
     .toggle {
       cursor: pointer;
       display: inline-block;
@@ -80,4 +84,3 @@
     }
   }
 }
-

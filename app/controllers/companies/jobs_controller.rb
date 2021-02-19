@@ -57,7 +57,6 @@ module Companies
 
     def show
       @inscriptions_count = @job.inscriptions.count
-      @same_category_jobs = Job.active.same_category(@job).order('created_at DESC').take(3)
       @matching_candidates = @job.show_matching_candidates(@job.skills)  
     end 
   

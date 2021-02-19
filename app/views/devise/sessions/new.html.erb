@@ -1,9 +1,14 @@
+<%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
+<%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>
+<%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
+
 <% if (params.has_key?(:company)) %>
     <%= render partial: "/devise/sessions/company_signin",
     locals: { resource: resource, resource_name: resource_name, devise_mapping: devise_mapping } %>
-<% end %>
-
-<% if (params.has_key?(:candidate)) %>
+<% elsif (params.has_key?(:candidate)) %>
+    <%= render partial: "/devise/sessions/candidate_signin", 
+    locals: { resource: resource, resource_name: resource_name, devise_mapping: devise_mapping } %>
+<% else %>
     <%= render partial: "/devise/sessions/candidate_signin", 
     locals: { resource: resource, resource_name: resource_name, devise_mapping: devise_mapping } %>
 <% end %>
