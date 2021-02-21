@@ -4,13 +4,13 @@
       <%= job_type.id %>
     </div>
     <div class="column">
-      <%= f.input :name, label: false, input_html: { class: "input" }, wrapper: false, placeholder: t('categories.name') %>
+      <%= f.input :name, label: false, input_html: { class: "input is-size-7" }, wrapper: false, placeholder: t('categories.name') %>
     </div>
     <div class="column">
       <%= job_type.internal_name %>
     </div>
     <div class="column">
-      <%= f.submit t('save'), class: 'button is-info' %>
+      <%= f.submit t('save'), class: 'button is-info is-size-7' %>
     </div>
   </div>
 <% end %>

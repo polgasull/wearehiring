@@ -3,7 +3,6 @@ $openheart: "\f08a";
 
 .button {
 	background-color: $white;
-	border-color: $white;
 	color: $black;
 	font-weight: 400;
 
@@ -107,5 +106,25 @@ $openheart: "\f08a";
 		color: $black; 
 		background-color: $light_gray;
 		border-radius: 4px;
+	}
+}
+
+.best_in_place {
+	padding-right: 18px;
+	background-image: url(asset_path('editar_logo.png'));
+	background-size: 15px auto;
+	background-position: right center;
+	background-repeat: no-repeat;
+	cursor: pointer;
+
+	&:hover {
+		background-image: url(asset_path('editar_logo_blue.png'));
+		font-weight: bold;
+		color: #485fc7;
+	}
+
+	&:focus,
+	&:focus-within {
+		background-image: none;
 	}
 }

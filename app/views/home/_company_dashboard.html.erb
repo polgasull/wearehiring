@@ -55,12 +55,13 @@
                           <%= image_tag(inscription.user.picture_url, width: 35, height: 35) %>
                         <% end %>
                       </div>
-                      <div class="column is-size-7 is-8"><%= inscription.user.name %> ha aplicado a <%= inscription.job.title %> </div>
-                        <div class="column has-text-right is-3">
-                          <%= link_to companies_job_inscription_path(inscription.job_id, inscription.id), class: "button is-small is-link" do %>
-                            <%= t('view_profile') %>
-                          <% end %>
-                        </div>
+                      <div class="column is-size-7 is-8">
+                        <%= inscription.user.name %> ha aplicado a <%= inscription.job.title %> 
+                      </div>
+                      <div class="column has-text-right is-3">
+                        <%= link_to companies_job_inscription_path(inscription.job_id, inscription.id), class: "button is-small is-link" do %>
+                          <%= t('view_profile') %>
+                        <% end %>
                       </div>
                     </div>
                   <% end %>

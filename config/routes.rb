@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :categories, only: [:update]
     resources :job_types, only: [:update]
     resources :levels, only: [:update]
-    resources :skills, only: [:update]
+    resources :skills, only: [:update, :create]
   end
 
   namespace :companies do

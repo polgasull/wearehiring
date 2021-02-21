@@ -16,8 +16,6 @@
         <%= link_to t('jobs.manage_inscriptions'), companies_job_inscriptions_path(@job), class: 'button is-link is-outlined' %>
       </div>
       <div class="column has-text-right">
-      </div>
-      <div class="column has-text-right">
         <%= link_to edit_companies_job_path(@job), class: 'button is-link' do %>
           <%= icon('fas', 'edit') %>
         <% end %>
@@ -28,6 +26,11 @@
           disabled: !@job.open?) do %>
             <%= icon('fas', 'calendar-times mr2') %> <%= t('jobs.close') %> 
         <% end %>
+        <div>
+          <%= link_to job_path(@job), class: 'button mt3' do %>
+            <%= icon('fas', 'eye mr1') %> Ver publicación
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
@@ -40,7 +43,7 @@
         <%= render partial: "companies/jobs/job_info", locals: { job: @job } %>
       </div>
       <div class="column">
-        <h1 class="title"> Matching System <span class="tag is-info"> ¡Nuevo! </span> </h1>
+        <h1 class="title"> Otros candidatos que pueden interesarte <span class="tag is-info"> ¡Nuevo! </span> </h1>
         <h2 class="subtitle is-6"> Estos candidatos encajan con tus requisitos. Puedes añadirlos y ampliar el número de inscritos para el proceso. </h2>
         <% if @job.open? %>
           <% if @matching_candidates.any? %>

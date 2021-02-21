@@ -1,5 +1,6 @@
 //= require rails-ujs
 //= require jquery
+//= require best_in_place
 //= require jquery_ujs
 //= require jquery-ui
 //= require social-share-button

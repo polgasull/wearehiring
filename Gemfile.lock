@@ -77,6 +77,9 @@ GEM
       actionpack (>= 3.1)
       axlsx (>= 2.0.1)
     bcrypt (3.1.16)
+    best_in_place (3.0.3)
+      actionpack (>= 3.2)
+      railties (>= 3.2)
     better_errors (2.7.1)
       coderay (>= 1.0.0)
       erubi (>= 1.0.0)
@@ -415,6 +418,7 @@ DEPENDENCIES
   aws-sdk-rails
   axlsx (= 2.0.1)
   axlsx_rails
+  best_in_place (~> 3.0.1)
   better_errors
   binding_of_caller
   browser (~> 4.0)

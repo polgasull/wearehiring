@@ -33,3 +33,10 @@
     box-shadow: 0 1px 3px 0 darken(#3298dc, 7%);
   }
 }
+
+.inscriptions-table {
+  .button.is-link {
+    max-height: 25px;
+    max-width: 10px;
+  }
+}

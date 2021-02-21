@@ -7,9 +7,10 @@ module Companies
     def index
       return redirect_to_response(t('not_found'), root_path, false) unless @job
   
-      @inscribeds = @job.inscriptions.where(status: [nil, 0])
-      @in_process = @job.inscriptions.where(status: [1])
-      @finalists = @job.inscriptions.where(status: [2])
+      @inscribeds_count = @job.inscriptions.where(status: [nil]).count
+      @discardeds_count = @job.inscriptions.where(status: [0]).count
+      @in_process_count = @job.inscriptions.where(status: [1]).count
+      @finalists_count = @job.inscriptions.where(status: [2]).count
       @inscriptions = @job.inscriptions
       @inscriptions_count = @job.inscriptions.count
   
@@ -21,9 +22,16 @@ module Companies
   
     def update
       @inscription = @job.inscriptions.find(params[:id])
-      @inscription.update(inscription_params) ? 
-        redirect_back_response(t('users.messages.user_updated')) : 
-        redirect_back_response(t('users.messages.user_not_updated'), false)
+
+      respond_to do |format|
+        if @inscription.update(inscription_params)
+          format.html { redirect_to_responset(t('users.messages.user_not_updated'), companies_job_inscriptions_path(@job)) }
+          format.json { respond_with_bip(@inscription) }
+        else
+          format.html { redirect_to_response(t('users.messages.user_not_updated'), companies_job_inscriptions_path(@job), false)  }
+          format.json { respond_with_bip(@inscription) }
+        end
+      end
     end
   
     def show

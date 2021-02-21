@@ -73,7 +73,7 @@ class Job < ApplicationRecord
     candidates = []
 
     job_skills.each do |skill|
-      skill.users.each do |user|
+      skill.users.where(visible: true).each do |user|
         candidates << user if candidates.exclude?(user)
       end
     end

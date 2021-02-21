@@ -22,36 +22,90 @@
       </div>
     </div>
     <div class="columns">
-      <% if !@inscriptions_count.zero? %>
-        <div class="column is-3-desktop">
+      <div class="column is-3-desktop">
+        <% if !@inscriptions_count.zero? %>
           <%= link_to companies_job_inscriptions_path(format: "xlsx"), class: 'button is-success pl3' do %>
             <%= icon('fas', 'file-download pr2') %> <%= t('download_candidates_excel') %>
           <% end %>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
+  </div>
+  <section class="info-tiles">
+    <div class="tile is-ancestor has-text-centered">
+      <div class="tile is-parent">
+        <article class="tile is-child box">
+          <p class="title"> <%= @inscribeds_count %> </p>
+          <p class="subtitle"><%= icon('fas', 'check-circle') %> <%= t("inscriptions.inscribeds") %> </p>
+        </article>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child box">
+          <p class="title"><%= @finalists_count %></p>
+          <p class="subtitle"> <%= icon('fas', 'heart-broken') %> <%= t("inscriptions.finalists") %> </p>
+        </article>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child box">
+          <p class="title"> <%= @in_process_count %> </p>
+          <p class="subtitle"> <%= icon('fas', 'user-clock') %> <%= t("inscriptions.in_process") %> </p>
+        </article>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child box">
+          <p class="title"> <%= @discardeds_count %> </p>
+          <p class="subtitle"><%= icon('fas', 'trophy') %> <%= t("inscriptions.discardeds") %> </p>
+        </article>
+      </div>
+    </div>
+  </section>
+  <div class="container mt4">
+    <table id="inscriptionsTable" class="table is-striped inscriptions-table" style="width:100%" data-order='[[ 6, "desc" ]]'>
+      <thead> 
+        <tr>
+          <th> <%= t('inscriptions.picture') %> </th>
+          <th> <%= t('inscriptions.name') %> </th>
+          <th> <%= t('inscriptions.current_job') %> </th>
+          <th> <%= t('inscriptions.phone') %> </th>
+          <th> <%= t('inscriptions.email') %> </th>
+          <th> <%= t('inscriptions.linkedin') %> </th>
+          <th> <%= t('inscriptions.status') %> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @inscriptions.each do |inscription| %>
+          <%= render partial: 'companies/inscriptions/inscription', locals: { inscription: inscription } %>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </section>
 
-<% %w[finalists in_process inscribeds].each do |inscriptions_status| %>
-  <section class="section pt0">
-    <div class="container">
-      <p class="f3 mb2"> 
-        <%= t("inscriptions.#{inscriptions_status}") %> 
-        <%= instance_variable_get("@#{inscriptions_status}".to_sym).count %>
-      </p>
-      <%= render 'header' %>
+<%= content_for :head do %>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bulma.min.css">
+<% end %>
 
-      <% if instance_variable_get("@#{inscriptions_status}".to_sym).count.zero? %>
-        <div class="columns is-mobile is-vertical-center">
-          <div class="column has-text-centered">
-            <%= t("inscriptions.any_#{inscriptions_status}") %>
-          </div>
-        </div>
-      <% else %>
-        <%= render instance_variable_get("@#{inscriptions_status}".to_sym) %>
-      <% end %>
-    </div>
-  </section>
+<%= content_for :footer do %>
+<script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.23/js/dataTables.bulma.min.js"></script>
+<script>
+
+  $(document).ready(function() {
+    $('#inscriptionsTable').DataTable({
+      "pageLength": 200,
+      "paging": false,
+      "language": {
+        "search": "Buscar:",
+        "info":           "",
+      }
+    });
+    /* Activating Best In Place */
+    $(".best_in_place").best_in_place();
+    $('.best_in_place').bind("ajax:success", function () { 
+      console.log('success');
+      $(this).closest('tr').effect('highlight', {color: '#48c774'}, 700);
+    });
+  });
+</script>
 <% end %>
 
