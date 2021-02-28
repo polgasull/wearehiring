@@ -47,12 +47,7 @@
           <%= f.input :location, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }, hint: 'Examples: "Oviedo, Asturias", "Sevilla", "Cualquiera"', placeholder: "Barcelona" %>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="columns">
-    <div class="column">
-      <div class="field">
+      <div class="field mt4">
         <div class="control">
           <label for="job[remote_ok]">
             <%= f.input :remote_ok, required: false, input_html: { class: "checkbox" }, wrapper: false, label: false %>
@@ -69,7 +64,17 @@
       <strong>
         <abbr title="required">*</abbr>
         <%= t('jobs.salary_range') %>  
+        <%= icon('fas', 'question-circle') %>
       </strong>
+    </div>
+  </div>
+
+  <div class="columns">
+    <div class="column">
+      <div class="field">
+        <input id="salarySwitch" type="checkbox" name="salarySwitch" class="switch">
+        <label for="salarySwitch"> A consultar </label>
+      </div>  
     </div>
   </div>
 
@@ -78,7 +83,7 @@
       <div class="field">
         <div class="control">
           <%= f.input_field :salary_from, required: true, class: 'input', placeholder: '30000' %>
-          <small> <%= t('forms.from') %> </small>
+          <small class="salary-hint"> <%= t('forms.from') %> </small>
         </div>
       </div>
     </div>
@@ -86,15 +91,9 @@
       <div class="field">
         <div class="control">
           <%= f.input_field :salary_to, required: true, class: 'input', placeholder: '40000' %>
-          <small> <%= t('forms.to') %> </small>
+          <small class="salary-hint"> <%= t('forms.to') %> </small>
         </div>
       </div>
-    </div>
-    <div class="column">
-      <div class="field">
-        <input id="salarySwitch" type="checkbox" name="salarySwitch" class="switch">
-        <label for="salarySwitch"> A consultar </label>
-      </div>    
     </div>
   </div>
   
@@ -166,7 +165,7 @@
       <div class="field">
         <div class="control">
           <label class="label f4"> <%= t('jobs.logo_image') %> </label>
-          <div class="file is-primary">
+          <div class="file is-info">
             <label class="file-label">
               <%= f.input :avatar, 
                 as: :file, 
@@ -232,32 +231,38 @@
 <% end %>
 
 <%= content_for :footer do %>
+  <%= javascript_include_tag "helpers/image_loader.js" %>
   <script src="https://cdn.tiny.cloud/1/2waujryfoz8jq9ucu0b6ioeaevozjce6026p9vf6i7hpp8io/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-  <%= javascript_include_tag "helpers/image_loader.js" %>
-
-  <script>
-    tinymce.init({
-      selector: '#job_description',
-      plugins: 'image link lists',
-      menubar:  false,
-      toolbar: 'undo redo | styleselect | bold italic | numlist bullist | link | alignleft aligncenter alignright alignjustify | outdent indent | image'
-    });
-  </script>
-
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <script src="https://unpkg.com/tippy.js@6"></script>
   <script>  
-    $(document).on("change", "#salarySwitch", function () {
-      if ($('#salarySwitch').is(":checked")) {
-        $('#job_salary_from, #job_salary_to').val(0);
-        $('#job_salary_from, #job_salary_to').prop("type", "hidden");
-      } else {
-        $('#job_salary_from, #job_salary_to').val("");
-        $('#job_salary_from, #job_salary_to').prop("type", "number");
-      }
-    });
     $(document).ready(function() {
       $('.skills-select').select2({
         maximumSelectionLength: 10
+      });
+
+      $("#salarySwitch").change(function() {
+        if ($('#salarySwitch').is(":checked")) {
+          $('#job_salary_from, #job_salary_to').val(0);
+          $('#job_salary_from, #job_salary_to').addClass("is-hidden");
+          $(".salary-hint").addClass("is-hidden");
+        } else {
+          $('#job_salary_from, #job_salary_to').val("");
+          $('#job_salary_from, #job_salary_to').removeClass("is-hidden");
+          $(".salary-hint").removeClass("is-hidden");
+        }
+      });
+
+      tinymce.init({
+        selector: '#job_description',
+        plugins: 'image link lists',
+        menubar:  false,
+        toolbar: 'undo redo | styleselect | bold italic | numlist bullist | link | alignleft aligncenter alignright alignjustify | outdent indent | image'
+      });
+
+      tippy('.fa-question-circle', {
+        content: 'Las empresas que añaden el salario tienen un 67% más de candidatos',
       });
     });
   </script>

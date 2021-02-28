@@ -71,14 +71,14 @@ $openheart: "\f08a";
 		cursor: pointer;
 
 		&:hover {
-			border: 1px solid $primary;
-			color: $primary;
+			border: 1px solid $success;
+			color: $success;
 		}
 	}
 
 	input[type="radio"]:checked + label,
 	input[type="checkbox"]:checked + label {
-		background-color: $primary;
+		background-color: $success;
 		color: $white;
 	}
 }

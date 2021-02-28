@@ -6,7 +6,7 @@
             Hola, <%= current_user.name %>
         </h1>
         <h2 class="subtitle">
-          Aquí tienes un resumen de tus publicaciones en We Are Hiring
+          Aquí tienes el resumen de tus Jobs en We Are Hiring
         </h2>
         <section class="info-tiles">
           <div class="tile is-ancestor has-text-centered">
@@ -95,7 +95,7 @@
                       </div>
                       <div class="column has-text-right is-3">
                         <%= link_to companies_job_path(job.id), class: "button is-small is-link" do %>
-                          <%= t('view_job') %>
+                          <%= t('go_to_job') %>
                         <% end %>
                       </div>
                     </div>

@@ -8,7 +8,6 @@
 			<div class="column is-4">
 				<h2 class="title is-3"> <%= t('candidate_access') %> </h2>
         <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <%= f.error_notification %>
           <div class="field mb2">
             <%= f.label :email, class: 'has-text-weight-bold' %>
             <div class="control has-icons-left">

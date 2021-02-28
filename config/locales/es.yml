@@ -239,8 +239,8 @@ es:
     company: "Empresa"
     salary_range: "Rango salario anual"
     location: "Localización"
-    post_job: "Publicar empleo"
-    post_job_free: "Publicar Gratis"
+    post_job: "Publicar Job"
+    post_job_free: "Publicar Job Gratis"
     post_job_with_price: "Publicar Job"
     new_job: "Nuevo Job"
     edit_job: "Editar Job"
@@ -338,7 +338,7 @@ es:
   your_email: "Correo electrónico"
   your_name: "Nombre"
   edit_password: "Cambiar contraseña"
-  my_jobs: "Mis publicaciones"
+  my_jobs: "Mis Jobs"
   my_inscriptions: "Mis inscripciones"
   sign_up_as_company: "Registro Empresas"
   company_access: "Acceso Empresas"
@@ -394,7 +394,7 @@ es:
         location: "Localización"
         description: "Descripción"
         apply_url: "Enlace original"
-        job_author: "Nombre empresa"
+        job_author: "Nombre de empresa"
         profile_url: "Perfil de Linkedin"
         new:
           username: 'Elige un nombre de usuario'

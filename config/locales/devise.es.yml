@@ -9,11 +9,12 @@ es:
       inactive: "Tu cuenta aún no está confirmada."
       invalid: "Datos inválidos %{authentication_keys} o contraseña."
       locked: "Tu cuenta está bloqueada"
-      last_attempt: "Tienes un último intento hasta bloquear tu cuenta."
+      last_attempt: "Tienes un último intento para desbloquear tu cuenta."
       not_found_in_database: "Datos inválidos %{authentication_keys} o contraseña."
-      timeout: "La sesión ha expirado. Por favor, logueate otra vez."
-      unauthenticated: "Debes iniciar sesión como empresa antes de publicar un Job"
+      timeout: "La sesión ha expirado. Por favor, vuelve a iniciar sesión."
+      unauthenticated: "Debes iniciar sesión como empresa"
       unconfirmed: "Tienes que confirmar tu email antes de continuar."
+      wrong_email_or_password: "Correo electrónico o contraseña inválidos."
     mailer:
       confirmation_instructions:
         subject: "Bienvenido"
@@ -45,7 +46,7 @@ es:
       signed_out: "Logout correcto"
       already_signed_out: "Logout correcto."
     unlocks:
-      send_instructions: "Recibirás instruccione en tu email para desbloquear tu cuenta."
+      send_instructions: "Recibirás instrucciones en tu email para desbloquear tu cuenta."
       send_paranoid_instructions: "Si tu email existe en la base de datos, recibirás un email para desbloquearla."
       unlocked: "Cuenta desbloqueda correctamnete."
   errors:

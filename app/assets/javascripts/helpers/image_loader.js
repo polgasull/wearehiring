@@ -25,7 +25,9 @@ $(document).ready(function () {
           newDiv.innerHTML = ['<img class="image-preview-thumb border-light" src="', e.target.result,
             '" title="', escape(theFile.name), '"/>'
           ].join('');
-          submitButton.innerHTML = ['<button class="button is-info mt3" type="submit">Guardar</button>']
+          if (window.location.href.indexOf("users") > -1) {
+            submitButton.innerHTML = ['<button class="button is-info mt3" type="submit">Guardar</button>']
+          }
           document.getElementById('list').replaceWith(newDiv, submitButton);
         };
       })(f);
