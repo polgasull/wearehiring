@@ -1,6 +1,34 @@
 <section class="section">
   <div class="container">
     <h1 class="f3"> <%= t('my_inscriptions') %>: <%= @inscriptions_count %> </h1>
+    <section class="info-tiles">
+      <div class="tile is-ancestor has-text-centered">
+        <div class="tile is-parent">
+          <article class="tile is-child box">
+            <p class="title"><%= @inscriptions_count %></p>
+            <p class="subtitle"><%= icon('fas', 'check-circle') %> Inscripciones</p>
+          </article>
+        </div>
+        <div class="tile is-parent">
+          <article class="tile is-child box">
+            <p class="title"><%= @discardeds.count %></p>
+            <p class="subtitle"> <%= icon('fas', 'heart-broken') %> Descartado</p>
+          </article>
+        </div>
+        <div class="tile is-parent">
+          <article class="tile is-child box">
+            <p class="title"> <%= @in_process.count %> </p>
+            <p class="subtitle"> <%= icon('fas', 'user-clock') %> En Proceso</p>
+          </article>
+        </div>
+        <div class="tile is-parent">
+          <article class="tile is-child box">
+            <p class="title"> <%= @finalists.count %> </p>
+            <p class="subtitle"><%= icon('fas', 'trophy') %> Finalista</p>
+          </article>
+        </div>
+      </div>
+    </section>
     <% %w[finalists in_process discardeds inscribeds].each do |inscriptions_status| %>
       <div class="columns mt2">
         <div class="column">

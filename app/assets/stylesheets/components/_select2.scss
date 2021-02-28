@@ -1,9 +1,9 @@
 .select2-container--default {
   .select2-selection.select2-selection--multiple {
     .select2-selection__choice {
-      background-color: $primary;
+      background-color: $success;
       color: $white;
-      border: 1px solid $primary;
+      border: 1px solid $success;
       border-radius: 20px;
       display: inline-block;
       margin-left: 5px;
@@ -27,26 +27,6 @@
       background-color: transparent;
       border: none;
       box-shadow: none;
-    }
-  }
-}
-
-.candidate-user-form {
-  .select2-container--default {
-    .select2-selection.select2-selection--multiple {
-      .select2-selection__choice {
-        background-color: whitesmoke;
-        color:$black;
-        border: 1px solid whitesmoke;
-       }
-
-       .select2-selection__choice__remove {
-        color: $black;
-      }
-  
-      .select2-selection__choice__remove:hover {
-        color: $red;
-      }
     }
   }
 }

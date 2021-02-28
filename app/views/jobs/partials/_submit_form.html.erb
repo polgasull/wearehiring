@@ -19,9 +19,9 @@
 <% if user_signed_in? && current_user&.is_candidate? %>
   <% if user_inscribed_to(job) %>
     <div class="has-text-centered">
-      <button disabled class="button is-rounded is-success is-large">  
+      <div class="button is-rounded is-success is-light is-large">  
         <%= t('inscribed') %> <%= icon('fas', 'check ml2') %>
-      </button>
+      </div>
     </div>
   <% else %>
     <%= form_for :inscription, url: candidates_job_inscriptions_path(job) do |f| %>

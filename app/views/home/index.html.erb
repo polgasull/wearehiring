@@ -1,7 +1,7 @@
 <% if current_user&.is_candidate? %>
-	<%= render partial: "home/candidate_dashboard" %>
+	<%= render partial: "home/partials/candidate_dashboard" %>
 <% elsif current_user&.is_company? || current_user&.is_ambassador? %>
-	<%= render partial: "home/company_dashboard" %>
+	<%= render partial: "home/partials/company_dashboard" %>
 <% else %>
-	<%= render partial: "home/public_home_layout" %>
+	<%= render partial: "home/partials/public_home_layout" %>
 <% end %>

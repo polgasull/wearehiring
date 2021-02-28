@@ -536,7 +536,7 @@ en:
       level_deleted: "Level was successfully deleted"
       level_not_deleted: "Level was not able to be deleted"
   skills:
-    title: "Habilidades"
+    title: "Hard & Soft Skills"
     name: "Nombre"
     internal_name: "Identificador"
     job_subtitle: "Search and add skills. For example: Python, SEO, Agile, Scrum, etc."

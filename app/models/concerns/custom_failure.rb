@@ -4,6 +4,10 @@ class CustomFailure < Devise::FailureApp
   end
 
   def respond
-    http_auth? ? http_auth : redirect_back(fallback_location: root_path)
+    if http_auth?
+      http_auth
+    else
+       redirect_back(fallback_location: root_path)
+    end
   end
 end

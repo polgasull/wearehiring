@@ -256,7 +256,9 @@
       }
     });
     $(document).ready(function() {
-      $('.skills-select').select2();
+      $('.skills-select').select2({
+        maximumSelectionLength: 10
+      });
     });
   </script>
 <% end %>

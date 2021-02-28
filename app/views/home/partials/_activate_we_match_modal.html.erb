@@ -1,0 +1,37 @@
+<%= simple_form_for(current_user, method: :patch, url: candidates_user_profile_path(current_user), html: { multipart: true }) do |f| %>
+<%= f.hidden_field :visible, value: true %>
+<div class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title"> ¡Estás a un paso de activar We Match! </p>
+      <button type="button" class="modal-close" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body has-text-centered">
+      <div class="field mt4">
+        <%= f.label "Indicanos tus Hard & Soft Skills (max 10)", class: 'has-text-weight-bold' %>
+        <div class="control">
+          <small> <%= t('skills.job_subtitle') %> </small>
+          <%= f.collection_select :skill_ids, Skill.all, :id, :name, {}, { multiple: "multiple", class: "skills-select", style: "width: 100%"} %>  
+        </div>
+      </div>
+      <article class="message mt3">
+        <div class="message-body">
+          Al activar We Match aparecerás como <strong> candidato recomendado </strong> 
+          para las empresas que estén buscando perfiles con <strong> tus habilidades </strong> 
+          y podrán añadirte a sus procesos de selección        
+        </div>
+      </article>
+
+    </section>
+    <footer class="modal-card-foot justify-center">
+      <div class="we-match-btn-block">
+        <button class= "btn btn--activate" id="btnActivation">
+          <span class="btn__icon"></span>
+          <span class="btn__text" data-wait="Activando">Activar</span>
+        </button>
+      </div>
+    </footer>
+  </div>
+</div>
+<% end %>     

@@ -31,8 +31,8 @@
           <p> <%= icon('fas', 'laptop') %> Oficina </p>
         <% end %>    
         <div class="mt2"></div>                         
-        <% @job.tags.each do |tag| %>
-          <span class='tag is-success is-normal'> <%= tag.name %> </span>
+        <% @job.skills.each do |skill| %>
+          <span class='tag is-success is-normal'> <%= skill.name %> </span>
         <% end %>  
       </div>
     </div>

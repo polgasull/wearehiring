@@ -41,18 +41,28 @@
         <div class="column">
           <p class="title is-4"> We Match <span class="tag is-info is-light"> ¡Nuevo! </span> </p>
         </div>
-        <div class="column">
-          <div class="toggleWrapper">
-            <%= f.check_box :visible, checked: f.object.visible, class: 'activate-we-match' %>
-            <%= f.label :visible, class: 'toggle' do %>
-              <span class="toggle__handler"></span>
-            <% end %>
-          </div>
+        <div class="column has-text-right">
+          <% if current_user.visible? %>
+            <div class="button is-rounded is-success is-light is-medium">  
+              <%= icon('fas', 'check mr2') %> Activado 
+            </div>
+          <% else %>
+            <%= f.hidden_field :visible, value: false %>
+            <div class="we-match-btn-block">
+              <button class= "btn btn--activate" id="btnActivation">
+                <span class="btn__icon"></span>
+                <span class="btn__text" data-wait="Activando">Activar</span>
+              </button>
+            </div>
+          <% end %>
         </div>
       </div>
       <article class="message mt3">
         <div class="message-body">
-          Al activar We Match aparecerás como <strong> candidato recomendado </strong> para las empresas que estén buscando perfiles con <strong> tus habilidades </strong> 
+          <% sentence = current_user.visible? ? 'Has activado We Match y aparecerás' : 'Al activar We Match aparecerás' %>
+          <%= sentence %> como <strong> candidato recomendado </strong> 
+          para las empresas que estén buscando perfiles con <strong> tus habilidades </strong> 
+          y podrán añadirte a sus procesos de selección
         </div>
       </article>
       <div class="field mt4">
@@ -234,6 +244,15 @@
       </div>
     </div>
 
+    <% if current_user.visible? %>
+      <div class="field mt4">
+        <%= f.check_box :visible, checked: f.object.visible, class: "switch" %>
+        <%= f.label :visible do %>
+          Desactivar We Match y dejar de ser visible como candidato recomendado para las empresas que estén buscando perfiles con tus mismas habilidades
+        <% end %>
+      </div>
+    <% end %>
+
     <%= f.button :submit, t('save'), class:"button is-info is-pulled-right mt3" %>
   </div>
 </div>
@@ -249,11 +268,17 @@
 
   <script>  
     $(document).ready(function() {
-      $('.skills-select').select2();
-    });
+      $('.skills-select').select2({
+        maximumSelectionLength: 10
+      });
 
-    $(".activate-we-match").change(function(){
-      $("form").submit();
+      $(document).on('click', '#btnActivation', function() {
+        if(!$('#btnActivation').hasClass(('btn--activated'))){
+          $('#user_visible').val(true)
+          $('#btnActivation').removeClass('btn--activate');
+          $('#btnActivation').addClass('btn--waiting');
+        }
+      });
     });
 
   </script>

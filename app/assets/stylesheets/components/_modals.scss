@@ -1,0 +1,13 @@
+.modal {
+  .modal-close {
+    color: $black;
+    position: relative;
+    right: auto;
+    top: auto;
+    background: $black;
+
+    &:hover {
+      background: $red;
+    }
+  }
+}
