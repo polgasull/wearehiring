@@ -2,7 +2,7 @@
   <div class="container">
     <div class="columns">
       <div class="column is-3-desktop">
-        <%= link_to companies_job_inscriptions_path(@job.id), class: 'button is-normal' do %>
+        <%= link_to companies_job_path(@job.id), class: 'button is-normal' do %>
           <%= icon('fas', 'arrow-left mr2') %>
           <%= t('go_back_to_inscriptions') %>
         <% end %>

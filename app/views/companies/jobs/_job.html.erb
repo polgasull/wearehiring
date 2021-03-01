@@ -17,7 +17,7 @@
     <% end %>  
   </div>
   <div class="column">
-  <%= link_to companies_job_inscriptions_path(job) do %>
+  <%= link_to companies_job_path(job.id) do %>
     <%= job_inscriptions_counter(job) %>
   <% end %>
   </div>

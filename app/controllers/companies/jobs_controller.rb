@@ -56,8 +56,20 @@ module Companies
     end
 
     def show
+      return redirect_to_response(t('not_found'), root_path, false) unless @job
       @inscriptions_count = @job.inscriptions.count
       @matching_candidates = @job.show_matching_candidates(@job.skills)  
+  
+      @inscribeds = @job.inscriptions.where(status: [nil])
+      @discardeds = @job.inscriptions.where(status: [0])
+      @in_process = @job.inscriptions.where(status: [1])
+      @finalists = @job.inscriptions.where(status: [2])
+      @inscriptions = @job.inscriptions
+  
+      respond_to do |format|
+        format.html
+        format.xlsx
+      end
     end 
   
     def update
@@ -66,7 +78,7 @@ module Companies
   
     def create_inscription
       @job = current_user.jobs.find(params[:job_id])
-      assign_inscription_to_job(@job, @candidate, companies_job_inscriptions_path(@job.id))
+      assign_inscription_to_job(@job, @candidate, companies_job_path(@job.id))
     end
 
     private

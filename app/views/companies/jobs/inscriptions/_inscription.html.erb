@@ -1,0 +1,38 @@
+<div class="columns listrow is-mobile is-vertical-center is-size-7">
+  <div class="column is-1-desktop is-hidden-touch is-vertical-center">
+    <span class="pr3"><%=  + 1 %></span>
+    <div class="rounded-image size-50">
+      <%= image_tag(inscription.user.picture_url) %>
+    </div>
+  </div>
+  <div class="column is-1-desktop">
+    <%= link_to companies_job_inscription_path(inscription.job_id, inscription.id) do %>
+      <%= inscription.user.name %>
+    <% end %>
+  </div>
+  <div class="column is-2-desktop is-hidden-touch">
+    <%= inscription.user.current_position %>
+  </div>
+  <div class="column is-2-desktop">
+    <%= inscription.user.phone %>
+  </div>
+  <div class="column is-3-desktop is-hidden-mobile">
+    <%= inscription.user.email %>
+  </div>
+  <div class="column is-1-desktop">
+    <%= link_to inscription.user.profile_url, target: "_blank", class: 'button is-link' do %>
+      <%= icon('fab', 'linkedin') %>
+    <% end if inscription.user.profile_url.present? %>  
+  </div>
+  <div class="column is-2-desktop has-text-centered">
+    <% @statuses = Inscription.statuses.keys.map {|status, id| [status, t("inscriptions.#{status}")]} %>
+    <%= best_in_place inscription, 
+        :status, 
+        as: :select, 
+        class: 'is-size-7 select-status',
+        collection: @statuses, 
+        url: companies_job_inscription_path(inscription.job_id, inscription.id),
+        place_holder: 'Seleccionar', 
+        data: { status: inscription.status } %>
+  </div>
+</div>

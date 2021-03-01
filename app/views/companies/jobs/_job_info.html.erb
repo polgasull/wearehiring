@@ -1,16 +1,12 @@
 <div class="columns">
   <div class="column">
     <h1 class="title"> <%= job.title %> </h1>
-    <h2 class="subtitle"> <%= job.job_author %> en <%= job.location %> </h2>
-    <div class="mt1">
-      <% job.skills.each do |skill| %>
-        <span class='tag is-success is-normal'> <%= skill.name %> </span>
-      <% end %>   
-    </div>
+    <h2 class="subtitle"> <%= job.job_author %> en <%= job.remote_ok? ? "Remoto" : job.location %> </h2>
   </div>
 </div>
-<div class="columns">
-  <div class="column is-one-third has-text-centered">
+
+<div class="columns pr4 wrapper-content">
+  <div class="column is-2 is-vertical-center justify-center">
     <% if job.avatar.file.nil? %>
       <%= icon('far', 'image', style: 'font-size: 50px') %>
     <% else %>
@@ -19,41 +15,43 @@
       </div>
     <% end %>
   </div>
-  <div class="column">
-    <div class="columns is-mobile">
-      <div class="column is-1"> <%= icon('far', 'clock') %> </div>
-      <div class="column"> <%= t('jobs.job_type') %> </div>
-      <div class="column"> <%= job.job_type.name %> </div>
-    </div>
-    <div class="columns is-mobile">
-      <div class="column is-1"> <%= icon('fas', 'level-up-alt') %> </div>
-      <div class="column"> <%= t('exp_level')  %> </div>
-      <div class="column"> <%= job.level.name %> </div>
-    </div>
-    <div class="columns is-mobile">
-      <div class="column is-1"> <%= icon('fas', 'globe') %> </div>
-      <div class="column"> <%= t('category') %> </div>
-      <div class="column"> <%= job.category.name %> </div>
-    </div>
-    <div class="columns is-mobile">
-      <div class="column is-1"> <%= icon('fas', 'wifi') %> </div>
-      <div class="column"> <%= t('remote') %> </div>
-      <div class="column"> <%= job.remote_ok? ? t('remote') : 'oficina' %> </div>
-    </div>
-    <div class="columns is-mobile">
-      <div class="column is-1"> <%= icon('fas', 'euro-sign') %> </div>
-      <div class="column"> <%= t('jobs.salary_range') %> </div>
-      <div class="column"> <%= job_salary(job.salary_from, job.salary_to) %> </div>
+  <div class="column bg-light radius-10">
+    <div class="columns">
+      <div class="column">
+        <div class="pv1 pl2 pr2">
+          <strong> <%= job.title %> </strong>
+        </div>
+        <div class="pv1 pl2 pr2 mt2">
+          <%= icon('fas', 'globe mr1') %> <%= job.category.name %>
+        </div>
+        <div class="pv1 pl2 pr2 mt2">
+          <%= icon('fas', 'coins mr1') %>
+          <%= job_salary(job.salary_from, job.salary_to) %>
+        </div>        
+      </div>
+      <div class="column">
+        <div class="pv1 pl2 pr2">
+          <%= icon('fas', 'level-up-alt mr1') %> <%= job.level.name %>
+        </div>           
+        <div class="pv1 pl2 pr2 mt2">
+          <%= icon('far', 'clock mr2') %> <%= job.job_type.name %>
+        </div>
+        <div class="pv1 pl2 pr2 mt2">
+          <% if job.remote_ok? %>
+            <%= icon('fas', 'wifi') %> <%= t('remote') %> 
+          <% else %>
+            <%= icon('fas', 'laptop') %> Oficina
+          <% end %>     
+        </div>
+      </div>
+      <div class="column">
+        <% job.skills.each do |skill| %>
+          <span class='tag is-success is-normal'> <%= skill.name %> </span>
+        <% end %>  
+      </div>
     </div>
   </div>
 </div>
 
-<hr>
-
-<div class="columns">
-  <div class="column">
-    <%= job.description.html_safe %>
-  </div>
-</div>
 
 

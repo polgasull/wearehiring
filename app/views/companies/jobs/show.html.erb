@@ -7,30 +7,42 @@
           <%= icon('far', 'calendar-alt') %> <%= job_expired(@job) %> 
         </strong> 
         <%= t('remaining_days') %>
-        <p class="mb2">
-          <strong class="f3"> 
-            <%= icon('fas', 'user mr2') %> <%= @job.inscriptions.count %> 
-          </strong> 
-          inscritos
-        </p>
-        <%= link_to t('jobs.manage_inscriptions'), companies_job_inscriptions_path(@job), class: 'button is-link is-outlined' %>
       </div>
       <div class="column has-text-right">
         <%= link_to edit_companies_job_path(@job), class: 'button is-link' do %>
           <%= icon('fas', 'edit') %>
         <% end %>
-        <%= button_tag(type: 'button',
-          class: 'button is-danger is-outlined deactivate-job-button',
-          'data-target': 'deactivate-job-modal',
-          'aria-haspopup': 'true',
-          disabled: !@job.open?) do %>
-            <%= icon('fas', 'calendar-times mr2') %> <%= t('jobs.close') %> 
+        <%= link_to job_path(@job), class: 'button', target: '_blank' do %>
+          <%= icon('fas', 'eye mr1') %> Ver publicación
         <% end %>
-        <div>
-          <%= link_to job_path(@job), class: 'button mt3' do %>
-            <%= icon('fas', 'eye mr1') %> Ver publicación
-          <% end %>
-        </div>
+      </div>
+    </div>
+  </div>
+  <div class="info-tiles container">
+    <div class="tile has-text-centered">
+      <div class="tile is-parent">
+        <article class="tile is-child box">
+          <p class="title"> <%= @inscriptions_count %> </p>
+          <p class="subtitle"><%= icon('fas', 'check-circle') %> <%= t("inscriptions.inscribeds") %> </p>
+        </article>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child box">
+          <p class="title"><%= @finalists.count %></p>
+          <p class="subtitle"> <%= icon('fas', 'heart-broken') %> <%= t("inscriptions.finalists") %> </p>
+        </article>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child box">
+          <p class="title"> <%= @in_process.count %> </p>
+          <p class="subtitle"> <%= icon('fas', 'user-clock') %> <%= t("inscriptions.in_process") %> </p>
+        </article>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child box">
+          <p class="title"> <%= @discardeds.count %> </p>
+          <p class="subtitle"><%= icon('fas', 'trophy') %> <%= t("inscriptions.discardeds") %> </p>
+        </article>
       </div>
     </div>
   </div>
@@ -38,35 +50,65 @@
 
 <section class="section">
   <div class="container">
-    <div class="columns">
-      <div class="column is-two-thirds">
-        <%= render partial: "companies/jobs/job_info", locals: { job: @job } %>
+    <%= render partial: "companies/jobs/job_info", locals: { job: @job } %>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h3 class="title"> Otros candidatos que pueden interesarte <span class="tag is-info"> ¡Nuevo! </span> </h1>
+    <h4 class="subtitle is-6"> Estos candidatos encajan con tus requisitos. Puedes añadirlos y ampliar el número de inscritos para el proceso. </h2>
+    <% if @job.open? %>
+      <% if @matching_candidates.any? %>
+        <% @matching_candidates.each do |user| %>
+          <%= render partial: "companies/jobs/candidate", locals: { user: user, job: @job } %>
+        <% end %>
+      <% else %>
+        <div class="has-text-centered mt4">
+          <p> Estamos buscando perfiles que puedan encajar con tus requisitos </p>
+          <p>
+            <img src='<%=asset_path('glasses-loading.gif')%>' width='50'>
+          </p>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="has-text-centered mt4">
+        <p> Job Finalizado </p>
       </div>
+    <% end %>  
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns">
       <div class="column">
-        <h1 class="title"> Otros candidatos que pueden interesarte <span class="tag is-info"> ¡Nuevo! </span> </h1>
-        <h2 class="subtitle is-6"> Estos candidatos encajan con tus requisitos. Puedes añadirlos y ampliar el número de inscritos para el proceso. </h2>
-        <% if @job.open? %>
-          <% if @matching_candidates.any? %>
-            <% @matching_candidates.each do |user| %>
-              <%= render partial: "companies/jobs/candidate", locals: { user: user, job: @job } %>
-            <% end %>
-          <% else %>
-            <div class="has-text-centered mt4">
-              <p> Estamos buscando perfiles que puedan encajar con tus requisitos </p>
-              <p>
-                <img src='<%=asset_path('glasses-loading.gif')%>' width='50'>
-              </p>
-              <%= link_to t('jobs.edit_job'), edit_companies_job_path(@job), class: 'button is-link is-outlined mt3' %>
-            </div>
+          <h3 class="title"> Candidatos inscritos </h1>
+      </div>
+      <div class="column mb4 has-text-right"> 
+        <% if @inscriptions.any? %>
+          <%= link_to companies_job_inscriptions_path(job_id: @job.id, format: "xlsx"), class: 'button is-success' do %>
+            <%= icon('fas', 'file-download pr2') %> <%= t('download_candidates_excel') %>
           <% end %>
-        <% else %>
-          <div class="has-text-centered mt4">
-            <p> Job Finalizado </p>
-            <%= link_to t('jobs.manage_inscriptions'), companies_job_inscriptions_path(@job), class: 'button is-link is-outlined' %>
-          </div>
         <% end %>
       </div>
     </div>
+    <%= render partial: 'companies/jobs/inscriptions/header' %>
+    <% @inscriptions.each do |inscription| %>
+      <%= render partial: 'companies/jobs/inscriptions/inscription', locals: { inscription: inscription } %>
+    <% end %>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container has-text-centered">
+    <%= button_tag(type: 'button',
+      class: 'button is-danger is-outlined deactivate-job-button',
+      'data-target': 'deactivate-job-modal',
+      'aria-haspopup': 'true',
+      disabled: !@job.open?) do %>
+        <%= icon('fas', 'calendar-times mr2') %> <%= t('jobs.close') %> 
+    <% end %>
   </div>
 </section>
 
@@ -88,6 +130,13 @@
 
     $(document).on("click", ".deactivate-job-button", function() {
       $('.deactivate-job-modal').addClass('is-active');
+    });
+
+    /* Activating Best In Place */
+    $(".best_in_place").best_in_place();
+    $('.best_in_place').bind("ajax:success", function () { 
+      console.log('success');
+      $(this).closest('tr').effect('highlight', {color: '#48c774'}, 700);
     });
 
   </script>
