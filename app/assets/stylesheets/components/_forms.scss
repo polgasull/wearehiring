@@ -51,7 +51,7 @@ $openheart: "\f08a";
 
 .switch[type=checkbox]:checked + label::before, 
 .switch[type=checkbox]:checked + label:before {
-	background-color: $success;
+	background-color: $primary;
 }
 
 .choice-collection {

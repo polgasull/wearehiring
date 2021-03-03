@@ -10,7 +10,7 @@
       </div>
       <div class="column has-text-right">
         <%= link_to edit_companies_job_path(@job), class: 'button is-link' do %>
-          <%= icon('fas', 'edit') %>
+          <%= icon('fas', 'edit mr1') %> <%= t('jobs.edit') %>
         <% end %>
         <%= link_to job_path(@job), class: 'button', target: '_blank' do %>
           <%= icon('fas', 'eye mr1') %> Ver publicación
@@ -54,6 +54,8 @@
   </div>
 </section>
 
+<% 
+=begin %>
 <section class="section">
   <div class="container">
     <h3 class="title"> Otros candidatos que pueden interesarte <span class="tag is-info"> ¡Nuevo! </span> </h1>
@@ -78,6 +80,8 @@
     <% end %>  
   </div>
 </section>
+<% 
+=end %>
 
 <section class="section">
   <div class="container">

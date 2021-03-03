@@ -1,38 +1,64 @@
 <section class="section">
-  <div class="container">
+  <div class="container mb5">
     <div class="columns">
       <div class="column">
         <h1 class="f2"> <%= t('my_jobs') %> </h1>
       </div>
     </div>
-  <%= form_for companies_jobs_path(current_user), method: :get do |f| %>
-    <div class="columns is-search is-vertical-center">
-      <div class="column">
-      <input 
-        type="text" 
-        class="input" 
-        placeholder="<%=t('search')%>" 
-        name="search_my_jobs" 
-        value="<%=params[:search_my_jobs] ? params[:search_my_jobs] : ''%>">
-      </div>
-      <div class="column has-text-left">
-        <%= f.submit t('search'), class: "button is-dark" %>
-      </div>
-    </div>
-  <% end %>
-  </div>
-</section>
-
-<section class="section pb5">
-  <div class="container">
     <div class="columns">
-      <div class="column mt2">
-        <span class="tag is-info"><b> <%= @jobs_count %> <%= t('jobs.total') %> </b></span>
-        <span class="tag is-success"><b> <%= @jobs_active_count %> <%= t('jobs.published_jobs') %> </b></span>
-        <span class="tag is-danger"><b> <%= @jobs_expired_count %> <%= t('jobs.expired') %> </b></span>
+      <div class="column">
+        <div class="info-tiles">
+          <div class="tile has-text-centered">
+            <div class="tile is-parent">
+              <article class="tile is-child box">
+                <p class="title"> <%= @jobs_count %> </p>
+                <p class="subtitle"> Jobs </p>
+              </article>
+            </div>
+            <div class="tile is-parent">
+              <article class="tile is-child box">
+                <p class="title"><%= @jobs_active_count %></p>
+                <p class="subtitle"> Jobs Activos </p>
+              </article>
+            </div>
+            <div class="tile is-parent">
+              <article class="tile is-child box">
+                <p class="title"> <%= @jobs_expired_count %> </p>
+                <p class="subtitle"> Jobs Finalizados </p>
+              </article>
+            </div>
+            <div class="tile is-parent">
+              <article class="tile is-child box">
+                <p class="title"> <%= @total_inscriptions %> </p>
+                <p class="subtitle"> Total Inscritos </p>
+              </article>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+    <%= form_for companies_jobs_path(current_user), method: :get do |f| %>
+    <div class="columns">
+      <div class="column is-4 is-offset-8">
+        <div class="field has-addons is-pulled-right">
+          <div class="control">
+            <input 
+              type="text" 
+              class="input" 
+              placeholder="<%=t('search')%>" 
+              name="search_my_jobs" 
+              value="<%=params[:search_my_jobs] ? params[:search_my_jobs] : ''%>">
+          </div>
+          <div class="control">
+            <%= f.submit t('search'), class: "button is-dark" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
 
+  <div class="container">
     <div class="columns listhead is-mobile">
       <div class="column is-1 is-hidden-touch">
         Nb

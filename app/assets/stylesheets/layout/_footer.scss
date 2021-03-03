@@ -1,5 +1,5 @@
 .footer {
-
+	margin-top: 100px;
 	background: $secondary;
 	position: relative;
 	padding-bottom: 0;
@@ -7,7 +7,6 @@
 	font-size: 0.9rem;
 	
 	.is-footer {
-
 		padding-bottom: 2.5rem;
 	}
 	
@@ -29,7 +28,6 @@
 
 
 	.footer-bg {
-
 		position: absolute;
 		top:0;
 		left:0;
@@ -37,31 +35,26 @@
 	}
 
 	nav.navbar {
-
 		background: none;
 		background: none;
 	}
 
 	.navbar-brand {
-
 		display: block;
 	}
 
-	nav .i{
-
+	nav .i {
 		display: none;
 	} 
 
 	.fab {
-
 		color: $primary;
 		font-size: 1rem;
-	    display: inline-block;
-	    margin-right: 18px;
+		display: inline-block;
+		margin-right: 18px;
 	}
 
 	.social-buttons {
-
 		margin-top: 1rem;
 	}
 
@@ -70,19 +63,16 @@
 	}
 
 	.is-copy {
-
 		color:$footer_color;
 		font-size: 0.8rem;
 	}
 
 	.is-copy a {
-
 		color: $footer_color;
 		margin-right: 2rem;
 	}
 
 	input {
-
 		background: #323231;
 		color: $text_footer;
 		padding-left: 30px;
@@ -94,30 +84,27 @@
 		&:focus {
 			outline: 0;
 		}
-
 	}
 
 	label {
-
 		color: $text_footer;
 		font-weight: lighter;
 	}
 
 	button {
-
 		position: absolute;
 		right: 0;
 		top: 2px;
-	    font-size: 1.5rem;
-	    padding: 0.4rem 1.5rem;
-	    color: $primary;
-	    background: none;
-	    border-color: transparent;
-	    cursor: pointer;
+		font-size: 1.5rem;
+		padding: 0.4rem 1.5rem;
+		color: $primary;
+		background: none;
+		border-color: transparent;
+		cursor: pointer;
 
-	    &:focus{
-	    	outline: 0;
-	    } 
+		&:focus{
+			outline: 0;
+		} 
 	}
 
 	.field {

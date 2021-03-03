@@ -5,8 +5,17 @@
   <div class="columns">
     <div class="column">
       <div class="field">
-        <div class="control">
-          <%= f.input :title, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }, placeholder: "Frontend Developer" %>
+        <%= f.label :title, class: 'label has-text-weight-bold' %>
+        <div class="control has-icons-left">
+          <%= f.input :title, 
+            input_html: { class: "input" }, 
+            placeholder: "Frontend Developer", 
+            label: false, 
+            required: true,
+            wrapper: false %>
+          <span class="icon is-small is-left">
+            <%= icon('fas', 'user-plus') %>
+          </span>
         </div>
       </div>
     </div>
@@ -15,8 +24,17 @@
   <div class="columns">
     <div class="column">
       <div class="field">
-        <div class="control">
-          <%= f.input :job_author, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }, placeholder: t('will_be_visible_by_candidates') %>
+        <%= f.label :job_author, class: 'label has-text-weight-bold' %>
+        <div class="control has-icons-left">
+          <%= f.input :job_author, 
+            input_html: { class: "input" }, 
+            placeholder: t('will_be_visible_by_candidates'), 
+            label: false, 
+            required: true,
+            wrapper: false %>
+          <span class="icon is-small is-left">
+            <%= icon('fas', 'building') %>
+          </span>
         </div>
       </div>
     </div>  
@@ -27,7 +45,6 @@
       <div class="field">
         <div class="control">
           <label class="label"> 
-            <abbr title="required">*</abbr>
             <%= t('jobs.job_type') %>
           </label>
           <div class="control has-icons-left">
@@ -43,8 +60,18 @@
     </div>
     <div class="column is-three-fifths-desktop">
       <div class="field">
-        <div class="control">
-          <%= f.input :location, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }, hint: 'Examples: "Oviedo, Asturias", "Sevilla", "Cualquiera"', placeholder: "Barcelona" %>
+        <%= f.label :location, class: 'label has-text-weight-bold' %>
+        <div class="control has-icons-left">
+          <%= f.input :location, 
+            input_html: { class: "input" }, 
+            placeholder: 'Barcelona', 
+            label: false, 
+            required: true,
+            hint: 'Examples: "Oviedo, Asturias", "Sevilla", "Cualquiera"',
+            wrapper: false %>
+          <span class="icon is-small is-left">
+            <%= icon('fas', 'map-marker-alt') %>
+          </span>
         </div>
       </div>
       <div class="field mt4">
@@ -70,30 +97,46 @@
   </div>
 
   <div class="columns">
-    <div class="column">
+    <div class="column is-one-quarter-desktop salaries">
       <div class="field">
-        <input id="salarySwitch" type="checkbox" name="salarySwitch" class="switch">
-        <label for="salarySwitch"> A consultar </label>
-      </div>  
+        <div class="control has-icons-left">
+          <%= f.input :salary_from, 
+            input_html: { class: "input" }, 
+            placeholder: '30000', 
+            label: false, 
+            required: true,
+            hint: t('forms.from'),
+            wrapper: false %>
+          <span class="icon is-small is-left">
+            <%= icon('fas', 'euro-sign') %>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="column is-one-quarter-desktop salaries">
+      <div class="field">
+        <div class="control has-icons-left">
+          <%= f.input :salary_to, 
+            input_html: { class: "input" }, 
+            placeholder: '40000', 
+            label: false, 
+            required: true,
+            hint: t('forms.to'),
+            wrapper: false %>
+          <span class="icon is-small is-left">
+            <%= icon('fas', 'euro-sign') %>
+          </span>
+        </div>
+      </div>
     </div>
   </div>
 
   <div class="columns">
-    <div class="column is-one-quarter-desktop">
+    <div class="column">
       <div class="field">
-        <div class="control">
-          <%= f.input_field :salary_from, required: true, class: 'input', placeholder: '30000' %>
-          <small class="salary-hint"> <%= t('forms.from') %> </small>
-        </div>
-      </div>
-    </div>
-    <div class="column is-one-quarter-desktop">
-      <div class="field">
-        <div class="control">
-          <%= f.input_field :salary_to, required: true, class: 'input', placeholder: '40000' %>
-          <small class="salary-hint"> <%= t('forms.to') %> </small>
-        </div>
-      </div>
+        <input id="salarySwitch" type="checkbox" name="salarySwitch" class="switch">
+        <label for="salarySwitch"> <small> No mostrar salario </small> </label>
+      </div>  
     </div>
   </div>
   
@@ -245,11 +288,11 @@
       $("#salarySwitch").change(function() {
         if ($('#salarySwitch').is(":checked")) {
           $('#job_salary_from, #job_salary_to').val(0);
-          $('#job_salary_from, #job_salary_to').addClass("is-hidden");
+          $('.salaries').addClass("is-hidden");
           $(".salary-hint").addClass("is-hidden");
         } else {
           $('#job_salary_from, #job_salary_to').val("");
-          $('#job_salary_from, #job_salary_to').removeClass("is-hidden");
+          $('.salaries').removeClass("is-hidden");
           $(".salary-hint").removeClass("is-hidden");
         }
       });

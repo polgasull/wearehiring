@@ -16,6 +16,7 @@ module Companies
       @jobs_active_count = @jobs.active.count
       @jobs_expired_count = @jobs.inactive.count
       @jobs_count = @jobs.count
+      @total_inscriptions = current_user.total_inscriptions_sum(@jobs)
     end
 
     def new

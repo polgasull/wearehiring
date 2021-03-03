@@ -394,7 +394,7 @@ es:
         location: "Localización"
         description: "Descripción"
         apply_url: "Enlace original"
-        job_author: "Nombre de empresa"
+        job_author: "Nombre de la empresa"
         profile_url: "Perfil de Linkedin"
         new:
           username: 'Elige un nombre de usuario'
