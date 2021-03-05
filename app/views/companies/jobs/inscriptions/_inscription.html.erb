@@ -1,6 +1,5 @@
-<div class="columns listrow is-mobile is-vertical-center is-size-7">
+<div class="columns listrow is-mobile is-vertical-center is-size-7 inscription-row-<%= inscription.status %>">
   <div class="column is-1-desktop is-hidden-touch is-vertical-center">
-    <span class="pr3"><%=  + 1 %></span>
     <div class="rounded-image size-50">
       <%= image_tag(inscription.user.picture_url) %>
     </div>
@@ -25,14 +24,17 @@
     <% end if inscription.user.profile_url.present? %>  
   </div>
   <div class="column is-2-desktop has-text-centered">
-    <% @statuses = Inscription.statuses.keys.map {|status, id| [status, t("inscriptions.#{status}")]} %>
-    <%= best_in_place inscription, 
-        :status, 
-        as: :select, 
-        class: 'is-size-7 select-status',
-        collection: @statuses, 
-        url: companies_job_inscription_path(inscription.job_id, inscription.id),
-        place_holder: 'Seleccionar', 
-        data: { status: inscription.status } %>
+    <div class="status-wrapper">
+      <% @statuses = Inscription.statuses.keys.map {|status, id| [status, t("inscriptions.#{status}")]}.insert(0, ["", "Seleccionar"]) %>
+      <%= best_in_place inscription, 
+          :status, 
+          as: :select, 
+          class: 'is-size-7',
+          inner_class: 'select',
+          collection: @statuses, 
+          url: companies_job_inscription_path(inscription.job_id, inscription.id),
+          place_holder: 'Seleccionar', 
+          data: { status: inscription.status } %>
+    </div>
   </div>
 </div>

@@ -109,26 +109,6 @@ $openheart: "\f08a";
 	}
 }
 
-.best_in_place {
-	padding-right: 18px;
-	background-image: url(asset_path('editar_logo.png'));
-	background-size: 15px auto;
-	background-position: right center;
-	background-repeat: no-repeat;
-	cursor: pointer;
-
-	&:hover {
-		background-image: url(asset_path('editar_logo_blue.png'));
-		font-weight: bold;
-		color: #485fc7;
-	}
-
-	&:focus,
-	&:focus-within {
-		background-image: none;
-	}
-}
-
 .we-match-btn-block {
 	.btn {
 		width: 165px;

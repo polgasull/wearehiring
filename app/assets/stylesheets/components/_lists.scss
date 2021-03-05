@@ -6,6 +6,79 @@
 
 .listrow {
   border-bottom: 1px solid darkgrey;
+
+  .status-wrapper .best_in_place {
+    display: block;
+    margin: 0 auto;
+    line-height: 37px;
+    height: 38px;
+    width: 100px;
+    background-color: $light_grey;
+    color: $secondary;
+    font-weight: bold;
+    border-radius: 25px;
+    box-shadow: 8px 6px 10px -6px #ccc;
+    cursor: pointer;
+  
+    &:focus,
+    &:focus-within {
+      background-image: none;
+    }
+
+    &:hover {
+      background: darken($light_grey, 20%);
+    } 
+
+    select.select {
+      border: 2px solid $light_grey;
+      border-radius: 25px;
+      margin-top: 2px;
+    }
+
+    select.select:focus,
+    select.select:focus-within {
+      outline: none;
+    }
+  }
+
+  &.inscription-row-finalist .status-wrapper .best_in_place {
+    background: $success;
+    color: $white;
+
+    &:hover {
+      background: darken($success, 20%);
+    } 
+
+    select.select {
+      border: 2px solid $success;
+    }
+  }
+  
+  &.inscription-row-in_process .status-wrapper .best_in_place {
+    background: $blue;
+    color: $white;
+
+    &:hover {
+      background: darken($blue, 20%);
+    } 
+
+    select.select {
+      border: 2px solid $blue;
+    }
+  }
+  
+  &.inscription-row-discarded .status-wrapper .best_in_place {
+    background: $danger;
+    color: $white;
+
+    &:hover {
+      background: darken($danger, 20%);
+    } 
+
+    select.select {
+      border: 2px solid $danger;
+    }
+  }
 }
 
 .listrow:nth-child(even) {

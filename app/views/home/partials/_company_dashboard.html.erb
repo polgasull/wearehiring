@@ -68,7 +68,7 @@
                 <% else %>
                   <div class="has-text-centered mt3">
                     <%= image_tag(asset_path('applicants_logo.svg'), size: 150) %>
-                    <p> No tienes candidatos </p>
+                    <p> Aún no tienes candidatos </p>
                   </div>
                 <% end %>
               </div>
@@ -103,10 +103,10 @@
                 <% else %>
                   <div class="has-text-centered mt3">
                     <%= image_tag(asset_path('job_logo.svg'), size: 100) %>
-                    <p class="mb2"> No tienes Jobs publicados </p>
+                    <p class="mb2"> Aún no has publicado ningún job </p>
                     	<%= link_to t(post_job_toggle_title), 
                         new_companies_job_path, 
-                        class: "button text-uppercase f6 is-primary has-text-weight-bold" %>
+                        class: "button text-uppercase f6 primary has-text-weight-bold" %>
                   </div>
                 <% end %>
               </div>

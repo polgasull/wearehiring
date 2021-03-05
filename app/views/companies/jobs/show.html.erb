@@ -29,7 +29,7 @@
       <div class="tile is-parent">
         <article class="tile is-child box">
           <p class="title"><%= @finalists.count %></p>
-          <p class="subtitle"> <%= icon('fas', 'heart-broken') %> <%= t("inscriptions.finalists") %> </p>
+          <p class="subtitle"> <%= icon('fas', 'heart-broken') %> <%= t("inscriptions.discardeds") %> </p>
         </article>
       </div>
       <div class="tile is-parent">
@@ -41,7 +41,7 @@
       <div class="tile is-parent">
         <article class="tile is-child box">
           <p class="title"> <%= @discardeds.count %> </p>
-          <p class="subtitle"><%= icon('fas', 'trophy') %> <%= t("inscriptions.discardeds") %> </p>
+          <p class="subtitle"><%= icon('fas', 'trophy') %> <%= t("inscriptions.finalists") %> </p>
         </article>
       </div>
     </div>
@@ -139,8 +139,27 @@
     /* Activating Best In Place */
     $(".best_in_place").best_in_place();
     $('.best_in_place').bind("ajax:success", function () { 
-      console.log('success');
-      $(this).closest('tr').effect('highlight', {color: '#48c774'}, 700);
+      var $value = $(this).text();
+      if ($value == 'En proceso') {
+        $(this).closest('.listrow').effect('highlight', {color: '#3e8ed0'}, 700);
+        $(this).closest('.listrow').removeClass('inscription-row-discarded');
+        $(this).closest('.listrow').removeClass('inscription-row-finalist');
+        $(this).closest('.listrow').addClass('inscription-row-in_process');
+      } else if ($value == 'Finalista') {
+        $(this).closest('.listrow').effect('highlight', {color: '#48c78e'}, 700);
+        $(this).closest('.listrow').removeClass('inscription-row-in_process');
+        $(this).closest('.listrow').removeClass('inscription-row-discarded');
+        $(this).closest('.listrow').addClass('inscription-row-finalist');
+      } else if ($value == 'Descartado') {
+        $(this).closest('.listrow').effect('highlight', {color: '#f14668'}, 700);
+        $(this).closest('.listrow').removeClass('inscription-row-finalist');
+        $(this).closest('.listrow').removeClass('inscription-row-in_process');
+        $(this).closest('.listrow').addClass('inscription-row-discarded');
+      } else {
+        $(this).closest('.listrow').removeClass('inscription-row-in_process');
+        $(this).closest('.listrow').removeClass('inscription-row-finalist');
+        $(this).closest('.listrow').removeClass('inscription-row-discarded');
+      }
     });
 
   </script>
