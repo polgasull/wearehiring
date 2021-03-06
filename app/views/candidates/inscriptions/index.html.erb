@@ -11,12 +11,6 @@
         </div>
         <div class="tile is-parent">
           <article class="tile is-child box">
-            <p class="title"><%= @discardeds.count %></p>
-            <p class="subtitle"> <%= icon('fas', 'heart-broken') %> Descartado</p>
-          </article>
-        </div>
-        <div class="tile is-parent">
-          <article class="tile is-child box">
             <p class="title"> <%= @in_process.count %> </p>
             <p class="subtitle"> <%= icon('fas', 'user-clock') %> En Proceso</p>
           </article>
@@ -29,8 +23,13 @@
         </div>
       </div>
     </section>
-    <% %w[finalists in_process discardeds inscribeds].each do |inscriptions_status| %>
-      <div class="columns mt2">
+  </div>
+</section>
+
+<% %w[finalists in_process discardeds inscribeds].each do |inscriptions_status| %>
+  <section class="section">
+    <div class="container">
+      <div class="columns">
         <div class="column">
           <p class="f4 mb2"> 
             <% if inscriptions_status == 'finalists' %>
@@ -59,6 +58,7 @@
           collection: instance_variable_get("@#{inscriptions_status}".to_sym), 
           as: :inscription %>
       <% end %>
-    <% end %>
-  </div>
-</section>
+    </div>
+  </section>
+<% end %>
+

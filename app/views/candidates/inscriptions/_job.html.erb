@@ -1,22 +1,27 @@
 <% job = inscription.job %>
 
-<div class="columns bg-white box">
+<div class="columns bg-white box is-gapless">
   <div class="column is-1 is-vertical-center">
     <% if job.avatar.file.nil? %>
       <%= icon('far', 'image', style: 'font-size: 50px') %>
     <% else %>
-      <%= image_tag(job.avatar_url(:thumb), alt: job.job_author, width: 100, height: 100) %>
+      <%= image_tag(job.avatar_url(:thumb), alt: job.job_author, width: 50, height: 50) %>
     <% end %>
   </div>
-  <div class="column is-10">
-    <div class="columns">
+  <div class="column is-11">
+    <div class="columns is-gapless">
       <div class="column is-vertical-center">
         <%= link_to job do %>
           <span class="pr2"> <%= job.job_author %> </span> <strong> <%= job.title %> </strong>
         <% end %>
       </div>
+      <div class="column">
+        <% job.skills.each do |skill| %>
+          <span class='tag is-success is-normal'> <%= skill.name %> </span>
+        <% end %>
+      </div>
     </div>
-    <div class="columns">
+    <div class="columns is-gapless">
       <div class="column">
         <%= icon('fas', 'coins mr1') %> 
         <%= job_salary(job.salary_from, job.salary_to) %>      
@@ -30,11 +35,6 @@
       <div class="column">
         <% if job.remote_ok? %>
           <%= icon('fas', 'wifi') %> <%= t('remote') %> 
-        <% end %>
-      </div>
-      <div class="column">
-        <% job.skills.each do |skill| %>
-          <span class='tag is-success is-normal'> <%= skill.name %> </span>
         <% end %>
       </div>
     </div>

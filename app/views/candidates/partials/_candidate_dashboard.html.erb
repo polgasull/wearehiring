@@ -15,12 +15,6 @@
             </div>
             <div class="tile is-parent">
               <article class="tile is-child box">
-                <p class="title"><%= @discardeds_count %></p>
-                <p class="subtitle"> <%= icon('fas', 'heart-broken') %> Descartado</p>
-              </article>
-            </div>
-            <div class="tile is-parent">
-              <article class="tile is-child box">
                 <p class="title"> <%= @in_process_count %> </p>
                 <p class="subtitle"> <%= icon('fas', 'user-clock') %> En Proceso</p>
               </article>
@@ -129,7 +123,7 @@
               <% else %>
                 <div class="has-text-centered">
                   <%= button_tag(type: 'button',
-                    class: "button is-rounded is-medium primary",
+                    class: "button is-rounded is-medium primary shadow",
                     id: "showWeMatchModal",
                     'data-target': 'deactivate-job-modal',
                     'aria-haspopup': 'true') do %>
@@ -190,7 +184,7 @@
   </div>
 </section>
 
-<%= render partial: 'home/partials/activate_we_match_modal' %>
+<%= render partial: 'candidates/partials/activate_we_match_modal' %>
 
 <%= content_for :head do %>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css">

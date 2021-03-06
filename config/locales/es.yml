@@ -466,8 +466,8 @@ es:
       any_finalists: "Aquí te mostraremos los Jobs dónde estés cómo finalista"
       jobs_inscribeds: "Inscrito"
       jobs_discardeds: "Descartado pero ¡No dejes de intentarlo!"
-      jobs_in_process: "En proceso ¡A por ello!"
-      jobs_finalists: "Finalista ¡Mucha suerte!"
+      jobs_in_process: "En proceso"
+      jobs_finalists: "Finalista"
   posts: 
     blog: "Blog"
     all_posts: "Ver todos los Posts"
