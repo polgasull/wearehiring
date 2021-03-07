@@ -79,7 +79,8 @@
   <tr>
     <td style="text-align:center">
       <%= link_to '¡Ver Candidatos!', 
-          companies_job_url(@job), 
+          companies_job_url(@job.id), 
+          target: '_blank',
           style: 'background-color: #cc0022;
                   border-color: #dbdbdb;
                   border-width: 1px;
