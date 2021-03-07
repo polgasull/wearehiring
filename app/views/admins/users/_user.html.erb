@@ -1,54 +1,62 @@
 <%= simple_form_for(user, method: :patch, url: admins_user_path(user.id), html: { multipart: true }) do |f| %>
-
-<div class="columns f7 is-vertical-center listrow is-mobile">
-  <div class="column is-1">
-    <%= user.id %>
-  </div>
-  <div class="column is-1">
+<tr class="is-size-7">
+  <td><%= user.id %></td>
+  <td>
     <% if user.picture_url.file.nil? %>
       <%= icon('far', 'user-circle', style: 'font-size: 30px') %>
     <% else %>
       <%= image_tag(user.picture_url, size: 30, alt: "Imagen perfil usuario | Wearehiring.io") %>
     <% end %>
-  </div>
-  <div class="column">
+  </td>
+  <td>
     <%= link_to user.name, admins_user_path(user) %>
-  </div>
-  <div class="column">
+  </td>
+  <td>
     <%= f.input :phone, 
+      label: false, 
+      input_html: { class: "input f7" }, 
+      wrapper: false, 
+      placeholder: t('users.phone') if user.is_candidate? %>
+  </td>
+  <td><%= user.email %></td>
+  <td>
+    <%= f.input :profile_url, 
         label: false, 
         input_html: { class: "input f7" }, 
         wrapper: false, 
-        placeholder: t('users.phone') if user.is_candidate? %>
-  </div>
-  <div class="column is-2-desktop">
-    <%= user.email %>
-  </div>
-  <div class="column">
-      <%= f.input :profile_url, 
-          label: false, 
-          input_html: { class: "input f7" }, 
-          wrapper: false, 
-          placeholder: t('users.profile_url') if user.is_candidate? %>
-  </div>
-  <div class="column">
+        placeholder: t('users.profile_url') if user.is_candidate? %>
+  </td>
+  <td>
+    <% if user.is_candidate? %>
+      <% if user.visible? %>
+        <span class="tag is-success is-size-7"> ON </span>
+      <% else %>
+        <span class="tag is-danger is-size-7"> OFF </span>
+      <% end %>
+    <% end %>
+  </td>
+  <td>
+    <% if user.is_candidate? %>
+      <%= user.skills.map(&:name).to_sentence %>
+    <% end %>
+  </td>
+  <td>
     <% if user.is_candidate? || user.is_admin? %>
       <%= user.user_type.name %>
     <% else %>
       <%= f.select(:user_type_id, UserType.where(id: [2,4]).collect {|u| [ u.name, u.id ] }, { include_blank: false }) %>
     <% end %>
-  </div>
-  <div class="column is-1">
+  </td>
+  <td>
     <% if user.is_company? || user.is_ambassador? %>
       <%= user.jobs.count %>
     <% end %>
-  </div>
-  <div class="column is-1">
+  </td>
+  <td>
     <%= link_to user.inscriptions.count, inscriptions_admins_user_path(user.id), target: "_blank" if user.is_candidate? %>
-  </div>
-  <div class="column is-1">
+  </td>
+  <td>
     <%= f.submit t('save'), class: 'button is-info f6' %>
-  </div>
-</div>
-
+  </td>
+</tr>
 <% end %>

@@ -34,7 +34,7 @@
   </tr>
   <tr>
     <td style="text-align:center">
-      <%= @user.profile_url %>
+      <%= link_to 'Ver perfil de Linkedin', @user.profile_url, target: "_blank" %>
     </td>
   </tr>
   <tr>
@@ -79,7 +79,7 @@
   <tr>
     <td style="text-align:center">
       <%= link_to '¡Ver Candidatos!', 
-          @job, 
+          companies_job_url(@job), 
           style: 'background-color: #cc0022;
                   border-color: #dbdbdb;
                   border-width: 1px;
