@@ -61,11 +61,10 @@ module Companies
       @inscriptions_count = @job.inscriptions.count
       @matching_candidates = @job.show_matching_candidates(@job.skills)  
   
-      @inscribeds = @job.inscriptions.where(status: [nil])
-      @discardeds = @job.inscriptions.where(status: [0])
-      @in_process = @job.inscriptions.where(status: [1])
-      @finalists = @job.inscriptions.where(status: [2])
-      @inscriptions = @job.inscriptions
+      @discardeds_count = @job.inscriptions.where(status: [0]).count
+      @in_process_count = @job.inscriptions.where(status: [1]).count
+      @finalists_count = @job.inscriptions.where(status: [2]).count
+      @inscriptions = @job.inscriptions.order(status: :desc)
   
       respond_to do |format|
         format.html
