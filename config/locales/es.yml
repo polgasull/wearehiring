@@ -460,10 +460,10 @@ es:
       user_deleted: "Usuario eliminado satisfactoriamente"
       user_not_deleted: "No se pudo eliminar el Usuario"
     inscriptions:
-      any_inscribeds: "Aquí te mostraremos los Jobs dónde hayas aplicado recientemente"
+      any_inscribeds: "Aquí te mostraremos los Jobs en los que has aplicado recientemente"
       any_discardeds: "Aquí te mostraremos los Jobs descartados"
-      any_in_process: "Aquí te mostraremos los Jobs dónde estés en proceso de selección"
-      any_finalists: "Aquí te mostraremos los Jobs dónde estés cómo finalista"
+      any_in_process: "Aquí te mostraremos los jobs en los que has avanzado en el proceso de selección"
+      any_finalists: "Aquí te mostraremos los Jobs en los que estés cómo finalista"
       jobs_inscribeds: "Inscrito"
       jobs_discardeds: "Descartado pero ¡No dejes de intentarlo!"
       jobs_in_process: "En proceso"
@@ -542,6 +542,7 @@ es:
       level_not_deleted: "No se pudo eliminar el Nivel"
   skills:
     title: "Hard & Soft Skills"
+    candidate_title: "Indicanos tus Hard & Soft Skills (max 10)"
     name: "Nombre"
     internal_name: "Identificador"
     job_subtitle: "Busca y añade habilidades. Por ejemplo: Python, SEO, Agile, Scrum, etc."

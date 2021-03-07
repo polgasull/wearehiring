@@ -1,4 +1,4 @@
-<section class="section pb0 pt1">
+<section class="section pb0">
   <div class="container is-wrapper bg-white radius-8">
     <div class="columns">
       <div class="column">    
@@ -18,38 +18,7 @@
       </div>
     </div>
   </div>
-  <div class="info-tiles container">
-    <div class="tile has-text-centered">
-      <div class="tile is-parent">
-        <article class="tile is-child box">
-          <p class="title"> <%= @inscriptions_count %> </p>
-          <p class="subtitle"><%= icon('fas', 'check-circle') %> <%= t("inscriptions.inscribeds") %> </p>
-        </article>
-      </div>
-      <div class="tile is-parent">
-        <article class="tile is-child box">
-          <p class="title"><%= @finalists_count %></p>
-          <p class="subtitle"> <%= icon('fas', 'heart-broken') %> <%= t("inscriptions.discardeds") %> </p>
-        </article>
-      </div>
-      <div class="tile is-parent">
-        <article class="tile is-child box">
-          <p class="title"> <%= @in_process_count %> </p>
-          <p class="subtitle"> <%= icon('fas', 'user-clock') %> <%= t("inscriptions.in_process") %> </p>
-        </article>
-      </div>
-      <div class="tile is-parent">
-        <article class="tile is-child box">
-          <p class="title"> <%= @discardeds_count %> </p>
-          <p class="subtitle"><%= icon('fas', 'trophy') %> <%= t("inscriptions.finalists") %> </p>
-        </article>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
+  <div class="container pt4">
     <%= render partial: "companies/jobs/job_info", locals: { job: @job } %>
   </div>
 </section>
@@ -85,6 +54,34 @@
 
 <section class="section">
   <div class="container">
+    <div class="info-tiles">
+      <div class="tile has-text-centered mb4">
+        <div class="tile is-parent">
+          <article class="tile is-child box">
+            <p class="title"> <%= @inscriptions_count %> </p>
+            <p class="subtitle"><%= icon('fas', 'check-circle') %> <%= t("inscriptions.inscribeds") %> </p>
+          </article>
+        </div>
+        <div class="tile is-parent">
+          <article class="tile is-child box">
+            <p class="title"><%= @finalists_count %></p>
+            <p class="subtitle"> <%= icon('fas', 'heart-broken') %> <%= t("inscriptions.discardeds") %> </p>
+          </article>
+        </div>
+        <div class="tile is-parent">
+          <article class="tile is-child box">
+            <p class="title"> <%= @in_process_count %> </p>
+            <p class="subtitle"> <%= icon('fas', 'user-clock') %> <%= t("inscriptions.in_process") %> </p>
+          </article>
+        </div>
+        <div class="tile is-parent">
+          <article class="tile is-child box">
+            <p class="title"> <%= @discardeds_count %> </p>
+            <p class="subtitle"><%= icon('fas', 'trophy') %> <%= t("inscriptions.finalists") %> </p>
+          </article>
+        </div>
+      </div>
+    </div>
     <div class="columns">
       <div class="column">
         <h3 class="title"> Candidatos inscritos </h1>

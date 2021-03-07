@@ -2,6 +2,18 @@
   outline: none;
 }
 
+.carousel {
+
+  .slider-navigation-next,
+  .slider-navigation-previous {
+    background-color: $dark;
+
+    svg {
+      color: $white;
+    }
+  }
+}
+
 .slider-container {
   height: 250px;
   max-height: 250px;

@@ -96,10 +96,10 @@
               </div>
               <article class="message mt3">
                 <div class="message-body">
-                  <% sentence = current_user.visible? ? 'Has activado We Match y aparecerás' : 'Al activar We Match aparecerás' %>
-                  <%= sentence %> como <strong> candidato recomendado </strong> 
-                  para las empresas que estén buscando perfiles con <strong> tus habilidades </strong> 
-                  y podrán añadirte a sus procesos de selección
+                  <% sentence = current_user.visible? ? '¡Enhorabuena! Has activado We Match y a partir de ahora' : 'Activa We Match y' %>
+                  <%= sentence %> aparecerás como <strong> Candidato Recomendado </strong> cuando las empresas busquen 
+                  perfiles como el tuyo. 
+                  <p><strong> ¡No busques trabajo, haz que el trabajo venga a ti! </strong></p>
                 </div>
               </article>
               <% if current_user.visible? %>
@@ -172,7 +172,7 @@
               <% end %>
               <div class="">
                 <% if user_inscribed_to(job) %>
-                  <span class="tag is-danger inscribed-tag"> <%= t('inscribed') %> </span>
+                  <span class="tag is-light inscribed-tag"> <%= t('inscribed') %> </span>
                 <% end %>
                 <%= link_to "Ver Job", job, class: "button is-small is-link" %>
               </div>
@@ -196,7 +196,7 @@
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
   <script>
     $(document).ready(function() {
-      $('.skills-select').select2({
+      $('#user_skill_ids').select2({
         maximumSelectionLength: 10
       });
 
