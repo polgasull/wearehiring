@@ -542,7 +542,7 @@ es:
       level_not_deleted: "No se pudo eliminar el Nivel"
   skills:
     title: "Hard & Soft Skills"
-    candidate_title: "Indicanos tus Hard & Soft Skills (max 10)"
+    candidate_title: "Indícanos tus Hard & Soft Skills (max 10)"
     name: "Nombre"
     internal_name: "Identificador"
     job_subtitle: "Busca y añade habilidades. Por ejemplo: Python, SEO, Agile, Scrum, etc."

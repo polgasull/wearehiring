@@ -8,58 +8,20 @@
       <button type="button" class="modal-close" aria-label="close"></button>
     </header>
     <section class="modal-card-body">
-      <div class="field mt4">
+      <div class="field mt3">
         <%= f.label t('skills.candidate_title'), class: 'has-text-weight-bold' %>
-        <div class="control">
-          <small> <%= t('skills.job_subtitle') %> </small>
-          <%= f.collection_select :skill_ids, Skill.all, :id, :name, {}, { multiple: "multiple", class: "skills-select", style: "width: 100%", required: true } %>  
+        <div class="control mt3">
+          <%= f.collection_select :skill_ids, Skill.all, :id, :name, {}, { multiple: "multiple", class: "skills-select input", style: "width: 100%", required: true } %> 
         </div>
+        <small> <%= t('skills.job_subtitle') %> </small>
       </div>
-      <div class="field mt4">
-        <strong> <%= t('users.salary_expectation') %> </strong>  
-      </div>
-      <div class="columns">
-        <div class="column is-one-quarter-desktop">
-          <div class="field">
-            <div class="control has-icons-left">
-              <%= f.input :salary_from, 
-                input_html: { class: "input" }, 
-                placeholder: '23000', 
-                label: false, 
-                required: true,
-                hint: t('forms.from'),
-                wrapper: false %>
-              <span class="icon is-small is-left">
-                <%= icon('fas', 'euro-sign') %>
-              </span>
-            </div>
-          </div>
-        </div>
-        <div class="column is-one-quarter-desktop">
-          <div class="field">
-            <div class="control has-icons-left">
-              <%= f.input :salary_to, 
-                input_html: { class: "input" }, 
-                placeholder: '40000', 
-                label: false, 
-                required: true,
-                hint: t('forms.to'),
-                wrapper: false %>
-              <span class="icon is-small is-left">
-                <%= icon('fas', 'euro-sign') %>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <article class="message mt3">
+      <article class="message mt4 mb4">
         <div class="message-body">
           Activa We Match y aparecerás como <strong> Candidato Recomendado </strong> cuando las empresas busquen 
           perfiles como el tuyo. 
           <p><strong> ¡No busques trabajo, haz que el trabajo venga a ti! </strong> </p>
         </div>
       </article>
-
     </section>
     <footer class="modal-card-foot justify-center">
       <div class="we-match-btn-block">

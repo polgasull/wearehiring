@@ -22,7 +22,7 @@ module Candidates
     def user_params
       params.require(:user).permit(:name, :last_name, :phone, :profile_url, :current_position, 
       :picture_url, :description, :github, :pinterest, :behance, :personal_website,
-      :salary_to, :salary_from, :visible, skill_ids: [])
+      :salary_to, :salary_from, :location, :experience, :visible, skill_ids: [])
     end
   end
 end

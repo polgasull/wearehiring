@@ -235,7 +235,7 @@
       }
 
       $(document).on('click', '#btnActivation', function() {
-        if(!$('#btnActivation').hasClass(('btn--activated'))){
+        if (!$('#btnActivation').hasClass('btn--activated') && $("#user_skill_ids").val()) {
           $('#btnActivation').removeClass('btn--activate');
           $('#btnActivation').addClass('btn--waiting');
         }
