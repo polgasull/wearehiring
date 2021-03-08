@@ -36,9 +36,13 @@
     <% end %>
   </td>
   <td>
-    <% if user.is_candidate? %>
-      <%= user.skills.map(&:name).to_sentence %>
-    <% end %>
+    <%= user.skills.map(&:name).to_sentence if user.is_candidate? %>
+  </td>
+  <td>
+    <%= user.location if user.is_candidate? %>
+  </td>
+  <td>
+    <%= user.experience if user.is_candidate? %>
   </td>
   <td>
     <% if user.is_candidate? || user.is_admin? %>
