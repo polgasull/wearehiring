@@ -1,28 +1,31 @@
-<div class="columns listrow is-mobile f6">
-  <div class="column is-1 is-hidden-touch">
+<tr class="is-size-7">
+  <td>
     <%= job.id %>
-  </div>
-  <div class="column is-hidden-touch">
+  </td>
+  <td>
     <%= job.reference %>
-  </div>
-  <div class="column is-hidden-mobile">
+  </td>
+  <td>
     <%= job.job_author %>
-  </div>
-  <div class="column">
+  </td>
+  <td>
     <%= link_to job.title, job %>
-  </div>
-  <div class="column">
+  </td>
+  <td>
+    <%= job.skills.map(&:name).to_sentence %>
+  </td>
+  <td>
   <%= link_to admins_job_inscriptions_path(job.id) do %>
     <%= job_inscriptions_counter(job) %>
   <% end %>
-  </div>
-  <div class="column">
+  </td>
+  <td>
     <strong> <%= job_expired(job) %> </strong> 
-  </div>
-  <div class="column">
+  </td>
+  <td>
     <%= link_to t('simple_form.labels.defaults.apply_url'), job.apply_url, target: "_blank" if job.apply_url.present? %>
-  </div>
-  <div class="column is-flex">
+  </td>
+  <td>
     <%= simple_form_for([:admins, job], html: { multipart: true }) do |f| %>
       <%= f.hidden_field :open, value: false %>
       <%= f.submit(
@@ -33,8 +36,6 @@
         El Job ya no estará visible pero la empresa podrá seguir gestionando sus candidatos' }) %>
     <% end %>
 
-    <%= link_to edit_admins_job_path(job.id) do %>
-      <%= icon('fas', 'edit') %>
-    <% end %>
-  </div>
-</div>
+    <%= link_to 'editar', edit_admins_job_path(job.id) %>
+  </td>
+</tr>

@@ -5,7 +5,7 @@ module Admins
     before_action :set_job, only: [:edit, :update, :destroy]
 
     def index
-      @jobs = Job.all.filter(params).order('created_at DESC')
+      @jobs = Job.all.filter(params).order('created_at DESC').page(params[:page]).per(30)
       @jobs_active_count = @jobs.active.count
       @jobs_expired_count = @jobs.inactive.count
       @jobs_count = @jobs.count  

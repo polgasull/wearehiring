@@ -37,50 +37,51 @@
 </section>
 
 <section class="section pb5">
-  <div class="table-container">
-    <table class="table is-striped">
-      <thead> 
-        <tr>
-          <td>ID</td>
-          <td><%= t('users.image') %></td>
-          <td><%= t('users.name') %></td>
-          <td><%= t('users.phone') %></td>
-          <td><%= t('users.email') %></td>
-          <td><%= t('users.profile_url') %></td>
-          <td>We Match</td>
-          <td>Skills</td>
-          <td><%= t('users.user_type') %></td>
-          <td>Jobs</td>
-          <td><%= t('inscribed') %></td>
-          <td><%= t('save') %></td>
-        </tr>
-      </thead>
-      <tfoot> 
-        <tr>
-          <td>ID</td>
-          <td><%= t('users.image') %></td>
-          <td><%= t('users.name') %></td>
-          <td><%= t('users.phone') %></td>
-          <td><%= t('users.email') %></td>
-          <td><%= t('users.profile_url') %></td>
-          <td>We Match</td>
-          <td>Skills</td>
-          <td><%= t('users.user_type') %></td>
-          <td>Jobs</td>
-          <td><%= t('inscribed') %></td>
-          <td><%= t('save') %></td>
-        </tr>
-      </tfoot>
-      <tbody>
-          <%= render @users %>
-      </tbody>
-      <!-- Your table content -->
-    </table>
-  </div>
   <div class="container">
-    <div class="columns is-centered mt3">
-      <div class="column is-half-desktop">
-        <%= paginate @users %>
+    <div class="table-container">
+      <table class="table is-striped">
+        <thead> 
+          <tr>
+            <td>ID</td>
+            <td><%= t('users.image') %></td>
+            <td><%= t('users.name') %></td>
+            <td><%= t('users.phone') %></td>
+            <td><%= t('users.email') %></td>
+            <td><%= t('users.profile_url') %></td>
+            <td>We Match</td>
+            <td>Skills</td>
+            <td><%= t('users.user_type') %></td>
+            <td>Jobs</td>
+            <td><%= t('inscribed') %></td>
+            <td><%= t('save') %></td>
+          </tr>
+        </thead>
+        <tfoot> 
+          <tr>
+            <td>ID</td>
+            <td><%= t('users.image') %></td>
+            <td><%= t('users.name') %></td>
+            <td><%= t('users.phone') %></td>
+            <td><%= t('users.email') %></td>
+            <td><%= t('users.profile_url') %></td>
+            <td>We Match</td>
+            <td>Skills</td>
+            <td><%= t('users.user_type') %></td>
+            <td>Jobs</td>
+            <td><%= t('inscribed') %></td>
+            <td><%= t('save') %></td>
+          </tr>
+        </tfoot>
+        <tbody>
+            <%= render @users %>
+        </tbody>
+      </table>
+    </div>
+    <div class="container">
+      <div class="columns is-centered mt3">
+        <div class="column is-half-desktop">
+          <%= paginate @users %>
+        </div>
       </div>
     </div>
   </div>

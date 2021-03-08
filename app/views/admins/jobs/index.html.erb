@@ -23,7 +23,7 @@
   </div>
 </section>
 
-<section class="section pb5 pt2">
+<section class="section pb5">
   <div class="container">
     <div class="columns">
       <div class="column mt2">
@@ -33,34 +33,45 @@
       </div>
     </div>
 
-    <div class="columns listhead is-mobile">
-      <div class="column is-1 is-hidden-touch">
-        Nb
-      </div>
-      <div class="column is-hidden-touch">
-        <%= t('reference') %>
-      </div>
-      <div class="column is-hidden-mobile">
-        <%= t('jobs.company') %>
-      </div>
-      <div class="column">
-        <%= t('jobs.position') %>
-      </div>
-      <div class="column">
-        <%= t('jobs.candidates') %>
-      </div>
-      <div class="column">
-        Estado
-      </div>
-      <div class="column">
-        <%= t('simple_form.labels.defaults.apply_url') %>
-      </div>
-      <div class="column">
-        Acciones
+    <div class="table-container">
+      <table class="table is-striped">
+        <thead> 
+          <tr>
+            <td>ID</td>
+            <td><%= t('reference') %></td>
+            <td><%= t('jobs.company') %></td>
+            <td><%= t('jobs.position') %></td>
+            <td>Skills</td>
+            <td><%= t('jobs.candidates') %></td>
+            <td>Estado</td>
+            <td><%= t('simple_form.labels.defaults.apply_url') %></td>
+            <td>Acciones</td>
+          </tr>
+        </thead>
+        <tfoot> 
+          <tr>
+            <td>ID</td>
+            <td><%= t('reference') %></td>
+            <td><%= t('jobs.company') %></td>
+            <td><%= t('jobs.position') %></td>
+            <td>Skills</td>
+            <td><%= t('jobs.candidates') %></td>
+            <td>Estado</td>
+            <td><%= t('simple_form.labels.defaults.apply_url') %></td>
+            <td>Acciones</td>
+          </tr>
+        </tfoot>
+        <tbody>
+            <%= render @jobs %>
+        </tbody>
+      </table>
+    </div>
+    <div class="container">
+      <div class="columns is-centered mt3">
+        <div class="column is-half-desktop">
+          <%= paginate @jobs %>
+        </div>
       </div>
     </div>
-
-    <%= render @jobs %>
-
   </div>
 </section>
