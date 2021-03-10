@@ -15,6 +15,9 @@
     <% job.skills.each do |skill| %>
       <span class="tag is-light"> <%= skill.name %> </span>
     <% end %>  
+    <% job.tags.each do |tag| %>
+      <span class='tag is-light'> <%= tag.name %> </span>
+    <% end if job.tags.any? %>  
   </div>
   <div class="column">
   <%= link_to companies_job_path(job.id) do %>
