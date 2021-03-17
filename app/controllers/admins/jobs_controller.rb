@@ -6,9 +6,9 @@ module Admins
 
     def index
       @jobs = Job.all.filter(params).order('created_at DESC').page(params[:page]).per(30)
-      @jobs_active_count = @jobs.active.count
-      @jobs_expired_count = @jobs.inactive.count
-      @jobs_count = @jobs.count  
+      @jobs_active_count = Job.where(open: true).count
+      @jobs_expired_count = Job.where(open: false).count
+      @jobs_count = Job.all.count  
     end
 
     def new
