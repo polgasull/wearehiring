@@ -7,14 +7,14 @@
     "@id": "https://google.com/article"
   },
   "headline": "<%= job.title %> en <%= job.job_author %> en <%= job.location %>",
+  <% unless job.avatar.file.nil? %>
   "image": {
     "@type": "ImageObject",
-    <% unless job.avatar.file.nil? %>
     "url": "<%= job.avatar_url(:thumb) %>",
     "height": 250,
     "width": 250
-    <% end %>
   },
+  <% end %>
   "datePublished": "<%= job.created_at %>",
   "dateModified": "<%= job.updated_at %>",
   "author": {

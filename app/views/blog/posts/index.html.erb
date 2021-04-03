@@ -25,3 +25,10 @@
     </div>
   </div>
 </section>
+
+<%= content_for :head do %>
+  <%= render "seo", 
+      title: "El Blog del talento digital", 
+      description: "Blog sobre programación web y app, marketing digital, diseño y todo lo que siempre has querido saber sobre el mundo digital", 
+      image: asset_path('logo_black.png') %>
+<% end %>
