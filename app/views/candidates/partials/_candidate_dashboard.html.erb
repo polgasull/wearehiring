@@ -28,7 +28,7 @@
           </div>
         </section>
         <div class="columns mt3">
-          <div class="column is-6">
+          <div class="column is-5">
             <div class="card events-card">
               <header class="card-header">
                 <p class="card-header-title">
@@ -78,59 +78,48 @@
               </footer>
             </div>
           </div>
-          <div class="column is-6">
+          <div class="column is-7">
             <div class="we-match-box no-border mb3">
               <div class="columns">
                 <div class="column">
                   <p class="title is-4"> 
-                    We Match
-                    <% if current_user.visible? %>
-                      <span class="tag is-success"> 
-                        <%= icon('fas', 'check mr2') %> Activado
-                      </span> 
-                    <% else %>
-                      <span class="tag is-info is-light"> ¡Nuevo! </span> 
-                    <% end %>
+                    <%= icon('fas', 'rocket') %> We Match <span class="tag is-info is-light"> ¡Nuevo! </span> 
                   </p>
+                  <% if !current_user.visible? %>
+                    <span class="tag is-danger">Desactivado </span> 
+                    <span class="tag is-light"> ¡Pero no te preocupes puedes seguir aplicando por tu cuenta! </span>
+                  <% end %>
+                </div>
+                <div class="column">
+                  <%= link_to edit_user_registration_path, class: "button is-rounded is-medium shadow" do %>
+                    <% if current_user.picture_url.file.nil? %>
+                      <%= icon('far', 'user-circle mr1') %>
+                    <% else %>
+                      <div class="rounded-image size-25 mr1">
+                      <%= image_tag(current_user.picture_url, alt: "Imagen usuario del perfil de Linkedin | Wearehiring.io") %>
+                      </div>
+                    <% end %>
+                    Completar Mi Perfil
+                  <% end %>
                 </div>
               </div>
+              <% if current_user.skills.any? %>
+                <p class="has-text-weight-bold mb2"> Has indicado las siguientes Hard & Soft Skills: </p>
+                <% current_user.skills.each do |skill| %>
+                  <span class='tag is-success is-light mr2'> 
+                    <%= icon('fas', 'check mr2') %>
+                    <%= skill.name %> 
+                  </span>
+                <% end %>
+              <% end %>
               <article class="message mt3">
-                <div class="message-body">
-                  <% sentence = current_user.visible? ? '¡Enhorabuena! Has activado We Match y a partir de ahora' : 'Activa We Match y' %>
-                  <%= sentence %> aparecerás como <strong> Candidato Recomendado </strong> cuando las empresas busquen 
-                  perfiles como el tuyo. 
-                  <p><strong> ¡No busques trabajo, haz que el trabajo venga a ti! </strong></p>
+                <div class="message-body <%= 'has-text-grey-light' if !current_user.visible? %>">
+                  <strong> Nuestro sistema de matching </strong> propondrá tu perfil a las empresas que publiquen Jobs y cumplan tus requisitos.
+                  <p class="mt2"> Puedes aplicar por tu cuenta o esperar a que las empresas te añadan a sus procesos de selección. <%= icon('far','smile-wink')%> </p>
+                  <p class="mt2"><strong> Cuanto más completes tu perfil, más posibilidades de ¡Match! </strong> </p>
+                  <p class="mt2"> ¡No busques trabajo, haz que el trabajo venga a ti! </p>
                 </div>
               </article>
-              <% if current_user.visible? %>
-                <% if current_user.skills.any? %>
-                  <p class="has-text-weight-bold mb2"> Has indicado las siguientes Hard & Soft Skills: </p>
-                  <% current_user.skills.each do |skill| %>
-                    <span class='tag is-success is-light mr2'> 
-                      <%= icon('fas', 'check mr2') %>
-                      <%= skill.name %> 
-                    </span>
-                  <% end %>
-                <% else %>
-                  El usuario no ha indicado ninguna habilidad
-                <% end %>
-                <div class="mt4">
-                  <%= link_to edit_user_registration_path, class: "button" do %>
-                    <span> Modificar mis skills </span>
-                    <%= icon('fas', 'long-arrow-alt-right ml2') %>
-                  <% end %>
-                </div>
-              <% else %>
-                <div class="has-text-centered">
-                  <%= button_tag(type: 'button',
-                    class: "button is-rounded is-medium primary shadow",
-                    id: "showWeMatchModal",
-                    'data-target': 'deactivate-job-modal',
-                    'aria-haspopup': 'true') do %>
-                      Activar
-                  <% end %>
-                </div>
-              <% end %>
             </div>
           </div>
         </div>
@@ -184,30 +173,14 @@
   </div>
 </section>
 
-<%= render partial: 'candidates/partials/activate_we_match_modal' %>
-
 <%= content_for :head do %>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css">
-  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 <% end %>
 
 <%= content_for :footer do %>
   <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
   <script>
-    $(document).ready(function() {
-      $('#user_skill_ids').select2({
-        maximumSelectionLength: 10
-      });
-
-      $("#showWeMatchModal").click(function() {
-        $(".modal").addClass("is-active");
-      });
-
-      $(document).on("click", ".modal-close", function() {
-        $('.modal').removeClass('is-active');
-      });
-      
+    $(document).ready(function() {     
       bulmaCarousel.attach('#jobs-carousel', {
         slidesToScroll: 1,
         slidesToShow: 4,
@@ -233,13 +206,6 @@
           console.log(state);
         });
       }
-
-      $(document).on('click', '#btnActivation', function() {
-        if (!$('#btnActivation').hasClass('btn--activated') && $("#user_skill_ids").val()) {
-          $('#btnActivation').removeClass('btn--activate');
-          $('#btnActivation').addClass('btn--waiting');
-        }
-      });
     });
   </script>
 <% end %>

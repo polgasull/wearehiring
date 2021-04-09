@@ -36,39 +36,48 @@
     <output id="list"></output>
   </div>
   <div class="column is-8">
-    <article class="message animate__animated animate__pulse mb3 mt3">
+    <article class="message mb3 mt3">
       <div class="message-body">
-        <div class="columns">
-          <div class="column">
-            <h2 class="title is-4"> We Match <span class="tag is-info is-light is-size-6"> ¡Nuevo! </span> </h2>
-          </div>
-          <div class="column has-text-right">
-            <% if current_user.visible? %>
-              <div class="button is-rounded is-success is-light is-medium">  
-                <%= icon('fas', 'check mr2') %> Activado 
-              </div>
-            <% else %>
-              <%= button_tag(type: 'button',
-                class: "button is-rounded is-medium primary shadow",
-                id: "showWeMatchModal",
-                'data-target': 'deactivate-job-modal',
-                'aria-haspopup': 'true') do %>
-                  Activar
-              <% end %>
-            <% end %>
-          </div>
+        <h2 class="title is-4"> 
+          <%= icon('fas', 'rocket') %> We Match <span class="tag is-info is-light is-size-6"> ¡Nuevo! </span> 
+        </h2>
+        <% if !current_user.visible? %>
+        <p class="mb2">
+          <span class="tag is-danger"> Desactivado </span> 
+          <span class="tag is-light"> ¡Pero no te preocupes puedes seguir aplicando por tu cuenta! </span>
+        <p>
+        <% end %>
+        <div class=<%= 'has-text-grey-light' if !current_user.visible? %>>
+          <strong> Nuestro sistema de matching </strong> propondrá tu perfil a las empresas que publiquen Jobs y cumplan tus requisitos.
+          <p class="mt2"> Puedes aplicar por tu cuenta o esperar a que las empresas te añadan a sus procesos de selección. <%= icon('far','smile-wink')%> </p>
+          <p class="mt2"><strong> Cuanto más completes tu perfil, más posibilidades de ¡Match! </strong> </p>
+          <p class="mt2"> ¡No busques trabajo, haz que el trabajo venga a ti! </p>
         </div>
-        <% sentence = current_user.visible? ? '¡Enhorabuena! Has activado We Match y a partir de ahora' : 'Activa We Match y' %>
-        <%= sentence %> aparecerás como <strong> Candidato Recomendado </strong> cuando las empresas busquen 
-        perfiles como el tuyo. 
-        <p><strong> ¡No busques trabajo, haz que el trabajo venga a ti! </strong></p>
       </div>
     </article>
-    <h2 class="title is-4 mt4"> <%= t('important_info_for_the_recruiter') %> </h2>
+    <h2 class="title is-4 mt4"> 
+      <%= t('important_info_for_the_recruiter') %> 
+      <%= f.button :submit, t('save'), class:"button is-info is-pulled-right mt2" %>
+    </h2>
     <div class="columns">
       <div class="column">
         <div class="field">
+          <%= f.label :skills_ids, class: 'label has-text-weight-bold' do %>
+            <%= t('skills.candidate_title') %>
+            <%= content_tag(:span, nil, class: 'dot-notification') if current_user.skills.empty? %>
+          <% end %>
+          <div class="control">
+            <small> <%= t('skills.job_subtitle') %> </small>
+            <%= f.collection_select :skill_ids, Skill.all, :id, :name, {}, { multiple: "multiple", class: "skills-select-2", style: "width: 100%", id: "candidate_skills" } %>  
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="columns mt3">
+      <div class="column">
+        <div class="field">
           <%= f.label :name, class: 'has-text-weight-bold' %>
+          <%= content_tag(:span, nil, class: 'dot-notification') if current_user.name.blank? %>
           <div class="control mt2">
             <%= f.input :name, 
               input_html: { class: "input" }, 
@@ -81,6 +90,7 @@
       <div class="column">
         <div class="field">
           <%= f.label :last_name, class: 'has-text-weight-bold' %>
+          <%= content_tag(:span, nil, class: 'dot-notification') if current_user.last_name.blank? %>
           <div class="control mt2">
             <%= f.input :last_name, 
               input_html: { class: "input" }, 
@@ -91,14 +101,14 @@
         </div>
       </div>
     </div>
-    <div class='has-text-weight-bold mb2'>
-      <%= t('users.phone') %>
-      <%= content_tag(:span, nil, class: 'dot-notification') if current_user.phone.blank? %>
-    </div>
-    <% if current_user.phone.blank? %>
-      <span class="f6 primary-color"> Añade tu <strong class="primary-color"> teléfono </strong> y aumenta las posibilidades de ser contactado </span>
-    <% end %>
-    <div class="field">
+    <div class="field mt4">
+      <%= f.label :phone, class: 'label has-text-weight-bold' do %>
+        <%= t('users.phone') %>
+        <%= content_tag(:span, nil, class: 'dot-notification') if current_user.phone.blank? %>
+      <% end %>
+      <% if current_user.phone.blank? %>
+        <span class="f6 primary-color"> Añade tu <strong class="primary-color"> teléfono </strong> y aumenta las posibilidades de ser contactado </span>
+      <% end %>
       <div class="control has-icons-left">
         <%= f.input :phone, 
           label: false,
@@ -111,11 +121,11 @@
         </span>
       </div>
     </div>
-    <div class='has-text-weight-bold mb2'>
-      <%= t('users.profile_url') %>
-      <%= content_tag(:span, nil, class: 'dot-notification') if current_user.profile_url.blank? %>
-    </div>
-    <div class="field">
+    <div class="field mt4">
+      <%= f.label :profile_url, class: 'label has-text-weight-bold' do %>
+        <%= t('users.profile_url') %>
+        <%= content_tag(:span, nil, class: 'dot-notification') if current_user.profile_url.blank? %>
+      <% end %>
       <div class="control has-icons-left">
         <%= f.input :profile_url, 
           label: false,
@@ -127,11 +137,11 @@
         </span>
       </div>
     </div>
-    <div class='has-text-weight-bold mb2'>
-      <%= t('users.current_position') %>
-      <%= content_tag(:span, nil, class: 'dot-notification') if current_user.current_position.blank? %>
-    </div>
-    <div class="field">
+    <div class="field mt4">
+      <%= f.label :current_position, class: 'label has-text-weight-bold' do %>
+        <%= t('users.current_position') %>
+        <%= content_tag(:span, nil, class: 'dot-notification') if current_user.current_position.blank? %>
+      <% end %>
       <div class="control">
         <%= f.input :current_position, 
           label: false,
@@ -140,15 +150,11 @@
           placeholder: "Marketing digital" %>
       </div>
     </div>
-    <div class="field mt3">
-      <%= f.label t('skills.candidate_title'), class: 'has-text-weight-bold' %>
-      <div class="control">
-        <small> <%= t('skills.job_subtitle') %> </small>
-        <%= f.collection_select :skill_ids, Skill.all, :id, :name, {}, { multiple: "multiple", class: "skills-select-2", style: "width: 100%", id: "candidate_skills" } %>  
-      </div>
-    </div>
-    <div class="field">
-      <%= f.label 'Lugar de residencia habitual', class: 'label has-text-weight-bold', for: 'user_location' %>
+    <div class="field mt4">
+      <%= f.label :location, class: 'label has-text-weight-bold' do %>
+        Lugar de residencia habitual
+        <%= content_tag(:span, nil, class: 'dot-notification') if current_user.location.blank? %>
+      <% end %>
       <div class="control has-icons-left">
         <%= f.input :location, 
           input_html: { class: "input" }, 
@@ -161,16 +167,20 @@
         </span>
       </div>
     </div>
-    <div class="field">
-      <%= f.label 'Años de experiencia', class: 'label has-text-weight-bold', for: 'user_experience' %>
+    <div class="field mt4">
+      <%= f.label :experience, class: 'label has-text-weight-bold' do %>
+        Años de experiencia        
+        <%= content_tag(:span, nil, class: 'dot-notification') if current_user.experience.blank? %>
+      <% end %>
       <div class="select is-rounded">
         <%= f.select :experience, 
           options_for_select([ "0-2 años", "2-6 años", "6-10 años", "+10 años" ], current_user.experience),
           {include_blank: 'Seleccionar' } %>
       </div>
     </div>
-    <div class="field">
+    <div class="field mt4">
       <strong> <%= t('users.salary_expectation') %> </strong>  
+      <%= content_tag(:span, nil, class: 'dot-notification') if current_user.salary_from.blank? && current_user.salary_to.blank?  %>
     </div>
     <div class="columns">
       <div class="column is-one-quarter-desktop">
@@ -278,24 +288,26 @@
       </div>
     </div>
 
-    <% if current_user.visible? %>
-      <div class="field mt4">
-        <%= f.check_box :visible, checked: f.object.visible, class: "switch" %>
-        <%= f.label :visible do %>
-          Desactivar We Match y dejar de ser visible como candidato recomendado para las empresas que estén buscando perfiles con tus mismas habilidades
-        <% end %>
-      </div>
-    <% end %>
+    <div class="field mt4">
+
+      <article class="message">
+        <div class="message-body">
+          <%= f.check_box :visible, { class: "switch" }, false, true %>
+          <%= f.label :visible do %>
+            <strong> Desactivar We Match </strong>
+          <% end %>
+          <p class="mt2"> Al desactivar We Match, podrás seguir aplicando por tu cuenta, pero nuestro sistema de matching ya no propondrá tu perfil a las empresas que publiquen Jobs y cumplan tus requisitos. </p>
+        </div>
+      </article>
+    </div>
 
     <%= f.button :submit, t('save'), class:"button is-info is-pulled-right mt3" %>
   </div>
 </div>
 <% end %>
-<%= render partial: 'candidates/partials/activate_we_match_modal' %>
 
 <%= content_for :head do %>
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 <% end %>
 
 <%= content_for :footer do %>
@@ -304,26 +316,9 @@
 
   <script>  
     $(document).ready(function() {
-
       $('#candidate_skills, #user_skill_ids').select2({
         maximumSelectionLength: 10
       });
-
-      $("#showWeMatchModal").click(function() {
-        $(".modal").addClass("is-active");
-      });
-
-      $(document).on("click", ".modal-close", function() {
-        $('.modal').removeClass('is-active');
-      });
-
-      $(document).on('click', '#btnActivation', function() {
-        if (!$('#btnActivation').hasClass('btn--activated') && $("#user_skill_ids").val()) {
-          $('#btnActivation').removeClass('btn--activate');
-          $('#btnActivation').addClass('btn--waiting');
-        }
-      });
     });
-
   </script>
 <% end %>

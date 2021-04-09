@@ -28,9 +28,10 @@
   </td>
   <td>
     <% if user.is_candidate? %>
-      <% if user.visible? %>
+      <% if user.skills.any? && user.visible? %>
         <span class="tag is-success is-size-7"> ON </span>
-      <% else %>
+      <% end %>
+      <% if !user.visible? %>
         <span class="tag is-danger is-size-7"> OFF </span>
       <% end %>
     <% end %>
