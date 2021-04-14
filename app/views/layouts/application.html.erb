@@ -37,32 +37,8 @@
       <%= render "footer" %>
       <%= render "cookies_eu/consent_banner"%>
     </div>
-    <script>
-      $(document).ready(function() {
-
-        $(window).scroll(function (event) {
-          var scroll = $(window).scrollTop();
-          if(scroll >= (50)) {
-            $('.logo-size').width(50)
-            $('.logo-size').height(50)
-          } else {
-            $('.logo-size').width(100)
-            $('.logo-size').height(100)
-          }
-        });
-
-        $(document).on("click", ".open-menu", function() {
-          document.getElementById("mySidenav").style.width = "100%";
-        });
-
-        $(document).on("click", ".close-menu", function() {
-          document.getElementById("mySidenav").style.width = "0";
-        });
-      });
-    </script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <%= render "after_click" %>
     
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <%= yield :footer %>
 
   </body>

@@ -3,7 +3,7 @@
     <div class="column is-1-desktop is-hidden-touch is-vertical-center">
       <span class="pr3"><%= inscription_counter + 1 %></span>
       <div class="rounded-image size-50">
-        <%= image_tag(inscription.user.picture_url) %>
+        <%= image_tag(inscription.user.picture_url_url(:thumb)) %>
       </div>
     </div>
     <div class="column is-1-desktop">

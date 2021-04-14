@@ -52,7 +52,9 @@
                         <% if inscription.user.picture_url.file.nil? %>
                           <%= icon('far', 'image', style: 'font-size: 25px') %>
                         <% else %>
-                          <%= image_tag(inscription.user.picture_url, width: 35, height: 35) %>
+                        	<div class="rounded-image size-25 mr1">
+                            <%= image_tag(inscription.user.picture_url_url(:thumb), width: 35, height: 35) %>
+                          </div>
                         <% end %>
                       </div>
                       <div class="column is-size-7 is-8">

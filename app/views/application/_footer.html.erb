@@ -48,3 +48,19 @@
     </div>
   </section>
 </footer>
+
+<%= content_for :footer do %>
+  <script>
+    $(document).ready(function() {
+      $(document).on("click", ".open-menu", function() {
+        document.getElementById("mySidenav").style.width = "100%";
+      });
+
+      $(document).on("click", ".close-menu", function() {
+        document.getElementById("mySidenav").style.width = "0";
+      });
+    });
+  </script>
+  <%= render "after_click" %>
+
+<% end %>

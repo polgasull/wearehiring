@@ -1,7 +1,11 @@
 <div class="columns listrow is-mobile is-vertical-center is-size-7 inscription-row-<%= inscription.status %>">
   <div class="column is-1-desktop is-hidden-touch is-vertical-center">
     <div class="rounded-image size-50">
-      <%= image_tag(inscription.user.picture_url) %>
+      <% if inscription.user.picture_url.file.nil? %>
+        <%= asset_path('user_male_avatar.svg') %>
+      <% else %>
+        <%= image_tag(inscription.user.picture_url_url(:thumb)) %>
+      <% end %>
     </div>
   </div>
   <div class="column is-1-desktop">

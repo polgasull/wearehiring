@@ -4,7 +4,7 @@
       <div class="media">
         <div class="media-left">
           <figure class="image is-48x48">
-            <% image_url = user.picture_url.file.nil? ? asset_path('user_male_avatar.svg') : user.picture_url %>
+            <% image_url = user.picture_url.file.nil? ? asset_path('user_male_avatar.svg') : user.picture_url_url(:thumb) %>
             <%= image_tag(image_url, alt: "Candidato ideal para tu empresa", class: 'is-rounded') %>
           </figure>
         </div>

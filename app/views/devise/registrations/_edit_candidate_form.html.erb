@@ -6,7 +6,7 @@
       <%= icon('far', 'user-circle', style: 'font-size: 100px') %>
     <% else %>
       <div class="rounded-image m-auto size-120">
-        <%= image_tag(current_user.picture_url, alt: "Imagen perfil usuario | Wearehiring.io") %>
+        <%= image_tag(current_user.picture_url_url(:thumb), alt: "Imagen perfil usuario | Wearehiring.io") %>
       </div>
     <% end %>
     <p class="title f4 mt4"> 

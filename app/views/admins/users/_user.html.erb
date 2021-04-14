@@ -5,7 +5,7 @@
     <% if user.picture_url.file.nil? %>
       <%= icon('far', 'user-circle', style: 'font-size: 30px') %>
     <% else %>
-      <%= image_tag(user.picture_url, size: 30, alt: "Imagen perfil usuario | Wearehiring.io") %>
+      <%= image_tag(user.picture_url_url(:thumb), size: 30, alt: "Imagen perfil usuario | Wearehiring.io") %>
     <% end %>
   </td>
   <td>
