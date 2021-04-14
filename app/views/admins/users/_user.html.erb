@@ -28,7 +28,7 @@
   </td>
   <td>
     <% if user.is_candidate? %>
-      <% if user.skills.any? && user.visible? %>
+      <% if user.skills.exists? && user.visible? %>
         <span class="tag is-success is-size-7"> ON </span>
       <% end %>
       <% if !user.visible? %>
@@ -37,7 +37,7 @@
     <% end %>
   </td>
   <td>
-    <%= user.skills.map(&:name).to_sentence if user.is_candidate? %>
+    <%= user.skills.map(&:name).to_sentence if user.skills.exists? %>
   </td>
   <td>
     <%= user.location if user.is_candidate? %>

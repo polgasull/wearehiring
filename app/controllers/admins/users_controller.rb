@@ -10,7 +10,7 @@ module Admins
       @companies_count = User.where(user_type: 2).count
       @candidates_count = User.where(user_type: 1).count
       @ambassadors_count = User.where(user_type: 4).count
-      @matching_users_count = candidates_with_skills.count
+      @matching_users_count = candidates_with_skills_count
       @candidates_not_visible = User.where(visible: false).count
 
       respond_to do |format|
@@ -47,12 +47,12 @@ module Admins
       params.require(:user).permit!
     end
 
-    def candidates_with_skills
+    def candidates_with_skills_count
       candidates = []
       User.where(user_type: 1).each do |user|
-        candidates << user if user.skills.any?
+        candidates << user if user.skills.exists?
       end
-      candidates
+      candidates.count
     end
   end
 end
