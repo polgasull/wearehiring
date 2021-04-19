@@ -14,7 +14,7 @@
         <% if job.avatar.file.nil? %>
           <%= icon('far', 'image', style: 'font-size: 50px') %>
         <% else %>
-          <div class="rounded-image size-150">
+          <div class="rounded-image size-150 mauto">
             <%= image_tag(job.avatar_url(:thumb), alt: "Empleo de #{job.title} en #{job.job_author}") %>
           </div>
         <% end %>

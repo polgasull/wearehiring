@@ -2,9 +2,13 @@
   <div class="columns listrow is-mobile is-vertical-center is-size-7">
     <div class="column is-1-desktop is-hidden-touch is-vertical-center">
       <span class="pr3"><%= inscription_counter + 1 %></span>
-      <div class="rounded-image size-50">
-        <%= image_tag(inscription.user.picture_url_url(:thumb)) %>
-      </div>
+      <% if inscription.user.picture_url.file.nil? %>
+        <%= icon('far', 'user-circle', style: 'font-size: 30px') %>
+      <% else %>
+        <div class="rounded-image size-50">
+          <%= image_tag(inscription.user.picture_url_url(:thumb)) %>
+        </div>
+      <% end %>
     </div>
     <div class="column is-1-desktop">
       <%= link_to admins_job_inscription_path(inscription.job_id, inscription.id) do %>
