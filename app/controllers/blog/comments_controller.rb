@@ -2,6 +2,7 @@
 
 module Blog
   class CommentsController < Blog::BlogController
+    before_action :authenticate_user!
     before_action :set_post
 
     def create
@@ -9,7 +10,7 @@ module Blog
       if @comment.save 
         redirect_to_response(t('comments.messages.comment_created'), blog_post_path(@post)) 
       else 
-        redirect_back_response(t('comments.messages.comment_not_updated'), false)
+        redirect_back_response(t('comments.messages.comment_not_created'), false)
       end 
     end
 

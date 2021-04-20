@@ -1,15 +1,28 @@
-<%= simple_form_for([:blog, @post, @post.comments.build]) do |f| %>
-<div class="field">
-  <div class="control">
-    <label class="label"> <%= t('your_name') %> </label>
-    <%= f.input :name, input_html: {class: "input"}, wrapper: false, label: false, placeholder: 'Nombre Apellido' %>
+<% if user_signed_in? %>
+  <%= simple_form_for([:blog, @post, @post.comments.build]) do |f| %>
+    <div class="field">
+      <div class="control">
+        <label class="label"> <%= t('your_name') %> </label>
+        <%= f.input :name, input_html: {class: "input"}, wrapper: false, label: false, placeholder: 'Nombre Apellido' %>
+      </div>
+    </div>
+    <div class="field">
+      <div class="control">
+        <label class="label"> <%= t('comments.singular') %> </label>
+        <%= f.input :comment, input_html: {class: "textarea"}, wrapper: false, label: false %>
+      </div>
+    </div>
+    <%= f.button :submit, t('comments.post'), class: "button is-primary" %>
+  <% end %>
+<% else %>
+  <div class="columns">
+    <div class="column">
+      <p> Debes iniciar sesión para poder comentar </p>
+    </div>
   </div>
-</div>
-<div class="field">
-  <div class="control">
-    <label class="label"> <%= t('comments.singular') %> </label>
-    <%= f.input :comment, input_html: {class: "textarea"}, wrapper: false, label: false %>
+  <div class="columns">
+    <div class="column">
+      <%= link_to t('login'), new_user_session_path(:candidate => "true"), class: "button is-link" %>
+    </div>
   </div>
-</div>
-<%= f.button :submit, t('comments.post'), class: "button is-primary" %>
 <% end %>
