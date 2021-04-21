@@ -2,9 +2,137 @@
   <div class="container">
     <h1 class="title is-4"> Dashboard Admin ¡Coming Soon! </h1>
     
-    <div class="columns mt6">
-      <div class="column is-half is-offset-one-quarter">
-        <%= image_tag(asset_path('dashboard_data_people.svg')) %>  
+    <div class="columns">
+      <div class="column">
+        <h2>Candidatos registrados al día</h2>
+        <div class="table-container">
+          <table class="table is-bordered is-striped">
+            <thead>
+              <tr>
+                <th>Dia</th>
+                <th>Nb</th>
+              </tr>
+            </thead>
+            <tbody> 
+              <% @candidates_by_date.each do |date, number| %>
+                <tr>
+                  <td> <%= date %> </td>
+                  <td> <%= number %> </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="column">
+        <h2>Candidatos registrados a la semana</h2>
+        <div class="table-container">
+          <table class="table is-bordered is-striped">
+            <thead>
+              <tr>
+                <th>Dia</th>
+                <th>Nb</th>
+              </tr>
+            </thead>
+            <tbody> 
+              <% @candidates_by_week.each do |date, number| %>
+                <tr>
+                  <td> <%= date %> </td>
+                  <td> <%= number %> </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="column">
+        <h2>Candidatos registrados al mes</h2>
+        <div class="table-container">
+          <table class="table is-bordered is-striped">
+            <thead>
+              <tr>
+                <th>Dia</th>
+                <th>Nb</th>
+              </tr>
+            </thead>
+            <tbody> 
+              <% @candidates_by_month.each do |date, number| %>
+                <tr>
+                  <td> <%= date %> </td>
+                  <td> <%= number %> </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="columns">
+      <div class="column">
+        <h2>Empresas registradas al día</h2>
+        <div class="table-container">
+          <table class="table is-bordered is-striped">
+            <thead>
+              <tr>
+                <th>Dia</th>
+                <th>Nb</th>
+              </tr>
+            </thead>
+            <tbody> 
+              <% @companies_by_date.each do |date, number| %>
+                <tr>
+                  <td> <%= date %> </td>
+                  <td> <%= number %> </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="column">
+        <h2>Empresas registradas a la semana</h2>
+        <div class="table-container">
+          <table class="table is-bordered is-striped">
+            <thead>
+              <tr>
+                <th>Dia</th>
+                <th>Nb</th>
+              </tr>
+            </thead>
+            <tbody> 
+              <% @companies_by_week.each do |date, number| %>
+                <tr>
+                  <td> <%= date %> </td>
+                  <td> <%= number %> </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="column">
+        <h2>Empresas registradas al mes</h2>
+        <div class="table-container">
+          <table class="table is-bordered is-striped">
+            <thead>
+              <tr>
+                <th>Dia</th>
+                <th>Nb</th>
+              </tr>
+            </thead>
+            <tbody> 
+              <% @companies_by_month.each do |date, number| %>
+                <tr>
+                  <td> <%= date %> </td>
+                  <td> <%= number %> </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
