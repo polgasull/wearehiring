@@ -42,3 +42,33 @@
 .slider-navigation {
   outline: none;
 }
+
+#candidates-carousel {
+  .slider-container {
+    height: 290px;
+    max-height: 290px;
+
+    .slider-item .card {
+      height: 250px;
+      max-height: 250px;
+      margin-right: 3px;
+      margin-left: 3px;
+    }
+  }
+
+  .slider-pagination {
+    .slider-page {
+      background: $red;
+    }
+
+    .slider-page.is-active {
+      background: darken($red, 10%);
+    }
+  }
+
+  .card-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+}

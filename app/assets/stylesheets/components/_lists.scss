@@ -4,7 +4,7 @@
   border-bottom: 2px solid darkgrey;
 }
 
-.listrow {
+.job-candidates-table {
   border-bottom: 1px solid darkgrey;
 
   .status-wrapper .best_in_place {
@@ -41,7 +41,7 @@
     }
   }
 
-  &.inscription-row-finalist .status-wrapper .best_in_place {
+  .inscription-row-finalist .status-wrapper .best_in_place {
     background: $success;
     color: $white;
 
@@ -54,7 +54,7 @@
     }
   }
   
-  &.inscription-row-in_process .status-wrapper .best_in_place {
+  .inscription-row-in_process .status-wrapper .best_in_place {
     background: $blue;
     color: $white;
 
@@ -67,7 +67,7 @@
     }
   }
   
-  &.inscription-row-discarded .status-wrapper .best_in_place {
+  .inscription-row-discarded .status-wrapper .best_in_place {
     background: $danger;
     color: $white;
 

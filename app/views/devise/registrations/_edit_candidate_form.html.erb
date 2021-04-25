@@ -139,7 +139,7 @@
     </div>
     <div class="field mt4">
       <%= f.label :current_position, class: 'label has-text-weight-bold' do %>
-        <%= t('users.current_position') %>
+        <%= t('users.current_position_or_wanted') %>
         <%= content_tag(:span, nil, class: 'dot-notification') if current_user.current_position.blank? %>
       <% end %>
       <div class="control">

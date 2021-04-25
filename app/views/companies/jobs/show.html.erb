@@ -23,35 +23,6 @@
   </div>
 </section>
 
-<% 
-=begin %>
-<section class="section">
-  <div class="container">
-    <h3 class="title"> Otros candidatos que pueden interesarte <span class="tag is-info"> ¡Nuevo! </span> </h1>
-    <h4 class="subtitle is-6"> Estos candidatos encajan con tus requisitos. Puedes añadirlos y ampliar el número de inscritos para el proceso. </h2>
-    <% if @job.open? %>
-      <% if @matching_candidates.any? %>
-        <% @matching_candidates.each do |user| %>
-          <%= render partial: "companies/jobs/candidate", locals: { user: user, job: @job } %>
-        <% end %>
-      <% else %>
-        <div class="has-text-centered mt4">
-          <p> Estamos buscando perfiles que puedan encajar con tus requisitos </p>
-          <p>
-            <img src='<%=asset_path('glasses-loading.gif')%>' width='50'>
-          </p>
-        </div>
-      <% end %>
-    <% else %>
-      <div class="has-text-centered mt4">
-        <p> Job Finalizado </p>
-      </div>
-    <% end %>  
-  </div>
-</section>
-<% 
-=end %>
-
 <section class="section">
   <div class="container">
     <div class="info-tiles">
@@ -82,24 +53,62 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h3 class="title"> We Match <span class="tag is-info"> ¡Nuevo! </span> </h3>
+    <h4 class="subtitle is-6"> Estos candidatos encajan con la oferta de empleo que has publicado. Añádelos a tu proceso de selección y empieza con las entrevistas ¡Ahora!. </h4>
+    <% if @job.open? %>
+      <% if @matching_candidates.any? %>
+        <div id="candidates-carousel" class="carousel">
+          <% @matching_candidates.each do |user| %>
+              <%= render partial: "companies/jobs/candidate", locals: { user: user, job: @job } %>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="has-text-centered mt4">
+          <p> Nuestro sistema de matching está buscando perfiles que encajen con tus requisitos y puedas añadirlos al proceso. </p>
+          <p>
+            <img src='<%=asset_path('glasses-loading.gif')%>' width='50'>
+          </p>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="has-text-centered mt4">
+        <p> Job Finalizado </p>
+      </div>
+    <% end %>  
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
     <div class="columns">
       <div class="column">
-        <h3 class="title"> Candidatos inscritos </h1>
+        <h3 class="title"> Candidatos inscritos <%= icon('fas', 'check-circle has-text-success') %> </h1>
       </div>
       <div class="column mb4 has-text-right"> 
         <% if @inscriptions.any? %>
-          <%= link_to companies_job_inscriptions_path(job_id: @job.id, format: "xlsx"), class: 'button is-success' do %>
+          <%= link_to companies_job_inscriptions_path(job_id: @job.id, format: "xlsx"), class: 'button' do %>
             <%= icon('fas', 'file-download pr2') %> <%= t('download_candidates_excel') %>
           <% end %>
         <% end %>
       </div>
     </div>
-    <%= render partial: 'companies/jobs/inscriptions/header' %>
-    <% if @inscriptions.any? %>
-      <% @inscriptions.each do |inscription| %>
-        <%= render partial: 'companies/jobs/inscriptions/inscription', locals: { inscription: inscription } %>
+    <table class="table job-candidates-table is-bordered is-striped is-fullwidth is-size-7">
+      <%= render partial: 'companies/jobs/inscriptions/table_header' %>
+      <% if @inscriptions.any? %>
+        <tbody>
+          <% @inscriptions.each do |inscription| %>
+            <%= render partial: 'companies/jobs/inscriptions/inscription', locals: { inscription: inscription } %>
+          <% end %>
+        </tbody>
+        <%= render partial: 'companies/jobs/inscriptions/table_footer' %>
       <% end %>
-    <% else %>
+    </table>
+    <% if @inscriptions.empty? %>
       <div class="columns mt5">
         <div class="column is-half is-offset-one-quarter">
           <%= image_tag(asset_path('no_data_undraw.svg'), class: 'has-opacity-5') %>
@@ -124,6 +133,7 @@
 <%= render partial: '/jobs/partials/deactivate_job_modal', locals: { job: @job } %>
 
 <%= content_for :head do %>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css">
   <%= render "seo", 
       title: "Empleo #{ @job.title } en #{ @job.job_author } en #{ @job.location } | WeAreHiring.io", 
       description: "#{ @job.job_author } está buscando a un #{ @job.title } en #{ @job.location }. Solicita este empleo en WeAreHiring.io",
@@ -131,39 +141,68 @@
 <% end %>
 
 <%= content_for :footer do %>
+  <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
   <script>
 
-    $(document).on("click", ".modal-close", function() {
-      $('.modal').removeClass('is-active');
-    });
+    $(document).ready(function() {     
+      $(document).on("click", ".modal-close", function() {
+        $('.modal').removeClass('is-active');
+      });
 
-    $(document).on("click", ".deactivate-job-button", function() {
-      $('.deactivate-job-modal').addClass('is-active');
-    });
+      $(document).on("click", ".deactivate-job-button", function() {
+        $('.deactivate-job-modal').addClass('is-active');
+      });
 
-    /* Activating Best In Place */
-    $(".best_in_place").best_in_place();
-    $('.best_in_place').bind("ajax:success", function () { 
-      var $value = $(this).text();
-      if ($value == 'En proceso') {
-        $(this).closest('.listrow').effect('highlight', {color: '#3e8ed0'}, 700);
-        $(this).closest('.listrow').removeClass('inscription-row-discarded');
-        $(this).closest('.listrow').removeClass('inscription-row-finalist');
-        $(this).closest('.listrow').addClass('inscription-row-in_process');
-      } else if ($value == 'Finalista') {
-        $(this).closest('.listrow').effect('highlight', {color: '#48c78e'}, 700);
-        $(this).closest('.listrow').removeClass('inscription-row-in_process');
-        $(this).closest('.listrow').removeClass('inscription-row-discarded');
-        $(this).closest('.listrow').addClass('inscription-row-finalist');
-      } else if ($value == 'Descartado') {
-        $(this).closest('.listrow').effect('highlight', {color: '#f14668'}, 700);
-        $(this).closest('.listrow').removeClass('inscription-row-finalist');
-        $(this).closest('.listrow').removeClass('inscription-row-in_process');
-        $(this).closest('.listrow').addClass('inscription-row-discarded');
-      } else {
-        $(this).closest('.listrow').removeClass('inscription-row-in_process');
-        $(this).closest('.listrow').removeClass('inscription-row-finalist');
-        $(this).closest('.listrow').removeClass('inscription-row-discarded');
+      /* Activating Best In Place */
+      $(".best_in_place").best_in_place();
+      $('.best_in_place').bind("ajax:success", function () { 
+        var $value = $(this).text();
+        if ($value == 'En proceso') {
+          $(this).closest('.job-candidates-table tr').effect('highlight', {color: '#3e8ed0'}, 700);
+          $(this).closest('.job-candidates-table tr').removeClass('inscription-row-discarded');
+          $(this).closest('.job-candidates-table tr').removeClass('inscription-row-finalist');
+          $(this).closest('.job-candidates-table tr').addClass('inscription-row-in_process');
+        } else if ($value == 'Finalista') {
+          $(this).closest('.job-candidates-table tr').effect('highlight', {color: '#48c78e'}, 700);
+          $(this).closest('.job-candidates-table tr').removeClass('inscription-row-in_process');
+          $(this).closest('.job-candidates-table tr').removeClass('inscription-row-discarded');
+          $(this).closest('.job-candidates-table tr').addClass('inscription-row-finalist');
+        } else if ($value == 'Descartado') {
+          $(this).closest('.job-candidates-table tr').effect('highlight', {color: '#f14668'}, 700);
+          $(this).closest('.job-candidates-table tr').removeClass('inscription-row-finalist');
+          $(this).closest('.job-candidates-table tr').removeClass('inscription-row-in_process');
+          $(this).closest('.job-candidates-table tr').addClass('inscription-row-discarded');
+        } else {
+          $(this).closest('.job-candidates-table tr').removeClass('inscription-row-in_process');
+          $(this).closest('.job-candidates-table tr').removeClass('inscription-row-finalist');
+          $(this).closest('.job-candidates-table tr').removeClass('inscription-row-discarded');
+        }
+      });
+
+      bulmaCarousel.attach('#candidates-carousel', {
+        slidesToScroll: 1,
+        slidesToShow: 4,
+        infinite: true
+      });
+
+      // Initialize all div with carousel class
+      var carousels = bulmaCarousel.attach('.carousel');
+
+      // Loop on each carousel initialized
+      for(var i = 0; i < carousels.length; i++) {
+        // Add listener to  event
+        carousels[i].on('before:show', state => {
+          console.log(state);
+        });
+      }
+
+      // Access to bulmaCarousel instance of an element
+      var element = document.querySelector('#my-element');
+      if (element && element.bulmaCarousel) {
+        // bulmaCarousel instance is available as element.bulmaCarousel
+        element.bulmaCarousel.on('before-show', function(state) {
+          console.log(state);
+        });
       }
     });
 

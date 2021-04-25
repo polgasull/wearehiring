@@ -1,5 +1,5 @@
 <%= form_for :inscription, url: create_inscription_companies_jobs_path(job_id: job.id, user_id: user.id) do |f| %>
-  <div class="card mb3">
+  <div class="card">
     <div class="card-content">
       <div class="media">
         <div class="media-left">
@@ -9,24 +9,14 @@
           </figure>
         </div>
         <div class="media-content">
-          <p class="title is-4"> <%= user.name %> </p>
-          <p class="subtitle is-6"> <%= user.email %> </p>
+          <p class="title is-6"> <%= user.current_position.present? ?  user.current_position : content_tag(:span, 'Posición no especificada', class: 'has-text-grey-light') %> </p>
+          <p class="subtitle is-7"> <%= user.experience.present? ? user.experience : content_tag(:span, 'Experiencia no especificada', class: 'has-text-grey-light') %> </p>
         </div>
       </div>
-
       <div class="content">
-        <div class="mb3">
-          <% user.skills.each do |skill| %>
-            <span class='tag is-success is-normal'> <%= skill.name %> </span>
-          <% end %>  
-        </div>
-        <p> <%= icon('fas', 'phone') %> <%= user.phone %> </p>
-        <%= link_to user.profile_url, target: "_blank", class: "is-size-5" do %>
-          <%= icon('fab', 'linkedin') %>
+        <% user.skills.each do |skill| %>
+          <span class='tag is-success is-normal'> <%= skill.name %> </span>
         <% end %>  
-        <%= mail_to user.email, target: "_blank", class: "is-size-5" do %>
-          <%= icon('far', 'envelope') %>
-        <% end %>
       </div>
     </div>
     <footer class="card-footer">
@@ -37,7 +27,7 @@
         </div>
       <% else %>
         <%= f.submit "Añadir al proceso de selección", class: "card-footer-item button is-info pa0" %>
-      <% end %>
+      <% end %>              
     </footer>
-  </div>  
-<% end %>        
+  </div>
+<% end %>
