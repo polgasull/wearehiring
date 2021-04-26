@@ -97,17 +97,19 @@
         <% end %>
       </div>
     </div>
-    <table class="table job-candidates-table is-bordered is-striped is-fullwidth is-size-7">
-      <%= render partial: 'companies/jobs/inscriptions/table_header' %>
-      <% if @inscriptions.any? %>
-        <tbody>
-          <% @inscriptions.each do |inscription| %>
-            <%= render partial: 'companies/jobs/inscriptions/inscription', locals: { inscription: inscription } %>
-          <% end %>
-        </tbody>
-        <%= render partial: 'companies/jobs/inscriptions/table_footer' %>
-      <% end %>
-    </table>
+    <div class="table-container">
+      <table class="table job-candidates-table is-bordered is-striped is-fullwidth is-size-7">
+        <%= render partial: 'companies/jobs/inscriptions/table_header' %>
+        <% if @inscriptions.any? %>
+          <tbody>
+            <% @inscriptions.each do |inscription| %>
+              <%= render partial: 'companies/jobs/inscriptions/inscription', locals: { inscription: inscription } %>
+            <% end %>
+          </tbody>
+          <%= render partial: 'companies/jobs/inscriptions/table_footer' %>
+        <% end %>
+      </table>
+    </div>
     <% if @inscriptions.empty? %>
       <div class="columns mt5">
         <div class="column is-half is-offset-one-quarter">
@@ -182,7 +184,11 @@
       bulmaCarousel.attach('#candidates-carousel', {
         slidesToScroll: 1,
         slidesToShow: 4,
-        infinite: true
+        infinite: true,
+        breakpoints: [
+          { changePoint: 768, slidesToShow: 1, slidesToScroll: 1 },
+          { changePoint: 992, slidesToShow: 3, slidesToScroll: 1 }
+        ]
       });
 
       // Initialize all div with carousel class

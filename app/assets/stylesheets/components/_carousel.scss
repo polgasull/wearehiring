@@ -70,5 +70,12 @@
     position: absolute;
     bottom: 0;
     width: 100%;
+    border: none;
+
+    input {
+      bottom: 1rem;
+      margin-left: 1.5rem;
+      margin-right: 1.5rem;
+    }
   }
 }
