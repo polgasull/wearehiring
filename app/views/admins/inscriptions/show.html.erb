@@ -41,7 +41,7 @@
           <p class="mt4 has-text-weight-bold"> <%= t('skills.title') %> </p>
           <% if @user.skills.any? %>
             <% @user.skills.each do |skill| %>
-              <span class='tag is-success is-normal'> <%= skill.name %> </span>
+              <span class='tag is-success'> <%= skill.name %> </span>
             <% end %>  
           <% else %>
             El usuario no ha indicado ninguna habilidad

@@ -79,3 +79,12 @@
     }
   }
 }
+
+#partners-carousel {
+  .slider-item {
+    display: flex;
+    align-items: center;
+    height: 150px;
+    justify-content: center;
+  }
+}

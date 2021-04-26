@@ -22,27 +22,61 @@
 
 <div class="mt5 is-hidden-touch"></div>
 
-<section class="section has-text-centered">
+<section class="section has-text-left-mobile">
 	<div class="container">
-		<div class="columns">
-			<div class="column is-three-fifths is-offset-one-fifth">
-				<h2 class="title"> Colaboramos con </h2>
+		<div class="columns card-box-secondary">
+			<div class="column is-vertical-center justify-center">
+				<img src="<%=asset_path('hire_profiles.svg')%>" width="400" height="400" class="is-blank" alt="Crear cuenta empresa y publicar empleo digital | Wearehiring.io">			
+			</div>
+			<div class="column">
+				<h2 class="title"> 
+					<span> We Match </span> 
+					<span class="tag is-success"> Nuevo </span> <br>
+					<span> Sistema de matching por Skills </span>
+				</h2>
+				<p> 
+					<span class='tag is-info'> React </span>
+					<span class='tag is-info'> Python </span>
+					<span class='tag is-info'> UX </span>
+					<span class='tag is-info'> UI </span>
+					<span class='tag is-info'> SEO </span>
+					<span class='tag is-info'> SEM </span>
+					<span class='tag is-info'> Figma </span>
+					<span class='tag is-info'> SQL </span>
+					<span class='tag is-info'> Scrum </span>
+					<span class='tag is-info'> Docker </span>
+					<span class='tag is-info'> REST API </span>
+					<span class='tag is-info'> Scala </span>
+					<span class='tag is-info'> VueJS </span>
+					<span class='tag is-info'> Ruby on Rails </span>
+					<span class='tag is-info'> Mongo </span>
+					<span class='tag is-info'> Wordpress </span>
+					<span class='tag is-info'> Invision </span>
+					<span class='tag is-info'> Strategy </span>
+				</p>
+				<div class="mt4">
+				</div>
 			</div>
 		</div>
 	</div>
 </section>
 
+<div class="mv5 is-hidden-touch"></div>
+
 <section class="section">
 	<div class="container">
-		<%= render 'partners', animation: 'flip-left' %>
+		<div class="columns">
+			<div class="column has-text-centered">
+				<h2 class="title"> Colaboramos con </h2>
+			</div>
+		</div>
+		<%= render 'partners' %>
 	</div>
 </section>
 
-<div class="mt6 is-hidden-touch"></div>
-
-<section class="section has-text-left-mobile is-section-primary mv5">
+<section class="section has-text-left-mobile">
 	<div class="container">
-		<div class="columns">
+		<div class="columns card-box-primary">
 			<div class="column">
 				<% if current_user&.is_company? %>
 					<h2 class="title"> 
@@ -51,7 +85,7 @@
 					</h2>
 					<p> <%= t('company_section_body') %> </p>
 					<div class="mt4">
-						<%= link_to new_companies_job_path, class: 'button is-medium is-rounded' do %>
+						<%= link_to new_companies_job_path, class: 'button is-medium is-rounded is-success' do %>
 							<%= t('jobs.post_job_with_price') %> 
 							<%= first_job_publication(current_user) ? 'Gratis' : 'por 99€' %>
 							<%= icon('fas', 'arrow-right ml3') %>
@@ -61,11 +95,11 @@
 					<h2 class="title"> 
 						<span> <%= t('company_section_title') %> </span> 
 						<span class="has-text-success"> <%= t('free').upcase %> </span> <br>
-						<span> <%= t('company_section_subtitle') %>
+						<span> <%= t('company_section_subtitle') %> </span>
  					</h2>
 					<p> <%= t('company_section_body') %> </p>
 					<div class="mt4">
-						<%= link_to new_user_registration_path, class: 'button is-medium is-rounded' do %>
+						<%= link_to new_user_registration_path, class: 'button is-medium is-rounded is-success' do %>
 							<%= t('jobs.post_job') %> <%= icon('fas', 'arrow-right ml3') %>
 						<% end if !current_user&.is_candidate? %>
 					</div>
@@ -77,6 +111,8 @@
 		</div>
 	</div>
 </section>
+
+<div class="mv5 is-hidden-touch"></div>
 
 <section class="section has-text-centered has-text-left-mobile">
 	<div class="container">
@@ -99,8 +135,8 @@
 					height="220" 
 					class="is-blank is-mobile-img" 
 					alt="Only Digital Jobs | Wearehiring.io"
-					data-aos="fade-up" 
-					data-aos-duration="1500">
+					data-aos="fade-down" 
+					data-aos-duration="1000">
 				<div class="content has-text-left-mobile mt4">
 					<h3> <%=t('feature_1')%> </h3>
 					<p class="has-text-left"> <%=t('feature_1_text')%> </p>
@@ -113,8 +149,8 @@
 					height="180"
 					class="is-blank"
 					alt="Rápido regístro | Wearehiring.io"
-					data-aos="fade-up" 
-					data-aos-duration="1500">
+					data-aos="fade-down" 
+					data-aos-duration="1000">
 				<div class="content has-text-left-mobile mt4">
 					<h3> <%=t('feature_2')%> </h3>
 					<p class="has-text-left"> <%=t('feature_2_text')%> </p>
@@ -127,8 +163,8 @@
 					height="200"
 					class="is-blank"
 					alt="Digital talent place | Wearehiring.io"
-					data-aos="fade-up" 
-					data-aos-duration="1500">			
+					data-aos="fade-down" 
+					data-aos-duration="1000">			
 				<div class="content has-text-left-mobile mt4">
 					<h3> <%=t('feature_3')%> </h3>
 					<ul class="has-text-left">

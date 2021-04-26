@@ -23,3 +23,19 @@
   right: 10px;
 }
 
+.card-box-primary {
+  border-radius: 20px;
+  padding: 40px;
+  background: $red;
+  color: $white;
+
+  h2.title {
+		color: $white;
+	}
+}
+
+.card-box-secondary {
+  border-radius: 20px;
+  padding: 40px;
+  background: $light_gray;
+}
