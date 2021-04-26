@@ -1,4 +1,4 @@
-<div class="section main-section">
+<section class="section">
   <div class="container">
     <div class="columns is-centered is-variable is-8">
       <div class="column is-7 is-hidden-mobile has-text-centered">
@@ -84,26 +84,19 @@
         <% end %>
       </div>
     </div>
-    <div class="columns">
-      <div class="column">
-        <section class="section has-text-centered">
-          <div class="container">
-            <div class="columns">
-              <div class="column is-three-fifths is-offset-one-fifth">
-                <h2 class="title"> Colaboramos con </h2>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section class="section">
-          <div class="container">
-            <%= render 'partners', animation: false %>
-          </div>
-        </section>
-      </div>
-    </div>
   </div>
-</div>
+</section>
+
+<section class="section">
+	<div class="container">
+		<div class="columns">
+			<div class="column has-text-centered">
+				<h2 class="title"> Colaboramos con </h2>
+			</div>
+		</div>
+		<%= render 'partners' %>
+	</div>
+</section>
 
 <%= content_for :head do %>
 	<%= render "seo", 
