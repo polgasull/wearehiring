@@ -78,32 +78,17 @@
 	<div class="container">
 		<div class="columns card-box-primary">
 			<div class="column">
-				<% if current_user&.is_company? %>
-					<h2 class="title"> 
-						<%= current_user.name %> 
-						<p> <%= 'Empieza hoy publicando GRATIS' if first_job_publication(current_user) %> </p>
-					</h2>
-					<p> <%= t('company_section_body') %> </p>
-					<div class="mt4">
-						<%= link_to new_companies_job_path, class: 'button is-medium is-rounded is-success' do %>
-							<%= t('jobs.post_job_with_price') %> 
-							<%= first_job_publication(current_user) ? 'Gratis' : 'por 99€' %>
-							<%= icon('fas', 'arrow-right ml3') %>
-						<% end %>
-					</div>
-				<% else %>
-					<h2 class="title"> 
-						<span> <%= t('company_section_title') %> </span> 
-						<span class="has-text-success"> <%= t('free').upcase %> </span> <br>
-						<span> <%= t('company_section_subtitle') %> </span>
- 					</h2>
-					<p> <%= t('company_section_body') %> </p>
-					<div class="mt4">
-						<%= link_to new_user_registration_path, class: 'button is-medium is-rounded is-success' do %>
-							<%= t('jobs.post_job') %> <%= icon('fas', 'arrow-right ml3') %>
-						<% end if !current_user&.is_candidate? %>
-					</div>
-				<% end %>
+				<h2 class="title"> 
+					<span> <%= t('company_section_title') %> </span> 
+					<span class="has-text-success"> <%= t('free').upcase %> </span> <br>
+					<span> <%= t('company_section_subtitle') %> </span>
+				</h2>
+				<p> <%= t('company_section_body') %> </p>
+				<div class="mt4">
+					<%= link_to new_user_registration_path(:company => "true"), class: 'button is-medium is-rounded is-success' do %>
+						<%= t('jobs.post_job') %> <%= icon('fas', 'arrow-right ml3') %>
+					<% end %>
+				</div>
 			</div>
 			<div class="column is-vertical-center justify-center">
 				<img src="<%=asset_path('undraw_people_search_wctu.svg')%>" width="400" height="400" class="is-blank" alt="Crear cuenta empresa y publicar empleo digital | Wearehiring.io">			
