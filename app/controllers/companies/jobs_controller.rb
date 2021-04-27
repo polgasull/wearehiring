@@ -3,10 +3,8 @@
 module Companies
   class JobsController < Companies::CompaniesController
     include PaymentHelper
-    include InscriptionsHelper
 
     before_action :set_job, only: [:show, :edit, :update]
-    before_action :set_candidate, only: [:create_inscription]
 
     AMBASSADOR_PRICE = 5586
     COMPANY_PRICE = 11286
@@ -75,17 +73,8 @@ module Companies
     def update
       @job&.update(job_params) ? redirect_to_response(t('jobs.messages.job_updated'), companies_job_path(@job)) : redirect_back_response(t('jobs.messages.job_not_updated'), false)
     end
-  
-    def create_inscription
-      @job = current_user.jobs.find(params[:job_id])
-      assign_inscription_to_job(@job, @candidate, companies_job_path(@job.id))
-    end
 
     private
-
-    def set_candidate
-      @candidate = User.where(user_type: 1).find_by_id(params[:user_id])
-    end
 
     def set_job
       @job = current_user.jobs.find(params[:id])

@@ -2,7 +2,10 @@
 
 module Companies
   class InscriptionsController < Companies::CompaniesController
+    include InscriptionsHelper
+
     before_action :set_job
+    before_action :set_candidate, only: [:create]
 
     def index
       return redirect_to_response(t('not_found'), root_path, false) unless @job
@@ -13,6 +16,10 @@ module Companies
       respond_to do |format|
         format.xlsx
       end
+    end
+
+    def create
+      assign_inscription_to_job(@job, @candidate, companies_job_path(@job.id))
     end
   
     def update
@@ -36,6 +43,10 @@ module Companies
     end
   
     private
+
+    def set_candidate
+      @candidate = User.where(user_type: 1).find_by_id(params[:user_id])
+    end
   
     def set_job
       @job = current_user.jobs.find(params[:job_id])

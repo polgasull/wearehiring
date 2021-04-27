@@ -1,3 +1,47 @@
+<section class="section pb0 pt1">
+  <div class="container is-wrapper bg-white radius-8">
+    <div class="columns admin-block">
+      <div class="column is-vertical-center is-flex">
+        <span class="has-text-weight-bold f3 pr4"> Admin controls </span>
+        <%= link_to admins_job_inscriptions_path(@job.id) do %>
+          <%= icon('fas', 'user mr2') %> <%= @job.inscriptions.count %> inscritos
+        <% end %>
+      </div>
+      <div class="column is-2">
+        <%= link_to edit_admins_job_path(@job.id), class: 'button is-link' do %>
+          <%= icon('fas', 'edit mr2') %> Editar
+        <% end %> 
+      </div>
+      <div class="column is-2 has-text-right">
+      <%= simple_form_for([:admins, @job], html: { multipart: true }) do |f| %>
+        <%= f.hidden_field :open, value: false %>
+        <%= f.submit(
+          t('jobs.close'),
+          class: 'button is-danger is-outlined',
+          disabled: !@job.open?, 
+          data: { confirm: "alert('¿Estás seguro? Esta acción no se puede deshacer. 
+          El Job ya no estará visible pero la empresa podrá seguir gestionando sus candidatos')"}) %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <article class="message is-warning">
+      <div class="message-header">
+        <h1> Estás como ADMIN </h1>
+      </div>
+      <div class="message-body">
+      Esto es exactamente lo que <strong> ve la empresa </strong>. Puedes editarlo sin problemas, pero mucho cuidado. Ser Admin es una gran responsabilidad.
+      </div>
+    </article>
+  </div>
+</section>
+
+<hr>
+
 <section class="section pb0">
   <div class="container is-wrapper bg-white radius-8">
     <div class="columns">
@@ -9,9 +53,6 @@
         <%= t('remaining_days') %>
       </div>
       <div class="column has-text-right">
-        <%= link_to edit_companies_job_path(@job), class: 'button is-link' do %>
-          <%= icon('fas', 'edit mr1') %> <%= t('jobs.edit') %>
-        <% end %>
         <%= link_to job_path(@job), class: 'button', target: '_blank' do %>
           <%= icon('fas', 'eye mr1') %> Ver publicación
         <% end %>
@@ -19,7 +60,7 @@
     </div>
   </div>
   <div class="container pt4">
-    <%= render partial: "jobs/shared/job_info", locals: { job: @job } %>
+    <%= render partial: "/jobs/shared/job_info", locals: { job: @job } %>
   </div>
 </section>
 
@@ -64,7 +105,7 @@
       <% if @matching_candidates.any? %>
         <div id="candidates-carousel" class="carousel">
           <% @matching_candidates.each do |user| %>
-              <%= render partial: "/jobs/shared/candidate", locals: { user: user, job: @job, path: companies_job_inscriptions_path(job_id: @job.id, user_id: user.id) } %>
+              <%= render partial: "/jobs/shared/candidate", locals: { user: user, job: @job, path: admins_job_inscriptions_path(job_id: @job.id, user_id: user.id) } %>
           <% end %>
         </div>
       <% else %>
@@ -89,13 +130,6 @@
       <div class="column">
         <h3 class="title"> Candidatos inscritos <%= icon('fas', 'check-circle has-text-success') %> </h1>
       </div>
-      <div class="column mb4 has-text-right"> 
-        <% if @inscriptions.any? %>
-          <%= link_to companies_job_inscriptions_path(job_id: @job.id, format: "xlsx"), class: 'button' do %>
-            <%= icon('fas', 'file-download pr2') %> <%= t('download_candidates_excel') %>
-          <% end %>
-        <% end %>
-      </div>
     </div>
     <div class="table-container">
       <table class="table job-candidates-table is-bordered is-striped is-fullwidth is-size-7">
@@ -103,7 +137,7 @@
         <% if @inscriptions.any? %>
           <tbody>
             <% @inscriptions.each do |inscription| %>
-              <%= render partial: 'companies/jobs/inscriptions/inscription', locals: { inscription: inscription } %>
+              <%= render partial: 'admins/jobs/inscriptions/inscription', locals: { inscription: inscription } %>
             <% end %>
           </tbody>
           <%= render partial: 'jobs/shared/table_inscriptions_footer' %>
@@ -132,7 +166,7 @@
   </div>
 </section>
 
-<%= render partial: '/jobs/partials/deactivate_job_modal', locals: { job: @job, model: :companies } %>
+<%= render partial: '/jobs/partials/deactivate_job_modal', locals: { job: @job, model: :admins } %>
 
 <%= content_for :head do %>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css">

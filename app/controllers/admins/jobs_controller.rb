@@ -2,7 +2,7 @@
 
 module Admins
   class JobsController < Admins::AdminsController
-    before_action :set_job, only: [:edit, :update, :destroy]
+    before_action :set_job, only: [:edit, :update, :show, :destroy]
 
     def index
       @jobs = Job.all.filter(params).order('created_at DESC').page(params[:page]).per(30)
@@ -14,6 +14,22 @@ module Admins
     def new
       @job = current_user.jobs.build
     end
+
+    def show
+      return redirect_to_response(t('not_found'), root_path, false) unless @job
+      @inscriptions_count = @job.inscriptions.count
+      @matching_candidates = @job.show_matching_candidates(@job.skills)  
+  
+      @discardeds_count = @job.inscriptions.where(status: [0]).count
+      @in_process_count = @job.inscriptions.where(status: [1]).count
+      @finalists_count = @job.inscriptions.where(status: [2]).count
+      @inscriptions = @job.inscriptions.order(status: :desc)
+  
+      respond_to do |format|
+        format.html
+        format.xlsx
+      end
+    end 
 
     def edit; end
 

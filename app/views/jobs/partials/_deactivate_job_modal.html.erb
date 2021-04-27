@@ -20,7 +20,7 @@
       <p class="mb1"> <%= icon('fas', 'user mr1') %> <%= @job.inscriptions.count %> inscritos </p>
     </section>
     <footer class="modal-card-foot justify-center">
-    <%= simple_form_for([:companies, job], html: { multipart: true }) do |f| %>
+    <%= simple_form_for([model, job], html: { multipart: true }) do |f| %>
       <%= f.hidden_field :open, value: false %>
       <%= button_tag(type: 'submit', class: "button is-danger") do %>
         <%= icon('fas', 'calendar-times mr2') %> <%= t('jobs.close') %>

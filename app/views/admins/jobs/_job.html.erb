@@ -9,7 +9,7 @@
     <%= job.job_author %>
   </td>
   <td>
-    <%= link_to job.title, job %>
+    <%= link_to job.title, admins_job_path(job.id) %>
   </td>
   <td>
     <%= job.skills.map(&:name).to_sentence %>

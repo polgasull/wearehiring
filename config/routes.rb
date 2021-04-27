@@ -3,8 +3,8 @@ require 'sidekiq/web'
 Rails.application.routes.draw do
 
   namespace :admins do
-    resources :jobs, except: [:show] do
-      resources :inscriptions
+    resources :jobs do
+      resources :inscriptions, only: [:index, :create, :update, :show]
     end
     resources :users, only: [:index, :update, :show] do
       member do
@@ -20,10 +20,7 @@ Rails.application.routes.draw do
 
   namespace :companies do
     resources :jobs do
-      resources :inscriptions, only: [:index, :update, :show]
-      collection do
-        post :create_inscription
-      end
+      resources :inscriptions, only: [:index, :create, :update, :show]
     end
   end
 

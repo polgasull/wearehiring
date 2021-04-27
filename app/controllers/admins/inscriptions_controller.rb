@@ -2,7 +2,10 @@
 
 module Admins
   class InscriptionsController < Admins::AdminsController
-    before_action :set_job, only: [:index, :update, :show]
+    include InscriptionsHelper
+
+    before_action :set_job
+    before_action :set_candidate, only: [:create]
 
     def index
       return redirect_to_response(t('not_found'), root_path, false) unless @job
@@ -19,11 +22,22 @@ module Admins
       end
     end
 
+    def create
+      assign_inscription_to_job(@job, @candidate, admins_job_path(@job.id))
+    end
+
     def update
       @inscription = @job.inscriptions.find(params[:id])
-      @inscription.update(inscription_params) ? 
-        redirect_back_response(t('users.messages.user_updated')) : 
-        redirect_back_response(t('users.messages.user_not_updated'), false)
+
+      respond_to do |format|
+        if @inscription.update(inscription_params)
+          format.html { redirect_to_responset(t('users.messages.user_not_updated'), admins_job_path(@job)) }
+          format.json { respond_with_bip(@inscription) }
+        else
+          format.html { redirect_to_response(t('users.messages.user_not_updated'), admins_job_path(@job), false)  }
+          format.json { respond_with_bip(@inscription) }
+        end
+      end
     end
 
     def show
@@ -33,6 +47,10 @@ module Admins
     end
 
     private
+
+    def set_candidate
+      @candidate = User.where(user_type: 1).find_by_id(params[:user_id])
+    end
 
     def set_job
       @job = Job.find_by_id(params[:job_id])
