@@ -538,7 +538,8 @@ en:
       level_deleted: "Level was successfully deleted"
       level_not_deleted: "Level was not able to be deleted"
   skills:
-    title: "Hard & Soft Skills"
+    title: "Hard & Soft Skills (max 6)"
+    candidate_title: "Indícanos tus Hard & Soft Skills (max 6)"
     name: "Nombre"
     internal_name: "Identificador"
     job_subtitle: "Search and add skills. For example: Python, SEO, Agile, Scrum, etc."

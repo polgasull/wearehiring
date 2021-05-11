@@ -16,6 +16,10 @@ module Users
         joins(:user_type).
         where('user_types.id = ?', user_type)
       }
+
+      scope :without_skills, -> () {
+        left_outer_joins(:user_skills).where(user_skills: {user_id: nil})
+      }
     end
   end
 end

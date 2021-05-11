@@ -11,6 +11,7 @@ module Admins
       @candidates_count = User.where(user_type: 1).count
       @ambassadors_count = User.where(user_type: 4).count
       @candidates_not_visible = User.where(visible: false).count
+      @candidates_without_skills = User.where(user_type: 1).without_skills.count
 
       respond_to do |format|
         format.html
