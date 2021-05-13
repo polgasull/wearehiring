@@ -15,7 +15,7 @@
   <tr>
     <% if @user.picture_url.file.nil? %>
       <td style="text-align:center">
-        <%= image_tag(asset_path('user_male_avatar.svg'), size: 50) %>
+        <%= image_tag(attachments['user_circle.png'].url, width: 50, height: 50) %>
       </td>
     <% else %>
       <td style="text-align:center">
