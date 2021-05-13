@@ -13,9 +13,15 @@
     <td width="111" style="font-size:1px;line-height:30px;">&nbsp;</td>
   </tr>
   <tr>
-    <td style="text-align:center">
-      <%= image_tag(@user.picture_url_url(:thumb), size: 50) %>
-    </td>
+    <% if @user.picture_url.file.nil? %>
+      <td style="text-align:center">
+        <%= image_tag(asset_path('user_male_avatar.svg'), size: 50) %>
+      </td>
+    <% else %>
+      <td style="text-align:center">
+        <%= image_tag(@user.picture_url_url(:thumb), size: 50) %>
+      </td>
+    <% end %>
   </tr>
   <tr>
     <td style="text-align:center">
