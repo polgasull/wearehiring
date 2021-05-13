@@ -71,7 +71,7 @@
 				</div>
 				<div class="navbar-brand is-vertical-center has-text-weight-bold ml3 f2">|</div>
 				<div class="navbar-brand is-vertical-center">
-					<%= link_to t('my_inscriptions'), 
+					<%= link_to (t('my_inscriptions') + " (#{current_user.inscriptions.count})"), 
 							candidates_inscriptions_path(current_user), 
 							class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(candidates_inscriptions_path(current_user))}" %>
 				</div>

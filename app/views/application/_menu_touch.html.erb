@@ -42,7 +42,8 @@
 					class: "navbar-item text-uppercase  #{ 'active' if current_page?(jobs_path)}" %>
       </div>
       <div class="navbar-brand">
-        <%= link_to t('my_inscriptions'), candidates_inscriptions_path(current_user), 
+        <%= link_to (t('my_inscriptions') + " (#{current_user.inscriptions.count})"), 
+          candidates_inscriptions_path(current_user), 
           class: "navbar-item text-uppercase #{ 'active' if current_page?(candidates_inscriptions_path(current_user)) }" %>
       </div>
       <div class="navbar-brand">
