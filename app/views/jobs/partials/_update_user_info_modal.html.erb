@@ -103,11 +103,9 @@
 
     $(document).on("input", ".input", function () {
       if( !$(this).val() ) {
-        console.log('is-danger')
         $(this).removeClass('is-success');
         $(this).addClass('is-danger');
       } else {
-        console.log('is-success')
         $(this).removeClass('is-danger');
         $(this).addClass('is-success');
       }

@@ -148,8 +148,6 @@ es:
       prompt: Por favor seleccione
       select: Seleccionar
     submit:
-      job: 
-        create: "Pagar y publicar"
       create: Crear %{model}
       submit: Guardar %{model}
       update: Actualizar %{model}
@@ -314,13 +312,11 @@ es:
   about_us_title: "¿Qué es We Are Hiring?"
   about_us_subtitle: "El portal de empleo donde las empresas encuentran el mejor talento digital"
   feature_1: "Solo empleo digital"
-  feature_1_text: "Encuentra todas las ofertas de empleo digital dentro del mundo startup en España: Marketing Digital, Web Development, Product Management, UX/UI Designers, Growth Hacking... Only Digital Jobs"
-  feature_2: "¡Rápido regístro!"
-  feature_2_text: "Cuando buscas trabajo en portales de empleo te obligan a registrarte en formularios que no se acaban nunca… Pues bien: aquí te registras con un solo clic cuando aplicas al Job que más te gusta: ¡TA-CHÁN!"
-  feature_3: "El mejor talento"
-  feature_3_text_1: "Para startups que buscan developers, cracks en marketing digital, genios designers, etc"
-  feature_3_text_2: "Para compañías que buscan Freelancers que aporten experiencia"
-  feature_3_text_3: "Para empresas que necesitan profesionales a tiempo parcial o en remoto"
+  feature_1_text: "Encuentra todas las ofertas de empleo digital dentro del mundo tecnológico en España: Software Engineering, UX/UI Design, Data, Product Management, Marketing Digital, Growth Hacking, etc..."
+  feature_2: "We Match"
+  feature_2_text: "Nuestro propio sistema de matching permite a la empresas encontrar talento que encaje con sus requisitos y empezar los procesos de selección al instante."
+  feature_3: "Transparencia y rapidez"
+  feature_3_text: "Sin grandes formularios de registro garantizamos la información mínima para una buena comunicación entre candidato y empresa."
   search: "Buscar"
   search_placeholder: "Posición, ciudad, empresa..."
   category: "Categoría"

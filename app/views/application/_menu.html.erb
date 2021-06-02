@@ -115,7 +115,7 @@
 		<% if current_user.is_company? || current_user.is_ambassador? %>
 			<div class="navbar-end">
 				<div class="navbar-brand is-vertical-center">
-					<%= link_to t(post_job_toggle_title), 
+					<%= link_to t('jobs.post_job_free'), 
 						new_companies_job_path, 
 						class: "button text-uppercase f6 primary has-text-weight-bold" %>
 				</div>
@@ -161,7 +161,7 @@
 						class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(jobs_path)}" %>
 			</div>
 			<div class="navbar-brand">
-				<%= link_to t(post_job_toggle_title), 
+				<%= link_to t('jobs.post_job_free'), 
 					new_user_session_path(:company => "true"), 
 					class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(new_companies_job_path)}" %>
 			</div>

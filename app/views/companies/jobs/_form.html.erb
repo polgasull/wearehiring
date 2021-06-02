@@ -245,27 +245,28 @@
 
   <hr>
 
-  <% if first_job_publication(current_user) %>
-    <%= render 'first_publication_message' %>
-  <% else %>
-    <%= render 'payment' %>
-  <% end %>
+  <div class="is-light has-text-centered mt5">
+    <p class="f3">
+      <%= icon('fas', 'rocket') %>
+      <strong class="has-text-success"> GRATIS </strong>
+    </p>
+    <p class="has-text-centered">
+      Puedes publicar las veces que quieras.
+    </p>
+    <p class="has-text-centered">
+      ¡Aprovéchalo que nunca se sabe!
+    </p>
+    <span class="block mb3"></span>
+  </div>
   
-  <% if edit_page %>
-    <div class="has-text-centered submit-box">
-      <%= button_tag(type: 'submit', class: "button is-rounded is-large primary mt3") do %>
-        <%= t('jobs.edit_job') %>
-      <% end %>
-      <%= icon('fas', 'circle-notch fa-spin is-hidden f1', id: 'submitSpinnerIcon') %>
-    </div>
-  <% else %>
-    <div class="has-text-centered submit-box">
-      <%= button_tag(type: 'submit', class: "button is-rounded is-large primary mt3", id: "postJobSubmit") do %>
-        <%= first_job_publication(current_user) ? 'Publicar Gratis' : 'Pagar y publicar' %>
-      <% end %>
-      <%= icon('fas', 'circle-notch fa-spin is-hidden f1', id: 'submitSpinnerIcon') %>
-    </div>
-  <% end %>
+  <div class="has-text-centered submit-box">
+    <% button_name = edit_page ? t('jobs.edit_job') : 'Publicar Gratis' %>
+    <% loading_text = edit_page ? 'Editando...' : 'Publicando...' %>
+    <%= f.submit button_name, 
+      class: "button is-rounded is-large primary mt3", 
+      id: "submitJobButton", 
+      data: { disable_with: loading_text } %>
+  </div>
 
 <% end %>
 

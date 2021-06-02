@@ -2,8 +2,6 @@
 
 module Companies
   class JobsController < Companies::CompaniesController
-    include PaymentHelper
-
     before_action :set_job, only: [:show, :edit, :update]
 
     AMBASSADOR_PRICE = 5586
@@ -35,11 +33,6 @@ module Companies
       if params[:job][:avatar].nil? && job_last
         @job.avatar = job_last.avatar
       end
-      
-      if !current_user.jobs.first.id.blank?
-        price = current_user.is_ambassador? ? AMBASSADOR_PRICE : COMPANY_PRICE
-        stripe_process(price)
-      end
   
       if @job.save
         TwitterService.new.send_tweet @job
@@ -48,10 +41,6 @@ module Companies
       else 
         redirect_back_response(t('jobs.messages.job_not_created'), false)
       end
-  
-      rescue Stripe::CardError => e
-        flash.alert = e.message
-        render action: :new
     end
 
     def show
