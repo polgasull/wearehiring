@@ -18,41 +18,38 @@
       </div>
     </div>
   </div>
-  <div class="container pt4">
-    <%= render partial: "jobs/shared/job_info", locals: { job: @job } %>
-  </div>
-</section>
-
-<section class="section">
   <div class="container">
     <div class="info-tiles">
       <div class="tile has-text-centered mb4">
         <div class="tile is-parent">
           <article class="tile is-child box">
             <p class="title"> <%= @inscriptions_count %> </p>
-            <p class="subtitle"><%= icon('fas', 'check-circle') %> <%= t("inscriptions.inscribeds") %> </p>
+            <p class="subtitle"><%= icon('fas', 'check-circle has-text-success') %> <%= t("inscriptions.inscribeds") %> </p>
           </article>
         </div>
         <div class="tile is-parent">
           <article class="tile is-child box">
             <p class="title"><%= @discardeds_count %></p>
-            <p class="subtitle"> <%= icon('fas', 'heart-broken') %> <%= t("inscriptions.discardeds") %> </p>
+            <p class="subtitle"> <%= icon('fas', 'heart-broken has-text-danger') %> <%= t("inscriptions.discardeds") %> </p>
           </article>
         </div>
         <div class="tile is-parent">
           <article class="tile is-child box">
             <p class="title"> <%= @in_process_count %> </p>
-            <p class="subtitle"> <%= icon('fas', 'user-clock') %> <%= t("inscriptions.in_process") %> </p>
+            <p class="subtitle"> <%= icon('fas', 'user-clock has-text-info') %> <%= t("inscriptions.in_process") %> </p>
           </article>
         </div>
         <div class="tile is-parent">
           <article class="tile is-child box">
             <p class="title"> <%= @finalists_count %> </p>
-            <p class="subtitle"><%= icon('fas', 'trophy') %> <%= t("inscriptions.finalists") %> </p>
+            <p class="subtitle"><%= icon('fas', 'trophy has-text-warning') %> <%= t("inscriptions.finalists") %> </p>
           </article>
         </div>
       </div>
     </div>
+  </div>
+  <div class="container pt4">
+    <%= render partial: "jobs/shared/job_info", locals: { job: @job } %>
   </div>
 </section>
 
@@ -104,7 +101,7 @@
   <div class="container">
     <div class="columns">
       <div class="column">
-        <h3 class="title"> Candidatos inscritos <%= icon('fas', 'check-circle has-text-success') %> </h1>
+        <h3 class="title"> <%= @inscriptions_count %> Candidatos inscritos <%= icon('fas', 'check-circle has-text-success') %> </h1>
       </div>
       <div class="column mb4 has-text-right"> 
         <% if @inscriptions.any? %>
@@ -113,6 +110,12 @@
           <% end %>
         <% end %>
       </div>
+    </div>
+    <div class="mb1">
+      <span class="tag is-success"> <%= icon('fas', 'check-circle mr1') %> <%= @inscriptions_count %> </span>
+      <span class="tag is-danger"> <%= icon('fas', 'heart-broken mr1') %> <%= @discardeds_count %> </span>
+      <span class="tag is-info"> <%= icon('fas', 'user-clock mr1') %> <%= @in_process_count %> </span>
+      <span class="tag is-warning"> <%= icon('fas', 'trophy mr1') %> <%= @finalists_count %> </span>
     </div>
     <div class="table-container">
       <table class="table job-candidates-table is-bordered is-striped is-fullwidth is-size-7">
