@@ -60,6 +60,7 @@
   <div class="container">
     <h3 class="title"> We Match <span class="tag is-info"> ¡Nuevo! </span> </h3>
     <h4 class="subtitle is-6"> Estos candidatos encajan con la oferta de empleo que has publicado. Añádelos a tu proceso de selección y empieza con las entrevistas ¡Ahora!. </h4>
+    <%= @matching_candidates.count %>
     <% if @job.open? %>
       <% if @matching_candidates.any? %>
         <div id="candidates-carousel" class="carousel">
@@ -185,32 +186,11 @@
         slidesToScroll: 1,
         slidesToShow: 4,
         pagination: false,
-        infinite: true,
         breakpoints: [
           { changePoint: 768, slidesToShow: 1, slidesToScroll: 1 },
           { changePoint: 992, slidesToShow: 3, slidesToScroll: 1 }
         ]
       });
-      
-      // Initialize all div with carousel class
-      var carousels = bulmaCarousel.attach('.carousel');
-
-      // Loop on each carousel initialized
-      for(var i = 0; i < carousels.length; i++) {
-        // Add listener to  event
-        carousels[i].on('before:show', state => {
-          console.log(state);
-        });
-      }
-
-      // Access to bulmaCarousel instance of an element
-      var element = document.querySelector('#my-element');
-      if (element && element.bulmaCarousel) {
-        // bulmaCarousel instance is available as element.bulmaCarousel
-        element.bulmaCarousel.on('before-show', function(state) {
-          console.log(state);
-        });
-      }
     });
 
   </script>

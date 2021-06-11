@@ -14,7 +14,7 @@
         </div>
       </div>
       <div class="content">
-        <% user.skills.each do |skill| %>
+        <% user.skills.take(6).each do |skill| %>
           <span class='tag is-success is-normal'> <%= skill.name %> </span>
         <% end %>  
       </div>
