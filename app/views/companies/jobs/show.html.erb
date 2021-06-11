@@ -58,9 +58,15 @@
 
 <section class="section">
   <div class="container">
-    <span class="tag is-success is-light mb2">
-      Activo <%= icon('fas', 'clock mr1 ml1') %> <%= job_expired(@job) %> días
-    </span>
+    <% if @job.open? %>
+      <span class="tag is-success is-light mb2">
+        Activo <%= icon('fas', 'clock mr1 ml1') %> <%= job_expired(@job) %> días
+      </span>
+    <% else %>
+      <span class="tag is-danger is-light mb2">
+        <%= icon('fas', 'hourglass-end mr1') %> Job Finalizado
+      </span>
+    <% end %>
     <h3 class="title">
       We Match <span class="tag is-info"> ¡Nuevo! </span>
     </h3>
@@ -68,13 +74,11 @@
       Estos candidatos encajan con la oferta de empleo que has publicado.
       Añádelos a tu proceso de selección y empieza con las entrevistas ¡Ahora!.
     </p>
-    <% if @matching_candidates.any? %>
-      <p class="mb3 subtitle is-5 has-text-weight-bold">
-        <%= icon('fas', 'gem has-text-info') %> ¡Genial! <%= @matching_candidates.count %> candidatos encontrados
-      </p>
-    <% end %>
     <% if @job.open? %>
       <% if @matching_candidates.any? %>
+        <p class="mb3 subtitle is-5 has-text-weight-bold">
+          <%= icon('fas', 'gem has-text-info') %> ¡Genial! <%= @matching_candidates.count %> candidatos encontrados
+        </p>
         <div id="candidates-carousel" class="carousel">
           <% @matching_candidates.each do |user| %>
               <%= render partial: "/jobs/shared/candidate", locals: { user: user, job: @job, path: companies_job_inscriptions_path(job_id: @job.id, user_id: user.id) } %>
@@ -90,7 +94,7 @@
       <% end %>
     <% else %>
       <div class="has-text-centered mt4">
-        <p> Job Finalizado </p>
+        <span class="tag is-danger is-light"> <%= icon('fas', 'hourglass-end mr1') %> Job Finalizado. No es posible añadir más candidatos. </span>
       </div>
     <% end %>  
   </div>
