@@ -27,7 +27,7 @@ module Companies
 
       respond_to do |format|
         if @inscription.update(inscription_params)
-          ModelMailer.update_inscription_status(current_user, @inscription, @job).deliver_later if Rails.env.staging?
+          ModelMailer.update_inscription_status(current_user, @inscription, @job).deliver_later if Rails.env.production?
           format.html { redirect_to_responset(t('users.messages.user_not_updated'), companies_job_path(@job)) }
           format.json { respond_with_bip(@inscription) }
         else
