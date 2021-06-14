@@ -31,7 +31,8 @@ module Admins
 
       respond_to do |format|
         if @inscription.update(inscription_params)
-          format.html { redirect_to_responset(t('users.messages.user_not_updated'), admins_job_path(@job)) }
+          ModelMailer.update_inscription_status(@inscription, @job).deliver_later if Rails.env.production?
+          format.html { redirect_to_response(t('users.messages.user_not_updated'), admins_job_path(@job)) }
           format.json { respond_with_bip(@inscription) }
         else
           format.html { redirect_to_response(t('users.messages.user_not_updated'), admins_job_path(@job), false)  }
