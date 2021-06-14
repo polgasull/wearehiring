@@ -67,7 +67,7 @@ class ModelMailer < ApplicationMailer
     attachments.inline["twitter.png"] = File.read("#{Rails.root}/app/assets/images/twitter.png")
     attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
     mail( 
-      :from => @job.user.email
+      :from => @job.user.email,
       :to => @inscription.user.email,
       :bcc => 'pol@wearehiring.io',
       :subject => "Tu estado en el proceso de #{@job.title} ha cambiado a #{@inscription.status}"
