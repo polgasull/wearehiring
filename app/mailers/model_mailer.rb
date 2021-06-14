@@ -59,8 +59,7 @@ class ModelMailer < ApplicationMailer
     )
   end
 
-  def update_inscription_status(user, inscription, job)
-    @user = user
+  def update_inscription_status(inscription, job)
     @inscription = inscription
     @job = job
     @status = I18n.t("inscriptions.#{@inscription.status}")
@@ -69,7 +68,8 @@ class ModelMailer < ApplicationMailer
     attachments.inline["twitter.png"] = File.read("#{Rails.root}/app/assets/images/twitter.png")
     attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
     mail( 
-      :to => @user.email,
+      :from => @job.user.email
+      :to => @inscription.user.email,
       :bcc => 'pol@wearehiring.io',
       :subject => "Tu estado en el proceso de #{@job.title} ha cambiado a #{@inscription.status}"
     )
