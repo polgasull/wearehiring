@@ -62,7 +62,6 @@ class ModelMailer < ApplicationMailer
   def update_inscription_status(inscription, job)
     @inscription = inscription
     @job = job
-    @status = I18n.t("inscriptions.#{@inscription.status}")
 
     attachments.inline["logo_black.png"] = File.read("#{Rails.root}/app/assets/images/logo_black.png")
     attachments.inline["twitter.png"] = File.read("#{Rails.root}/app/assets/images/twitter.png")
