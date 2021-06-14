@@ -1,73 +1,58 @@
 <table>
   <tr>
     <td style="text-align:center">             
-      <h2> <strong> ¡Felicidades! has publicado un nuevo Job en We Are Hiring </strong> </h2>
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      <%= t('jobs.reference') %>: <%= @job.reference %>    
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      <h3> <strong> <%= @job.title %> </strong> </h3>
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      <%= @job.job_author %>    
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      <%= @job.location %>    
+      <h2> <strong> Hola, <%= @inscription.user.name %> </strong> </h2>
     </td>
   </tr>
   <tr>
     <td width="111" style="font-size:1px;line-height:30px;">&nbsp;</td>
   </tr>
+  <% if @inscription.status === "discarded" %>
   <tr>
     <td style="text-align:center">
-      Tu oferta de empleo ya está visible en We Are Hiring
-    </td>
-  </tr>
-  <tr>
-    <td width="111" style="font-size:1px;line-height:20px;">&nbsp;</td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      Estará activa <strong> durante 60 días </strong>
-    </td>
-  </tr>
-  <tr>
-    <td width="111" style="font-size:1px;line-height:20px;">&nbsp;</td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      Recibirás un email cada vez que haya un nuevo candidato para tu Job. 
+      <strong> ¡No dejes de intentarlo! </strong>
+      <br><br>
     </td>
   </tr>
   <tr>
     <td style="text-align:center">
-      Gestiona cada candidato indicándoles si están: 
+      Lo sentimos, has sido descartado para el proceso de <%= @job.title %>
+    </td>
+  </tr>
+  <% end %>
+  <% if @inscription.status === "in_process" %>
+  <tr>
+    <td style="text-align:center">
+      <strong> ¡Has avanzado! </strong>
+      <br><br>
     </td>
   </tr>
   <tr>
-    <td width="111" style="font-size:1px;line-height:50px;">&nbsp;</td>
+    <td style="text-align:center">
+      Estás dentro del proceso de selección para el puesto de <%= @job.title %>
+    </td>
   </tr>
+  <% end %>
+  <% if @inscription.status === "finalist" %>
   <tr>
     <td style="text-align:center">
-      Descartados - Finalistas - En proceso
+      <strong> ¡Estás a un sólo paso! </strong>
+      <br><br>
     </td>
   </tr>
   <tr>
-    <td width="111" style="font-size:1px;line-height:50px;">&nbsp;</td>
+    <td style="text-align:center">
+      Eres finalista para el puesto de <%= @job.title %>
+    </td>
+  </tr>
+  <% end %>
+  <tr>
+    <td width="111" style="font-size:1px;line-height:60px;">&nbsp;</td>
   </tr>
   <tr>
     <td style="text-align:center">
-      <%= link_to '¡Ver mi Job!', 
-          @job, 
+      <%= link_to 'Entrar en We Are Hiring', 
+          root_url, 
           style: 'background-color: #cc0022;
                   border-color: #dbdbdb;
                   border-width: 1px;

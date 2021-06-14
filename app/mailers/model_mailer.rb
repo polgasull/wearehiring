@@ -28,7 +28,7 @@ class ModelMailer < ApplicationMailer
     attachments.inline["twitter.png"] = File.read("#{Rails.root}/app/assets/images/twitter.png")
     attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
     mail( 
-      :to => job.user.email,
+      :to => @job.user.email,
       :subject => "✅ Nuevo candidato para #{@job.title}" 
     )  
   end
@@ -41,7 +41,7 @@ class ModelMailer < ApplicationMailer
     attachments.inline["twitter.png"] = File.read("#{Rails.root}/app/assets/images/twitter.png")
     attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
     mail( 
-      :to => user.email,
+      :to => @user.email,
       :subject => "Has aplicado para #{@job.title} en #{job.remote_ok? ? '(Remoto)' : job.location}"
     )  
   end
@@ -55,7 +55,23 @@ class ModelMailer < ApplicationMailer
     attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
     mail( 
       :to => @job.external_mail,
-      :subject => "Tu oferta #{@job.title} ha sido publicada! 🚀"
+      :subject => "¡Tu oferta #{@job.title} ha sido publicada! 🚀"
+    )
+  end
+
+  def update_inscription_status(user, inscription, job)
+    @user = user
+    @inscription = inscription
+    @job = job
+    @status = I18n.t("inscriptions.#{@inscription.status}")
+
+    attachments.inline["logo_black.png"] = File.read("#{Rails.root}/app/assets/images/logo_black.png")
+    attachments.inline["twitter.png"] = File.read("#{Rails.root}/app/assets/images/twitter.png")
+    attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
+    mail( 
+      :to => @user.email,
+      :bcc => 'pol@wearehiring.io',
+      :subject => "Tu estado en el proceso de #{@job.title} ha cambiado a #{@inscription.status}"
     )
   end
 end

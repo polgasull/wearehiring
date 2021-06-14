@@ -41,7 +41,7 @@ module Admins
     
       if @job.save
         TwitterService.new.send_tweet @job
-        ModelMailer.new_job_scrapping(current_user, @job).deliver if @job.external_mail.present?
+        ModelMailer.new_job_scrapping(current_user, @job).deliver_later if @job.external_mail.present?
         redirect_to_response(t('jobs.messages.job_created'), @job) 
       else 
         redirect_back_response(t('jobs.messages.job_not_created'), false)
