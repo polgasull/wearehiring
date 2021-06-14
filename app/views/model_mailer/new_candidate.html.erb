@@ -1,132 +1,97 @@
-<table>
+<span class="preheader"> Tu Job <%= @job.title %> está despertando mucho interés </span>
+<table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
   <tr>
-    <td style="text-align:center">             
-      <h2> <strong> Tu Job está despertando mucho interés </strong> </h2>
+    <td>&nbsp;</td>
+    <td class="container">
+      <div class="content">
+
+        <!-- START CENTERED WHITE CONTAINER -->
+        <table role="presentation" class="main">
+
+          <!-- START MAIN CONTENT AREA -->
+          <tr>
+            <td class="wrapper">
+              <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td>
+                    <h2> Tu Job <%= @job.title %> está despertando mucho interés </h2>
+                    <p> <strong> <%= @user.name %> acaba de aplicar a tu oferta. </strong> </p>
+                    <% if @user.picture_url.file.nil? %>
+                      <p>
+                        <%= image_tag(attachments['user_circle.png'].url, width: 50, height: 50) %>
+                      </p>
+                    <% else %>
+                      <p>
+                        <%= image_tag(@user.picture_url_url(:thumb), size: 50) %>
+                      </p>
+                    <% end %>
+                    <p> <%= @user.name %> </p>
+                    <p> <%= @user.email %> </p>
+                    <p> <%= @user.phone %> </p>
+                    <p> <%= link_to 'Ver perfil de Linkedin', @user.profile_url, target: "_blank" %></p>
+                    <hr>
+                    <p> Gestiona cada candidato indicándoles si están: </p>
+                    <ul>
+                      <li>Descartados</li>
+                      <li>Finalistas</li>
+                      <li>En proceso</li>
+                    </ul>
+                    <p> Recibirán un email avisándoles de la fase en la que se encuentran. </p>
+                    <hr>
+                    <p> <strong> ¿Quieres más candidatos de forma instantánea? Usa WE MATCH </strong> </p>
+                    <p> En cada oferta te mostraremos candidatos de nuestra base de datos que encajen con tus requisitos </p>
+                    <p> Añádelos a tu proceso de selección y empieza con las entrevistas hoy mismo </p>
+                    <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
+                      <tbody>
+                        <tr>
+                          <td align="left">
+                            <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                              <tbody>
+                                <tr>
+                                  <td> <%= link_to '¡Ver mi Job!', @job %> </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <p> ¡Te deseamos mucha suerte! </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+        <!-- END MAIN CONTENT AREA -->
+        </table>
+        <!-- END CENTERED WHITE CONTAINER -->
+
+        <!-- START FOOTER -->
+        <div class="footer">
+          <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td class="content-block">
+                <span class="apple-link">¡Síguenos en RRSS!</span>
+                <br> 
+                <a href="https://twitter.com/WeAreHiring_io" target="_blank">
+                  <%= image_tag(attachments['twitter.png'].url) %>      
+                </a>  
+                <a href="https://www.linkedin.com/company/we-are-hiring-startup" target="_blank">
+                  <%= image_tag(attachments['linkedin.png'].url) %>
+                </a>    
+              </td>
+            </tr>
+            <tr>
+              <td class="content-block">
+                <%= image_tag(attachments['logo_black.png'].url, width: 100, height: 100) %>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <!-- END FOOTER -->
+      </div>
     </td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      <%= @user.name %> acaba de aplicar a tu oferta. 
-    </td>
-  </tr>
-  <tr>
-    <td width="111" style="font-size:1px;line-height:30px;">&nbsp;</td>
-  </tr>
-  <tr>
-    <% if @user.picture_url.file.nil? %>
-      <td style="text-align:center">
-        <%= image_tag(attachments['user_circle.png'].url, width: 50, height: 50) %>
-      </td>
-    <% else %>
-      <td style="text-align:center">
-        <%= image_tag(@user.picture_url_url(:thumb), size: 50) %>
-      </td>
-    <% end %>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      <%= @user.name %>
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      <%= @user.email %>
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      <%= @user.phone %>
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      <%= link_to 'Ver perfil de Linkedin', @user.profile_url, target: "_blank" %>
-    </td>
-  </tr>
-  <tr>
-    <td width="111" style="font-size:1px;line-height:30px;">&nbsp;</td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      Puedes ver si cumple con todos los requisitos que estás buscando ahora mismo.
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      Recuerda que puedes gestionar el estado de cada candidato:
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      Finalistas 
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      En proceso  
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      Descartados
-    </td>
-  </tr>  
-  <tr>
-    <td width="111" style="font-size:1px;line-height:50px;">&nbsp;</td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      ¡Vamos!
-    </td>
-  </tr>
-  <tr>
-    <td width="111" style="font-size:1px;line-height:30px;">&nbsp;</td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      <%= link_to '¡Ver Candidatos!', 
-          companies_job_url(@job.id), 
-          target: '_blank',
-          style: 'background-color: #cc0022;
-                  border-color: #dbdbdb;
-                  border-width: 1px;
-                  color: #fff;
-                  cursor: pointer;
-                  justify-content: center;
-                  text-align: center;
-                  white-space: nowrap;
-                  border-radius: 6px;
-                  padding: 1rem 2rem;
-                  text-decoration: none;' %>
-    </td>
-  </tr>
-  <tr>
-    <td width="111" style="font-size:1px;line-height:50px;">&nbsp;</td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      ¡Síguenos en RRSS!
-    </td>
-  </tr>
-  <tr>
-    <td width="111" style="font-size:1px;line-height:20px;">&nbsp;</td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      <a href="https://twitter.com/WeAreHiring_io" target="_blank">
-        <%= image_tag(attachments['twitter.png'].url) %>      
-      </a>  
-      <a href="https://www.linkedin.com/company/we-are-hiring-startup" target="_blank">
-        <%= image_tag(attachments['linkedin.png'].url) %>
-      </a>    
-    </td>
-  </tr>
-  <tr>
-    <td width="111" style="font-size:1px;line-height:30px;">&nbsp;</td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      <%= image_tag(attachments['logo_black.png'].url, width: 100, height: 100) %>
-    </td>
+    <td>&nbsp;</td>
   </tr>
 </table>

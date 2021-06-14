@@ -1,89 +1,79 @@
-<table>
+<span class="preheader"> Tu solicitud para <%= @job.title %> se ha enviado correctamente</span>
+<table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
   <tr>
-    <td style="text-align:center">             
-      <h2> <strong> ¡Felicidades! Tu solicitud se ha enviado correctamente </strong> </h2>
+    <td>&nbsp;</td>
+    <td class="container">
+      <div class="content">
+
+        <!-- START CENTERED WHITE CONTAINER -->
+        <table role="presentation" class="main">
+
+          <!-- START MAIN CONTENT AREA -->
+          <tr>
+            <td class="wrapper">
+              <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td>
+                    <h2> <strong> Hola, <%= @user.name %>  </strong> </h2>
+                    <h3> Tu solicitud se ha enviado correctamente </h3>
+                    <p> <%= @job.title %> </p>
+                    <p> <%= @job.job_author %> </p>
+                    <p> <%= @job.location %> </p>
+                    <hr>
+                    <p> La oferta estará activa durante al menos 60 días en total. </p>
+                    <p> Recibirás un email en caso que tu estado en el proceso cambie. </p>
+                    <p> También puedes seguir el proceso en la plataforma. </p>
+                    <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
+                      <tbody>
+                        <tr>
+                          <td align="left">
+                            <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                              <tbody>
+                                <tr>
+                                  <td> <%= link_to '¡Ver más Jobs!', jobs_url %> </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <p> ¡Te deseamos mucha suerte! </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+        <!-- END MAIN CONTENT AREA -->
+        </table>
+        <!-- END CENTERED WHITE CONTAINER -->
+
+        <!-- START FOOTER -->
+        <div class="footer">
+          <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td class="content-block">
+                <span class="apple-link">¡Síguenos en RRSS!</span>
+                <br> 
+                <a href="https://twitter.com/WeAreHiring_io" target="_blank">
+                  <%= image_tag(attachments['twitter.png'].url) %>      
+                </a>  
+                <a href="https://www.linkedin.com/company/we-are-hiring-startup" target="_blank">
+                  <%= image_tag(attachments['linkedin.png'].url) %>
+                </a>    
+              </td>
+            </tr>
+            <tr>
+              <td class="content-block">
+                <%= image_tag(attachments['logo_black.png'].url, width: 100, height: 100) %>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <!-- END FOOTER -->
+      </div>
     </td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      <%= @job.title %>
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      <%= @job.job_author %>
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      <%= @job.location %>
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      <%= job_salary(@job.salary_from, @job.salary_to) %>    
-    </td>
-  </tr>
-  <tr>
-    <td width="111" style="font-size:1px;line-height:30px;">&nbsp;</td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      La oferta estará activa durante al menos 60 días en total. 
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      Mientras tanto, puedes ver otros Digital Jobs adecuados para ti: 
-    </td>
-  </tr>
-  <tr>
-    <td width="111" style="font-size:1px;line-height:30px;">&nbsp;</td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      <%= link_to '¡Ver más Jobs!', 
-          jobs_url, 
-          style: 'background-color: #cc0022;
-                  border-color: #dbdbdb;
-                  border-width: 1px;
-                  color: #fff;
-                  cursor: pointer;
-                  justify-content: center;
-                  text-align: center;
-                  white-space: nowrap;
-                  border-radius: 6px;
-                  padding: 1rem 2rem;
-                  text-decoration: none;' %>
-    </td>
-  </tr>
-  <tr>
-    <td width="111" style="font-size:1px;line-height:50px;">&nbsp;</td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      ¡Síguenos en RRSS!
-    </td>
-  </tr>
-  <tr>
-    <td width="111" style="font-size:1px;line-height:20px;">&nbsp;</td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      <a href="https://twitter.com/WeAreHiring_io" target="_blank">
-        <%= image_tag(attachments['twitter.png'].url) %>      
-      </a>  
-      <a href="https://www.linkedin.com/company/we-are-hiring-startup" target="_blank">
-        <%= image_tag(attachments['linkedin.png'].url) %>
-      </a>    
-    </td>
-  </tr>
-  <tr>
-    <td width="111" style="font-size:1px;line-height:30px;">&nbsp;</td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      <%= image_tag(attachments['logo_black.png'].url, width: 100, height: 100) %>
-    </td>
+    <td>&nbsp;</td>
   </tr>
 </table>

@@ -36,7 +36,7 @@ module Companies
   
       if @job.save
         TwitterService.new.send_tweet @job
-        ModelMailer.new_job(current_user, @job).deliver_later if Rails.env.production?
+        ModelMailer.new_job(current_user, @job).deliver_later
         redirect_to_response(t('jobs.messages.job_created'), thanks_jobs_path) 
       else 
         redirect_back_response(t('jobs.messages.job_not_created'), false)

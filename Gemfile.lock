@@ -458,6 +458,7 @@ DEPENDENCIES
   rails (~> 5.1.6, >= 5.1.6.1)
   rails-controller-testing
   rb-readline (~> 0.5.3)
+  redis
   rspec-rails (~> 3.5)
   rubyzip (= 1.0.0)
   sass-rails (~> 5.0)

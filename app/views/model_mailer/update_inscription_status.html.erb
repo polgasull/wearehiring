@@ -1,98 +1,84 @@
-<table>
+<span class="preheader"> El estado de tu inscripción para <%= @job.title %> ha cambiado </span>
+<table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
   <tr>
-    <td style="text-align:center">             
-      <h2> <strong> Hola, <%= @inscription.user.name %> </strong> </h2>
+    <td>&nbsp;</td>
+    <td class="container">
+      <div class="content">
+
+        <!-- START CENTERED WHITE CONTAINER -->
+        <table role="presentation" class="main">
+
+          <!-- START MAIN CONTENT AREA -->
+          <tr>
+            <td class="wrapper">
+              <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td>
+                    <h2> <strong> <strong> Hola, <%= @inscription.user.name %> </strong> </strong> </h2>
+                    <% if @inscription.status === "discarded" %>
+                      <h3> ¡No dejes de intentarlo! </h3>
+                      <p> Lo sentimos, has sido descartado para el proceso de <%= @job.title %> </p>
+                    <% end %>
+                    <% if @inscription.status === "in_process" %>
+                      <h3> ¡Tu perfil ha generado interés! </h3>
+                      <p> Estás dentro del proceso de selección para el puesto de <%= @job.title %> </p>
+                      <p> Pronto alguien de <%= @job.job_author %> se pondrá en contacto contigo para darte más instrucciones </p>
+                    <% end %>
+                    <% if @inscription.status === "finalist" %>
+                      <h3> ¡Estás a un sólo paso! </h3>
+                      <p> Eres finalista para el puesto de <%= @job.title %> </p>
+                      <p> Pronto alguien de <%= @job.job_author %> se pondrá en contacto contigo para darte más instrucciones </p>
+                    <% end %>
+                    <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
+                      <tbody>
+                        <tr>
+                          <td align="left">
+                            <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                              <tbody>
+                                <tr>
+                                  <td> <%= link_to 'Entrar en We Are Hiring', root_url %> </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+        <!-- END MAIN CONTENT AREA -->
+        </table>
+        <!-- END CENTERED WHITE CONTAINER -->
+
+        <!-- START FOOTER -->
+        <div class="footer">
+          <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td class="content-block">
+                <span class="apple-link">¡Síguenos en RRSS!</span>
+                <br> 
+                <a href="https://twitter.com/WeAreHiring_io" target="_blank">
+                  <%= image_tag(attachments['twitter.png'].url) %>      
+                </a>  
+                <a href="https://www.linkedin.com/company/we-are-hiring-startup" target="_blank">
+                  <%= image_tag(attachments['linkedin.png'].url) %>
+                </a>    
+              </td>
+            </tr>
+            <tr>
+              <td class="content-block">
+                <%= image_tag(attachments['logo_black.png'].url, width: 100, height: 100) %>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <!-- END FOOTER -->
+      </div>
     </td>
-  </tr>
-  <tr>
-    <td width="111" style="font-size:1px;line-height:30px;">&nbsp;</td>
-  </tr>
-  <% if @inscription.status === "discarded" %>
-  <tr>
-    <td style="text-align:center">
-      <strong> ¡No dejes de intentarlo! </strong>
-      <br><br>
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      Lo sentimos, has sido descartado para el proceso de <%= @job.title %>
-    </td>
-  </tr>
-  <% end %>
-  <% if @inscription.status === "in_process" %>
-  <tr>
-    <td style="text-align:center">
-      <strong> ¡Has avanzado! </strong>
-      <br><br>
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      Estás dentro del proceso de selección para el puesto de <%= @job.title %>
-    </td>
-  </tr>
-  <% end %>
-  <% if @inscription.status === "finalist" %>
-  <tr>
-    <td style="text-align:center">
-      <strong> ¡Estás a un sólo paso! </strong>
-      <br><br>
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      Eres finalista para el puesto de <%= @job.title %>
-    </td>
-  </tr>
-  <% end %>
-  <tr>
-    <td width="111" style="font-size:1px;line-height:60px;">&nbsp;</td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      <%= link_to 'Entrar en We Are Hiring', 
-          root_url, 
-          style: 'background-color: #cc0022;
-                  border-color: #dbdbdb;
-                  border-width: 1px;
-                  color: #fff;
-                  cursor: pointer;
-                  justify-content: center;
-                  text-align: center;
-                  white-space: nowrap;
-                  border-radius: 6px;
-                  padding: 1rem 2rem;
-                  text-decoration: none;' %>
-    </td>
-  </tr>
-  <tr>
-    <td width="111" style="font-size:1px;line-height:50px;">&nbsp;</td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      ¡Síguenos en RRSS!
-    </td>
-  </tr>
-  <tr>
-    <td width="111" style="font-size:1px;line-height:20px;">&nbsp;</td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      <a href="https://twitter.com/WeAreHiring_io" target="_blank">
-        <%= image_tag(attachments['twitter.png'].url) %>      
-      </a>  
-      <a href="https://www.linkedin.com/company/we-are-hiring-startup" target="_blank">
-        <%= image_tag(attachments['linkedin.png'].url) %>
-      </a>    
-    </td>
-  </tr>
-  <tr>
-    <td width="111" style="font-size:1px;line-height:30px;">&nbsp;</td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      <%= image_tag(attachments['logo_black.png'].url, width: 100, height: 100) %>
-    </td>
+    <td>&nbsp;</td>
   </tr>
 </table>
