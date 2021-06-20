@@ -52,6 +52,11 @@ $openheart: "\f08a";
 	background-color: $primary;
 }
 
+.switch.remote-switch[type=checkbox]:checked + label::before, 
+.switch.remote-switch[type=checkbox]:checked + label:before {
+	background-color: $normal_success;
+}
+
 .choice-collection {
 	display: inline;
 

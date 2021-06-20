@@ -22,7 +22,7 @@
         <div class="mt2"></div>
         <p> <%= job_salary(@job.salary_from, @job.salary_to) %> </p>
         <div class="mt2"></div>
-        <p> <%= icon('fas', 'globe mr1') %> <%= @job.category.name %> </p>
+        <p> <%= icon('fas', 'puzzle-piece mr1') %> <%= @job.category.name %> </p>
         <p> <%= icon('fas', 'level-up-alt mr1') %> <%= @job.level.name %> </p>             
         <p> <%= icon('far', 'clock mr2') %> <%= @job.job_type.name %> <p>
         <% if @job.remote_ok? %>

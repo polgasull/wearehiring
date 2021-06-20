@@ -559,3 +559,5 @@ en:
   go_back_to_job: "Go back to Job"
   successfully_updated: "Successfully updated"
   job_offer_h1: "Job offer"
+  show_remote_jobs_only: "Show Remote Jobs only"
+  searching_by: "Searching by"

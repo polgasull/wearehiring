@@ -9,7 +9,7 @@
         <p class="has-text-warning"> Candidatos pendientes de rellenar skills: <%= @candidates_without_skills %> </p>
         <p class="has-text-danger"> Candidatos que NO quieren aparecer como We Match: <%= @candidates_not_visible %> </p>
         <%= form_for admins_users_path, method: :get, html: {class: "mt3"} do |f| %>
-          <div class="columns is-search is-vertical-center">
+          <div class="columns is-vertical-center">
             <div class="column">
               <input 
                 type="text" 

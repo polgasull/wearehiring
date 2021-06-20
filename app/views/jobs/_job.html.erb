@@ -28,7 +28,7 @@
             <strong> <%= job.title %> </strong>
           </div>
           <div class="pv1 pl2 pr2 mt2 bg-light">
-            <%= icon('fas', 'globe mr1') %> <%= job.category.name %>
+            <%= icon('fas', 'puzzle-piece mr1') %> <%= job.category.name %>
           </div>
           <div class="pv1 pl2 pr2 mt2 bg-light">
             <%= icon('fas', 'coins mr1') %> 
@@ -37,7 +37,7 @@
         </div>
         <div class="column">
           <div class="pv1 pl2 pr2 bg-light is-vertical-center">
-            <img src="<%=asset_path('level.svg')%>" width="20" height="20", class="mr2"> <%= job.level.name %>
+            <%= icon('fas', 'graduation-cap mr1') %> <%= job.level.name %>
           </div>           
           <div class="pv1 pl2 pr2 mt2 bg-light">
             <%= icon('far', 'clock mr2') %> <%= job.job_type.name %>

@@ -1,42 +1,64 @@
 <%= form_for jobs_path, method: :get do |f| %>
-  <div class="columns is-search is-vertical-center">
-    <div class="column is-4-desktop">
-     <input 
-      type="text" 
-      class="input" 
-      placeholder="<%=t('search_placeholder')%>" 
-      name="search_for" 
-      value="<%=params[:search_for] ? params[:search_for] : ''%>">
-    </div>
-    <div class="column is-hidden-touch">
-      <div class="select">
-        <%= select_tag :by_category, 
-          options_from_collection_for_select(Category.all, :id, :name, params[:by_category].to_i), 
-          :include_blank => t('select.category') %>
+  <div class="columns is-vertical-center">
+    <div class="column is-3-desktop is-8-mobile">
+      <div class="control has-icons-left">
+        <input 
+          type="text" 
+          class="input" 
+          placeholder="<%=t('search_placeholder')%>" 
+          name="search_for" 
+          value="<%=params[:search_for] ? params[:search_for] : ''%>">
+        <span class="icon is-small is-left">
+          <%= icon('fas', 'search') %>
+        </span>
       </div>
     </div>
     <div class="column is-hidden-touch">
-      <div class="select">
-        <%= select_tag :by_job_type, 
-          options_from_collection_for_select(JobType.all, :id, :name, params[:by_job_type].to_i), 
-          :include_blank => t('select.job_type') %>
+      <div class="control has-icons-left">
+        <div class="select">
+          <%= select_tag :by_category, 
+            options_from_collection_for_select(Category.all, :id, :name, params[:by_category].to_i), 
+            :include_blank => t('select.category') %>
+        </div>
+        <span class="icon is-left">
+          <%= icon('fas', 'puzzle-piece') %>
+        </span>
       </div>
     </div>
     <div class="column is-hidden-touch">
-      <div class="select">
-        <%= select_tag :by_level, 
-          options_from_collection_for_select(Level.all, :id, :name, params[:by_level].to_i), 
-          :include_blank => t('select.level') %>
-      </div>
+      <div class="control has-icons-left">
+        <div class="select">
+          <%= select_tag :by_job_type, 
+            options_from_collection_for_select(JobType.all, :id, :name, params[:by_job_type].to_i), 
+            :include_blank => t('select.job_type') %>
+        </div>
+        <span class="icon is-left">
+          <%= icon('fas', 'clock') %>
+        </span>
+      </div>      
     </div>
-    <div class="column is-hidden-touch is-hidden-desktop-only">
-      <%= label_tag do %>
-        <%= check_box_tag :is_remote, true, params[:is_remote] %>
-        <%= t('remote') %>
-      <% end %>
+    <div class="column is-hidden-touch">
+      <div class="control has-icons-left">
+        <div class="select">
+          <%= select_tag :by_level, 
+            options_from_collection_for_select(Level.all, :id, :name, params[:by_level].to_i), 
+            :include_blank => t('select.level') %>
+        </div>
+        <span class="icon is-left">
+          <%= icon('fas', 'graduation-cap') %>
+        </span>
+      </div>      
     </div>
     <div class="column has-text-right">
-      <%= f.submit t('search'), class: "button is-dark" %>
+      <%= f.submit t('search'), class: "button is-success is-fullwidth", data: { disable_with: "Buscando..." }%>
     </div>
+  </div>
+  <div class="columns">
+    <div class="column">
+      <%= check_box_tag :is_remote, true, params[:is_remote], { class: "switch remote-switch" } %>
+      <%= label_tag :is_remote do %>
+        <%= t('show_remote_jobs_only') %>
+      <% end %>
+    </div>  
   </div>
 <% end %>
