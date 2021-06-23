@@ -67,7 +67,7 @@
             placeholder: 'Barcelona', 
             label: false, 
             required: true,
-            hint: 'Ejemplos: "Oviedo, Asturias", "Sevilla", "Cualquiera"',
+            hint: 'Ejemplos: "Málaga", "Barcelona", "Madrid", "Remoto"',
             wrapper: false %>
           <span class="icon is-small is-left">
             <%= icon('fas', 'map-marker-alt') %>
@@ -76,11 +76,10 @@
       </div>
       <div class="field mt4">
         <div class="control">
-          <label for="job[remote_ok]">
-            <%= f.input :remote_ok, required: false, input_html: { class: "checkbox" }, wrapper: false, label: false %>
-            <%= t('work_can_be_done_remotely') %>
-          </label>
-          <%= icon('fas', 'wifi') %>
+          <%= f.check_box :remote_ok, { class: "switch remote-switch" } %>
+          <%= f.label :remote_ok do %>
+            <%= t('work_can_be_done_remotely') %> <%= icon('fas', 'wifi') %>
+          <% end %>
         </div>
       </div>
     </div>
