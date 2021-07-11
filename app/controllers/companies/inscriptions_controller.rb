@@ -28,10 +28,10 @@ module Companies
       respond_to do |format|
         if @inscription.update(inscription_params)
           ModelMailer.update_inscription_status(@inscription, @job).deliver_later
-          format.html { redirect_to_responset(t('users.messages.user_not_updated'), companies_job_path(@job)) }
+          format.html { redirect_back_response(t('users.messages.user_updated')) }
           format.json { respond_with_bip(@inscription) }
         else
-          format.html { redirect_to_response(t('users.messages.user_not_updated'), companies_job_path(@job), false)  }
+          format.html { redirect_back_response(t('users.messages.user_not_updated'), false)  }
           format.json { respond_with_bip(@inscription) }
         end
       end
