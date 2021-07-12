@@ -3,7 +3,6 @@
   <div class="container is-wrapper bg-white radius-8">
     <div class="columns">
       <div class="column pb0">
-        <p class="f7"> <%= icon('fas', 'clock') %> Publicado <%= time_ago_in_words(job.created_at) %> </p>
         <h1 class="f2 mb0"><%= "#{t('job_offer_h1')} #{job.title} en #{job.remote_ok? ? "Remoto" : job.location}" %></h1>
         <p> <%= job.job_author %> en <%= job.location %> </p>
       </div>
