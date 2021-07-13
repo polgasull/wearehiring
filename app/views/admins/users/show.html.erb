@@ -48,7 +48,26 @@
           <%= t('users.current_position') %>
         </div>
         <%= content_tag(:p, @user.current_position, class: 'box') %>
-
+        <div class='has-text-weight-bold mb2'>
+          Lugar de residencia habitual
+        </div>
+        <%= content_tag(:p, @user.location, class: 'box') %>
+        <div class='has-text-weight-bold mb2'>
+          Años de experiencia
+        </div>
+        <%= content_tag(:p, @user.experience, class: 'box') %>
+        <div class='has-text-weight-bold mb2'>
+          <%= t('users.salary_expectation') %>
+        </div>
+        <div class="columns">
+          <div class="column">
+            <%= content_tag(:p, "#{@user.salary_from} €", class: 'box') %>
+          </div>
+          <div class="column">
+            <%= content_tag(:p, "#{@user.salary_to} €", class: 'box') %>
+          </div>
+        </div>
+        
         <h2 class="title is-4 mt4"> <%= t('complementary_info') %> </h2>
         <hr>
         <%= content_tag(:p, t('users.description'), class: 'has-text-weight-bold mb2') %>
