@@ -106,7 +106,7 @@
                   <div class="has-text-centered mt3">
                     <%= image_tag(asset_path('job_logo.svg'), size: 100) %>
                     <p class="mb2"> Aún no has publicado ningún job </p>
-                    	<%= link_to t('jobs.post_job_free'), 
+                    	<%= link_to t('jobs.post_job'), 
                         new_companies_job_path, 
                         class: "button text-uppercase f6 primary has-text-weight-bold" %>
                   </div>
@@ -118,4 +118,91 @@
       </div>
     </div>
   </div>
+</section>
+
+<section class="section has-text-left-mobile">
+	<div class="container">
+		<div class="columns card-box-primary">
+			<div class="column">
+				<h2 class="title"> 
+					<span> ¿Buscas talento? </span> 
+					<br>
+					<span> Publica tu Job <del> por 99€ </del> </span> <span class="has-text-success ml2"> <%= t('free').upcase %> </span>
+					<br>
+					<span> ¡Al instante! </span> 
+				</h2>
+				<p> <%= t('company_section_body') %> </p>
+				<div class="mt4">
+					<%= link_to new_companies_job_path, class: 'button is-medium is-rounded is-success' do %>
+						<%= t('jobs.post_job') %> <%= icon('fas', 'arrow-right ml3') %>
+					<% end %>
+				</div>
+			</div>
+			<div class="column is-vertical-center justify-center">
+				<img src="<%=asset_path('undraw_people_search_wctu.svg')%>" width="400" height="400" class="is-blank" alt="Crear cuenta empresa y publicar empleo digital | Wearehiring.io">			
+			</div>
+		</div>
+	</div>
+</section>
+
+<div class="mv5 is-hidden-touch"></div>
+
+<section class="section has-text-centered has-text-left-mobile">
+	<div class="container">
+		<div class="columns">
+			<div class="column is-three-fifths is-offset-one-fifth">
+				<h2 class="title"> <%= t('about_us_title') %> </h2>
+				<p> <%= t('about_us_subtitle') %> </p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="section">
+	<div class="container">
+		<div class="columns is-variable is-8">
+			<div class="column has-text-centered">
+				<div class="home-feature-img-wrapper">
+					<img 
+						src="<%=asset_path('digital_profile.svg')%>" 
+						width="220" 
+						height="220" 
+						class="is-blank is-mobile-img" 
+						alt="Only Digital Jobs | Wearehiring.io">
+				</div>
+				<h3 class="title is-4"> <%=t('feature_1')%> </h3>
+				<div class="content has-text-left-mobile mt4">
+					<p class="has-text-left"> <%=t('feature_1_text')%> </p>
+				</div>
+			</div>
+			<div class="column has-text-centered">
+				<div class="home-feature-img-wrapper">
+					<img 
+						src="<%=asset_path('only_digital_people.svg')%>"
+						width="180"
+						height="180"
+						class="is-blank"
+						alt="Rápido regístro | Wearehiring.io">
+				</div>
+				<h3 class="title is-4"> <%=t('feature_2')%> </h3>
+				<div class="content has-text-left-mobile mt4">
+					<p class="has-text-left"> <%=t('feature_2_text')%> </p>
+				</div>
+			</div>
+			<div class="column has-text-centered">
+				<div class="home-feature-img-wrapper">
+					<img 
+						src="<%=asset_path('velocidad.svg')%>"
+						width="200"
+						height="200"
+						class="is-blank"
+						alt="Digital talent place | Wearehiring.io">			
+				</div>
+				<h3 class="title is-4"> <%=t('feature_3')%> </h3>
+				<div class="content has-text-left-mobile mt4">
+					<p class="has-text-left"> <%=t('feature_3_text')%> </p>
+				</div>			
+			</div>
+		</div>
+	</div>
 </section>
