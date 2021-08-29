@@ -174,81 +174,8 @@
 </section>
 
 <section class="section has-text-left-mobile">
-	<div class="container">
-		<div class="columns">
-			<div class="column">
-				<h2 class="title"> ¿Cómo funciona? </h2>
-			</div>
-		</div>
-	</div>
-</section>
-
-<section class="section">
   <div class="container">
-    <div class="columns">
-      <div class="column is-4 has-text-centered">
-      	<img 
-          src="<%=asset_path('candidate_confirmation.svg')%>" 
-          width="220" 
-          height="220" 
-          class="is-blank is-mobile-img" 
-          alt="Only Digital Jobs | Wearehiring.io">
-      </div>
-      <div class="column">
-				<h3 class="title is-4"> <%= t('feature_candidate_1') %> </h3>
-				<div class="content mt4">
-					<p class="has-text-left"> <%= t('feature_candidate_text_1') %> </p>
-				</div>
-      </div>
-    </div>
-    <div class="columns mt5">
-      <div class="column is-4 has-text-centered">
-        <img 
-          src="<%=asset_path('candidate_complete_profile.svg')%>"
-          width="180"
-          height="180"
-          class="is-blank"
-          alt="Rápido regístro | Wearehiring.io">      
-      </div>
-      <div class="column">
-				<h3 class="title is-4"> <%= t('feature_candidate_2') %> </h3>
-				<div class="content mt4">
-					<p class="has-text-left"> <%= t('feature_candidate_text_2') %> </p>
-				</div>			
-      </div>
-    </div>
-    <div class="columns mt5">
-      <div class="column is-4 has-text-centered">
-        <img 
-          src="<%=asset_path('candidate_we_match.svg')%>"
-          width="200"
-          height="200"
-          class="is-blank"
-          alt="Digital talent place | Wearehiring.io">			
-      </div>
-      <div class="column">
-				<h3 class="title is-4"> <%= t('feature_candidate_3') %> </h3>
-				<div class="content mt4">
-					<p class="has-text-left"> <%= t('feature_candidate_text_3') %> </p>
-				</div>
-      </div>
-    </div>
-    <div class="columns mt5">
-      <div class="column is-4 has-text-centered">
-        <img 
-          src="<%=asset_path('candidate_notification.svg')%>"
-          width="200"
-          height="200"
-          class="is-blank"
-          alt="Digital talent place | Wearehiring.io">			
-      </div>
-      <div class="column">
-				<h3 class="title is-4"> <%= t('feature_candidate_4') %> </h3>
-				<div class="content mt4">
-					<p class="has-text-left"> <%= t('feature_candidate_text_4') %> </p>
-				</div>
-      </div>
-    </div>
+    <%= render 'candidate_how_it_works' %>
   </div>
 </section>
 

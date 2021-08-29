@@ -2,82 +2,106 @@
 <section class="section">
 	<div class="container">
 		<div class="columns is-centered is-variable is-8">
-			<div class="column is-4 is-hidden-tablet">
+      <div class="column is-7 is-hidden-mobile">
+        <%= render "candidate_how_it_works" %>
+      </div>
+			<div class="column is-4">
 				<h2 class="title is-3"> <%= t('candidate_signup') %> </h2>
-        <%= render partial: "/devise/registrations/candidate_signup_form", locals: { resource: resource, resource_name: resource_name }%>
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= f.error_notification %>
+          <%= f.hidden_field :user_type_id, value: UserType.where(internal_name: 'candidate').first.id %>
+          <%= f.hidden_field :accepted_terms, value: true %>
+          <div class="field mb5">
+            <%= f.label :name, class: 'has-text-weight-bold' %>
+            <div class="control has-icons-left">
+              <%= f.input :name, 
+                  required: true, 
+                  wrapper: false,
+                  autofocus: true, 
+                  label: false,
+                  input_html: { class: "input" },
+                  placeholder: "John Smith" %>
+              <span class="icon is-small is-left">
+                <%= icon('fas', 'user') %>
+              </span>
+            </div>
+          </div>
+          <div class="field mb2">
+            <%= f.label :email, class: 'has-text-weight-bold' %>
+            <div class="control has-icons-left">
+              <%= f.input :email,
+                  required: true,
+                  wrapper: false,
+                  label: false,
+                  input_html: { class:"input" },
+                  placeholder: "johnsmith@correo.com" %>
+              <span class="icon is-small is-left">
+                <%= icon('fas', 'envelope') %>
+              </span>
+            </div>
+          </div>
+          <div class="field mb2">
+            <%= f.label :password, class: 'has-text-weight-bold' %>
+            <div class="control has-icons-left">
+              <%= f.input :password,
+                  required: true,
+                  wrapper: false,
+                  label: false,
+                  input_html: { class: "input", onkeyup: "checkPass(); return false;"  },
+                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+              <span class="icon is-small is-left">
+                <%= icon('fas', 'key') %>
+              </span>
+            </div>
+          </div>
+          <div class="field">
+            <%= f.label :password_confirmation, class: 'has-text-weight-bold' %>
+            <div class="control has-icons-left">
+              <%= f.input :password_confirmation,
+                  required: true,
+                  wrapper: false,
+                  label: false,                  
+                  input_html: { class: "input", onkeyup: "checkPass(); return false;" } %>
+              <span class="icon is-small is-left">
+                <%= icon('fas', 'key') %>
+              </span>
+            </div>
+          </div>
+          <div id="error-message"></div>
+          <div class="mb2">
+            <small class="accept-terms-text pl2">
+              Al inscribirme, estoy de acuerdo con la
+              <%= link_to 'política de privacidad', privacy_policy_path, target: '_blank' %>, 
+              <%= link_to 'aviso legal', legal_terms_path, target: '_blank' %> y 
+              <%= link_to 'política de cookies', cookies_policy_path, target: '_blank' %>
+              de Wearehiring
+            </small>
+          </div>
+          <div class="field mt3">
+            <div class="control is-grouped">
+              <%= f.button :submit,
+                  t('create_account'),
+                  class:"button primary",
+                  id: "signupSubmit",
+                  disabled: true %>
+              <%= link_to "¿Ya estás registrado?", 
+                  new_user_session_path(:candidate => "true"), 
+                  class: "button with-border" %>
+            </div>
+          </div>
+        <% end %>
+        <hr>
+        O accede con Linkedin
+        <div class="mt2">
+          <%= link_to user_linkedin_omniauth_authorize_path, class: "button linkedin" do %>
+            <%= icon('fab', 'linkedin mr2') %> <%= t('create_account') %>
+          <% end %>
+        </div>
 			</div>
       <div class="mv5 is-hidden-tablet"></div>
-      <div class="column is-7">
-        <h2 class="title is-3"> ¿Cómo funciona? </h2>
-        <div class="columns mt4">
-          <div class="column is-4 has-text-centered">
-            <img 
-              src="<%=asset_path('candidate_confirmation.svg')%>" 
-              width="220" 
-              height="220" 
-              class="is-blank is-mobile-img" 
-              alt="Only Digital Jobs | Wearehiring.io">
-          </div>
-          <div class="column">
-            <h3 class="title is-4"> <%= t('feature_candidate_1') %> </h3>
-            <div class="content mt4">
-              <p class="has-text-left"> <%= t('feature_candidate_text_1') %> </p>
-            </div>
-          </div>
-        </div>
-        <div class="columns mt5">
-          <div class="column is-4 has-text-centered">
-            <img 
-              src="<%=asset_path('candidate_complete_profile.svg')%>"
-              width="180"
-              height="180"
-              class="is-blank"
-              alt="Rápido regístro | Wearehiring.io">      
-          </div>
-          <div class="column">
-            <h3 class="title is-4"> <%= t('feature_candidate_2') %> </h3>
-            <div class="content mt4">
-              <p class="has-text-left"> <%= t('feature_candidate_text_2') %> </p>
-            </div>			
-          </div>
-        </div>
-        <div class="columns mt5">
-          <div class="column is-4 has-text-centered">
-            <img 
-              src="<%=asset_path('candidate_we_match.svg')%>"
-              width="200"
-              height="200"
-              class="is-blank"
-              alt="Digital talent place | Wearehiring.io">			
-          </div>
-          <div class="column">
-            <h3 class="title is-4"> <%= t('feature_candidate_3') %> </h3>
-            <div class="content mt4">
-              <p class="has-text-left"> <%= t('feature_candidate_text_3') %> </p>
-            </div>
-          </div>
-        </div>
-        <div class="columns mt5">
-          <div class="column is-4 has-text-centered">
-            <img 
-              src="<%=asset_path('candidate_notification.svg')%>"
-              width="200"
-              height="200"
-              class="is-blank"
-              alt="Digital talent place | Wearehiring.io">			
-          </div>
-          <div class="column">
-            <h3 class="title is-4"> <%= t('feature_candidate_4') %> </h3>
-            <div class="content mt4">
-              <p class="has-text-left"> <%= t('feature_candidate_text_4') %> </p>
-            </div>
-          </div>
-        </div>
+      <div class="column is-7 is-hidden-tablet">
+        <%= render "candidate_how_it_works" %>
       </div>
-			<div class="column is-4 is-hidden-mobile">
-				<h2 class="title is-3"> <%= t('candidate_signup') %> </h2>
-        <%= render partial: "/devise/registrations/candidate_signup_form", locals: { resource: resource, resource_name: resource_name }%>
-			</div>
 		</div>
 	</div>
 </section>
