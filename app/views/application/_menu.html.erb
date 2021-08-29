@@ -117,7 +117,7 @@
 				<div class="navbar-brand is-vertical-center">
 					<%= link_to t('jobs.post_job'), 
 						new_companies_job_path, 
-						class: "button text-uppercase f6 primary has-text-weight-bold" %>
+						class: "button text-uppercase f6 is-dark has-text-weight-bold" %>
 				</div>
 				<div class="navbar-brand is-vertical-center has-text-weight-bold ml3 f2">|</div>
 				<div class="navbar-brand is-vertical-center">
@@ -167,16 +167,18 @@
 			</div>
 			<div class="navbar-brand">
 				<div class="navbar-item">
-					<%= link_to t('candidate_access'), 
-						new_user_session_path(:candidate => "true"), 
-						class: "text-uppercase f6 button is-rounded primary" %>
+					<%= link_to new_user_session_path(:candidate => "true"), class: "text-uppercase f6 button is-rounded is-link" do %>
+						<%= icon('fas', 'user mr2') %>
+						<%= t('candidate_access') %>
+					<% end %>
 				</div>
 			</div>
 			<div class="navbar-brand">
 				<div class="navbar-item">
-					<%= link_to t('company_access'), 
-						new_user_session_path(:company => "true"), 
-						class: "text-uppercase f6 button is-rounded is-primary" %>
+					<%= link_to new_user_session_path(:company => "true"), class: "text-uppercase f6 button is-rounded is-dark" do %>
+						<%= icon('far', 'building mr2') %>
+						<%= t('company_access') %>
+					<% end %>
 				</div>
 			</div>
 		</div>

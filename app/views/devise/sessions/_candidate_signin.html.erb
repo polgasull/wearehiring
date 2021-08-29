@@ -6,7 +6,7 @@
         <%= image_tag(asset_path('undraw_winners_ao2o.svg'), alt: "Encuentra todo el Empleo Digital en We Are Hiring") %>
       </div>
 			<div class="column is-4">
-				<h2 class="title is-3"> <%= t('candidate_access') %> </h2>
+				<h2 class="title is-3"> <%= icon('fas', 'user mr2') %> <%= t('candidate_access') %> </h2>
         <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="field mb2">
             <%= f.label :email, class: 'has-text-weight-bold' %>
@@ -47,7 +47,7 @@
             <div class="control is-grouped">
               <%= f.button :submit,
                   t('login'),
-                  class:"button primary" %>
+                  class:"button is-link" %>
               <%= link_to "¿No tienes cuenta?", 
                   new_registration_path(resource_name, :candidate => "true"), 
                   class: "button with-border" %>

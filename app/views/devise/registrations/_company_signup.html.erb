@@ -1,18 +1,11 @@
 <section class="section">
   <div class="container">
     <div class="columns is-centered is-variable is-8">
-      <div class="column is-7 is-hidden-mobile has-text-centered">
-        <h2 class="title is-3"> 
-					<span> ¿Buscas talento? </span> 
-					<br>
-					<span> Publica tu Job <del> por 99€ </del> </span> <span class="has-text-success ml2"> <%= t('free').upcase %> </span>
-					<br>
-					<span> ¡Al instante! </span> 
-        </h2>
-        <%= image_tag(asset_path('undraw_hiring_cyhs.svg'), alt: "Encuentra todo el Talento Digital en We Are Hiring") %>
+      <div class="column is-7 is-hidden-mobile">
+        <%= render 'company_how_it_works' %>
       </div>
       <div class="column is-4">
-        <h2 class="title is-3"> <%= t('sign_up_as_company') %> </h2>
+        <h2 class="title is-3"> <%= icon('far', 'building mr2') %> <%= t('sign_up_as_company') %> </h2>
 
         <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= f.error_notification %>
@@ -54,7 +47,7 @@
                   required: true,
                   wrapper: false,
                   label: false,
-                  input_html: { class: "input" },
+                  input_html: { class: "input", onkeyup: "checkPass(); return false;" },
                   hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
               <span class="icon is-small is-left">
                 <%= icon('fas', 'key') %>
@@ -68,16 +61,20 @@
                   required: true,
                   wrapper: false,
                   label: false,                  
-                  input_html: { class: "input" } %>
+                  input_html: { class: "input", onkeyup: "checkPass(); return false;" } %>
               <span class="icon is-small is-left">
                 <%= icon('fas', 'key') %>
               </span>
             </div>
           </div>
+          <div id="error-message"></div>
           <div class="field">
             <div class="control is-grouped">
-              <%= f.button :submit, t('create_account'), 
-                class:"button is-primary" %>
+              <%= f.button :submit, 
+                t('create_account'), 
+                class:"button is-dark",
+                id: "signupSubmit",
+                disabled: true %>
               <%= link_to "¿Ya estás registrado?", 
                 new_user_session_path(:company => "true"), 
                 class: "button with-border" %>
@@ -85,7 +82,17 @@
           </div>
         <% end %>
       </div>
+      <div class="mv5 is-hidden-tablet"></div>
+      <div class="column is-7 is-hidden-tablet">
+        <%= render "company_how_it_works" %>
+      </div>    
     </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container has-text-centered">
+    <%= image_tag(asset_path('hiring_companies.svg'), alt: "Encuentra todo el Empleo Digital en We Are Hiring", width: 500) %>
   </div>
 </section>
 
@@ -108,9 +115,46 @@
 <% end %>
 
 <%= content_for :footer do %>
-
-	<script>
-	  AOS.init();
-	</script>
-
+  <script>
+  	AOS.init();
+    function checkPass() {
+      var pass1 = document.getElementById('user_password');
+      var pass2 = document.getElementById('user_password_confirmation');
+      var message = document.getElementById('error-message');
+      var submitBtn = document.getElementById('signupSubmit');
+      var successColor = "#48c78e";
+      var successColorLight = "#dff5eb";
+      var errorColor = "#f14668";
+      var errorColorLight = "#f5b8c4";
+        
+      if (pass1.value.length >= 8) {
+        pass1.style.borderColor = successColor;
+        pass1.style.backgroundColor = successColorLight;
+        message.style.color = successColor;
+        submitBtn.removeAttribute("disabled");
+        message.innerHTML = "";
+      } else {
+        pass1.style.borderColor = errorColor;
+        pass1.style.backgroundColor = errorColorLight;
+        message.style.color = errorColor;
+        submitBtn.setAttribute("disabled", "disabled");
+        message.innerHTML = "La contraseña debe contener al menos 8 carácteres"
+        return;
+      }
+      
+      if (pass1.value == pass2.value) {
+        pass2.style.borderColor = successColor;
+        pass2.style.backgroundColor = successColorLight;
+        message.style.color = successColor;
+        submitBtn.removeAttribute("disabled");
+        message.innerHTML = "";
+      } else {
+        pass2.style.borderColor = errorColor;
+        pass2.style.backgroundColor = errorColorLight;
+        message.style.color = errorColor;
+        message.innerHTML = "Las contraseñas no coinciden";
+        submitBtn.setAttribute("disabled", "disabled");
+      }
+    }  
+  </script>
 <% end %>
