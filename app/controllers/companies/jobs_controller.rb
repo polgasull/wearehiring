@@ -2,10 +2,12 @@
 
 module Companies
   class JobsController < Companies::CompaniesController
+    include PaymentHelper
+    
     before_action :set_job, only: [:show, :edit, :update]
 
-    AMBASSADOR_PRICE = 5586
-    COMPANY_PRICE = 11286
+    AMBASSADOR_PRICE = 990
+    COMPANY_PRICE = 4900
   
     def index
       @jobs = current_user.jobs.filter(params).order('created_at DESC')
@@ -33,6 +35,11 @@ module Companies
       if params[:job][:avatar].nil? && job_last
         @job.avatar = job_last.avatar
       end
+
+      if current_user.jobs.first(3).count == 3
+        price = current_user.is_ambassador? ? AMBASSADOR_PRICE : COMPANY_PRICE
+        stripe_process(price)
+      end
   
       if @job.save
         TwitterService.new.send_tweet @job
@@ -41,6 +48,10 @@ module Companies
       else 
         redirect_back_response(t('jobs.messages.job_not_created'), false)
       end
+
+      rescue Stripe::CardError => e
+        flash.alert = e.message
+        render action: :new
     end
 
     def show

@@ -115,9 +115,10 @@
 		<% if current_user.is_company? || current_user.is_ambassador? %>
 			<div class="navbar-end">
 				<div class="navbar-brand is-vertical-center">
-					<%= link_to t('jobs.post_job'), 
-						new_companies_job_path, 
-						class: "button text-uppercase f6 is-dark has-text-weight-bold" %>
+					<%= link_to new_companies_job_path, 
+						class: "button text-uppercase f6 is-dark has-text-weight-bold" do %>
+						<%= t('jobs.post_job') %> <%= icon('fas', 'gem ml2 has-text-warning') if current_user.is_ambassador? %>
+					<% end %>
 				</div>
 				<div class="navbar-brand is-vertical-center has-text-weight-bold ml3 f2">|</div>
 				<div class="navbar-brand is-vertical-center">

@@ -14,4 +14,5 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 Rails.application.config.assets.precompile += %w[global/global.js]
 Rails.application.config.assets.precompile += %w[global/pagination.js]
+Rails.application.config.assets.precompile += %w[jobs/stripe.js]
 Rails.application.config.assets.precompile += %w[helpers/image_loader.js]

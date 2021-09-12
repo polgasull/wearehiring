@@ -288,6 +288,7 @@ en:
       inscription_not_created: "Something went wrong during your inscription"
   payments:
     price: "Price"
+    premium_price: "Premium Price"
     monthly: "for 60 days"
     enter_credit_card: "Enter credit or debit card"
     previously_card: "Previously used card"
@@ -295,6 +296,7 @@ en:
     card_last4: "Last 4 digits"
     card_exp_month: "Expiration month"
     card_exp_year: "Expiration year"
+    pay_and_post: "Pay and post Job"
   you_must_sign_in: "You must be signed in"
   login: "Login"
   logout: "Log out"

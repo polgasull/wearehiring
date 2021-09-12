@@ -1,13 +1,25 @@
 <section class="section">
   <div class="container">
-    <div class="columns"> 
-      <div class="column">
+    <div class="columns">
+      <div class="column is-8">
         <h1 class="title">
-            Hola, <%= current_user.name %>
+          Hola, <%= current_user.name %>
         </h1>
         <h2 class="subtitle">
           Aquí tienes el resumen de tus Jobs en We Are Hiring
         </h2>
+      </div>
+      <div class="column">
+        <% if current_user.is_ambassador? %>
+          <div class="box has-background-white-ter">
+            <p> <%= icon('fas', 'gem has-text-warning') %> Cuenta Premium Activada </p>
+            Precio por publicación reducido a <strong> 9,90€ </strong>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="columns"> 
+      <div class="column">
         <section class="info-tiles">
           <div class="tile is-ancestor has-text-centered">
             <div class="tile is-parent">
@@ -120,32 +132,7 @@
   </div>
 </section>
 
-<section class="section has-text-left-mobile">
-	<div class="container">
-		<div class="columns card-box-primary">
-			<div class="column">
-				<h2 class="title"> 
-					<span> ¿Buscas talento? </span> 
-					<br>
-					<span> Publica tu Job <del> por 99€ </del> </span> <span class="has-text-success ml2"> <%= t('free').upcase %> </span>
-					<br>
-					<span> ¡Al instante! </span> 
-				</h2>
-				<p> <%= t('company_section_body') %> </p>
-				<div class="mt4">
-					<%= link_to new_companies_job_path, class: 'button is-medium is-rounded is-success' do %>
-						<%= t('jobs.post_job') %> <%= icon('fas', 'arrow-right ml3') %>
-					<% end %>
-				</div>
-			</div>
-			<div class="column is-vertical-center justify-center">
-				<img src="<%=asset_path('undraw_people_search_wctu.svg')%>" width="400" height="400" class="is-blank" alt="Crear cuenta empresa y publicar empleo digital | Wearehiring.io">			
-			</div>
-		</div>
-	</div>
-</section>
-
-<div class="mv5 is-hidden-touch"></div>
+<div class="mv3 is-hidden-touch"></div>
 
 <section class="section">
   <div class="container">

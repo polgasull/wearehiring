@@ -29,7 +29,7 @@ def job_inscriptions_counter(job)
 end
 
 def first_job_publication(user)
-  user && (user.jobs.empty? || user.jobs.first.id.blank?)
+  user && (user.jobs.first(3).count < 3)
 end
 
 def post_job_toggle_title

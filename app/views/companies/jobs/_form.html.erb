@@ -243,35 +243,23 @@
   </div>
 
   <hr>
-
-  <div class="is-light has-text-centered mt5">
-    <p class="f3">
-      <del> Precio 99 <%= icon('fas', 'euro') %> </del>
-    </p>
-    <p class="f3">
-      <%= icon('fas', 'rocket') %>
-      <strong class="has-text-success"> GRATIS </strong>
-    </p>
-    <p class="has-text-centered mt3">
-      Puedes publicar las veces que quieras.
-    </p>
-    <p class="has-text-centered">
-      Sin coste de publicación ni de contratación en caso de seleccionar alguno de los candidatos.
-    </p>
-    <p class="has-text-centered mt2">
-      ¡Aprovéchalo, antes de que nos arrepintamos!
-    </p>
-    <span class="block mb3"></span>
-  </div>
   
-  <div class="has-text-centered submit-box">
-    <% button_name = edit_page ? t('jobs.edit_job') : t('jobs.post_job_free') %>
-    <% loading_text = edit_page ? 'Editando...' : 'Publicando...' %>
-    <%= f.submit button_name, 
-      class: "button is-rounded is-large is-success mt3", 
-      id: "submitJobButton", 
-      data: { disable_with: loading_text } %>
-  </div>
+  <% if edit_page %>
+    <div class="has-text-centered submit-box">
+      <%= f.submit t('jobs.edit_job'), 
+        class: "button is-rounded is-large is-success mt3", 
+        id: "submitJobButton", 
+        data: { disable_with: 'Editando...' } %>
+    </div>
+
+    <% else %>
+
+    <% if first_job_publication(current_user) %>
+      <%= render 'free_publication_message', f: f %>
+    <% else %>
+      <%= render 'payment', f: f %>
+    <% end %>
+  <% end %>
 
 <% end %>
 
