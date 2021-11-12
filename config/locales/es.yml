@@ -396,6 +396,7 @@ es:
         apply_url: "Enlace original"
         job_author: "Nombre de la empresa"
         profile_url: "Perfil de Linkedin"
+        discount_code: "Código descuento"
         new:
           username: 'Elige un nombre de usuario'
     hints:
@@ -554,6 +555,17 @@ es:
       skill_not_updated: "No se pudo actualizar el Skill"
       skill_deleted: "Skill eliminado satisfactoriamente"
       skill_not_deleted: "No se pudo eliminar el Skill"
+  coupons:
+    title: "Cupones de descuento"
+    name: "Nombre"
+    value: "Valor en euros"
+    messages:
+      coupon_created: "Coupon creado satisfactoriamente"
+      coupon_not_created: "No se pudo crear el Coupon"
+      coupon_updated: "Coupon actualizado satisfactoriamente"
+      coupon_not_updated: "No se pudo actualizar el Coupon"
+      coupon_deleted: "Coupon eliminado satisfactoriamente"
+      coupon_not_deleted: "No se pudo eliminar el Coupon"
   no_inscriptions_yet: "Aún hay candidatos"
   important_info_for_the_recruiter: "Información importante para el reclutador"
   important_info: "Información importante"

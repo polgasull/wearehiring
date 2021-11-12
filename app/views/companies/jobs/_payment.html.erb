@@ -1,92 +1,91 @@
 
-    <div class="columns card-box-secondary">
-      <div class="column">
-        <% if !@job.persisted? %>
-          <div class="columns">
-            <div class="column">
-              <p class="f4"> Detalles para el pago </p>
-            </div>
-            <div class="column has-text-right">
-              <%= image_tag(asset_path('powered-stripe.svg'), size: 150) %>
-            </div>
-          </div>
-
-          <% if current_user.is_ambassador? %>
-            <h4 class="subtitle is-4"> <%= t('payments.premium_price') %> <%= icon('fas', 'gem ml2 has-text-warning') %> </h4>
-          <% else %>
-            <h4 class="subtitle is-4"> <%= t('payments.price') %> </h4>
-          <% end %>
-
-          <% if current_user.is_ambassador? %>
-            <div class="is-light has-text-centered">
-              <p>
-                <%= icon('fas', 'credit-card f1') %>
-                <span class="f1 ml2"> <del> 49€ </del> <strong class="has-text-success"> 9,90€ </strong> </span>
-                <span class="has-text-success"> IVA incluido </span>
-              </p>
-              <p class="has-text-centered">
-                <%= t('payments.monthly') %>
-              </p>
-              <span class="block mb4"></span>
-            </div>
-          <% else %>
-            <div class="is-light has-text-centered">
-              <p>
-                <%= icon('fas', 'credit-card f1') %>
-                <strong class="has-text-success f1 ml2"> 49€ </strong>
-                <span class="has-text-success"> IVA incluido </span>
-              </p>
-              <p class="has-text-centered">
-                <%= t('payments.monthly') %>
-              </p>
-              <span class="block mb4"></span>
-            </div>
-          <% end %>
-
-          <div class="form-row">
-            <label for="card-element" class="label">
-              <%= t('payments.enter_credit_card') %>
-            </label>
-
-            <div id="card-element" class="form-control">
-
-            </div>
-
-            <div id="card-errors" role="alert"></div>
-          </div>
-
-          <% if current_user.stripe_id.present? %>
-            <div class="last-card bg-light pa4 border-radius-3 mt4">
-              <h5 class="is-6 title pt2">
-                <%= t('payments.previously_card') %>
-              </h5>
-              <table class="table is-narrow bg-light is-fullwidth">
-                <thead>
-                  <th> <%= t('payments.card_brand') %> </th>
-                  <th> <%= t('payments.card_last4') %> </th>
-                  <th> <%= t('payments.card_exp_month') %> </th>
-                  <th> <%= t('payments.card_exp_year') %> </th>
-                </thead>
-                <tr>
-                  <td> <%= current_user.card_brand %> </td>
-                  <td> <%= current_user.card_last4 %> </td>
-                  <td> <%= current_user.card_exp_month %> </td>
-                  <td> <%= current_user.card_exp_year %> </td>
-                </tr>
-              </table>
-            </div>
-          <% end %>
-        <% end %>
-        <div class="has-text-centered submit-box">
-          <% button_name = t('payments.pay_and_post') %>
-          <% loading_text = 'Publicando...' %>
-          <%= f.submit button_name, 
-            class: "button is-rounded is-large is-success mt3", 
-            id: "submitJobButton", 
-            data: { disable_with: loading_text } %>
+<div class="columns card-box-secondary">
+  <div class="column">
+    <% if !@job.persisted? %>
+      <div class="columns">
+        <div class="column">
+          <p class="f4"> Detalles para el pago </p>
+        </div>
+        <div class="column has-text-right">
+          <%= image_tag(asset_path('powered-stripe.svg'), size: 150) %>
         </div>
       </div>
+
+      <h4 class="subtitle is-4"> <%= t('payments.price') %> </h4>
+
+      <div class="is-light has-text-centered">
+        <p>
+          <%= icon('fas', 'credit-card f1') %>
+          <strong class="has-text-success f1 ml2 job-price"> 49€ </strong>
+          <span class="f1 ml2 discounted-price is-hidden"> <del> 49€ </del> <strong class="has-text-success"> 29€ </strong> </span>
+          <span class="has-text-success"> IVA incluido </span>
+        </p>
+        <p class="has-text-centered">
+          <%= t('payments.monthly') %>
+        </p>
+        <span class="block mb4"></span>
+      </div>
+
+      <div class="form-row">
+        <label for="card-element" class="label">
+          <%= t('payments.enter_credit_card') %>
+        </label>
+
+        <div id="card-element" class="form-control"></div>
+
+        <div id="card-errors" role="alert"></div>
+      </div>
+
+      <% if current_user.stripe_id.present? %>
+        <div class="last-card bg-light pa4 border-radius-3 mt4">
+          <h5 class="is-6 title pt2">
+            <%= t('payments.previously_card') %>
+          </h5>
+          <table class="table is-narrow bg-light is-fullwidth">
+            <thead>
+              <th> <%= t('payments.card_brand') %> </th>
+              <th> <%= t('payments.card_last4') %> </th>
+              <th> <%= t('payments.card_exp_month') %> </th>
+              <th> <%= t('payments.card_exp_year') %> </th>
+            </thead>
+            <tr>
+              <td> <%= current_user.card_brand %> </td>
+              <td> <%= current_user.card_last4 %> </td>
+              <td> <%= current_user.card_exp_month %> </td>
+              <td> <%= current_user.card_exp_year %> </td>
+            </tr>
+          </table>
+        </div>
+      <% end %>
+    <% end %>
+    <div class="columns mt3">
+      <div class="column is-half is-offset-one-quarter">
+        <label class="label"> 
+          ¿Tienes un código de descuento?
+        </label>
+        <div class="field is-grouped">
+          <p class="control is-expanded">
+            <%= f.input :discount_code, label: false, input_html: { class: "input discount-code" }, wrapper: false, label_html: { class: "label" }, placeholder: "MYCOUPON10" %>
+          </p>
+          <p class="control">
+            <a class="button is-dark">
+              Aplicar
+            </a>
+          </p>
+        </div>
+        <div id="error-message" class="has-text-danger"></div>
+      </div>
     </div>
+    <div class="has-text-centered submit-box">
+      <% button_name = t('payments.pay_and_post') %>
+      <% loading_text = 'Publicando...' %>
+      <%= f.submit button_name, 
+        class: "button is-rounded is-large is-success mt3", 
+        id: "submitJobButton", 
+        data: { disable_with: loading_text } %>
+    </div>
+  </div>
+</div>
 
 
 

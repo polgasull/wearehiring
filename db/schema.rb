@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210409171315) do
+ActiveRecord::Schema.define(version: 20211112214301) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,13 @@ ActiveRecord::Schema.define(version: 20210409171315) do
     t.datetime "updated_at", null: false
     t.bigint "post_id"
     t.index ["post_id"], name: "index_comments_on_post_id"
+  end
+
+  create_table "coupons", force: :cascade do |t|
+    t.string "name"
+    t.integer "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -88,6 +95,7 @@ ActiveRecord::Schema.define(version: 20210409171315) do
     t.string "reference"
     t.string "slug"
     t.string "external_mail", default: "", null: false
+    t.string "discount_code"
     t.index ["category_id"], name: "index_jobs_on_category_id"
     t.index ["job_type_id"], name: "index_jobs_on_job_type_id"
     t.index ["level_id"], name: "index_jobs_on_level_id"

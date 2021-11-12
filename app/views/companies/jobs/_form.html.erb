@@ -301,6 +301,30 @@
       tippy('.fa-question-circle', {
         content: 'Las empresas que añaden el salario tienen un 67% más de candidatos',
       });
+
+      var discountInput = $('#job_discount_code')
+      var message = document.getElementById('error-message');
+      var successColorLight = "#effaf5"
+      var errorColorLight = "#f5b8c4";
+      $('.button.is-dark').click(function() {
+        if (discountInput.val() === 'YTALENTFY20') {
+          $('.job-price').addClass('is-hidden');
+          $('.discounted-price').removeClass('is-hidden');
+          $('#error-message').removeClass('has-text-danger').addClass('has-text-success');
+          discountInput.removeClass('is-danger');
+          discountInput.addClass('is-success');
+          discountInput.css("background-color", successColorLight)
+          message.innerHTML = "Descuento de 20€ aplicado correctamente";
+        } else {
+          $('.job-price').removeClass('is-hidden');
+          $('.discounted-price').addClass('is-hidden');
+          $('#error-message').addClass('has-text-danger').removeClass('has-text-success');
+          discountInput.removeClass('is-success');
+          discountInput.addClass('is-danger');
+          discountInput.css("background-color", errorColorLight)
+          message.innerHTML = "El código debe ser válido";
+        }
+      })
     });
   </script>
 <% end %>

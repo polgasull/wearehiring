@@ -8,6 +8,7 @@ module Admins
       @job_types = JobType.all.order("id ASC")
       @levels = Level.all.order("id ASC")
       @skills = Skill.all.order("id ASC")
+      @coupons = Coupon.all.order("id ASC")
     end
 
   end

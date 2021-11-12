@@ -553,6 +553,17 @@ en:
       skill_not_updated: "Skill was not able to be updated"
       skill_deleted: "Skill was successfully deleted"
       skill_not_deleted: "Skill was not able to be deleted"
+  coupons:
+    title: "Cupones de descuento"
+    name: "Nombre"
+    value: "Valor en euros"
+    messages:
+      coupon_created: "Coupon creado satisfactoriamente"
+      coupon_not_created: "No se pudo crear el Coupon"
+      coupon_updated: "Coupon actualizado satisfactoriamente"
+      coupon_not_updated: "No se pudo actualizar el Coupon"
+      coupon_deleted: "Coupon eliminado satisfactoriamente"
+      coupon_not_deleted: "No se pudo eliminar el Coupon"
   no_inscriptions_yet: "No inscriptions yet"
   important_info_for_the_recruiter: "Important information for the recruiter"
   important_info: "Important information"

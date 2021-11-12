@@ -6,7 +6,6 @@ module Companies
     
     before_action :set_job, only: [:show, :edit, :update]
 
-    AMBASSADOR_PRICE = 990
     COMPANY_PRICE = 4900
   
     def index
@@ -37,8 +36,10 @@ module Companies
       end
 
       if current_user.jobs.first(3).count == 3
-        price = current_user.is_ambassador? ? AMBASSADOR_PRICE : COMPANY_PRICE
-        stripe_process(price)
+        coupon = Coupon.find_by_name(@job.discount_code)
+        discount = coupon.present? ? coupon.value : 0
+        price = COMPANY_PRICE
+        stripe_process(price, discount)
       end
   
       if @job.save
@@ -85,7 +86,7 @@ module Companies
     def job_params
       params.require(:job).permit(:title, :description, :url, :job_type, :location, :job_author, 
         :remote_ok, :apply_url, :avatar, :salary_from, :salary_to, :open, :tag_list, :expiry_date, 
-        :category_id, :job_type_id, :level_id, skill_ids: [])
+        :discount_code, :category_id, :job_type_id, :level_id, skill_ids: [])
     end
   end
 end
