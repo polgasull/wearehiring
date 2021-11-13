@@ -593,3 +593,4 @@ es:
   feature_company_text_3: "Podrás hacer un seguimiento de tus Jobs a tiempo real en la misma plataforma. Con control de estado de cada candidato."
   feature_company_4: "Candidato informado al momento"
   feature_company_text_4: "Cada cambio en el estado del proceso mantendrá al candidato informado vía correo electrónico, ahorrando así tiempo y asegurando una respuesta."
+  login_as_company: "Iniciar sesión como empresa"

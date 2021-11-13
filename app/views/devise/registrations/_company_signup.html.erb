@@ -5,7 +5,7 @@
         <%= render 'company_how_it_works' %>
       </div>
       <div class="column is-4">
-        <h2 class="title is-3"> <%= icon('far', 'building mr2') %> <%= t('sign_up_as_company') %> </h2>
+        <h2 class="title is-4"> <%= icon('far', 'building mr2') %> <%= t('create_company_account') %> </h2>
 
         <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= f.error_notification %>
@@ -68,19 +68,22 @@
             </div>
           </div>
           <div id="error-message"></div>
-          <div class="field">
-            <div class="control is-grouped">
+          <div class="field mt4">
+            <div class="control">
               <%= f.button :submit, 
                 t('create_account'), 
-                class:"button is-dark",
+                class:"button is-dark is-fullwidth",
                 id: "signupSubmit",
                 disabled: true %>
-              <%= link_to "¿Ya estás registrado?", 
-                new_user_session_path(:company => "true"), 
-                class: "button with-border" %>
             </div>
           </div>
         <% end %>
+        <hr>
+        <div>
+          <%= link_to t('login'), 
+            new_user_session_path(:company => "true"), 
+            class: "button with-border is-fullwidth" %>
+        </div>
       </div>
       <div class="mv5 is-hidden-tablet"></div>
       <div class="column is-7 is-hidden-tablet">
@@ -92,7 +95,7 @@
 
 <section class="section">
   <div class="container has-text-centered">
-    <%= image_tag(asset_path('hiring_companies.svg'), alt: "Encuentra todo el Empleo Digital en We Are Hiring", width: 500) %>
+    <%= image_tag(asset_path('WAH_ESCALERA.png'), alt: "Encuentra todo el Empleo Digital en We Are Hiring", width: 500) %>
   </div>
 </section>
 

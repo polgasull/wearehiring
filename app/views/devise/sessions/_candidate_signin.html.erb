@@ -6,7 +6,7 @@
         <%= image_tag(asset_path('undraw_winners_ao2o.svg'), alt: "Encuentra todo el Empleo Digital en We Are Hiring") %>
       </div>
 			<div class="column is-4">
-				<h2 class="title is-3"> <%= icon('fas', 'user mr2') %> <%= t('candidate_access') %> </h2>
+				<h2 class="title is-4"> <%= icon('fas', 'user mr2') %> <%= t('candidate_access') %> </h2>
         <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="field mb2">
             <%= f.label :email, class: 'has-text-weight-bold' %>
@@ -30,44 +30,40 @@
                   wrapper: false,
                   label: false,
                   input_html: { class: "input" },
-                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+                  hint: false %>
               <span class="icon is-small is-left">
                 <%= icon('fas', 'key') %>
               </span>
             </div>
           </div>
-
-          <div class="field">
-            <div class="control">
-              <%= f.input :remember_me, wrapper: false, as: :boolean if devise_mapping.rememberable? %>
+          <div class="is-flex is-justify-content-space-between">
+            <div>
+              <small class="is-size-7"> <%= f.input :remember_me, wrapper: false, as: :boolean if devise_mapping.rememberable? %> </small>
+            </div>
+            <div>
+              <small class="is-size-7"> <%= render "devise/shared/links" %> </small>
             </div>
           </div>
-
           <div class="field mt3">
-            <div class="control is-grouped">
-              <%= f.button :submit,
-                  t('login'),
-                  class:"button is-link" %>
-              <%= link_to "¿No tienes cuenta?", 
-                  new_registration_path(resource_name, :candidate => "true"), 
-                  class: "button with-border" %>
+            <div class="control">
+              <%= f.button :submit, t('login'), 
+                class:"button is-link is-fullwidth" %>
             </div>
           </div>
 				<% end %>
         <hr>
-        O accede con Linkedin
+        <div>
+          <%= link_to t('create_account'), 
+            new_registration_path(resource_name, :candidate => "true"), 
+            class: "button with-border is-fullwidth" %>
+        </div>
+        <hr>
+        También puedes acceder con Linkedin
         <div class="mt2">
-          <%= link_to user_linkedin_omniauth_authorize_path, class: "button linkedin" do %>
+          <%= link_to user_linkedin_omniauth_authorize_path, class: "button linkedin is-fullwidth" do %>
             <%= icon('fab', 'linkedin mr2') %> <%= t('login') %>
           <% end %>
         </div>
-
-        <div class="field mt4">
-          <div class="control has-text-centered">
-            <%= render "devise/shared/links" %>
-          </div>
-        </div>
-
 			</div>
 		</div>
   </div>
