@@ -252,7 +252,7 @@
         data: { disable_with: 'Editando...' } %>
     </div>
 
-    <% else %>
+  <% else %>
 
     <% if first_job_publication(current_user) %>
       <%= render 'free_publication_message', f: f %>
@@ -302,19 +302,24 @@
         content: 'Las empresas que añaden el salario tienen un 67% más de candidatos',
       });
 
+      var coupon_names_array = <%= raw @coupon_names.to_json %>;
       var discountInput = $('#job_discount_code')
       var message = document.getElementById('error-message');
+      var priceAfterDiscount = document.getElementById('price-after-discount')
       var successColorLight = "#effaf5"
       var errorColorLight = "#f5b8c4";
       $('.button.is-dark').click(function() {
-        if (discountInput.val() === 'YTALENTFY20') {
+        var inputValue = discountInput.val()
+        if($.inArray(inputValue, coupon_names_array) !== -1) {
+          var discountNumber = inputValue.match(/\d+/);
           $('.job-price').addClass('is-hidden');
           $('.discounted-price').removeClass('is-hidden');
           $('#error-message').removeClass('has-text-danger').addClass('has-text-success');
           discountInput.removeClass('is-danger');
           discountInput.addClass('is-success');
           discountInput.css("background-color", successColorLight)
-          message.innerHTML = "Descuento de 20€ aplicado correctamente";
+          message.innerHTML = `Descuento de ${discountNumber}€ aplicado correctamente`;
+          priceAfterDiscount.innerHTML = `${100 - discountNumber}€`;
         } else {
           $('.job-price').removeClass('is-hidden');
           $('.discounted-price').addClass('is-hidden');
@@ -323,6 +328,7 @@
           discountInput.addClass('is-danger');
           discountInput.css("background-color", errorColorLight)
           message.innerHTML = "El código debe ser válido";
+          priceAfterDiscount.innerHTML = "";
         }
       })
     });

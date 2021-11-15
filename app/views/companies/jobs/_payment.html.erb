@@ -16,8 +16,8 @@
       <div class="is-light has-text-centered">
         <p>
           <%= icon('fas', 'credit-card f1') %>
-          <strong class="has-text-success f1 ml2 job-price"> 49€ </strong>
-          <span class="f1 ml2 discounted-price is-hidden"> <del> 49€ </del> <strong class="has-text-success"> 29€ </strong> </span>
+          <strong class="has-text-success f1 ml2 job-price"> 100€ </strong>
+          <span class="f1 ml2 discounted-price is-hidden"> <del> 100€ </del> <strong class="has-text-success" id="price-after-discount"></strong> </span>
           <span class="has-text-success"> IVA incluido </span>
         </p>
         <p class="has-text-centered">
@@ -77,12 +77,9 @@
       </div>
     </div>
     <div class="has-text-centered submit-box">
-      <% button_name = t('payments.pay_and_post') %>
-      <% loading_text = 'Publicando...' %>
-      <%= f.submit button_name, 
+      <%= f.submit t('payments.pay_and_post') , 
         class: "button is-rounded is-large is-success mt3", 
-        id: "submitJobButton", 
-        data: { disable_with: loading_text } %>
+        id: "postJobSubmit" %>
     </div>
   </div>
 </div>

@@ -6,7 +6,7 @@ module Companies
     
     before_action :set_job, only: [:show, :edit, :update]
 
-    COMPANY_PRICE = 4900
+    COMPANY_PRICE = 10000
   
     def index
       @jobs = current_user.jobs.filter(params).order('created_at DESC')
@@ -19,6 +19,7 @@ module Companies
     def new
       @job_last = current_user.jobs.last
       @job = current_user.jobs.build
+      @coupon_names = Coupon.select(:name).map(&:name)
     end
   
     def edit

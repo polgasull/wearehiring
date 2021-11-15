@@ -168,7 +168,7 @@
 			</div>
 			<div class="navbar-brand">
 				<div class="navbar-item">
-					<%= link_to new_user_session_path(:candidate => "true"), class: "text-uppercase f6 button is-rounded is-link" do %>
+					<%= link_to new_user_session_path(:candidate => "true"), class: "text-uppercase f6 button is-rounded is-link #{ 'is-outlined' if !current_page?(new_user_session_path(:candidate => "true"))}" do %>
 						<%= icon('fas', 'user mr2') %>
 						<%= t('candidate_access') %>
 					<% end %>
@@ -176,7 +176,7 @@
 			</div>
 			<div class="navbar-brand">
 				<div class="navbar-item">
-					<%= link_to new_user_session_path(:company => "true"), class: "text-uppercase f6 button is-rounded is-dark" do %>
+					<%= link_to new_user_session_path(:company => "true"), class: "text-uppercase f6 button is-rounded is-dark #{ 'is-outlined' if !current_page?(new_user_session_path(:company => "true"))}" do %>
 						<%= icon('far', 'building mr2') %>
 						<%= t('company_access') %>
 					<% end %>
