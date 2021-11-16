@@ -1,41 +1,37 @@
-<tr class="is-size-7">
-  <td>
-    <%= job.id %>
-  </td>
-  <td>
-    <%= job.reference %>
-  </td>
-  <td>
-    <%= job.job_author %>
-  </td>
-  <td>
-    <%= link_to job.title, admins_job_path(job.id) %>
-  </td>
-  <td>
-    <%= job.skills.map(&:name).to_sentence %>
-  </td>
-  <td>
-  <%= link_to admins_job_inscriptions_path(job.id) do %>
-    <%= job_inscriptions_counter(job) %>
-  <% end %>
-  </td>
-  <td>
-    <strong> <%= job_expired(job) %> </strong> 
-  </td>
-  <td>
-    <%= link_to t('simple_form.labels.defaults.apply_url'), job.apply_url, target: "_blank" if job.apply_url.present? %>
-  </td>
-  <td>
-    <%= simple_form_for([:admins, job], html: { multipart: true }) do |f| %>
-      <%= f.hidden_field :open, value: false %>
-      <%= f.submit(
-        t('jobs.close'),
-        class: 'mr2',
-        disabled: !job.open?, 
-        data: { confirm: '¿Estás seguro? Esta acción no se puede deshacer. 
-        El Job ya no estará visible pero la empresa podrá seguir gestionando sus candidatos' }) %>
+<%= simple_form_for([:admins, job], html: { multipart: true }) do |f| %>
+  <tr class="is-size-7">
+    <td>
+      <%= job.id %>
+    </td>
+    <td>
+      <%= job.reference %>
+    </td>
+    <td>
+      <%= job.job_author %>
+    </td>
+    <td>
+      <%= link_to job.title, admins_job_path(job.id) %>
+    </td>
+    <td>
+      <%= job.skills.map(&:name).to_sentence %>
+    </td>
+    <td>
+    <%= link_to admins_job_inscriptions_path(job.id) do %>
+      <%= job_inscriptions_counter(job) %>
     <% end %>
+    </td>
+    <td>
+      <strong> <%= job_expired(job) %> </strong>
+      <%= f.date_field :expiry_date %>
+    </td>
+    <td>
+      <%= link_to t('simple_form.labels.defaults.apply_url'), job.apply_url, target: "_blank" if job.apply_url.present? %>
+    </td>
+    <td>
+      <%= f.select :open, options_for_select([ true, false], job.open) %>
+      <%= f.submit t('save'), class: 'mr2' %>
 
-    <%= link_to 'editar', edit_admins_job_path(job.id) %>
-  </td>
-</tr>
+      <%= link_to 'editar', edit_admins_job_path(job.id) %>
+    </td>
+  </tr>
+<% end %>
