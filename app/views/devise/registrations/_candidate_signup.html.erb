@@ -89,12 +89,12 @@
         <% end %>
         <hr>
         <div>
-          <%= link_to t('login'), 
+          <%= link_to t('already_account'), 
               new_user_session_path(:candidate => "true"), 
               class: "button with-border is-fullwidth" %>        
         </div>
         <hr>
-        También puedes acceder con Linkedin
+        Crear cuenta con Linkedin
         <div class="mt2">
           <%= link_to user_linkedin_omniauth_authorize_path, class: "button linkedin is-fullwidth" do %>
             <%= icon('fab', 'linkedin mr2') %> <%= t('create_account') %>
