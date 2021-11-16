@@ -12,12 +12,7 @@
               <%= t('jobs.assign_user') %>
             </label>
             <div class="control has-icons-left">
-              <span class="select">
-                <%= f.input_field :user_id, collection: User.where(user_type_id: [2, 3, 4]).all %>
-              </span>
-              <span class="icon is-small is-left">
-                <%= icon('fas', 'user') %>
-              </span>
+              <%= f.input_field :user_id, collection: User.where(user_type_id: [2, 3, 4]).all, id: "assign-user" %>
             </div>
           </div>
         </div>
@@ -302,6 +297,10 @@
       });
 
       $('.skills-select').select2({
+        maximumSelectionLength: 6
+      });
+
+      $('#assign-user').select2({
         maximumSelectionLength: 6
       });
 
