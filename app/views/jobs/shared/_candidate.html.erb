@@ -11,9 +11,9 @@
         <div class="media-content">
           <p class="title is-6"> <%= user.current_position.present? ?  user.current_position : content_tag(:span, 'Posición no especificada', class: 'has-text-grey-light') %> </p>
           <p class="subtitle is-7"> <%= user.experience.present? ? user.experience : content_tag(:span, 'Experiencia no especificada', class: 'has-text-grey-light') %> </p>
-          <p class="subtitle is-7"> <%= user.location.present? ? user.location : content_tag(:span, 'Localización no especificada', class: 'has-text-grey-light') %> </p>
         </div>
       </div>
+      <span class="is-7"> <%= user.location.present? ? user.location : content_tag(:span, 'Localización no especificada', class: 'has-text-grey-light') %> </span>
       <div class="content">
         <% user.skills.take(6).each do |skill| %>
           <span class='tag is-success is-normal'> <%= skill.name %> </span>
