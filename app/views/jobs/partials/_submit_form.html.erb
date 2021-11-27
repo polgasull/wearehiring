@@ -18,7 +18,7 @@
 
 <% if user_signed_in? && current_user&.is_candidate? %>
   <% if user_inscribed_to(job) %>
-    <div class="has-text-centered">
+    <div class="has-text-centered mt4 mb2">
       <div class="button is-rounded is-success is-light is-large">  
         <%= t('inscribed') %> <%= icon('fas', 'check ml2') %>
       </div>

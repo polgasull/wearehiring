@@ -1,26 +1,25 @@
 .box-link {
+  position: relative;
   text-decoration: none;
   color: $black;
-  box-shadow: 0 2px 3px 0px rgba(0,0,0,0.25);
-  border: 1px solid #d6d6d6;
-  transition: .1s all; 
+  transition: .1s all;
+  padding: 30px;
+
+  &:hover {
+    transform: translateX(-5px);
+    box-shadow: 0 0px 1px rgba(0, 0, 0, 0.10), 0 4px 4px rgba(0, 0, 0, 0.10);
+  }
 }
 
-.boxes-wrapper:hover .box-link {
-  transform: scale(.98);
-  box-shadow: none;
-}
-
-.boxes-wrapper:hover .box-link:hover {
-  transform:scale(1);
-  filter:blur(0px);
-  box-shadow: 0 8px 20px 0px rgba(0,0,0,0.125);
+.bottom-content {
+  position: absolute;
+  bottom: 20px;
 }
 
 .my-tag {
   position: absolute;
-  bottom: 16px;
-  right: 10px;
+  bottom: 30px;
+  right: 30px;
 }
 
 .card-box-primary {
@@ -36,6 +35,64 @@
 
 .card-box-secondary {
   border-radius: 20px;
-  padding: 40px;
   background: $light_gray;
+
+  &.payment-box {
+    padding: 80px;
+  }
+
+  &.home-box {
+    padding: 120px 80px;
+  }
+}
+
+#pagination-loader .fa-spinner {
+  color: #cc0022;
+  font-size: 32px;
+}
+
+.card-ribbon {
+  position: absolute;
+  overflow: hidden;
+  top: -6px;
+  left: -8px;
+  width: 91px;
+  height: 86px;
+
+  span {
+    position: absolute;
+    display: block;
+    width: 140px;
+    padding: 8px 0;
+    background-color: #3498db;
+    box-shadow: 0 5px 5px rgba(0,0,0,0.2);
+    color: #fff;
+    font-size: 13px;
+    text-transform: uppercase;
+    text-align: center;
+    left: -39px;
+    top: 15px;
+    transform: rotate(-45deg);
+    z-index: 1;
+  }
+
+  &::before,
+  &::after {
+    position: absolute;
+    z-index: -1;
+    content: '';
+    display: block;
+    border-top-color: transparent;
+    border-left-color: transparent;
+  }
+
+  &::before {
+    top: 0;
+    right: 0; 
+  }
+
+  &::after {
+    bottom: 0;
+    left: 0;
+  }
 }

@@ -55,7 +55,7 @@
                         </span>
                       </div>
                       <div class="column has-text-right is-3">
-                        <%= link_to inscription.job, class: "button is-small is-link" do %>
+                        <%= link_to inscription.job, class: "button is-small is-link is-rounded" do %>
                           Ver Job
                         <% end %>
                       </div>
@@ -91,11 +91,11 @@
                   <% end %>
                 </div>
                 <div class="column">
-                  <%= link_to edit_user_registration_path, class: "button is-rounded is-medium shadow" do %>
+                  <%= link_to edit_user_registration_path, class: "button is-rounded is-medium is-warning shadow" do %>
                     <% if current_user.picture_url.file.nil? %>
-                      <%= icon('far', 'user-circle mr1') %>
+                      <%= icon('far', 'user-circle mr2') %>
                     <% else %>
-                      <div class="rounded-image size-25 mr1">
+                      <div class="rounded-image size-25 mr2">
                       <%= image_tag(current_user.picture_url_url(:thumb), alt: "Imagen usuario del perfil de Linkedin | Wearehiring.io") %>
                       </div>
                     <% end %>
@@ -163,7 +163,7 @@
                 <% if user_inscribed_to(job) %>
                   <span class="tag is-light inscribed-tag"> <%= t('inscribed') %> </span>
                 <% end %>
-                <%= link_to "Ver Job", job, class: "button is-small is-link" %>
+                <%= link_to "Ver Job", job, class: "button is-small is-link is-rounded" %>
               </div>
             </div>
           </div>

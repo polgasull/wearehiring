@@ -52,17 +52,15 @@
           </div>
 				<% end %>
         <hr>
-        <div>
-          <%= link_to t('dont_have_account'), 
-            new_registration_path(resource_name, :candidate => "true"), 
-            class: "button with-border is-fullwidth" %>
+        <div class="mt2 has-text-centered">
+          <%= link_to user_linkedin_omniauth_authorize_path, class: "button linkedin" do %>
+            <%= icon('fab', 'linkedin mr2') %> <%= t('linkedin_signin') %>
+          <% end %>
         </div>
         <hr>
-        También puedes acceder con Linkedin
-        <div class="mt2">
-          <%= link_to user_linkedin_omniauth_authorize_path, class: "button linkedin is-fullwidth" do %>
-            <%= icon('fab', 'linkedin mr2') %> <%= t('login') %>
-          <% end %>
+        <div class="has-text-centered">
+          <span> <%= t('dont_have_account') %> </span>
+          <%= link_to t('create_account'), new_registration_path(resource_name, :candidate => "true")%>
         </div>
 			</div>
 		</div>

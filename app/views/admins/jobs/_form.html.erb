@@ -24,7 +24,22 @@
     <div class="column">
       <div class="field">
         <div class="control">
-          <%= f.input :apply_url, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }, placeholder: "Añade el enlace original de la oferta" %>
+          <label class="label"> 
+            <%= t('partners.title') %> 
+          </label>
+          <div class="control has-icons-left">
+            <%= f.input_field :partner_id, collection: Partner.all %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="columns">
+    <div class="column">
+      <div class="field">
+        <div class="control">
+          <%= f.input :apply_url, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }, placeholder: "URL externa (será la que se mostrará en caso de Partnership)" %>
         </div>
       </div>
     </div>
@@ -297,12 +312,10 @@
       });
 
       $('.skills-select').select2({
-        maximumSelectionLength: 6
+        maximumSelectionLength: 4
       });
 
-      $('#assign-user').select2({
-        maximumSelectionLength: 6
-      });
+      $('#assign-user').select2();
 
       tippy('.fa-question-circle', {
         content: 'Las empresas que añaden el salario tienen un 67% más de candidatos',

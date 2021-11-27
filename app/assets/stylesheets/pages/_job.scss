@@ -19,3 +19,40 @@
     font-weight: bold;
   }
 }
+
+.job-highlighted-info {
+  border: 1px solid #dbdbdb;
+}
+
+.job-tag {
+  padding: 10px 15px;
+  border-radius: 20px;
+  display: inline-block;
+  font-size: 14px;
+
+  &.category-tag,
+  &.level-tag {
+    border: 1px solid darken(#F5F5F5, 10%);
+    background-color: #F5F5F5;
+
+    &.bg-white {
+      background-color: white;
+    }
+  }
+
+  &.skill-tag {
+    border: 1px solid $success;
+    color: #0a854d;
+    background-color: lighten($success, 40%);
+  }
+
+  @media (max-width: 1215px) {
+    &.skill-tag {
+      margin-top: 16px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    margin-top: 16px;
+  }
+}

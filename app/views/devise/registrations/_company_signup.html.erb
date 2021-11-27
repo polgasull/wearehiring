@@ -79,10 +79,9 @@
           </div>
         <% end %>
         <hr>
-        <div>
-          <%= link_to t('already_account'), 
-            new_user_session_path(:company => "true"), 
-            class: "button with-border is-fullwidth" %>
+        <div class="has-text-centered">
+          <span> <%= t('already_account') %> </span>
+          <%= link_to t('login'), new_user_session_path(:company => "true") %>        
         </div>
       </div>
       <div class="mv5 is-hidden-tablet"></div>

@@ -17,7 +17,7 @@ end
 
 def job_salary(from, to)
   if (from && to) == 0 || (from && to) == nil
-    'A consultar'
+    "<span class='has-text-grey-light has-text-weight-normal has-font-size-14'> A consultar </span>".html_safe
   else
     "#{number_to_currency(from, precision: 0)} - #{number_to_currency(to, precision: 0)}"               
   end

@@ -1,65 +1,72 @@
 <%= link_to job do %>
-  <div class="columns box-link radius-10">
-    <div class="column bg-white radius-10">
-      <div class="columns is-hidden-touch">
-        <div class="column">
-          <strong> <%= job.job_author %> </strong> 
-          <%= t('is_looking_for_one').downcase %> 
-          <strong> <%= job.title %>  </strong>
-          <%= t('at').downcase %> 
-          <strong> <%= job.location %> </strong>
-        </div>
+  <div class="box radius-20 box-link">
+    <% if job.created_at.to_date == Date.current %>
+      <div class="card-ribbon">
+        <span>New</span>
       </div>
-      <div class="columns">
-        <div class="column is-1 is-vertical-center justify-center pr0">
-          <% if job.avatar.file.nil? %>
-            <%= icon('far', 'image', style: 'font-size: 50px') %>
-          <% else %>
-            <div class="rounded-image size-80">
-              <%= image_tag(job.avatar_url(:thumb), alt: "Empleo de #{job.title} en #{job.job_author}") %>
+    <% end %>
+    <div class="columns">
+      <div class="column is-8">
+        <article class="media">
+          <div class="media-left">
+            <figure class="image rounded-image size-70">
+              <% if job.avatar.file.nil? %>
+                <%= image_tag(asset_path('logo_black.jpg'), alt: "Empleo de #{job.title} en #{job.job_author}") %>
+              <% else %>
+                <%= image_tag(job.avatar_url(:thumb), alt: "Empleo de #{job.title} en #{job.job_author}") %>
+              <% end %>
+            </figure>
+          </div>
+          <div class="media-content">
+            <div class="content">
+              <p class="has-font-size-18"> <strong> <%= job.title %> </strong> </p>
+              <p class="has-font-size-16">
+                <%= icon('fas', 'building mr1') %> <span class="mr3"> <%= job.job_author %> </span>
+                <div class="is-hidden-desktop mt2">
+                <%= icon('fas', 'map-marker-alt mr1') %> <span> <%= job.location %> </span>
+              </p>
             </div>
-          <% end %>
-        </div>
-        <div class="column">
-          <div class="pv1 pl2 pr2 bg-light">
-            <strong> <%= job.title %> </strong>
           </div>
-          <div class="pv1 pl2 pr2 mt2 bg-light">
-            <%= icon('fas', 'puzzle-piece mr1') %> <%= job.category.name %>
+        </article>
+      </div>
+      <div class="column is-4 has-text-right-tablet">
+        <div class="content">
+          <p class="has-font-size-18 has-text-weight-bold"> 
+            <%= icon('fas', 'euro-sign mr1 has-font-size-16') %> <%= job_salary(job.salary_from, job.salary_to) %>
+          </p>
+          <div>
+            <span class="mr3">
+              <% if job.remote_ok? %>
+                <%= icon('fas', 'wifi mr1') %> <%= t('remote') %> 
+              <% else %>
+                <%= icon('fas', 'laptop mr1') %> Oficina
+              <% end %>   
+            </span>
+            <span>
+              <%= icon('far', 'clock mr1') %> <%= job.job_type.name %>
+            </span>
           </div>
-          <div class="pv1 pl2 pr2 mt2 bg-light">
-            <%= icon('fas', 'coins mr1') %> 
-            <%= job_salary(job.salary_from, job.salary_to) %>          
-          </div>        
-        </div>
-        <div class="column">
-          <div class="pv1 pl2 pr2 bg-light is-vertical-center">
-            <%= icon('fas', 'graduation-cap mr1') %> <%= job.level.name %>
-          </div>           
-          <div class="pv1 pl2 pr2 mt2 bg-light">
-            <%= icon('far', 'clock mr2') %> <%= job.job_type.name %>
-          </div>
-          <div class="pv1 pl2 pr2 mt2 bg-light">
-            <% if job.remote_ok? %>
-              <%= icon('fas', 'wifi') %> <%= t('remote') %> 
-            <% else %>
-              <%= icon('fas', 'laptop') %> Oficina
-            <% end %>     
-          </div>
-        </div>
-        <div class="column is-relative">
-          <% job.skills.each do |skill| %>
-            <span class='tag is-success is-normal'> <%= skill.name %> </span>
-          <% end %>  
-          <% job.tags.each do |tag| %>
-            <span class='tag is-success is-normal'> <%= tag.name %> </span>
-          <% end if job.tags.any? %>  
-          <% if current_user&.is_candidate? && user_inscribed_to(job) %>
-            <span class='tag is-danger my-tag'> <%= t('inscribed') %> </span>
-          <% end %> 
         </div>
       </div>
     </div>
+    <div class="columns">
+      <div class="column">
+        <span class="job-tag category-tag mr2"> <%= icon('fas', 'puzzle-piece mr1') %> <%= job.category.name %> </span>
+        <span class="job-tag level-tag mr2"> <%= icon('fas', 'graduation-cap mr1') %> <%= job.level.name %>  </span>
+        <br class="is-hidden-widescreen">
+        <% job.skills.first(4).each do |skill| %>
+          <span class='job-tag skill-tag mr2'> <%= skill.name %> </span>
+        <% end %> 
+        <% if current_user&.is_candidate? && user_inscribed_to(job) %> 
+          <span class='tag is-danger my-tag'> <%= t('inscribed') %> </span>
+        <% end %>
+      </div>
+      <div class="column is-2 has-text-right is-vertical-center">
+        <% if job.partner.present? %>
+          <%= image_tag(asset_path('talent-hackers-logo.png'), alt: "Job by TalentHackers", width: 160, height: 160) %>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <div class="mb4"></div>
 <% end %>
+<div class="mb4"></div>

@@ -34,7 +34,7 @@
 <%= render partial: "jobs/partials/job_information", locals: { job: @job } %>
 
 <% if @same_category_jobs.any? && !current_user&.is_recruiter %>
-  <section class="section">
+  <section class="section jobs-section pb6">
     <h2 class="f3 mb4"> 
       <%= t('if_you_liked_jobs_about') %> 
       <span class="primary-color"> <%= @job.title %>  </span> 
@@ -50,6 +50,8 @@
 <% end %>
 
 <%= render partial: '/jobs/partials/update_user_info_modal', locals: { user: current_user, job: @job } if current_user %>
+
+<div class="mnegative"></div>
 
 <%= content_for :head do %>
   <%= render "seo", 

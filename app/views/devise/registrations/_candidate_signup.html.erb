@@ -88,17 +88,15 @@
           </div>
         <% end %>
         <hr>
-        <div>
-          <%= link_to t('already_account'), 
-              new_user_session_path(:candidate => "true"), 
-              class: "button with-border is-fullwidth" %>        
+        <div class="mt2 has-text-centered">
+          <%= link_to user_linkedin_omniauth_authorize_path, class: "button linkedin" do %>
+            <%= icon('fab', 'linkedin mr2') %> <%= t('linkedin_signup') %>
+          <% end %>
         </div>
         <hr>
-        Crear cuenta con Linkedin
-        <div class="mt2">
-          <%= link_to user_linkedin_omniauth_authorize_path, class: "button linkedin is-fullwidth" do %>
-            <%= icon('fab', 'linkedin mr2') %> <%= t('create_account') %>
-          <% end %>
+        <div class="has-text-centered">
+          <span> <%= t('already_account') %> </span>
+          <%= link_to t('login'), new_user_session_path(:candidate => "true") %>        
         </div>
 			</div>
       <div class="mv5 is-hidden-tablet"></div>

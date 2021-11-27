@@ -243,6 +243,10 @@
 	margin: 0 auto;
 }
 
+.mnegative {
+	margin-bottom: -7rem;
+}
+
 /* Color */
 .bg-gray { background-color: #f8f8f8; }
 
@@ -361,5 +365,11 @@
 @for $i from 0 through 9 {
 	.has-opacity-#{$i} {
 		opacity: #{'0.' + $i};
+	}
+}
+
+@for $i from 8 through 32 {
+	.has-font-size-#{$i} {
+		font-size: #{$i}px;
 	}
 }

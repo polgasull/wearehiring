@@ -41,9 +41,26 @@ location = [
   "Boston, MA"
 ]
 
-User.where(email: "candidate@email.com").first_or_create(name: "Pol Candidate", password: "123456", user_type_id: 1)
-User.where(email: "company@email.com").first_or_create(name: "Pol Company", password: "123456", user_type_id: 2)
-User.where(email: "admin@email.com").first_or_create(name: "Pol Admin", password: "123456", user_type_id: 3)
+50.times do
+  User.create(email: Faker::Internet.email,
+              name: Faker::Name.name,
+              last_name: Faker::Name.last_name,
+              phone: Faker::PhoneNumber.phone_number,
+              description: Faker::Lorem.paragraph,
+              personal_website: Faker::Internet.domain_name,
+              github: Faker::Internet.domain_name,
+              pinterest: Faker::Internet.domain_name,
+              behance: Faker::Internet.domain_name,
+              salary_from: Faker::Number.number(digits: 5),
+              salary_to: Faker::Number.number(digits: 5),
+              password: "12345678", 
+              user_type_id: 1,
+            )
+end
+
+User.where(email: "candidate@email.com").first_or_create(name: "Pol Candidate", password: "12345678", user_type_id: 1)
+User.where(email: "company@email.com").first_or_create(name: "Pol Company", password: "12345678", user_type_id: 2)
+User.where(email: "admin2@email.com").first_or_create(name: "Pol Admin", password: "12345678", user_type_id: 3)
 
 10.times do 
   User.create(email: Faker::Internet.email, password: "123456", user_type_id: 2)

@@ -12,20 +12,15 @@ small {
   font-family: 'archiathin';
 }
 
-a {
+p {
 
-  &.is-normal-link {
-    color: $black; 
-    text-decoration: underline;
-    
-    &:hover {
-      color: #276DDA;
-    }
+  &.half-margin {
+    margin-bottom: .5rem;
   }
-}
 
-.is-strikethrough {
-  text-decoration: line-through;
+  &.size-14 {
+    font-size: 14px;
+  }
 }
 
 .has-text-corporate {

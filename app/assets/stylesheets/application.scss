@@ -117,9 +117,11 @@
   font-weight: bold;
 }
 
-$size: 34px;
+$size: 25px;
 
 .social-share-button {
+  font-size: 30px;
+  
   .ssb-icon {
     background-size: $size $size;
     height: $size;

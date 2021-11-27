@@ -7,6 +7,7 @@ class Job < ApplicationRecord
   belongs_to :category, dependent: :destroy
   belongs_to :job_type, dependent: :destroy
   belongs_to :level, dependent: :destroy
+  belongs_to :partner, dependent: :destroy, required: false
   has_many :job_skills
   has_many :skills, through: :job_skills
   has_many :taggings, dependent: :destroy

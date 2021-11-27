@@ -1,66 +1,69 @@
-
 <section class="section">
   <div class="container is-wrapper bg-white radius-8">
+    <div class="has-text-centered is-hidden-desktop">
+      <%= social_share_button_tag("#{job.title} en #{job.location}", :image => asset_path('logo_black.png'), :allow_sites => %w(whatsapp_app twitter linkedin email)) %>
+    </div>
     <div class="columns">
       <div class="column pb0">
         <h1 class="f2 mb0"><%= "#{t('job_offer_h1')} #{job.title} en #{job.remote_ok? ? "Remoto" : job.location}" %></h1>
         <p> <%= job.job_author %> en <%= job.location %> </p>
       </div>
     </div>
-    <div class="ma4 is-hidden-mobile"></div>  
-    <div class="columns pr4 wrapper-content">
+
+    <div class="ma4 is-hidden-mobile"></div>
+    <div class="columns">
       <div class="column is-2 is-vertical-center justify-center">
-        <% if job.avatar.file.nil? %>
-          <%= icon('far', 'image', style: 'font-size: 50px') %>
-        <% else %>
-          <div class="rounded-image size-150 mauto">
+        <figure class="image rounded-image size-120">
+          <% if job.avatar.file.nil? %>
+            <%= image_tag(asset_path('logo_black.jpg'), alt: "Empleo de #{job.title} en #{job.job_author}") %>
+          <% else %>
             <%= image_tag(job.avatar_url(:thumb), alt: "Empleo de #{job.title} en #{job.job_author}") %>
-          </div>
-        <% end %>
+          <% end %>
+        </figure>
       </div>
-      <div class="column bg-light radius-10">
+      <div class="column is-10 card-box-secondary pa4">
+        <div class="columns">
+          <div class="column is-5">
+            <p class="is-size-5"> <strong> <%= job.title %> </strong> </p>
+            <p class="size-14">
+              <%= icon('fas', 'building mr1') %> <span class="mr3"> <%= job.job_author %> </span>
+              <%= icon('fas', 'map-marker-alt mr1') %> <span> <%= job.location %> </span>
+            </p>
+          </div>
+          <div class="column is-7 has-text-right-desktop">
+            <div class="content">
+              <p> 
+                <%= icon('fas', 'euro-sign mr1') %> <%= job_salary(job.salary_from, job.salary_to) %>
+              </p>
+              <div>
+                <span class="mr3">
+                  <% if job.remote_ok? %>
+                    <%= icon('fas', 'wifi mr1') %> <%= t('remote') %> 
+                  <% else %>
+                    <%= icon('fas', 'laptop mr1') %> Oficina
+                  <% end %>   
+                </span>
+                <span>
+                  <%= icon('far', 'clock mr1') %> <%= job.job_type.name %>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt4 is-hidden-mobile"></div>
         <div class="columns">
           <div class="column">
-            <div class="pv1 pl2 pr2">
-              <strong> <%= job.title %> </strong>
-            </div>
-            <div class="pv1 pl2 pr2 mt2">
-              <%= icon('fas', 'puzzle-piece mr1') %> <%= job.category.name %>
-            </div>
-            <div class="pv1 pl2 pr2 mt2">
-              <%= icon('fas', 'coins mr1') %>
-              <%= job_salary(job.salary_from, job.salary_to) %>
-            </div>        
+            <span class="job-tag category-tag bg-white mr2"> <%= icon('fas', 'puzzle-piece mr1') %> <%= job.category.name %> </span>
+            <span class="job-tag level-tag bg-white mr2"> <%= icon('fas', 'graduation-cap mr1') %> <%= job.level.name %>  </span>
+            <% job.skills.first(4).each do |skill| %>
+              <span class='job-tag skill-tag mr2'> <%= skill.name %> </span>
+            <% end %> 
           </div>
-          <div class="column">
-            <div class="pv1 pl2 pr2">
-              <%= icon('fas', 'level-up-alt mr1') %> <%= job.level.name %>
-            </div>           
-            <div class="pv1 pl2 pr2 mt2">
-              <%= icon('far', 'clock mr2') %> <%= job.job_type.name %>
-            </div>
-            <div class="pv1 pl2 pr2 mt2">
-              <% if job.remote_ok? %>
-                <%= icon('fas', 'wifi') %> <%= t('remote') %> 
-              <% else %>
-                <%= icon('fas', 'laptop') %> Oficina
-              <% end %>     
-            </div>
+          <% if job.partner.present? %>
+          <div class="column is-2 has-text-right">
+            <%= image_tag(asset_path('talent-hackers-logo.png'), alt: "Job by TalentHackers", width: 160, height: 160) %>
           </div>
-          <div class="column">
-            <% job.skills.each do |skill| %>
-              <span class='tag is-success is-normal'> <%= skill.name %> </span>
-            <% end %>  
-            <% job.tags.each do |tag| %>
-              <span class='tag is-success is-normal'> <%= tag.name %> </span>
-            <% end if job.tags.any? %>  
-          </div>
-          <div class="column is-relative">
-            <div class="is-absolute bottom-10 right-20">
-              <p> ¡Comparte este Job! </p>
-              <%= social_share_button_tag("#{job.title} en #{job.location}", :image => asset_path('logo_black.png'), :allow_sites => %w(whatsapp_app twitter linkedin email)) %>
-            </div>
-          </div>
+          <% end %>
         </div>
       </div>
     </div>
@@ -68,7 +71,14 @@
 
     <div class="columns">
       <div class="column has-text-centered">
-        <%= render partial: '/jobs/partials/submit_form', locals: { job: job, cta_text: 'i_want_this_job' } %>
+        <% if job.partner.present? %>
+          <%= link_to "#{job.apply_url + '?rid=' + job.partner.token}", class: "button is-dark is-medium is-rounded", target: '_blank' do %>
+            <%= t('i_want_this_job') %> <%= icon('fas', 'external-link-alt ml2') %>
+          <% end %>
+          <p class="mt3"> <small> Partnership con <%= job.partner.name %> </small> </p>
+        <% else %>
+          <%= render partial: '/jobs/partials/submit_form', locals: { job: job, cta_text: 'i_want_this_job' } %>
+        <% end %>
       </div>
     </div>
   </div>
@@ -78,7 +88,7 @@
   <div class="container is-wrapper bg-white radius-8">
     <div class="columns">
       <div class="column">
-        <h2 class="f3 mb2"> <%= t('job_description') %> </h2>
+        <h2 class="f3 mb2 has-text-centered-mobile"> <%= t('job_description') %> </h2>
         <div class="job-description pr4 pl4 pb4"> 
           <%= job.description.html_safe %>
         </div>
@@ -86,8 +96,21 @@
     </div>
     <div class="columns">
       <div class="column has-text-centered">
-        <%= render partial: '/jobs/partials/submit_form', locals: { job: job, cta_text: 'this_job_is_mine' } %>
+        <% if job.partner.present? %>
+          <%= link_to "#{job.apply_url + '?rid=' + job.partner.token}", class: "button is-dark is-medium is-rounded" do %>
+            <%= t('this_job_is_mine') %> <%= icon('fas', 'external-link-alt ml2') %>
+          <% end %>
+          <p class="mt3"> <small> Partnership con <%= job.partner.name %> </small> </p>
+        <% else %>
+          <%= render partial: '/jobs/partials/submit_form', locals: { job: job, cta_text: 'this_job_is_mine' } %>
+        <% end %>
       </div>
-    </div>  
+    </div>
+    <div class="columns mt4 is-hidden-touch">
+      <div class="column has-text-centered">
+        <p> Compartir Job: </p>
+        <%= social_share_button_tag("#{job.title} en #{job.location}", :image => asset_path('logo_black.png'), :allow_sites => %w(whatsapp_app twitter linkedin email)) %>
+      </div>
+    </div>
   </div>
 </section>

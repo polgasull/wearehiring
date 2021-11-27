@@ -83,4 +83,28 @@
   <% @coupons.each do |coupon| %>
     <%= render partial: "/admins/settings/coupon", locals: { coupon: coupon } %>
   <% end %>
+
+  <div class="columns has-text-centered listhead">
+    <div class="column"> <%= t("partners.id") %> </div>
+    <div class="column"> <%= t("partners.name") %> </div>
+    <div class="column"> <%= t("partners.token") %> </div>
+    <div class="column"></div>
+  </div>
+  <%= simple_form_for(Partner.new, method: :post, url: admins_partners_path, html: { multipart: true }) do |f| %>
+    <div class="columns is-vertical-center listrow">
+      <div class="column"></div>
+      <div class="column">
+        <%= f.input :name, label: false, input_html: { class: "input is-size-7" }, wrapper: false, placeholder: t('partners.name') %>
+      </div>
+      <div class="column">
+        <%= f.input :token, label: false, input_html: { class: "input is-size-7" }, wrapper: false, placeholder: t('partners.token') %>
+      </div>
+      <div class="column">
+        <%= f.submit t('create'), class: 'button is-primary is-size-7' %>
+      </div>
+    </div>
+  <% end %>
+  <% @partners.each do |partner| %>
+    <%= render partial: "/admins/settings/partner", locals: { partner: partner } %>
+  <% end %>
 </div>

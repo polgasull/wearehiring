@@ -1,22 +1,13 @@
 .header {
-	width: 100%;
-	padding: 1rem;
 	z-index: 10;
 
-	@media (max-width: 992px) {
-		padding: 1.5rem 1rem 1.5rem 1rem;
+	.navbar-brand {
+		display: flex;
+		align-items: center;
 
-		.column {
-			padding: 0;
+		a {
+			height: 79px;
 		}
-
-		.columns {
-			margin: 0;
-		}
-	}
-
-	@media (min-width: 1200px) {
-		padding: 1rem 5.5rem;
 	}
 
 	.navbar-item {
@@ -28,13 +19,7 @@
 	}
 
 	nav.navbar {
-		float: right;
 		background: none;
-		font-size: 0.75rem;
-	}
-
-	nav li {
-		display: inline-block;
 	}
 
 	a {
@@ -46,27 +31,21 @@
 	}
 
 	img {
-
 		max-width: 170px;
 	}
 
 	.logo {
 		position: relative;
 		top: 7px;
-
-		@media(max-width: 768px) {
-			top: 2px;
-		}
-
-		@media(min-width: 768px) and (max-width: 992px) {
-			top: 2px;
+	
+		@media(max-width: 992px) {
+			top: 5px;
+			left: 10px
 		}
 	}
-
-	.admin-bar {
-		font-weight: 600;
-		background-color: $red;
-		border-radius: 10px;
-		color: $white;
+	
+	.navbar-burger span {
+		color: black;
+		height: 2px;
 	}
 }

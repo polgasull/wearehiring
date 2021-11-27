@@ -1,39 +1,131 @@
-<nav class="navbar" role="navigation" aria-label="main navigation">
-	<% if user_signed_in? %>
-		<% if current_user.is_admin? %>
+<% if user_signed_in? %>
+	<% if current_user.is_admin? %>
+	<div class="navbar-end">
+		<div class="navbar-item">
+			<%= link_to t('show_jobs'), 
+					jobs_path, 
+					class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(jobs_path)}" %>
+		</div>
+		<div class="navbar-item has-text-weight-bold ml3 f2">|</div>
+		<div class="navbar-item">
+			<%= link_to "New Job", 
+					new_admins_job_path, 
+					class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(new_admins_job_path)}" %>
+		</div>
+		<div class="navbar-item">
+			<%= link_to "Jobs", 
+					admins_jobs_path, 
+					class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(admins_jobs_path)}" %>		
+		</div>
+		<div class="navbar-item">
+			<%= link_to "Users", 
+					admins_users_path, 
+					class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(admins_users_path)}" %>		
+		</div>
+		<div class="navbar-item">
+			<%= link_to "Settings", 
+					admins_settings_path, 
+					class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(admins_settings_path)}" %>		
+		</div>
+		<div class="navbar-item">
+			<%= link_to "Blog", 
+					blog_posts_path, 
+					class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(blog_posts_path)}" %>		
+		</div>
+		<div class="navbar-item has-text-left">
+			<div class="dropdown navbar-item is-right" id="profileDropdown">
+				<div class="dropdown-trigger">
+					<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+						<span><%= icon('fas', 'cog') %></span>
+						<span class="icon is-small">
+							<i class="fas fa-angle-down" aria-hidden="true"></i>
+						</span>
+					</button>
+				</div>
+				<div class="dropdown-menu" id="dropdown-menu" role="menu">
+					<div class="dropdown-content">
+						<%= link_to edit_user_registration_path, class: "dropdown-item" do %>
+							<span class="icon is-small"> <%= icon('fas', 'key') %> </span>
+							<span> <%= t('edit_password') %> </span>
+						<% end %>
+					</div>
+					<div class="dropdown-content">
+						<%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do %>
+							<span class="icon is-small"><%= icon('fas', 'sign-out-alt') %></span>
+							<span> <%= t('logout') %> </span>
+						<% end %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<% end %>
+
+	<% if current_user.is_candidate? %>
 		<div class="navbar-end">
-			<div class="navbar-brand">
+			<div class="navbar-item">
 				<%= link_to t('show_jobs'), 
 						jobs_path, 
 						class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(jobs_path)}" %>
 			</div>
-			<div class="navbar-brand is-vertical-center has-text-weight-bold ml3 f2">|</div>
-			<div class="navbar-brand is-vertical-center">
-				<%= link_to "New Job", 
-						new_admins_job_path, 
-						class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(new_admins_job_path)}" %>
+			<div class="navbar-item has-text-weight-bold ml3 f2">|</div>
+			<div class="navbar-item">
+				<%= link_to (t('my_inscriptions') + " (#{current_user.inscriptions.count})"), 
+						candidates_inscriptions_path(current_user), 
+						class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(candidates_inscriptions_path(current_user))}" %>
 			</div>
-			<div class="navbar-brand is-vertical-center">
-				<%= link_to "Jobs", 
-						admins_jobs_path, 
-						class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(admins_jobs_path)}" %>		
+			<div class="navbar-item">
+				<%= link_to edit_user_registration_path, 
+							class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(edit_user_registration_path) }" do %> 
+					<% if current_user.picture_url.file.nil? %>
+						<%= icon('far', 'user-circle mr1') %>
+					<% else %>
+						<div class="rounded-image size-25 mr1">
+						<%= image_tag(current_user.picture_url_url(:thumb), alt: "Imagen usuario del perfil de Linkedin | Wearehiring.io") %>
+						</div>
+					<% end %>
+					<%= t('my_profile') %>
+					<%= content_tag(:span, "¡completar!", class: 'tag is-danger ml2') if !profile_is_completed(current_user) %>
+				<% end %>
 			</div>
-			<div class="navbar-brand is-vertical-center">
-				<%= link_to "Users", 
-						admins_users_path, 
-						class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(admins_users_path)}" %>		
+			<div class="navbar-item has-text-left">
+				<div class="dropdown navbar-item is-right" id="profileDropdown">
+					<div class="dropdown-trigger">
+						<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+							<span><%= icon('fas', 'cog') %></span>
+							<span class="icon is-small">
+								<i class="fas fa-angle-down" aria-hidden="true"></i>
+							</span>
+						</button>
+					</div>
+					<div class="dropdown-menu" id="dropdown-menu" role="menu">
+						<div class="dropdown-content">
+							<%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do %>
+								<span class="icon is-small"><%= icon('fas', 'sign-out-alt') %></span>
+								<span> <%= t('logout') %> </span>
+							<% end %>
+						</div>
+					</div>
+				</div>
 			</div>
-			<div class="navbar-brand is-vertical-center">
-				<%= link_to "Settings", 
-						admins_settings_path, 
-						class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(admins_settings_path)}" %>		
+		</div>
+	<% end %>
+
+	<% if current_user.is_company? || current_user.is_ambassador? %>
+		<div class="navbar-end">
+			<div class="navbar-item">
+				<%= link_to new_companies_job_path, 
+					class: "button text-uppercase f6 is-dark has-text-weight-bold" do %>
+					<%= t('jobs.post_job') %> <%= icon('fas', 'gem ml2 has-text-warning') if current_user.is_ambassador? %>
+				<% end %>
 			</div>
-			<div class="navbar-brand is-vertical-center">
-				<%= link_to "Blog", 
-						blog_posts_path, 
-						class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(blog_posts_path)}" %>		
+			<div class="navbar-item has-text-weight-bold ml3 f2">|</div>
+			<div class="navbar-item">
+				<%= link_to t('my_jobs'), 
+						companies_jobs_path(current_user), 
+						class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(companies_jobs_path(current_user))}" %>
 			</div>
-			<div class="navbar-brand has-text-left">
+			<div class="navbar-item has-text-left">
 				<div class="dropdown navbar-item is-right" id="profileDropdown">
 					<div class="dropdown-trigger">
 						<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
@@ -60,128 +152,34 @@
 				</div>
 			</div>
 		</div>
-		<% end %>
-
-		<% if current_user.is_candidate? %>
-			<div class="navbar-end">
-				<div class="navbar-brand">
-					<%= link_to t('show_jobs'), 
-							jobs_path, 
-							class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(jobs_path)}" %>
-				</div>
-				<div class="navbar-brand is-vertical-center has-text-weight-bold ml3 f2">|</div>
-				<div class="navbar-brand is-vertical-center">
-					<%= link_to (t('my_inscriptions') + " (#{current_user.inscriptions.count})"), 
-							candidates_inscriptions_path(current_user), 
-							class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(candidates_inscriptions_path(current_user))}" %>
-				</div>
-				<div class="navbar-brand is-vertical-center">
-					<%= link_to edit_user_registration_path, 
-								class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(edit_user_registration_path) }" do %> 
-						<% if current_user.picture_url.file.nil? %>
-							<%= icon('far', 'user-circle mr1') %>
-						<% else %>
-							<div class="rounded-image size-25 mr1">
-							<%= image_tag(current_user.picture_url_url(:thumb), alt: "Imagen usuario del perfil de Linkedin | Wearehiring.io") %>
-							</div>
-						<% end %>
-						<%= t('my_profile') %>
-						<%= content_tag(:span, "¡completar!", class: 'tag is-danger ml2') if !profile_is_completed(current_user) %>
-					<% end %>
-				</div>
-				<div class="navbar-brand has-text-left">
-					<div class="dropdown navbar-item is-right" id="profileDropdown">
-						<div class="dropdown-trigger">
-							<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-								<span><%= icon('fas', 'cog') %></span>
-								<span class="icon is-small">
-									<i class="fas fa-angle-down" aria-hidden="true"></i>
-								</span>
-							</button>
-						</div>
-						<div class="dropdown-menu" id="dropdown-menu" role="menu">
-							<div class="dropdown-content">
-								<%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do %>
-									<span class="icon is-small"><%= icon('fas', 'sign-out-alt') %></span>
-									<span> <%= t('logout') %> </span>
-								<% end %>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		<% end %>
-
-		<% if current_user.is_company? || current_user.is_ambassador? %>
-			<div class="navbar-end">
-				<div class="navbar-brand is-vertical-center">
-					<%= link_to new_companies_job_path, 
-						class: "button text-uppercase f6 is-dark has-text-weight-bold" do %>
-						<%= t('jobs.post_job') %> <%= icon('fas', 'gem ml2 has-text-warning') if current_user.is_ambassador? %>
-					<% end %>
-				</div>
-				<div class="navbar-brand is-vertical-center has-text-weight-bold ml3 f2">|</div>
-				<div class="navbar-brand is-vertical-center">
-					<%= link_to t('my_jobs'), 
-							companies_jobs_path(current_user), 
-							class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(companies_jobs_path(current_user))}" %>
-				</div>
-				<div class="navbar-brand has-text-left">
-					<div class="dropdown navbar-item is-right" id="profileDropdown">
-						<div class="dropdown-trigger">
-							<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-								<span><%= icon('fas', 'cog') %></span>
-								<span class="icon is-small">
-									<i class="fas fa-angle-down" aria-hidden="true"></i>
-								</span>
-							</button>
-						</div>
-						<div class="dropdown-menu" id="dropdown-menu" role="menu">
-							<div class="dropdown-content">
-								<%= link_to edit_user_registration_path, class: "dropdown-item" do %>
-									<span class="icon is-small"> <%= icon('fas', 'key') %> </span>
-									<span> <%= t('edit_password') %> </span>
-								<% end %>
-							</div>
-							<div class="dropdown-content">
-								<%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do %>
-									<span class="icon is-small"><%= icon('fas', 'sign-out-alt') %></span>
-									<span> <%= t('logout') %> </span>
-								<% end %>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		<% end %>
-	<% else %>
-		<div class="navbar-end">
-			<div class="navbar-brand">
-				<%= link_to t('show_jobs'), 
-						jobs_path, 
-						class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(jobs_path)}" %>
-			</div>
-			<div class="navbar-brand">
-				<%= link_to t('jobs.post_job'), 
-					new_user_session_path(:company => "true"), 
-					class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(new_companies_job_path)}" %>
-			</div>
-			<div class="navbar-brand">
-				<div class="navbar-item">
-					<%= link_to new_user_session_path(:candidate => "true"), class: "text-uppercase f6 button is-rounded is-link #{ 'is-outlined' if !current_page?(new_user_session_path(:candidate => "true"))}" do %>
-						<%= icon('fas', 'user mr2') %>
-						<%= t('candidate_access') %>
-					<% end %>
-				</div>
-			</div>
-			<div class="navbar-brand">
-				<div class="navbar-item">
-					<%= link_to new_user_session_path(:company => "true"), class: "text-uppercase f6 button is-rounded is-dark #{ 'is-outlined' if !current_page?(new_user_session_path(:company => "true"))}" do %>
-						<%= icon('far', 'building mr2') %>
-						<%= t('company_access') %>
-					<% end %>
-				</div>
+	<% end %>
+<% else %>
+	<div class="navbar-end">
+		<div class="navbar-item">
+			<%= link_to t('show_jobs'), 
+					jobs_path, 
+					class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(jobs_path)}" %>
+		</div>
+		<div class="navbar-item">
+			<%= link_to t('jobs.post_job'), 
+				new_user_session_path(:company => "true"), 
+				class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(new_companies_job_path)}" %>
+		</div>
+		<div class="navbar-item">
+			<div class="navbar-item">
+				<%= link_to new_user_session_path(:candidate => "true"), class: "text-uppercase f6 button is-rounded is-link #{ 'is-outlined' if !params[:candidate]}" do %>
+					<%= icon('fas', 'user mr2') %>
+					<%= t('candidate_access') %>
+				<% end %>
 			</div>
 		</div>
-	<% end %>
-</nav>
+		<div class="navbar-item">
+			<div class="navbar-item">
+				<%= link_to new_user_session_path(:company => "true"), class: "text-uppercase f6 button is-rounded is-dark #{ 'is-outlined' if !params[:company]}" do %>
+					<%= icon('far', 'building mr2') %>
+					<%= t('company_access') %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+<% end %>

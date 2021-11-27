@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :levels, only: [:update]
     resources :skills, only: [:update, :create]
     resources :coupons, only: [:update, :create]
+    resources :partners, only: [:update, :create]
   end
 
   namespace :companies do
