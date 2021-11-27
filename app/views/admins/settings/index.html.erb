@@ -83,6 +83,14 @@
   <% @coupons.each do |coupon| %>
     <%= render partial: "/admins/settings/coupon", locals: { coupon: coupon } %>
   <% end %>
+</div>
+
+<div class="container mb5 is-size-7">
+  <div class="columns has-text-centered">
+    <div class="column">
+      <p class="title f4"> <%= t("partners.title") %> </p>
+    </div>
+  </div>
 
   <div class="columns has-text-centered listhead">
     <div class="column"> <%= t("partners.id") %> </div>
