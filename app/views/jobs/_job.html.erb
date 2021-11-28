@@ -11,7 +11,7 @@
           <div class="media-left">
             <figure class="image rounded-image size-70">
               <% if job.avatar.file.nil? %>
-                <%= image_tag(asset_path('logo_black.jpg'), alt: "Empleo de #{job.title} en #{job.job_author}") %>
+                <%= image_tag(asset_path('wah_red_logo.png'), alt: "Empleo de #{job.title} en #{job.job_author}") %>
               <% else %>
                 <%= image_tag(job.avatar_url(:thumb), alt: "Empleo de #{job.title} en #{job.job_author}") %>
               <% end %>
