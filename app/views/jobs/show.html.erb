@@ -57,7 +57,7 @@
   <%= render "seo", 
       title: "Empleo #{ @job.title } en #{ @job.job_author } en #{ @job.location } | WeAreHiring.io", 
       description: "#{ @job.job_author } está buscando a un #{ @job.title } en #{ @job.location }. Solicita este empleo en WeAreHiring.io",
-      image: @job.avatar.file.nil? ? image_url(asset_path('logo_black.png')) : image_url(@job.avatar_url(:thumb), alt: "Empleo de #{@job.title} en #{@job.job_author}") %>
+      image: @job.avatar.file.nil? ? "https://wearehiring-bucket-prod.s3.eu-west-3.amazonaws.com/uploads/job/avatar/660/0000_sin.png" : image_url(@job.avatar_url(:thumb), alt: "Empleo de #{@job.title} en #{@job.job_author}") %>
 
   <%= render partial: "/jobs/partials/structured_data", locals: { job: @job } %>
 <% end %>
