@@ -61,5 +61,5 @@
   <%= render "seo", 
       title: "#{@post.meta_title} | WeAreHiring.io", 
       description: "#{@post.meta_description} | WeAreHiring.io", 
-      image: @post.image.file.nil? ? "https://wearehiring-bucket-prod.s3.eu-west-3.amazonaws.com/uploads/job/avatar/660/0000_sin.png" : image_url(@post.image_url, alt: @post.title) %>
+      image: @post.image.file.nil? ? image_url(asset_path('wah_red_logo.png')) : image_url(@post.image_url, alt: @post.title) %>
 <% end %>
