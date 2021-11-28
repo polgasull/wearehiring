@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe InscriptionsController, type: :controller do
+RSpec.describe Candidates::InscriptionsController, type: :controller do
 
   describe 'POST #create' do
     let(:company_user) { FactoryBot.create(:user, :company) }
