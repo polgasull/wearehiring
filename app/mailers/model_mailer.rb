@@ -72,4 +72,30 @@ class ModelMailer < ApplicationMailer
       :subject => "Tu estado en el proceso de #{@job.title} ha cambiado a #{@inscription.status}"
     )
   end
+
+  def welcome_company(user)
+    @user = user
+
+    attachments.inline["wah_red_logo.png"] = File.read("#{Rails.root}/app/assets/images/wah_red_logo.png")
+    attachments.inline["twitter.png"] = File.read("#{Rails.root}/app/assets/images/twitter.png")
+    attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
+    attachments.inline["WAH_ESCALERA.png"] = File.read("#{Rails.root}/app/assets/images/WAH_ESCALERA.png")
+    mail( 
+      :to => user.email,
+      :subject => 'Bienvenid@s a We Are Hiring 🚀'
+    )  
+  end
+
+  def welcome_candidate(user)
+    @user = user
+
+    attachments.inline["wah_red_logo.png"] = File.read("#{Rails.root}/app/assets/images/wah_red_logo.png")
+    attachments.inline["twitter.png"] = File.read("#{Rails.root}/app/assets/images/twitter.png")
+    attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
+    attachments.inline["sky_is_the_limit.jpg"] = File.read("#{Rails.root}/app/assets/images/sky_is_the_limit.jpg")
+    mail( 
+      :to => user.email,
+      :subject => 'Bienvenid@ a We Are Hiring 🚀' 
+    )  
+  end
 end

@@ -1,0 +1,111 @@
+<span class="preheader"> Hola <%= @user.name %>, bienvenid@ a We Are Hiring </span>
+<table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
+  <tr>
+    <td>&nbsp;</td>
+    <td class="container">
+      <div class="content">
+
+        <!-- START CENTERED WHITE CONTAINER -->
+        <table role="presentation" class="main">
+
+          <!-- START MAIN CONTENT AREA -->
+          <tr>
+            <td class="wrapper">
+              <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td>
+                    <h2> Bienvenid@ a We Are Hiring 🙂 </h2>
+                    <p> 
+                      Enhorabuena ya eres parte de una de las comunidades de profesionales digitales más activas del momento.
+                    </p>
+                    <p>
+                     <strong>
+                      ¿Cómo funcionamos?
+                     </strong>
+                    </p>
+                    <ul>
+                      <li> Aplica por tu cuenta </li>
+                      <li> Deja que trabajemos nosotros por ti con WE MATCH </li>
+                    </ul>
+                    <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td class="content-block" style="text-align: center;">
+                          <%= image_tag(attachments['sky_is_the_limit.jpg'].url, width: 250, height: 250) %>     
+                        </td>
+                      </tr>
+                    </table>
+                    <br>
+                    <p>
+                     <strong>
+                      ¿Qué es WE MATCH?
+                     </strong>
+                    </p>
+                    <p>
+                      Aparte de las ofertas dónde apliques tu mismo, nuestro sistema de matching propondrá tu perfil a las empresas que publiquen Jobs y encajen con tus habilidades. 
+                      ¡No busques trabajo, haz que el trabajo venga a ti!
+                    </p>
+                    <p>
+                     <strong>
+                      No olvides rellenar tu perfil ✅ ✍️
+                     </strong>
+                    </p>
+                    <p>
+                      Al completar tu perfil tus probabilidades de ser contactado aumentan un 76% 😉
+                    </p>
+                    <br>
+                    <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
+                      <tbody>
+                        <tr>
+                          <td align="center">
+                            <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                              <tbody>
+                                <tr>
+                                  <td style="text-align: center;"> <%= link_to '¡Empezar ahora!', "https://www.wearehiring.io" %> </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <br>
+                    <p> ¡Muchas gracias! </p>
+                    <p> Estamos a tu disposición para cualquier duda o consulta </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+        <!-- END MAIN CONTENT AREA -->
+        </table>
+        <!-- END CENTERED WHITE CONTAINER -->
+
+        <!-- START FOOTER -->
+        <div class="footer">
+          <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td class="content-block">
+                <span class="apple-link">¡Síguenos en RRSS!</span>
+                <br> 
+                <a href="https://twitter.com/WeAreHiring_io" target="_blank">
+                  <%= image_tag(attachments['twitter.png'].url) %>      
+                </a>  
+                <a href="https://www.linkedin.com/company/we-are-hiring-startup" target="_blank">
+                  <%= image_tag(attachments['linkedin.png'].url) %>
+                </a>    
+              </td>
+            </tr>
+            <tr>
+              <td class="content-block">
+                <%= image_tag(attachments['wah_red_logo.png'].url, width: 80, height: 80) %>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <!-- END FOOTER -->
+      </div>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+</table>

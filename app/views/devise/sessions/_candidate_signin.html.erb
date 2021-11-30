@@ -2,10 +2,11 @@
 <section class="section">
 	<div class="container">
 		<div class="columns is-centered is-variable is-8">
-      <div class="column is-7 is-hidden-mobile">
-        <%= image_tag(asset_path('undraw_winners_ao2o.svg'), alt: "Encuentra todo el Empleo Digital en We Are Hiring") %>
+      <div class="column is-7 is-hidden-touch has-text-centered">
+        <%= image_tag(asset_path('WAH_sky.svg'), alt: "Encuentra todo el Empleo Digital en We Are Hiring") %>
       </div>
 			<div class="column is-4">
+        <div class="mt4"></div>
 				<h2 class="title is-4"> <%= icon('fas', 'user mr2') %> <%= t('candidate_access') %> </h2>
         <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="field mb2">
@@ -63,6 +64,9 @@
           <%= link_to t('create_account'), new_registration_path(resource_name, :candidate => "true")%>
         </div>
 			</div>
+      <div class="column is-7 is-hidden-desktop">
+        <%= image_tag(asset_path('WAH_sky.svg'), alt: "Encuentra todo el Empleo Digital en We Are Hiring") %>
+      </div>
 		</div>
   </div>
 </section>

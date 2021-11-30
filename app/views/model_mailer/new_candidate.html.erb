@@ -22,7 +22,7 @@
                       </p>
                     <% else %>
                       <p>
-                        <%= image_tag(@user.picture_url_url(:thumb), size: 50) %>
+                        <%= image_tag(@user.picture_url_url(:thumb), width: 50, height: 50) %>
                       </p>
                     <% end %>
                     <p> <%= @user.name %> </p>

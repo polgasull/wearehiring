@@ -71,3 +71,112 @@
 		}
 	}
 }
+
+.claim-title {
+  overflow: hidden;
+  font-size: 35px;
+  line-height: 50px;
+  color: $black;
+  
+  &__container {
+    font-weight: 600;
+    overflow: hidden;
+    height: 50px;
+
+    &__text {
+      display: inline;
+      float: left;
+      margin: 0;
+    }
+
+    &__list {
+      margin-top: 0;
+      padding-left: 150px;
+      text-align: left;
+      list-style: none;
+      
+      -webkit-animation-name: change;
+      -webkit-animation-duration: 10s;
+      -webkit-animation-iteration-count: infinite;
+      animation-name: change;
+      animation-duration: 10s;
+      animation-iteration-count: infinite;
+
+      &__item {
+				color: $red;
+        line-height: 50px;
+        margin:0;
+      }
+
+			@media (max-width: 768px) {
+				padding-left: 75px;
+			}
+    }
+  }
+
+	@media (max-width: 768px) {
+		font-size: 20px;
+	}
+}
+
+@-webkit-keyframes change {
+  0%, 8.5%, 100% {transform:translate3d(0,0,0); }
+	12.5%, 20% {transform:translate3d(0,-20%,0); }
+	25%, 33.5% {transform:translate3d(0,-40%,0); }
+  37.5%, 46% {transform:translate3d(0,-60%,0); }
+  50%, 58.5% {transform:translate3d(0,-80%,0); }
+  62.5%, 71% {transform:translate3d(0,-60%,0); }
+  75%, 83.5% {transform:translate3d(0,-40%,0); }
+  87.5%, 96% {transform:translate3d(0,-20%,0); }
+}
+
+@-o-keyframes change {
+  0%, 8.5%, 100% {transform:translate3d(0,0,0); }
+	12.5%, 20% {transform:translate3d(0,-20%,0); }
+	25%, 33.5% {transform:translate3d(0,-40%,0); }
+  37.5%, 46% {transform:translate3d(0,-60%,0); }
+  50%, 58.5% {transform:translate3d(0,-80%,0); }
+  62.5%, 71% {transform:translate3d(0,-60%,0); }
+  75%, 83.5% {transform:translate3d(0,-40%,0); }
+  87.5%, 96% {transform:translate3d(0,-20%,0); }
+}
+
+@-moz-keyframes change {
+  0%, 8.5%, 100% {transform:translate3d(0,0,0); }
+	12.5%, 20% {transform:translate3d(0,-20%,0); }
+	25%, 33.5% {transform:translate3d(0,-40%,0); }
+  37.5%, 46% {transform:translate3d(0,-60%,0); }
+  50%, 58.5% {transform:translate3d(0,-80%,0); }
+  62.5%, 71% {transform:translate3d(0,-60%,0); }
+  75%, 83.5% {transform:translate3d(0,-40%,0); }
+  87.5%, 96% {transform:translate3d(0,-20%,0); }
+}
+
+@keyframes change {
+  0%, 8.5%, 100% {transform:translate3d(0,0,0); }
+	12.5%, 20% {transform:translate3d(0,-20%,0); }
+	25%, 33.5% {transform:translate3d(0,-40%,0); }
+  37.5%, 46% {transform:translate3d(0,-60%,0); }
+  50%, 58.5% {transform:translate3d(0,-80%,0); }
+  62.5%, 71% {transform:translate3d(0,-60%,0); }
+  75%, 83.5% {transform:translate3d(0,-40%,0); }
+  87.5%, 96% {transform:translate3d(0,-20%,0); }
+}
+
+// 6 is the number of animation.
+// Here, there are 4 lines :
+
+// 1 to 2
+// 2 to 3
+// 3 to 4
+// 4 to 3
+// 3 to 2
+// 2 to 1
+
+// 6x + 6y = 100 (100% duration)
+
+// HERE : 
+// y = 4 -> Animation between two lines
+// x = 12.66 -> Time spent on a line
+
+// You can define a value and calculate the other if you want change speed or the number of lines

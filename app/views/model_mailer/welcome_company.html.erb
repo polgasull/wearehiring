@@ -1,0 +1,111 @@
+<span class="preheader"> Bienvenidos a We Are Hiring </span>
+<table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
+  <tr>
+    <td>&nbsp;</td>
+    <td class="container">
+      <div class="content">
+
+        <!-- START CENTERED WHITE CONTAINER -->
+        <table role="presentation" class="main">
+
+          <!-- START MAIN CONTENT AREA -->
+          <tr>
+            <td class="wrapper">
+              <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td>
+                    <p> Hola <%= @user.name %>, </p>
+                    <p> 
+                      Bienvenidos a We Are Hiring
+                    </p>
+                    <p>
+                      Soy Pol Gasull, co-fundador de la plataforma. <br>
+                      Es un placer que una empresa como la vuestra se haya unido a nosotros. 
+                    </p>
+                    <p>
+                     <strong>
+                      ¿Cómo funcionamos?
+                     </strong>
+                    </p>
+                    <p>
+                      Disponéis de 2 publicaciones <strong style="color: #48c774;"> GRATIS </strong> <br>
+                      Tras usarlas, el coste es de 100€ por Job con una duración de 60 días.
+                    </p>
+                    <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td class="content-block" style="text-align: center; padding-top: 0; padding-bottom: 0;">
+                          <%= image_tag(attachments['WAH_ESCALERA.png'].url, width: 300, height: 300) %>     
+                        </td>
+                      </tr>
+                    </table>
+                    <p>
+                     <strong>
+                      ¿Conoces nuestro sistema WE MATCH? ⚙️ 
+                     </strong>
+                    </p>
+                    <p>
+                      Con WE MATCH no hace falta que esperéis a que los usuarios apliquen. 
+                      Os mostraremos perfiles que encajan con vuestros requisitos y podéis añadirlos al instante.
+                    </p>
+                    <p>
+                      Podéis gestionar todo el proceso desde la plataforma. El usuario será notificado a tiempo real vía correo electrónico / SMS
+                    </p>
+                    <br>
+                    <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
+                      <tbody>
+                        <tr>
+                          <td align="center">
+                            <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                              <tbody>
+                                <tr>
+                                  <td style="text-align: center;"> <%= link_to '¡Publicar Job!', "https://www.wearehiring.io" %> </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <br>
+                    <p> Espero que os sintáis a gusto y disfrutéis de We Are Hiring </p>
+                    <p> Quedo a vuestra disposición para cualquier duda o consulta. </p>
+                    <p> Muchas Gracias </p>
+                    <p> Un cordial saludo </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+        <!-- END MAIN CONTENT AREA -->
+        </table>
+        <!-- END CENTERED WHITE CONTAINER -->
+
+        <!-- START FOOTER -->
+        <div class="footer">
+          <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td class="content-block">
+                <span class="apple-link">¡Síguenos en RRSS!</span>
+                <br> 
+                <a href="https://twitter.com/WeAreHiring_io" target="_blank">
+                  <%= image_tag(attachments['twitter.png'].url) %>      
+                </a>  
+                <a href="https://www.linkedin.com/company/we-are-hiring-startup" target="_blank">
+                  <%= image_tag(attachments['linkedin.png'].url) %>
+                </a>    
+              </td>
+            </tr>
+            <tr>
+              <td class="content-block">
+                <%= image_tag(attachments['wah_red_logo.png'].url, width: 80, height: 80) %>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <!-- END FOOTER -->
+      </div>
+    </td>
+    <td>&nbsp;</td>
+  </tr>
+</table>

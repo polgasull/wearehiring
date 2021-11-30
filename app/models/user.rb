@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_many :jobs
   has_many :inscriptions
   mount_uploader :picture_url, AvatarUploader
-  after_create :update_sendgrid_list
+  after_create :send_welcome_mail
 
   %w[candidate company admin ambassador].each do |user_type_name|
     define_method "is_#{user_type_name}?" do
@@ -47,10 +47,6 @@ class User < ApplicationRecord
     end
   end
 
-  def update_sendgrid_list
-    SendgridService.new.update_contact self
-  end
-
   def total_inscriptions_sum(jobs)
     inscriptions = []
 
@@ -69,5 +65,13 @@ class User < ApplicationRecord
     end
 
     inscriptions
+  end
+
+  def send_welcome_mail
+    if self.is_company?
+      ModelMailer.welcome_company(self).deliver_later
+    else
+      ModelMailer.welcome_candidate(self).deliver_later
+    end
   end
 end
