@@ -82,6 +82,7 @@ class ModelMailer < ApplicationMailer
     attachments.inline["WAH_ESCALERA.png"] = File.read("#{Rails.root}/app/assets/images/WAH_ESCALERA.png")
     mail( 
       :to => user.email,
+      :bcc => 'pol@wearehiring.io',
       :subject => 'Bienvenid@s a We Are Hiring 🚀'
     )  
   end
@@ -95,6 +96,7 @@ class ModelMailer < ApplicationMailer
     attachments.inline["sky_is_the_limit.jpg"] = File.read("#{Rails.root}/app/assets/images/sky_is_the_limit.jpg")
     mail( 
       :to => user.email,
+      :bcc => 'pol@wearehiring.io',
       :subject => 'Bienvenid@ a We Are Hiring 🚀' 
     )  
   end
