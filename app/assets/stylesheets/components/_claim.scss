@@ -1,78 +1,5 @@
-.claim {
-	color: $white;
-	
-	.title {
-		font-size: 4rem;
-	}
-
-	.title a {
-		text-decoration: underline;
-	}
-
-	.home-link {
-		color: $red;
-
-		&:hover {
-			color: darken($red, 10%);
-		}
-	}
-
-  &.is-medium {
-    height: 50vh !important;
-    min-height: 50vh !important;  
-
-    .hero-body {
-      padding: 5rem 0rem;
-    }
-  }
-
-	.hero-body {
-    position: relative;
-  }
-}
-
-@media(max-width: 1200px) {
-	
-	.claim {
-
-		h1.title-mb {
-			font-size: 3rem;
-			margin-top: 0rem;
-		}
-	}
-}
-
-@media (max-width: 500px) {
-
-	.claim {
-
-		&.is-medium {
-			min-height: 40vh !important;
-			height: 40vh !important;
-			
-			.hero-body {
-				padding: 3rem 0rem;			
-			}
-		}
-
-		&.is-mb-bg {
-			height: 100vh;
-			background-position: -460px 0px !important;
-		}
-
-		h1.title-mb {
-			font-size: 2rem;
-			margin-top: 0rem;
-		}
-
-		.column {
-			padding-left: 15px;
-    	padding-right: 15px;
-		}
-	}
-}
-
 .claim-title {
+  font-family: 'archiabold';
   overflow: hidden;
   font-size: 35px;
   line-height: 50px;
@@ -116,6 +43,15 @@
 
 	@media (max-width: 768px) {
 		font-size: 20px;
+	}
+}
+
+@media (max-width: 768px) {
+	.claim {
+
+		h1.title-touch {
+			font-size: 2rem;
+		}
 	}
 }
 
