@@ -5,123 +5,123 @@
         <h1 class="title">
             Hola, <%= current_user.name %>
         </h1>
-        <section class="info-tiles">
-          <div class="tile is-ancestor has-text-centered">
-            <div class="tile is-parent">
-              <article class="tile is-child box">
-                <p class="title"><%= @candidate_inscriptions.count %></p>
-                <p class="subtitle"><%= icon('fas', 'check-circle') %> Inscripciones</p>
-              </article>
-            </div>
-            <div class="tile is-parent">
-              <article class="tile is-child box">
-                <p class="title"> <%= @in_process_count %> </p>
-                <p class="subtitle"> <%= icon('fas', 'user-clock') %> En Proceso</p>
-              </article>
-            </div>
-            <div class="tile is-parent">
-              <article class="tile is-child box">
-                <p class="title"> <%= @finalists_count %> </p>
-                <p class="subtitle"><%= icon('fas', 'trophy') %> Finalista</p>
-              </article>
+      </div>
+    </div>
+    <div class="columns mt5"> 
+      <div class="column">
+        <nav class="level">
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="heading"><%= icon('fas', 'check-circle') %> Inscripciones</p>
+              <p class="title"><%= @candidate_inscriptions.count %></p>
             </div>
           </div>
-        </section>
-        <div class="columns mt3">
-          <div class="column is-5">
-            <div class="card events-card">
-              <header class="card-header">
-                <p class="card-header-title">
-                  <%= t('my_inscriptions') %>
-                </p>
-              </header>
-              <div class="card-table pa2">
-                <% if @candidate_inscriptions.any? %>
-                  <% @candidate_inscriptions.each do |inscription| %>
-                    <div class="columns is-vcentered">
-                      <div class="column is-1">
-                        <% if inscription.job.avatar.file.nil? %>
-                          <%= icon('far', 'image', style: 'font-size: 25px') %>
-                        <% else %>
-                          <%= image_tag(inscription.job.avatar_url(:thumb), width: 35, height: 35) %>
-                        <% end %>
-                      </div>
-                      <div class="column is-size-7 is-6">
-                        <%= inscription.job.title %>
-                      </div>
-                      <div class="column is-2 has-text-right">
-                        <span class="tag is-size-7 is-light">
-                          <%= inscription.status.present? ? t("inscriptions.#{inscription.status}") : 'Inscrito' %> 
-                        </span>
-                      </div>
-                      <div class="column has-text-right is-3">
-                        <%= link_to inscription.job, class: "button is-small is-link is-rounded" do %>
-                          Ver Job
-                        <% end %>
-                      </div>
-                    </div>
-                  <% end %>
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="heading"><%= icon('fas', 'user-clock') %> En Proceso</p>
+              <p class="title"><%= @in_process_count %></p>
+            </div>
+          </div>
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="heading"><%= icon('fas', 'trophy') %> Finalista</p>
+              <p class="title"><%= @finalists_count %></p>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div class="columns mt5">
+      <div class="column is-5">
+        <div class="box events-card">
+          <p class="title is-4">
+            <%= t('my_inscriptions') %>
+          </p>
+          <div class="card-table pa2">
+            <% if @candidate_inscriptions.any? %>
+              <% @candidate_inscriptions.each do |inscription| %>
+                <div class="columns is-vcentered">
+                  <div class="column is-1">
+                    <% if inscription.job.avatar.file.nil? %>
+                      <%= icon('far', 'image', style: 'font-size: 25px') %>
+                    <% else %>
+                      <%= image_tag(inscription.job.avatar_url(:thumb), width: 35, height: 35) %>
+                    <% end %>
+                  </div>
+                  <div class="column is-size-7 is-6">
+                    <%= inscription.job.title %>
+                  </div>
+                  <div class="column is-2 has-text-right">
+                    <span class="tag is-size-7 is-light">
+                      <%= inscription.status.present? ? t("inscriptions.#{inscription.status}") : 'Inscrito' %> 
+                    </span>
+                  </div>
+                  <div class="column has-text-right is-3">
+                    <%= link_to inscription.job, class: "button is-small is-link is-rounded" do %>
+                      Ver Job
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
+            <% else %>
+              <div class="has-text-centered mt3">
+                <%= image_tag(asset_path('job_search.svg'), size: 100) %>
+                <p class="mb2"> No te has inscrito a ningún Job </p>
+                  <%= link_to t('show_jobs'), 
+                    jobs_path, 
+                    class: "button text-uppercase f6 is-primary has-text-weight-bold" %>
+              </div>
+            <% end %>
+          </div>
+          <footer class="card-footer">
+            <%= link_to candidates_inscriptions_path(current_user), class: "card-footer-item" do %>
+              Ver todas
+            <% end %>
+          </footer>
+        </div>
+      </div>
+      <div class="column is-7">
+        <div class="we-match-box no-border mb3">
+          <div class="columns">
+            <div class="column">
+              <p class="title is-4"> 
+                <%= icon('fas', 'rocket') %> We Match <span class="tag is-info is-light"> ¡Nuevo! </span> 
+              </p>
+              <% if !current_user.visible? %>
+                <span class="tag is-danger">Desactivado </span> 
+                <span class="tag is-light"> ¡Pero no te preocupes puedes seguir aplicando por tu cuenta! </span>
+              <% end %>
+            </div>
+            <div class="column">
+              <%= link_to edit_user_registration_path, class: "button is-rounded is-medium is-warning shadow" do %>
+                <% if current_user.picture_url.file.nil? %>
+                  <%= icon('far', 'user-circle mr2') %>
                 <% else %>
-                  <div class="has-text-centered mt3">
-                    <%= image_tag(asset_path('job_search.svg'), size: 100) %>
-                    <p class="mb2"> No te has inscrito a ningún Job </p>
-                    	<%= link_to t('show_jobs'), 
-                        jobs_path, 
-                        class: "button text-uppercase f6 is-primary has-text-weight-bold" %>
+                  <div class="rounded-image size-25 mr2">
+                  <%= image_tag(current_user.picture_url_url(:thumb), alt: "Imagen usuario del perfil de Linkedin | Wearehiring.io") %>
                   </div>
                 <% end %>
-              </div>
-              <footer class="card-footer">
-                <%= link_to candidates_inscriptions_path(current_user), class: "card-footer-item" do %>
-                  Ver todas
-                <% end %>
-              </footer>
-            </div>
-          </div>
-          <div class="column is-7">
-            <div class="we-match-box no-border mb3">
-              <div class="columns">
-                <div class="column">
-                  <p class="title is-4"> 
-                    <%= icon('fas', 'rocket') %> We Match <span class="tag is-info is-light"> ¡Nuevo! </span> 
-                  </p>
-                  <% if !current_user.visible? %>
-                    <span class="tag is-danger">Desactivado </span> 
-                    <span class="tag is-light"> ¡Pero no te preocupes puedes seguir aplicando por tu cuenta! </span>
-                  <% end %>
-                </div>
-                <div class="column">
-                  <%= link_to edit_user_registration_path, class: "button is-rounded is-medium is-warning shadow" do %>
-                    <% if current_user.picture_url.file.nil? %>
-                      <%= icon('far', 'user-circle mr2') %>
-                    <% else %>
-                      <div class="rounded-image size-25 mr2">
-                      <%= image_tag(current_user.picture_url_url(:thumb), alt: "Imagen usuario del perfil de Linkedin | Wearehiring.io") %>
-                      </div>
-                    <% end %>
-                    Completar Mi Perfil
-                  <% end %>
-                </div>
-              </div>
-              <% if current_user.skills.any? %>
-                <p class="has-text-weight-bold mb2"> Has indicado las siguientes Hard & Soft Skills: </p>
-                <% current_user.skills.each do |skill| %>
-                  <span class='tag is-success is-light mr2'> 
-                    <%= icon('fas', 'check mr2') %>
-                    <%= skill.name %> 
-                  </span>
-                <% end %>
+                Completar Mi Perfil
               <% end %>
-              <article class="message mt3">
-                <div class="message-body <%= 'has-text-grey-light' if !current_user.visible? %>">
-                  <strong> Nuestro sistema de matching </strong> propondrá tu perfil a las empresas que publiquen Jobs y cumplan tus requisitos.
-                  <p class="mt2"> Puedes aplicar por tu cuenta o esperar a que las empresas te añadan a sus procesos de selección. <%= icon('far','smile-wink')%> </p>
-                  <p class="mt2"><strong> Cuanto más completes tu perfil, más posibilidades de ¡Match! </strong> </p>
-                  <p class="mt2"> ¡No busques trabajo, haz que el trabajo venga a ti! </p>
-                </div>
-              </article>
             </div>
           </div>
+          <% if current_user.skills.any? %>
+            <p class="has-text-weight-bold mb2"> Has indicado las siguientes Hard & Soft Skills: </p>
+            <% current_user.skills.each do |skill| %>
+              <span class='tag is-success is-light mr2'> 
+                <%= icon('fas', 'check mr2') %>
+                <%= skill.name %> 
+              </span>
+            <% end %>
+          <% end %>
+          <article class="message mt3">
+            <div class="message-body <%= 'has-text-grey-light' if !current_user.visible? %>">
+              <strong> Nuestro sistema de matching </strong> propondrá tu perfil a las empresas que publiquen Jobs y cumplan tus requisitos.
+              <p class="mt2"> Puedes aplicar por tu cuenta o esperar a que las empresas te añadan a sus procesos de selección. <%= icon('far','smile-wink')%> </p>
+              <p class="mt2"><strong> Cuanto más completes tu perfil, más posibilidades de ¡Match! </strong> </p>
+              <p class="mt2"> ¡No busques trabajo, haz que el trabajo venga a ti! </p>
+            </div>
+          </article>
         </div>
       </div>
     </div>

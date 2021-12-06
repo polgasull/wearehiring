@@ -19,6 +19,10 @@
   max-height: 250px;
   outline: none;
 
+  .slider-item {
+    margin-right: 1rem;
+  }
+
   .slider-item .card {
     height: 220px;
     max-height: 220px;

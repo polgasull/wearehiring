@@ -82,6 +82,7 @@ $openheart: "\f08a";
 	input[type="radio"]:checked + label,
 	input[type="checkbox"]:checked + label {
 		background-color: $success;
+		border: 1px solid $success;
 		color: $white;
 	}
 }

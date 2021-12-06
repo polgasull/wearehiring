@@ -31,6 +31,12 @@
   h2.title {
 		color: $white;
 	}
+
+  @media (max-width: 768px) {
+    .button.is-medium {
+      font-size: 1rem;
+    }
+  }
 }
 
 .card-box-secondary {
@@ -43,6 +49,10 @@
 
   &.home-box {
     padding: 120px 80px;
+
+    @media (max-width: 768px) {
+      padding: 40px;
+    }
   }
 }
 

@@ -12,7 +12,7 @@
           <%= f.hidden_field :user_type_id, value: UserType.where(internal_name: 'company').first.id %>
 
           <div class="field mb5">
-            <%= f.label :name, class: 'has-text-weight-bold' %>
+            <label for="user_name" class="has-text-weight-bold"> <%= t('forms.company_name') %> </label>
             <div class="control has-icons-left">
               <%= f.input :name, 
                   required: true, 
@@ -26,7 +26,22 @@
               </span>
             </div>
           </div>
-          <div class="field mb2">
+          <div class="field mb2 mt3">
+            <label for="user_last_name" class="has-text-weight-bold"> <%= t('forms.contact_name') %> </label>
+            <div class="control has-icons-left">
+              <%= f.input :last_name, 
+                  required: true, 
+                  wrapper: false,
+                  autofocus: true, 
+                  label: false,
+                  input_html: { class: "input" },
+                  placeholder: "María Hernández" %>
+              <span class="icon is-small is-left">
+                <%= icon('fas', 'building') %>
+              </span>
+            </div>
+          </div>
+          <div class="field mb2 mt3">
             <%= f.label :email, class: 'has-text-weight-bold' %>
             <div class="control has-icons-left">
               <%= f.input :email,
@@ -40,7 +55,7 @@
               </span>
             </div>
           </div>
-          <div class="field mb2">
+          <div class="field mb2 mt3">
             <%= f.label :password, class: 'has-text-weight-bold' %>
             <div class="control has-icons-left">
               <%= f.input :password,
@@ -48,13 +63,13 @@
                   wrapper: false,
                   label: false,
                   input_html: { class: "input", onkeyup: "checkPass(); return false;" },
-                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+                  hint: ("Mínimo #{@minimum_password_length} carácteres" if @minimum_password_length) %>
               <span class="icon is-small is-left">
                 <%= icon('fas', 'key') %>
               </span>
             </div>
           </div>
-          <div class="field">
+          <div class="field mt3">
             <%= f.label :password_confirmation, class: 'has-text-weight-bold' %>
             <div class="control has-icons-left">
               <%= f.input :password_confirmation,

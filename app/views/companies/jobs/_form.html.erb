@@ -21,7 +21,7 @@
     </div>
   </div>
 
-  <div class="columns">
+  <div class="columns mt3">
     <div class="column">
       <div class="field">
         <%= f.label :job_author, class: 'label has-text-weight-bold' %>
@@ -40,7 +40,7 @@
     </div>  
   </div>
 
-  <div class="columns">
+  <div class="columns mt3">
     <div class="column">
       <div class="field">
         <div class="control">
@@ -85,10 +85,9 @@
     </div>
   </div>
 
-  <div class="columns">
+  <div class="columns mt3">
     <div class="column"> 
       <strong>
-        <abbr title="required">*</abbr>
         <%= t('jobs.salary_range') %>  
         <%= icon('fas', 'question-circle') %>
       </strong>
@@ -139,12 +138,11 @@
     </div>
   </div>
   
-  <div class="columns">
+  <div class="columns mt3">
     <div class="column is-one-third-desktop">
       <div class="field">
         <div class="control">
-          <label class="label"> 
-            <abbr title="required">*</abbr>
+          <label class="label" for="job_level_id"> 
             <%= t('exp_level') %> 
           </label>
           <div class="control has-icons-left">
@@ -160,23 +158,22 @@
     </div>
   </div>
   
-  <div class="columns">
+  <div class="columns mt3">
     <div class="column">
       <div class="field">
         <div class="control">
-          <label class="label"> 
-            <abbr title="required">*</abbr>
+          <label class="label" for=""> 
             <%= t('category') %> 
           </label>
           <div class="control is-flex wrap mt3">
-            <%= f.collection_radio_buttons :category_id, Category.all, :id, :name, item_wrapper_class: 'choice-collection' %>
+            <%= f.collection_radio_buttons :category_id, Category.all, :id, :name, item_wrapper_class: 'choice-collection', checked: Category.all.first.id %>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="columns">
+  <div class="columns mt3">
     <div class="column">
       <div class="field">
         <div class="control">
@@ -190,7 +187,7 @@
     </div>
   </div>
 
-  <div class="columns">
+  <div class="columns mt3">
     <div class="column">
       <div class="field">
         <div class="control">
@@ -202,11 +199,11 @@
 
   <hr>
 
-  <div class="columns">
+  <div class="columns mt3">
     <div class="column">
       <div class="field">
         <div class="control">
-          <label class="label f4"> <%= t('jobs.logo_image') %> </label>
+          <label class="label f4"> <%= t('jobs.logo_image') %> (opcional) </label>
           <div class="file is-info">
             <label class="file-label">
               <%= f.input :avatar, 

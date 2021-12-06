@@ -10,10 +10,6 @@
 		}
 	}
 
-	.navbar-item {
-		color: $black;
-	}
-
 	.button {
 		text-transform: capitalize;
 	}
@@ -23,7 +19,7 @@
 	}
 
 	a {
-		color: $white;
+		color: $black;
 
 		&.dropdown-item {
 			color: $black;
@@ -31,21 +27,85 @@
 	}
 
 	img {
-		max-width: 170px;
-	}
-
-	.logo {
-		position: relative;
-		top: 7px;
-	
-		@media(max-width: 992px) {
-			top: 5px;
-			left: 10px
-		}
+		height: 75px;
+		width: 75px;
+		max-width: 75px;
 	}
 	
 	.navbar-burger span {
-		color: black;
+		color: $black;
+		height: 2px;
+	}
+
+	.dropdown .dropdown-content:hover {
+		background: whitesmoke;
+	}
+}
+
+.header.signed-header {
+	background-color: $secondary;
+	
+	.navbar {
+		height: 65px;
+	}
+
+	.navbar-brand {
+		a {
+			height: 65px;
+		}
+	}
+
+	img {
+		height: 60px;
+		width: 60px;
+		max-width: 65px;
+	}
+
+	.navbar-item {
+		color: $white;
+		padding: 2px 10px;
+	}
+
+	.navbar-item:hover {
+		color: $red;
+	}
+
+	.navbar-item:focus {
+		background: none;
+	}
+
+	a.navbar-item.active {
+		color: $red;
+		-webkit-font-smoothing: antialiased;
+	}
+
+	.button.is-dark {
+		-webkit-font-smoothing: antialiased;
+		background-color: $red;
+	}
+
+	.button.is-dark:hover {
+		background-color: darken($red, 10%);
+	}
+
+	.dropdown button {
+		background: none;
+		border: none;
+
+		span {
+			color: $white;
+		}
+	}
+
+	.dropdown button:hover {
+
+		span {
+			color: $red;
+		}
+	}
+
+	.navbar-burger span {
+		color: $white;
 		height: 2px;
 	}
 }

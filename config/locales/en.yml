@@ -353,6 +353,7 @@ en:
     from: "From"
     to: "To"
     company_name: "Company Name"
+    contact_name: "Contact Name"
     email: "Email"
     password: "Create Password"
     password_confirmation: "Confirm Password"

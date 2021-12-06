@@ -3,128 +3,114 @@
     <div class="columns">
       <div class="column is-8">
         <h1 class="title">
-          Hola, <%= current_user.name %>
+          Panel de <%= current_user.name %>
         </h1>
         <h2 class="subtitle">
           Aquí tienes el resumen de tus Jobs en We Are Hiring
         </h2>
       </div>
+    </div>
+    <div class="columns mt5"> 
       <div class="column">
-        <% if current_user.is_ambassador? %>
-          <div class="box has-background-white-ter">
-            <p> <%= icon('fas', 'gem has-text-warning') %> Cuenta Premium Activada </p>
-            Precio por publicación reducido a <strong> 9,90€ </strong>
+        <nav class="level">
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="heading">Jobs</p>
+              <p class="title"><%= @company_jobs_count %></p>
+            </div>
           </div>
-        <% end %>
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="heading">Jobs Activos</p>
+              <p class="title"><%= @company_jobs_open_count %></p>
+            </div>
+          </div>
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="heading">Jobs Finalizados</p>
+              <p class="title"><%= @company_jobs_close_count %></p>
+            </div>
+          </div>
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="heading">Total Inscritos</p>
+              <p class="title"><%= @total_inscriptions %></p>
+            </div>
+          </div>
+        </nav>
       </div>
     </div>
-    <div class="columns"> 
-      <div class="column">
-        <section class="info-tiles">
-          <div class="tile is-ancestor has-text-centered">
-            <div class="tile is-parent">
-              <article class="tile is-child box">
-                <p class="title"><%= @company_jobs_count %></p>
-                <p class="subtitle">Jobs</p>
-              </article>
-            </div>
-            <div class="tile is-parent">
-              <article class="tile is-child box">
-                <p class="title"><%= @company_jobs_open_count %></p>
-                <p class="subtitle">Jobs Activos</p>
-              </article>
-            </div>
-            <div class="tile is-parent">
-              <article class="tile is-child box">
-                <p class="title"><%= @company_jobs_close_count %></p>
-                <p class="subtitle">Jobs Finalizados</p>
-              </article>
-            </div>
-            <div class="tile is-parent">
-              <article class="tile is-child box">
-                <p class="title"><%= @total_inscriptions %></p>
-                <p class="subtitle">Total Inscritos</p>
-              </article>
-            </div>
-          </div>
-        </section>
-        <div class="columns">
-          <div class="column is-6">
-            <div class="card events-card">
-              <header class="card-header">
-                <p class="card-header-title">
-                  Últimos candidatos
-                </p>
-              </header>
-              <div class="card-table pa2">
-                <% if @last_inscribeds.any? %>
-                  <% @last_inscribeds.each do |inscription| %>
-                    <div class="columns is-vcentered">
-                      <div class="column is-1">
-                        <% if inscription.user.picture_url.file.nil? %>
-                          <%= icon('far', 'image', style: 'font-size: 25px') %>
-                        <% else %>
-                        	<div class="rounded-image size-25 mr1">
-                            <%= image_tag(inscription.user.picture_url_url(:thumb), width: 35, height: 35) %>
-                          </div>
-                        <% end %>
+    <div class="columns mt5">
+      <div class="column is-6">
+        <div class="box events-card">
+          <p class="title is-4">
+            Últimos candidatos
+          </p>
+          <div class="card-table pa2">
+            <% if @last_inscribeds.any? %>
+              <% @last_inscribeds.each do |inscription| %>
+                <div class="columns is-vcentered">
+                  <div class="column is-1">
+                    <% if inscription.user.picture_url.file.nil? %>
+                      <%= icon('far', 'image', style: 'font-size: 25px') %>
+                    <% else %>
+                      <div class="rounded-image size-25 mr1">
+                        <%= image_tag(inscription.user.picture_url_url(:thumb), width: 35, height: 35) %>
                       </div>
-                      <div class="column is-size-7 is-8">
-                        <%= inscription.user.name %> ha aplicado a <%= inscription.job.title %> 
-                      </div>
-                      <div class="column has-text-right is-3">
-                        <%= link_to companies_job_inscription_path(inscription.job_id, inscription.id), class: "button is-small is-link" do %>
-                          <%= t('view_profile') %>
-                        <% end %>
-                      </div>
-                    </div>
-                  <% end %>
-                <% else %>
-                  <div class="has-text-centered mt3">
-                    <%= image_tag(asset_path('applicants_logo.svg'), size: 150) %>
-                    <p> Aún no tienes candidatos </p>
+                    <% end %>
                   </div>
-                <% end %>
-              </div>
-            </div>
-          </div>
-          <div class="column is-6">
-            <div class="card events-card">
-              <header class="card-header">
-                <p class="card-header-title">
-                  Últimos Jobs publicados
-                </p>
-              </header>
-              <div class="card-table pa2">
-                <% if @company_jobs.any? %>
-                  <% @company_jobs.each do |job| %>
-                    <div class="columns is-vcentered">
-                      <div class="column is-size-7 is-6">
-                        <%= job.title %>
-                      </div>
-                      <div class="column is-3 has-text-right"> 
-                        <span class="tag is-size-7 <%= job.open? ? 'is-success' : 'is-danger' %>">
-                          <%= job.open? ? 'En curso' : 'Finalizado' %> 
-                        </span>
-                      </div>
-                      <div class="column has-text-right is-3">
-                        <%= link_to companies_job_path(job.id), class: "button is-small is-link" do %>
-                          <%= t('go_to_job') %>
-                        <% end %>
-                      </div>
-                    </div>
-                  <% end %>
-                <% else %>
-                  <div class="has-text-centered mt3">
-                    <%= image_tag(asset_path('job_logo.svg'), size: 100) %>
-                    <p class="mb2"> Aún no has publicado ningún job </p>
-                    	<%= link_to t('jobs.post_job'), 
-                        new_companies_job_path, 
-                        class: "button text-uppercase f6 is-dark has-text-weight-bold" %>
+                  <div class="column is-size-7 is-8">
+                    <%= inscription.user.name %> ha aplicado a <%= inscription.job.title %> 
                   </div>
-                <% end %>
+                  <div class="column has-text-right is-3">
+                    <%= link_to companies_job_inscription_path(inscription.job_id, inscription.id), class: "button is-small is-link" do %>
+                      <%= t('view_profile') %>
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
+            <% else %>
+              <div class="has-text-centered mt3">
+                <%= image_tag(asset_path('applicants_logo.svg'), size: 150) %>
+                <p> Aún no tienes candidatos </p>
               </div>
-            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="column is-6">
+        <div class="box events-card">
+          <p class="title is-4">
+            Últimos Jobs publicados
+          </p>
+          <div class="card-table pa2">
+            <% if @company_jobs.any? %>
+              <% @company_jobs.each do |job| %>
+                <div class="columns is-vcentered">
+                  <div class="column is-6">
+                    <%= job.title %>
+                  </div>
+                  <div class="column is-3 has-text-right"> 
+                    <span class="tag is-light <%= 'is-success' if job.open? %>">
+                      <%= job.open? ? 'En curso' : 'Finalizado' %> 
+                    </span>
+                  </div>
+                  <div class="column has-text-right is-3">
+                    <%= link_to companies_job_path(job.id) do %>
+                      <%= t('go_to_job') %> <%= icon('fas', 'arrow-right ml2') %>
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
+            <% else %>
+              <div class="has-text-centered mt3">
+                <%= image_tag(asset_path('job_logo.svg'), size: 100) %>
+                <p class="mb2"> Aún no has publicado ningún job </p>
+                  <%= link_to t('jobs.post_job'), 
+                    new_companies_job_path, 
+                    class: "button text-uppercase f6 is-dark has-text-weight-bold" %>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>

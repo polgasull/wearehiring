@@ -354,6 +354,7 @@ es:
     from: "Desde"
     to: "Hasta"
     company_name: "Nombre de la empresa"
+    contact_name: "Nombre de contacto"
     email: "Correo electrónico"
     password: "Crear contraseña"
     password_confirmation: "Repetir contraseña"
