@@ -4,6 +4,7 @@
       <%= simple_form_for(user, method: :patch, url: candidates_user_profile_path(user.id), html: { multipart: true }) do |f| %>
         <header class="modal-card-head">
           <p class="modal-card-title"> Hola, <%= user.name %> </p>
+          <button class="modal-close is-large" aria-label="close"></button>
         </header>
 
         <section class="modal-card-body">
@@ -90,11 +91,10 @@
         <footer class="modal-card-foot justify-center">
           <%= hidden_field_tag "job_id", @job.id %>
           <%= f.hidden_field :accepted_terms, value: true %>
-          <%= f.button :submit, t('i_want_this_job'), class: "button is-rounded primary is-large shadow mv3" %>
+          <%= f.button :submit, t('apply_now'), class: "button is-rounded primary is-large shadow mv3" %>
         </footer>
       <% end %>
     </div>
-    <button class="modal-close is-large" aria-label="close"></button>
   </div>
 
 

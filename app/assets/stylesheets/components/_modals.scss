@@ -1,13 +1,48 @@
 .modal {
+  .modal-background {
+    background-color: rgba(10, 10, 10, 0.55);
+  }
+
   .modal-close {
-    color: $black;
     position: relative;
     right: auto;
     top: auto;
-    background: $black;
+    background: transparent;
+    
+    &:before {
+      background-color: $dark;
+    }
 
-    &:hover {
-      background: $red;
+    &:after {
+      background-color: $dark;
+    }
+  }
+
+  .modal-close:hover {
+    &:before {
+      background-color: $red;
+    }
+
+    &:after {
+      background-color: $red;
+    }
+  }
+
+  .modal-card-body {
+    padding: 32px 48px;
+  }
+
+  .modal-card-foot {
+    padding: 16px;
+  }
+
+  @media (max-width: 768px) {
+    .modal-card-body {
+      padding: 16px;
+    }
+
+    .modal-card-foot {
+      padding: 0;
     }
   }
 }

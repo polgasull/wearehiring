@@ -15,6 +15,7 @@ es:
       unauthenticated: "Debes iniciar sesión como empresa"
       unconfirmed: "Tienes que confirmar tu email antes de continuar."
       wrong_email_or_password: "Correo electrónico o contraseña inválidos."
+      taken: "Parece que ya existe una cuenta con ese correo electrónico."
     mailer:
       confirmation_instructions:
         subject: "Bienvenido"

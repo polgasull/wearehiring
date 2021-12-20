@@ -11,9 +11,13 @@
 <% end %>
 
 <% if !user_signed_in? && !current_user&.is_company? && !current_user&.is_ambassador? %>
-  <%= link_to t(cta_text), 
-              new_user_session_path(:candidate => "true"), 
-              class: "button is-rounded primary is-large shadow mv3" %>
+  <%= button_tag(type: 'button',
+    class: 'button is-rounded primary is-large shadow mv3 modal-button',
+    'data-target': 'candidateSignupModal',
+    'aria-haspopup': 'true',
+    disabled: !@job.open?) do %>
+      <%= t(cta_text) %> 
+  <% end %>
 <% end %>
 
 <% if user_signed_in? && current_user&.is_candidate? %>
@@ -26,7 +30,7 @@
   <% else %>
     <%= form_for :inscription, url: candidates_job_inscriptions_path(job) do |f| %>
       <%= f.submit t(cta_text), class: "button is-rounded primary is-large shadow mv3 #{'require-user-info' unless minimum_profile(current_user)}" %>
-    <% end %>        
+    <% end %>      
   <% end %>
 <% end %>      
 

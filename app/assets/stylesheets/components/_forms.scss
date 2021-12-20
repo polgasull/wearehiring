@@ -40,7 +40,12 @@ $openheart: "\f08a";
 }
 
 .input {
+	box-shadow: none;
 
+	&:focus {
+		box-shadow: none;
+	}
+	
 	&.is-disabled {	
 		color: transparent;
 		background-color: $red;

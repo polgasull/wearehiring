@@ -47,7 +47,8 @@ Rails.application.routes.draw do
   end
 
   devise_for :users, controllers: { 
-    omniauth_callbacks: 'users/omniauth_callbacks'
+    omniauth_callbacks: 'users/omniauth_callbacks',
+    registrations: 'registrations'
   }
 
   get '/legal/aviso_legal', to: 'legal#legal_terms', as: 'legal_terms'

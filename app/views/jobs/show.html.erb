@@ -50,6 +50,7 @@
 <% end %>
 
 <%= render partial: '/jobs/partials/update_user_info_modal', locals: { user: current_user, job: @job } if current_user %>
+<%= render partial: '/jobs/partials/candidate_signup_modal', locals: { user: current_user, job: @job, resource: resource } %>
 
 <div class="mnegative"></div>
 
@@ -72,6 +73,15 @@
     $(document).on("click", ".require-user-info", function() {
       $('.update-user-modal').addClass('is-active');
       return false
+    });
+
+    $(document).on("click", ".modal-close", function() {
+      $('.modal').removeClass('is-active');
+    });
+
+    $(document).on("click", ".modal-button", function() {
+      $('#candidateSignupModal').addClass('is-active');
+      return false;
     });
 
   </script>

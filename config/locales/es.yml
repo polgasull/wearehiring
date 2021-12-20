@@ -405,7 +405,7 @@ es:
     hints:
       defaults:
         username: 'Nombre de usuario para iniciar sesión.'
-        password: 'Por favor, mínimo 6 carácteres.'
+        password: 'Por favor, mínimo 8 carácteres.'
     placeholders:
       defaults:
         username: 'Tu nombre de usuario'
@@ -434,6 +434,8 @@ es:
   show_all_digital_offers: "Ver Todas las Ofertas de Empleo Digital"
   you_posted: "Tu publicación"
   welcome: "Bienvenido"
+  apply_and_create: "Crear cuenta y aplicar"
+  apply_now: "Aplicar ahora"
   i_want_this_job: "¡Quiero este Job!"
   this_job_is_mine: "¡Este Job es mío!"
   if_you_liked_jobs_about: "Si te interesa la oferta de empleo de"

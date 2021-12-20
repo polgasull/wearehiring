@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include ResponseHelper
+  include InscriptionsHelper
   protect_from_forgery with: :exception
 
   before_action :configure_permitted_parameters, if: :devise_controller?
@@ -38,16 +39,25 @@ class ApplicationController < ActionController::Base
     render status: 500
   end
 
+  def after_sign_in_path_for(resource)
+    if params[:job_id].present?
+      Inscription.create(job_id: params[:job_id], user_id: current_user.id)
+      job_path(params[:job_id])
+    else
+      root_path
+    end
+  end
+
   protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(
       :sign_up, 
-      keys: [:name, :last_name, :picture_url, :location, :profile_url, :user_type_id, :accepted_terms]
+      keys: [:name, :last_name, :picture_url, :location, :profile_url, :user_type_id, :accepted_terms, :job_id, :phone]
     )
     devise_parameter_sanitizer.permit(
       :account_update, 
-      keys: [:name, :last_name, :picture_url, :location, :profile_url, :user_type_id, :accepted_terms]
+      keys: [:name, :last_name, :picture_url, :location, :profile_url, :user_type_id, :accepted_terms, :phone]
     )
   end
 end
