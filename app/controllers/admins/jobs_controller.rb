@@ -16,7 +16,6 @@ module Admins
     end
 
     def show
-      render inline: helpers.signup_helper
       return redirect_to_response(t('not_found'), root_path, false) unless @job
       @inscriptions_count = @job.inscriptions.count
       @matching_candidates = @job.show_matching_candidates(@job.skills)  
