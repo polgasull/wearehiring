@@ -3,7 +3,9 @@
 		<div class="columns is-vcentered">
 			<div class="column is-4-desktop">
 				<%= render 'claim' %>
-			</div>
+				<%= link_to("¡Soy el talento!", new_user_registration_path(:candidate => "true"), class: "f6 button is-rounded is-link mr2") %>
+				<%= link_to("¡Busco talento!", new_user_registration_path(:company => "true"), class: "f6 button is-rounded is-dark") %>
+ 			</div>
 			<div class="column is-8-desktop">
 				<%= image_tag(asset_path('WAH_camino_1.svg')) %>
 			</div>
