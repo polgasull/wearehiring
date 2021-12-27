@@ -552,7 +552,7 @@ es:
     candidate_title: "Indícanos tus mejores habilidades (max 4)"
     name: "Nombre"
     internal_name: "Identificador"
-    job_subtitle: "Añade hasta 4 habilidades. Por ejemplo: ReactJS, HTML, CSS, API"
+    job_subtitle: "Añade hasta 4 habilidades. Por ejemplo: ReactJS, Java, Leadership, Data"
     messages:
       skill_created: "Skill creado satisfactoriamente"
       skill_not_created: "No se pudo crear el Skill"

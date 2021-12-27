@@ -46,11 +46,16 @@
 	}
 }
 
+.claim .title {
+  font-size: 3.6rem;
+}
+
 @media (max-width: 768px) {
 	.claim {
 
 		h1.title-touch {
 			font-size: 2rem;
+      text-align: center;
 		}
 	}
 }

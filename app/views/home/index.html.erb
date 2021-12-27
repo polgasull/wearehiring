@@ -1,7 +1,14 @@
-<section class="hero is-medium container">
-  <div class="hero-body has-text-centered claim">
-		<%= render 'claim' %>
-  </div>
+<section class="section">
+	<div class="container claim">
+		<div class="columns is-vcentered">
+			<div class="column is-4-desktop">
+				<%= render 'claim' %>
+			</div>
+			<div class="column is-8-desktop">
+				<%= image_tag(asset_path('WAH_camino_1.svg')) %>
+			</div>
+		</div>
+	</div>
 </section>
 
 <section class="section has-text-left-mobile jobs-section">
