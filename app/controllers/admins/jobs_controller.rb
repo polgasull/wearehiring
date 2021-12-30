@@ -41,6 +41,7 @@ module Admins
     
       if @job.save
         TwitterService.new.send_tweet @job
+        slack_ping_channel_message(@job)
         ModelMailer.new_job_scrapping(current_user, @job).deliver_later if @job.external_mail.present?
         redirect_to_response(t('jobs.messages.job_created'), @job) 
       else 
@@ -64,11 +65,30 @@ module Admins
       params.require(:job).permit!
     end
 
-    # def slack_ping_channel_message
-    #   job_link = "[Puedes aplicar aquí ¡Mucha suerte!](http://www.wearehiring.io/ofertas-empleo-digital/#{@job.slug})"
-    #   new_job_message = "Nuevo Job! #{@job.title} en #{@job.job_author} en #{@job.location} #{'(Remoto)' if @job.remote_ok?} 
-    #     #{Slack::Notifier::Util::LinkFormatter.format(job_link)}"
-    #   SlackService.new.ping_channel_message new_job_message, "jobs_#{@job.category.internal_name}"
-    # end
+    def slack_ping_channel_message(job)
+      job_link = "[Puedes aplicar aquí](https://www.wearehiring.io/ofertas-empleo-digital/#{job.slug})"
+
+      message = 
+      <<~END
+      ¡Nuevo Job! 📢
+  
+      👉 #{job.title}
+      🏢 #{job.job_author}
+      📍 #{job.remote_ok? ? '(Remoto)' : job.location}
+      💰 #{job_salary(job.salary_from, job.salary_to)}
+      
+      #{Slack::Notifier::Util::LinkFormatter.format(job_link)}
+  
+      END
+      SlackService.new.ping_channel_message message, "jobs_#{job.category.internal_name}"
+    end
+
+    def job_salary(from, to)
+      if (from && to) == 0 || (from && to) == nil
+        'A consultar'
+      else
+        "#{from} € - #{to} €"               
+      end
+    end
   end
 end
