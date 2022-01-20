@@ -45,7 +45,7 @@ module Companies
   
       if @job.save
         TwitterService.new.send_tweet @job
-        slack_ping_channel_message(@job)
+        DiscordService.new.send_webhook @job
         ModelMailer.new_job(current_user, @job).deliver_later
         redirect_to_response(t('jobs.messages.job_created'), thanks_jobs_path) 
       else 
@@ -89,32 +89,6 @@ module Companies
       params.require(:job).permit(:title, :description, :url, :job_type, :location, :job_author, 
         :remote_ok, :apply_url, :avatar, :salary_from, :salary_to, :open, :tag_list, :expiry_date, 
         :discount_code, :category_id, :job_type_id, :level_id, skill_ids: [])
-    end
-
-    def slack_ping_channel_message(job)
-      job_link = "[Puedes aplicar aquí](https://www.wearehiring.io/ofertas-empleo-digital/#{job.slug})"
-
-      message = 
-      <<~END
-      ¡Nuevo Job! 📢
-  
-      👉 #{job.title}
-      🏢 #{job.job_author}
-      📍 #{job.remote_ok? ? '(Remoto)' : job.location}
-      💰 #{job_salary(job.salary_from, job.salary_to)}
-      
-      #{Slack::Notifier::Util::LinkFormatter.format(job_link)}
-  
-      END
-      SlackService.new.ping_channel_message message, "jobs_#{job.category.internal_name}"
-    end
-
-    def job_salary(from, to)
-      if (from && to) == 0 || (from && to) == nil
-        'A consultar'
-      else
-        "#{from} € - #{to} €"               
-      end
     end
   end
 end

@@ -1,36 +1,3 @@
-<% if current_user&.is_admin? %>
-  <section class="section">
-    <div class="container bg-white radius-8">
-      <div class="columns admin-block">
-        <div class="column is-vertical-center is-flex">
-          <span class="has-text-weight-bold f3 pr4"> Admin controls </span>
-          <%= link_to admins_job_inscriptions_path(@job.id) do %>
-            <%= icon('fas', 'user mr2') %> <%= @job.inscriptions.count %> inscritos
-          <% end %>
-        </div>
-        <div class="column is-2">
-          <%= link_to edit_admins_job_path(@job.id), class: 'button is-link' do %>
-            <%= icon('fas', 'edit mr2') %> Editar
-          <% end %> 
-        </div>
-        <div class="column is-2 has-text-right">
-        <%= simple_form_for([:admins, @job], html: { multipart: true }) do |f| %>
-          <%= f.hidden_field :open, value: false %>
-          <%= f.submit(
-            t('jobs.close'),
-            class: 'button is-danger is-outlined',
-            disabled: !@job.open?, 
-            data: { confirm: "alert('¿Estás seguro? Esta acción no se puede deshacer. 
-            El Job ya no estará visible pero la empresa podrá seguir gestionando sus candidatos')"}) %>
-        <% end %>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr>
-<% end %>
-
 <%= render partial: "jobs/partials/job_information", locals: { job: @job } %>
 
 <% if @same_category_jobs.any? && !current_user&.is_recruiter %>

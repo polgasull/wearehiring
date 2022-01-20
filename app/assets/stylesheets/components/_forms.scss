@@ -1,6 +1,10 @@
 $heart: "\f004";
 $openheart: "\f08a";
 
+@mixin button-width($width) {
+	width: $width;
+}
+
 .button {
 	font-weight: 400;
 
@@ -36,6 +40,14 @@ $openheart: "\f08a";
 		&:hover {
 			background-color: darken(#0072b1, 20%);
 		}
+	}
+
+	&.width-50 {
+		@include button-width(50px)
+	}
+
+	&.width-150 {
+		@include button-width(150px)
 	}
 }
 
@@ -115,5 +127,25 @@ $openheart: "\f08a";
 		color: $black; 
 		background-color: $light_gray;
 		border-radius: 4px;
+	}
+}
+
+select {
+	&.inscription-status-discarded {
+		background-color: #f14668;
+		color: $white;
+		border-radius: 20px;
+	}
+	
+	&.inscription-status-in_process {
+		background-color: #3e8ed0;
+		color: $white;
+		border-radius: 20px;
+	}
+	
+	&.inscription-status-finalist {
+		background-color: #48c78e;
+		color: $white;
+		border-radius: 20px;
 	}
 }

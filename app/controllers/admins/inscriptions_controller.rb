@@ -32,10 +32,10 @@ module Admins
       respond_to do |format|
         if @inscription.update(inscription_params)
           ModelMailer.update_inscription_status(@inscription, @job).deliver_later
-          format.html { redirect_to_response(t('users.messages.user_not_updated'), admins_job_path(@job)) }
+          format.html { redirect_back_response(t('users.messages.user_not_updated')) }
           format.json { respond_with_bip(@inscription) }
         else
-          format.html { redirect_to_response(t('users.messages.user_not_updated'), admins_job_path(@job), false)  }
+          format.html { redirect_back_response(t('users.messages.user_not_updated'), false)  }
           format.json { respond_with_bip(@inscription) }
         end
       end
@@ -45,6 +45,7 @@ module Admins
       @inscription = @job.inscriptions.find(params[:id])
       return redirect_to_response(t('not_found'), @job, false) unless @inscription
       @user = @inscription.user  
+      @inscriptions = @job.inscriptions.where.not(user_id: @user.id).order('created_at DESC').take(10)
     end
 
     private

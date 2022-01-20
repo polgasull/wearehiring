@@ -1,142 +1,164 @@
-<section class="section">
+<div class="section">
+  <div class="container">
+    <div class="columns mb3">
+      <div class="column">
+        <%= link_to companies_job_path(@job.id), class: 'is-link' do %>
+          <%= icon('fas', 'arrow-left mr2') %>
+          <%= t('go_back_to_job') %>
+        <% end %>
+      </div>
+      <div class="column is-flex is-align-content-center is-justify-content-flex-end">
+        <div class="is-vertical-center">
+          <p class="has-text-weight-bold mr2"> <%= t('inscriptions.process_status') %>: </p>
+        </div>
+        <div>
+          <%= form_for @inscription, url: companies_job_inscription_path(@inscription.job_id, @inscription.id), method: :patch do |f| %>
+            <div class="select">
+              <%= f.select(:status, 
+                  Inscription.statuses.keys.map {|status, id| [t("inscriptions.#{status}"), status]},
+                  {include_blank: t('helpers.select.select')}, 
+                  {onchange: 'this.form.submit();', class: "inscription-status-#{@inscription.status}"}) %>
+            </div>
+          <% end %>  
+        </div>
+      </div>
+    </div>
+    <div class="box">
+      <div class="columns pa3">
+        <div class="column is-2 is-vertical-center">
+          <div class="rounded-image m-auto size-120">
+            <% if @user.picture_url.file.nil? %>
+              <%= image_tag(asset_path('user_male_avatar.svg')) %>
+            <% else %>
+              <%= image_tag(@user.picture_url_url(:thumb), alt: "Imagen perfil usuario | Wearehiring.io") %>
+            <% end %>
+          </div>
+        </div>
+        <div class="column is-4 with-right-border is-flex is-flex-direction-column is-justify-content-space-between">
+          <p class="is-size-3 has-text-weight-bold"> <%= @user.name %> </p>
+          <p> <%= @user.current_position %> </p>
+          <p> <%= icon('fas', 'phone') %> <%= @user.phone %> </p>
+          <div class="is-flex">
+            <%= mail_to @user.email, class: 'button width-150 mr3 mt3' do %>
+              <span>Contactar</span> <%= icon('far', 'paper-plane ml2') %> 
+            <% end %>
+            <%= link_to @user.profile_url, class: 'button linkedin width-50 mt3' do %>
+              <%= icon('fab', 'linkedin') %>
+            <% end %>
+          </div>
+        </div>
+        <div class="column is-6 pl4">
+          <div class="columns">
+            <div class="column">
+              <div>
+                <%= content_tag(:span, 'Lugar de residencia habitual', class: 'has-text-weight-bold') %>:
+              </div>
+              <div class="mt2">
+                <%= content_tag(:span, 'Años de experiencia', class: 'has-text-weight-bold') %>:
+              </div>
+              <div class="mt2">
+                <%= content_tag(:span, t('users.salary_expectation'), class: 'has-text-weight-bold') %>:
+              </div>
+            </div>
+            <div class="column">
+              <div>
+                <%= @user.location ? content_tag(:span, @user.location) : content_tag(:span, 'Ciudad/País', class: 'has-text-grey-lighter') %>
+              </div>
+              <div class="mt2">
+                <%= @user.experience ? content_tag(:span, @user.experience) : content_tag(:span, 'X años', class: 'has-text-grey-lighter') %>
+              </div>
+              <div class="mt2">
+                <% if @user.salary_from && @user.salary_to %>
+                  <%= content_tag(:span, "#{@user.salary_from} €") %> - <%= content_tag(:span, "#{@user.salary_to} €") %>
+                <% else %>
+                  <%= content_tag(:span, "XXXXX €", class: 'has-text-grey-lighter') %> - <%= content_tag(:span, "XXXXX €", class: 'has-text-grey-lighter') %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div>
+            <% if @user.skills.any? %>
+              <% @user.skills.each do |skill| %>
+                <span class='tag is-success is-normal'> <%= skill.name %> </span>
+              <% end %>  
+            <% end %>
+          </div>
+        </div> 
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section pt2">
   <div class="container">
     <div class="columns">
-      <div class="column is-3-desktop">
-        <%= link_to companies_job_path(@job.id), class: 'button is-normal' do %>
-          <%= icon('fas', 'arrow-left mr2') %>
-          <%= t('go_back_to_inscriptions') %>
-        <% end %>
-      </div>
-    </div>
-    <div class="columns">
-      <div class="column">
-        <h1 class="f2"> <%= @user.name %> ha aplicado para: </h1>
-        <p class="f2">
-          <%= @job.title %> </p>
-        </p>
-        <p> <%= @job.job_author %> en <%= @job.location %> </p>
-      </div>
-      <div class="column has-text-right-desktop">
-        <p class="f6"> <%= icon('fas', 'clock') %> Publicado <%= time_ago_in_words(@job.created_at) %> </p>
-        <p> <%= t('jobs.reference') %>: <%= @job.reference %> </p>
-        <div class="is-flex is-vertical-center justify-end mt2">
-          <p class="has-text-weight-bold"> Estado en el proceso: <p>
-          <p class="ml3">
-            <%= form_for @inscription, url: companies_job_inscription_path(@inscription.job_id, @inscription.id), method: :patch do |f| %>
-              <div class="select">
-                <%= f.select(:status, 
-                    Inscription.statuses.keys.map {|status, id| [t("inscriptions.#{status}"), status]}, 
-                    {include_blank: t('helpers.select.select')}, 
-                    {onchange: 'this.form.submit();'}) %>
-              </div>
-            <% end %>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<section class="section">
-  <div class="container"> 
-    <div class="columns">
-      <div class="column is-4 has-text-centered">
-        <h1 class="title is-5"> <%= t('profile') %> </h1>
-        <% if @user.picture_url.file.nil? %>
-          <%= icon('far', 'user-circle', style: 'font-size: 100px') %>
-        <% else %>
-          <div class="rounded-image m-auto size-120">
-            <%= image_tag(@user.picture_url_url(:thumb), alt: "Imagen perfil usuario | Wearehiring.io") %>
-          </div>
-        <% end %>
-        <p class="title f4 mt4"> 
-          <%= @user.name %>
-        </p>
-        <p> 
-          <%= @user.current_position %> 
-        </p>
-        <p> 
-          <%= icon('far', 'paper-plane') %>
-          <%= mail_to @user.email %> 
-        </p>
-        <p class="mt4 has-text-weight-bold"> <%= t('inscriptions.status') %> </p>
-        <p> <%= @inscription.status %> </p>
-        <div class="mt4">
-          <p class="mt4 has-text-weight-bold"> <%= t('skills.title') %> </p>
-          <% if @user.skills.any? %>
-            <% @user.skills.each do |skill| %>
-              <span class='tag is-success is-normal'> <%= skill.name %> </span>
-            <% end %>  
-          <% else %>
-            El usuario no ha indicado ninguna habilidad
+      <div class="column is-3">
+        <div class="box">
+          <p class="is-size-5 has-text-weight-bold"> Portfolio </p>
+          <%= content_tag(:div, class: 'mt3') do %>
+            <%= icon('fab', 'github mr2') %>
+            <%= @user.github ? link_to('Github', @user.github) : content_tag(:span, 'github/profile', class: 'has-text-grey-lighter') %>
           <% end %>
-        </div>      
+
+          <%= content_tag(:div, class: 'mt2') do %>
+            <%= icon('fab', 'pinterest mr2') %>
+            <%= @user.pinterest ? link_to('Pinterest', @user.pinterest) : content_tag(:span, 'pinterest/profile', class: 'has-text-grey-lighter') %>
+          <% end %>
+
+          <%= content_tag(:div, class: 'mt2') do %>
+            <%= icon('fab', 'behance-square mr2') %>
+            <%= @user.behance ? link_to('Behance', @user.behance) : content_tag(:span, 'behance/profile', class: 'has-text-grey-lighter') %>
+          <% end %>
+
+          <%= content_tag(:div, class: 'mt2') do %>
+            <%= icon('fas', 'globe mr2') %>
+            <%= @user.personal_website ? link_to('Personal Website', @user.personal_website) : content_tag(:span, 'https://personalwebsite.com', class: 'has-text-grey-lighter') %>
+          <% end %>
+        </div>
       </div>
-      <div class="column is-8">
-        <h2 class="title is-4"> <%= t('important_info') %> </h2>
+      <div class="column is-6">
+        <div class="box">
+          <p class="is-size-5 has-text-weight-bold"> About </p>
+          <% if @user.description %>
+            <%= content_tag(:p, simple_format(@user.description), class: 'mt3') %>
+          <% else %>
+            <p class="has-text-grey-lighter mt3">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut erat nec dui luctus laoreet. Curabitur ac odio nec orci varius finibus. Praesent in sapien arcu. Phasellus laoreet ultrices eros in dignissim. Aliquam porta varius augue, sit amet finibus ex gravida quis. Ut non pretium lacus. Praesent quis est non est facilisis tristique. Aenean euismod bibendum velit non semper. Nam maximus ipsum sed tellus posuere, eget pulvinar risus feugiat. Sed tristique vehicula nibh et luctus. Praesent ornare quis nisl ac viverra. 
+              <br><br>
+              Aliquam convallis odio ut nunc viverra sodales. Pellentesque molestie enim at dui maximus, nec eleifend lorem tempus. Proin ex urna, rhoncus ut erat ac, blandit gravida mauris. Praesent auctor est vitae ipsum sodales sodales. Etiam neque ante, lobortis quis dolor et, mollis finibus metus. Vivamus cursus dictum lectus non feugiat. Sed interdum ligula sit amet pretium dignissim. Suspendisse eleifend porttitor tincidunt.
+            </p>
+          <% end %>
+        </div>
+      </div>
+      <div class="column is-3">
+        <p class="is-size-5 has-text-weight-bold"> Otros candidatos </p>
         <hr>
-        <div class="columns">
-          <div class="column">
-            <%= content_tag(:p, t('users.name'), class: 'has-text-weight-bold mb2') %>
-            <%= content_tag(:p, @user.name, class: 'box') %>
+        <% @inscriptions.each do |inscription| %>
+          <div class="columns">
+            <div class="column is-3 is-vertical-center">
+              <div class="rounded-image m-auto size-50">
+                <% if inscription.user.picture_url.file.nil? %>
+                  <%= image_tag(asset_path('user_male_avatar.svg')) %>
+                <% else %>
+                  <%= image_tag(inscription.user.picture_url_url(:thumb), alt: "Imagen perfil usuario | Wearehiring.io") %>
+                <% end %>
+              </div>
+            </div>
+            <div class="column">
+              <div class="">
+                <p> <%= inscription.user.name %> </p>
+                <p> <%= inscription.user.current_position %> </p>
+                <p> <%= link_to 'See profile', companies_job_inscription_path(inscription.job_id, inscription.id) %> </p>
+              </div>
+            </div>
           </div>
-          <div class="column">
-            <%= content_tag(:p, t('users.last_name'), class: 'has-text-weight-bold mb2') %>
-            <%= content_tag(:p, @user.last_name, class: 'box') %>
-          </div>
+        <% end %>
+        <div class="has-text-center">
+          <%= link_to companies_job_path(@job.id), class: 'button' do %>
+            <%= t('inscriptions.show_all') %>
+          <% end %>
         </div>
-        <div class='has-text-weight-bold mb2'>
-          <%= icon('fas', 'phone') %>
-          <%= t('users.phone') %>
-        </div>
-        <%= content_tag(:p, @user.phone, class: 'box') %>
-        <div class='has-text-weight-bold mb2'>
-          <%= icon('fab', 'linkedin') %>
-          <%= t('users.profile_url') %>
-        </div>
-        <%= content_tag(:p, @user.profile_url, class: 'box') %>
-        <div class='has-text-weight-bold mb2'>
-          <%= t('users.current_position') %>
-        </div>
-        <%= content_tag(:p, @user.current_position, class: 'box') %>
-        <div class='has-text-weight-bold mb2'>
-          Lugar de residencia habitual
-        </div>
-        <%= content_tag(:p, @user.location, class: 'box') %>
-        <div class='has-text-weight-bold mb2'>
-          Años de experiencia
-        </div>
-        <%= content_tag(:p, @user.experience, class: 'box') %>
-        <div class='has-text-weight-bold mb2'>
-          <%= t('users.salary_expectation') %>
-        </div>
-        <div class="columns">
-          <div class="column">
-            <%= content_tag(:p, "#{@user.salary_from} €", class: 'box') %>
-          </div>
-          <div class="column">
-            <%= content_tag(:p, "#{@user.salary_to} €", class: 'box') %>
-          </div>
-        </div>
-
-        <h2 class="title is-4 mt4"> <%= t('complementary_info') %> </h2>
-        <hr>
-        <%= content_tag(:p, t('users.description'), class: 'has-text-weight-bold mb2') %>
-        <%= content_tag(:p,  @user.description, class: 'box') %>
-
-        <%= content_tag(:p, t('users.github'), class: 'has-text-weight-bold mb2') %>
-        <%= content_tag(:p,  @user.github, class: 'box') %>
-
-        <%= content_tag(:p, t('users.pinterest'), class: 'has-text-weight-bold mb2') %>
-        <%= content_tag(:p,  @user.pinterest, class: 'box') %>
-
-        <%= content_tag(:p, t('users.behance'), class: 'has-text-weight-bold mb2') %>
-        <%= content_tag(:p,  @user.behance, class: 'box') %>
-
-        <%= content_tag(:p, t('users.personal_website'), class: 'has-text-weight-bold mb2') %>
-        <%= content_tag(:p,  @user.personal_website, class: 'box') %>
       </div>
     </div>
   </div>
-</section>
+</div>

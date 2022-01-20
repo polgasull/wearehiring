@@ -285,6 +285,8 @@ es:
     any_in_process: "No dispones de ningún candidato en proceso de selección"
     any_finalists: "No has elegido a nadie como finalista"
     status: "Estado"
+    process_status: "Estado en el proceso"
+    show_all: "Ver tod@s"
     messages:
       inscription_created: "Inscrito correctamente"
       inscription_not_created: "Algo ha ido mal durante la inscripción"
@@ -610,3 +612,5 @@ es:
   feature_company_4: "Candidato informado al momento"
   feature_company_text_4: "Cada cambio en el estado del proceso mantendrá al candidato informado vía correo electrónico, ahorrando así tiempo y asegurando una respuesta."
   login_as_company: "Iniciar sesión como empresa"
+  your_profile: "Tu perfil"
+  your_status_process: "Tu estado en el proceso"

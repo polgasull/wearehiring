@@ -21,6 +21,7 @@ gem 'carrierwave-aws'
 gem 'cookies_eu'
 gem 'coffee-rails', '~> 4.2'
 gem "devise", ">= 4.7.1"
+gem 'discordrb-webhooks', '~> 3.4', '>= 3.4.2'
 gem 'faraday', '~> 1.1'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'font-awesome-sass', '~> 5.8.1'

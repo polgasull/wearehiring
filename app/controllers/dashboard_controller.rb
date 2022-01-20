@@ -33,5 +33,8 @@ class DashboardController < ApplicationController
     @companies_by_date = User.where(user_type: 2).group_by_day(:created_at, last: 20, reverse: true).count
     @companies_by_week = User.where(user_type: 2).group_by_week(:created_at, last: 20, reverse: true).count
     @companies_by_month = User.where(user_type: 2).group_by_month(:created_at, format: "%b %Y", last: 20, reverse: true).count
+    @jobs_by_date = Job.all.group_by_day(:created_at, last: 20, reverse: true).count
+    @jobs_by_week = Job.all.group_by_week(:created_at, last: 20, reverse: true).count
+    @jobs_by_month = Job.all.group_by_month(:created_at, format: "%b %Y", last: 20, reverse: true).count
   end
 end

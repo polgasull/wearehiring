@@ -80,8 +80,8 @@
 					<% if current_user.picture_url.file.nil? %>
 						<%= icon('far', 'user-circle mr1') %>
 					<% else %>
-						<div class="rounded-image size-25 mr1">
-						<%= image_tag(current_user.picture_url_url(:thumb), alt: "Imagen usuario del perfil de Linkedin | Wearehiring.io") %>
+						<div class="rounded-image size-25 mr1" style="box-shadow: none;">
+							<%= image_tag(current_user.picture_url_url(:thumb), alt: "Imagen usuario del perfil de Linkedin | Wearehiring.io") %>
 						</div>
 					<% end %>
 					<%= t('my_profile') %>

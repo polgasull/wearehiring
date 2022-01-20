@@ -5,6 +5,7 @@ module Companies
     include InscriptionsHelper
 
     before_action :set_job
+    before_action :set_inscription, only: [:update, :show] 
     before_action :set_candidate, only: [:create]
 
     def index
@@ -23,8 +24,6 @@ module Companies
     end
   
     def update
-      @inscription = @job.inscriptions.find(params[:id])
-
       respond_to do |format|
         if @inscription.update(inscription_params)
           ModelMailer.update_inscription_status(@inscription, @job).deliver_later
@@ -38,9 +37,9 @@ module Companies
     end
   
     def show
-      @inscription = @job.inscriptions.find(params[:id])
       return redirect_to_response(t('not_found'), @job, false) unless @inscription
       @user = @inscription.user
+      @inscriptions = @job.inscriptions.where.not(user_id: @user.id).order('created_at DESC').take(10)
     end
   
     private
@@ -53,6 +52,10 @@ module Companies
       @job = current_user.jobs.find(params[:job_id])
       rescue ActiveRecord::RecordNotFound
         redirect_to not_found_url
+    end
+
+    def set_inscription
+      @inscription = @job.inscriptions.find(params[:id])
     end
 
     def inscription_params

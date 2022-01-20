@@ -16,7 +16,7 @@
       <%= job.skills.map(&:name).to_sentence %>
     </td>
     <td>
-    <%= link_to admins_job_inscriptions_path(job.id) do %>
+    <%= link_to admins_job_path(job.id) do %>
       <%= job_inscriptions_counter(job) %>
     <% end %>
     </td>

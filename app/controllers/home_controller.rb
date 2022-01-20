@@ -8,6 +8,4 @@ class HomeController < ApplicationController
     @inactive_jobs = Job.inactive.order('created_at DESC')
     respond_to :text
   end
-
-  private 
 end

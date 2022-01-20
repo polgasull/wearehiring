@@ -135,5 +135,73 @@
         </div>
       </div>
     </div>
+
+    <hr>
+
+    <div class="columns">
+      <div class="column">
+        <h2>Jobs al día</h2>
+        <div class="table-container">
+          <table class="table is-bordered is-striped">
+            <thead>
+              <tr>
+                <th>Dia</th>
+                <th>Nb</th>
+              </tr>
+            </thead>
+            <tbody> 
+              <% @jobs_by_date.each do |date, number| %>
+                <tr>
+                  <td> <%= date %> </td>
+                  <td> <%= number %> </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="column">
+        <h2>Jobs a la semana</h2>
+        <div class="table-container">
+          <table class="table is-bordered is-striped">
+            <thead>
+              <tr>
+                <th>Dia</th>
+                <th>Nb</th>
+              </tr>
+            </thead>
+            <tbody> 
+              <% @jobs_by_week.each do |date, number| %>
+                <tr>
+                  <td> <%= date %> </td>
+                  <td> <%= number %> </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="column">
+        <h2>Jobs al mes</h2>
+        <div class="table-container">
+          <table class="table is-bordered is-striped">
+            <thead>
+              <tr>
+                <th>Dia</th>
+                <th>Nb</th>
+              </tr>
+            </thead>
+            <tbody> 
+              <% @jobs_by_month.each do |date, number| %>
+                <tr>
+                  <td> <%= date %> </td>
+                  <td> <%= number %> </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
 </section>

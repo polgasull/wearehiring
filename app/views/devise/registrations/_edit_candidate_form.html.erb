@@ -1,7 +1,6 @@
 <%= simple_form_for(@user, method: :patch, url: candidates_user_profile_path(@user), html: { multipart: true }) do |f| %>
 <div class="columns candidate-user-form">
   <div class="column is-4 has-text-centered">
-    <h1 class="title is-5"> <%= t('my_profile') %> </h1>
     <% if current_user.picture_url.file.nil? %>
       <%= icon('far', 'user-circle', style: 'font-size: 100px') %>
     <% else %>
@@ -16,8 +15,7 @@
       <%= current_user.current_position %> 
     </p>
     <p> 
-      <%= icon('far', 'paper-plane') %>
-      <%= mail_to current_user.email %> 
+      <%= current_user.email %> 
     </p>
     <p class="mt4">
       <%= icon('fab', 'get-pocket') %>
@@ -55,10 +53,14 @@
         </div>
       </div>
     </article>
-    <h2 class="title is-4 mt4"> 
-      <%= t('important_info_for_the_recruiter') %> 
-      <%= f.button :submit, t('save'), class:"button is-info is-pulled-right mt2" %>
-    </h2>
+    <div class="is-flex is-justify-content-space-between mb3">
+      <div>
+        <h2 class="title is-4"> <%= t('your_profile') %> </h2>
+      </div>
+      <div>
+        <%= f.button :submit, t('save'), class:"button is-info is-medium" %>
+      </div>
+    </div>
     <div class="columns">
       <div class="column">
         <div class="field">
@@ -215,12 +217,6 @@
       </div>
     </div>
 
-    <div class="has-text-right">
-      <%= f.button :submit, t('save'), class:"button is-info " %>
-    </div>
-
-    <h2 class="title is-4 mt4"> <%= t('complementary_info') %> </h2>
-
     <div class="field">
       <%= f.label t('about_me'), class: 'has-text-weight-bold', for: 'user_description' %>
       <div class="control">
@@ -301,7 +297,7 @@
       </article>
     </div>
 
-    <%= f.button :submit, t('save'), class:"button is-info is-pulled-right mt3" %>
+    <%= f.button :submit, t('save'), class:"button is-info is-pulled-right mt3 is-medium" %>
   </div>
 </div>
 <% end %>

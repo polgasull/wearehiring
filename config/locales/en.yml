@@ -283,6 +283,8 @@ en:
     any_in_process: "You don't have anyone on recruitment process"
     any_finalists: "You not chosen any candidate as finalist"
     status: "Status"
+    process_status: "Process status"
+    show_all: "Show all"
     messages:
       inscription_created: "You have registered successfully"
       inscription_not_created: "Something went wrong during your inscription"
@@ -600,3 +602,5 @@ en:
   feature_candidate_4: "Notificación de tu estado en el proceso"
   feature_candidate_text_4: "Recibirás notificaciones a tiempo real en tu móvil, tablet o ordenador vía correo electrónico del estado en que se encuentra tu candidatura dentro del proceso de selección"
   login_as_company: "Login as company"
+  your_profile: "Your Profile"
+  your_status_process: "Your status process"
