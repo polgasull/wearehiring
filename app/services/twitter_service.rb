@@ -14,7 +14,7 @@ class TwitterService
     Estamos buscando a un #{job.title} en #{job.remote_ok? ? '(Remoto)' : job.location}
     https://www.wearehiring.io/ofertas-empleo-digital/#{job.slug}
 
-    #OfertaDeEmpleo
+    #OfertaDeEmpleo #JobAlert #Empleos #Hiring
     END
     client = Twitter::REST::Client.new do |config| 
       config.consumer_key = ENV['TWITTER_CONSUMER_KEY'] 

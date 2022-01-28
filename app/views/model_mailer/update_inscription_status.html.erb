@@ -17,7 +17,7 @@
                     <h2> <strong> <strong> Hola, <%= @inscription.user.name %> </strong> </strong> </h2>
                     <% if @inscription.status === "discarded" %>
                       <h3> ¡No dejes de intentarlo! </h3>
-                      <p> Lo sentimos, has sido descartado para el proceso de <%= @job.title %> </p>
+                      <p> Lo sentimos, has sido descartado para el proceso de <%= @job.title %> con <%= @job.job_author %> </p>
                     <% end %>
                     <% if @inscription.status === "in_process" %>
                       <h3> ¡Tu perfil ha generado interés! </h3>
