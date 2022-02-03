@@ -39,13 +39,13 @@
             </div>
             <div class="column">
               <div>
-                <%= @user.location ? content_tag(:span, @user.location) : content_tag(:span, 'Ciudad/País', class: 'has-text-grey-lighter') %>
+                <%= @user.location.present? ? content_tag(:span, @user.location) : content_tag(:span, 'Ciudad/País', class: 'has-text-grey-lighter') %>
               </div>
               <div class="mt2">
-                <%= @user.experience ? content_tag(:span, @user.experience) : content_tag(:span, 'X años', class: 'has-text-grey-lighter') %>
+                <%= @user.experience.present? ? content_tag(:span, @user.experience) : content_tag(:span, 'X años', class: 'has-text-grey-lighter') %>
               </div>
               <div class="mt2">
-                <% if @user.salary_from && @user.salary_to %>
+                <% if @user.salary_from.present? && @user.salary_to.present? %>
                   <%= content_tag(:span, "#{@user.salary_from} €") %> - <%= content_tag(:span, "#{@user.salary_to} €") %>
                 <% else %>
                   <%= content_tag(:span, "XXXXX €", class: 'has-text-grey-lighter') %> - <%= content_tag(:span, "XXXXX €", class: 'has-text-grey-lighter') %>
@@ -74,29 +74,29 @@
           <p class="is-size-5 has-text-weight-bold"> Portfolio </p>
           <%= content_tag(:div, class: 'mt3') do %>
             <%= icon('fab', 'github mr2') %>
-            <%= @user.github ? link_to('Github', @user.github) : content_tag(:span, 'github/profile', class: 'has-text-grey-lighter') %>
+            <%= @user.github.present? ? link_to('Github', @user.github) : content_tag(:span, 'github/profile', class: 'has-text-grey-lighter') %>
           <% end %>
 
           <%= content_tag(:div, class: 'mt2') do %>
             <%= icon('fab', 'pinterest mr2') %>
-            <%= @user.pinterest ? link_to('Pinterest', @user.pinterest) : content_tag(:span, 'pinterest/profile', class: 'has-text-grey-lighter') %>
+            <%= @user.pinterest.present? ? link_to('Pinterest', @user.pinterest) : content_tag(:span, 'pinterest/profile', class: 'has-text-grey-lighter') %>
           <% end %>
 
           <%= content_tag(:div, class: 'mt2') do %>
             <%= icon('fab', 'behance-square mr2') %>
-            <%= @user.behance ? link_to('Behance', @user.behance) : content_tag(:span, 'behance/profile', class: 'has-text-grey-lighter') %>
+            <%= @user.behance.present? ? link_to('Behance', @user.behance) : content_tag(:span, 'behance/profile', class: 'has-text-grey-lighter') %>
           <% end %>
 
           <%= content_tag(:div, class: 'mt2') do %>
             <%= icon('fas', 'globe mr2') %>
-            <%= @user.personal_website ? link_to('Personal Website', @user.personal_website) : content_tag(:span, 'https://personalwebsite.com', class: 'has-text-grey-lighter') %>
+            <%= @user.personal_website.present? ? link_to('Personal Website', @user.personal_website) : content_tag(:span, 'https://personalwebsite.com', class: 'has-text-grey-lighter') %>
           <% end %>
         </div>
       </div>
       <div class="column is-6">
         <div class="box">
           <p class="is-size-5 has-text-weight-bold"> About </p>
-          <% if @user.description %>
+          <% if @user.description.present? %>
             <%= content_tag(:p, simple_format(@user.description), class: 'mt3') %>
           <% else %>
             <p class="has-text-grey-lighter mt3">
