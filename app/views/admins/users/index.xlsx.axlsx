@@ -2,17 +2,19 @@ wb = xlsx_package.workbook
 
 wb.add_worksheet(name: "Users") do |sheet|
   # this is the head row of your spreadsheet
-  sheet.add_row %w(id name email current_position linkedin_url Skills Experience salary_from salary_to type github pinterest behance personal_website)
+  sheet.add_row %w(id name email phone current_position linkedin_url visible Skills Experience salary_from salary_to type github pinterest behance personal_website)
   
   # each user is a row on your spreadsheet
   @all_users.each do |user|
     sheet.add_row [
       user.id, 
       user.name, 
-      user.email, 
+      user.email,
+      user.phone,
       user.current_position, 
       user.profile_url,
       user.skills.map(&:name).to_sentence,
+      user.visible,
       user.experience,
       user.salary_from,
       user.salary_to,
