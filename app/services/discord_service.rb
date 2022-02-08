@@ -88,4 +88,24 @@ class DiscordService
       end
     end
   end
+
+  def inscription_alert_webhook(candidate, job, is_we_match)
+    return unless Rails.env.production?
+    we_match_sentence = "ha sido añadido a través de We Match para la posición de"
+    inscribed_sentence = "se ha inscrito para la posición de"
+    client = Discordrb::Webhooks::Client.new(url: @process_alert_webwook_url)
+    client.execute do |builder|
+      builder.add_embed do |embed|
+        embed.thumbnail = Discordrb::Webhooks::EmbedThumbnail.new(url: job.avatar_url(:thumb))
+        embed.title = job.job_author
+        embed.description = 
+        <<~END
+          #{ candidate.name } #{ is_we_match ? we_match_sentence : inscribed_sentence } #{ job.title }
+        END
+
+        embed.url = "https://www.wearehiring.io/ofertas-empleo-digital/#{job.slug}"
+        embed.timestamp = Time.now
+      end
+    end
+  end
 end

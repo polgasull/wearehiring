@@ -15,7 +15,7 @@ module Candidates
     end
 
     def create
-      assign_inscription_to_job(@job, current_user, false)
+      assign_inscription_to_job(@job, current_user, false, false)
     end
 
     private

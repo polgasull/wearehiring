@@ -20,7 +20,7 @@ module Companies
     end
 
     def create
-      assign_inscription_to_job(@job, @candidate, companies_job_path(@job.id))
+      assign_inscription_to_job(@job, @candidate, companies_job_path(@job.id), true)
     end
   
     def update

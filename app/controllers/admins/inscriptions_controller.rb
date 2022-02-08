@@ -19,7 +19,7 @@ module Admins
     end
 
     def create
-      assign_inscription_to_job(@job, @candidate, admins_job_path(@job.id))
+      assign_inscription_to_job(@job, @candidate, admins_job_path(@job.id), true)
     end
 
     def update

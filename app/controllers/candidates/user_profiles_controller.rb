@@ -8,7 +8,7 @@ module Candidates
       if current_user.update(user_params)
         if params[:job_id]
           @job = Job.find_by_id(params[:job_id])
-          assign_inscription_to_job(@job, current_user, false) and return
+          assign_inscription_to_job(@job, current_user, false, false) and return
         end
         return redirect_back_response(t('successfully_updated'))
       else 
