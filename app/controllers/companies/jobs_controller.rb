@@ -45,7 +45,7 @@ module Companies
   
       if @job.save
         TwitterService.new.send_tweet @job
-        DiscordService.new.send_webhook @job
+        DiscordService.new.job_alert_webhook @job
         ModelMailer.new_job(current_user, @job).deliver_later
         redirect_to_response(t('jobs.messages.job_created'), thanks_jobs_path) 
       else 

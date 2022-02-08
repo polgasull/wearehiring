@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_many :jobs
   has_many :inscriptions
   mount_uploader :picture_url, AvatarUploader
-  after_create :send_welcome_mail if Rails.env.production?
+  after_create :send_notification if Rails.env.production?
 
   %w[candidate company admin ambassador].each do |user_type_name|
     define_method "is_#{user_type_name}?" do
@@ -67,11 +67,13 @@ class User < ApplicationRecord
     inscriptions
   end
 
-  def send_welcome_mail
+  def send_notification
     if self.is_company?
       ModelMailer.welcome_company(self).deliver_later
+      DiscordService.new.company_signup_alert_webhook(self)
     else
       ModelMailer.welcome_candidate(self).deliver_later
+      DiscordService.new.candidate_signup_alert_webhook(self)
     end
   end
 end

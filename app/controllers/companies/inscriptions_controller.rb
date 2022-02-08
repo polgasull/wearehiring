@@ -27,6 +27,7 @@ module Companies
       respond_to do |format|
         if @inscription.update(inscription_params)
           ModelMailer.update_inscription_status(@inscription, @job).deliver_later
+          DiscordService.new.inscription_status_alert_webhook(@inscription, @job)
           format.html { redirect_back_response(t('users.messages.user_updated')) }
           format.json { respond_with_bip(@inscription) }
         else
