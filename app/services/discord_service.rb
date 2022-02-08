@@ -80,7 +80,7 @@ class DiscordService
         embed.description = 
         <<~END
           Proceso #{ job.title } - #{ job.reference }
-          #{ inscription.user.name } ha cambiado su estado a #{ inscription.status }
+          El estado de #{ inscription.user.name } ha cambiado a #{ inscription.status }
         END
 
         embed.url = "https://www.wearehiring.io/ofertas-empleo-digital/#{job.slug}"
