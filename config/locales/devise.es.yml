@@ -36,7 +36,7 @@ es:
       updated_not_active: "La contraseña se ha cambiado correctamente."
     registrations:
       destroyed: "La cuenta se ha eliminado correctamente."
-      signed_up: "Bienvenido"
+      signed_up: "Bienvenido a We Are Hiring"
       signed_up_but_inactive: "You have signed up successfully. However, we could not sign you in because your account is not yet activated."
       signed_up_but_locked: "You have signed up successfully. However, we could not sign you in because your account is locked."
       signed_up_but_unconfirmed: "A message with a confirmation link has been sent to your email address. Please follow the link to activate your account."

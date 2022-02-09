@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   include ResponseHelper
-  include InscriptionsHelper
   protect_from_forgery with: :exception
 
   before_action :configure_permitted_parameters, if: :devise_controller?
@@ -41,11 +40,22 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if params[:job_id].present?
-      Inscription.create(job_id: params[:job_id], user_id: current_user.id)
-      job_path(params[:job_id])
+      find_job(params[:job_id])
+      Inscription.create(job_id: @job.id, user_id: current_user.id)
+      DiscordService.new.inscription_alert_webhook(current_user, @job, false)
+      job_path(@job.id)
     else
       root_path
     end
+  end
+
+  private
+
+  def find_job(job_id)
+    @job = Job.find(job_id)
+
+    rescue ActiveRecord::RecordNotFound
+      redirect_to not_found_url
   end
 
   protected
