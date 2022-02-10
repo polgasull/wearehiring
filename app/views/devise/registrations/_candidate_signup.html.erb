@@ -88,12 +88,6 @@
           </div>
         <% end %>
         <hr>
-        <div class="mt2 has-text-centered">
-          <%= link_to user_linkedin_omniauth_authorize_path, class: "button linkedin" do %>
-            <%= icon('fab', 'linkedin mr2') %> <%= t('linkedin_signup') %>
-          <% end %>
-        </div>
-        <hr>
         <div class="has-text-centered">
           <span> <%= t('already_account') %> </span>
           <%= link_to t('login'), new_user_session_path(:candidate => "true") %>        
