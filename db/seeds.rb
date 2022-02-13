@@ -30,6 +30,19 @@ UserType.where(internal_name: "company").first_or_create(name: "Company", intern
 UserType.where(internal_name: "admin").first_or_create(name: "Admin", internal_name: "admin")
 UserType.where(internal_name: "ambassador").first_or_create(name: "Ambassador", internal_name: "ambassador")
 
+Skill.where(internal_name: "javascript").first_or_create(name: "Javascript", internal_name: "javascript")
+Skill.where(internal_name: "java").first_or_create(name: "Java", internal_name: "java")
+Skill.where(internal_name: "ruby_on_rails").first_or_create(name: "Ruby on Rails", internal_name: "ruby_on_rails")
+Skill.where(internal_name: "python").first_or_create(name: "Python", internal_name: "python")
+Skill.where(internal_name: "seo_specialist").first_or_create(name: "SEO Specialist", internal_name: "seo_specialist")
+Skill.where(internal_name: "sem_specialist").first_or_create(name: "SEM Specialist", internal_name: "sem_specialist")
+Skill.where(internal_name: "prototype").first_or_create(name: "Prototype", internal_name: "prototype")
+Skill.where(internal_name: "figma").first_or_create(name: "Figma", internal_name: "figma")
+Skill.where(internal_name: "prestashop").first_or_create(name: "Prestashop", internal_name: "prestashop")
+Skill.where(internal_name: "wordpress").first_or_create(name: "Wordpress", internal_name: "wordpress")
+Skill.where(internal_name: "php").first_or_create(name: "PHP", internal_name: "php")
+Skill.where(internal_name: "aws").first_or_create(name: "AWS", internal_name: "aws")
+
 location = [
   "Denver, CO", 
   "San Francisco, CA", 

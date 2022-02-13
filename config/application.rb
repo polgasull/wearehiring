@@ -1,6 +1,6 @@
-require_relative 'boot'
+require_relative "boot"
 
-require 'rails/all'
+require "rails/all"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -8,7 +8,8 @@ Bundler.require(*Rails.groups)
 
 module JobApp
   class Application < Rails::Application
-
+    # Initialize configuration defaults for originally generated Rails version.
+    config.load_defaults 5.1
     config.ignored_paths = %W(/users /users/sign_in /users/sign_up /users/password /users/sign_out /users/confirm_password)
     config.time_zone = 'Madrid'
     config.active_record.default_timezone = :utc
@@ -16,8 +17,6 @@ module JobApp
 
     config.active_job.queue_adapter = :sidekiq
     config.application_name = 'Job App'
-    # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 5.1
 
     config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :es
@@ -25,9 +24,12 @@ module JobApp
     config.serve_static_assets = true
     config.exceptions_app = self.routes
     config.middleware.use Rack::Deflater
-
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration should go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded.
+    # Configuration for the application, engines, and railties goes here.
+    #
+    # These settings can be overridden in specific environments using the files
+    # in config/environments, which are processed later.
+    #
+    # config.time_zone = "Central Time (US & Canada)"
+    # config.eager_load_paths << Rails.root.join("extras")
   end
 end

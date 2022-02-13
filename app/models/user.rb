@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  extend Filter
+  extend FilterBy
   include Users::UserScopes
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

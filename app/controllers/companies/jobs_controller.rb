@@ -9,7 +9,7 @@ module Companies
     COMPANY_PRICE = 10000
   
     def index
-      @jobs = current_user.jobs.filter(params).order('created_at DESC')
+      @jobs = current_user.jobs.filter_by(params).order('created_at DESC')
       @jobs_active_count = @jobs.active.count
       @jobs_expired_count = @jobs.inactive.count
       @jobs_count = @jobs.count

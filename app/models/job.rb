@@ -1,5 +1,5 @@
 class Job < ApplicationRecord
-  extend Filter
+  extend FilterBy
   extend FriendlyId
   include Jobs::JobScopes
 

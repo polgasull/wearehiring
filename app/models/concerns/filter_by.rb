@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-module Filter
+module FilterBy
   extend ActiveSupport::Concern
 
-  def filter(filtering_params = {})
+  def filter_by(filtering_params = {})
     results = all
     filtering_params.each do |key, value|
       results = results.public_send(key, value) if value.present? && results.respond_to?(key)

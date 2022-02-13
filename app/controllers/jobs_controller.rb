@@ -7,8 +7,8 @@ class JobsController < ApplicationController
       @jobs = Job.active.order_list(params[:sort_by]).page(params[:page]).per(10)
       @jobs_count = Job.active.count
     else 
-      @jobs = Job.active.order('created_at DESC').filter(params).page(params[:page]).per(10)
-      @jobs_count = Job.active.filter(params).count
+      @jobs = Job.active.order('created_at DESC').filter_by(params).page(params[:page]).per(10)
+      @jobs_count = Job.active.filter_by(params).count
     end
 
     respond_to do |format|
