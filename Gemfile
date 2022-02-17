@@ -9,8 +9,8 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'activerecord-session_store'
 gem 'aws-sdk-rails', '~> 3.6', '>= 3.6.1'
-gem 'axlsx', '= 2.0.1'
-gem 'axlsx_rails'
+gem 'caxlsx'
+gem 'caxlsx_rails'
 gem "best_in_place", git: "https://github.com/mmotherwell/best_in_place"
 gem 'binding_of_caller'
 gem 'browser', '~> 4.0'
@@ -38,7 +38,7 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.7'
 gem 'pry', '~> 0.12.2'
 gem 'rails', '~> 7.0', '>= 7.0.2'
-gem 'rubyzip', '= 1.0.0'
+gem 'rubyzip', '~> 2.3', '>= 2.3.2'
 gem 'sass-rails', '~> 6.0'
 gem "simple_form", ">= 5.0.0"
 gem "slack-notifier"
@@ -63,9 +63,6 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'rb-readline', '~> 0.5.3'
   gem "letter_opener"
-  # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '~> 2.13'
-  gem 'selenium-webdriver'
   gem 'better_errors'
 end
 
