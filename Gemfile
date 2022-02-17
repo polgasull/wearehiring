@@ -34,6 +34,7 @@ gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
 gem 'kaminari'
 gem 'mini_magick', '~> 4.9', '>= 4.9.4'
 gem 'omniauth-linkedin-oauth2', '~> 1.0'
+gem "omniauth-rails_csrf_protection"
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.7'
 gem 'pry', '~> 0.12.2'
