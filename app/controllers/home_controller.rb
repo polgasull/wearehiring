@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HomeController < ApplicationController
   def index
     @jobs = Job.active.order('created_at DESC').take(10);

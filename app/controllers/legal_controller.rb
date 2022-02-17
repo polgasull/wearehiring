@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LegalController < ApplicationController
 
   def legal_terms; end
