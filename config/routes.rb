@@ -51,6 +51,9 @@ Rails.application.routes.draw do
     registrations: 'registrations'
   }
 
+  get '/como-funciona/empresas', to: 'how_it_works#companies', as: 'how_it_works_companies'
+  get '/como-funciona/candidatos', to: 'how_it_works#candidates', as: 'how_it_works_candidates'
+  get '/pricing', to: 'pricing#index', as: 'pricing'
   get '/legal/aviso_legal', to: 'legal#legal_terms', as: 'legal_terms'
   get '/legal/politicas_privacidad', to: 'legal#privacy_policy', as: 'privacy_policy'
   get '/legal/politicas_cookies', to: 'legal#cookies_policy', as: 'cookies_policy'

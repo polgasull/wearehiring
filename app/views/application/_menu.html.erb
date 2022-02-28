@@ -160,25 +160,27 @@
 					jobs_path, 
 					class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(jobs_path)}" %>
 		</div>
+		<div class="navbar-item text-uppercase f6 has-dropdown is-hoverable">
+			<%= link_to t('how_it_works'), how_it_works_companies_path, 
+					class: "navbar-link #{ 'active' if current_page?(how_it_works_companies_path) || current_page?(how_it_works_candidates_path)}" %>
+			<div class="navbar-dropdown is-boxed">
+				<%= link_to t('for_companies'), how_it_works_companies_path, class: "navbar-item #{ 'active' if current_page?(how_it_works_companies_path)}" %>
+				<%= link_to t('for_candidates'), how_it_works_candidates_path, class: "navbar-item #{ 'active' if current_page?(how_it_works_candidates_path)}" %>
+			</div>
+    </div>
 		<div class="navbar-item">
-			<%= link_to t('jobs.post_job'), 
-				new_user_session_path(:company => "true"), 
-				class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(new_companies_job_path)}" %>
+			<%= link_to t('pricing'), pricing_path, class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(pricing_path)}" %>
 		</div>
 		<div class="navbar-item">
 			<div class="navbar-item">
-				<%= link_to new_user_session_path(:candidate => "true"), class: "text-uppercase f6 button is-rounded is-link #{ 'is-outlined' if !params[:candidate]}" do %>
-					<%= icon('fas', 'user mr2') %>
-					<%= t('candidate_access') %>
-				<% end %>
+				<%= link_to t('login'), new_user_session_path, 
+						class: "text-uppercase f6 button is-rounded is-link #{ 'is-outlined' unless current_page?(new_user_session_path)}" %>
 			</div>
 		</div>
 		<div class="navbar-item">
 			<div class="navbar-item">
-				<%= link_to new_user_session_path(:company => "true"), class: "text-uppercase f6 button is-rounded is-dark #{ 'is-outlined' if !params[:company]}" do %>
-					<%= icon('far', 'building mr2') %>
-					<%= t('company_access') %>
-				<% end %>
+				<%= link_to t('create_account'), new_user_registration_path, 
+						class: "text-uppercase f6 button is-rounded is-dark #{ 'is-outlined' unless current_page?(new_user_registration_path)}" %>
 			</div>
 		</div>
 	</div>
