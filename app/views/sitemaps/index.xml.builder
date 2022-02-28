@@ -10,10 +10,6 @@ xml.tag! 'urlset', 'xmlns' => "http://www.sitemaps.org/schemas/sitemap/0.9" do
   end
 
   xml.tag! 'url' do
-    xml.tag! 'loc', new_job_url
-  end
-
-  xml.tag! 'url' do
     xml.tag! 'loc', blog_posts_url
   end
   
