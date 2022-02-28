@@ -3,7 +3,7 @@
   "@context": "http://schema.org",
   "@type": "JobPosting",
   "title" : "<%= job.title %>",
-  "description": "<%= job.description.html_safe %>",
+  "description": '<%= job.description.html_safe %>',
   "identifier": {
     "@type": "PropertyValue",
     "name": "<%= job.job_author %>",
@@ -21,7 +21,7 @@
   <% else %>
   "jobLocation": {
     "@type": "Place",
-      "address": {
+    "address": {
       "@type": "PostalAddress",
       "addressLocality": "<%= job.location %>",
     }
