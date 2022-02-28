@@ -1,0 +1,49 @@
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "JobPosting",
+  "title" : "<%= job.title %>",
+  "description": "<%= job.description.html_safe %>",
+  "identifier": {
+    "@type": "PropertyValue",
+    "name": "<%= job.job_author %>",
+    "value": "<%= job.reference %>"
+  },
+  "datePosted" : "<%= job.created_at %>",
+  "validThrough" : "<%= job.expiry_date %>",
+  "employmentType": "FULL_TIME",
+  <% if job.remote_ok? %>
+  "applicantLocationRequirements": {
+    "@type": "Country",
+    "name": "ESP"
+  },
+  "jobLocationType": "TELECOMMUTE",
+  <% else %>
+  "jobLocation": {
+    "@type": "Place",
+      "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "<%= job.location %>",
+    }
+  },
+  <% end %>
+  <% if (job.salary_from && job.salary_from != 0) %>
+  "baseSalary": {
+    "@type": "MonetaryAmount",
+    "currency": "EUR",
+    "value": {
+      "@type": "QuantitativeValue",
+      "minValue": <%= job.salary_from %>,
+      "maxValue": <%= job.salary_to %>,
+      "unitText": "MONTH"
+    }
+  },
+  <% end %>
+  "hiringOrganization" : {
+    "@type" : "Organization",
+    "name" : "We Are Hiring",
+    "sameAs" : "http://www.wearehiring.io",
+    "logo" : "https://wearehiring-bucket-prod.s3.eu-west-3.amazonaws.com/uploads/job/avatar/660/thumb_0000_sin.png"
+  }
+}
+</script>

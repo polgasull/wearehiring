@@ -27,7 +27,7 @@
       description: "#{ @job.job_author } está buscando a un #{ @job.title } en #{ @job.location }. Solicita este empleo en WeAreHiring.io",
       image: @job.avatar.file.nil? ? image_url(asset_path('wah_red_logo.png')) : image_url(@job.avatar_url(:thumb), alt: "Empleo de #{@job.title} en #{@job.job_author}") %>
 
-  <%= render partial: "/jobs/partials/structured_data", locals: { job: @job } %>
+  <%= render partial: "/jobs/partials/job_posting_structured_data", locals: { job: @job } %>
 <% end %>
 
 <%= content_for :footer do %>
