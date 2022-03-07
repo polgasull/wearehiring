@@ -18,3 +18,49 @@
     color: $grey;
   }
 }
+
+.home-search {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  box-shadow: 0 0px 1px rgba(0, 0, 0, 0.10), 0 4px 4px rgba(0, 0, 0, 0.10);
+  height: 72px;
+  border-radius: 20px;
+  width: 410px;
+  padding: 0 16px;
+}
+
+.home-search-icon {
+  width: 24px;
+}
+
+.home-search-input {
+  height: 72px;
+  border: none;
+  width: 250px;
+  font-size: 16px;
+  
+  &:focus {
+    outline: none;
+  }
+
+  &::placeholder {
+    color: #a9a9a9;
+  }
+}
+
+.home-search-button {
+  border: none;
+  border-radius: 20px;
+  background: $normal_success;
+  color: white;
+  padding: 16px;
+  width: 100px;
+  font-size: 16px;
+  
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.10), 0 0px 0 1px rgba(0, 0, 0, 0.10);
+  }
+}

@@ -1,12 +1,30 @@
 <section class="section">
 	<div class="container claim">
 		<div class="columns is-vcentered">
-			<div class="column is-4-desktop has-text-centered-mobile">
+			<div class="column is-5-desktop has-text-centered-mobile">
 				<%= render 'claim' %>
-				<%= link_to("¡Soy el talento!", new_user_registration_path(:candidate => "true"), class: "f6 button is-rounded is-link mr2") %>
-				<%= link_to("¡Busco talento!", new_user_registration_path(:company => "true"), class: "f6 button is-rounded is-dark") %>
+
+				<div class="mv5"></div>
+				<%= form_tag(jobs_path, method: :get) do %>
+					<div class="home-search">
+						<div class="home-search-icon">
+							<%= icon('fas', 'search') %>
+						</div>
+						<input 
+							type="text" 
+							class="home-search-input" 
+							placeholder="Buscar Job" 
+							name="search_for" 
+							value="<%=params[:search_for] ? params[:search_for] : ''%>">
+						<%= button_tag(t('search'), type: 'submit', class: "home-search-button", data: { disable_with: "<i class='fas fa-spinner fa-spin'></i>".html_safe }) %>
+					</div>
+				<% end %>
+
+				<p class="mt3">
+					Ejemplo: <span class="tag is-light mr3"> Backend </span> <span class="tag is-light mr3"> Rails </span> <span class="tag is-light"> Remoto </span> 
+				</p>
  			</div>
-			<div class="column is-8-desktop">
+			<div class="column is-7-desktop">
 				<%= image_tag(asset_path('WAH_camino_1.svg')) %>
 			</div>
 		</div>
