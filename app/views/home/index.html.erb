@@ -1,4 +1,4 @@
-<section class="section">
+<section class="section pv6">
 	<div class="container claim">
 		<div class="columns is-vcentered">
 			<div class="column is-5-desktop has-text-centered-mobile">
@@ -31,11 +31,36 @@
 	</div>
 </section>
 
-<section class="section has-text-left-mobile jobs-section">
+<section class="section">
+	<div class="container">
+		<div class="columns has-text-centered is-vertical-center">
+			<div class="column">
+				<%= image_tag(asset_path('emogg_logo.png'), width: 60, height: 60) %>
+			</div>
+			<div class="column">
+				<%= image_tag(asset_path('gartner_logo.png'), width: 80, height: 80) %>
+			</div>
+			<div class="column">
+				<%= image_tag(asset_path('sennder_logo.jpeg'), width: 60, height: 60) %>
+			</div>
+			<div class="column">
+				<%= image_tag(asset_path('payfit_logo.png'), width: 80, height: 80) %>
+			</div>
+			<div class="column">
+				<%= image_tag(asset_path('madeofgenes_logo.png'), width: 80, height: 80) %>
+			</div>
+			<div class="column">
+				<%= image_tag(asset_path('dnv_logo.png'), width: 80, height: 80) %>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="section has-text-left-mobile section-bg-gray pv6">
 	<div class="container">
 		<div class="columns">
 			<div class="column has-text-left">
-				<strong> <%= t('last') %> <%= @jobs_count %> <%= t('digital_job_offers') %>	</strong>
+				<p class="title is-3"> <%= t('last') %> <%= @jobs_count %> <%= t('digital_job_offers') %>	</p>
 			</div>
 		</div>
 		<div class="columns">
@@ -51,172 +76,257 @@
 	</div>
 </section>
 
-<div class="mt5 is-hidden-touch"></div>
-
-<section class="section has-text-centered-desktop">
-	<div class="container is-vertical-center justify-center">
-		<div class="claim-title">
-			<div class="claim-title__container">
-				<p class="claim-title__container__text">
-					We are
-				</p>
-				
-				<ul class="claim-title__container__list">
-					<li class="claim-title__container__list__item"> Developers </li>
-					<li class="claim-title__container__list__item"> Designers </li>
-					<li class="claim-title__container__list__item"> Marketers </li>
-					<li class="claim-title__container__list__item"> Product </li>
-					<li class="claim-title__container__list__item"> Data </li>
-				</ul>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="mb3 is-hidden-touch"></div>
-
-<section class="section has-text-left-mobile">
-	<div class="container">
-		<div class="columns is-marginless box card-box-secondary home-box">
-			<div class="column is-vertical-center">
-				<img src="<%=asset_path('hire_profiles.svg')%>" width="400" height="400" class="is-blank" alt="Crear cuenta empresa y publicar empleo digital | Wearehiring.io">			
-			</div>
-			<div class="column">
-				<h2 class="title"> 
-					<span> We Match </span> 
-					<span class="tag is-success"> Nuevo </span> <br>
-					<span> Sistema de matching por Skills </span>
-				</h2>
-				<p> 
-					<span class='tag is-info'> React </span>
-					<span class='tag is-info'> Python </span>
-					<span class='tag is-info'> UX </span>
-					<span class='tag is-info'> UI </span>
-					<span class='tag is-info'> SEO </span>
-					<span class='tag is-info'> SEM </span>
-					<span class='tag is-info'> Figma </span>
-					<span class='tag is-info'> SQL </span>
-					<span class='tag is-info'> Scrum </span>
-					<span class='tag is-info'> Docker </span>
-					<span class='tag is-info'> REST API </span>
-					<span class='tag is-info'> Scala </span>
-					<span class='tag is-info'> VueJS </span>
-					<span class='tag is-info'> Ruby on Rails </span>
-					<span class='tag is-info'> Mongo </span>
-					<span class='tag is-info'> Wordpress </span>
-					<span class='tag is-info'> Invision </span>
-					<span class='tag is-info'> Strategy </span>
-				</p>
-				<div class="mt4">
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-
-<div class="mv5 is-hidden-touch"></div>
+<div class="mt6 is-hidden-touch"></div>
 
 <section class="section">
 	<div class="container">
 		<div class="columns">
-			<div class="column has-text-centered">
-				<h2 class="title"> Colaboramos con </h2>
-			</div>
-		</div>
-		<%= render 'partners' %>
-	</div>
-</section>
-
-<section class="section has-text-left-mobile">
-	<div class="container">
-		<div class="columns is-marginless box card-box-primary">
 			<div class="column">
-				<h2 class="title"> 
-					<span> ¿Buscas talento? </span> 
-				</h2>
-				<h3 class="title has-text-white">
-					x2 Jobs <span class="has-text-success"> GRATIS </span>
-				</h3>
-				<h3 class="title has-text-white">
-					Publica tu Job por 100€
-				</h3>
-				<p> <%= t('company_section_body') %> </p>
-				<div class="mt4">
-					<%= link_to new_user_registration_path(:company => "true"), class: 'button is-medium is-rounded is-dark' do %>
-						<%= t('create_company_account') %> <%= icon('fas', 'arrow-right ml3') %>
-					<% end %>
-				</div>
+				<p class="title is-2 has-text-weight-bold has-text-corporate">
+					Talento digital, <br>
+					éste es tu lugar
+				</p>
+				<p class="is-size-5 mb3 has-text-weight-bold">
+					Sólo empleos tecnológicos. <br>
+					Recién salidos del horno.
+				</p>
+				<p>
+					En We Are Hiring agrupamos y damos <br>
+					visibilidad a los Jobs digitales más recientes.
+				</p>
+				<p class="mt3">
+					<%= link_to t('for_candidates'), how_it_works_candidates_path, class: 'button is-rounded primary shadow' %>
+				</p>
 			</div>
-			<div class="column is-vertical-center justify-center">
-				<img src="<%=asset_path('undraw_people_search_wctu.svg')%>" width="400" height="400" class="is-blank" alt="Crear cuenta empresa y publicar empleo digital | Wearehiring.io">			
+			<div class="column">
+				<img src="<%=asset_path('undraw_navigation.svg')%>" width="400" height="400" class="is-blank" alt="Crear cuenta empresa y publicar empleo digital | Wearehiring.io">			
 			</div>
 		</div>
 	</div>
 </section>
 
-<div class="mv5 is-hidden-touch"></div>
-
-<section class="section has-text-centered has-text-left-mobile">
-	<div class="container">
-		<div class="columns">
-			<div class="column is-three-fifths is-offset-one-fifth">
-				<h2 class="title"> <%= t('about_us_title') %> </h2>
-				<p> <%= t('about_us_subtitle') %> </p>
-			</div>
-		</div>
-	</div>
-</section>
+<div class="mt6 is-hidden-touch"></div>
 
 <section class="section">
 	<div class="container">
-		<div class="columns is-variable is-8">
-			<div class="column has-text-centered">
-				<div class="home-feature-img-wrapper">
-					<img 
-						src="<%=asset_path('WAH_mariposa_1.svg')%>" 
-						width="300" 
-						height="300" 
-						class="is-blank is-mobile-img" 
-						alt="Only Digital Jobs | Wearehiring.io">
-				</div>
-				<h3 class="title is-4"> <%=t('feature_1')%> </h3>
-				<div class="content mt4">
-					<p class="has-text-centered-mobile"> <%=t('feature_1_text')%> </p>
-				</div>
+		<div class="columns">
+			<div class="column">
+				<img src="<%=asset_path('undraw_community.svg')%>" width="400" height="400" class="is-blank" alt="Crear cuenta empresa y publicar empleo digital | Wearehiring.io">			
 			</div>
-			<div class="column has-text-centered">
-				<div class="home-feature-img-wrapper">
-					<img 
-						src="<%=asset_path('WAH_cohete_1.svg')%>"
-						width="400"
-						height="400"
-						class="is-blank"
-						alt="Rápido regístro | Wearehiring.io">
-				</div>
-				<h3 class="title is-4"> <%=t('feature_2')%> </h3>
-				<div class="content mt4">
-					<p class="has-text-centered-mobile"> <%=t('feature_2_text')%> </p>
-				</div>
-			</div>
-			<div class="column has-text-centered">
-				<div class="home-feature-img-wrapper">
-					<img 
-						src="<%=asset_path('WAH_barco_1.svg')%>"
-						width="300"
-						height="300"
-						class="is-blank"
-						alt="Digital talent place | Wearehiring.io">			
-				</div>
-				<h3 class="title is-4"> <%=t('feature_3')%> </h3>
-				<div class="content mt4">
-					<p class="has-text-centered-mobile"> <%=t('feature_3_text')%> </p>
-				</div>			
+			<div class="column">
+				<p class="title is-2 has-text-weight-bold has-text-corporate">
+					Tu comunidad digital-tech
+				</p>
+				<p class="is-size-5 mb3 has-text-weight-bold">
+					Crece con WAH Community
+				</p>
+				<p>
+					Una comunidad exclusiva donde conectaras con los mejores profesionales de tu sector. <br>
+					Mentoring, Learning, Networking o el simple placer de compartir con otros.
+				</p>
 			</div>
 		</div>
 	</div>
 </section>
 
-<div class="mv5 is-hidden-touch"></div>
+<div class="mt6 is-hidden-touch"></div>
+
+<section class="section section-bg-gray pv6">
+	<div class="container">
+		<p class="title is-2 has-text-weight-bold has-text-corporate has-text-centered">
+			¡Flechazos en We Are Hiring!
+		</p>
+		<div class="columns mt4">
+			<div class="column">
+				<div class="card">
+					<div class="card-content">
+						<div class="rounded-image m-auto size-120">
+							<img src="<%=asset_path('user_male_avatar.svg')%>" class="is-blank">			
+						</div>
+						<div class="media mt3">
+							<div class="media-left">
+								<figure class="image is-48x48">
+									<img src="<%=asset_path('emogg_logo.png')%>" class="is-blank">
+								</figure>
+							</div>
+							<div class="media-content">
+								<p class="title is-4">Alex Lope</p>
+								<p class="subtitle is-6">Emogg</p>
+							</div>
+						</div>
+						<div class="content">
+							"Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi porta gravida at eget metus."
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="column">
+				<div class="card">
+					<div class="card-content">
+						<div class="rounded-image m-auto size-120">
+							<img src="<%=asset_path('user_male_avatar.svg')%>" class="is-blank">			
+						</div>
+						<div class="media mt3">
+							<div class="media-left">
+								<figure class="image is-48x48">
+									<img src="<%=asset_path('emogg_logo.png')%>" class="is-blank">
+								</figure>
+							</div>
+							<div class="media-content">
+								<p class="title is-4">Victor M</p>
+								<p class="subtitle is-6">Nüo Planet</p>
+							</div>
+						</div>
+						<div class="content">
+							"Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi porta gravida at eget metus."
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="column">
+				<div class="card">
+					<div class="card-content">
+						<div class="rounded-image m-auto size-120">
+							<img src="<%=asset_path('user_male_avatar.svg')%>" class="is-blank">			
+						</div>
+						<div class="media mt3">
+							<div class="media-left">
+								<figure class="image is-48x48">
+									<img src="<%=asset_path('emogg_logo.png')%>" class="is-blank">
+								</figure>
+							</div>
+							<div class="media-content">
+								<p class="title is-4">John Smith</p>
+								<p class="subtitle is-6">Knauff Insulation</p>
+							</div>
+						</div>
+						<div class="content">
+							"Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi porta gravida at eget metus."
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<div class="mt6 is-hidden-touch"></div>
+
+<section class="section">
+	<div class="container">
+		<div class="columns">
+			<div class="column">
+				<p class="title is-2 has-text-weight-bold has-text-corporate">
+					¡BOOST! para tus Jobs
+				</p>
+				<p>
+					We Are Hiring es el altavoz que le falta a tus Jobs para llegar al talento que buscas.
+				</p>
+			</div>
+			<div class="column">
+				<img src="<%=asset_path('undraw_maker_launch.svg')%>" width="400" height="400" class="is-blank" alt="Crear cuenta empresa y publicar empleo digital | Wearehiring.io">			
+			</div>
+		</div>
+	</div>
+</section>
+
+<div class="mt6 is-hidden-touch"></div>
+
+<section class="section">
+	<div class="container">
+		<div class="columns">
+			<div class="column">
+				<img src="<%=asset_path('undraw_order_confirmed.svg')%>" width="400" height="400" class="is-blank" alt="Crear cuenta empresa y publicar empleo digital | Wearehiring.io">			
+			</div>
+			<div class="column">
+				<p class="title is-2 has-text-weight-bold has-text-corporate">
+					En 3 pasos
+				</p>
+				<p class="is-size-5 mb3 has-text-weight-bold">
+					Publicar. Recibir. Contratar.
+				</p>
+				<p>
+					Tan fácil como esto. ¿Quieres saber más sobre cómo funciona nuestro digital talent place?
+				</p>
+				<p class="mt3">
+					<%= link_to t('for_companies'), how_it_works_companies_path, class: 'button is-rounded is-dark shadow' %>
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<div class="mt6 is-hidden-touch"></div>
+
+<section class="section section-bg-gray pv6">
+	<div class="container">
+		<div class="columns">
+			<div class="column has-text-centered">
+				<p class="title is-2 has-text-corporate"> Nuestros partners </p>
+			</div>
+		</div>
+		<div class="box mt4 pv5">
+			<div class="columns is-vertical-center has-text-centered">
+				<div class="column">
+					<%= image_tag(asset_path('UIC.png'), width: 80, height: 80) %>
+				</div>
+				<div class="column">
+					<%= image_tag(asset_path('codehouse_academy.png'), width: 80, height: 80) %>
+				</div>
+				<div class="column">
+					<%= image_tag(asset_path('inesdi.jpg'), width: 80, height: 80) %>
+				</div>
+				<div class="column">
+					<%= image_tag(asset_path('ironhack.png'), width: 60, height: 60) %>
+				</div>
+			</div>
+			<div class="columns is-vertical-center has-text-centered">
+				<div class="column">
+					<%= image_tag(asset_path('lets_coder.png'), width: 80, height: 80) %>
+				</div>
+				<div class="column">
+					<%= image_tag(asset_path('esade.png'), width: 80, height: 80) %>
+				</div>
+				<div class="column">
+					<%= image_tag(asset_path('BAU.png'), width: 80, height: 80) %>
+				</div>
+				<div class="column">
+					<%= image_tag(asset_path('BTS.png'), width: 80, height: 80) %>
+				</div>
+			</div>
+			<div class="columns is-vertical-center has-text-centered">
+				<div class="column">
+					<%= image_tag(asset_path('esdi.png'), width: 80, height: 80) %>
+				</div>
+				<div class="column">
+					<%= image_tag(asset_path('KEEPCODING.png'), width: 80, height: 80) %>
+				</div>
+				<div class="column">
+					<%= image_tag(asset_path('la_salle.png'), width: 80, height: 80) %>
+				</div>
+				<div class="column">
+					<%= image_tag(asset_path('upc.png'), width: 80, height: 80) %>
+				</div>
+			</div>
+			<div class="columns is-vertical-center has-text-centered">
+				<div class="column">
+					<%= image_tag(asset_path('elisava.png'), width: 80, height: 80) %>
+				</div>
+				<div class="column">
+					<%= image_tag(asset_path('epitech.jpg'), width: 80, height: 80) %>
+				</div>
+				<div class="column">
+					<%= image_tag(asset_path('gse_bcn.jpg'), width: 80, height: 80) %>
+				</div>
+				<div class="column">
+					<%= image_tag(asset_path('IEBS.png'), width: 80, height: 80) %>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<div class="mnegative"></div>
 
 <%= content_for :head do %>
 	<%= render "seo", 

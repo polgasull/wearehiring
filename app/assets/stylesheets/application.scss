@@ -55,13 +55,24 @@
 }
 
 @font-face {
-  font-family: 'archiaregular';
+  font-family: 'archia';
   src: url(asset_path('archia-regular-webfont.eot'));
   src: url(asset_path('archia-regular-webfont.eot?#iefix')) format('embedded-opentype'),
         url(asset_path('archia-regular-webfont.woff2')) format('woff2'),
         url(asset_path('archia-regular-webfont.woff')) format('woff'),
         url(asset_path('archia-regular-webfont.ttf')) format('truetype');
   font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'archia';
+  src: url(asset_path('archia-bold-webfont.eot'));
+  src: url(asset_path('archia-bold-webfont.eot?#iefix')) format('embedded-opentype'),
+        url(asset_path('archia-bold-webfont.woff2')) format('woff2'),
+        url(asset_path('archia-bold-webfont.woff')) format('woff'),
+        url(asset_path('archia-bold-webfont.ttf')) format('truetype');
+  font-weight: bold;
   font-style: normal;
 }
 

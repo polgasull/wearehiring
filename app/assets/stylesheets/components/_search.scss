@@ -29,6 +29,10 @@
   border-radius: 20px;
   width: 410px;
   padding: 0 16px;
+
+  @media (max-width: 768px) {
+    width: auto;
+  }
 }
 
 .home-search-icon {
@@ -47,6 +51,10 @@
 
   &::placeholder {
     color: #a9a9a9;
+  }
+
+  @media (max-width: 768px) {
+    width: auto;
   }
 }
 

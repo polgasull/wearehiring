@@ -1,4 +1,4 @@
-<%= form_for jobs_path, method: :get do |f| %>
+<%= form_tag(jobs_path, method: :get) do %>
   <div class="columns is-vertical-center">
     <div class="column is-3-desktop is-8-mobile">
       <div class="control has-icons-left">
@@ -50,7 +50,7 @@
       </div>      
     </div>
     <div class="column has-text-right">
-      <%= f.submit t('search'), class: "button is-success is-fullwidth", data: { disable_with: "Buscando..." }%>
+      <%= button_tag(t('search'), type: 'submit', class: "button is-success is-fullwidth", data: { disable_with: "<i class='fas fa-spinner fa-spin'></i>".html_safe }) %>
     </div>
   </div>
   <div class="columns">
