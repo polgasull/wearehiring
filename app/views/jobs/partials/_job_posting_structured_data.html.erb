@@ -41,7 +41,7 @@
   "hiringOrganization" : {
     "@type" : "Organization",
     "name" : "<%= job.job_author %>",
-    "logo" : "https://wearehiring-bucket-prod.s3.eu-west-3.amazonaws.com/uploads/job/avatar/<%=job.id%>/<%=job.avatar_url(:thumb)%>"
+    "logo" : "<%= job.avatar_url(:thumb) %>"
   }
 }
 </script>
