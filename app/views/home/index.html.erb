@@ -1,5 +1,5 @@
 <section class="section pv6">
-	<div class="container claim">
+	<div class="container claim is-max-widescreen">
 		<div class="columns is-vcentered">
 			<div class="column is-5-desktop has-text-centered-mobile">
 				<%= render 'claim' %>
@@ -10,18 +10,18 @@
 						<div class="home-search-icon">
 							<%= icon('fas', 'search') %>
 						</div>
-						<input 
-							type="text" 
-							class="home-search-input" 
-							placeholder="Buscar Job" 
-							name="search_for" 
+						<input
+							type="text"
+							class="home-search-input"
+							placeholder="Buscar Job"
+							name="search_for"
 							value="<%=params[:search_for] ? params[:search_for] : ''%>">
 						<%= button_tag(t('search'), type: 'submit', class: "home-search-button", data: { disable_with: "<i class='fas fa-spinner fa-spin'></i>".html_safe }) %>
 					</div>
 				<% end %>
 
 				<p class="mt3">
-					Ejemplo: <span class="tag is-light mr3"> Backend </span> <span class="tag is-light mr3"> Rails </span> <span class="tag is-light"> Remoto </span> 
+					Ejemplo: <span class="tag is-light mr3"> Backend </span> <span class="tag is-light mr3"> Rails </span> <span class="tag is-light"> Remoto </span>
 				</p>
  			</div>
 			<div class="column is-7-desktop">
@@ -71,7 +71,7 @@
 		<div class="columns">
 			<div class="column has-text-centered">
 				<%= link_to t('show_all_jobs'), jobs_path, class: 'button is-rounded primary is-large shadow' %>
-			</div>		
+			</div>
 		</div>
 	</div>
 </section>
@@ -79,7 +79,7 @@
 <div class="mt6 is-hidden-touch"></div>
 
 <section class="section">
-	<div class="container">
+	<div class="container is-max-widescreen">
 		<div class="columns">
 			<div class="column">
 				<p class="title is-2 has-text-weight-bold has-text-corporate">
@@ -99,7 +99,7 @@
 				</p>
 			</div>
 			<div class="column">
-				<img src="<%=asset_path('undraw_navigation.svg')%>" width="400" height="400" class="is-blank" alt="Crear cuenta empresa y publicar empleo digital | Wearehiring.io">			
+				<img src="<%=asset_path('undraw_navigation.svg')%>" width="400" height="400" class="is-blank" alt="Crear cuenta empresa y publicar empleo digital | Wearehiring.io">		
 			</div>
 		</div>
 	</div>
@@ -108,10 +108,10 @@
 <div class="mt6 is-hidden-touch"></div>
 
 <section class="section">
-	<div class="container">
+	<div class="container is-max-widescreen">
 		<div class="columns">
 			<div class="column">
-				<img src="<%=asset_path('undraw_community.svg')%>" width="400" height="400" class="is-blank" alt="Crear cuenta empresa y publicar empleo digital | Wearehiring.io">			
+				<img src="<%=asset_path('undraw_community.svg')%>" width="400" height="400" class="is-blank" alt="Crear cuenta empresa y publicar empleo digital | Wearehiring.io">	
 			</div>
 			<div class="column">
 				<p class="title is-2 has-text-weight-bold has-text-corporate">
@@ -213,7 +213,7 @@
 <div class="mt6 is-hidden-touch"></div>
 
 <section class="section">
-	<div class="container">
+	<div class="container is-max-widescreen">
 		<div class="columns">
 			<div class="column">
 				<p class="title is-2 has-text-weight-bold has-text-corporate">
@@ -233,7 +233,7 @@
 <div class="mt6 is-hidden-touch"></div>
 
 <section class="section">
-	<div class="container">
+	<div class="container is-max-widescreen">
 		<div class="columns">
 			<div class="column">
 				<img src="<%=asset_path('undraw_order_confirmed.svg')%>" width="400" height="400" class="is-blank" alt="Crear cuenta empresa y publicar empleo digital | Wearehiring.io">			

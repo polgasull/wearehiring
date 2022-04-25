@@ -180,7 +180,7 @@
 		<div class="navbar-item">
 			<div class="navbar-item">
 				<%= link_to t('create_account'), new_user_registration_path, 
-						class: "text-uppercase f6 button is-rounded is-dark #{ 'is-outlined' unless current_page?(new_user_registration_path)}" %>
+						class: "text-uppercase f6 button is-rounded is-dark #{ 'is-outlined' unless current_page?(new_user_registration_path) || current_page?(new_company_registration_path)}" %>
 			</div>
 		</div>
 	</div>

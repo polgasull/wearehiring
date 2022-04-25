@@ -1,8 +1,10 @@
-# frozen_string_literal: true
-
-class RegistrationsController < Devise::RegistrationsController
+class CompaniesRegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
-  before_action :configure_account_update_params, only: [:update]
+  layout 'new_company_registration'
+
+  def new
+    super
+  end
 
   def create
     super do
@@ -13,11 +15,7 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  def update
-    super
-  end
-
-  private 
+  private
 
   def has_duplicate_email?
     return false unless resource.errors.has_key?(:email)
@@ -30,20 +28,13 @@ class RegistrationsController < Devise::RegistrationsController
     t('devise.failure.taken')
   end
 
-  def candidate_type
-    UserType.where(internal_name: 'candidate').first.id
+  def company_type
+    UserType.where(internal_name: 'company').first.id
   end
 
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(
       :sign_up, 
-      keys: [:name, :last_name, :picture_url, :location, :profile_url, :user_type_id, :accepted_terms, :job_id, :phone]
-    )
-  end
-
-  def configure_account_update_params
-    devise_parameter_sanitizer.permit(
-      :account_update, 
       keys: [:name, :last_name, :picture_url, :location, :profile_url, :user_type_id, :accepted_terms, :job_id, :phone]
     )
   end

@@ -307,6 +307,7 @@ es:
   login: "Iniciar sesión"
   logout: "Cerrar sesión"
   create_account: "Crear cuenta"
+  create_candidate_account: "Crear cuenta candidato"
   create_company_account: "Crear cuenta empresa"
   forgot_password: "¿Has olvidado la contraseña?"
   already_account: "¿Ya tienes cuenta?"
@@ -617,4 +618,5 @@ es:
   how_it_works: "Cómo funciona"
   for_companies: "Para empresas"
   for_candidates: "Para candidatos"
+  candidates: "Candidatos"
   pricing: "Pricing"

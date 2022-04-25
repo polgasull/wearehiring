@@ -51,6 +51,11 @@ Rails.application.routes.draw do
     registrations: 'registrations'
   }
 
+  devise_scope :user do
+    get "companies/sign_up", to: "companies_registrations#new", as: "new_company_registration"
+    post "companies", to: "companies_registrations#create", as: "company_registration"
+  end
+
   get '/como-funciona/empresas', to: 'how_it_works#companies', as: 'how_it_works_companies'
   get '/como-funciona/candidatos', to: 'how_it_works#candidates', as: 'how_it_works_candidates'
   get '/pricing', to: 'pricing#index', as: 'pricing'

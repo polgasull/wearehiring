@@ -305,6 +305,7 @@ en:
   login: "Login"
   logout: "Log out"
   create_account: "Create Account"
+  create_candidate_account: "Create candidate account"
   create_company_account: "Create company account"
   forgot_password: "Forgot your password?"
   already_account: "Already an account?"
