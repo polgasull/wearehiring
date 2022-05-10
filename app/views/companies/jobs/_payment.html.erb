@@ -18,7 +18,11 @@
           <%= icon('fas', 'credit-card f1') %>
           <strong class="has-text-success f1 ml2 job-price"> 299€ </strong>
           <span class="f1 ml2 discounted-price is-hidden"> <del> 299€ </del> <strong class="has-text-success" id="price-after-discount"></strong> </span>
-          <span class="has-text-success"> IVA incluido </span>
+          <span class="has-text-success"> + Tasas </span>
+        </p>
+        <p>
+          <%= icon('fas', 'info-circle') %>
+          <small id="price-after-taxes"> 316.94 </small> <small> con tasas incluidas </small>
         </p>
         <p class="has-text-centered">
           <%= t('payments.monthly') %>

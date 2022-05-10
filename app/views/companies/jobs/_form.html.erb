@@ -303,12 +303,15 @@
       var discountInput = $('#job_discount_code')
       var message = document.getElementById('error-message');
       var priceAfterDiscount = document.getElementById('price-after-discount')
+      var priceAfterTaxes = document.getElementById('price-after-taxes')
       var successColorLight = "#effaf5"
       var errorColorLight = "#f5b8c4";
       $('.button.is-dark').click(function() {
         var inputValue = discountInput.val()
         if($.inArray(inputValue, coupon_names_array) !== -1) {
           var discountNumber = inputValue.match(/\d+/);
+          var iva_tax = (299 - discountNumber) * 0.21
+          var irpf_tax = (299 - discountNumber) * 0.15
           $('.job-price').addClass('is-hidden');
           $('.discounted-price').removeClass('is-hidden');
           $('#error-message').removeClass('has-text-danger').addClass('has-text-success');
@@ -317,6 +320,7 @@
           discountInput.css("background-color", successColorLight)
           message.innerHTML = `Descuento de ${discountNumber}€ aplicado correctamente`;
           priceAfterDiscount.innerHTML = `${299 - discountNumber}€`;
+          priceAfterTaxes.innerHTML = `${(299 - discountNumber) + iva_tax - irpf_tax}€`;
         } else {
           $('.job-price').removeClass('is-hidden');
           $('.discounted-price').addClass('is-hidden');
@@ -326,6 +330,7 @@
           discountInput.css("background-color", errorColorLight)
           message.innerHTML = "El código debe ser válido";
           priceAfterDiscount.innerHTML = "";
+          priceAfterTaxes.innerHTML = `${316.94}€`;
         }
       })
     });
