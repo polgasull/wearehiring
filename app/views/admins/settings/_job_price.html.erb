@@ -1,0 +1,22 @@
+<%= simple_form_for(job_price, method: :patch, url: admins_job_price_path(job_price.id), html: { multipart: true }) do |f| %>
+  <div class="columns is-vertical-center listrow">
+    <div class="column has-text-centered">
+      <%= job_price.id %>
+    </div>
+    <div class="column">
+      <%= f.input :name, label: false, input_html: { class: "input is-size-7" }, wrapper: false, placeholder: t('job_prices.name') %>
+    </div>
+    <div class="column">
+      <%= job_price.internal_name %>
+    </div>
+    <div class="column">
+      <%= f.input :value, label: false, input_html: { class: "input is-size-7" }, wrapper: false, placeholder: t('job_prices.value') %>
+    </div>
+    <div class="column">
+      <%= f.input :value_with_taxes, label: false, input_html: { class: "input is-size-7" }, wrapper: false, placeholder: t('job_prices.value_with_taxes') %>
+    </div>
+    <div class="column">
+      <%= f.submit t('save'), class: 'button is-info is-size-7' %>
+    </div>
+  </div>
+<% end %>

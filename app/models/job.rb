@@ -4,10 +4,11 @@ class Job < ApplicationRecord
   include Jobs::JobScopes
 
   belongs_to :user
-  belongs_to :category, dependent: :destroy
-  belongs_to :job_type, dependent: :destroy
-  belongs_to :level, dependent: :destroy
-  belongs_to :partner, dependent: :destroy, required: false
+  belongs_to :category
+  belongs_to :job_type
+  belongs_to :level
+  belongs_to :partner, required: false
+  belongs_to :job_price
   has_many :job_skills
   has_many :skills, through: :job_skills
   has_many :taggings, dependent: :destroy
