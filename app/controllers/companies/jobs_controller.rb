@@ -6,7 +6,7 @@ module Companies
     
     before_action :set_job, only: [:show, :edit, :update]
 
-    COMPANY_PRICE = 10000
+    COMPANY_PRICE = 29900
   
     def index
       @jobs = current_user.jobs.filter_by(params).order('created_at DESC')
