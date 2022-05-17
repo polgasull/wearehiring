@@ -82,4 +82,10 @@ class Job < ApplicationRecord
     
     return candidates
   end
+
+  %w[basic pro].each do |job_type_name|
+    define_method "is_#{job_type_name}_price?" do
+      job_price&.internal_name == job_type_name
+    end
+  end
 end

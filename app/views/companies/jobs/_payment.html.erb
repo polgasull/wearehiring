@@ -13,16 +13,117 @@
 
       <h4 class="subtitle is-4"> <%= t('payments.price') %> </h4>
 
-      <div class="is-light has-text-centered">
-        <p>
+      <div class="is-light">
+        <div class="columns job-price-cards">
+          <div class="column">
+            <label class="price-card price-card-basic" for="job_job_price_id_1">
+              <input name="job[job_price_id]" class="radio-card" type="radio" id="job_job_price_id_1" checked>
+              <span class="job-price-details">
+                <span class="job-price-type">Basic</span>
+                <span class="job-price-cost">99€</span>
+                <div class="is-flex is-justify-content-space-between">
+                  <p> Duración 60 días </p>
+                  <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
+                </div>
+                <div class="is-flex is-justify-content-space-between">
+                  <p> Gestión proceso </p>
+                  <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
+                </div>
+                <div class="is-flex is-justify-content-space-between">
+                  <p> Notificación a tiempo real </p>
+                  <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
+                </div>
+                <div class="is-flex is-justify-content-space-between">
+                  <p> Posicionamiento SEO </p>
+                  <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
+                </div>
+                <div class="is-flex is-justify-content-space-between">
+                  <p> Compartir Job </p>
+                  <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
+                </div>
+                <div class="is-flex is-justify-content-space-between">
+                  <p> <del> We Match </del> </p>
+                  <p> <%= icon('fas', 'times-circle') %> </p>
+                </div>
+                <div class="is-flex is-justify-content-space-between">
+                  <p> <del> Candidato Estrella </del> </p>
+                  <p> <%= icon('fas', 'times-circle') %> </p>
+                </div>
+                <div class="is-flex is-justify-content-space-between">
+                  <p> <del> Difusión comunidad WAH </del> </p>
+                  <p> <%= icon('fas', 'times-circle') %> </p>
+                </div>
+                <div class="is-flex is-justify-content-space-between">
+                  <p> <del> Acciones de Marketing </del> </p>
+                  <p> <%= icon('fas', 'times-circle') %> </p>
+                </div>
+                <div class="is-flex is-justify-content-space-between">
+                  <p> <del> Integración con audiencia </del> </p>
+                  <p> <%= icon('fas', 'times-circle') %> </p>
+                </div>
+              </span>
+            </label>
+          </div>
+          <div class="column">
+            <label class="price-card price-card-pro" for="job_job_price_id_2">
+              <input name="job[job_price_id]" class="radio-card" type="radio" id="job_job_price_id_2">
+              <span class="hidden-visually">Pro - $50 per month, 5 team members, 500 GB per month, 5 concurrent builds</span>
+              <span class="job-price-details" aria-hidden="true">
+                <span class="job-price-type">Pro <%= icon('fas', 'star', class: 'ml1') %> </span>
+                <span class="job-price-cost">299€</span>
+                <div class="is-flex is-justify-content-space-between">
+                  <p> Duración 60 días </p>
+                  <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
+                </div>
+                <div class="is-flex is-justify-content-space-between">
+                  <p> Gestión proceso </p>
+                  <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
+                </div>
+                <div class="is-flex is-justify-content-space-between">
+                  <p> Notificación a tiempo real </p>
+                  <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
+                </div>
+                <div class="is-flex is-justify-content-space-between">
+                  <p> Posicionamiento SEO </p>
+                  <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
+                </div>
+                <div class="is-flex is-justify-content-space-between">
+                  <p> Compartir Job </p>
+                  <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
+                </div>
+                <div class="is-flex is-justify-content-space-between">
+                  <p> We Match </p>
+                  <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
+                </div>
+                <div class="is-flex is-justify-content-space-between">
+                  <p> Candidato Estrella </p>
+                  <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
+                </div>
+                <div class="is-flex is-justify-content-space-between">
+                  <p> Difusión comunidad WAH </p>
+                  <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
+                </div>
+                <div class="is-flex is-justify-content-space-between">
+                  <p> Acciones de Marketing </p>
+                  <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
+                </div>
+                <div class="is-flex is-justify-content-space-between">
+                  <p> Integración con audiencia </p>
+                  <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
+                </div>
+              </span>
+            </label>
+          </div>
+        </div>
+        <p class="has-text-centered mt4">
           <%= icon('fas', 'credit-card f1') %>
-          <strong class="has-text-success f1 ml2 job-price"> 299€ </strong>
+          <strong class="has-text-success f1 ml2 job-price" id="price-displayed"> 99€ </strong>
           <span class="f1 ml2 discounted-price is-hidden"> <del> 299€ </del> <strong class="has-text-success" id="price-after-discount"></strong> </span>
           <span class="has-text-success"> + Tasas </span>
         </p>
-        <p>
+        <p class="has-text-centered">
           <%= icon('fas', 'info-circle') %>
-          <small id="price-after-taxes"> 316.94 </small> <small> con tasas incluidas </small>
+          <small id="price-after-taxes"> 104.94 </small> <small> con tasas incluidas </small>
         </p>
         <p class="has-text-centered">
           <%= t('payments.monthly') %>
@@ -30,7 +131,7 @@
         <span class="block mb4"></span>
       </div>
 
-      <div class="form-row">
+      <div class="form-row has-text-centered">
         <label for="card-element" class="label">
           <%= t('payments.enter_credit_card') %>
         </label>
@@ -41,7 +142,7 @@
       </div>
 
       <% if current_user.stripe_id.present? %>
-        <div class="last-card bg-light pa4 border-radius-3 mt4">
+        <div class="last-card bg-light pa4 border-radius-3 mt4 has-text-centered">
           <h5 class="is-6 title pt2">
             <%= t('payments.previously_card') %>
           </h5>
@@ -62,7 +163,7 @@
         </div>
       <% end %>
     <% end %>
-    <div class="columns mt3">
+    <div class="columns mt3 has-text-centered discount-section is-hidden">
       <div class="column is-half is-offset-one-quarter">
         <label class="label"> 
           ¿Tienes un código de descuento?

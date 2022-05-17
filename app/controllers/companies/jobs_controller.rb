@@ -5,8 +5,6 @@ module Companies
     include PaymentHelper
     
     before_action :set_job, only: [:show, :edit, :update]
-
-    COMPANY_PRICE = 29900
   
     def index
       @jobs = current_user.jobs.filter_by(params).order('created_at DESC')
@@ -36,12 +34,9 @@ module Companies
         @job.avatar = job_last.avatar
       end
 
-      if current_user.jobs.first(3).count == 3
-        coupon = Coupon.find_by_name(@job.discount_code)
-        discount = coupon.present? ? coupon.value : 0
-        price = COMPANY_PRICE
-        stripe_process(price, discount)
-      end
+      coupon = Coupon.find_by_name(@job.discount_code)
+      discount = (coupon.present? && @job.is_pro_price?) ? coupon.value : 0
+      stripe_process(@job.job_price.value, discount)
   
       if @job.save
         TwitterService.new.send_tweet @job
@@ -88,7 +83,7 @@ module Companies
     def job_params
       params.require(:job).permit(:title, :description, :url, :job_type, :location, :job_author, 
         :remote_ok, :apply_url, :avatar, :salary_from, :salary_to, :open, :tag_list, :expiry_date, 
-        :discount_code, :category_id, :job_type_id, :level_id, skill_ids: [])
+        :discount_code, :category_id, :job_type_id, :level_id, :job_price_id, skill_ids: [])
     end
   end
 end

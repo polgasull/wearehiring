@@ -248,14 +248,8 @@
         id: "submitJobButton", 
         data: { disable_with: 'Editando...' } %>
     </div>
-
   <% else %>
-
-    <% if first_job_publication(current_user) %>
-      <%= render 'free_publication_message', f: f %>
-    <% else %>
-      <%= render 'payment', f: f %>
-    <% end %>
+    <%= render 'payment', f: f %>
   <% end %>
 
 <% end %>
@@ -299,13 +293,46 @@
         content: 'Las empresas que añaden el salario tienen un 67% más de candidatos',
       });
 
-      var coupon_names_array = <%= raw @coupon_names.to_json %>;
-      var discountInput = $('#job_discount_code')
-      var message = document.getElementById('error-message');
-      var priceAfterDiscount = document.getElementById('price-after-discount')
-      var priceAfterTaxes = document.getElementById('price-after-taxes')
-      var successColorLight = "#effaf5"
-      var errorColorLight = "#f5b8c4";
+      var coupon_names_array  = <%= raw @coupon_names.to_json %>;
+      var discountInput       = $('#job_discount_code')
+      var message             = document.getElementById('error-message');
+      var priceDisplayed      = document.getElementById('price-displayed')
+      var priceAfterDiscount  = document.getElementById('price-after-discount')
+      var priceAfterTaxes     = document.getElementById('price-after-taxes')
+      var successColorLight   = "#effaf5"
+      var errorColorLight     = "#f5b8c4";
+
+      $('.price-card-basic').click(function() {
+        if ($('#job_job_price_id_1').is(':checked')) {
+          $('.discount-section').addClass('is-hidden');
+          $('.discounted-price').addClass('is-hidden');
+          $('.job-price').removeClass('is-hidden');
+          priceDisplayed.innerHTML = '99€';
+          priceAfterTaxes.innerHTML = '104.94€';
+          message.innerHTML = ''
+          discountInput.css("background-color", '#FFFFFF')
+          discountInput.removeClass('is-danger');
+          discountInput.removeClass('is-success');
+          discountInput.val("");
+        }
+      });
+
+      $('.price-card-pro').click(function() {
+        if ($('#job_job_price_id_2').is(':checked')) {
+          $('.discount-section').removeClass('is-hidden');
+          $('.discounted-price').addClass('is-hidden');
+          $('.job-price').removeClass('is-hidden');
+          priceDisplayed.innerHTML = '299€';
+          priceAfterTaxes.innerHTML = '316.94€';
+          message.innerHTML = ''
+          discountInput.css("background-color", '#FFFFFF')
+          discountInput.removeClass('is-danger');
+          discountInput.removeClass('is-success');
+          discountInput.val("");
+          discountInput.val("")
+        }
+      });
+
       $('.button.is-dark').click(function() {
         var inputValue = discountInput.val()
         if($.inArray(inputValue, coupon_names_array) !== -1) {
@@ -330,7 +357,7 @@
           discountInput.css("background-color", errorColorLight)
           message.innerHTML = "El código debe ser válido";
           priceAfterDiscount.innerHTML = "";
-          priceAfterTaxes.innerHTML = `${316.94}€`;
+          priceAfterTaxes.innerHTML = '316.94€';
         }
       })
     });

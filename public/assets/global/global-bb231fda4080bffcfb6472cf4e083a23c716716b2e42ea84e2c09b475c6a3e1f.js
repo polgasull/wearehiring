@@ -1,1 +1,0 @@
-$(document).ready(function(){if($("#profileDropdown").length>0){let e=document.querySelector(".dropdown");e.addEventListener("click",function(o){o.stopPropagation(),e.classList.toggle("is-active")}),window.onclick=function(){document.getElementById("profileDropdown").classList.remove("is-active")}}});
