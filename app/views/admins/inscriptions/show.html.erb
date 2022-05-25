@@ -122,10 +122,8 @@
           <% if @user.description.present? %>
             <%= content_tag(:p, simple_format(@user.description), class: 'mt3') %>
           <% else %>
-            <p class="has-text-grey-lighter mt3">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut erat nec dui luctus laoreet. Curabitur ac odio nec orci varius finibus. Praesent in sapien arcu. Phasellus laoreet ultrices eros in dignissim. Aliquam porta varius augue, sit amet finibus ex gravida quis. Ut non pretium lacus. Praesent quis est non est facilisis tristique. Aenean euismod bibendum velit non semper. Nam maximus ipsum sed tellus posuere, eget pulvinar risus feugiat. Sed tristique vehicula nibh et luctus. Praesent ornare quis nisl ac viverra. 
-              <br><br>
-              Aliquam convallis odio ut nunc viverra sodales. Pellentesque molestie enim at dui maximus, nec eleifend lorem tempus. Proin ex urna, rhoncus ut erat ac, blandit gravida mauris. Praesent auctor est vitae ipsum sodales sodales. Etiam neque ante, lobortis quis dolor et, mollis finibus metus. Vivamus cursus dictum lectus non feugiat. Sed interdum ligula sit amet pretium dignissim. Suspendisse eleifend porttitor tincidunt.
+            <p class="has-text-grey-lighter mt3 is-vertical-center is-justify-content-center" style="height: 300px">
+              Sin descripción
             </p>
           <% end %>
         </div>
@@ -153,7 +151,7 @@
             </div>
           </div>
         <% end %>
-        <div class="has-text-center">
+        <div class="has-text-centered">
           <%= link_to admins_job_path(@job.id), class: 'button' do %>
             <%= t('inscriptions.show_all') %>
           <% end %>

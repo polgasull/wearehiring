@@ -1,5 +1,5 @@
-<section class="section pb0 pt1">
-  <div class="container is-wrapper bg-white radius-8">
+<section class="section">
+  <div class="container radius-8">
     <div class="columns admin-block">
       <div class="column is-vertical-center is-flex">
         <span class="has-text-weight-bold f3 pr4"> Admin controls </span>
@@ -39,8 +39,8 @@
 
 <hr>
 
-<section class="section pb0">
-  <div class="container is-wrapper bg-white radius-8">
+<section class="section">
+  <div class="container radius-8">
     <div class="columns">
       <div class="column">    
         <p> <%= t('jobs.reference') %>: #<%= @job.reference %> </p>
@@ -67,8 +67,8 @@
         </div>
         <div class="tile is-parent">
           <article class="tile is-child box">
-            <p class="title"><%= @discardeds_count %></p>
-            <p class="subtitle"> <%= icon('fas', 'heart-broken has-text-danger') %> <%= t("inscriptions.discardeds") %> </p>
+            <p class="title"> <%= @finalists_count %> </p>
+            <p class="subtitle"><%= icon('fas', 'trophy has-text-warning') %> <%= t("inscriptions.finalists") %> </p>
           </article>
         </div>
         <div class="tile is-parent">
@@ -79,20 +79,14 @@
         </div>
         <div class="tile is-parent">
           <article class="tile is-child box">
-            <p class="title"> <%= @finalists_count %> </p>
-            <p class="subtitle"><%= icon('fas', 'trophy has-text-warning') %> <%= t("inscriptions.finalists") %> </p>
+            <p class="title"><%= @discardeds_count %></p>
+            <p class="subtitle"> <%= icon('fas', 'heart-broken has-text-danger') %> <%= t("inscriptions.discardeds") %> </p>
           </article>
         </div>
       </div>
     </div>
   </div>
   <div class="container pt4">
-    <%= render partial: "/jobs/shared/job_info", locals: { job: @job } %>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
     <% if @job.open? %>
       <span class="tag is-success is-light mb2">
         Activo <%= icon('fas', 'clock mr1 ml1') %> <%= job_expired(@job) %> días
@@ -102,10 +96,16 @@
         <%= icon('fas', 'hourglass-end mr1') %> Job Finalizado
       </span>
     <% end %>
+    <%= render partial: "/jobs/shared/job_info", locals: { job: @job } %>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
     <h3 class="title"> We Match <span class="tag is-info"> ¡Nuevo! </span> </h3>
     <p class="subtitle is-6">
-      Estos candidatos encajan con la oferta de empleo que has publicado.
-      Añádelos a tu proceso de selección y empieza con las entrevistas ¡Ahora!.
+      Aquí se muestran aquellos perfiles abiertos a ser contactados que encajan con los requisitos del Job. <br>
+      Añádelos a tu proceso de selección y empieza con las entrevistas ahora.
     </p>
     <% if @job.open? %>
       <% if @matching_candidates.any? %>
@@ -118,11 +118,11 @@
           <% end %>
         </div>
       <% else %>
-        <div class="has-text-centered mt4">
-          <p> Nuestro sistema de matching está buscando perfiles que encajen con tus requisitos y puedas añadirlos al proceso. </p>
-          <p>
-            <img src='<%=asset_path('glasses-loading.gif')%>' width='50'>
+        <div class="box pa4 has-text-centered mt4">
+          <p class="mb2">
+            <%= icon('fas', 'user-ninja', class: 'is-size-2') %>
           </p>
+          <small> Actualmente, en nuestra base de datos, no hay perfiles abiertos a ser contactados para estos requisitos </small>
         </div>
       <% end %>
     <% else %>

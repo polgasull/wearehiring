@@ -1,6 +1,7 @@
 <tr class="inscription-row-<%= inscription.status %>">
-  <td>
-    <div class="rounded-image size-50">
+  <td class="is-flex is-align-items-center">
+    <%= best_in_place inscription, :super_star, as: :checkbox, collection: {false: raw("<i class='far fa-star'></i>"), true: raw("<i class='fas fa-star'></i>")}, url: admins_job_inscription_path(inscription.job_id, inscription.id) %>
+    <div class="rounded-image size-50 ml3">
       <% if inscription.user.picture_url.file.nil? %>
         <%= image_tag(asset_path('user_male_avatar.svg')) %>
       <% else %>

@@ -5,7 +5,14 @@
 }
 
 .job-candidates-table {
-  border-bottom: 1px solid darkgrey;
+
+  &.table tr, &.table td, &.table th {
+    border: none;
+  }
+
+  &.table td {
+    vertical-align: middle;
+  }
 
   .status-wrapper .best_in_place {
     display: block;
@@ -77,6 +84,15 @@
 
     select.select {
       border: 2px solid $danger;
+    }
+  }
+
+  #best_in_place_inscription_1_super_star {
+    cursor: pointer;
+    font-size: 22px;
+
+    .fas.fa-star {
+      color: $gold;
     }
   }
 }
