@@ -36,12 +36,10 @@ module Companies
         @job.avatar = job_last.avatar
       end
 
-      if current_user.jobs.first(3).count == 3
-        coupon = Coupon.find_by_name(@job.discount_code)
-        discount = coupon.present? ? coupon.value : 0
-        price = COMPANY_PRICE
-        stripe_process(price, discount)
-      end
+      coupon = Coupon.find_by_name(@job.discount_code)
+      discount = coupon.present? ? coupon.value : 0
+      price = COMPANY_PRICE
+      stripe_process(price, discount)
   
       if @job.save
         TwitterService.new.send_tweet @job

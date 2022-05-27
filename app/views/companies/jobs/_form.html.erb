@@ -250,12 +250,7 @@
     </div>
 
   <% else %>
-
-    <% if first_job_publication(current_user) %>
-      <%= render 'free_publication_message', f: f %>
-    <% else %>
-      <%= render 'payment', f: f %>
-    <% end %>
+    <%= render 'payment', f: f %>
   <% end %>
 
 <% end %>
