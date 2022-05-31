@@ -1,6 +1,6 @@
 <% if current_user&.is_candidate? %>
 	<%= render partial: "candidates/partials/candidate_dashboard" %>
-<% elsif current_user&.is_company? || current_user&.is_ambassador? %>
+<% elsif current_user&.is_company? %>
 	<%= render partial: "companies/partials/company_dashboard" %>
 <% else %>
 	<%= render partial: "admins/partials/admin_dashboard" %>

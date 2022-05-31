@@ -50,14 +50,10 @@
     <%= user.experience if user.is_candidate? %>
   </td>
   <td>
-    <% if user.is_candidate? || user.is_admin? %>
-      <%= user.user_type.name %>
-    <% else %>
-      <%= f.select(:user_type_id, UserType.where(id: [2,4]).collect {|u| [ u.name, u.id ] }, { include_blank: false }) %>
-    <% end %>
+    <%= user.user_type.name %>
   </td>
   <td>
-    <% if user.is_company? || user.is_ambassador? %>
+    <% if user.is_company? %>
       <%= user.jobs.count %>
     <% end %>
   </td>

@@ -57,21 +57,21 @@
   <div class="container">
     <div class="columns">
       <div class="column">
-        <h3 class="title"> Candidatos inscritos: <%= @inscriptions_count %> </h1>
+        <h3 class="title"> Candidatos inscritos: <%= @inscriptions_count %> </h3>
       </div>
       <div class="column mb4 has-text-right"> 
         <% if @inscriptions.any? %>
           <%= link_to companies_job_inscriptions_path(job_id: @job.id, format: "xlsx"), class: 'button' do %>
-            <%= icon('fas', 'file-download pr2') %> <%= t('download_candidates_excel') %>
+            <%= icon('fas', 'file-download pr2', class: 'has-excel-color') %> <%= t('download_candidates_excel') %>
           <% end %>
         <% end %>
       </div>
     </div>
     <div class="mb1">
-      <span class="tag is-success"> <%= icon('fas', 'check-circle mr1') %> <%= @inscriptions_count %> </span>
-      <span class="tag is-danger"> <%= icon('fas', 'heart-broken mr1') %> <%= @discardeds_count %> </span>
-      <span class="tag is-info"> <%= icon('fas', 'user-clock mr1') %> <%= @in_process_count %> </span>
-      <span class="tag is-warning"> <%= icon('fas', 'trophy mr1') %> <%= @finalists_count %> </span>
+      <span class="tag"> <%= icon('fas', 'check-circle mr1', class: 'has-text-success') %> <%= @inscriptions_count %> </span>
+      <span class="tag"> <%= icon('fas', 'heart-broken mr1', class: 'has-text-danger') %> <%= @discardeds_count %> </span>
+      <span class="tag"> <%= icon('fas', 'user-clock mr1', class: 'has-text-info') %> <%= @in_process_count %> </span>
+      <span class="tag"> <%= icon('fas', 'trophy mr1', class: 'has-text-warning') %> <%= @finalists_count %> </span>
     </div>
     <div class="table-container mt3">
       <table class="table job-candidates-table is-striped is-fullwidth is-size-7">

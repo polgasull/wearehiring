@@ -16,7 +16,7 @@ class User < ApplicationRecord
 
   attr_accessor :company
 
-  %w[candidate company admin ambassador].each do |user_type_name|
+  %w[candidate company admin].each do |user_type_name|
     define_method "is_#{user_type_name}?" do
       user_type&.internal_name == user_type_name
     end

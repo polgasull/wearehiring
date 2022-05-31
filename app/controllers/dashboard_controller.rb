@@ -7,7 +7,7 @@ class DashboardController < ApplicationController
     @jobs = Job.active.order('created_at DESC').take(10);
     @jobs_count = Job.active.take(10).count
     candidate_variables(current_user) if current_user.is_candidate?
-    company_variables(current_user) if current_user.is_company? || current_user.is_ambassador? 
+    company_variables(current_user) if current_user.is_company?
     admin_variables if current_user.is_admin?
   end
 

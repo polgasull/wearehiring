@@ -49,7 +49,6 @@ class SendgridService
 
     return "ebec45ba-a56b-43fe-b281-58b4c93a24b6" if user.is_candidate?
     return "13f2530e-9018-493b-95a5-5b4a48cc76aa" if user.is_company?
-    return "b7a0acb0-f99a-47ad-8aeb-8d6cd796900a" if user.is_ambassador?
   end
 end
 
