@@ -1,104 +1,88 @@
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<nav class="navbar text-uppercase" role="navigation" aria-label="main navigation">
 	<% if user_signed_in? %>
 		<% if current_user.is_admin? %>
-    <div class="navbar-end">
       <div class="navbar-brand">
         <%= link_to t('show_jobs'), 
             jobs_path, 
-            class: "navbar-item text-uppercase  #{ 'active' if current_page?(jobs_path)}" %>
+            class: "navbar-item #{ 'active' if current_page?(jobs_path)}" %>
       </div>
       <div class="navbar-brand">
         <%= link_to "New Job", 
             new_admins_job_path, 
-            class: "navbar-item text-uppercase #{ 'active' if current_page?(new_admins_job_path)}" %>
+            class: "navbar-item #{ 'active' if current_page?(new_admins_job_path)}" %>
       </div>
       <div class="navbar-brand">
         <%= link_to "Jobs", 
             admins_jobs_path, 
-            class: "navbar-item text-uppercase #{ 'active' if current_page?(admins_jobs_path)}" %>		
+            class: "navbar-item #{ 'active' if current_page?(admins_jobs_path)}" %>		
       </div>
       <div class="navbar-brand">
         <%= link_to "Users", 
             admins_users_path, 
-            class: "navbar-item text-uppercase #{ 'active' if current_page?(admins_users_path)}" %>		
+            class: "navbar-item #{ 'active' if current_page?(admins_users_path)}" %>		
       </div>
       <div class="navbar-brand">
         <%= link_to "Settings", 
             admins_settings_path, 
-            class: "navbar-item text-uppercase #{ 'active' if current_page?(admins_settings_path)}" %>		
+            class: "navbar-item #{ 'active' if current_page?(admins_settings_path)}" %>		
       </div>
       <div class="navbar-brand">
         <%= link_to "Blog", 
             blog_posts_path, 
-            class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(blog_posts_path)}" %>		
+            class: "navbar-item #{ 'active' if current_page?(blog_posts_path)}" %>		
       </div>
-    </div>
     <% end %>
     <% if current_user.is_candidate? %>
-    <div class="navbar-end">
-      <div class="navbar-brand has-text-weight-bold">
-       <%= link_to t('show_jobs'), 
-					jobs_path, 
-					class: "navbar-item text-uppercase  #{ 'active' if current_page?(jobs_path)}" %>
+      <div class="navbar-brand">
+       <%= link_to t('show_jobs'), jobs_path, class: "navbar-item #{ 'active' if current_page?(jobs_path)}" %>
       </div>
       <div class="navbar-brand">
         <%= link_to (t('my_inscriptions') + " (#{current_user.inscriptions.count})"), 
           candidates_inscriptions_path(current_user), 
-          class: "navbar-item text-uppercase #{ 'active' if current_page?(candidates_inscriptions_path(current_user)) }" %>
+          class: "navbar-item #{ 'active' if current_page?(candidates_inscriptions_path(current_user)) }" %>
       </div>
       <div class="navbar-brand">
         <%= link_to edit_user_registration_path, 
-        class: "navbar-item text-uppercase #{ 'active' if current_page?(edit_user_registration_path) }" do %> 
+        class: "navbar-item #{ 'active' if current_page?(edit_user_registration_path) }" do %> 
           <span> <%= t('profile') %> </span>
         <% end %>
       </div>
-    </div>
     <% end %>
     <% if current_user.is_company? || current_user.is_ambassador? %>
-      <div class="navbar-end">
-      	<div class="navbar-brand has-text-weight-bold">
-          <%= link_to t('jobs.post_job'), 
-              new_companies_job_path, 
-              class: "navbar-item text-uppercase #{ 'active' if current_page?(new_companies_job_path)}" %>
-        </div>
-        <div class="navbar-brand">
-          <%= link_to t('my_jobs'), companies_jobs_path(current_user), 
-          class: "navbar-item text-uppercase #{ 'active' if current_page?(companies_jobs_path(current_user)) }" %>
-        </div>      
-        <div class="navbar-brand">
-          <%= link_to edit_user_registration_path, 
-          class: "navbar-item text-uppercase #{ 'active' if current_page?(edit_user_registration_path) }" do %> 
-            <span> <%= t('edit_password') %> </span>
-          <% end %>
-        </div>
-        <hr />
-        <div class="navbar-brand">
-          <%= link_to t('logout'), destroy_user_session_path, method: :delete, class: "navbar-item text-uppercase" %>
-        </div>
+      <div class="navbar-brand">
+        <%= link_to t('jobs.post_job'), new_companies_job_path, class: "navbar-item #{ 'active' if current_page?(new_companies_job_path)}" %>
+      </div>
+      <div class="navbar-brand">
+        <%= link_to t('my_jobs'), companies_jobs_path(current_user), class: "navbar-item #{ 'active' if current_page?(companies_jobs_path(current_user)) }" %>
+      </div>      
+      <div class="navbar-brand">
+        <%= link_to edit_user_registration_path, class: "navbar-item #{ 'active' if current_page?(edit_user_registration_path) }" do %> 
+          <span> <%= t('edit_password') %> </span>
+        <% end %>
+      </div>
+      <hr />
+      <div class="navbar-brand">
+        <%= link_to t('logout'), destroy_user_session_path, method: :delete, class: "navbar-item" %>
       </div>
     <% end %>
   <% else %>
-    <div class="navbar-end">
-    	<div class="navbar-brand has-text-weight-bold">
-        <%= link_to t('show_jobs'), 
-					jobs_path, 
-					class: "navbar-item text-uppercase  #{ 'active' if current_page?(jobs_path)}" %>
-      </div>
-      <div class="navbar-brand has-text-weight-bold">
-        <%= link_to t('jobs.post_job'), 
-            new_user_session_path(:company => "true"), 
-            class: "navbar-item text-uppercase #{ 'active' if current_page?(new_companies_job_path)}" %>
-      </div>
-      <div class="navbar-brand">
-        <%= link_to t('candidate_access'), 
-          new_user_registration_path(:candidate => "true"),
-          class: "navbar-item text-uppercase #{ 'active' if current_page?(new_user_registration_path(:candidate => "true"))}" %>
-      </div>
-      <div class="navbar-brand">
-        <%= link_to t('company_access'), 
-          new_user_registration_path(:company => "true"),
-          class: "navbar-item text-uppercase #{ 'active' if current_page?(new_user_registration_path(:company => "true"))}" %>
-      </div>
+    <div class="navbar-brand">
+      <%= link_to t('show_jobs'), jobs_path, class: "navbar-item #{ 'active' if current_page?(jobs_path)}" %>
+    </div>
+    <div class="navbar-brand">
+      <%= link_to t('for_talent'), how_it_works_talent_path, class: "navbar-item #{ 'active' if current_page?(how_it_works_talent_path)}" %>
+    </div>
+    <div class="navbar-brand">
+      <%= link_to t('for_companies'), how_it_works_companies_path, class: "navbar-item #{ 'active' if current_page?(how_it_works_companies_path)}" %>
+    </div>
+    <div class="navbar-brand">
+      <%= link_to t('pricing'), pricing_path, class: "navbar-item #{ 'active' if current_page?(pricing_path)}" %>
+    </div>
+    <div class="navbar-brand">
+      <%= link_to t('login'), new_user_session_path, class: "navbar-item #{ 'active' if current_page?(new_user_session_path)}" %>
+    </div>
+    <div class="navbar-brand">
+      <%= link_to t('create_account'), new_user_registration_path, class: "navbar-item #{ 'active' if current_page?(new_user_registration_path) || current_page?(new_company_registration_path)}" %>
     </div>
   <% end %>
 </nav>

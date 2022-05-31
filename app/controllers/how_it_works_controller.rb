@@ -4,6 +4,6 @@ class HowItWorksController < ApplicationController
 
   def companies; end
 
-  def candidates; end
+  def talent; end
 
 end

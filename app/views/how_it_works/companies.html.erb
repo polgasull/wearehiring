@@ -3,17 +3,17 @@
 		<div class="columns">
 			<div class="column">
 				<p class="title is-2 has-text-weight-bold has-text-corporate">
-					Para empresas dentro del ecosistema digital
+					Para <span class="has-text-dark"> empresas </span> dentro del ecosistema digital
 				</p>
 				<p>
-          Somos el <strong>talent place</strong>  especializado en talento digital para tus <strong>equipos tech.</strong>
+          Somos el <strong> talent place</strong>  especializado en talento digital para tus <strong>equipos tech.</strong>
 				</p>
 				<p class="mt4">
-					<%= link_to t('company_access'), how_it_works_companies_path, class: 'button is-rounded primary shadow' %>
+					<%= link_to t('create_company_account'), new_company_registration_path, class: 'button is-rounded is-dark shadow' %>
 				</p>
 			</div>
 			<div class="column">
-				<img src="<%=asset_path('undraw_programmer.svg')%>" width="400" height="400" class="is-blank" alt="Crear cuenta empresa y publicar empleo digital | Wearehiring.io">			
+				<img src="<%=asset_path('undraw_group_hangout.svg')%>" width="400" height="400" class="is-blank" alt="Crear cuenta empresa y publicar empleo digital | Wearehiring.io">			
 			</div>
 		</div>
 	</div>
@@ -32,7 +32,7 @@
 					¡BOOST! para tus Jobs
 				</p>
 				<p>
-					We Are Hiring es el altavoz que le falta a tus Jobs para llegar al talento que buscas.
+					We Are Hiring es el altavoz que le falta a tus Jobs para llegar al talento que estabas buscando.
 				</p>
 			</div>
 		</div>
@@ -172,7 +172,7 @@
 				</p>
 			</div>
 			<div class="column">
-				<img src="<%=asset_path('undraw_maker_launch.svg')%>" width="400" height="400" class="is-blank" alt="Crear cuenta empresa y publicar empleo digital | Wearehiring.io">			
+				<img src="<%=asset_path('undraw_data.svg')%>" width="400" height="400" class="is-blank" alt="Crear cuenta empresa y publicar empleo digital | Wearehiring.io">			
 			</div>
 		</div>
 	</div>
@@ -261,7 +261,7 @@
 					Publica tu job en We Are Hiring
 				</p>
 				<p class="mt4">
-					<%= link_to "Publicar", how_it_works_candidates_path, class: 'button is-rounded shadow' %>
+					<%= link_to "Publicar", new_company_registration_path, class: 'button is-rounded primary is-large shadow' %>
 				</p>
 			</div>
 		</div>

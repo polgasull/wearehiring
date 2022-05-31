@@ -162,10 +162,10 @@
 		</div>
 		<div class="navbar-item text-uppercase f6 has-dropdown is-hoverable">
 			<%= link_to t('how_it_works'), how_it_works_companies_path, 
-					class: "navbar-link #{ 'active' if current_page?(how_it_works_companies_path) || current_page?(how_it_works_candidates_path)}" %>
+					class: "navbar-link #{ 'active' if current_page?(how_it_works_companies_path) || current_page?(how_it_works_talent_path)}" %>
 			<div class="navbar-dropdown is-boxed">
+				<%= link_to t('for_talent'), how_it_works_talent_path, class: "navbar-item #{ 'active' if current_page?(how_it_works_talent_path)}" %>
 				<%= link_to t('for_companies'), how_it_works_companies_path, class: "navbar-item #{ 'active' if current_page?(how_it_works_companies_path)}" %>
-				<%= link_to t('for_candidates'), how_it_works_candidates_path, class: "navbar-item #{ 'active' if current_page?(how_it_works_candidates_path)}" %>
 			</div>
     </div>
 		<div class="navbar-item">

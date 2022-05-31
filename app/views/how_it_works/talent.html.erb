@@ -1,4 +1,7 @@
-<section class="section pv5 mt5">
+<div class="mt5 is-hidden-touch"></div>
+<div class="mt3 is-hidden-desktop"></div>
+
+<section class="section pv5">
 	<div class="container is-max-widescreen">
 		<div class="columns">
 			<div class="column">
@@ -10,12 +13,13 @@
           accede a oportunidades de trabajo dentro del ecosistema tecnológico que encajen contigo.
 				</p>
 				<p class="mt4">
-					<%= link_to t('candidate_access'), how_it_works_candidates_path, class: 'button is-rounded primary shadow' %>
-					<%= link_to how_it_works_candidates_path, class: 'button is-rounded shadow' do %>
+					<%= link_to t('create_account'), new_user_registration_path, class: 'button is-rounded primary shadow' %>
+					<%= link_to "https://discord.gg/feMXMacM9w", class: 'button is-rounded shadow' do %>
 						<%= icon('fab', 'discord', class: 'mr2') %> Discord 
 					<% end %>
 				</p>
 			</div>
+      <div class="column mt3 is-hidden-desktop"></div>
 			<div class="column">
 				<img src="<%=asset_path('undraw_programmer.svg')%>" width="400" height="400" class="is-blank" alt="Crear cuenta empresa y publicar empleo digital | Wearehiring.io">			
 			</div>
@@ -24,12 +28,13 @@
 </section>
 
 <div class="mt6 is-hidden-touch"></div>
+<div class="mt3 is-hidden-desktop"></div>
 
 <section class="section pv5">
 	<div class="container is-max-widescreen">
 		<div class="columns">
-			<div class="column">
-				<img src="<%=asset_path('undraw_navigation.svg')%>" width="400" height="400" class="is-blank" alt="Crear cuenta empresa y publicar empleo digital | Wearehiring.io">			
+			<div class="column is-hidden-touch">
+				<img src="<%=asset_path('undraw_online_wishes.svg')%>" width="400" height="400" class="is-blank" alt="Crear cuenta empresa y publicar empleo digital | Wearehiring.io">			
 			</div>
 			<div class="column">
 				<p class="title is-2 has-text-weight-bold has-text-corporate">
@@ -44,13 +49,16 @@
 					visibilidad a los Jobs digitales más recientes.
 				</p>
 			</div>
+      <div class="column is-hidden-desktop">
+				<img src="<%=asset_path('undraw_online_wishes.svg')%>" width="400" height="400" class="is-blank" alt="Crear cuenta empresa y publicar empleo digital | Wearehiring.io">			
+			</div>
 		</div>
 	</div>
 </section>
 
 <div class="mt6 is-hidden-touch"></div>
 
-<section class="section pv6">
+<section class="section pv5">
 	<div class="container is-max-widescreen">
 		<div class="columns">
 			<div class="column">
@@ -66,7 +74,7 @@
 				</p>
 			</div>
 			<div class="column">
-				<img src="<%=asset_path('undraw_navigation.svg')%>" width="400" height="400" class="is-blank" alt="Crear cuenta empresa y publicar empleo digital | Wearehiring.io">			
+				<img src="<%=asset_path('undraw_surveillance.svg')%>" width="400" height="400" class="is-blank" alt="Crear cuenta empresa y publicar empleo digital | Wearehiring.io">			
 			</div>
 		</div>
 	</div>
@@ -74,11 +82,11 @@
 
 <div class="mt6 is-hidden-touch"></div>
 
-<section class="section pv6">
+<section class="section pv5">
 	<div class="container is-max-widescreen">
 		<div class="columns">
-			<div class="column">
-				<img src="<%=asset_path('undraw_navigation.svg')%>" width="400" height="400" class="is-blank" alt="Crear cuenta empresa y publicar empleo digital | Wearehiring.io">			
+			<div class="column is-hidden-touch">
+				<img src="<%=asset_path('undraw_positive_attitude.svg')%>" width="400" height="400" class="is-blank" alt="Crear cuenta empresa y publicar empleo digital | Wearehiring.io">			
 			</div>
 			<div class="column">
 				<p class="title is-2 has-text-weight-bold has-text-corporate">
@@ -92,10 +100,13 @@
 					Mentoring, Learning, Networking o el simple placer de compartir con otros.
 				</p>
 				<p class="mt4">
-					<%= link_to how_it_works_candidates_path, class: 'button is-rounded shadow' do %>
+					<%= link_to "https://discord.gg/feMXMacM9w", class: 'button is-rounded shadow' do %>
 						<%= icon('fab', 'discord', class: 'mr2') %> Discord 
 					<% end %>
 				</p>
+			</div>
+      <div class="column is-hidden-desktop">
+				<img src="<%=asset_path('undraw_positive_attitude.svg')%>" width="400" height="400" class="is-blank" alt="Crear cuenta empresa y publicar empleo digital | Wearehiring.io">			
 			</div>
 		</div>
 	</div>
@@ -113,7 +124,7 @@
 				<div class="card">
 					<div class="card-content">
 						<div class="rounded-image m-auto size-120">
-							<img src="<%=asset_path('user_male_avatar.svg')%>" class="is-blank">			
+							<img src="<%=asset_path('alex_lope.jpeg')%>" class="is-blank">			
 						</div>
 						<div class="media mt3">
 							<div class="media-left">
@@ -123,11 +134,11 @@
 							</div>
 							<div class="media-content">
 								<p class="title is-4">Alex Lope</p>
-								<p class="subtitle is-6">Emogg</p>
+								<p class="subtitle is-6">Fullstack developer - Emogg</p>
 							</div>
 						</div>
 						<div class="content">
-							"Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi porta gravida at eget metus."
+							"Buscaba el reto de trabajar en una startup como desarrollador de software y gracias a We Are Hiring conocí a Emogg."
 						</div>
 					</div>
 				</div>
@@ -136,21 +147,21 @@
 				<div class="card">
 					<div class="card-content">
 						<div class="rounded-image m-auto size-120">
-							<img src="<%=asset_path('user_male_avatar.svg')%>" class="is-blank">			
+							<img src="<%=asset_path('jose_alvarez.jpeg')%>" class="is-blank">			
 						</div>
 						<div class="media mt3">
 							<div class="media-left">
 								<figure class="image is-48x48">
-									<img src="<%=asset_path('emogg_logo.png')%>" class="is-blank">
+									<img src="<%=asset_path('nuo_planet.jpg')%>" class="is-blank">
 								</figure>
 							</div>
 							<div class="media-content">
-								<p class="title is-4">Victor M</p>
-								<p class="subtitle is-6">Nüo Planet</p>
+								<p class="title is-4">Jose Álvarez</p>
+								<p class="subtitle is-6">ReactJS developer - Nüo Planet</p>
 							</div>
 						</div>
 						<div class="content">
-							"Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi porta gravida at eget metus."
+							"Nunca imaginé dar este salto profesional de una manera tan rápida, sencilla y transparente ¡Fue surrealista!"
 						</div>
 					</div>
 				</div>
@@ -159,30 +170,37 @@
 				<div class="card">
 					<div class="card-content">
 						<div class="rounded-image m-auto size-120">
-							<img src="<%=asset_path('user_male_avatar.svg')%>" class="is-blank">			
+							<img src="<%=asset_path('laia_armengol.jpeg')%>" class="is-blank">			
 						</div>
 						<div class="media mt3">
 							<div class="media-left">
 								<figure class="image is-48x48">
-									<img src="<%=asset_path('emogg_logo.png')%>" class="is-blank">
+									<img src="<%=asset_path('knauf.png')%>" class="is-blank">
 								</figure>
 							</div>
 							<div class="media-content">
-								<p class="title is-4">John Smith</p>
-								<p class="subtitle is-6">Knauff Insulation</p>
+								<p class="title is-4">Laia Armengol</p>
+								<p class="subtitle is-6">SEO specialist - Knauff Insulation</p>
 							</div>
 						</div>
 						<div class="content">
-							"Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi porta gravida at eget metus."
+							"Cuesta encontrar páginas especializadas y que agrupen de una manera tan directa ofertas digitales."
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+  <div class="columns mt5">
+    <div class="column has-text-centered">
+      <%= link_to "Únete a We Are Hiring", new_user_registration_path, class: 'button is-rounded primary is-large shadow' %>
+    </div>
+  </div>
 </section>
 
-<section class="section pv6">
+<div class="mt5 is-hidden-touch"></div>
+
+<section class="section pv5">
 	<div class="container">
 		<div class="columns">
 			<div class="column has-text-centered">
@@ -195,7 +213,7 @@
 				<p>
 					Nuestro objetivo es que crezcas como profesional más allá del portal.
 				</p>
-				<img src="<%=asset_path('undraw_navigation.svg')%>" width="400" height="400" class="is-blank mt5" alt="Crear cuenta empresa y publicar empleo digital | Wearehiring.io">
+				<img src="<%=asset_path('undraw_powerful.svg')%>" width="400" height="400" class="is-blank mt5" alt="Crear cuenta empresa y publicar empleo digital | Wearehiring.io">
 			</div>
 		</div>
 	</div>
@@ -203,7 +221,9 @@
 
 <hr>
 
-<section class="section pv6">
+<div class="mt5 is-hidden-touch"></div>
+
+<section class="section pv5">
 	<div class="container">
 		<div class="columns">
 			<div class="column has-text-centered">
@@ -211,13 +231,13 @@
 					Entra en la WAH Community
 				</p>
 				<p class="mt4">
-					<%= link_to how_it_works_candidates_path, class: 'button is-rounded shadow' do %>
+					<%= link_to "https://www.linkedin.com/company/we-are-hiring-digital-talent-place", target: "_blank", class: 'button is-rounded shadow' do %>
 						<%= icon('fab', 'linkedin', class: 'mr2') %> Linkedin 
 					<% end %>					
-					<%= link_to how_it_works_candidates_path, class: 'button is-rounded shadow' do %>
+					<%= link_to "https://discord.gg/feMXMacM9w", target: "_blank", class: 'button is-rounded shadow' do %>
 						<%= icon('fab', 'discord', class: 'mr2') %> Discord 
 					<% end %>
-					<%= link_to how_it_works_candidates_path, class: 'button is-rounded shadow' do %>
+					<%= link_to "https://twitter.com/WeAreHiring_io", target: "_blank", class: 'button is-rounded shadow' do %>
 						<%= icon('fab', 'twitter', class: 'mr2') %> Twitter 
 					<% end %>
 				</p>

@@ -1,16 +1,17 @@
 
 <section class="section">
 	<div class="container">
-    <div class="columns mt4">
+    <div class="columns">
       <div class="column is-4">
       </div>
       <div class="column is-4">
       	<h2 class="title is-4 has-text-centered"> Únete a We Are Hiring </h2>
+        <p class="title is-6 has-text-centered"> La comunidad { tech } más activa del momento </p>
         <div class="tabs is-boxed is-fullwidth">
           <ul>
             <li class="is-active">
               <%= link_to new_registration_path(resource_name) do %>
-                <%= icon('fas', 'user', class: 'mr2') %> <%= t('candidates') %>
+                <%= icon('fas', 'user', class: 'mr2') %> <%= t('talent') %>
               <% end %>
             </li>
             <li>
@@ -34,7 +35,7 @@
                   autofocus: true, 
                   label: false,
                   input_html: { class: "input" },
-                  placeholder: "John Smith" %>
+                  placeholder: "Carmen García" %>
               <span class="icon is-small is-left">
                 <%= icon('fas', 'user') %>
               </span>
@@ -48,7 +49,7 @@
                   wrapper: false,
                   label: false,
                   input_html: { class:"input" },
-                  placeholder: "johnsmith@correo.com" %>
+                  placeholder: "carmen@micorreo.com" %>
               <span class="icon is-small is-left">
                 <%= icon('fas', 'envelope') %>
               </span>

@@ -37,16 +37,17 @@
 
       <section class="section">
         <div class="container">
-          <div class="columns mt4">
+          <div class="columns">
             <div class="column is-4">
             </div>
             <div class="column is-4">
-              <h2 class="title is-4 has-text-centered"> Únete a We Are Hiring </h2>
+              <h2 class="title is-4 has-text-centered"> We Are Hiring | Empresas </h2>
+              <p class="title is-6 has-text-centered"> Encuentra talento digital para tus equipos tech </p>
               <div class="tabs is-boxed is-fullwidth">
                 <ul>
                   <li>
                     <%= link_to new_registration_path(resource_name) do %>
-                      <%= icon('fas', 'user', class: 'mr2') %> <%= t('candidates') %>
+                      <%= icon('fas', 'user', class: 'mr2') %> <%= t('talent') %>
                     <% end %>
                   </li>
                   <li class="is-active">
@@ -92,14 +93,14 @@
                   </div>
                 </div>
                 <div class="field mb2 mt3">
-                  <%= f.label :email, class: 'has-text-weight-bold' %>
+                  <%= f.label t('forms.work_email'), :email, class: 'has-text-weight-bold' %>
                   <div class="control has-icons-left">
                     <%= f.input :email,
                         required: true,
                         wrapper: false,
                         label: false,
                         input_html: { class:"input" },
-                        placeholder: "empresaejemplosl@correo.com" %>
+                        placeholder: "maria@empresa.com" %>
                     <span class="icon is-small is-left">
                       <%= icon('fas', 'envelope') %>
                     </span>
