@@ -270,3 +270,10 @@
 		</div>
 	</div>
 </section>
+
+<%= content_for :head do %>
+	<%= render "seo", 
+			title: t('seo.companies_title'), 
+			description: t('seo.companies_description'),
+			image: image_url(asset_path('wah_red_logo.png')) %>
+<% end %>

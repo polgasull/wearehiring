@@ -137,7 +137,7 @@
         Contrata un recruiter dedicado que no parará hasta encontrarlo.
       </p>
       <p class="has-text-centered">
-        Explícanos tu caso <a href="mailto:talent@wearehiring.io"> talent@wearehiring.io </a>
+        Explícanos tu caso <a href="mailto:hello@wearehiring.io"> hello@wearehiring.io </a>
       </p>
     </div>
   </section>
@@ -152,3 +152,10 @@
     </div>
   </section>
 </div>
+
+<%= content_for :head do %>
+	<%= render "seo", 
+			title: t('seo.pricing_title'), 
+			description: t('seo.pricing_description'),
+			image: image_url(asset_path('wah_red_logo.png')) %>
+<% end %>
