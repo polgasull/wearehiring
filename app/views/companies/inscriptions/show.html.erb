@@ -12,14 +12,14 @@
           <p class="has-text-weight-bold mr2"> <%= t('inscriptions.process_status') %>: </p>
         </div>
         <div>
-          <%= form_for @inscription, url: companies_job_inscription_path(@inscription.job_id, @inscription.id), method: :patch do |f| %>
-            <div class="select">
-              <%= f.select(:status, 
+          <%= form_for :inscription, url: companies_job_inscription_path(@inscription.job_id, @inscription.id), method: :patch, remote: true, id: "update-inscription-form-#{@inscription.id}" do |f| %>
+            <div class="select is-rounded">
+              <%= f.select(:status,
                   Inscription.statuses.keys.map {|status, id| [t("inscriptions.#{status}"), status]},
-                  {include_blank: t('helpers.select.select')}, 
-                  {onchange: 'this.form.submit();', class: "inscription-status-#{@inscription.status}"}) %>
+                  {include_blank: t('helpers.select.select'), selected: @inscription.status}, 
+                  {onchange: '$(this.form).submit();', class: "inscription-status-#{@inscription.status}"}) %>
             </div>
-          <% end %>  
+          <% end %>
         </div>
       </div>
     </div>
@@ -42,7 +42,7 @@
             <%= mail_to @user.email, class: 'button width-150 mr3 mt3' do %>
               <span>Contactar</span> <%= icon('far', 'paper-plane ml2') %> 
             <% end %>
-            <%= link_to @user.profile_url, class: 'button linkedin width-50 mt3' do %>
+            <%= link_to @user.profile_url, target: "_blank", class: 'button linkedin width-50 mt3' do %>
               <%= icon('fab', 'linkedin') %>
             <% end %>
           </div>
@@ -122,11 +122,9 @@
           <% if @user.description.present? %>
             <%= content_tag(:p, simple_format(@user.description), class: 'mt3') %>
           <% else %>
-            <p class="has-text-grey-lighter mt3">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut erat nec dui luctus laoreet. Curabitur ac odio nec orci varius finibus. Praesent in sapien arcu. Phasellus laoreet ultrices eros in dignissim. Aliquam porta varius augue, sit amet finibus ex gravida quis. Ut non pretium lacus. Praesent quis est non est facilisis tristique. Aenean euismod bibendum velit non semper. Nam maximus ipsum sed tellus posuere, eget pulvinar risus feugiat. Sed tristique vehicula nibh et luctus. Praesent ornare quis nisl ac viverra. 
-              <br><br>
-              Aliquam convallis odio ut nunc viverra sodales. Pellentesque molestie enim at dui maximus, nec eleifend lorem tempus. Proin ex urna, rhoncus ut erat ac, blandit gravida mauris. Praesent auctor est vitae ipsum sodales sodales. Etiam neque ante, lobortis quis dolor et, mollis finibus metus. Vivamus cursus dictum lectus non feugiat. Sed interdum ligula sit amet pretium dignissim. Suspendisse eleifend porttitor tincidunt.
-            </p>
+            <p class="has-text-grey-lighter mt3 is-vertical-center is-justify-content-center" style="height: 300px">
+              Sin descripción
+            </p>          
           <% end %>
         </div>
       </div>
@@ -153,7 +151,7 @@
             </div>
           </div>
         <% end %>
-        <div class="has-text-center">
+        <div class="has-text-centered">
           <%= link_to companies_job_path(@job.id), class: 'button' do %>
             <%= t('inscriptions.show_all') %>
           <% end %>
@@ -162,3 +160,19 @@
     </div>
   </div>
 </div>
+
+<div class="notification is-success is-light" style="position: absolute; top: 65px; width: 100%; display: none;">
+  Candidato actualizado y notificado vía correo electrónico
+</div>
+
+<%= content_for :footer do %>
+
+<script>
+  $(document).on('ajax:success', '#update-inscription-form-<%= @inscription.id %>', function(event) {
+    $selectValue = $(this).find('select').val()
+    $(this).find('select').removeClass().addClass('inscription-status-' + $selectValue)
+    $('.notification').fadeIn().delay(4000).fadeOut();
+  });
+</script>
+
+<% end %>

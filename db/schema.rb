@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2021_11_22_195416) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_03_125219) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -80,8 +80,19 @@ ActiveRecord::Schema[7.0].define(version: 2021_11_22_195416) do
     t.bigint "job_id"
     t.bigint "user_id"
     t.integer "status"
+    t.boolean "recommended", default: false
+    t.boolean "added_by_company", default: false
     t.index ["job_id"], name: "index_inscriptions_on_job_id"
     t.index ["user_id"], name: "index_inscriptions_on_user_id"
+  end
+
+  create_table "job_prices", force: :cascade do |t|
+    t.string "name"
+    t.string "internal_name"
+    t.integer "value"
+    t.integer "value_with_taxes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "job_skills", id: :serial, force: :cascade do |t|
@@ -124,7 +135,9 @@ ActiveRecord::Schema[7.0].define(version: 2021_11_22_195416) do
     t.string "external_mail", default: "", null: false
     t.string "discount_code"
     t.bigint "partner_id"
+    t.bigint "job_price_id"
     t.index ["category_id"], name: "index_jobs_on_category_id"
+    t.index ["job_price_id"], name: "index_jobs_on_job_price_id"
     t.index ["job_type_id"], name: "index_jobs_on_job_type_id"
     t.index ["level_id"], name: "index_jobs_on_level_id"
     t.index ["partner_id"], name: "index_jobs_on_partner_id"
@@ -251,6 +264,7 @@ ActiveRecord::Schema[7.0].define(version: 2021_11_22_195416) do
   add_foreign_key "inscriptions", "jobs"
   add_foreign_key "inscriptions", "users"
   add_foreign_key "jobs", "categories"
+  add_foreign_key "jobs", "job_prices"
   add_foreign_key "jobs", "job_types"
   add_foreign_key "jobs", "levels"
   add_foreign_key "jobs", "partners"

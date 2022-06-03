@@ -116,3 +116,43 @@
     <%= render partial: "/admins/settings/partner", locals: { partner: partner } %>
   <% end %>
 </div>
+
+<div class="container mb5 is-size-7">
+  <div class="columns has-text-centered">
+    <div class="column">
+      <p class="title f4"> <%= t("job_prices.title") %> </p>
+    </div>
+  </div>
+
+  <div class="columns has-text-centered listhead">
+    <div class="column"> <%= t("job_prices.id") %> </div>
+    <div class="column"> <%= t("job_prices.name") %> </div>
+    <div class="column"> <%= t('job_prices.internal_name') %> </div>
+    <div class="column"> <%= t("job_prices.value") %> </div>
+    <div class="column"> <%= t("job_prices.value_with_taxes") %> </div>
+    <div class="column"></div>
+  </div>
+  <%= simple_form_for(JobPrice.new, method: :post, url: admins_job_prices_path, html: { multipart: true }) do |f| %>
+    <div class="columns is-vertical-center listrow">
+      <div class="column"></div>
+      <div class="column">
+        <%= f.input :name, label: false, input_html: { class: "input is-size-7" }, wrapper: false, placeholder: t('job_prices.name') %>
+      </div>
+      <div class="column">
+        <%= f.input :internal_name, label: false, input_html: { class: "input is-size-7" }, wrapper: false, placeholder: t('job_prices.internal_name') %>
+      </div>
+      <div class="column">
+        <%= f.input :value, label: false, input_html: { class: "input is-size-7" }, wrapper: false, placeholder: t('job_prices.value') %>
+      </div>
+      <div class="column">
+        <%= f.input :value_with_taxes, label: false, input_html: { class: "input is-size-7" }, wrapper: false, placeholder: t('job_prices.value_with_taxes') %>
+      </div>
+      <div class="column">
+        <%= f.submit t('create'), class: 'button is-primary is-size-7' %>
+      </div>
+    </div>
+  <% end %>
+  <% @job_prices.each do |job_price| %>
+    <%= render partial: "/admins/settings/job_price", locals: { job_price: job_price } %>
+  <% end %>
+</div>

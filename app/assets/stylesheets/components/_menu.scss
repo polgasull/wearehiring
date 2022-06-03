@@ -75,6 +75,11 @@ a.navbar-item:hover {
   color: $primary;
 }
 
+.navbar-link.active {
+  color: $primary;
+  font-weight: bold;
+}
+
 .dropdown-trigger button {
   border: 1px solid #d6d6d6;
 }

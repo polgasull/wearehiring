@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :skills, only: [:update, :create]
     resources :coupons, only: [:update, :create]
     resources :partners, only: [:update, :create]
+    resources :job_prices, only: [:update, :create]
   end
 
   namespace :companies do
@@ -51,6 +52,14 @@ Rails.application.routes.draw do
     registrations: 'registrations'
   }
 
+  devise_scope :user do
+    get "companies/sign_up", to: "companies_registrations#new", as: "new_company_registration"
+    post "companies", to: "companies_registrations#create", as: "company_registration"
+  end
+
+  get '/como-funciona/empresas', to: 'how_it_works#companies', as: 'how_it_works_companies'
+  get '/como-funciona/talento', to: 'how_it_works#talent', as: 'how_it_works_talent'
+  get '/pricing', to: 'pricing#index', as: 'pricing'
   get '/legal/aviso_legal', to: 'legal#legal_terms', as: 'legal_terms'
   get '/legal/politicas_privacidad', to: 'legal#privacy_policy', as: 'privacy_policy'
   get '/legal/politicas_cookies', to: 'legal#cookies_policy', as: 'cookies_policy'

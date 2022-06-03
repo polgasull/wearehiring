@@ -25,84 +25,97 @@
         'components/images',
         'components/select2',
         'components/carousel',
-        'components/modals';
+        'components/modals',
+        'components/cards';
 
 @import 'pages/dashboard',
         'pages/profile',
-        'pages/job';
+        'pages/job',
+        'pages/pricing';
 
 @font-face {
   font-family: 'archiathin';
-  src: url(asset_path('archia-thin-webfont.eot'));
-  src: url(asset_path('archia-thin-webfont.eot?#iefix')) format('embedded-opentype'),
-        url(asset_path('archia-thin-webfont.woff2')) format('woff2'),
-        url(asset_path('archia-thin-webfont.woff')) format('woff'),
-        url(asset_path('archia-thin-webfont.ttf')) format('truetype');
+  src: font-url(asset_path('archia-thin-webfont.eot'));
+  src: font-url(asset_path('archia-thin-webfont.eot?#iefix')) format('embedded-opentype'),
+        font-url(asset_path('archia-thin-webfont.woff2')) format('woff2'),
+        font-url(asset_path('archia-thin-webfont.woff')) format('woff'),
+        font-url(asset_path('archia-thin-webfont.ttf')) format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'archialight';
-  src: url(asset_path('archia-light-webfont.eot'));
-  src: url(asset_path('archia-light-webfont.eot?#iefix')) format('embedded-opentype'),
-        url(asset_path('archia-light-webfont.woff2')) format('woff2'),
-        url(asset_path('archia-light-webfont.woff')) format('woff'),
-        url(asset_path('archia-light-webfont.ttf')) format('truetype');
+  src: font-url(asset_path('archia-light-webfont.eot'));
+  src: font-url(asset_path('archia-light-webfont.eot?#iefix')) format('embedded-opentype'),
+       font-url(asset_path('archia-light-webfont.woff2')) format('woff2'),
+       font-url(asset_path('archia-light-webfont.woff')) format('woff'),
+       font-url(asset_path('archia-light-webfont.ttf')) format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'archiaregular';
-  src: url(asset_path('archia-regular-webfont.eot'));
-  src: url(asset_path('archia-regular-webfont.eot?#iefix')) format('embedded-opentype'),
-        url(asset_path('archia-regular-webfont.woff2')) format('woff2'),
-        url(asset_path('archia-regular-webfont.woff')) format('woff'),
-        url(asset_path('archia-regular-webfont.ttf')) format('truetype');
+  font-family: 'archia';
+  src: font-url(asset_path('archia-regular-webfont.eot'));
+  src: font-url(asset_path('archia-regular-webfont.eot?#iefix')) format('embedded-opentype'),
+       font-url(asset_path('archia-regular-webfont.woff2')) format('woff2'),
+       font-url(asset_path('archia-regular-webfont.woff')) format('woff'),
+       font-url(asset_path('archia-regular-webfont.ttf')) format('truetype');
   font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'archia';
+  src: font-url(asset_path('archia-bold-webfont.eot'));
+  src: font-url(asset_path('archia-bold-webfont.eot?#iefix')) format('embedded-opentype'),
+       font-url(asset_path('archia-bold-webfont.woff2')) format('woff2'),
+       font-url(asset_path('archia-bold-webfont.woff')) format('woff'),
+       font-url(asset_path('archia-bold-webfont.ttf')) format('truetype');
+  font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'archiamedium';
-  src: url(asset_path('archia-medium-webfont.eot'));
-  src: url(asset_path('archia-medium-webfont.eot?#iefix')) format('embedded-opentype'),
-        url(asset_path('archia-medium-webfont.woff2')) format('woff2'),
-        url(asset_path('archia-medium-webfont.woff')) format('woff'),
-        url(asset_path('archia-medium-webfont.ttf')) format('truetype');
+  src: font-url(asset_path('archia-medium-webfont.eot'));
+  src: font-url(asset_path('archia-medium-webfont.eot?#iefix')) format('embedded-opentype'),
+       font-url(asset_path('archia-medium-webfont.woff2')) format('woff2'),
+       font-url(asset_path('archia-medium-webfont.woff')) format('woff'),
+       font-url(asset_path('archia-medium-webfont.ttf')) format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'archiasemibold';
-  src: url(asset_path('archia-semibold-webfont.eot'));
-  src: url(asset_path('archia-semibold-webfont.eot?#iefix')) format('embedded-opentype'),
-        url(asset_path('archia-semibold-webfont.woff2')) format('woff2'),
-        url(asset_path('archia-semibold-webfont.woff')) format('woff'),
-        url(asset_path('archia-semibold-webfont.ttf')) format('truetype');
+  src: font-url(asset_path('archia-semibold-webfont.eot'));
+  src: font-url(asset_path('archia-semibold-webfont.eot?#iefix')) format('embedded-opentype'),
+       font-url(asset_path('archia-semibold-webfont.woff2')) format('woff2'),
+       font-url(asset_path('archia-semibold-webfont.woff')) format('woff'),
+       font-url(asset_path('archia-semibold-webfont.ttf')) format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'archiabold';
-  src: url(asset_path('archia-bold-webfont.eot'));
-  src: url(asset_path('archia-bold-webfont.eot?#iefix')) format('embedded-opentype'),
-        url(asset_path('archia-bold-webfont.woff2')) format('woff2'),
-        url(asset_path('archia-bold-webfont.woff')) format('woff'),
-        url(asset_path('archia-bold-webfont.ttf')) format('truetype');
+  src: font-url(asset_path('archia-bold-webfont.eot'));
+  src: font-url(asset_path('archia-bold-webfont.eot?#iefix')) format('embedded-opentype'),
+       font-url(asset_path('archia-bold-webfont.woff2')) format('woff2'),
+       font-url(asset_path('archia-bold-webfont.woff')) format('woff'),
+       font-url(asset_path('archia-bold-webfont.ttf')) format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
-.notification {
+.global-notification {
   border-radius: 0;
   z-index: 99999;
 }
 
-.notification:not(:last-child) {
+.global-notification:not(:last-child) {
   margin-bottom: 0;
 }
 

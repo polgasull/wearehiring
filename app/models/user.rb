@@ -14,7 +14,9 @@ class User < ApplicationRecord
   mount_uploader :picture_url, AvatarUploader
   after_create :send_notification if Rails.env.production?
 
-  %w[candidate company admin ambassador].each do |user_type_name|
+  attr_accessor :company
+
+  %w[candidate company admin].each do |user_type_name|
     define_method "is_#{user_type_name}?" do
       user_type&.internal_name == user_type_name
     end

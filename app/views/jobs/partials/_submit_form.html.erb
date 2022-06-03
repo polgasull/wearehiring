@@ -1,4 +1,4 @@
-<% unless current_user&.is_company? && current_user&.is_ambassador? %>
+<% unless current_user&.is_company? %>
   <div class="mb2">
     <small class="accept-terms-text pl2">
       Al inscribirme, estoy de acuerdo con la
@@ -10,7 +10,7 @@
   </div>
 <% end %>
 
-<% if !user_signed_in? && !current_user&.is_company? && !current_user&.is_ambassador? %>
+<% if !user_signed_in? && !current_user&.is_company? %>
   <%= button_tag(type: 'button',
     class: 'button is-rounded primary is-large shadow mv3 modal-button',
     'data-target': 'candidateSignupModal',

@@ -16,10 +16,5 @@ FactoryBot.define do
       internal_name { 'company' }
       name { 'Company' }
     end
-
-    trait :ambassador_type do
-      internal_name { 'ambassador' }
-      name { 'Ambassador' }
-    end
   end
 end

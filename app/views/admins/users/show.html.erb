@@ -19,7 +19,7 @@
             <%= mail_to @user.email, class: 'button width-150 mr3 mt3' do %>
               <span>Contactar</span> <%= icon('far', 'paper-plane ml2') %> 
             <% end %>
-            <%= link_to @user.profile_url, class: 'button linkedin width-50 mt3' do %>
+            <%= link_to @user.profile_url, target: '_blank', class: 'button linkedin width-50 mt3' do %>
               <%= icon('fab', 'linkedin') %>
             <% end %>
           </div>

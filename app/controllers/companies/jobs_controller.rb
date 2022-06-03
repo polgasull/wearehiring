@@ -5,8 +5,6 @@ module Companies
     include PaymentHelper
     
     before_action :set_job, only: [:show, :edit, :update]
-
-    COMPANY_PRICE = 29900
   
     def index
       @jobs = current_user.jobs.filter_by(params).order('created_at DESC')
@@ -37,9 +35,8 @@ module Companies
       end
 
       coupon = Coupon.find_by_name(@job.discount_code)
-      discount = coupon.present? ? coupon.value : 0
-      price = COMPANY_PRICE
-      stripe_process(price, discount)
+      discount = (coupon.present? && @job.is_pro_price?) ? coupon.value : 0
+      stripe_process(@job.job_price.value, discount)
   
       if @job.save
         TwitterService.new.send_tweet @job
@@ -57,15 +54,25 @@ module Companies
 
     def show
       return redirect_to_response(t('not_found'), root_path, false) unless @job
-      @inscriptions_count = @job.inscriptions.count
-      @matching_candidates = @job.show_matching_candidates(@job.skills)  
-  
+      if params[:search_users]
+        @matching_candidates = @job.show_filtered_matching_candidates(@job.skills, params[:search_users])
+        respond_to do |format|
+          format.js { render partial: 'jobs/shared/we_match_search_results'}
+        end
+      else 
+        @matching_candidates = @job.show_matching_candidates(@job.skills)
+      end
+      
       @discardeds_count = @job.inscriptions.where(status: [0]).count
       @in_process_count = @job.inscriptions.where(status: [1]).count
       @finalists_count = @job.inscriptions.where(status: [2]).count
-      @inscriptions = @job.inscriptions.order(status: :desc)
+      @inscriptions = @job.inscriptions.where(added_by_company: false).order(status: :desc)
+      @inscriptions_count = @inscriptions.count
+      @we_match_inscriptions = @job.inscriptions.where(added_by_company: true).order(status: :desc)
+      @we_match_inscriptions_count = @we_match_inscriptions.count
   
       respond_to do |format|
+        format.js
         format.html
         format.xlsx
       end
@@ -86,7 +93,7 @@ module Companies
     def job_params
       params.require(:job).permit(:title, :description, :url, :job_type, :location, :job_author, 
         :remote_ok, :apply_url, :avatar, :salary_from, :salary_to, :open, :tag_list, :expiry_date, 
-        :discount_code, :category_id, :job_type_id, :level_id, skill_ids: [])
+        :discount_code, :category_id, :job_type_id, :level_id, :job_price_id, skill_ids: [])
     end
   end
 end

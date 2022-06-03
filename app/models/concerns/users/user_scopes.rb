@@ -5,11 +5,14 @@ module Users
     extend ActiveSupport::Concern
 
     included do
-      scope :search_users, -> (query) { 
+      scope :search_users, -> (query) {
+        left_outer_joins(:skills).
         where('LOWER(users.name) LIKE :query OR 
               LOWER(users.email) LIKE :query OR 
-              LOWER(users.current_position) LIKE :query', 
-              query: "%#{query.downcase}%") 
+              LOWER(users.current_position) LIKE :query OR
+              LOWER(skills.name) LIKE :query OR
+              LOWER(users.location) LIKE :query',
+              query: "%#{query.downcase}%")
       }
     
       scope :by_user_type, -> (user_type) {

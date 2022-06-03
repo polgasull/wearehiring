@@ -4,10 +4,11 @@ class Job < ApplicationRecord
   include Jobs::JobScopes
 
   belongs_to :user
-  belongs_to :category, dependent: :destroy
-  belongs_to :job_type, dependent: :destroy
-  belongs_to :level, dependent: :destroy
-  belongs_to :partner, dependent: :destroy, required: false
+  belongs_to :category
+  belongs_to :job_type
+  belongs_to :level
+  belongs_to :partner, required: false
+  belongs_to :job_price
   has_many :job_skills
   has_many :skills, through: :job_skills
   has_many :taggings, dependent: :destroy
@@ -74,11 +75,35 @@ class Job < ApplicationRecord
     candidates = []
 
     job_skills.each do |skill|
-      skill.users.where.not(visible: false).each do |user|
+      skill.users.where.not(visible: false)
+                 .where.not(location: [nil, ""])
+                 .where.not(current_position: [nil, ""])
+                 .where.not(experience: [nil, ""]).each do |user|
         candidates << user if candidates.exclude?(user)
       end
     end
     
     return candidates
+  end
+
+  def show_filtered_matching_candidates(job_skills, search_params)
+    candidates = []
+    
+    job_skills.each do |skill|
+      skill.users.search_users(search_params).where.not(visible: false)
+                                             .where.not(location: [nil, ""])
+                                             .where.not(current_position: [nil, ""])
+                                             .where.not(experience: [nil, ""]).each do |user|
+        candidates << user if candidates.exclude?(user)
+      end
+    end
+    
+    return candidates
+  end
+
+  %w[basic pro].each do |job_type_name|
+    define_method "is_#{job_type_name}_price?" do
+      job_price&.internal_name == job_type_name
+    end
   end
 end

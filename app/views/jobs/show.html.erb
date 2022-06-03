@@ -1,7 +1,7 @@
 <%= render partial: "jobs/partials/job_information", locals: { job: @job } %>
 
 <% if @same_category_jobs.any? && !current_user&.is_recruiter %>
-  <section class="section jobs-section pb6">
+  <section class="section section-bg-gray pb6">
     <h2 class="f3 mb4"> 
       <%= t('if_you_liked_jobs_about') %> 
       <span class="primary-color"> <%= @job.title %>  </span> 

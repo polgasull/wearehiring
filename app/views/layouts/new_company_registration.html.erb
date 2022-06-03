@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= render "gtm_script" if (Rails.env.production?) %>
+    <%= render "google_analytics" if (Rails.env.production?) %>
+    <%= render "structured_data" %>
+    <link rel='icon' href='<%= asset_path('favicon.ico') %>' type='image/x-icon'/ >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %>
+    <%= stylesheet_link_tag 'https://unpkg.com/aos@2.3.1/dist/aos.css' %>
+    <%= stylesheet_link_tag 'application' %>
+    <%= tag :meta, name: "stripe-public-key", content: Figaro.env.stripe_publishable_key %>
+    <%= javascript_include_tag 'application', "https://js.stripe.com/v3/" %>
+    <%= csrf_meta_tags %>
+    <%= render "seo", 
+			title: t('seo.company_signup'), 
+			description: t('seo.company_signup_description'),
+			image: image_url(asset_path('wah_red_logo.png')) %>
+  </head>
+
+  <body class="<%= yield (:body_class) %>">
+    <%= render "gtm_iframe" if (Rails.env.production?) %>
+
+    <% if flash[:notice] %>
+      <div class="notification is-success global-notification">
+        <p class="notice"> <%= notice %> </p>
+      </div>
+    <% end %>
+
+    <% if flash[:alert] %>
+      <div class="notification is-danger global-notification">
+        <p class="alert"><%= alert %></p>
+      </div>
+    <% end %>
+    <div id="mainWrapper">
+      <%= render "application/header" %>
+
+      <section class="section">
+        <div class="container">
+          <div class="columns">
+            <div class="column is-4">
+            </div>
+            <div class="column is-4">
+              <h2 class="title is-4 has-text-centered"> We Are Hiring | Empresas </h2>
+              <p class="title is-6 has-text-centered"> Encuentra talento digital para tus equipos tech </p>
+              <div class="tabs is-boxed is-fullwidth">
+                <ul>
+                  <li>
+                    <%= link_to new_registration_path(resource_name) do %>
+                      <%= icon('fas', 'user', class: 'mr2') %> <%= t('talent') %>
+                    <% end %>
+                  </li>
+                  <li class="is-active">
+                    <%= link_to new_company_registration_path do %>
+                      <%= icon('fas', 'building', class: 'mr2') %> <%= t('companies') %>
+                    <% end %>
+                  </li>
+                </ul>
+              </div>
+              <%= simple_form_for(resource, as: resource_name, url: company_registration_path) do |f| %>
+                <%= f.error_notification %>
+                <%= f.hidden_field :user_type_id, value: UserType.where(internal_name: 'company').first.id %>
+                <%= f.hidden_field :accepted_terms, value: true %>
+
+                <div class="field mb5">
+                  <label for="user_name" class="has-text-weight-bold"> <%= t('forms.company_name') %> </label>
+                  <div class="control has-icons-left">
+                    <%= f.input :name, 
+                        required: true, 
+                        wrapper: false,
+                        autofocus: true, 
+                        label: false,
+                        input_html: { class: "input" },
+                        placeholder: "Empresa Ejemplo SL" %>
+                    <span class="icon is-small is-left">
+                      <%= icon('fas', 'building') %>
+                    </span>
+                  </div>
+                </div>
+                <div class="field mb2 mt3">
+                  <label for="user_last_name" class="has-text-weight-bold"> <%= t('forms.contact_name') %> </label>
+                  <div class="control has-icons-left">
+                    <%= f.input :last_name, 
+                        required: true, 
+                        wrapper: false,
+                        autofocus: true, 
+                        label: false,
+                        input_html: { class: "input" },
+                        placeholder: "María Hernández" %>
+                    <span class="icon is-small is-left">
+                      <%= icon('fas', 'building') %>
+                    </span>
+                  </div>
+                </div>
+                <div class="field mb2 mt3">
+                  <%= f.label t('forms.work_email'), :email, class: 'has-text-weight-bold' %>
+                  <div class="control has-icons-left">
+                    <%= f.input :email,
+                        required: true,
+                        wrapper: false,
+                        label: false,
+                        input_html: { class:"input" },
+                        placeholder: "maria@empresa.com" %>
+                    <span class="icon is-small is-left">
+                      <%= icon('fas', 'envelope') %>
+                    </span>
+                  </div>
+                </div>
+                <div class="field mb2 mt3">
+                  <%= f.label t('forms.password'), :password, class: 'has-text-weight-bold' %>
+                  <div class="control has-icons-left">
+                    <%= f.input :password,
+                        required: true,
+                        wrapper: false,
+                        label: false,
+                        input_html: { class: "input", onkeyup: "checkPass(); return false;" },
+                        hint: ("Mínimo #{@minimum_password_length} carácteres" if @minimum_password_length) %>
+                    <span class="icon is-small is-left">
+                      <%= icon('fas', 'key') %>
+                    </span>
+                  </div>
+                </div>
+                <div class="field mt3">
+                  <%= f.label :password_confirmation, class: 'has-text-weight-bold' %>
+                  <div class="control has-icons-left">
+                    <%= f.input :password_confirmation,
+                        required: true,
+                        wrapper: false,
+                        label: false,                  
+                        input_html: { class: "input", onkeyup: "checkPass(); return false;" } %>
+                    <span class="icon is-small is-left">
+                      <%= icon('fas', 'key') %>
+                    </span>
+                  </div>
+                </div>
+                <div id="error-message"></div>
+                <div class="field mt4">
+                  <div class="control">
+                    <%= f.button :submit, 
+                      t('create_company_account'), 
+                      class:"button is-dark is-fullwidth",
+                      id: "signupSubmit",
+                      disabled: true %>
+                  </div>
+                </div>
+              <% end %>
+                <hr>
+                <div class="has-text-centered">
+                  <span> <%= t('already_account') %> </span>
+                  <%= link_to t('login'), new_user_session_path(:candidate => "true") %>        
+                </div>
+            </div>
+            <div class="column is-4">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <%= render "footer" %>
+      <%= render "cookies_eu/consent_banner"%>
+    </div>
+    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <%= yield :footer %>
+    <script>
+      function checkPass() {
+        var pass1 = document.getElementById('user_password');
+        var pass2 = document.getElementById('user_password_confirmation');
+        var message = document.getElementById('error-message');
+        var submitBtn = document.getElementById('signupSubmit');
+        var successColor = "#48c78e";
+        var successColorLight = "#dff5eb";
+        var errorColor = "#f14668";
+        var errorColorLight = "#f5b8c4";
+          
+        if (pass1.value.length >= 8) {
+          pass1.style.borderColor = successColor;
+          pass1.style.backgroundColor = successColorLight;
+          message.style.color = successColor;
+          submitBtn.removeAttribute("disabled");
+          message.innerHTML = "";
+        } else {
+          pass1.style.borderColor = errorColor;
+          pass1.style.backgroundColor = errorColorLight;
+          message.style.color = errorColor;
+          submitBtn.setAttribute("disabled", "disabled");
+          message.innerHTML = "La contraseña debe contener al menos 8 carácteres"
+          return;
+        }
+        
+        if (pass1.value == pass2.value) {
+          pass2.style.borderColor = successColor;
+          pass2.style.backgroundColor = successColorLight;
+          message.style.color = successColor;
+          submitBtn.removeAttribute("disabled");
+          message.innerHTML = "";
+        } else {
+          pass2.style.borderColor = errorColor;
+          pass2.style.backgroundColor = errorColorLight;
+          message.style.color = errorColor;
+          message.innerHTML = "Las contraseñas no coinciden";
+          submitBtn.setAttribute("disabled", "disabled");
+        }
+      }  
+    </script>
+  </body>
+</html>

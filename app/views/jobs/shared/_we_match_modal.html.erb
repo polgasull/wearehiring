@@ -1,0 +1,71 @@
+<div class="modal we-match-modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title has-text-weight-bold"> We Match </p>
+      <button class="modal-close" type="submit" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body has-text-centered">
+
+      <article class="message is-info">
+        <div class="message-body has-text-left">
+          Estos candidatos encajan con la oferta de empleo que has publicado. <br>
+          Puedes añadirlos y contactarles para tu proceso de selección.        
+        </div>
+      </article>
+
+      <div class="columns">
+        <div class="column">
+          <p class="has-text-left"> 
+            <%= job.title %> <br>
+            <%= job.location %>
+          </p>
+        </div>
+        <div class="column has-text-right">
+          <%= form_tag([model.to_sym, job], method: :get, remote: true, class: 'is-pulled-right') do %>
+            <div class="field is-grouped">
+              <p class="control is-expanded has-icons-left">
+                <input 
+                  type="text" 
+                  class="input" 
+                  placeholder="<%=t('search_we_match_placeholder')%>" 
+                  name="search_users" 
+                  value="<%=params[:search_users] ? params[:search_users] : ''%>">
+                <span class="icon is-small is-left">
+                  <%= icon('fas', 'search') %>
+                </span>
+              </p>
+              <p class="control">
+                <%= button_tag(t('search'), type: 'submit', class: "button is-dark", data: { disable_with: "<i class='fas fa-spinner fa-spin'></i>".html_safe }) %>
+              </p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div>
+        <% if matching_candidates.any? %>
+          <p class="mb3 subtitle is-5 has-text-weight-bold">
+            <%= icon('fas', 'gem has-text-info') %> ¡Genial! <%= matching_candidates.count %> candidatos extra encontrados
+          </p>
+          <div id="we-match-results">
+            <% matching_candidates.each do |user| %>
+                <%= render partial: "/jobs/shared/we_match_candidate", locals: { user: user, job: job, path: send("#{model}_job_inscriptions_path", job_id: job.id, user_id: user.id) } %>
+            <% end %>
+          </div>
+          <div id="we-match-search-results"></div>
+        <% else %>
+          <div class="has-text-centered mt4 box">
+            <p class="mb2">
+              <%= icon('fas', 'user-ninja', class: 'is-size-2') %>
+            </p>
+            <small> Actualmente no hay perfiles abiertos a ser contactados en nuestra base de datos para estos requisitos </small>
+          </div>
+        <% end %>
+      </div>
+
+    </section>
+    <footer class="modal-card-foot justify-center">
+      <%= button_tag('Cerrar', type: 'submit', class: "button modal-close-footer") %>
+    </footer>
+  </div>
+</div>

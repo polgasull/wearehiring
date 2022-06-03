@@ -111,7 +111,7 @@
 		</div>
 	<% end %>
 
-	<% if current_user.is_company? || current_user.is_ambassador? %>
+	<% if current_user.is_company? %>
 		<div class="navbar-end">
 			<div class="navbar-item">
 				<%= link_to new_companies_job_path, 
@@ -126,7 +126,7 @@
 						class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(companies_jobs_path(current_user))}" %>
 			</div>
 			<div class="navbar-item has-text-left">
-				<div class="dropdown navbar-item is-right" id="profileDropdown">
+				<div class="dropdown is-right" id="profileDropdown">
 					<div class="dropdown-trigger">
 						<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
 							<span><%= icon('fas', 'cog') %></span>
@@ -160,26 +160,24 @@
 					jobs_path, 
 					class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(jobs_path)}" %>
 		</div>
+		<div class="navbar-item text-uppercase f6 has-dropdown is-hoverable">
+			<%= link_to t('how_it_works'), how_it_works_companies_path, 
+					class: "navbar-link #{ 'active' if current_page?(how_it_works_companies_path) || current_page?(how_it_works_talent_path)}" %>
+			<div class="navbar-dropdown is-boxed">
+				<%= link_to t('for_talent'), how_it_works_talent_path, class: "navbar-item #{ 'active' if current_page?(how_it_works_talent_path)}" %>
+				<%= link_to t('for_companies'), how_it_works_companies_path, class: "navbar-item #{ 'active' if current_page?(how_it_works_companies_path)}" %>
+			</div>
+    </div>
 		<div class="navbar-item">
-			<%= link_to t('jobs.post_job'), 
-				new_user_session_path(:company => "true"), 
-				class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(new_companies_job_path)}" %>
+			<%= link_to t('pricing'), pricing_path, class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(pricing_path)}" %>
 		</div>
 		<div class="navbar-item">
-			<div class="navbar-item">
-				<%= link_to new_user_session_path(:candidate => "true"), class: "text-uppercase f6 button is-rounded is-link #{ 'is-outlined' if !params[:candidate]}" do %>
-					<%= icon('fas', 'user mr2') %>
-					<%= t('candidate_access') %>
-				<% end %>
-			</div>
+      <%= link_to t('login'), new_user_session_path, 
+          class: "navbar-item text-uppercase f6 button is-rounded is-link #{ 'is-outlined' unless current_page?(new_user_session_path)}" %>
 		</div>
 		<div class="navbar-item">
-			<div class="navbar-item">
-				<%= link_to new_user_session_path(:company => "true"), class: "text-uppercase f6 button is-rounded is-dark #{ 'is-outlined' if !params[:company]}" do %>
-					<%= icon('far', 'building mr2') %>
-					<%= t('company_access') %>
-				<% end %>
-			</div>
+      <%= link_to t('create_account'), new_user_registration_path, 
+          class: "navbar-item text-uppercase f6 button is-rounded is-dark #{ 'is-outlined' unless current_page?(new_user_registration_path) || current_page?(new_company_registration_path)}" %>
 		</div>
 	</div>
 <% end %>

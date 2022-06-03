@@ -10,6 +10,26 @@ xml.tag! 'urlset', 'xmlns' => "http://www.sitemaps.org/schemas/sitemap/0.9" do
   end
 
   xml.tag! 'url' do
+    xml.tag! 'loc', how_it_works_talent_path
+  end
+
+  xml.tag! 'url' do
+    xml.tag! 'loc', how_it_works_companies_path
+  end
+
+  xml.tag! 'url' do
+    xml.tag! 'loc', pricing_url
+  end
+
+  xml.tag! 'url' do
+    xml.tag! 'loc', new_company_registration_url
+  end
+
+  xml.tag! 'url' do
+    xml.tag! 'loc', new_user_registration_url
+  end
+
+  xml.tag! 'url' do
     xml.tag! 'loc', blog_posts_url
   end
   

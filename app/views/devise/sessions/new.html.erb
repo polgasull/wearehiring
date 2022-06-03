@@ -1,10 +1,70 @@
-<% if (params.has_key?(:company)) %>
-    <%= render partial: "/devise/sessions/company_signin",
-    locals: { resource: resource, resource_name: resource_name, devise_mapping: devise_mapping } %>
-<% elsif (params.has_key?(:candidate)) %>
-    <%= render partial: "/devise/sessions/candidate_signin", 
-    locals: { resource: resource, resource_name: resource_name, devise_mapping: devise_mapping } %>
-<% else %>
-    <%= render partial: "/devise/sessions/candidate_signin", 
-    locals: { resource: resource, resource_name: resource_name, devise_mapping: devise_mapping } %>
+
+<section class="section">
+	<div class="container">
+    <div class="columns mt4">
+      <div class="column is-4">
+      </div>
+      <div class="column">
+        <h2 class="title is-4 has-text-centered"> <%= t('login') %> </h2>
+        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="field mb4">
+              <%= f.label :email, class: 'has-text-weight-bold' %>
+              <div class="control has-icons-left">
+              <%= f.input :email,
+                  required: true,
+                  wrapper: false,
+                  label: false,
+                  input_html: { class:"input" },
+                  placeholder: "johnsmith@correo.com" %>
+              <span class="icon is-small is-left">
+                  <%= icon('fas', 'envelope') %>
+              </span>
+              </div>
+          </div>
+          <div class="field mb3 mt3">
+              <%= f.label :password, class: 'has-text-weight-bold' %>
+              <div class="control has-icons-left">
+              <%= f.input :password,
+                  required: true,
+                  wrapper: false,
+                  label: false,
+                  input_html: { class: "input" },
+                  hint: false %>
+              <span class="icon is-small is-left">
+                  <%= icon('fas', 'key') %>
+              </span>
+              </div>
+          </div>
+          <div class="is-flex is-justify-content-space-between">
+              <div>
+              <small class="is-size-7"> <%= f.input :remember_me, wrapper: false, as: :boolean if devise_mapping.rememberable? %> </small>
+              </div>
+              <div>
+              <small class="is-size-7"> <%= render "devise/shared/links" %> </small>
+              </div>
+          </div>
+          <div class="field mt4">
+              <div class="control">
+              <%= f.button :submit, t('login'), 
+                  class:"button is-link is-fullwidth" %>
+              </div>
+          </div>
+        <% end %>
+        <hr>
+        <div class="has-text-centered">
+            <span> <%= t('dont_have_account') %> </span>
+            <%= link_to t('create_account'), new_registration_path(resource_name)%>
+        </div>
+      </div>
+      <div class="column is-4">
+      </div>
+    </div>
+  </div>
+</section>
+
+<%= content_for :head do %>
+	<%= render "seo", 
+        title: t('seo.candidate_signup'), 
+        description: t('seo.candidate_signup_description'),
+        image: image_url(asset_path('wah_red_logo.png')) %>
 <% end %>

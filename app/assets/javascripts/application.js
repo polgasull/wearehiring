@@ -11,7 +11,7 @@
 SITENAME = {
   common: {
     init: function() {
-      $('.notification').fadeIn().delay(4000).fadeOut();
+      $('.global-notification').fadeIn().delay(4000).fadeOut();
     }
   },
 
