@@ -24,7 +24,9 @@ module Admins
 
     def update
       if @user.update(user_params)
-        redirect_back_response(t('users.messages.user_updated'))
+        respond_to do |format|
+          format.js
+        end
       else 
         redirect_back_response(t('users.messages.user_not_updated'), false)
       end

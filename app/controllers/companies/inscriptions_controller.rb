@@ -20,7 +20,7 @@ module Companies
     end
 
     def create
-      assign_inscription_to_job(@job, @candidate, companies_job_path(@job.id), true)
+      assign_inscription_to_job(@job, @candidate, companies_job_path(@job.id), params[:inscription][:added_by_company])
     end
   
     def update
@@ -28,7 +28,6 @@ module Companies
         if @inscription.update(inscription_params)
           ModelMailer.update_inscription_status(@inscription, @job).deliver_later
           DiscordService.new.inscription_status_alert_webhook(@inscription, @job)
-          format.html { redirect_back_response(t('users.messages.user_updated')) }
           format.json { respond_with_bip(@inscription) }
         else
           format.html { redirect_back_response(t('users.messages.user_not_updated'), false)  }
@@ -60,7 +59,7 @@ module Companies
     end
 
     def inscription_params
-      params.require(:inscription).permit(:job_id, :user_id, :status)
+      params.require(:inscription).permit(:job_id, :user_id, :status, :added_by_company)
     end
   end
 end

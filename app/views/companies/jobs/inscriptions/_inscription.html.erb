@@ -1,53 +1,57 @@
-<tr class="spacer">
-  <td style="height: 16px;"></td>
-</tr>
-<tr class="inscription-row-<%= inscription.status %>">
-  <td>
-    <div class="rounded-image size-50">
-      <% if inscription.user.picture_url.file.nil? %>
-        <%= image_tag(asset_path('user_male_avatar.svg')) %>
-      <% else %>
-        <%= image_tag(inscription.user.picture_url_url(:thumb)) %>
+<div class="box radius-20 is-relative">    
+  <% if inscription.recommended? %>
+    <div class="card-ribbon">
+      <span><%= icon('fas', 'star') %></span>
+    </div>
+  <% end %>
+  <div class="columns is-vcentered">
+    <div class="column is-1">
+      <div class="rounded-image size-50">
+        <% if inscription.user.picture_url.file.nil? %>
+          <%= image_tag(asset_path('user_male_avatar.svg')) %>
+        <% else %>
+          <%= image_tag(inscription.user.picture_url_url(:thumb)) %>
+        <% end %>
+      </div>
+    </div>
+    <div class="column is-4">
+      <%= icon('fas', 'user', class: 'mr1') %> <%= inscription.user.name %> <br>
+      <%= icon('fas', 'at', class: 'mr1') %> <%= inscription.user.email %> <br>
+      <%= icon('fas', 'phone', class: 'mr1') %> <%= inscription.user.phone %> <br>
+      <%= link_to inscription.user.profile_url, target: "_blank", class: 'is-link' do %>
+        <%= icon('fab', 'linkedin', class: 'mr1') %> Linkedin <br>
+      <% end if inscription.user.profile_url.present? %> 
+    </div>
+    <div class="column is-4">
+      <span class="has-text-weight-bold"> Cargo actual: </span> <%= inscription.user.current_position.present? ? inscription.user.current_position : content_tag(:span, 'Sin especificar', class: 'has-text-grey-lighter') %> <br>
+      <span class="has-text-weight-bold"> Experiencia: </span> <%= inscription.user.experience.present? ? inscription.user.experience : content_tag(:span, 'Sin especificar', class: 'has-text-grey-lighter') %> <br>
+      <span class="has-text-weight-bold"> Residencia: </span> <%= inscription.user.location.present? ? inscription.user.location : content_tag(:span, 'Sin especificar', class: 'has-text-grey-lighter') %>
+    </div>
+    <div class="column is-1"> 
+      <%= link_to companies_job_inscription_path(inscription.job_id, inscription.id), target: "_blank", class: 'button' do %>
+        <%= icon('fas', 'address-card', class: 'mr2') %> Ver perfil <br>
       <% end %>
     </div>
-  </td>
-  <td>
-    <%= link_to companies_job_inscription_path(inscription.job_id, inscription.id) do %>
-      <%= inscription.user.name %>
-    <% end %>
-  </td>
-  <td>
-    <%= inscription.user.current_position %>
-  </td>
-  <td>
-    <%= inscription.user.experience %>
-  </td>
-  <td>
-    <%= inscription.user.phone %>
-  </td>
-  <td>
-    <%= inscription.user.email %>
-  </td>
-  <td>
-    <%= link_to inscription.user.profile_url, target: "_blank", class: 'button is-link' do %>
-      <%= icon('fab', 'linkedin') %>
-    <% end if inscription.user.profile_url.present? %>  
-  </td>
-  <td>
-    <div class="status-wrapper has-text-centered">
-      <% @statuses = Inscription.statuses.keys.map {|status, id| [status, t("inscriptions.#{status}")]}.insert(0, ["", "Seleccionar"]) %>
-      <%= best_in_place inscription, 
-          :status, 
-          as: :select, 
-          class: 'is-size-7',
-          inner_class: 'select',
-          collection: @statuses, 
-          url: companies_job_inscription_path(inscription.job_id, inscription.id),
-          place_holder: 'Seleccionar', 
-          data: { status: inscription.status } %>
+    <div class="column is-2 has-text-right">
+      <%= form_for :inscription, url: companies_job_inscription_path(inscription.job_id, inscription.id), method: :patch, remote: true, id: "update-inscription-form-#{inscription.id}" do |f| %>
+        <div class="select">
+          <%= f.select(:status,
+              Inscription.statuses.keys.map {|status, id| [t("inscriptions.#{status}"), status]},
+              {include_blank: t('helpers.select.select'), selected: inscription.status}, 
+              {onchange: '$(this.form).submit();', class: "inscription-status-#{inscription.status}"}) %>
+        </div>
+      <% end %>
     </div>
-  </td>
-</tr>
-<tr class="spacer">
-  <td style="height: 16px;"></td>
-</tr>
+  </div>
+</div>
+
+<%= content_for :footer do %>
+
+<script>
+  $(document).on('ajax:success', '#update-inscription-form-<%= inscription.id %>', function(event) {
+    $selectValue = $(this).find('select').val()
+    $(this).find('select').removeClass().addClass('inscription-status-' + $selectValue)
+  });
+</script>
+
+<% end %>

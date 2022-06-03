@@ -63,7 +63,7 @@
                     <%= inscription.user.name %> ha aplicado a <%= inscription.job.title %> 
                   </div>
                   <div class="column has-text-right is-3">
-                    <%= link_to companies_job_inscription_path(inscription.job_id, inscription.id), class: "button is-small is-link" do %>
+                    <%= link_to companies_job_inscription_path(inscription.job_id, inscription.id), class: "button is-small is-rounded is-link" do %>
                       <%= t('view_profile') %>
                     <% end %>
                   </div>
@@ -87,17 +87,17 @@
             <% if @company_jobs.any? %>
               <% @company_jobs.each do |job| %>
                 <div class="columns is-vcentered">
-                  <div class="column is-6">
+                  <div class="column is-6 is-size-7">
                     <%= job.title %>
                   </div>
-                  <div class="column is-3 has-text-right"> 
+                  <div class="column is-2 has-text-right"> 
                     <span class="tag is-light <%= 'is-success' if job.open? %>">
                       <%= job.open? ? 'En curso' : 'Finalizado' %> 
                     </span>
                   </div>
-                  <div class="column has-text-right is-3">
-                    <%= link_to companies_job_path(job.id) do %>
-                      <%= t('go_to_job') %> <%= icon('fas', 'arrow-right ml2') %>
+                  <div class="column has-text-right is-4">
+                    <%= link_to companies_job_path(job.id), class: 'button is-small is-rounded is-link' do %>
+                      Gestionar Job
                     <% end %>
                   </div>
                 </div>

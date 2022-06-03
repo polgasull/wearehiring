@@ -54,15 +54,25 @@ module Companies
 
     def show
       return redirect_to_response(t('not_found'), root_path, false) unless @job
-      @inscriptions_count = @job.inscriptions.count
-      @matching_candidates = @job.show_matching_candidates(@job.skills)  
-  
+      if params[:search_users]
+        @matching_candidates = @job.show_filtered_matching_candidates(@job.skills, params[:search_users])
+        respond_to do |format|
+          format.js { render partial: 'companies/partials/we_match_search_results'}
+        end
+      else 
+        @matching_candidates = @job.show_matching_candidates(@job.skills)
+      end
+      
       @discardeds_count = @job.inscriptions.where(status: [0]).count
       @in_process_count = @job.inscriptions.where(status: [1]).count
       @finalists_count = @job.inscriptions.where(status: [2]).count
-      @inscriptions = @job.inscriptions.order(status: :desc)
+      @inscriptions = @job.inscriptions.where(added_by_company: false).order(status: :desc)
+      @inscriptions_count = @inscriptions.count
+      @we_match_inscriptions = @job.inscriptions.where(added_by_company: true).order(status: :desc)
+      @we_match_inscriptions_count = @we_match_inscriptions.count
   
       respond_to do |format|
+        format.js
         format.html
         format.xlsx
       end

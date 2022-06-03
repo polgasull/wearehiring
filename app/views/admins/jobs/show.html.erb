@@ -114,7 +114,7 @@
         </p>
         <div id="candidates-carousel" class="carousel">
           <% @matching_candidates.each do |user| %>
-              <%= render partial: "/jobs/shared/candidate", locals: { user: user, job: @job, path: admins_job_inscriptions_path(job_id: @job.id, user_id: user.id) } %>
+              <%= render partial: "/jobs/shared/we_match_candidate", locals: { user: user, job: @job, path: admins_job_inscriptions_path(job_id: @job.id, user_id: user.id) } %>
           <% end %>
         </div>
       <% else %>
@@ -168,8 +168,8 @@
     </div>
     <% if @inscriptions.empty? %>
       <div class="columns mt5">
-        <div class="column is-half is-offset-one-quarter">
-          <%= image_tag(asset_path('no_data_undraw.svg'), class: 'has-opacity-5') %>
+        <div class="column has-text-centered">
+          <%= image_tag(asset_path('no_data_undraw.svg'), class: 'has-opacity-5', height: 200, width: 200) %>
         </div>
       </div>
     <% end %>

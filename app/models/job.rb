@@ -75,7 +75,25 @@ class Job < ApplicationRecord
     candidates = []
 
     job_skills.each do |skill|
-      skill.users.where.not(visible: false).each do |user|
+      skill.users.where.not(visible: false)
+                 .where.not(location: [nil, ""])
+                 .where.not(current_position: [nil, ""])
+                 .where.not(experience: [nil, ""]).each do |user|
+        candidates << user if candidates.exclude?(user)
+      end
+    end
+    
+    return candidates
+  end
+
+  def show_filtered_matching_candidates(job_skills, search_params)
+    candidates = []
+    
+    job_skills.each do |skill|
+      skill.users.search_users(search_params).where.not(visible: false)
+                                             .where.not(location: [nil, ""])
+                                             .where.not(current_position: [nil, ""])
+                                             .where.not(experience: [nil, ""]).each do |user|
         candidates << user if candidates.exclude?(user)
       end
     end

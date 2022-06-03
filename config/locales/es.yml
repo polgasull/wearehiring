@@ -325,6 +325,7 @@ es:
   feature_3_text: "Sin grandes formularios de registro garantizamos la información mínima para una buena comunicación entre candidato y empresa."
   search: "Buscar"
   search_placeholder: "Posición, ciudad, empresa..."
+  search_we_match_placeholder: "Posición, experiencia, localización..."
   category: "Categoría"
   tags_form_small_text: "Añade habilidades separadas por coma. (Ejemplo: Programming, Gaming, Mobile, UX)"
   is_looking_for: "Está buscando"

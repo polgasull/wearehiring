@@ -1,0 +1,3 @@
+<% @matching_candidates.each do |user| %>
+    <%= render partial: "/jobs/shared/we_match_candidate", locals: { user: user, job: @job, path: companies_job_inscriptions_path(job_id: @job.id, user_id: user.id) } %>
+<% end %>

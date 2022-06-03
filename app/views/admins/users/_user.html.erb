@@ -1,5 +1,5 @@
-<%= simple_form_for(user, method: :patch, url: admins_user_path(user.id), html: { multipart: true }) do |f| %>
-<tr class="is-size-7">
+<%= simple_form_for(user, method: :patch, url: admins_user_path(user.id), html: { multipart: true }, remote: true) do |f| %>
+<tr class="is-size-7 user-table-row">
   <td><%= user.id %></td>
   <td>
     <% if user.picture_url.file.nil? %>
@@ -32,7 +32,7 @@
   </td>
   <td>
     <% if user.is_candidate? %>
-      <% if user.skills.exists? && user.visible? %>
+      <% if user.skills.exists? && user.visible? && user.location.present? && user.current_position.present? && user.experience.present? %>
         <span class="tag is-success is-size-7"> ON </span>
       <% end %>
       <% if !user.visible? %>
@@ -41,13 +41,19 @@
     <% end %>
   </td>
   <td>
-    <%= user.skills.map(&:name).to_sentence if user.skills.exists? %>
+    <%= f.collection_select :skill_ids, Skill.all, :id, :name, {:prompt => "Please Select a Skill"}, { multiple: "multiple" } if user.is_candidate? %>  
   </td>
   <td>
-    <%= user.location if user.is_candidate? %>
+    <%= f.input :location,
+        label: false, 
+        input_html: { class: "input f7" }, 
+        wrapper: false,
+        placeholder: 'location' if user.is_candidate? %>
   </td>
   <td>
-    <%= user.experience if user.is_candidate? %>
+    <%= f.select :experience, 
+    options_for_select([ "0-2 años", "2-6 años", "6-10 años", "+10 años" ], user.experience),
+    {include_blank: 'Seleccionar' } if user.is_candidate? %>
   </td>
   <td>
     <%= user.user_type.name %>
@@ -64,4 +70,18 @@
     <%= f.submit t('save'), class: 'button is-info f6' %>
   </td>
 </tr>
+<% end %>
+
+<%= content_for :footer do %>
+
+<script>
+  $(document).on('ajax:success', '#edit_user_<%= user.id %>', function(event) {
+    alert('Usuario actualizado correctamente')
+  });
+
+  $(document).on('ajax:error', '#edit_user_<%= user.id %>', function(event) {
+    alert('Ha ocurrido un problema al intentar guardar los cambios')
+  });
+</script>
+
 <% end %>
