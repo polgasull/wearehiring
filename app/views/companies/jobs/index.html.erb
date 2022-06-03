@@ -1,5 +1,5 @@
 <section class="section">
-  <div class="container mb5">
+  <div class="container">
     <div class="columns">
       <div class="column">
         <h1 class="f2"> <%= t('my_jobs') %> </h1>
@@ -37,53 +37,35 @@
         </div>
       </div>
     </div>
-    <%= form_for companies_jobs_path(current_user), method: :get do |f| %>
-    <div class="columns">
-      <div class="column is-4 is-offset-8">
-        <div class="field has-addons is-pulled-right">
-          <div class="control">
-            <input 
-              type="text" 
-              class="input" 
-              placeholder="<%=t('search')%>" 
-              name="search_my_jobs" 
-              value="<%=params[:search_my_jobs] ? params[:search_my_jobs] : ''%>">
-          </div>
-          <div class="control">
-            <%= f.submit t('search'), class: "button is-dark" %>
-          </div>
-        </div>
-      </div>
-    </div>
-    <% end %>
   </div>
+</section>
 
+<section class="section section-bg-gray">
   <div class="container">
-    <div class="columns listhead is-mobile">
-      <div class="column is-1 is-hidden-touch">
-        Nb
-      </div>
-      <div class="column is-hidden-touch">
-        <%= t('reference') %>
-      </div>
-      <div class="column is-hidden-mobile">
-        <%= t('jobs.company') %>
-      </div>
+    <div class="columns mb3">
       <div class="column">
-        <%= t('jobs.position') %>
-      </div>
-      <div class="column is-hidden-touch">
-        <%= t('jobs.tags') %>
-      </div>
-      <div class="column">
-        <%= t('jobs.candidates') %>
-      </div>
-      <div class="column">
-        Días restantes
+        <%= form_for companies_jobs_path(current_user), method: :get do |f| %>
+          <div class="columns">
+            <div class="column is-4 is-offset-8">
+              <div class="field has-addons is-pulled-right">
+                <div class="control">
+                  <input 
+                    type="text" 
+                    class="input" 
+                    placeholder="<%=t('search')%>" 
+                    name="search_my_jobs" 
+                    value="<%=params[:search_my_jobs] ? params[:search_my_jobs] : ''%>">
+                </div>
+                <div class="control">
+                  <%= f.submit t('search'), class: "button is-dark" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
-
-		<%= render partial: 'job', collection: @jobs, as: :job %>
+  	<%= render partial: 'job', collection: @jobs, as: :job %>
   </div>
 </section>
 

@@ -57,7 +57,7 @@ module Companies
       if params[:search_users]
         @matching_candidates = @job.show_filtered_matching_candidates(@job.skills, params[:search_users])
         respond_to do |format|
-          format.js { render partial: 'companies/partials/we_match_search_results'}
+          format.js { render partial: 'jobs/shared/we_match_search_results'}
         end
       else 
         @matching_candidates = @job.show_matching_candidates(@job.skills)

@@ -22,7 +22,7 @@
           </p>
         </div>
         <div class="column has-text-right">
-          <%= form_tag([:companies, job], method: :get, remote: true, class: 'is-pulled-right') do %>
+          <%= form_tag([model.to_sym, job], method: :get, remote: true, class: 'is-pulled-right') do %>
             <div class="field is-grouped">
               <p class="control is-expanded has-icons-left">
                 <input 
@@ -42,8 +42,6 @@
           <% end %>
         </div>
       </div>
-
-
       <div>
         <% if matching_candidates.any? %>
           <p class="mb3 subtitle is-5 has-text-weight-bold">
@@ -51,7 +49,7 @@
           </p>
           <div id="we-match-results">
             <% matching_candidates.each do |user| %>
-                <%= render partial: "/jobs/shared/we_match_candidate", locals: { user: user, job: job, path: companies_job_inscriptions_path(job_id: job.id, user_id: user.id) } %>
+                <%= render partial: "/jobs/shared/we_match_candidate", locals: { user: user, job: job, path: send("#{model}_job_inscriptions_path", job_id: job.id, user_id: user.id) } %>
             <% end %>
           </div>
           <div id="we-match-search-results"></div>

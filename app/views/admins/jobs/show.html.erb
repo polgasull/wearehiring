@@ -1,24 +1,21 @@
 <section class="section">
   <div class="container radius-8">
-    <div class="columns admin-block">
-      <div class="column is-vertical-center is-flex">
-        <span class="has-text-weight-bold f3 pr4"> Admin controls </span>
-        <%= icon('fas', 'user mr2') %> <%= @job.inscriptions.count %> inscritos
+    <div class="columns">
+      <div class="column">    
+        <p> <%= t('jobs.reference') %>: #<%= @job.reference %> </p>
+        <strong class="f3"> 
+          <%= @job.is_pro_price? ? content_tag(:span, @job.job_price.name, class: "tag is-large is-dark") : content_tag(:span, 'Basic', class: "tag is-large") %> 
+          <%= icon('far', 'calendar-alt') %> <%= job_expired(@job) %> 
+        </strong> 
+        <%= t('remaining_days') %>
       </div>
-      <div class="column is-2">
-        <%= link_to edit_admins_job_path(@job.id), class: 'button is-link' do %>
-          <%= icon('fas', 'edit mr2') %> Editar
-        <% end %> 
-      </div>
-      <div class="column is-2 has-text-right">
-      <%= simple_form_for([:admins, @job], html: { multipart: true }) do |f| %>
-        <%= f.hidden_field :open, value: false %>
-        <%= f.submit(
-          t('jobs.close'),
-          class: 'button is-danger is-outlined',
-          disabled: !@job.open?, 
-          data: { confirm: "¿Estás seguro? Esta acción no se puede deshacer. El Job ya no estará visible pero la empresa podrá seguir gestionando sus candidatos"}) %>
-      <% end %>
+      <div class="column has-text-right">
+        <%= link_to edit_admins_job_path(@job), class: 'button is-link' do %>
+          <%= icon('fas', 'edit mr1') %> <%= t('jobs.edit') %>
+        <% end %>
+        <%= link_to job_path(@job), class: 'button', target: '_blank' do %>
+          <%= icon('fas', 'eye mr1') %> Ver publicación
+        <% end %>
       </div>
     </div>
   </div>
@@ -31,7 +28,7 @@
         <h1> Estás como ADMIN </h1>
       </div>
       <div class="message-body">
-      Esto es exactamente lo que <strong> ve la empresa </strong>. Puedes editarlo sin problemas, pero con cuidado, no vayamos a liarla eh. Que te veo 👀.
+      Esto es exactamente lo que <strong> ve la empresa </strong>. Puedes editarlo sin problemas, pero con responsabilidad 👀.
       </div>
     </article>
   </div>
@@ -61,7 +58,7 @@
       <div class="tile has-text-centered mb4">
         <div class="tile is-parent">
           <article class="tile is-child box">
-            <p class="title"> <%= @inscriptions_count %> </p>
+            <p class="title"> <%= @job.inscriptions.count %> </p>
             <p class="subtitle"><%= icon('fas', 'check-circle has-text-success') %> <%= t("inscriptions.inscribeds") %> </p>
           </article>
         </div>
@@ -87,49 +84,7 @@
     </div>
   </div>
   <div class="container pt4">
-    <% if @job.open? %>
-      <span class="tag is-success is-light mb2">
-        Activo <%= icon('fas', 'clock mr1 ml1') %> <%= job_expired(@job) %> días
-      </span>
-    <% else %>
-      <span class="tag is-danger is-light mb2">
-        <%= icon('fas', 'hourglass-end mr1') %> Job Finalizado
-      </span>
-    <% end %>
     <%= render partial: "/jobs/shared/job_info", locals: { job: @job } %>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <h3 class="title"> We Match <span class="tag is-info"> ¡Nuevo! </span> </h3>
-    <p class="subtitle is-6">
-      Aquí se muestran aquellos perfiles abiertos a ser contactados que encajan con los requisitos del Job. <br>
-      Añádelos a tu proceso de selección y empieza con las entrevistas ahora.
-    </p>
-    <% if @job.open? %>
-      <% if @matching_candidates.any? %>
-        <p class="mb3 subtitle is-5 has-text-weight-bold">
-          <%= icon('fas', 'gem has-text-info') %> ¡Genial! <%= @matching_candidates.count %> candidatos encontrados 
-        </p>
-        <div id="candidates-carousel" class="carousel">
-          <% @matching_candidates.each do |user| %>
-              <%= render partial: "/jobs/shared/we_match_candidate", locals: { user: user, job: @job, path: admins_job_inscriptions_path(job_id: @job.id, user_id: user.id) } %>
-          <% end %>
-        </div>
-      <% else %>
-        <div class="box pa4 has-text-centered mt4">
-          <p class="mb2">
-            <%= icon('fas', 'user-ninja', class: 'is-size-2') %>
-          </p>
-          <small> Actualmente, en nuestra base de datos, no hay perfiles abiertos a ser contactados para estos requisitos </small>
-        </div>
-      <% end %>
-    <% else %>
-      <div class="has-text-centered mt4">
-        <span class="tag is-danger is-light"> <%= icon('fas', 'hourglass-end mr1') %> Job Finalizado. No es posible añadir más candidatos. </span>
-      </div>
-    <% end %>  
   </div>
 </section>
 
@@ -139,7 +94,7 @@
       <div class="column">
         <h3 class="title"> Candidatos inscritos: <%= @inscriptions_count %> </h3>
       </div>
-      <div class="column mb4 has-text-right"> 
+      <div class="column mb4 has-text-right">
         <% if @inscriptions.any? %>
           <%= link_to admins_job_inscriptions_path(job_id: @job.id, format: "xlsx"), class: 'button' do %>
             <%= icon('fas', 'file-download pr2', class: 'has-excel-color') %> <%= t('download_candidates_excel') %>
@@ -147,26 +102,19 @@
         <% end %>
       </div>
     </div>
-    <div class="mb1">
-      <span class="tag"> <%= icon('fas', 'check-circle mr1', class: 'has-text-success') %> <%= @inscriptions_count %> </span>
-      <span class="tag"> <%= icon('fas', 'heart-broken mr1', class: 'has-text-danger') %> <%= @discardeds_count %> </span>
-      <span class="tag"> <%= icon('fas', 'user-clock mr1', class: 'has-text-info') %> <%= @in_process_count %> </span>
-      <span class="tag"> <%= icon('fas', 'trophy mr1', class: 'has-text-warning') %> <%= @finalists_count %> </span>
-    </div>    
-    <div class="table-container mt3">
-      <table class="table job-candidates-table is-striped is-fullwidth is-size-7">
-        <%= render partial: 'jobs/shared/table_inscriptions_header' %>
-        <% if @inscriptions.any? %>
-          <tbody>
-            <% @inscriptions.each do |inscription| %>
-              <%= render partial: 'admins/jobs/inscriptions/inscription', locals: { inscription: inscription } %>
-            <% end %>
-          </tbody>
-          <%= render partial: 'jobs/shared/table_inscriptions_footer' %>
-        <% end %>
-      </table>
+    <div class="columns">
+      <div class="column">
+        <span class="tag"> <%= icon('fas', 'check-circle mr1', class: 'has-text-success') %> <%= @inscriptions_count %> </span>
+        <span class="tag"> <%= icon('fas', 'heart-broken mr1', class: 'has-text-danger') %> <%= @discardeds_count %> </span>
+        <span class="tag"> <%= icon('fas', 'user-clock mr1', class: 'has-text-info') %> <%= @in_process_count %> </span>
+        <span class="tag"> <%= icon('fas', 'trophy mr1', class: 'has-text-warning') %> <%= @finalists_count %> </span>
+      </div>
     </div>
-    <% if @inscriptions.empty? %>
+    <% if @inscriptions.any? %>
+      <% @inscriptions.each do |inscription| %>
+        <%= render partial: 'admins/jobs/inscriptions/inscription', locals: { inscription: inscription } %>
+      <% end %>
+    <% else %>
       <div class="columns mt5">
         <div class="column has-text-centered">
           <%= image_tag(asset_path('no_data_undraw.svg'), class: 'has-opacity-5', height: 200, width: 200) %>
@@ -177,7 +125,56 @@
 </section>
 
 <section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <article class="message is-info">
+          <div class="message-header">
+            <p>Info Admin</p>
+          </div>
+          <div class="message-body">
+            Solo las empresas que han publicado con precio PRO ven esta sección
+          </div>
+        </article>
+      </div>
+    </div>
+    <div class="columns">
+      <div class="column">
+        <h3 class="title"> Candidatos añadidos con We Match: <%= @we_match_inscriptions_count %> </h3>
+      </div>
+      <div class="column mb4 has-text-right">
+        <% if @job.open? %>
+          <%= button_tag(type: 'button',
+            class: "button is-warning we-match-button has-text-weight-bold #{ 'is-static' if @matching_candidates.empty?}",
+            'data-target': 'we-match-modal',
+            'aria-haspopup': 'true',
+            disabled: @matching_candidates.empty?) do %>
+              <%= icon('fas', 'gem', class: 'has-text-info mr1') %> We Match: <%= @matching_candidates.empty? ? '0' : @matching_candidates.count %> encontrados
+          <% end %>
+        <% else %>
+          <%= button_tag('Job Finalizado. No es posible añadir más candidatos', type: 'button', class: 'button is-static') %>
+        <% end %>
+      </div>
+    </div>
+    <% if @we_match_inscriptions.any? %>
+        <% @we_match_inscriptions.each do |inscription| %>
+          <%= render partial: 'admins/jobs/inscriptions/inscription', locals: { inscription: inscription } %>
+        <% end %>
+    <% else %>
+      <div class="columns mt5">
+        <div class="column has-text-centered">
+          <%= image_tag(asset_path('no_data_undraw.svg'), class: 'has-opacity-5', height: 200, width: 200) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>
+
+<hr>
+
+<section class="section">
   <div class="container has-text-centered">
+    <h3 class="title"> ¿Quieres finalizar el Job? </h3>
     <%= button_tag(type: 'button',
       class: 'button is-danger is-outlined deactivate-job-button',
       'data-target': 'deactivate-job-modal',
@@ -189,63 +186,26 @@
 </section>
 
 <%= render partial: '/jobs/partials/deactivate_job_modal', locals: { job: @job, model: :admins } %>
-
-<%= content_for :head do %>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css">
-  <%= render "seo", 
-      title: "Empleo #{ @job.title } en #{ @job.job_author } en #{ @job.location } | WeAreHiring.io", 
-      description: "#{ @job.job_author } está buscando a un #{ @job.title } en #{ @job.location }. Solicita este empleo en WeAreHiring.io",
-      image: @job.avatar.file.nil? ? image_url(asset_path('wah_red_logo.png')) : image_url(@job.avatar_url(:thumb), alt: "Empleo de #{@job.title} en #{@job.job_author}") %>
-<% end %>
+<%= render partial: '/jobs/shared/we_match_modal', locals: { job: @job, matching_candidates: @matching_candidates, model: 'admins' } if @job.open? && @matching_candidates.present? %>
 
 <%= content_for :footer do %>
-  <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
   <script>
 
     $(document).ready(function() {     
-      $(document).on("click", ".modal-close", function() {
+      $(document).on("click", ".modal-close, .modal-close-footer", function() {
         $('.modal').removeClass('is-active');
+        location.reload();
       });
 
       $(document).on("click", ".deactivate-job-button", function() {
         $('.deactivate-job-modal').addClass('is-active');
       });
 
-      /* Activating Best In Place */
-      $(".best_in_place").best_in_place();
-      $('.best_in_place').bind("ajax:success", function () { 
-        var $value = $(this).text();
-        if ($value == 'En proceso') {
-          $(this).closest('.job-candidates-table tr').effect('highlight', {color: '#3e8ed0'}, 700);
-          $(this).closest('.job-candidates-table tr').removeClass('inscription-row-discarded');
-          $(this).closest('.job-candidates-table tr').removeClass('inscription-row-finalist');
-          $(this).closest('.job-candidates-table tr').addClass('inscription-row-in_process');
-        } else if ($value == 'Finalista') {
-          $(this).closest('.job-candidates-table tr').effect('highlight', {color: '#48c78e'}, 700);
-          $(this).closest('.job-candidates-table tr').removeClass('inscription-row-in_process');
-          $(this).closest('.job-candidates-table tr').removeClass('inscription-row-discarded');
-          $(this).closest('.job-candidates-table tr').addClass('inscription-row-finalist');
-        } else if ($value == 'Descartado') {
-          $(this).closest('.job-candidates-table tr').effect('highlight', {color: '#f14668'}, 700);
-          $(this).closest('.job-candidates-table tr').removeClass('inscription-row-finalist');
-          $(this).closest('.job-candidates-table tr').removeClass('inscription-row-in_process');
-          $(this).closest('.job-candidates-table tr').addClass('inscription-row-discarded');
-        } else {
-          $(this).closest('.job-candidates-table tr').removeClass('inscription-row-in_process');
-          $(this).closest('.job-candidates-table tr').removeClass('inscription-row-finalist');
-          $(this).closest('.job-candidates-table tr').removeClass('inscription-row-discarded');
-        }
+      $(document).on("click", ".we-match-button", function() {
+        $('.we-match-modal').addClass('is-active');
       });
 
-      bulmaCarousel.attach('#candidates-carousel', {
-        slidesToScroll: 1,
-        slidesToShow: 4,
-        pagination: false,
-        breakpoints: [
-          { changePoint: 768, slidesToShow: 1, slidesToScroll: 1 },
-          { changePoint: 992, slidesToShow: 3, slidesToScroll: 1 }
-        ]
-      });
+      $(".best_in_place").best_in_place();
     });
 
   </script>

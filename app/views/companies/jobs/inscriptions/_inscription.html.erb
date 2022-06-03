@@ -27,14 +27,14 @@
       <span class="has-text-weight-bold"> Experiencia: </span> <%= inscription.user.experience.present? ? inscription.user.experience : content_tag(:span, 'Sin especificar', class: 'has-text-grey-lighter') %> <br>
       <span class="has-text-weight-bold"> Residencia: </span> <%= inscription.user.location.present? ? inscription.user.location : content_tag(:span, 'Sin especificar', class: 'has-text-grey-lighter') %>
     </div>
-    <div class="column is-1"> 
+    <div class="column is-1">
       <%= link_to companies_job_inscription_path(inscription.job_id, inscription.id), target: "_blank", class: 'button' do %>
         <%= icon('fas', 'address-card', class: 'mr2') %> Ver perfil <br>
       <% end %>
     </div>
     <div class="column is-2 has-text-right">
       <%= form_for :inscription, url: companies_job_inscription_path(inscription.job_id, inscription.id), method: :patch, remote: true, id: "update-inscription-form-#{inscription.id}" do |f| %>
-        <div class="select">
+        <div class="select is-rounded">
           <%= f.select(:status,
               Inscription.statuses.keys.map {|status, id| [t("inscriptions.#{status}"), status]},
               {include_blank: t('helpers.select.select'), selected: inscription.status}, 
@@ -45,12 +45,18 @@
   </div>
 </div>
 
+<div class="notification is-success is-light has-text-centered" id="notification-<%= inscription.id %>" style="position: fixed; z-index: 99999; margin-left: auto; margin-right: auto; left: 25%; right: 25%; top: 65px; display: none;">
+  Candidato actualizado y notificado vía correo electrónico
+</div>
+
 <%= content_for :footer do %>
 
 <script>
   $(document).on('ajax:success', '#update-inscription-form-<%= inscription.id %>', function(event) {
+    console.log('hello')
     $selectValue = $(this).find('select').val()
-    $(this).find('select').removeClass().addClass('inscription-status-' + $selectValue)
+    $(this).find('select').removeClass().addClass('inscription-status-' + $selectValue);
+    $('#notification-<%= inscription.id %>').fadeIn().delay(4000).fadeOut();
   });
 </script>
 

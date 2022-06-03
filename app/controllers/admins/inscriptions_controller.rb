@@ -29,10 +29,9 @@ module Admins
         if @inscription.update(inscription_params)
           ModelMailer.update_inscription_status(@inscription, @job).deliver_later
           DiscordService.new.inscription_status_alert_webhook(@inscription, @job)
-          format.html { redirect_back_response(t('users.messages.user_not_updated')) }
           format.json { respond_with_bip(@inscription) }
+          format.js
         else
-          format.html { redirect_back_response(t('users.messages.user_not_updated'), false)  }
           format.json { respond_with_bip(@inscription) }
         end
       end

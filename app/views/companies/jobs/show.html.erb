@@ -19,12 +19,12 @@
       </div>
     </div>
   </div>
-  <div class="container">
+  <div class="container mt4">
     <div class="info-tiles">
       <div class="tile has-text-centered mb4">
         <div class="tile is-parent">
           <article class="tile is-child box">
-            <p class="title"> <%= @inscriptions_count %> </p>
+            <p class="title"> <%= @job.inscriptions.count %> </p>
             <p class="subtitle"><%= icon('fas', 'check-circle has-text-success') %> <%= t("inscriptions.inscribeds") %> </p>
           </article>
         </div>
@@ -142,14 +142,7 @@
 </section>
 
 <%= render partial: '/jobs/partials/deactivate_job_modal', locals: { job: @job, model: :companies } %>
-<%= render partial: '/jobs/shared/we_match_modal', locals: { job: @job, matching_candidates: @matching_candidates } if @job.open? && @matching_candidates.present? %>
-
-<%= content_for :head do %>
-  <%= render "seo", 
-      title: "Empleo #{ @job.title } en #{ @job.job_author } en #{ @job.location } | WeAreHiring.io", 
-      description: "#{ @job.job_author } está buscando a un #{ @job.title } en #{ @job.location }. Solicita este empleo en WeAreHiring.io",
-      image: @job.avatar.file.nil? ? image_url(asset_path('wah_red_logo.png')) : image_url(@job.avatar_url(:thumb), alt: "Empleo de #{@job.title} en #{@job.job_author}") %>
-<% end %>
+<%= render partial: '/jobs/shared/we_match_modal', locals: { job: @job, matching_candidates: @matching_candidates, model: 'companies' } if @job.open? && @matching_candidates.present? %>
 
 <%= content_for :footer do %>
   <script>

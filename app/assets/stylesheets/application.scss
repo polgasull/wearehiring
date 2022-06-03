@@ -110,12 +110,12 @@
   font-style: normal;
 }
 
-.notification {
+.global-notification {
   border-radius: 0;
   z-index: 99999;
 }
 
-.notification:not(:last-child) {
+.global-notification:not(:last-child) {
   margin-bottom: 0;
 }
 

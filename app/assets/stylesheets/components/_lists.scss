@@ -107,22 +107,6 @@
   text-align: left;
 }
 
-.is-clickable {
-  border: 1px solid #3298dc;
-  border-radius: 6px;
-  padding: 5px;
-  text-decoration: none;
-  color: $white;
-  background-color: #3298dc;
-  font-weight: 600;
-  box-shadow: 0 1px 3px 0 darken(#3298dc, 5%);
-
-  &:hover {
-    background-color: darken(#3298dc, 10%);
-    box-shadow: 0 1px 3px 0 darken(#3298dc, 7%);
-  }
-}
-
 .inscriptions-table {
   .button.is-link {
     max-height: 25px;
