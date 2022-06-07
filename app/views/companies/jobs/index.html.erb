@@ -18,19 +18,19 @@
             <div class="tile is-parent">
               <article class="tile is-child box">
                 <p class="title"><%= @jobs_active_count %></p>
-                <p class="subtitle"> Jobs Activos </p>
+                <p class="subtitle"> <%= t('counters.active_jobs') %> </p>
               </article>
             </div>
             <div class="tile is-parent">
               <article class="tile is-child box">
                 <p class="title"> <%= @jobs_expired_count %> </p>
-                <p class="subtitle"> Jobs Finalizados </p>
+                <p class="subtitle"> <%= t('counters.finalized_jobs') %> </p>
               </article>
             </div>
             <div class="tile is-parent">
               <article class="tile is-child box">
                 <p class="title"> <%= @total_inscriptions %> </p>
-                <p class="subtitle"> Total Inscritos </p>
+                <p class="subtitle"> <%= t('counters.total_inscribeds') %> </p>
               </article>
             </div>
           </div>

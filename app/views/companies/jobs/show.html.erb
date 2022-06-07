@@ -14,7 +14,7 @@
           <%= icon('fas', 'edit mr1') %> <%= t('jobs.edit') %>
         <% end %>
         <%= link_to job_path(@job), class: 'button', target: '_blank' do %>
-          <%= icon('fas', 'eye mr1') %> Ver publicación
+          <%= icon('fas', 'eye mr1') %> <%= t('show_job_post') %>
         <% end %>
       </div>
     </div>
@@ -58,7 +58,7 @@
   <div class="container">
     <div class="columns">
       <div class="column">
-        <h3 class="title"> Candidatos inscritos: <%= @inscriptions_count %> </h3>
+        <h3 class="title"> <%= t('inscribed_candidates') %>: <%= @inscriptions_count %> </h3>
       </div>
       <div class="column mb4 has-text-right">
         <% if @inscriptions.any? %>
@@ -95,7 +95,7 @@
     <div class="container">
       <div class="columns">
         <div class="column">
-          <h3 class="title"> Candidatos añadidos con We Match: <%= @we_match_inscriptions_count %> </h3>
+          <h3 class="title"> <%= t('added_we_match_candidates') %>: <%= @we_match_inscriptions_count %> </h3>
         </div>
         <div class="column mb4 has-text-right">
           <% if @job.open? %>
@@ -104,7 +104,7 @@
               'data-target': 'we-match-modal',
               'aria-haspopup': 'true',
               disabled: @matching_candidates.empty?) do %>
-                <%= icon('fas', 'gem', class: 'has-text-info mr1') %> We Match: <%= @matching_candidates.empty? ? '0' : @matching_candidates.count %> encontrados
+                <%= icon('fas', 'gem', class: 'has-text-info mr1') %> We Match: <%= @matching_candidates.empty? ? '0' : @matching_candidates.count %> <%= t('we_match_info_text_4') %>
             <% end %>
           <% else %>
             <%= button_tag('Job Finalizado. No es posible añadir más candidatos', type: 'button', class: 'button is-static') %>
@@ -130,7 +130,7 @@
 
 <section class="section">
   <div class="container has-text-centered">
-    <h3 class="title"> ¿Quieres finalizar el Job? </h3>
+    <h3 class="title"> <%= t('finalized_job_question') %> </h3>
     <%= button_tag(type: 'button',
       class: 'button is-danger is-outlined deactivate-job-button',
       'data-target': 'deactivate-job-modal',

@@ -24,13 +24,13 @@
       <div class="column is-2">
         <% if user.is_already_inscribed(job) %>
           <div class="is-outline card-footer-item profile-added">
-            <span class="mr2"> ¡Añadido! </span>
+            <span class="mr2"> ¡<%= t('added') %>! </span>
             <span class="has-text-success"> <%= icon('far', 'check-circle') %> </span>
           </div>
         <% else %>
-          <%= f.submit "Añadir", class: "button is-info add-profile" %>
+          <%= f.submit t('add'), class: "button is-info add-profile" %>
           <div class="is-outline card-footer-item profile-added is-hidden">
-            <span class="mr2"> ¡Añadido! </span>
+            <span class="mr2"> ¡<%= t('added') %>! </span>
             <span class="has-text-success"> <%= icon('far', 'check-circle') %> </span>
           </div>
         <% end %>  

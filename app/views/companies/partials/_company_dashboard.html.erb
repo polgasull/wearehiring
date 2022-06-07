@@ -3,10 +3,10 @@
     <div class="columns">
       <div class="column is-8">
         <h1 class="title">
-          Panel de <%= current_user.name %>
+          Dashboard <%= current_user.name %>
         </h1>
         <h2 class="subtitle">
-          Aquí tienes el resumen de tus Jobs en We Are Hiring
+          <%= t('dashboard_subtitle') %>
         </h2>
       </div>
     </div>
@@ -21,19 +21,19 @@
           </div>
           <div class="level-item has-text-centered">
             <div>
-              <p class="heading">Jobs Activos</p>
+              <p class="heading"><%= t('counters.active_jobs') %></p>
               <p class="title"><%= @company_jobs_open_count %></p>
             </div>
           </div>
           <div class="level-item has-text-centered">
             <div>
-              <p class="heading">Jobs Finalizados</p>
+              <p class="heading"><%= t('counters.finalized_jobs') %></p>
               <p class="title"><%= @company_jobs_close_count %></p>
             </div>
           </div>
           <div class="level-item has-text-centered">
             <div>
-              <p class="heading">Total Inscritos</p>
+              <p class="heading"><%= t('counters.total_inscribeds') %></p>
               <p class="title"><%= @total_inscriptions %></p>
             </div>
           </div>
@@ -44,7 +44,7 @@
       <div class="column is-6">
         <div class="box events-card">
           <p class="title is-4">
-            Últimos candidatos
+            <%= t('last_candidates') %>
           </p>
           <div class="card-table pa2">
             <% if @last_inscribeds.any? %>
@@ -72,7 +72,7 @@
             <% else %>
               <div class="has-text-centered mt3">
                 <%= image_tag(asset_path('applicants_logo.svg'), size: 150) %>
-                <p> Aún no tienes candidatos </p>
+                <p> <%= t('dashboard_no_candidates') %>  </p>
               </div>
             <% end %>
           </div>
@@ -81,7 +81,7 @@
       <div class="column is-6">
         <div class="box events-card">
           <p class="title is-4">
-            Últimos Jobs publicados
+            <%= t('last_posted_jobs') %>
           </p>
           <div class="card-table pa2">
             <% if @company_jobs.any? %>
@@ -92,12 +92,12 @@
                   </div>
                   <div class="column is-2 has-text-right"> 
                     <span class="tag is-light <%= 'is-success' if job.open? %>">
-                      <%= job.open? ? 'En curso' : 'Finalizado' %> 
+                      <%= job.open? ? t('job_active') : t('job_ended') %> 
                     </span>
                   </div>
                   <div class="column has-text-right is-4">
                     <%= link_to companies_job_path(job.id), class: 'button is-small is-rounded is-link' do %>
-                      Gestionar Job
+                      <%= t('dashboard_manage_job') %>
                     <% end %>
                   </div>
                 </div>
@@ -105,7 +105,7 @@
             <% else %>
               <div class="has-text-centered mt3">
                 <%= image_tag(asset_path('job_logo.svg'), size: 100) %>
-                <p class="mb2"> Aún no has publicado ningún job </p>
+                <p class="mb2"> <%= t('dashboard_no_jobs') %> </p>
                   <%= link_to t('jobs.post_job'), 
                     new_companies_job_path, 
                     class: "button text-uppercase f6 is-dark has-text-weight-bold" %>

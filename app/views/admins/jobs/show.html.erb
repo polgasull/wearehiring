@@ -14,7 +14,7 @@
           <%= icon('fas', 'edit mr1') %> <%= t('jobs.edit') %>
         <% end %>
         <%= link_to job_path(@job), class: 'button', target: '_blank' do %>
-          <%= icon('fas', 'eye mr1') %> Ver publicación
+          <%= icon('fas', 'eye mr1') %> <%= t('show_job_post') %>
         <% end %>
       </div>
     </div>
@@ -37,22 +37,6 @@
 <hr>
 
 <section class="section">
-  <div class="container radius-8">
-    <div class="columns">
-      <div class="column">    
-        <p> <%= t('jobs.reference') %>: #<%= @job.reference %> </p>
-        <strong class="f3"> 
-          <%= icon('far', 'calendar-alt') %> <%= job_expired(@job) %> 
-        </strong> 
-        <%= t('remaining_days') %>
-      </div>
-      <div class="column has-text-right">
-        <%= link_to job_path(@job), class: 'button', target: '_blank' do %>
-          <%= icon('fas', 'eye mr1') %> Ver publicación
-        <% end %>
-      </div>
-    </div>
-  </div>
   <div class="container">
     <div class="info-tiles">
       <div class="tile has-text-centered mb4">
@@ -92,7 +76,7 @@
   <div class="container">
     <div class="columns">
       <div class="column">
-        <h3 class="title"> Candidatos inscritos: <%= @inscriptions_count %> </h3>
+        <h3 class="title"> <%= t('inscribed_candidates') %>: <%= @inscriptions_count %> </h3>
       </div>
       <div class="column mb4 has-text-right">
         <% if @inscriptions.any? %>
@@ -140,7 +124,7 @@
     </div>
     <div class="columns">
       <div class="column">
-        <h3 class="title"> Candidatos añadidos con We Match: <%= @we_match_inscriptions_count %> </h3>
+        <h3 class="title"> <%= t('added_we_match_candidates') %>: <%= @we_match_inscriptions_count %> </h3>
       </div>
       <div class="column mb4 has-text-right">
         <% if @job.open? %>
@@ -174,7 +158,7 @@
 
 <section class="section">
   <div class="container has-text-centered">
-    <h3 class="title"> ¿Quieres finalizar el Job? </h3>
+    <h3 class="title"> <%= t('finalized_job_question') %> </h3>
     <%= button_tag(type: 'button',
       class: 'button is-danger is-outlined deactivate-job-button',
       'data-target': 'deactivate-job-modal',

@@ -13,7 +13,7 @@
 						<input
 							type="text"
 							class="home-search-input"
-							placeholder="Buscar Job"
+							placeholder="<%= t('search_job') %>"
 							name="search_for"
 							value="<%=params[:search_for] ? params[:search_for] : ''%>">
 						<%= button_tag(t('search'), type: 'submit', class: "home-search-button", data: { disable_with: "<i class='fas fa-spinner fa-spin'></i>".html_safe }) %>
@@ -21,7 +21,7 @@
 				<% end %>
 
 				<p class="mt3">
-					Ejemplo: <span class="tag is-light mr3"> Backend </span> <span class="tag is-light mr3"> Rails </span> <span class="tag is-light"> Remoto </span>
+					<%= t('example') %>: <span class="tag is-light mr3"> Backend </span> <span class="tag is-light mr3"> Rails </span> <span class="tag is-light"> Remoto </span>
 				</p>
  			</div>
 			<div class="column is-7-desktop">
@@ -84,16 +84,16 @@
 		<div class="columns">
 			<div class="column">
 				<p class="title is-2 has-text-weight-bold has-text-corporate">
-					Talento digital, <br>
-					éste es tu lugar
+					<%= t('home_index.first_section_text_1') %>, <br>
+					<%= t('home_index.first_section_text_2') %>
 				</p>
 				<p class="is-size-5 mb3 has-text-weight-bold">
-					Sólo empleos tecnológicos. <br>
-					Recién salidos del horno.
+					<%= t('home_index.first_section_text_3') %> <br>
+					<%= t('home_index.first_section_text_4') %>
 				</p>
 				<p>
-					En We Are Hiring agrupamos y damos <br>
-					visibilidad a los Jobs digitales más recientes.
+					<%= t('home_index.first_section_text_5') %> <br>
+					<%= t('home_index.first_section_text_6') %>
 				</p>
 				<p class="mt3">
 					<%= link_to how_it_works_talent_path, class: 'button is-rounded shadow' do %>
@@ -120,14 +120,14 @@
 			</div>
 			<div class="column">
 				<p class="title is-2 has-text-weight-bold has-text-corporate">
-					Tu comunidad digital-tech
+          <%= t('home_index.second_section_text_1') %>
 				</p>
 				<p class="is-size-5 mb3 has-text-weight-bold">
-					Crece con WAH Community
+					<%= t('home_index.second_section_text_2') %>
 				</p>
 				<p>
-					Una comunidad exclusiva donde conectaras con los mejores profesionales de tu sector. <br>
-					Mentoring, Learning, Networking o el simple placer de compartir con otros.
+					<%= t('home_index.second_section_text_3') %> <br>
+					<%= t('home_index.second_section_text_4') %>
 				</p>
 			</div>
       <div class="column is-hidden-desktop mt4">
@@ -143,7 +143,7 @@
 <section class="section section-bg-gray pv6">
 	<div class="container">
 		<p class="title is-2 has-text-weight-bold has-text-corporate has-text-centered">
-			¡Flechazos en We Are Hiring!
+      <%= t('home_index.people_heading') %>
 		</p>
 		<div class="columns mt4">
 			<div class="column">
@@ -164,7 +164,7 @@
 							</div>
 						</div>
 						<div class="content">
-							"Buscaba el reto de trabajar en una startup como desarrollador de software y gracias a We Are Hiring conocí a Emogg."
+							<%= t('home_index.people_1') %>
 						</div>
 					</div>
 				</div>
@@ -187,7 +187,7 @@
 							</div>
 						</div>
 						<div class="content">
-							"Nunca imaginé dar este salto profesional de una manera tan rápida, sencilla y transparente ¡Fue surrealista!"
+							<%= t('home_index.people_2') %>
 						</div>
 					</div>
 				</div>
@@ -210,7 +210,7 @@
 							</div>
 						</div>
 						<div class="content">
-							"Cuesta encontrar páginas especializadas y que agrupen de una manera tan directa ofertas digitales."
+							<%= t('home_index.people_3') %>
 						</div>
 					</div>
 				</div>
@@ -219,7 +219,7 @@
 	</div>
   <div class="columns mt5">
     <div class="column has-text-centered">
-      <%= link_to "Únete a We Are Hiring", new_user_registration_path, class: 'button is-rounded primary is-large shadow' %>
+      <%= link_to t('join_we_are_hiring'), new_user_registration_path, class: 'button is-rounded primary is-large shadow' %>
     </div>
   </div>
 </section>
@@ -232,10 +232,10 @@
 		<div class="columns">
 			<div class="column">
 				<p class="title is-2 has-text-weight-bold has-text-corporate">
-					¡BOOST! para tus Jobs
+					<%= t('home_index.third_section_text_1') %>
 				</p>
 				<p>
-					We Are Hiring es el altavoz que le falta a tus Jobs para llegar al talento que buscas.
+					<%= t('home_index.third_section_text_2') %>
 				</p>
 			</div>
 			<div class="column">
@@ -256,13 +256,13 @@
 			</div>
 			<div class="column">
 				<p class="title is-2 has-text-weight-bold has-text-corporate">
-					En 3 pasos
+					<%= t('home_index.fourth_section_text_1') %>
 				</p>
 				<p class="is-size-5 mb3 has-text-weight-bold">
-					Publicar. Recibir. Contratar.
+					<%= t('home_index.fourth_section_text_2') %>
 				</p>
 				<p>
-					Tan fácil como esto. ¿Quieres saber más sobre cómo funciona nuestro digital talent place?
+					<%= t('home_index.fourth_section_text_3') %>
 				</p>
 				<p class="mt3">
         	<%= link_to how_it_works_companies_path, class: 'button is-rounded is-dark shadow' do %>
@@ -284,7 +284,7 @@
 	<div class="container">
 		<div class="columns">
 			<div class="column has-text-centered">
-				<p class="title is-2 has-text-corporate"> Nuestros partners </p>
+				<p class="title is-2 has-text-corporate"> <%= t('home_index.our_partners') %> </p>
 			</div>
 		</div>
 		<div class="box mt4 pv5">
@@ -355,15 +355,15 @@
 	<div class="container is-max-widescreen">
   	<div class="columns">
 			<div class="column has-text-centered">
-				<p class="title is-2 has-text-corporate"> Empieza ahora </p>
+				<p class="title is-2 has-text-corporate"> <%= t('home_index.start_now') %> </p>
 			</div>
 		</div>
     <div class="columns mt3">
       <div class="column has-text-right-desktop has-text-centered-touch">
-        <%= link_to "Soy el talento", new_user_registration_path, class: 'button is-rounded primary is-large shadow' %>
+        <%= link_to t('im_talent'), new_user_registration_path, class: 'button is-rounded primary is-large shadow' %>
       </div>
       <div class="column has-text-centered-touch">
-        <%= link_to "Busco talento", new_company_registration_path, class: 'button is-rounded is-dark is-large shadow' %>
+        <%= link_to t('search_talent'), new_company_registration_path, class: 'button is-rounded is-dark is-large shadow' %>
       </div>
     </div>
   </div>

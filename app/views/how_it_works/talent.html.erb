@@ -6,11 +6,11 @@
 		<div class="columns">
 			<div class="column">
 				<p class="title is-2 has-text-weight-bold has-text-corporate">
-					Éste es tu lugar
+					<%= content_tag(:span, t('home_index.first_section_text_2').capitalize) %>
 				</p>
 				<p>
-          Únete a la comunidad digital más activa del momento y <br>
-          accede a oportunidades de trabajo dentro del ecosistema tecnológico que encajen contigo.
+          <%= t('talent_index.first_section_text_1') %> <br>
+          <%= t('talent_index.first_section_text_2') %>
 				</p>
 				<p class="mt4">
 					<%= link_to t('create_account'), new_user_registration_path, class: 'button is-rounded primary shadow' %>
@@ -41,12 +41,12 @@
 					Digital talent place
 				</p>
 				<p class="is-size-5 mb3 has-text-weight-bold">
-					Sólo empleos tecnológicos. <br>
-					Recién salidos del horno.
+					<%= t('home_index.first_section_text_3') %> <br>
+					<%= t('home_index.first_section_text_4') %>
 				</p>
 				<p>
-					En We Are Hiring agrupamos y damos <br>
-					visibilidad a los Jobs digitales más recientes.
+					<%= t('home_index.first_section_text_5') %> <br>
+					<%= t('home_index.first_section_text_6') %>
 				</p>
 			</div>
       <div class="column is-hidden-desktop">
@@ -66,11 +66,11 @@
 					We Match
 				</p>
 				<p class="is-size-5 mb3 has-text-weight-bold">
-					Haz que el trabajo venga a ti. <br>
-					Multiplica x10 tu visibilidad.
+					<%= t('talent_index.third_section_text_1') %> <br>
+					<%= t('talent_index.third_section_text_2') %>
 				</p>
 				<p>
-					Activa We Match y las empresas podrán encontrar tu perfil por tus requerimientos.
+					<%= t('talent_index.third_section_text_3') %>
 				</p>
 			</div>
 			<div class="column">
@@ -90,14 +90,14 @@
 			</div>
 			<div class="column">
 				<p class="title is-2 has-text-weight-bold has-text-corporate">
-					Toda una comunidad digital para ti
+          <%= t('talent_index.fourth_section_text_1') %>
 				</p>
 				<p class="is-size-5 mb3 has-text-weight-bold">
-					Crece con la WAH Community
+          <%= t('talent_index.fourth_section_text_2') %>
 				</p>
 				<p>
-					Una comunidad exclusiva donde conectaras con los mejores profesionales de tu sector. <br>
-					Mentoring, Learning, Networking o el simple placer de compartir con otros.
+          <%= t('talent_index.fourth_section_text_3') %> <br>
+          <%= t('talent_index.fourth_section_text_4') %>
 				</p>
 				<p class="mt4">
 					<%= link_to "https://discord.gg/feMXMacM9w", class: 'button is-rounded shadow' do %>
@@ -117,7 +117,7 @@
 <section class="section section-bg-gray pv6">
 	<div class="container">
 		<p class="title is-2 has-text-weight-bold has-text-corporate has-text-centered">
-			Estos sí que hicieron match
+			<%= t('home_index.people_heading_2') %>
 		</p>
 		<div class="columns mt4">
 			<div class="column">
@@ -138,7 +138,7 @@
 							</div>
 						</div>
 						<div class="content">
-							"Buscaba el reto de trabajar en una startup como desarrollador de software y gracias a We Are Hiring conocí a Emogg."
+							<%= t('home_index.people_1') %>
 						</div>
 					</div>
 				</div>
@@ -161,7 +161,7 @@
 							</div>
 						</div>
 						<div class="content">
-							"Nunca imaginé dar este salto profesional de una manera tan rápida, sencilla y transparente ¡Fue surrealista!"
+							<%= t('home_index.people_2') %>
 						</div>
 					</div>
 				</div>
@@ -184,7 +184,7 @@
 							</div>
 						</div>
 						<div class="content">
-							"Cuesta encontrar páginas especializadas y que agrupen de una manera tan directa ofertas digitales."
+							<%= t('home_index.people_3') %>
 						</div>
 					</div>
 				</div>
@@ -193,7 +193,7 @@
 	</div>
   <div class="columns mt5">
     <div class="column has-text-centered">
-      <%= link_to "Únete a We Are Hiring", new_user_registration_path, class: 'button is-rounded primary is-large shadow' %>
+      <%= link_to t('join_we_are_hiring'), new_user_registration_path, class: 'button is-rounded primary is-large shadow' %>
     </div>
   </div>
 </section>
@@ -205,13 +205,13 @@
 		<div class="columns">
 			<div class="column has-text-centered">
 				<p class="title is-2 has-text-weight-bold has-text-corporate">
-					Estamos a tu disposición
+					<%= t('talent_index.fifth_section_text_1') %>
 				</p>
 				<p class="is-size-5 mb3 has-text-weight-bold">
-					Fácil. Sin letra pequeña. Sin Spam.
+					<%= t('talent_index.fifth_section_text_2') %>
 				</p>
 				<p>
-					Nuestro objetivo es que crezcas como profesional más allá del portal.
+					<%= t('talent_index.fifth_section_text_3') %>
 				</p>
 				<img src="<%=asset_path('undraw_powerful.svg')%>" width="400" height="400" class="is-blank mt5" alt="Crear cuenta empresa y publicar empleo digital | Wearehiring.io">
 			</div>

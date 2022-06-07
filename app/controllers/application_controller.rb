@@ -2,7 +2,15 @@
 
 class ApplicationController < ActionController::Base
   include ResponseHelper
+  before_action :set_locale
   protect_from_forgery with: :exception
+
+  ALLOWED_LOCALES = %w( en es ).freeze
+  DEFAULT_LOCALE = 'en'.freeze
+
+  def set_locale
+    I18n.locale = extract_locale_from_headers
+  end
 
   # def validate_is_candidate!
   # def validate_is_company!
@@ -55,5 +63,14 @@ class ApplicationController < ActionController::Base
 
     rescue ActiveRecord::RecordNotFound
       redirect_to not_found_url
+  end
+
+  def extract_locale_from_headers
+    browser_locale = request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+    if ALLOWED_LOCALES.include?(browser_locale)
+      browser_locale
+    else
+      DEFAULT_LOCALE
+    end
   end
 end

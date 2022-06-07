@@ -23,13 +23,13 @@
       <% end if inscription.user.profile_url.present? %> 
     </div>
     <div class="column is-4">
-      <span class="has-text-weight-bold"> Cargo actual: </span> <%= inscription.user.current_position.present? ? inscription.user.current_position : content_tag(:span, 'Sin especificar', class: 'has-text-grey-lighter') %> <br>
-      <span class="has-text-weight-bold"> Experiencia: </span> <%= inscription.user.experience.present? ? inscription.user.experience : content_tag(:span, 'Sin especificar', class: 'has-text-grey-lighter') %> <br>
-      <span class="has-text-weight-bold"> Residencia: </span> <%= inscription.user.location.present? ? inscription.user.location : content_tag(:span, 'Sin especificar', class: 'has-text-grey-lighter') %>
+      <span class="has-text-weight-bold"> <%= t('inscriptions.current_job') %>: </span> <%= inscription.user.current_position.present? ? inscription.user.current_position : content_tag(:span, 'Sin especificar', class: 'has-text-grey-lighter') %> <br>
+      <span class="has-text-weight-bold"> <%= t('inscriptions.experience') %>: </span> <%= inscription.user.experience.present? ? inscription.user.experience : content_tag(:span, 'Sin especificar', class: 'has-text-grey-lighter') %> <br>
+      <span class="has-text-weight-bold"> <%= t('inscriptions.location') %>: </span> <%= inscription.user.location.present? ? inscription.user.location : content_tag(:span, 'Sin especificar', class: 'has-text-grey-lighter') %>
     </div>
     <div class="column is-1">
       <%= link_to companies_job_inscription_path(inscription.job_id, inscription.id), target: "_blank", class: 'button' do %>
-        <%= icon('fas', 'address-card', class: 'mr2') %> Ver perfil <br>
+        <%= icon('fas', 'address-card', class: 'mr2') %> <%= t('view_profile') %> <br>
       <% end %>
     </div>
     <div class="column is-2 has-text-right">
@@ -46,7 +46,7 @@
 </div>
 
 <div class="notification is-success is-light has-text-centered" id="notification-<%= inscription.id %>" style="position: fixed; z-index: 99999; margin-left: auto; margin-right: auto; left: 25%; right: 25%; top: 65px; display: none;">
-  Candidato actualizado y notificado vía correo electrónico
+  <%= t('candidate_updated_notified') %>
 </div>
 
 <%= content_for :footer do %>

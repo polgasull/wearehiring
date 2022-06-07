@@ -9,8 +9,8 @@
 
       <article class="message is-info">
         <div class="message-body has-text-left">
-          Estos candidatos encajan con la oferta de empleo que has publicado. <br>
-          Puedes añadirlos y contactarles para tu proceso de selección.        
+          <%= t('we_match_info_text_1') %> <br>
+          <%= t('we_match_info_text_2') %>       
         </div>
       </article>
 
@@ -45,7 +45,7 @@
       <div>
         <% if matching_candidates.any? %>
           <p class="mb3 subtitle is-5 has-text-weight-bold">
-            <%= icon('fas', 'gem has-text-info') %> ¡Genial! <%= matching_candidates.count %> candidatos extra encontrados
+            <%= icon('fas', 'gem has-text-info') %> ¡Genial! <%= matching_candidates.count %> <%= t('we_match_info_text_3') %>
           </p>
           <div id="we-match-results">
             <% matching_candidates.each do |user| %>
@@ -58,7 +58,7 @@
             <p class="mb2">
               <%= icon('fas', 'user-ninja', class: 'is-size-2') %>
             </p>
-            <small> Actualmente no hay perfiles abiertos a ser contactados en nuestra base de datos para estos requisitos </small>
+            <small> <%= t('we_match_info_text_5') %> </small>
           </div>
         <% end %>
       </div>

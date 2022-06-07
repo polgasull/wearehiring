@@ -15,7 +15,7 @@
         <strong> <%= job_inscriptions_counter(job) %> </strong>
       </div>
       <div class="column is-3">
-        Días restantes: <strong> <%= job_expired(job) %> </strong> <br>
+        <%= t('remaining_days_short') %>: <strong> <%= job_expired(job) %> </strong> <br>
         Ref: <small> <%= job.reference %> </small>
       </div>
     </div>
