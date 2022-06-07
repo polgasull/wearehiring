@@ -239,6 +239,27 @@
   <hr>
 
   <div class="columns">
+    <div class="column is-one-third-desktop">
+      <div class="field">
+        <div class="control">
+          <label class="label"> 
+            <abbr title="required">*</abbr>
+            Tipo de Publicación
+          </label>
+          <div class="control has-icons-left">
+            <span class="select">
+              <%= f.input_field :job_price_id, collection: JobPrice.all, promt: "Select Job Price Type", required: true %>
+            </span>
+            <span class="icon is-small is-left">
+              <%= icon('fas', 'money') %>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="columns">
     <div class="column">
       <div class="field">
         <div class="control">
