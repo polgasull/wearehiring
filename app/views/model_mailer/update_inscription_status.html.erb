@@ -15,16 +15,16 @@
                 <tr>
                   <td>
                     <h2> <strong> <strong> Hola, <%= @inscription.user.name %> </strong> </strong> </h2>
-                    <% if @inscription.status === "discarded" %>
+                    <% if @inscription.discarded? %>
                       <h3> ¡No dejes de intentarlo! </h3>
                       <p> Lo sentimos, has sido descartado para el proceso de <%= @job.title %> con <%= @job.job_author %> </p>
                     <% end %>
-                    <% if @inscription.status === "in_process" %>
+                    <% if @inscription.in_process? %>
                       <h3> ¡Tu perfil ha generado interés! </h3>
                       <p> Estás dentro del proceso de selección para el puesto de <%= @job.title %> </p>
                       <p> Pronto alguien de <%= @job.job_author %> se pondrá en contacto contigo para darte más instrucciones </p>
                     <% end %>
-                    <% if @inscription.status === "finalist" %>
+                    <% if @inscription.finalist? %>
                       <h3> ¡Estás a un solo paso! </h3>
                       <p> Eres finalista para el puesto de <%= @job.title %> </p>
                       <p> Pronto alguien de <%= @job.job_author %> se pondrá en contacto contigo para darte más instrucciones </p>
