@@ -11,9 +11,6 @@ Sitemap: https://www.wearehiring.io/sitemap.xml
   Disallow: /inscriptions*
   Disallow: /inscriptions/*
   Disallow: /legal/*
-  <% @inactive_jobs.each do |job| %>
-  Disallow: <%= job_url(job) %>
-  <% end %>
 <% else %>
   User-Agent: *
   Noindex: /*
