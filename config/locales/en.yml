@@ -401,7 +401,7 @@ en:
     hints:
       defaults:
         username: 'User name to sign in.'
-        password: 'Minimum 6 digits, please.'
+        password: 'Minimum 8 digits, please.'
     placeholders:
       defaults:
         email: 'youremail@example.com'

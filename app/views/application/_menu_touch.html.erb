@@ -47,6 +47,10 @@
           <span> <%= t('profile') %> </span>
         <% end %>
       </div>
+      <hr />
+      <div class="navbar-brand">
+        <%= link_to t('logout'), destroy_user_session_path, method: :delete, class: "navbar-item" %>
+      </div>
     <% end %>
     <% if current_user.is_company? %>
       <div class="navbar-brand">
