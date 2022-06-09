@@ -58,6 +58,7 @@
                 </ul>
               </div>
               <%= simple_form_for(resource, as: resource_name, url: company_registration_path) do |f| %>
+                <%= invisible_captcha %>
                 <%= f.error_notification %>
                 <%= f.hidden_field :user_type_id, value: UserType.where(internal_name: 'company').first.id %>
                 <%= f.hidden_field :accepted_terms, value: true %>
