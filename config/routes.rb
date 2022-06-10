@@ -32,7 +32,7 @@ Rails.application.routes.draw do
       resources :inscriptions, only: [:create]
     end
     resources :inscriptions, only: [:index]
-    resources :user_profiles, only: [:update]
+    resources :user_profiles, only: [:show, :update]
   end
 
   resources :jobs, path: 'ofertas-empleo-digital', only: [:index, :show] do

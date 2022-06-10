@@ -1,0 +1,156 @@
+<div class="section">
+  <div class="container">
+    <div class="columns is-vcentered mb3">
+      <div class="column has-text-left">
+        <h2 class="title is-4"> <%= t('this_how_companies_see_you') %> </h2>
+      </div>
+      <div class="column has-text-right">
+        <%= link_to edit_user_registration_path, class: 'button' do %>
+          <%= icon('fas', 'edit', class: 'mr2') %> <%= t('edit_profile') %>
+        <% end %>
+      </div>
+    </div>
+    <div class="box">
+      <div class="columns pa3">
+        <div class="column is-2 is-vertical-center">
+          <div class="rounded-image m-auto size-120">
+            <% if current_user.picture_url.file.nil? %>
+              <%= image_tag(asset_path('user_male_avatar.svg')) %>
+            <% else %>
+              <%= image_tag(current_user.picture_url_url(:thumb), alt: "Imagen perfil usuario | Wearehiring.io") %>
+            <% end %>
+          </div>
+        </div>
+        <div class="column is-4 with-right-border is-flex is-flex-direction-column is-justify-content-space-between">
+          <p class="is-size-3 has-text-weight-bold"> <%= current_user.name %> </p>
+          <p> <%= current_user.current_position %> </p>
+          <p> <%= icon('fas', 'phone') %> <%= current_user.phone %> </p>
+          <div class="is-flex">
+            <%= mail_to current_user.email, class: 'button width-150 mr3 mt3' do %>
+              <span>Contactar</span> <%= icon('far', 'paper-plane ml2') %> 
+            <% end %>
+            <%= link_to current_user.profile_url, target: "_blank", class: 'button linkedin width-50 mt3' do %>
+              <%= icon('fab', 'linkedin') %>
+            <% end %>
+          </div>
+        </div>
+        <div class="column is-6 pl4">
+          <div class="columns">
+            <div class="column">
+              <div>
+                <%= content_tag(:span, 'Lugar de residencia habitual', class: 'has-text-weight-bold') %>:
+              </div>
+              <div class="mt2">
+                <%= content_tag(:span, 'Años de experiencia', class: 'has-text-weight-bold') %>:
+              </div>
+              <div class="mt2">
+                <%= content_tag(:span, t('users.salary_expectation'), class: 'has-text-weight-bold') %>:
+              </div>
+            </div>
+            <div class="column">
+              <div>
+                <%= current_user.location.present? ? content_tag(:span, current_user.location) : content_tag(:span, 'Ciudad/País', class: 'has-text-grey-lighter') %>
+              </div>
+              <div class="mt2">
+                <%= current_user.experience.present? ? content_tag(:span, current_user.experience) : content_tag(:span, 'X años', class: 'has-text-grey-lighter') %>
+              </div>
+              <div class="mt2">
+                <% if current_user.salary_from.present? && current_user.salary_to.present? %>
+                  <%= content_tag(:span, "#{current_user.salary_from} €") %> - <%= content_tag(:span, "#{current_user.salary_to} €") %>
+                <% else %>
+                  <%= content_tag(:span, "XXXXX €", class: 'has-text-grey-lighter') %> - <%= content_tag(:span, "XXXXX €", class: 'has-text-grey-lighter') %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div>
+            <% if current_user.skills.any? %>
+              <% current_user.skills.each do |skill| %>
+                <span class='tag is-success is-normal'> <%= skill.name %> </span>
+              <% end %>  
+            <% end %>
+          </div>
+        </div> 
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section pt2">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-3">
+        <div class="box">
+          <p class="is-size-5 has-text-weight-bold"> Portfolio </p>
+          <%= content_tag(:div, class: 'mt3') do %>
+            <%= icon('fab', 'github mr2') %>
+            <%= current_user.github.present? ? link_to('Github', current_user.github) : content_tag(:span, 'github/profile', class: 'has-text-grey-lighter') %>
+          <% end %>
+
+          <%= content_tag(:div, class: 'mt2') do %>
+            <%= icon('fab', 'pinterest mr2') %>
+            <%= current_user.pinterest.present? ? link_to('Pinterest', current_user.pinterest) : content_tag(:span, 'pinterest/profile', class: 'has-text-grey-lighter') %>
+          <% end %>
+
+          <%= content_tag(:div, class: 'mt2') do %>
+            <%= icon('fab', 'behance-square mr2') %>
+            <%= current_user.behance.present? ? link_to('Behance', current_user.behance) : content_tag(:span, 'behance/profile', class: 'has-text-grey-lighter') %>
+          <% end %>
+
+          <%= content_tag(:div, class: 'mt2') do %>
+            <%= icon('fas', 'globe mr2') %>
+            <%= current_user.personal_website.present? ? link_to('Personal Website', current_user.personal_website) : content_tag(:span, 'https://personalwebsite.com', class: 'has-text-grey-lighter') %>
+          <% end %>
+        </div>
+      </div>
+      <div class="column is-6">
+        <div class="box">
+          <p class="is-size-5 has-text-weight-bold"> About </p>
+          <% if current_user.description.present? %>
+            <%= content_tag(:p, simple_format(current_user.description), class: 'mt3') %>
+          <% else %>
+            <p class="has-text-grey-lighter mt3 is-vertical-center is-justify-content-center" style="height: 300px">
+              Sin descripción
+            </p>          
+          <% end %>
+        </div>
+      </div>
+      <div class="column is-3">
+        <div class="box">
+          <% if current_user.visible? %>
+            <%= icon('fas', 'rocket', class: 'mr2') %> We Match <span class="tag is-success is-light"> <%= t('we_match.active') %> </span>
+          <% else %>
+            <%= icon('fas', 'rocket', class: 'mr2') %> We Match <span class="tag is-danger is-light"> <%= t('we_match.inactive') %> </span>
+          <% end %>
+        </div>
+        <p class="is-size-5 has-text-weight-bold"> Mis inscripciones </p>
+        <hr>
+        <% @inscriptions.each do |inscription| %>
+          <div class="columns">
+            <div class="column is-3 is-vertical-center">
+              <div class="rounded-image m-auto size-50">
+                <% if inscription.job.avatar.file.nil? %>
+                  <%= image_tag(asset_path('applicants_logo.svg')) %>
+                <% else %>
+                  <%= image_tag(inscription.job.avatar_url(:thumb), alt: "Imagen perfil usuario | Wearehiring.io") %>
+                <% end %>
+              </div>
+            </div>
+            <div class="column">
+              <div class="">
+                <p> <%= inscription.job.title %> </p>
+                <p> <%= inscription.job.job_author %> </p>
+                <p> <%= link_to t('view_job'), job_path(inscription.job_id) %> </p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        <div class="has-text-centered">
+          <%= link_to candidates_inscriptions_path(current_user), class: 'button' do %>
+            <%= t('inscriptions.show_all') %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

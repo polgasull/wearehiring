@@ -498,6 +498,7 @@ es:
   download_candidates_excel: "Descargar candidatos en Excel"
   download_users_excel: "Descargar usuarios en Excel"
   view_profile: "Ver perfil"
+  edit_profile: "Editar perfil"
   show_post: "Ver publicación"
   last_jobs: "Últimos empleos digitales"
   last_blog_posts: "Últimos Posts"
@@ -761,3 +762,10 @@ es:
   we_match_info_text_4: "encontrados"
   we_match_info_text_5: "Actualmente no hay perfiles abiertos a ser contactados en nuestra base de datos para estos requisitos"
   show_job_post: "Ver publicación"
+  jobs_index:
+    title_part_1: "Ver todas las ofertas de"
+    title_part_2: "Empleo digital"
+  we_match:
+    active: "Activo"
+    inactive: "Inactivo"
+  this_how_companies_see_you: "Así es como te ven las empresas"

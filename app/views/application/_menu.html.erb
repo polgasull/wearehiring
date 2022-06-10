@@ -75,8 +75,8 @@
 						class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(candidates_inscriptions_path(current_user))}" %>
 			</div>
 			<div class="navbar-item">
-				<%= link_to edit_user_registration_path, 
-							class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(edit_user_registration_path) }" do %> 
+				<%= link_to candidates_user_profile_path(current_user), 
+							class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(candidates_user_profile_path(current_user)) }" do %> 
 					<% if current_user.picture_url.file.nil? %>
 						<%= icon('far', 'user-circle mr1') %>
 					<% else %>

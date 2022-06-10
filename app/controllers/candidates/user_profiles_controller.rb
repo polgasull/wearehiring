@@ -4,6 +4,12 @@ module Candidates
   class UserProfilesController < Candidates::CandidatesController
     include InscriptionsHelper
 
+    def show
+      return redirect_to_response(t('not_found'), root_path, false) unless current_user
+
+      @inscriptions = current_user.inscriptions.take(10)
+    end
+
     def update
       if current_user.update(user_params)
         if params[:job_id]

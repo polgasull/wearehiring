@@ -494,6 +494,7 @@ en:
   download_candidates_excel: "Download inscribeds to Excel"
   download_users_excel: "Download users to Excel"
   view_profile: "View profile"
+  edit_profile: "Edit profile"
   show_post: "Show post"
   last_jobs: "Last digital jobs"
   last_blog_posts: "Last Posts"
@@ -755,3 +756,11 @@ en:
   we_match_info_text_4: "found"
   we_match_info_text_5: "Currently there are no open profiles to be contacted in our database for these requirements"
   show_job_post: "Show job post"
+  jobs_index:
+    title_part_1: "Show all"
+    title_part_2: "Digital tech offers"
+  we_match:
+    active: "Active"
+    inactive: "Inactive"
+  this_how_companies_see_you: "This is how companies see you"
+  
