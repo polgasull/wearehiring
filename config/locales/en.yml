@@ -762,5 +762,13 @@ en:
   we_match:
     active: "Active"
     inactive: "Inactive"
+    info_text_1: "Our matching system"
+    info_text_2: "Your profile will be proposed to companies that post Jobs and meet your requirements."
+    info_text_3: "You can apply on your own or wait for companies to add you to their selection processes."
+    info_text_4: "The more you complete your profile, the more chances to Match!"
+    info_text_5: "Don't look for a job, make the job come to you!"
+    deactivate: "Deactivate We Match"
+    deactivate_info_message: "By deactivating We Match, you will still be able to apply on your own, but our matching system will no longer propose your profile to companies that post Jobs and meet your requirements."
   this_how_companies_see_you: "This is how companies see you"
+  contact: "Contact"
   

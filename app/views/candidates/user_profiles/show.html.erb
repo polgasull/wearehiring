@@ -27,7 +27,7 @@
           <p> <%= icon('fas', 'phone') %> <%= current_user.phone %> </p>
           <div class="is-flex">
             <%= mail_to current_user.email, class: 'button width-150 mr3 mt3' do %>
-              <span>Contactar</span> <%= icon('far', 'paper-plane ml2') %> 
+              <span><%= t('contact') %></span> <%= icon('far', 'paper-plane ml2') %> 
             <% end %>
             <%= link_to current_user.profile_url, target: "_blank", class: 'button linkedin width-50 mt3' do %>
               <%= icon('fab', 'linkedin') %>
@@ -122,33 +122,16 @@
           <% else %>
             <%= icon('fas', 'rocket', class: 'mr2') %> We Match <span class="tag is-danger is-light"> <%= t('we_match.inactive') %> </span>
           <% end %>
-        </div>
-        <p class="is-size-5 has-text-weight-bold"> Mis inscripciones </p>
-        <hr>
-        <% @inscriptions.each do |inscription| %>
-          <div class="columns">
-            <div class="column is-3 is-vertical-center">
-              <div class="rounded-image m-auto size-50">
-                <% if inscription.job.avatar.file.nil? %>
-                  <%= image_tag(asset_path('applicants_logo.svg')) %>
-                <% else %>
-                  <%= image_tag(inscription.job.avatar_url(:thumb), alt: "Imagen perfil usuario | Wearehiring.io") %>
-                <% end %>
+          <article class="message is-success mb3 mt3">
+            <div class="message-body">
+              <div>
+                <strong> <%= t('we_match.info_text_1') %> </strong> <%= t('we_match.info_text_2').downcase %>
+                <p class="mt2"> <%= t('we_match.info_text_3') %> <%= icon('far','smile-wink') %> </p>
+                <p class="mt2"><strong> <%= t('we_match.info_text_4') %> </strong> </p>
+                <p class="mt2"> <%= t('we_match.info_text_5') %> </p>
               </div>
             </div>
-            <div class="column">
-              <div class="">
-                <p> <%= inscription.job.title %> </p>
-                <p> <%= inscription.job.job_author %> </p>
-                <p> <%= link_to t('view_job'), job_path(inscription.job_id) %> </p>
-              </div>
-            </div>
-          </div>
-        <% end %>
-        <div class="has-text-centered">
-          <%= link_to candidates_inscriptions_path(current_user), class: 'button' do %>
-            <%= t('inscriptions.show_all') %>
-          <% end %>
+          </article>
         </div>
       </div>
     </div>

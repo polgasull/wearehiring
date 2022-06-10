@@ -294,10 +294,10 @@
           <article class="message is-success mb3 mt3">
             <div class="message-body">
               <div>
-                <strong> Nuestro sistema de matching </strong> propondrá tu perfil a las empresas que publiquen Jobs y cumplan tus requisitos.
-                <p class="mt2"> Puedes aplicar por tu cuenta o esperar a que las empresas te añadan a sus procesos de selección. <%= icon('far','smile-wink')%> </p>
-                <p class="mt2"><strong> Cuanto más completes tu perfil, más posibilidades de ¡Match! </strong> </p>
-                <p class="mt2"> ¡No busques trabajo, haz que el trabajo venga a ti! </p>
+                <strong> <%= t('we_match.info_text_1') %> </strong> <%= t('we_match.info_text_2').downcase %>
+                <p class="mt2"> <%= t('we_match.info_text_3') %> <%= icon('far','smile-wink') %> </p>
+                <p class="mt2"><strong> <%= t('we_match.info_text_4') %> </strong> </p>
+                <p class="mt2"> <%= t('we_match.info_text_5') %> </p>
               </div>
             </div>
           </article>
@@ -305,10 +305,10 @@
           <div>
             <%= f.check_box :visible, { class: "switch" }, false, true %>
             <%= f.label :visible do %>
-              <strong> Desactivar We Match </strong>
+              <strong> <%= t('we_match.deactivate') %> </strong>
             <% end %>
           </div>
-          <small class="mt2"> Al desactivar We Match, podrás seguir aplicando por tu cuenta, pero nuestro sistema de matching ya no propondrá tu perfil a las empresas que publiquen Jobs y cumplan tus requisitos. </small>
+          <small class="mt2"> <%= t('we_match.deactivate_info_message') %> </small>
           <div class="columns mt3">
             <div class="column has-text-right">
               <%= f.button :submit, t('save'), class:"button is-success" %>
