@@ -1,5 +1,22 @@
 <div class="section">
   <div class="container">
+    <div class="columns is-vcentered mb3">
+      <div class="column has-text-left">
+        <article class="message is-warning">
+          <div class="message-header">
+            <p>Estás como admin</p>
+          </div>
+          <div class="message-body">
+            Así es como las empresas ven a los candidatos
+          </div>
+        </article>
+      </div>
+      <div class="column has-text-right">
+        <%= link_to edit_admins_user_path(@user.id), class: 'button' do %>
+          <%= icon('fas', 'edit', class: 'mr2') %> <%= t('edit_profile') %>
+        <% end %>
+      </div>
+    </div>
     <div class="box">
       <div class="columns pa3">
         <div class="column is-2 is-vertical-center">
@@ -99,17 +116,41 @@
           <% if @user.description.present? %>
             <%= content_tag(:p, simple_format(@user.description), class: 'mt3') %>
           <% else %>
-            <p class="has-text-grey-lighter mt3">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut erat nec dui luctus laoreet. Curabitur ac odio nec orci varius finibus. Praesent in sapien arcu. Phasellus laoreet ultrices eros in dignissim. Aliquam porta varius augue, sit amet finibus ex gravida quis. Ut non pretium lacus. Praesent quis est non est facilisis tristique. Aenean euismod bibendum velit non semper. Nam maximus ipsum sed tellus posuere, eget pulvinar risus feugiat. Sed tristique vehicula nibh et luctus. Praesent ornare quis nisl ac viverra. 
-              <br><br>
-              Aliquam convallis odio ut nunc viverra sodales. Pellentesque molestie enim at dui maximus, nec eleifend lorem tempus. Proin ex urna, rhoncus ut erat ac, blandit gravida mauris. Praesent auctor est vitae ipsum sodales sodales. Etiam neque ante, lobortis quis dolor et, mollis finibus metus. Vivamus cursus dictum lectus non feugiat. Sed interdum ligula sit amet pretium dignissim. Suspendisse eleifend porttitor tincidunt.
+            <p class="has-text-grey-lighter mt3 is-vertical-center is-justify-content-center" style="height: 300px">
+              Sin descripción
             </p>
           <% end %>
         </div>
       </div>
       <div class="column is-3">
-        <p class="is-size-5 has-text-weight-bold"> Acciones </p>
+        <p class="is-size-5 has-text-weight-bold"> Inscripciones </p>
         <hr>
+        <% @user.inscriptions.each do |inscription| %>
+          <div class="columns">
+            <div class="column is-3 is-vertical-center">
+              <div class="rounded-image m-auto size-50">
+                <% if inscription.job.avatar.file.nil? %>
+                  <%= image_tag(asset_path('user_male_avatar.svg')) %>
+                <% else %>
+                  <%= image_tag(inscription.job.avatar_url(:thumb), alt: "Imagen perfil usuario | Wearehiring.io") %>
+                <% end %>
+              </div>
+            </div>
+            <div class="column">
+              <div class="">
+                <p> <%= inscription.job.job_author %> </p>
+                <p> <%= inscription.status.present? ? t("inscriptions.#{inscription.status}") : 'Inscrito' %> </p>
+                <p> <%= icon('fas', 'star') if inscription.recommended? %> </p>
+                <p> <%= link_to 'Ver job', admins_job_path(inscription.job.id) %> </p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        <div class="has-text-centered">
+          <%= link_to inscriptions_admins_user_path(@user.id), class: 'button' do %>
+            <%= t('inscriptions.show_all') %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

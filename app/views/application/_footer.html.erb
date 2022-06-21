@@ -6,8 +6,17 @@
           <div>
             <ol>
               <li><%= link_to t('show_jobs'), jobs_path %> </li>
-              <li><%= link_to t('jobs.post_job'), new_companies_job_path %></li>
+              <% unless user_signed_in? %>
+                <li><%= link_to t('pricing'), pricing_path %></li>
+                <li><%= link_to t('for_talent'), how_it_works_talent_path %></li>
+                <li><%= link_to t('for_companies'), how_it_works_companies_path %></li>
+              <% end %>
               <li><%= link_to t('blog'), blog_posts_path %></li>
+              <li>
+              	<%= link_to "https://discord.gg/feMXMacM9w" do %>
+                  Discord <%= icon('fab', 'discord', class: 'ml1') %>
+                <% end %>
+              </li>
             </ol>
           </div>
         </div>
@@ -20,6 +29,9 @@
             <a href="https://twitter.com/WeAreHiring_io" target="_blank">
               <span class="social-icon fab fa-twitter"></span>
             </a>
+            <%= link_to "https://discord.gg/feMXMacM9w" do %>
+              <%= icon('fab', 'discord', class: 'ml1') %>
+            <% end %>
             <div class="mt3">
               <script src="https://platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
               <script type="IN/FollowCompany" data-id="42320977" data-counter="bottom"></script>

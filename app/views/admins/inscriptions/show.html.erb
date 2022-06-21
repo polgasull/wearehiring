@@ -7,6 +7,25 @@
           <%= t('go_back_to_job') %>
         <% end %>
       </div>
+    </div>
+    <div class="columns is-vcentered mb3">
+      <div class="column has-text-left">
+        <article class="message is-warning">
+          <div class="message-header">
+            <p>Estás como admin</p>
+          </div>
+          <div class="message-body">
+            Así es como las empresas ven a los candidatos
+          </div>
+        </article>
+      </div>
+      <div class="column has-text-right">
+        <%= link_to edit_admins_user_path(@user.id), class: 'button' do %>
+          <%= icon('fas', 'edit', class: 'mr2') %> <%= t('edit_profile') %>
+        <% end %>
+      </div>
+    </div>
+    <div class="columns mb3">
       <div class="column is-flex is-align-content-center is-justify-content-flex-end">
         <div class="is-vertical-center">
           <p class="has-text-weight-bold mr2"> <%= t('inscriptions.process_status') %>: </p>

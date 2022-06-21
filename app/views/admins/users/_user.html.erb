@@ -9,26 +9,32 @@
     <% end %>
   </td>
   <td>
-    <%= link_to user.name, admins_user_path(user) %>
+    <% if user.is_candidate? %>
+      <%= link_to user.name, admins_user_path(user) %>
+    <% else %>
+      <%= user.name %>
+    <% end %>
   </td>
   <td>
-    <% if user.is_company? %>
-      <%= user.last_name %>
-    <% end %>
+    <%= f.input :last_name,
+          label: false,
+          input_html: { class: "input f7" },
+          wrapper: false,
+          placeholder: 'P. Contacto' if user.is_company? %>
   <td>
-    <%= f.input :phone, 
-      label: false, 
-      input_html: { class: "input f7" }, 
-      wrapper: false, 
-      placeholder: t('users.phone') if user.is_candidate? %>
+    <%= f.input :phone,
+          label: false,
+          input_html: { class: "input f7" },
+          wrapper: false,
+          placeholder: t('users.phone') %>
   </td>
   <td><%= user.email %></td>
   <td>
-    <%= f.input :profile_url, 
-        label: false, 
-        input_html: { class: "input f7" }, 
-        wrapper: false, 
-        placeholder: t('users.profile_url') if user.is_candidate? %>
+    <%= f.input :profile_url,
+          label: false,
+          input_html: { class: "input f7" },
+          wrapper: false,
+          placeholder: t('users.profile_url') if user.is_candidate? %>
   </td>
   <td>
     <% if user.is_candidate? %>

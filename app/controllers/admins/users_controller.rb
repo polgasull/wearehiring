@@ -2,7 +2,7 @@
 
 module Admins
   class UsersController < Admins::AdminsController
-    before_action :set_user, only: [:update, :inscriptions, :show]
+    before_action :set_user, only: [:update, :inscriptions, :show, :edit]
 
     def index
       @users = User.all.filter_by(params).order('created_at DESC').page(params[:page]).per(30)
@@ -22,9 +22,16 @@ module Admins
       return redirect_to_response(t('not_found'), root_path, false) unless @user
     end
 
+    def edit
+      return redirect_to_response(t('not_found'), root_path, false) unless @user
+    end
+
     def update
       if @user.update(user_params)
+        redirect_back_response(t('users.messages.user_updated'))
+
         respond_to do |format|
+          format.html
           format.js
         end
       else 

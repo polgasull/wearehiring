@@ -2,7 +2,7 @@ wb = xlsx_package.workbook
 
 wb.add_worksheet(name: @job.reference) do |sheet|
   # this is the head row of your spreadsheet
-  sheet.add_row %w(Nombre CargoActual Teléfono Email Linkedin Skills Experience Salary_from Salary_to Github Pinterest Behance Personal_website Status WeMatch)
+  sheet.add_row %w(Nombre CargoActual Teléfono Email Linkedin Skills Experience Salary_from Salary_to Github Pinterest Behance Personal_website Status Recomendado WeMatch)
   
   # each inscription is a row on your spreadsheet
   @inscriptions.each do |inscription|
@@ -21,7 +21,8 @@ wb.add_worksheet(name: @job.reference) do |sheet|
       inscription.user.behance,
       inscription.user.personal_website,
       inscription.status,
-      inscription.user.added_by_company
+      inscription.recommended,
+      inscription.added_by_company
     ]
   end
 end

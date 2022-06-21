@@ -1,11 +1,31 @@
 <section class="section">
   <div class="container">
-    <h1 class="f2"> <%= @user.name %>: <%= @inscriptions_count %> </h1>
+    <h2 class="title f3"> Inscripciones de <%= @user.name %>: <%= @inscriptions_count %> </h2>
+    <p> <%= @user.current_position %> </p>
+    <p> <%= @user.email %> </p>
+    <p> <%= @user.phone %> </p>
+    <p> <%= @user.skills.map(&:name).to_sentence %> </p>
+    <p> <%= link_to 'Linkedin', @user.profile_url %> </p>
   </div>
 </section>
 
-<section class="section">
+<section class="section pb5">
   <div class="container">
-    <%= render partial: 'inscription', collection: @inscriptions, as: :inscription %>
+    <div class="table-container">
+      <table class="table is-striped">
+        <thead> 
+          <tr>
+            <td>Logo</td>
+            <td><%= t('jobs.position') %></td>
+            <td><%= t('jobs.company') %></td>
+            <td> Recomendado </td>
+            <td> Status </td>
+          </tr>
+        </thead>
+        <tbody>
+            <%= render partial: 'inscription', collection: @inscriptions, as: :inscription %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </section>
