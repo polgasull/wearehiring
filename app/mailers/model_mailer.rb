@@ -10,7 +10,7 @@ class ModelMailer < ApplicationMailer
     @user = user
     @job = job
 
-    attachments.inline["wah_red_logo.png"] = File.read("#{Rails.root}/app/assets/images/wah_red_logo.png")
+    attachments.inline["logo_black.png"] = File.read("#{Rails.root}/app/assets/images/logo_black.png")
     attachments.inline["twitter.png"] = File.read("#{Rails.root}/app/assets/images/twitter.png")
     attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
     mail( 
@@ -24,7 +24,7 @@ class ModelMailer < ApplicationMailer
     @job = job
 
     attachments.inline["user_circle.png"] = File.read("#{Rails.root}/app/assets/images/user_circle.png")
-    attachments.inline["wah_red_logo.png"] = File.read("#{Rails.root}/app/assets/images/wah_red_logo.png")
+    attachments.inline["logo_black.png"] = File.read("#{Rails.root}/app/assets/images/logo_black.png")
     attachments.inline["twitter.png"] = File.read("#{Rails.root}/app/assets/images/twitter.png")
     attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
     mail( 
@@ -37,8 +37,9 @@ class ModelMailer < ApplicationMailer
     @user = user
     @job = job
 
-    attachments.inline["wah_red_logo.png"] = File.read("#{Rails.root}/app/assets/images/wah_red_logo.png")
+    attachments.inline["logo_black.png"] = File.read("#{Rails.root}/app/assets/images/logo_black.png")
     attachments.inline["twitter.png"] = File.read("#{Rails.root}/app/assets/images/twitter.png")
+    attachments.inline["discord.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
     attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
     mail( 
       :to => @user.email,
@@ -50,7 +51,7 @@ class ModelMailer < ApplicationMailer
     @user = user
     @job = job
 
-    attachments.inline["wah_red_logo.png"] = File.read("#{Rails.root}/app/assets/images/wah_red_logo.png")
+    attachments.inline["logo_black.png"] = File.read("#{Rails.root}/app/assets/images/logo_black.png")
     attachments.inline["twitter.png"] = File.read("#{Rails.root}/app/assets/images/twitter.png")
     attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
     mail( 
@@ -63,8 +64,9 @@ class ModelMailer < ApplicationMailer
     @inscription = inscription
     @job = job
 
-    attachments.inline["wah_red_logo.png"] = File.read("#{Rails.root}/app/assets/images/wah_red_logo.png")
+    attachments.inline["logo_black.png"] = File.read("#{Rails.root}/app/assets/images/logo_black.png")
     attachments.inline["twitter.png"] = File.read("#{Rails.root}/app/assets/images/twitter.png")
+    attachments.inline["discord.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
     attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
     mail(
       :to => @inscription.user.email,
@@ -75,7 +77,7 @@ class ModelMailer < ApplicationMailer
   def welcome_company(user)
     @user = user
 
-    attachments.inline["wah_red_logo.png"] = File.read("#{Rails.root}/app/assets/images/wah_red_logo.png")
+    attachments.inline["logo_black.png"] = File.read("#{Rails.root}/app/assets/images/logo_black.png")
     attachments.inline["twitter.png"] = File.read("#{Rails.root}/app/assets/images/twitter.png")
     attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
     attachments.inline["WAH_ESCALERA.png"] = File.read("#{Rails.root}/app/assets/images/WAH_ESCALERA.png")
@@ -88,9 +90,10 @@ class ModelMailer < ApplicationMailer
   def welcome_candidate(user)
     @user = user
 
-    attachments.inline["wah_red_logo.png"] = File.read("#{Rails.root}/app/assets/images/wah_red_logo.png")
+    attachments.inline["logo_black.png"] = File.read("#{Rails.root}/app/assets/images/logo_black.png")
     attachments.inline["twitter.png"] = File.read("#{Rails.root}/app/assets/images/twitter.png")
     attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
+    attachments.inline["discord.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
     attachments.inline["sky_is_the_limit.jpg"] = File.read("#{Rails.root}/app/assets/images/sky_is_the_limit.jpg")
     mail( 
       :to => user.email,
