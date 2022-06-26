@@ -54,6 +54,11 @@
           </div>
         </div>
         <div class="column is-4 with-right-border is-flex is-flex-direction-column is-justify-content-space-between">
+          <% if @inscription.recommended? %>
+            <p> 
+              <span class="tag is-warning is-medium"> <%= icon('fas', 'star', class: 'mr1') %> Recomendado </span>
+            </p>
+          <% end %>
           <p class="is-size-3 has-text-weight-bold"> <%= @user.name %> </p>
           <p> <%= @user.current_position %> </p>
           <p> <%= icon('fas', 'phone') %> <%= @user.phone %> </p>
