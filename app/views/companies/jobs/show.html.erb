@@ -15,7 +15,7 @@
         <% end %>
         <%= link_to job_path(@job), class: 'button', target: '_blank' do %>
           <%= icon('fas', 'eye mr1') %> <%= t('show_job_post') %>
-        <% end %>
+        <% end if @job.open %>
       </div>
     </div>
   </div>

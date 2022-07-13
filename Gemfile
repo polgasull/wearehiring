@@ -8,6 +8,7 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'activerecord-session_store'
+gem 'active_model_serializers', '~> 0.10.13'
 gem 'aws-sdk-rails', '~> 3.6', '>= 3.6.1'
 gem 'caxlsx'
 gem 'caxlsx_rails'

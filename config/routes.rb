@@ -2,6 +2,12 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
 
+  namespace :api do
+    namespace :v1 do
+      resources :jobs, only: [:index, :show]
+    end
+  end
+
   namespace :admins do
     resources :jobs do
       resources :inscriptions, only: [:index, :create, :update, :show]
