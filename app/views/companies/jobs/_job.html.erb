@@ -4,7 +4,9 @@
       <div class="column is-4">
         <span class="is-size-5 has-text-weight-bold"> <%= job.title %> </span> <br>
         <%= job.job_author %> <br>
-        
+        <div class="mt3">
+          <%= job_price_label(job.job_price&.internal_name) %> 
+        </div>
       </div>
       <div class="column is-3">
         <% job.skills.each do |skill| %>

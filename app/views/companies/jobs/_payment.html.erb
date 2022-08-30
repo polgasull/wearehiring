@@ -7,7 +7,15 @@
           <p class="f4"> <%= t('payment_detail') %> </p>
         </div>
         <div class="column has-text-right">
-          <%= image_tag(asset_path('powered-stripe.svg'), size: 150) %>
+          <div class="is-flex is-justify-content-flex-end">
+            <div class="mr2">
+              <%= icon('fas', 'shield-alt is-size-2') %>  
+            </div>
+            <div class="is-size-6">
+              <span> Secure SSL </span> <br>
+              <span> Encryption </span>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -16,8 +24,8 @@
       <div class="is-light">
         <div class="columns job-price-cards">
           <div class="column">
-            <label class="price-card price-card-basic" for="job_job_price_id_1">
-              <input name="job[job_price_id]" class="radio-card" type="radio" id="job_job_price_id_1" value="1">
+            <%= f.label :job_price_id_1, '1', class: "price-card price-card-basic" do %>
+              <%= f.radio_button :job_price_id, '1', class: "radio-card", checked: params[:job_price] == 'basic' %>
               <span class="job-price-details">
                 <span class="job-price-type">Basic</span>
                 <span class="job-price-cost">99€</span>
@@ -42,6 +50,10 @@
                   <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
                 </div>
                 <div class="is-flex is-justify-content-space-between">
+                  <p> Descargar candidatos en excel </p>
+                  <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
+                </div>
+                <div class="is-flex is-justify-content-space-between">
                   <p> <del> <%= t('pricing_index.pricing_feature_6') %> </del> </p>
                   <p> <%= icon('fas', 'times-circle') %> </p>
                 </div>
@@ -62,11 +74,11 @@
                   <p> <%= icon('fas', 'times-circle') %> </p>
                 </div>
               </span>
-            </label>
+            <% end %>
           </div>
           <div class="column">
-            <label class="price-card price-card-pro" for="job_job_price_id_2">
-              <input name="job[job_price_id]" class="radio-card" type="radio" id="job_job_price_id_2" value="2" checked>
+            <%= f.label :job_price_id_2, '2', class: "price-card price-card-pro" do %>
+              <%= f.radio_button :job_price_id, '2', class: "radio-card", checked: params[:job_price] != 'basic' %>
               <span class="job-price-details" aria-hidden="true">
                 <span class="job-price-type">Pro <%= icon('fas', 'star', class: 'ml1') %> </span>
                 <span class="job-price-cost">299€</span>
@@ -91,6 +103,10 @@
                   <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
                 </div>
                 <div class="is-flex is-justify-content-space-between">
+                  <p> Descargar candidatos en excel </p>
+                  <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
+                </div>
+                <div class="is-flex is-justify-content-space-between">
                   <p> <%= t('pricing_index.pricing_feature_6') %> </p>
                   <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
                 </div>
@@ -111,18 +127,20 @@
                   <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
                 </div>
               </span>
-            </label>
+            <% end %>
           </div>
         </div>
+        <% price = params[:job_price] == 'basic' ? '99€' : '299€' %>
+        <% price_after_tax = params[:job_price] == 'basic' ? '104.94€' : '316.94€' %>
         <p class="has-text-centered mt4">
           <%= icon('fas', 'credit-card f1') %>
-          <strong class="has-text-success f1 ml2 job-price" id="price-displayed"> 299€ </strong>
-          <span class="f1 ml2 discounted-price is-hidden"> <del> 299€ </del> <strong class="has-text-success" id="price-after-discount"></strong> </span>
+          <strong class="has-text-success f1 ml2 job-price" id="price-displayed"> <%= price %> </strong>
+          <span class="f1 ml2 discounted-price is-hidden"> <del> <%= price %> </del> <strong class="has-text-success" id="price-after-discount"></strong> </span>
           <span class="has-text-success"> + <%= t('taxes') %> </span>
         </p>
         <p class="has-text-centered">
           <%= icon('fas', 'info-circle') %>
-          <small id="price-after-taxes"> 316.94 </small> <small> <%= t('tax_included') %> </small>
+          <small id="price-after-taxes"> <%= price_after_tax %> </small> <small> <%= t('tax_included') %> </small>
         </p>
         <p class="has-text-centered">
           <%= t('payments.monthly') %>
@@ -131,10 +149,12 @@
       </div>
 
       <div class="form-row has-text-centered">
+        <div class="has-text-right">
+          <%= image_tag(asset_path('powered-stripe.svg'), size: 150) %>
+        </div>
         <label for="card-element" class="label">
           <%= t('payments.enter_credit_card') %>
         </label>
-
         <div id="card-element" class="form-control"></div>
 
         <div id="card-errors" role="alert"></div>
@@ -162,7 +182,7 @@
         </div>
       <% end %>
     <% end %>
-    <div class="columns mt3 has-text-centered discount-section">
+    <div class="columns mt3 has-text-centered discount-section <%= 'is-hidden' if  params[:job_price] == 'basic' %>">
       <div class="column is-half is-offset-one-quarter">
         <label class="label"> 
           <%= t('coupon_question_title') %>
@@ -187,8 +207,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-

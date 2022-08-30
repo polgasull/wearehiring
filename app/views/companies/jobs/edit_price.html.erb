@@ -1,0 +1,309 @@
+<section class="section">
+  <div class="container">
+    <h1 class="title is-3 has-text-centered"> Mejora tu publicación </h1>
+    <h2 class="subtitle has-text-centered"> 
+      <%= @job.title %> <br>
+      <%= @job.job_author %> en <%= @job.location %> </p>
+    </h2>
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <%= simple_form_for(@job, method: :patch, url: update_price_companies_job_path(@job.id), html: { multipart: true, id: :job_payment_form }) do |f| %>
+          <%= f.error_notification %>
+          <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+          <%= f.hidden_field :expiry_date, value: DateTime.now() + 60.days %>
+
+          <div class="columns card-box-secondary payment-box">
+            <div class="column">
+              <div class="columns">
+                <div class="column">
+                  <p class="f4"> <%= t('payment_detail') %> </p>
+                </div>
+                <div class="column has-text-right">
+                  <div class="is-flex is-justify-content-flex-end">
+                    <div class="mr2">
+                      <%= icon('fas', 'shield-alt is-size-2') %>  
+                    </div>
+                    <div class="is-size-6">
+                      <span> Secure SSL </span> <br>
+                      <span> Encryption </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <h4 class="subtitle is-4"> <%= t('payments.price') %> </h4>
+
+              <div class="is-light">
+                <div class="columns job-price-cards">
+                  <div class="column">
+                    <%= f.label :job_price_id_1, '1', class: "price-card price-card-basic" do %>
+                      <%= f.radio_button :job_price_id, '1', class: "radio-card", disabled: @job.is_basic_price? %>
+                      <span class="job-price-details">
+                        <span class="job-price-type">
+                          <% if @job.is_basic_price? %>
+                           <span class="tag is-info"> Activo </span>
+                          <% end %>
+                          Basic
+                        </span>
+                        <span class="job-price-cost"> 99€</span>
+                        <div class="is-flex is-justify-content-space-between">
+                          <p> <%= t('pricing_index.pricing_feature_1') %> </p>
+                          <p> <%= icon('fas', "check-circle #{ @job.is_basic_price? ? 'has-text-gray' : 'has-text-success'}") %> </p>
+                        </div>
+                        <div class="is-flex is-justify-content-space-between">
+                          <p> <%= t('pricing_index.pricing_feature_2') %> </p>
+                          <p> <%= icon('fas', "check-circle #{ @job.is_basic_price? ? 'has-text-gray' : 'has-text-success'}") %> </p>
+                        </div>
+                        <div class="is-flex is-justify-content-space-between">
+                          <p> <%= t('pricing_index.pricing_feature_3') %> </p>
+                          <p> <%= icon('fas', "check-circle #{ @job.is_basic_price? ? 'has-text-gray' : 'has-text-success'}") %> </p>
+                        </div>
+                        <div class="is-flex is-justify-content-space-between">
+                          <p> <%= t('pricing_index.pricing_feature_4') %> </p>
+                          <p> <%= icon('fas', "check-circle #{ @job.is_basic_price? ? 'has-text-gray' : 'has-text-success'}") %> </p>
+                        </div>
+                        <div class="is-flex is-justify-content-space-between">
+                          <p> <%= t('pricing_index.pricing_feature_5') %></p>
+                          <p> <%= icon('fas', "check-circle #{ @job.is_basic_price? ? 'has-text-gray' : 'has-text-success'}") %> </p>
+                        </div>
+                        <div class="is-flex is-justify-content-space-between">
+                          <p> Descargar candidatos en excel </p>
+                          <p> <%= icon('fas', "check-circle #{ @job.is_basic_price? ? 'has-text-gray' : 'has-text-success'}") %> </p>
+                        </div>
+                        <div class="is-flex is-justify-content-space-between">
+                          <p> <del> <%= t('pricing_index.pricing_feature_6') %> </del> </p>
+                          <p> <%= icon('fas', "times-circle") %> </p>
+                        </div>
+                        <div class="is-flex is-justify-content-space-between">
+                          <p> <del> <%= t('pricing_index.pricing_feature_7') %> </del> </p>
+                          <p> <%= icon('fas', "times-circle") %> </p>
+                        </div>
+                        <div class="is-flex is-justify-content-space-between">
+                          <p> <del> <%= t('pricing_index.pricing_feature_8') %> </del> </p>
+                          <p> <%= icon('fas', "times-circle") %> </p>
+                        </div>
+                        <div class="is-flex is-justify-content-space-between">
+                          <p> <del><%= t('pricing_index.pricing_feature_9') %> </del> </p>
+                          <p> <%= icon('fas', "times-circle") %> </p>
+                        </div>
+                        <div class="is-flex is-justify-content-space-between">
+                          <p> <del> <%= t('pricing_index.pricing_feature_10') %> </del> </p>
+                          <p> <%= icon('fas', "times-circle") %> </p>
+                        </div>
+                      </span>
+                    <% end %>
+                  </div>
+                  <div class="column">
+                    <%= f.label :job_price_id_2, '2', class: "price-card price-card-pro" do %>
+                      <%= f.radio_button :job_price_id, '2', class: "radio-card", checked: true %>
+                      <span class="job-price-details" aria-hidden="true">
+                        <span class="job-price-type">Pro <%= icon('fas', 'star', class: 'ml1') %> </span>
+                        <span class="job-price-cost">299€</span>
+                        <div class="is-flex is-justify-content-space-between">
+                          <p> <%= t('pricing_index.pricing_feature_1') %> </p>
+                          <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
+                        </div>
+                        <div class="is-flex is-justify-content-space-between">
+                          <p> <%= t('pricing_index.pricing_feature_2') %> </p>
+                          <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
+                        </div>
+                        <div class="is-flex is-justify-content-space-between">
+                          <p> <%= t('pricing_index.pricing_feature_3') %> </p>
+                          <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
+                        </div>
+                        <div class="is-flex is-justify-content-space-between">
+                          <p> <%= t('pricing_index.pricing_feature_4') %> </p>
+                          <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
+                        </div>
+                        <div class="is-flex is-justify-content-space-between">
+                          <p> <%= t('pricing_index.pricing_feature_5') %> </p>
+                          <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
+                        </div>
+                        <div class="is-flex is-justify-content-space-between">
+                          <p> Descargar candidatos en excel </p>
+                          <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
+                        </div>
+                        <div class="is-flex is-justify-content-space-between">
+                          <p> <%= t('pricing_index.pricing_feature_6') %> </p>
+                          <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
+                        </div>
+                        <div class="is-flex is-justify-content-space-between">
+                          <p> <%= t('pricing_index.pricing_feature_7') %></p>
+                          <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
+                        </div>
+                        <div class="is-flex is-justify-content-space-between">
+                          <p> <%= t('pricing_index.pricing_feature_8') %> </p>
+                          <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
+                        </div>
+                        <div class="is-flex is-justify-content-space-between">
+                          <p> <%= t('pricing_index.pricing_feature_9') %> </p>
+                          <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
+                        </div>
+                        <div class="is-flex is-justify-content-space-between">
+                          <p> <%= t('pricing_index.pricing_feature_10') %> </p>
+                          <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
+                        </div>
+                      </span>
+                    <% end %>
+                  </div>
+                </div>
+                <p class="has-text-centered mt4">
+                  <%= icon('fas', 'credit-card f1') %>
+                  <strong class="has-text-success f1 ml2 job-price" id="price-displayed"> 299€ </strong>
+                  <span class="f1 ml2 discounted-price is-hidden"> <del> 316.94€ </del> <strong class="has-text-success" id="price-after-discount"></strong> </span>
+                  <span class="has-text-success"> + <%= t('taxes') %> </span>
+                </p>
+                <p class="has-text-centered">
+                  <%= icon('fas', 'info-circle') %>
+                  <small id="price-after-taxes"> 316.94€ </small> <small> <%= t('tax_included') %> </small>
+                </p>
+                <p class="has-text-centered">
+                  <%= t('payments.monthly') %>
+                </p>
+                <span class="block mb4"></span>
+              </div>
+
+              <div class="form-row has-text-centered">
+                <div class="has-text-right">
+                  <%= image_tag(asset_path('powered-stripe.svg'), size: 150) %>
+                </div>
+                <label for="card-element" class="label">
+                  <%= t('payments.enter_credit_card') %>
+                </label>
+                <div id="card-element" class="form-control"></div>
+
+                <div id="card-errors" role="alert"></div>
+              </div>
+
+              <% if current_user.stripe_id.present? %>
+                <div class="last-card bg-light pa4 border-radius-3 mt4 has-text-centered">
+                  <h5 class="is-6 title pt2">
+                    <%= t('payments.previously_card') %>
+                  </h5>
+                  <table class="table is-narrow bg-light is-fullwidth">
+                    <thead>
+                      <th> <%= t('payments.card_brand') %> </th>
+                      <th> <%= t('payments.card_last4') %> </th>
+                      <th> <%= t('payments.card_exp_month') %> </th>
+                      <th> <%= t('payments.card_exp_year') %> </th>
+                    </thead>
+                    <tr>
+                      <td> <%= current_user.card_brand %> </td>
+                      <td> <%= current_user.card_last4 %> </td>
+                      <td> <%= current_user.card_exp_month %> </td>
+                      <td> <%= current_user.card_exp_year %> </td>
+                    </tr>
+                  </table>
+                </div>
+              <% end %>
+              <div class="columns mt3 has-text-centered discount-section">
+                <div class="column is-half is-offset-one-quarter">
+                  <label class="label"> 
+                    <%= t('coupon_question_title') %>
+                  </label>
+                  <div class="field is-grouped">
+                    <p class="control is-expanded">
+                      <%= f.input :discount_code, label: false, input_html: { class: "input discount-code" }, wrapper: false, label_html: { class: "label" }, placeholder: "MYCOUPON10" %>
+                    </p>
+                    <p class="control">
+                      <a class="button is-dark">
+                        <%= t('apply') %>
+                      </a>
+                    </p>
+                  </div>
+                  <div id="error-message" class="has-text-danger"></div>
+                </div>
+              </div>
+              <div class="has-text-centered submit-box">
+                <%= f.submit t('payments.pay_and_upgrade_job') , 
+                  class: "button is-rounded is-large is-success mt3", 
+                  id: "postJobSubmit" %>
+              </div>
+            </div>
+          </div>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%= content_for :footer do %>
+  <%= javascript_include_tag "jobs/stripe.js" %>
+  <script>
+    $(document).ready(function() {
+      var coupon_names_array  = <%= raw @coupon_names.to_json %>;
+      var discountInput       = $('#job_discount_code')
+      var message             = document.getElementById('error-message');
+      var priceDisplayed      = document.getElementById('price-displayed')
+      var priceAfterDiscount  = document.getElementById('price-after-discount')
+      var priceAfterTaxes     = document.getElementById('price-after-taxes')
+      var successColorLight   = "#effaf5"
+      var errorColorLight     = "#f5b8c4";
+
+      $('.price-card-basic').click(function() {
+        if ($('#job_job_price_id_1').is(':checked')) {
+          $('.discount-section').addClass('is-hidden');
+          $('.discounted-price').addClass('is-hidden');
+          $('.job-price').removeClass('is-hidden');
+          $('.basic-badge').removeClass('is-hidden');
+          $('.pro-badge').addClass('is-hidden');
+          priceDisplayed.innerHTML = '99€';
+          priceAfterTaxes.innerHTML = '104.94€';
+          message.innerHTML = ''
+          discountInput.css("background-color", '#FFFFFF')
+          discountInput.removeClass('is-danger');
+          discountInput.removeClass('is-success');
+          discountInput.val("");
+        }
+      });
+
+      $('.price-card-pro').click(function() {
+        if ($('#job_job_price_id_2').is(':checked')) {
+          console.log('hello')
+          $('.discount-section').removeClass('is-hidden');
+          $('.discounted-price').addClass('is-hidden');
+          $('.job-price').removeClass('is-hidden');
+          $('.basic-badge').addClass('is-hidden');
+          $('.pro-badge').removeClass('is-hidden');
+          priceDisplayed.innerHTML = '299€';
+          priceAfterTaxes.innerHTML = '316.94€';
+          message.innerHTML = ''
+          discountInput.css("background-color", '#FFFFFF')
+          discountInput.removeClass('is-danger');
+          discountInput.removeClass('is-success');
+          discountInput.val("");
+          discountInput.val("")
+        }
+      });
+
+      $('.button.is-dark').click(function() {
+        var inputValue = discountInput.val()
+        if($.inArray(inputValue, coupon_names_array) !== -1) {
+          var discountNumber = inputValue.match(/\d+/);
+          var iva_tax = (299 - discountNumber) * 0.21
+          var irpf_tax = (299 - discountNumber) * 0.15
+          $('.job-price').addClass('is-hidden');
+          $('.discounted-price').removeClass('is-hidden');
+          $('#error-message').removeClass('has-text-danger').addClass('has-text-success');
+          discountInput.removeClass('is-danger');
+          discountInput.addClass('is-success');
+          discountInput.css("background-color", successColorLight)
+          message.innerHTML = `Descuento de ${discountNumber}€ aplicado correctamente`;
+          priceAfterDiscount.innerHTML = `${299 - discountNumber}€`;
+          priceAfterTaxes.innerHTML = `${(299 - discountNumber) + iva_tax - irpf_tax}€`;
+        } else {
+          $('.job-price').removeClass('is-hidden');
+          $('.discounted-price').addClass('is-hidden');
+          $('#error-message').addClass('has-text-danger').removeClass('has-text-success');
+          discountInput.removeClass('is-success');
+          discountInput.addClass('is-danger');
+          discountInput.css("background-color", errorColorLight)
+          message.innerHTML = "El código debe ser válido";
+          priceAfterDiscount.innerHTML = "";
+          priceAfterTaxes.innerHTML = '316.94€';
+        }
+      })
+    });
+  </script>
+<% end %>

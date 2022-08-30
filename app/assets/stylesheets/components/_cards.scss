@@ -104,6 +104,10 @@
   .radio-card:disabled ~ .job-price-details {
     color: var(--color-dark-gray);
     cursor: default;
+
+    .fa-times-circle {
+      color: var(--color-dark-gray);;
+    }
   }
   
   .radio-card:disabled ~ .job-price-details .job-price-type {

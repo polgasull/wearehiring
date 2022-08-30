@@ -1,0 +1,16 @@
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <h1 class="title is-3">
+          <%= t('jobs.post_job') %> <%= t('instantly_exclamation') %>
+        </h1>
+        <p class="subtitle is-4"> 
+          <%= t('job_post_type') %>
+          <span class="tag is-large is-success is-light has-text-weight-bold"> Free </span>
+        </p>
+        <%= render 'free_form', job: @job, edit_page: false %>
+      </div>
+    </div>
+  </div>
+</section>

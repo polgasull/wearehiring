@@ -27,3 +27,16 @@ def job_inscriptions_counter(job)
   count = job.inscriptions.count
   (count > 1) ? "#{count} Inscritos" : "#{count} Inscrito"
 end
+
+def job_price_label(job_price)
+  case job_price # a_variable is the variable we want to compare
+  when 'free'    #compare to 1
+    content_tag(:span, 'Free', class: "tag is-large is-primary is-light")
+  when 'basic'    #compare to 2
+    content_tag(:span,'Basic', class: "tag is-large")
+  when 'pro'
+    content_tag(:span, 'Pro', class: "tag is-large is-dark")
+  else
+    content_tag(:span,'Basic', class: "tag is-large")
+  end
+end

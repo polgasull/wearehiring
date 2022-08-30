@@ -114,7 +114,7 @@
 	<% if current_user.is_company? %>
 		<div class="navbar-end">
 			<div class="navbar-item">
-				<%= link_to new_companies_job_path, 
+				<%= link_to new_job_index_companies_jobs_path, 
 					class: "button text-uppercase f6 is-dark has-text-weight-bold" do %>
 					<%= t('jobs.post_job') %> <%= icon('fas', 'bullhorn ml2') %>
 				<% end %>

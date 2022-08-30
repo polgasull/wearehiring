@@ -4,7 +4,7 @@ module Companies
   class JobsController < Companies::CompaniesController
     include PaymentHelper
     
-    before_action :set_job, only: [:show, :edit, :update]
+    before_action :set_job, only: [:show, :edit, :update, :edit_price, :update_price]
   
     def index
       @jobs = current_user.jobs.filter_by(params).order('created_at DESC')
@@ -14,12 +14,19 @@ module Companies
       @total_inscriptions = current_user.total_inscriptions_sum(@jobs)
     end
 
+    def new_job_index; end
+
     def new
       @job_last = current_user.jobs.last
       @job = current_user.jobs.build
       @coupon_names = Coupon.select(:name).map(&:name)
     end
-  
+
+    def free
+      @job_last = current_user.jobs.last
+      @job = current_user.jobs.build
+    end
+
     def edit
     end
   
@@ -28,20 +35,20 @@ module Companies
       @job = current_user.jobs.build(job_params)
   
       @job.reference = "wah#{DateTime.now.year}#{SecureRandom.hex(3)}"
-      @job.expiry_date = DateTime.now() + 60.days
+      @job.expiry_date = add_expiry_date(@job)
   
       if params[:job][:avatar].nil? && job_last
         @job.avatar = job_last.avatar
       end
 
-      coupon = Coupon.find_by_name(@job.discount_code)
-      discount = (coupon.present? && @job.is_pro_price?) ? coupon.value : 0
-      stripe_process(@job.job_price.value, discount)
+      unless @job.is_free_price?
+        coupon = Coupon.find_by_name(@job.discount_code)
+        discount = (coupon.present? && @job.is_pro_price?) ? coupon.value : 0
+        stripe_process(@job.job_price.value, discount)
+      end
   
       if @job.save
-        TwitterService.new.send_tweet @job
-        DiscordService.new.job_alert_webhook @job
-        ModelMailer.new_job(current_user, @job).deliver_later
+        send_notifications(current_user, @job)
         redirect_to_response(t('jobs.messages.job_created'), thanks_jobs_path) 
       else 
         redirect_back_response(t('jobs.messages.job_not_created'), false)
@@ -66,7 +73,7 @@ module Companies
       @discardeds_count = @job.inscriptions.where(status: [0]).count
       @in_process_count = @job.inscriptions.where(status: [1]).count
       @finalists_count = @job.inscriptions.where(status: [2]).count
-      @inscriptions = @job.inscriptions.where(added_by_company: false).order(status: :desc)
+      @inscriptions = inscriptions_list(@job)
       @inscriptions_count = @inscriptions.count
       @we_match_inscriptions = @job.inscriptions.where(added_by_company: true).order(status: :desc)
       @we_match_inscriptions_count = @we_match_inscriptions.count
@@ -76,13 +83,56 @@ module Companies
         format.html
         format.xlsx
       end
-    end 
-  
+    end
+
     def update
       @job&.update(job_params) ? redirect_to_response(t('jobs.messages.job_updated'), companies_job_path(@job)) : redirect_back_response(t('jobs.messages.job_not_updated'), false)
     end
 
+    def edit_price
+      @coupon_names = Coupon.select(:name).map(&:name)
+    end
+
+    def update_price
+      coupon = Coupon.find_by_name(params[:job][:discount_code])
+      discount = coupon.present? ? coupon.value : 0
+      job_price = JobPrice.find(params[:job][:job_price_id]).value
+      stripe_process(job_price, discount)
+
+      if @job.update(job_params)
+        redirect_to_response(t('jobs.messages.job_updated'), companies_job_path(@job)) 
+      else
+        redirect_back_response(t('jobs.messages.job_not_updated'), false)
+      end
+
+      rescue Stripe::CardError => e
+        flash.alert = e.message
+        render action: :edit_price
+    end
+
     private
+
+    def send_notifications(user, job)
+      TwitterService.new.send_tweet job
+      DiscordService.new.job_alert_webhook job
+      ModelMailer.new_job(user, job).deliver_later
+    end
+
+    def add_expiry_date(job)
+      if job.is_free_price?
+        DateTime.now() + 30.days
+      else
+        DateTime.now() + 60.days
+      end
+    end
+
+    def inscriptions_list(job)
+      if job.is_free_price?
+        job.inscriptions.where(added_by_company: false).order(status: :desc).take(25)
+      else
+        job.inscriptions.where(added_by_company: false).order(status: :desc)
+      end
+    end
 
     def set_job
       @job = current_user.jobs.find(params[:id])

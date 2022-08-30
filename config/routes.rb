@@ -29,6 +29,10 @@ Rails.application.routes.draw do
 
   namespace :companies do
     resources :jobs do
+      get :free, on: :new
+      get :edit_price, on: :member
+      patch :update_price, on: :member
+      get :new_job_index, path: 'publicar-job', on: :collection
       resources :inscriptions, only: [:index, :create, :update, :show]
     end
   end

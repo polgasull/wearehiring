@@ -33,7 +33,7 @@ $(document).ready(function () {
     }
   });
 
-  const form = document.getElementById('new_job');
+  const form = document.getElementById('job_payment_form');
 
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -58,7 +58,7 @@ $(document).ready(function () {
 
   const stripeTokenHandler = (token) => {
     // Insert the token ID into the form so it gets submitted to the server
-    const form = document.getElementById('new_job');
+    const form = document.getElementById('job_payment_form');
     const hiddenInput = document.createElement('input');
     hiddenInput.setAttribute('type', 'hidden');
     hiddenInput.setAttribute('name', 'stripeToken');

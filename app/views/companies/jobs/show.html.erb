@@ -4,18 +4,27 @@
       <div class="column">    
         <p> <%= t('jobs.reference') %>: #<%= @job.reference %> </p>
         <strong class="f3"> 
-          <%= @job.is_pro_price? ? content_tag(:span, @job.job_price.name, class: "tag is-large is-dark") : content_tag(:span, 'Basic', class: "tag is-large") %> 
+          <%= job_price_label(@job.job_price&.internal_name) %> 
           <%= icon('far', 'calendar-alt') %> <%= job_expired(@job) %> 
-        </strong> 
+        </strong>
         <%= t('remaining_days') %>
       </div>
       <div class="column has-text-right">
-        <%= link_to edit_companies_job_path(@job), class: 'button is-link' do %>
-          <%= icon('fas', 'edit mr1') %> <%= t('jobs.edit') %>
+        <% if @job.open? %>
+          <%= link_to edit_companies_job_path(@job), class: 'button is-link' do %>
+            <%= icon('fas', 'edit mr1') %> <%= t('jobs.edit') %>
+          <% end %>
+          <% unless @job.is_pro_price? %>
+            <%= link_to edit_price_companies_job_path, class: 'button is-success ml3' do %>
+              <span> Mejorar Job </span> <%= icon('fas', 'rocket ml2') %>
+            <% end %>
+          <% end %>
+          <%= link_to job_path(@job), class: 'button ml3', target: '_blank' do %>
+            <%= icon('fas', 'eye mr1') %> <%= t('show_job_post') %>
+          <% end %>
+        <% else %>
+          <%= content_tag(:span, t('job_ended'), class: 'button is-static is-danger') %>
         <% end %>
-        <%= link_to job_path(@job), class: 'button', target: '_blank' do %>
-          <%= icon('fas', 'eye mr1') %> <%= t('show_job_post') %>
-        <% end if @job.open %>
       </div>
     </div>
   </div>
@@ -58,13 +67,23 @@
   <div class="container">
     <div class="columns">
       <div class="column">
-        <h3 class="title"> <%= t('inscribed_candidates') %>: <%= @inscriptions_count %> </h3>
+        <h3 class="title"> 
+          <%= t('inscribed_candidates') %>: <%= @inscriptions_count %>
+          <% if @job.is_free_price? %>
+            <span class="tag is-info"> Limitado a 25 <%= icon('fas', 'lock', class: 'ml2') %> </span>
+          <% end %>
+        </h3>
       </div>
       <div class="column mb4 has-text-right">
-        <% if @inscriptions.any? %>
-          <%= link_to companies_job_inscriptions_path(job_id: @job.id, format: "xlsx"), class: 'button' do %>
-            <%= icon('fas', 'file-download pr2', class: 'has-excel-color') %> <%= t('download_candidates_excel') %>
+        <% if @job.is_free_price? %>
+            <span class="button is-static"> <%= t('download_candidates_excel') %> <span class="tag is-info ml2"> Basic o Pro <%= icon('fas', 'lock', class: 'ml2') %> </span> </span>
+          <%= link_to edit_price_companies_job_path, class: 'button is-success ml3' do %>
+            <span> Mejorar Job </span> <%= icon('fas', 'rocket ml2') %>
           <% end %>
+        <% else %>
+          <%= link_to '#', class: 'button is-disabled' do %>
+            <%= icon('fas', 'file-download pr2', class: 'has-excel-color') %> <%= t('download_candidates_excel') %>
+          <% end if @inscriptions.any? %>
         <% end %>
       </div>
     </div>
@@ -90,41 +109,49 @@
   </div>
 </section>
 
-<% if @job.is_pro_price? %>
-  <section class="section">
-    <div class="container">
-      <div class="columns">
-        <div class="column">
-          <h3 class="title"> <%= t('added_we_match_candidates') %>: <%= @we_match_inscriptions_count %> </h3>
-        </div>
-        <div class="column mb4 has-text-right">
-          <% if @job.open? %>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <h3 class="title"> <%= t('added_we_match_candidates') %>: <%= @we_match_inscriptions_count %> </h3>
+      </div>
+      <div class="column mb4 has-text-right">
+        <% if @job.open? %>
+          <% if @job.is_pro_price? %>
             <%= button_tag(type: 'button',
-              class: "button is-warning we-match-button has-text-weight-bold #{ 'is-static' if @matching_candidates.empty?}",
+              class: "button is-success we-match-button has-text-weight-bold #{ 'is-static' if @matching_candidates.empty?}",
               'data-target': 'we-match-modal',
               'aria-haspopup': 'true',
               disabled: @matching_candidates.empty?) do %>
-                <%= icon('fas', 'gem', class: 'has-text-info mr1') %> We Match: <%= @matching_candidates.empty? ? '0' : @matching_candidates.count %> <%= t('we_match_info_text_4') %>
+                <%= icon('fas', 'gem', class: 'mr1') %> Ver We Match: <%= @matching_candidates.empty? ? '0' : @matching_candidates.count %> <%= t('we_match_info_text_4') %>
             <% end %>
           <% else %>
-            <%= button_tag('Job Finalizado. No es posible añadir más candidatos', type: 'button', class: 'button is-static') %>
+            <%= content_tag(:span, class: 'button is-static') do %>
+              <%= icon('fas', 'gem', class: 'has-text-info mr1') %> We Match: <%= @matching_candidates.empty? ? '0' : @matching_candidates.count %> <%= t('we_match_info_text_4') %>
+              <span class="tag is-info ml2"> Pro <%= icon('fas', 'lock', class: 'ml2') %> </span>
+            <% end %>
+            <%= link_to edit_price_companies_job_path, class: 'button is-success ml3' do %>
+              <span> Mejorar Job </span> <%= icon('fas', 'rocket ml2') %>
+            <% end %>
           <% end %>
+        <% else %>
+          <%= content_tag(:span, 'Job Finalizado. No es posible añadir más candidatos', class: 'button is-static') %>
+        <% end %>
+      </div>
+    </div>
+    <% if @we_match_inscriptions.any? %>
+        <% @we_match_inscriptions.each do |inscription| %>
+          <%= render partial: 'companies/jobs/inscriptions/inscription', locals: { inscription: inscription } %>
+        <% end %>
+    <% else %>
+      <div class="columns mt5">
+        <div class="column has-text-centered">
+          <%= image_tag(asset_path('no_data_undraw.svg'), class: 'has-opacity-5', height: 200, width: 200) %>
         </div>
       </div>
-      <% if @we_match_inscriptions.any? %>
-          <% @we_match_inscriptions.each do |inscription| %>
-            <%= render partial: 'companies/jobs/inscriptions/inscription', locals: { inscription: inscription } %>
-          <% end %>
-      <% else %>
-        <div class="columns mt5">
-          <div class="column has-text-centered">
-            <%= image_tag(asset_path('no_data_undraw.svg'), class: 'has-opacity-5', height: 200, width: 200) %>
-          </div>
-        </div>
-      <% end %>
-    </div>
-  </section>
-<% end %>
+    <% end %>
+  </div>
+</section>
 
 <hr>
 
