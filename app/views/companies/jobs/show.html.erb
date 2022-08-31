@@ -81,7 +81,7 @@
             <span> Mejorar Job </span> <%= icon('fas', 'rocket ml2') %>
           <% end %>
         <% else %>
-          <%= link_to '#', class: 'button is-disabled' do %>
+          <%= link_to companies_job_inscriptions_path(job_id: @job.id, format: "xlsx"), class: 'button is-disabled' do %>
             <%= icon('fas', 'file-download pr2', class: 'has-excel-color') %> <%= t('download_candidates_excel') %>
           <% end if @inscriptions.any? %>
         <% end %>

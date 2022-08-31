@@ -705,6 +705,7 @@ en:
     subtitle_2: "For each candidate we guarantee the minimum information of name, email, telephone and Linkedin profile."
     basic: "Job Basic"
     pro: "Job Pro"
+    free: "Job Free"
     per_job: "per Job"
     pricing_feature_1_free: "Duration 30 days"
     pricing_feature_1: "Duration 60 days"
