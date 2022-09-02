@@ -4,7 +4,7 @@
       <div class="column">    
         <p> <%= t('jobs.reference') %>: #<%= @job.reference %> </p>
         <strong class="f3"> 
-          <%= @job.is_pro_price? ? content_tag(:span, @job.job_price.name, class: "tag is-large is-dark") : content_tag(:span, 'Basic', class: "tag is-large") %> 
+          <%= job_price_label(@job.job_price&.internal_name) %> 
           <%= icon('far', 'calendar-alt') %> <%= job_expired(@job) %> 
         </strong> 
         <%= t('remaining_days') %>
