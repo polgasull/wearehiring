@@ -15,7 +15,7 @@
             <span class="title is-3 has-text-success">0€</span>
             <span class="has-text-grey"> / por Job </span>
           </p>
-          <p class="has-text-grey mt4 mb3"> Incluye: </p>
+          <p class="has-text-grey mt4 mb3"> <%= t('included') %>: </p>
           <div class="is-flex">
             <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
             <p> <%= t('pricing_index.pricing_feature_1_free') %> </p>
@@ -34,7 +34,7 @@
           </div>
           <div class="is-flex">
             <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
-            <p> Hasta 25 candidatos </p>
+            <p> <%= t('until_25_candidates') %> </p>
           </div>
           <div class="mtauto has-text-centered">
             <%= link_to 'Publicar Job Free', free_new_companies_job_path, class: 'button is-success is-rounded' %>
@@ -48,12 +48,12 @@
             <span class="title is-3 has-text-success">99€</span>
             <span class="has-text-grey"> / por Job </span>
           </p>
-          <p class="has-text-grey mt4 mb3"> Incluye: </p>
+          <p class="has-text-grey mt4 mb3"> <%= t('included') %>: </p>
           <div class="is-flex">
             <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
             <p> 
               <del> <%= t('pricing_index.pricing_feature_1_free') %> </del>
-              <span class="has-text-success ml1 has-text-weight-semibold"> 60 días </span>
+              <span class="has-text-success ml1 has-text-weight-semibold"> <%= t('sixteen_days') %> </span>
             </p>
           </div>
           <div class="is-flex">
@@ -70,11 +70,11 @@
           </div>
           <div class="is-flex">
             <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
-            <p> <del> Hasta 25 candidatos </del> <span class="has-text-success ml1 has-text-weight-semibold">Nº candidatos ilimitado</span> </p>
+            <p> <del> <%= t('until_25_candidates') %> </del> <span class="has-text-success ml1 has-text-weight-semibold"><%= t('unlimited_candidates') %> </span> </p>
           </div>
           <div class="is-flex">
             <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
-            <p> Descargar candidatos en excel </p>
+            <p> <%= t('download_candidates_excel') %> </p>
           </div>
           <div class="mtauto has-text-centered">
             <%= link_to 'Publicar Job Basic', new_companies_job_path(job_price: :basic), class: 'button is-success is-rounded' %>
@@ -88,12 +88,12 @@
             <span class="title is-3 has-text-success">299€</span>
             <span class="has-text-grey"> / por Job </span>
           </p>
-          <p class="has-text-grey mt4 mb3"> Incluye: </p>
+          <p class="has-text-grey mt4 mb3"> <%= t('included') %>: </p>
           <div class="is-flex">
             <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
             <p> 
               <del> <%= t('pricing_index.pricing_feature_1_free') %> </del>
-              <span class="has-text-success ml1 has-text-weight-semibold"> 60 días </span>
+              <span class="has-text-success ml1 has-text-weight-semibold"> <%= t('sixteen_days') %> </span>
             </p>          
           </div>
           <div class="is-flex">
@@ -110,13 +110,13 @@
           </div>
           <div class="is-flex">
             <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
-            <p> <del> Hasta 25 candidatos </del> <span class="has-text-success ml1 has-text-weight-semibold">Nº candidatos ilimitado</span> </p>
+            <p> <del> <%= t('until_25_candidates') %> </del> <span class="has-text-success ml1 has-text-weight-semibold"><%= t('unlimited_candidates') %></span> </p>
           </div>
           <div class="is-flex">
             <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
-            <p> Descargar candidatos en excel </p>
+            <p> <%= t('download_candidates_excel') %> </p>
           </div>
-          <p class="has-text-grey mt3 mb3"> Y además: </p>
+          <p class="has-text-grey mt3 mb3"> <%= t('plus_feature') %>: </p>
           <div class="is-flex">
             <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
             <p class="has-text-weight-semibold"> <%= t('pricing_index.pricing_feature_6') %> </p>

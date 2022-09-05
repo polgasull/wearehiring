@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   ALLOWED_LOCALES = %w( en es ).freeze
-  DEFAULT_LOCALE = 'es'.freeze
+  DEFAULT_LOCALE = 'en'.freeze
 
   def set_locale
     I18n.locale = extract_locale_from_headers
