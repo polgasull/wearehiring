@@ -100,4 +100,18 @@ class ModelMailer < ApplicationMailer
       :subject => 'Bienvenid@ a We Are Hiring 🚀' 
     )  
   end
+
+  def upgrade_job_proposal(job)
+    @user = job.user
+    @job = job
+
+    attachments.inline["logo_black.png"] = File.read("#{Rails.root}/app/assets/images/logo_black.png")
+    attachments.inline["twitter.png"] = File.read("#{Rails.root}/app/assets/images/twitter.png")
+    attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
+
+    mail(
+      :to => @user.email,
+      :subject => 'Has alcanzado el máximo de candidatos'
+    )
+  end
 end

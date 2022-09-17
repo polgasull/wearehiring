@@ -15,7 +15,7 @@
             <%= icon('fas', 'edit mr1') %> <%= t('jobs.edit') %>
           <% end %>
           <% unless @job.is_pro_price? %>
-            <%= link_to edit_price_companies_job_path, class: 'button is-success ml3' do %>
+            <%= link_to edit_price_companies_job_path(id: @job.id), class: 'button is-success ml3' do %>
               <span> Mejorar Job </span> <%= icon('fas', 'rocket ml2') %>
             <% end %>
           <% end %>
@@ -77,7 +77,7 @@
       <div class="column mb4 has-text-right">
         <% if @job.is_free_price? %>
             <span class="button is-static"> <%= t('download_candidates_excel') %> <span class="tag is-info ml2"> Basic o Pro <%= icon('fas', 'lock', class: 'ml2') %> </span> </span>
-          <%= link_to edit_price_companies_job_path, class: 'button is-success ml3' do %>
+          <%= link_to edit_price_companies_job_path(id: @job.id), class: 'button is-success ml3' do %>
             <span> Mejorar Job </span> <%= icon('fas', 'rocket ml2') %>
           <% end %>
         <% else %>
@@ -130,7 +130,7 @@
               <%= icon('fas', 'gem', class: 'has-text-info mr1') %> We Match: <%= @matching_candidates.empty? ? '0' : @matching_candidates.count %> <%= t('we_match_info_text_4') %>
               <span class="tag is-info ml2"> Pro <%= icon('fas', 'lock', class: 'ml2') %> </span>
             <% end %>
-            <%= link_to edit_price_companies_job_path, class: 'button is-success ml3' do %>
+            <%= link_to edit_price_companies_job_path(id: @job.id), class: 'button is-success ml3' do %>
               <span> Mejorar Job </span> <%= icon('fas', 'rocket ml2') %>
             <% end %>
           <% end %>

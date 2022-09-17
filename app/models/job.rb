@@ -45,6 +45,15 @@ class Job < ApplicationRecord
     end
   end
 
+  def self.send_upgrade_job_email_proposal
+    free_jobs = Job.active.where(job_price_id: 3)
+    free_jobs.each do |job|
+      if (job.inscriptions.count >= 25)
+        ModelMailer.upgrade_job_proposal(job).deliver_later
+      end
+    end
+  end
+
   def user_owner_or_admin(current_user)
     user_id == current_user&.id || current_user&.is_admin?
   end

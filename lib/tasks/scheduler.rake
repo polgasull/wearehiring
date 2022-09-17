@@ -4,3 +4,9 @@ task :update_expired_jobs => :environment do
   Job.close_expired_jobs
   puts "done."
 end
+
+task :job_upgrade_email_proposal => :environment do
+  puts "Sending upgrade job proposal emails..."
+  Job.send_upgrade_job_email_proposal
+  puts "done."
+end
