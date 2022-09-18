@@ -46,6 +46,8 @@ class Job < ApplicationRecord
   end
 
   def self.send_upgrade_job_email_proposal
+    return false unless Date.today.tuesday?
+
     free_jobs = Job.active.where(job_price_id: 3)
     free_jobs.each do |job|
       if (job.inscriptions.count >= 25)
