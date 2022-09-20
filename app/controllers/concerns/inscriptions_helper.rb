@@ -7,8 +7,10 @@ module InscriptionsHelper
       
     @inscription = job.inscriptions.build(job_id: job.id, user_id: user.id, added_by_company: added_by_company)
     
-    if @inscription.save  
-      ModelMailer.new_candidate(user, job).deliver_later
+    if @inscription.save
+      unless (job.is_free_price? && job.inscriptions.count >= 25)
+        ModelMailer.new_candidate(user, job).deliver_later
+      end
       ModelMailer.successfully_inscribed(user, job).deliver_later
       DiscordService.new.inscription_alert_webhook(user, job, added_by_company)
       redirect_to_response(t('inscriptions.messages.inscription_created'), route ? route : job)
