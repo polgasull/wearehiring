@@ -69,6 +69,10 @@ class User < ApplicationRecord
     inscriptions
   end
 
+  def free_jobs_active
+    jobs.active.where(job_price_id: 3)
+  end
+
   def send_notification
     if self.is_company?
       ModelMailer.welcome_company(self).deliver_later

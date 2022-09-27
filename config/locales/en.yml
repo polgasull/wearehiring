@@ -258,6 +258,7 @@ en:
       job_deleted: "Job was successfully deleted"
       job_not_deleted: "Job was not able to be deleted"
       job_expired: "Sorry Job has expired"
+      free_jobs_limit: "You have reached the maximum of 10 Free Jobs live. End or wait for one to expire so you can post more."
     summary:
       thanks_title: "Your Job is posted successfully"
       job: "Job summary"
@@ -782,4 +783,5 @@ en:
   download_candidates_excel: "Download candidates list in excel"
   unlimited_candidates: "Unlimited Nb of candidates"
   plus_feature: "Plus"
-  sixteen_days: "60 días"
+  sixteen_days: "60 days"
+  upgrade_job: "Upgrade Job"

@@ -36,8 +36,16 @@
             <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
             <p> <%= t('until_25_candidates') %> </p>
           </div>
+          <% if current_user.free_jobs_active.count >= 10 %>
+            <article class="message is-info mt4">
+              <div class="message-body">
+                <%= icon('fas', 'info-circle') %>
+                <%= t('jobs.messages.free_jobs_limit') %>
+              </div>
+            </article>
+          <% end %>
           <div class="mtauto has-text-centered">
-            <%= link_to 'Publicar Job Free', free_new_companies_job_path, class: 'button is-success is-rounded' %>
+            <%= link_to 'Publicar Job Free', free_new_companies_job_path, class: 'button is-success is-rounded', disabled: current_user.free_jobs_active.count >= 10 %>
           </div>
         </div>
       </div>

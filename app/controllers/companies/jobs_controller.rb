@@ -5,6 +5,7 @@ module Companies
     include PaymentHelper
     
     before_action :set_job, only: [:show, :edit, :update, :edit_price, :update_price]
+    before_action :check_free_jobs_limit, only: [:free]
   
     def index
       @jobs = current_user.jobs.filter_by(params).order('created_at DESC')
@@ -138,6 +139,12 @@ module Companies
       @job = current_user.jobs.find(params[:id])
       rescue ActiveRecord::RecordNotFound
         redirect_to not_found_url
+    end
+
+    def check_free_jobs_limit
+      if current_user.free_jobs_active.count >= 10
+        redirect_back_response(t('jobs.messages.free_jobs_limit'), false)
+      end
     end
 
     def job_params
