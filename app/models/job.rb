@@ -50,7 +50,7 @@ class Job < ApplicationRecord
 
     free_jobs = Job.active.where(job_price_id: 3)
     free_jobs.each do |job|
-      if (job.inscriptions.count >= 25)
+      if (job.inscriptions.count >= 15)
         ModelMailer.upgrade_job_proposal(job).deliver_later
       end
     end

@@ -8,7 +8,7 @@ module InscriptionsHelper
     @inscription = job.inscriptions.build(job_id: job.id, user_id: user.id, added_by_company: added_by_company)
     
     if @inscription.save
-      unless (job.is_free_price? && job.inscriptions.count >= 25)
+      unless (job.is_free_price? && job.inscriptions.count >= 15)
         ModelMailer.new_candidate(user, job).deliver_later
       end
       ModelMailer.successfully_inscribed(user, job).deliver_later

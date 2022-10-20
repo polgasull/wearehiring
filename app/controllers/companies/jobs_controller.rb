@@ -36,7 +36,7 @@ module Companies
       @job = current_user.jobs.build(job_params)
   
       @job.reference = "wah#{DateTime.now.year}#{SecureRandom.hex(3)}"
-      @job.expiry_date = add_expiry_date(@job)
+      @job.expiry_date = DateTime.now() + 60.days
   
       if params[:job][:avatar].nil? && job_last
         @job.avatar = job_last.avatar
@@ -119,17 +119,9 @@ module Companies
       ModelMailer.new_job(user, job).deliver_later
     end
 
-    def add_expiry_date(job)
-      if job.is_free_price?
-        DateTime.now() + 30.days
-      else
-        DateTime.now() + 60.days
-      end
-    end
-
     def inscriptions_list(job)
       if job.is_free_price?
-        job.inscriptions.where(added_by_company: false).order(created_at: :asc).take(25)
+        job.inscriptions.where(added_by_company: false).order(created_at: :asc).take(15)
       else
         job.inscriptions.where(added_by_company: false).order(status: :desc)
       end

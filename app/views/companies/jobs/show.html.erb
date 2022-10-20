@@ -70,7 +70,7 @@
         <h3 class="title"> 
           <%= t('inscribed_candidates') %>: <%= @inscriptions_count %>
           <% if @job.is_free_price? %>
-            <span class="tag is-info"> Limitado a 25 <%= icon('fas', 'lock', class: 'ml2') %> </span>
+            <span class="tag is-info"> <%= t('limit_15') %> <%= icon('fas', 'lock', class: 'ml2') %> </span>
           <% end %>
         </h3>
       </div>
