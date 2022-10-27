@@ -6,6 +6,14 @@ module InscriptionsHelper
     return redirect_back_response(t('already_inscribed'), false) if user.is_already_inscribed(job)
       
     @inscription = job.inscriptions.build(job_id: job.id, user_id: user.id, added_by_company: added_by_company)
+
+    user.transaction do
+      user.update!(resident_city: request.location.city)
+      user.update!(resident_state: request.location.state)
+      user.update!(resident_country: request.location.country)
+      user.update!(resident_country_code: request.location.country_code)
+      user.update!(resident_postal_code: request.location.postal_code)
+    end
     
     if @inscription.save
       unless (job.is_free_price? && job.inscriptions.count >= 15)
