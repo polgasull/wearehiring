@@ -9,6 +9,7 @@
     <% end %>
   </td>
   <td>
+    <%= flag_icon(user.resident_country_code) %>
     <% if user.is_candidate? %>
       <%= link_to user.name, admins_user_path(user) %>
     <% else %>
@@ -50,11 +51,11 @@
     <%= f.collection_select :skill_ids, Skill.all, :id, :name, {:prompt => "Please Select a Skill"}, { multiple: "multiple" } if user.is_candidate? %>  
   </td>
   <td>
-    <%= f.input :location,
-        label: false, 
-        input_html: { class: "input f7" }, 
-        wrapper: false,
-        placeholder: 'location' if user.is_candidate? %>
+    by IP: <br>
+    <%= user.resident_city %>, <%= user.resident_state %>, <%= user.resident_postal_code %>, <%= user.resident_country %>
+    <br><br>
+    by user: <br>
+    <%= user.location %>
   </td>
   <td>
     <%= f.select :experience, 
