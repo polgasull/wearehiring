@@ -1,25 +1,25 @@
 <div class="modal" id="candidateSignupModal">
   <div class="modal-background"></div>
   <div class="modal-card">
+    <header class="modal-card-head is-hidden-mobile">
+      <figure class="image rounded-image size-45 mr3">
+        <% if job.avatar.file.nil? %>
+          <%= image_tag(asset_path('wah_red_logo.png'), alt: "Empleo de #{job.title} en #{job.job_author}") %>
+        <% else %>
+          <%= image_tag(job.avatar_url(:thumb), alt: "Empleo de #{job.title} en #{job.job_author}") %>
+        <% end %>
+      </figure>
+      <p class="modal-card-title"> 
+        <%= job.title %> <br>
+        <span class="is-size-6"> <%= job.job_author %> </span>
+      </p>
+      <button class="modal-close is-large" aria-label="close"></button>
+    </header>
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= invisible_captcha %>
       <%= f.error_notification %>
       <%= f.hidden_field :user_type_id, value: UserType.where(internal_name: 'candidate').first.id %>
       <%= f.hidden_field :accepted_terms, value: true %>
-      <header class="modal-card-head is-hidden-mobile">
-        <figure class="image rounded-image size-45 mr3">
-          <% if job.avatar.file.nil? %>
-            <%= image_tag(asset_path('wah_red_logo.png'), alt: "Empleo de #{job.title} en #{job.job_author}") %>
-          <% else %>
-            <%= image_tag(job.avatar_url(:thumb), alt: "Empleo de #{job.title} en #{job.job_author}") %>
-          <% end %>
-        </figure>
-        <p class="modal-card-title"> 
-          <%= job.title %> <br>
-          <span class="is-size-6"> <%= job.job_author %> </span>
-        </p>
-        <button class="modal-close is-large" aria-label="close"></button>
-      </header>
 
       <section class="modal-card-body">
         <button class="modal-close is-large is-hidden-tablet" aria-label="close" style="position: absolute; right: 10px;"></button>

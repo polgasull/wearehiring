@@ -1,12 +1,11 @@
   <div class="modal update-user-modal">
     <div class="modal-background"></div>
     <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title"> Hola, <%= user.name %> </p>
+        <button class="modal-close is-large" aria-label="close"></button>
+      </header>
       <%= simple_form_for(user, method: :patch, url: candidates_user_profile_path(user.id), html: { multipart: true }) do |f| %>
-        <header class="modal-card-head">
-          <p class="modal-card-title"> Hola, <%= user.name %> </p>
-          <button class="modal-close is-large" aria-label="close"></button>
-        </header>
-
         <section class="modal-card-body">
           <p class="has-text-weight-bold"> 
             Para conseguir este job, 

@@ -53,7 +53,6 @@
 
 <script>
   $(document).on('ajax:success', '#update-inscription-form-<%= inscription.id %>', function(event) {
-    console.log('hello')
     $selectValue = $(this).find('select').val()
     $(this).find('select').removeClass().addClass('inscription-status-' + $selectValue);
     $('#notification-<%= inscription.id %>').fadeIn().delay(4000).fadeOut();

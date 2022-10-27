@@ -1,4 +1,9 @@
 .modal {
+
+  .modal-card {
+    overflow: auto;
+  }
+
   .modal-background {
     background-color: rgba(10, 10, 10, 0.55);
   }
@@ -49,6 +54,7 @@
 
 .we-match-modal {
   .modal-card {
+    overflow: auto;
     width: 90%;
     max-width: 70rem;
   }
