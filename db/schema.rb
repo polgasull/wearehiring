@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_03_125219) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_27_195850) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -253,6 +253,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_03_125219) do
     t.integer "salary_to"
     t.boolean "visible", default: true
     t.string "experience"
+    t.string "resident_state"
+    t.string "resident_country"
+    t.string "resident_country_code"
+    t.string "resident_city"
+    t.string "resident_postal_code"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["user_type_id"], name: "index_users_on_user_type_id"

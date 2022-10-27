@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       resources :inscriptions, only: [:index, :create, :update, :show]
     end
     resources :users, only: [:index, :update, :show, :edit] do
+      get :companies_report, on: :collection
       member do
         get :inscriptions
       end

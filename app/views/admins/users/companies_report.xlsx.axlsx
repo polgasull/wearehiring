@@ -1,0 +1,17 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Companies") do |sheet|
+  # this is the head row of your spreadsheet
+  sheet.add_row %w(id name PContacto email jobs)
+  
+  # each user is a row on your spreadsheet
+  @all_companies.each do |user|
+    sheet.add_row [
+      user.id, 
+      user.name,
+      user.last_name,
+      user.email,
+      user.jobs.count
+    ]
+  end
+end

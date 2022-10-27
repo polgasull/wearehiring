@@ -6,7 +6,7 @@ module Admins
 
     def index
       @users = User.all.filter_by(params).order('created_at DESC').page(params[:page]).per(30)
-      @all_users = User.all
+      @all_candidates = User.where(user_type: 1).all
       @companies_count = User.where(user_type: 2).count
       @candidates_count = User.where(user_type: 1).count
       @candidates_not_visible = User.where(visible: false).count
@@ -16,7 +16,7 @@ module Admins
         format.html
         format.xlsx
       end
-    end 
+    end
 
     def show
       return redirect_to_response(t('not_found'), root_path, false) unless @user
@@ -42,7 +42,15 @@ module Admins
     def inscriptions
       @inscriptions = @user.inscriptions
       @inscriptions_count = @user.inscriptions.count
-    end  
+    end
+
+    def companies_report
+      @all_companies = User.where(user_type: 2).all
+
+      respond_to do |format|
+        format.xlsx
+      end
+    end
 
     private
 

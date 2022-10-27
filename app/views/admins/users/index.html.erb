@@ -30,8 +30,13 @@
       </div>
       <div class="column has-text-right">
         <%= link_to admins_users_path(format: :xlsx), class: 'button is-success pl3' do %>
-          <%= icon('fas', 'file-download pr2') %> <%= t('download_users_excel') %>
+          <%= icon('fas', 'file-download pr2') %> Descargar Candidatos
         <% end %>
+        <div class="mt3">
+          <%= link_to companies_report_admins_users_path(format: :xlsx), class: 'button is-success pl3' do %>
+            <%= icon('fas', 'file-download pr2') %> Descargar Empresas
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
