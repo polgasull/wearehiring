@@ -82,4 +82,14 @@ class User < ApplicationRecord
       DiscordService.new.candidate_signup_alert_webhook(self)
     end
   end
+
+  def self.update_residence_info
+    User.where(resident_country: [nil, ""]).last(50).each do |user|
+      user.update!(resident_city: Geocoder.search(user.last_sign_in_ip).first.city)
+      user.update!(resident_state: Geocoder.search(user.last_sign_in_ip).first.state)
+      user.update!(resident_country: Geocoder.search(user.last_sign_in_ip).first.country)
+      user.update!(resident_country_code: Geocoder.search(user.last_sign_in_ip).first.country_code)
+      user.update!(resident_postal_code: Geocoder.search(user.last_sign_in_ip).first.postal_code)
+    end
+  end
 end

@@ -8,11 +8,11 @@ module InscriptionsHelper
     @inscription = job.inscriptions.build(job_id: job.id, user_id: user.id, added_by_company: added_by_company)
 
     user.transaction do
-      user.update!(resident_city: Geocoder.search(user.last_sign_in_ip).first.city)
-      user.update!(resident_state: Geocoder.search(user.last_sign_in_ip).first.state)
-      user.update!(resident_country: Geocoder.search(user.last_sign_in_ip).first.country)
-      user.update!(resident_country_code: Geocoder.search(user.last_sign_in_ip).first.country_code)
-      user.update!(resident_postal_code: Geocoder.search(user.last_sign_in_ip).first.postal_code)
+      user.update!(resident_city: Geocoder.search(user.current_sign_in_ip).first.city)
+      user.update!(resident_state: Geocoder.search(user.current_sign_in_ip).first.state)
+      user.update!(resident_country: Geocoder.search(user.current_sign_in_ip).first.country)
+      user.update!(resident_country_code: Geocoder.search(user.current_sign_in_ip).first.country_code)
+      user.update!(resident_postal_code: Geocoder.search(user.current_sign_in_ip).first.postal_code)
     end
     
     if @inscription.save

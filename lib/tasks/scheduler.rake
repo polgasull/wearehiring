@@ -10,3 +10,9 @@ task :job_upgrade_email_proposal => :environment do
   Job.send_upgrade_job_email_proposal
   puts "done."
 end
+
+task :user_update_residence_info => :environment do
+  puts "Updating user residence info..."
+  User.update_residence_info
+  puts "done."
+end
