@@ -3,22 +3,24 @@
 require 'discordrb/webhooks'
 
 class DiscordService
-  attr_reader :job_alert_webwook_url, :candidate_alert_webwook_url, :company_alert_webwook_url, :process_alert_webwook_url
+  attr_reader :job_alert_webhook_url, :job_upgrade_alert_webhook_url, :candidate_alert_webhook_url, :company_alert_webhook_url, :process_alert_webhook_url
   DISCORD_JOB_ALERT_WEBHOOK_URL = ENV['DISCORD_JOB_ALERT_WEBHOOK_URL']
+  DISCORD_JOB_UPGRADE_ALERT_WEBHOOK_URL = ENV['DISCORD_JOB_UPGRADE_ALERT_WEBHOOK_URL']
   DISCORD_CANDIDATE_ALERT_WEBHOOK_URL = ENV['DISCORD_CANDIDATE_ALERT_WEBHOOK_URL']
   DISCORD_COMPANY_ALERT_WEBHOOK_URL = ENV['DISCORD_COMPANY_ALERT_WEBHOOK_URL']
   DISCORD_PROCESS_ALERT_WEBHOOK_URL = ENV['DISCORD_PROCESS_ALERT_WEBHOOK_URL']
 
   def initialize
-    @job_alert_webwook_url = DISCORD_JOB_ALERT_WEBHOOK_URL
-    @candidate_alert_webwook_url = DISCORD_CANDIDATE_ALERT_WEBHOOK_URL
-    @company_alert_webwook_url = DISCORD_COMPANY_ALERT_WEBHOOK_URL
-    @process_alert_webwook_url = DISCORD_PROCESS_ALERT_WEBHOOK_URL
+    @job_alert_webhook_url = DISCORD_JOB_ALERT_WEBHOOK_URL
+    @job_upgrade_alert_webhook_url = DISCORD_JOB_UPGRADE_ALERT_WEBHOOK_URL
+    @candidate_alert_webhook_url = DISCORD_CANDIDATE_ALERT_WEBHOOK_URL
+    @company_alert_webhook_url = DISCORD_COMPANY_ALERT_WEBHOOK_URL
+    @process_alert_webhook_url = DISCORD_PROCESS_ALERT_WEBHOOK_URL
   end
 
   def job_alert_webhook(job)
     return unless Rails.env.production?
-    client = Discordrb::Webhooks::Client.new(url: @job_alert_webwook_url)
+    client = Discordrb::Webhooks::Client.new(url: @job_alert_webhook_url)
     client.execute do |builder|
       builder.add_embed do |embed|
         embed.thumbnail = Discordrb::Webhooks::EmbedThumbnail.new(url: job.avatar_url(:thumb))
@@ -28,6 +30,25 @@ class DiscordService
           #{ job.job_author } - #{job.remote_ok? ? "Remote" : job.location }
           #{ (job.salary_from.nil? || job.salary_from == 0) ? 'A consultar' : job.salary_from } € - #{ (job.salary_to.nil? || job.salary_to == 0) ? 'A consultar' : job.salary_to  } €
           ##{ job.category.name }
+          #{ job.job_price.name }
+        END
+
+        embed.url = "https://www.wearehiring.io/ofertas-empleo-digital/#{job.slug}"
+        embed.timestamp = Time.now
+      end
+    end
+  end
+
+  def job_upgrade_alert_webhook(job)
+    return unless Rails.env.production?
+    client = Discordrb::Webhooks::Client.new(url: @job_upgrade_alert_webhook_url)
+    client.execute do |builder|
+      builder.add_embed do |embed|
+        embed.thumbnail = Discordrb::Webhooks::EmbedThumbnail.new(url: job.avatar_url(:thumb))
+        embed.title = job.title
+        embed.description = 
+        <<~END
+          #{ job.job_author } upgraded job to #{ job.job_price.name }
         END
 
         embed.url = "https://www.wearehiring.io/ofertas-empleo-digital/#{job.slug}"
@@ -38,7 +59,7 @@ class DiscordService
 
   def candidate_signup_alert_webhook(candidate)
     return unless Rails.env.production?
-    client = Discordrb::Webhooks::Client.new(url: @candidate_alert_webwook_url)
+    client = Discordrb::Webhooks::Client.new(url: @candidate_alert_webhook_url)
     client.execute do |builder|
       builder.add_embed do |embed|
         embed.title = candidate.name
@@ -56,7 +77,7 @@ class DiscordService
 
   def company_signup_alert_webhook(company)
     return unless Rails.env.production?
-    client = Discordrb::Webhooks::Client.new(url: @company_alert_webwook_url)
+    client = Discordrb::Webhooks::Client.new(url: @company_alert_webhook_url)
     client.execute do |builder|
       builder.add_embed do |embed|
         embed.title = company.name
@@ -72,7 +93,7 @@ class DiscordService
 
   def inscription_status_alert_webhook(inscription, job)
     return unless Rails.env.production?
-    client = Discordrb::Webhooks::Client.new(url: @process_alert_webwook_url)
+    client = Discordrb::Webhooks::Client.new(url: @process_alert_webhook_url)
     client.execute do |builder|
       builder.add_embed do |embed|
         embed.thumbnail = Discordrb::Webhooks::EmbedThumbnail.new(url: job.avatar_url(:thumb))
@@ -93,7 +114,7 @@ class DiscordService
     return unless Rails.env.production?
     we_match_sentence = "ha sido añadido a través de We Match para la posición de"
     inscribed_sentence = "se ha inscrito para la posición de"
-    client = Discordrb::Webhooks::Client.new(url: @process_alert_webwook_url)
+    client = Discordrb::Webhooks::Client.new(url: @process_alert_webhook_url)
     client.execute do |builder|
       builder.add_embed do |embed|
         embed.thumbnail = Discordrb::Webhooks::EmbedThumbnail.new(url: job.avatar_url(:thumb))

@@ -101,6 +101,7 @@ module Companies
       stripe_process(job_price, discount)
 
       if @job.update(job_params)
+        DiscordService.new.job_upgrade_alert_webhook @job
         redirect_to_response(t('jobs.messages.job_updated'), companies_job_path(@job)) 
       else
         redirect_back_response(t('jobs.messages.job_not_updated'), false)
