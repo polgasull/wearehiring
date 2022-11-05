@@ -15,6 +15,7 @@
                 <tr>
                   <td>
                     <h2> Tu Job <%= @job.title %> está despertando mucho interés </h2>
+                    <p> Candidatos inscritos actualmente: <%= @job.inscriptions.count %> </p><br>
                     <p> <strong> <%= @user.name %> acaba de aplicar a tu oferta. </strong> </p>
                     <% if @user.picture_url.file.nil? %>
                       <p>
@@ -38,7 +39,8 @@
                     </ul>
                     <p> Recibirán un email avisándoles de la fase en la que se encuentran. </p>
                     <hr>
-                    <p> <strong> ¿Quieres más candidatos de forma instantánea? Usa WE MATCH </strong> </p>
+                    <p> <strong> ¿Quieres más candidatos de forma instantánea? </strong> </p>
+                    <p> <strong> Si tu Job es PRO puedes usar WE MATCH </strong> </p>
                     <p> En cada oferta te mostraremos candidatos de nuestra base de datos que encajen con tus requisitos </p>
                     <p> Añádelos a tu proceso de selección y empieza con las entrevistas hoy mismo </p>
                     <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
@@ -56,7 +58,7 @@
                         </tr>
                       </tbody>
                     </table>
-                    <p> ¡Te deseamos mucha suerte! </p>
+                    <p> ¡Happy Hiring! </p>
                   </td>
                 </tr>
               </table>
