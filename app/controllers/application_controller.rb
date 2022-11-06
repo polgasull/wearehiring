@@ -49,6 +49,15 @@ class ApplicationController < ActionController::Base
     if params[:job_id].present?
       find_job(params[:job_id])
       Inscription.create(job_id: @job.id, user_id: current_user.id)
+      current_user.transaction do
+        current_user.update!(
+          resident_city: Geocoder.search(current_user.current_sign_in_ip).first.city,
+          resident_state: Geocoder.search(current_user.current_sign_in_ip).first.state,
+          resident_country: Geocoder.search(current_user.current_sign_in_ip).first.country,
+          resident_country_code: Geocoder.search(current_user.current_sign_in_ip).first.country_code,
+          resident_postal_code: Geocoder.search(current_user.current_sign_in_ip).first.postal_code
+        )
+      end
       DiscordService.new.inscription_alert_webhook(current_user, @job, false)
       job_path(@job.id)
     else
