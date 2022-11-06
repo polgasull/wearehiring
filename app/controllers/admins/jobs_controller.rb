@@ -30,6 +30,7 @@ module Admins
       @in_process_count = @job.inscriptions.where(status: [1]).count
       @finalists_count = @job.inscriptions.where(status: [2]).count
       @inscriptions = @job.inscriptions.where(added_by_company: false).order(status: :desc)
+      @inscriptions_country_codes = inscriptions_country_code(@job)
       @inscriptions_count = @inscriptions.count
       @we_match_inscriptions = @job.inscriptions.where(added_by_company: true).order(status: :desc)
       @we_match_inscriptions_count = @we_match_inscriptions.count
@@ -69,6 +70,17 @@ module Admins
 
     def set_job
       @job = Job.find(params[:id])
+    end
+
+    def inscriptions_country_code(job)
+      inscriptions = job.inscriptions
+      user_country_codes = []
+  
+      inscriptions.each do |inscription|
+        user_country_codes << inscription.user.resident_country_code
+      end
+  
+      user_country_codes.compact.uniq
     end
   
     def job_params

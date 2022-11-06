@@ -94,6 +94,49 @@
         <span class="tag"> <%= icon('fas', 'trophy mr1', class: 'has-text-warning') %> <%= @finalists_count %> </span>
       </div>
     </div>
+    <%= form_tag(admins_job_path(@job.id), method: :get, class: "mb3") do %>
+      <div class="is-flex is-justify-content-flex-end job-filters">
+        <div>
+          <div class="control has-icons-left">
+            <div class="select">
+              <%= select_tag :by_country_code, 
+                options_for_select(@inscriptions_country_codes, params[:by_country_code]), 
+                :include_blank => t('select.resident_country_code') %>
+            </div>
+            <span class="icon is-left">
+              <%= icon('fas', 'flag') %>
+            </span>
+          </div>
+        </div>
+        <div class="ml3">
+          <div class="control has-icons-left">
+            <div class="select">
+              <%= select_tag :by_experience, 
+                options_for_select([ "0-2 años", "2-6 años", "6-10 años", "+10 años" ], params[:by_experience]), 
+                :include_blank => "Años de experiencia" %>
+            </div>
+            <span class="icon is-left">
+              <%= icon('fas', 'graduation-cap') %>
+            </span>
+          </div>
+        </div>
+        <div class="ml3">
+          <div class="control has-icons-left">
+            <div class="select">
+              <%= select_tag :by_status, 
+                options_for_select(Inscription.statuses.keys.map {|status, id| [t("inscriptions.#{status}"), status]}, params[:by_status]), 
+                :include_blank => t('inscriptions.process_status') %>
+            </div>
+            <span class="icon is-left">
+              <%= icon('fas', 'clock') %>
+            </span>
+          </div>
+        </div>
+        <div>
+          <%= button_tag(t('apply_filters'), type: 'submit', class: "button is-text is-fullwidth", data: { disable_with: "<i class='fas fa-spinner fa-spin'></i>".html_safe }) %>
+        </div>
+      </div>
+    <% end %>
     <% if @inscriptions.any? %>
       <% @inscriptions.each do |inscription| %>
         <%= render partial: 'admins/jobs/inscriptions/inscription', locals: { inscription: inscription } %>
