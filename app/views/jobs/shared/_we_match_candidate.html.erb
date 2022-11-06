@@ -14,7 +14,7 @@
         <%= user.experience.present? ? user.experience : content_tag(:span, 'Experiencia no especificada', class: 'has-text-grey-light') %>
       </div>
       <div class="column is-2">
-        <%= user.location.present? ? user.location : content_tag(:span, 'Localización no especificada', class: 'has-text-grey-light') %>
+        <%= flag_icon(user.resident_country_code) %> <%= user.resident_country_code %>
       </div>
       <div class="column is-3">
         <% user.skills.take(6).each do |skill| %>

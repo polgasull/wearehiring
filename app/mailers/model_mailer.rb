@@ -32,6 +32,19 @@ class ModelMailer < ApplicationMailer
       :subject => "✅ Nuevo candidato para #{@job.title}" 
     )  
   end
+
+  def new_candidate_hidden(job)
+    @job = job
+
+    attachments.inline["user_circle.png"] = File.read("#{Rails.root}/app/assets/images/user_circle.png")
+    attachments.inline["logo_black.png"] = File.read("#{Rails.root}/app/assets/images/logo_black.png")
+    attachments.inline["twitter.png"] = File.read("#{Rails.root}/app/assets/images/twitter.png")
+    attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
+    mail( 
+      :to => @job.user.email,
+      :subject => "✅ Nuevo candidato para #{@job.title}" 
+    )  
+  end
   
   def successfully_inscribed(user, job)
     @user = user

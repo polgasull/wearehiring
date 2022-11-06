@@ -285,6 +285,7 @@ en:
     status: "Status"
     process_status: "Process status"
     show_all: "Show all"
+    residence: "Current residence"
     messages:
       inscription_created: "You have registered successfully"
       inscription_not_created: "Something went wrong during your inscription"
@@ -377,6 +378,7 @@ en:
     job_type: "By Job type"
     category: "By Category"
     category: "By Level"
+    resident_country_code: "By country code"
   already_inscribed: "You are already inscribed"
   share_with: "Share with"
   exp_level: "Experience level"
@@ -786,3 +788,5 @@ en:
   sixteen_days: "60 days"
   upgrade_job: "Upgrade Job"
   limit_15: "Limit to max 15"
+  dashboard_last_inscribeds_no_data: "Post some Job type BASIC or PRO to activate this space"
+  apply_filters: "Apply filters"

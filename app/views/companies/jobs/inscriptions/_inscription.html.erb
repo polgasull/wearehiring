@@ -23,9 +23,13 @@
       <% end if inscription.user.profile_url.present? %> 
     </div>
     <div class="column is-4">
+      <% if inscription.user.resident_country_code.present? %>
+        <span class="has-text-weight-bold"> <%= t('inscriptions.residence') %>: </span> 
+        <%= flag_icon(inscription.user.resident_country_code) %>
+        <%= inscription.user.resident_country_code %>, <%= inscription.user.resident_state %>, <%= inscription.user.resident_city %> <br>
+      <% end %>
       <span class="has-text-weight-bold"> <%= t('inscriptions.current_job') %>: </span> <%= inscription.user.current_position.present? ? inscription.user.current_position : content_tag(:span, 'Sin especificar', class: 'has-text-grey-lighter') %> <br>
-      <span class="has-text-weight-bold"> <%= t('inscriptions.experience') %>: </span> <%= inscription.user.experience.present? ? inscription.user.experience : content_tag(:span, 'Sin especificar', class: 'has-text-grey-lighter') %> <br>
-      <span class="has-text-weight-bold"> <%= t('inscriptions.location') %>: </span> <%= inscription.user.location.present? ? inscription.user.location : content_tag(:span, 'Sin especificar', class: 'has-text-grey-lighter') %>
+      <span class="has-text-weight-bold"> <%= t('inscriptions.experience') %>: </span> <%= inscription.user.experience.present? ? inscription.user.experience : content_tag(:span, 'Sin especificar', class: 'has-text-grey-lighter') %>
     </div>
     <div class="column is-1">
       <%= link_to companies_job_inscription_path(inscription.job_id, inscription.id), target: "_blank", class: 'button' do %>

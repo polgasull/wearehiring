@@ -16,7 +16,9 @@ module InscriptionsHelper
     end
     
     if @inscription.save
-      unless (job.is_free_price? && job.inscriptions.count >= 15)
+      if (job.is_free_price? && job.inscriptions.count >= 15)
+        ModelMailer.new_candidate_hidden(job).deliver_later
+      else
         ModelMailer.new_candidate(user, job).deliver_later
       end
       ModelMailer.successfully_inscribed(user, job).deliver_later

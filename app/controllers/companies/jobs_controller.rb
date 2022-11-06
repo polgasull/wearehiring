@@ -74,6 +74,7 @@ module Companies
       @discardeds_count = @job.inscriptions.where(status: [0]).count
       @in_process_count = @job.inscriptions.where(status: [1]).count
       @finalists_count = @job.inscriptions.where(status: [2]).count
+      @inscriptions_country_codes = inscriptions_country_code(@job)
       @inscriptions = inscriptions_list(@job)
       @inscriptions_count = @job.inscriptions.where(added_by_company: false).count
       @we_match_inscriptions = @job.inscriptions.where(added_by_company: true).order(status: :desc)
@@ -122,10 +123,21 @@ module Companies
 
     def inscriptions_list(job)
       if job.is_free_price?
-        job.inscriptions.where(added_by_company: false).order(created_at: :asc).take(15)
+        job.inscriptions.where(added_by_company: false).first(15)
       else
-        job.inscriptions.where(added_by_company: false).order(status: :desc)
+        job.inscriptions.where(added_by_company: false).filter_by(params).order(status: :desc)
       end
+    end
+
+    def inscriptions_country_code(job)
+      inscriptions = job.inscriptions
+      user_country_codes = []
+  
+      inscriptions.each do |inscription|
+        user_country_codes << inscription.user.resident_country_code
+      end
+  
+      user_country_codes.compact.uniq
     end
 
     def set_job

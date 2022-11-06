@@ -287,6 +287,7 @@ es:
     status: "Estado"
     process_status: "Estado en el proceso"
     show_all: "Ver tod@s"
+    residence: "Residencia actual"
     messages:
       inscription_created: "Inscrito correctamente"
       inscription_not_created: "Algo ha ido mal durante la inscripción"
@@ -380,6 +381,7 @@ es:
     user_type: "Tipo de Usuario"
     category: "Todas las Categorías"
     level: "Todos los Niveles"
+    resident_country_code: "Todos los países"
   already_inscribed: "Ya estás inscrito"
   share_with: "Comparte con"
   exp_level: "Nivel de experiencia"
@@ -792,3 +794,5 @@ es:
   sixteen_days: "60 días"
   upgrade_job: "Mejorar Job"
   limit_15: "Limitado a 15"
+  dashboard_last_inscribeds_no_data: "Publica algún Job tipo BASIC o PRO para activar este espacio"
+  apply_filters: "Aplicar filtros"

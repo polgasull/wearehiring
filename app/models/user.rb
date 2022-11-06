@@ -62,7 +62,7 @@ class User < ApplicationRecord
   def last_inscribeds(jobs)
     inscriptions = []
 
-    jobs.each do |job|
+    jobs.where(job_price_id: [1,2]).each do |job|
       job.inscriptions.map{ |i| inscriptions << i }
     end
 

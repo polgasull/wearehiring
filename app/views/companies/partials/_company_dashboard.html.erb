@@ -60,6 +60,7 @@
                     <% end %>
                   </div>
                   <div class="column is-size-7 is-8">
+                    <%= flag_icon(inscription.user.resident_country_code) %>
                     <%= inscription.user.name %> ha aplicado a <%= inscription.job.title %> 
                   </div>
                   <div class="column has-text-right is-3">
@@ -70,9 +71,10 @@
                 </div>
               <% end %>
             <% else %>
-              <div class="has-text-centered mt3">
+              <div class="has-text-centered mt5">
                 <%= image_tag(asset_path('applicants_logo.svg'), size: 150) %>
-                <p> <%= t('dashboard_no_candidates') %>  </p>
+                <p> <%= t('dashboard_no_candidates') %> </p>
+                <p> <%= t('dashboard_last_inscribeds_no_data') %> </p>
               </div>
             <% end %>
           </div>
