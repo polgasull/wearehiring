@@ -10,10 +10,19 @@
   </div>
   <div class="column">
     <h3 class="title is-5"> 
-      <%= t('feature_company_1') %> por solo 299€ <br>
+      <%= t('feature_company_1') %>
+    </h3>
+    <h3 class="title is-5"> 
+      FREE - 0€ / Job <br>
+      BASIC - 99€ / Job <br>
+      PRO - 299€ por Job
     </h3>
     <div class="content mt4">
       <p class="has-text-left"> <%= t('feature_company_text_1') %> </p>
+      <%= link_to new_job_index_companies_jobs_path, 
+        class: "button text-uppercase f6 primary has-text-weight-bold" do %>
+        <%= t('jobs.post_job') %> <%= icon('fas', 'bullhorn ml2') %>
+      <% end %>
     </div>
   </div>
 </div>
@@ -27,7 +36,7 @@
       alt="Rápido regístro | Wearehiring.io">      
   </div>
   <div class="column">
-    <h3 class="title is-5"> <%= t('feature_company_2') %> </h3>
+    <h3 class="title is-5"> <%= t('feature_company_2') %> - PRO <span><%= icon('fas', 'star') %></span> </h3>
     <div class="content mt4">
       <p class="has-text-left"> <%= t('feature_company_text_2') %> </p>
     </div>			
