@@ -33,8 +33,8 @@ class TwitterService
     <<~END
     #WEAREHIRING 📢
 
-    👀 En #{job.job_author} están buscando a un/a #{job.title} en #{job.remote_ok? ? '(Remoto)' : job.location}
-    🥷 #{job.level} de experiencia
+    En #{job.job_author} están buscando 👀 a un/a #{job.title} en #{job.remote_ok? ? '(Remoto)' : job.location}
+    🥷 #{job.level.name} de experiencia
     💰 #{ (job.salary_from.nil? || job.salary_from == 0) ? 'A consultar' : (job.salary_from.to_s + '-' + job.salary_to.to_s) } €
     https://www.wearehiring.io/ofertas-empleo-digital/#{job.slug}
 
