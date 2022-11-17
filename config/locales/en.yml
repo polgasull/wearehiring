@@ -286,6 +286,7 @@ en:
     process_status: "Process status"
     show_all: "Show all"
     residence: "Current residence"
+    by_recommended: "By recommended"
     messages:
       inscription_created: "You have registered successfully"
       inscription_not_created: "Something went wrong during your inscription"
@@ -790,3 +791,4 @@ en:
   limit_15: "Limit to max 15"
   dashboard_last_inscribeds_no_data: "Post some Job type BASIC or PRO to activate this space"
   apply_filters: "Apply filters"
+  recommended_users: "Recommended Users"

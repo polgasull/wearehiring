@@ -25,6 +25,7 @@
           <p class="is-size-3 has-text-weight-bold"> <%= current_user.name %> </p>
           <p> <%= current_user.current_position %> </p>
           <p> <%= icon('fas', 'phone') %> <%= current_user.phone %> </p>
+          <p> <%= icon('fas', 'envelope') %> <%= current_user.email %> </p>
           <div class="is-flex">
             <%= mail_to current_user.email, class: 'button width-150 mr3 mt3' do %>
               <span><%= t('contact') %></span> <%= icon('far', 'paper-plane ml2') %> 

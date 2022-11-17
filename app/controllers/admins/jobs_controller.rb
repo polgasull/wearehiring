@@ -29,7 +29,7 @@ module Admins
       @discardeds_count = @job.inscriptions.where(status: [0]).count
       @in_process_count = @job.inscriptions.where(status: [1]).count
       @finalists_count = @job.inscriptions.where(status: [2]).count
-      @inscriptions = @job.inscriptions.where(added_by_company: false).order(status: :desc)
+      @inscriptions = @job.inscriptions.where(added_by_company: false).filter_by(params).order(status: :desc)
       @inscriptions_country_codes = inscriptions_country_code(@job)
       @inscriptions_count = @inscriptions.count
       @we_match_inscriptions = @job.inscriptions.where(added_by_company: true).order(status: :desc)
@@ -52,6 +52,7 @@ module Admins
     
       if @job.save
         TwitterService.new.send_tweet @job
+        TwitterService.new.send_job_detail_tweet @job
         DiscordService.new.job_alert_webhook @job
         ModelMailer.new_job_scrapping(current_user, @job).deliver_later if @job.external_mail.present?
         redirect_to_response(t('jobs.messages.job_created'), @job) 

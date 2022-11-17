@@ -288,6 +288,7 @@ es:
     process_status: "Estado en el proceso"
     show_all: "Ver tod@s"
     residence: "Residencia actual"
+    by_recommended: "Por recomendación"
     messages:
       inscription_created: "Inscrito correctamente"
       inscription_not_created: "Algo ha ido mal durante la inscripción"
@@ -796,3 +797,4 @@ es:
   limit_15: "Limitado a 15"
   dashboard_last_inscribeds_no_data: "Publica algún Job tipo BASIC o PRO para activar este espacio"
   apply_filters: "Aplicar filtros"
+  recommended_users: "Usuarios recomendados"

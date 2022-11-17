@@ -132,6 +132,18 @@
               </span>
             </div>
           </div>
+          <div class="ml3">
+            <div class="control has-icons-left">
+              <div class="select">
+                <%= select_tag :by_recommended, 
+                  options_for_select({ t('recommended_users') => true }, params[:by_recommended]), 
+                  :include_blank => t('inscriptions.by_recommended') %>
+              </div>
+              <span class="icon is-left">
+                <%= icon('fas', 'star') %>
+              </span>
+            </div>
+          </div>
           <div>
             <%= button_tag(t('apply_filters'), type: 'submit', class: "button is-text is-fullwidth", data: { disable_with: "<i class='fas fa-spinner fa-spin'></i>".html_safe }) %>
           </div>

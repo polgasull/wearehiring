@@ -43,6 +43,7 @@
           <p class="is-size-3 has-text-weight-bold"> <%= @user.name %> </p>
           <p> <%= @user.current_position %> </p>
           <p> <%= icon('fas', 'phone') %> <%= @user.phone %> </p>
+          <p> <%= icon('fas', 'envelope') %> <%= @user.email %> </p>
           <div class="is-flex">
             <%= mail_to @user.email, class: 'button width-150 mr3 mt3' do %>
               <span>Contactar</span> <%= icon('far', 'paper-plane ml2') %> 
@@ -67,7 +68,12 @@
             </div>
             <div class="column">
               <div>
-                <%= @user.location.present? ? content_tag(:span, @user.location) : content_tag(:span, 'Ciudad/País', class: 'has-text-grey-lighter') %>
+                <%= flag_icon('ES') %>
+                <% if @user.location.present? %>
+                  <%= content_tag(:span, @user.location) %>
+                <% else %>
+                  <span> <%= @user.resident_city %>, <%= @user.resident_state %>, <%= @user.resident_country %> </span>
+                <% end %>
               </div>
               <div class="mt2">
                 <%= @user.experience.present? ? content_tag(:span, @user.experience) : content_tag(:span, 'X años', class: 'has-text-grey-lighter') %>

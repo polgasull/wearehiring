@@ -22,4 +22,8 @@ class Inscription < ApplicationRecord
     status_selected = Inscription.statuses[status]
     where('inscriptions.status = ?', status_selected)
   }
+
+  scope :by_recommended, -> (recommended) {
+    where('inscriptions.recommended = ?', recommended)
+  }
 end

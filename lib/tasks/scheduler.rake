@@ -16,3 +16,9 @@ task :user_update_residence_info => :environment do
   User.update_residence_info
   puts "done."
 end
+
+task :send_last_jobs_tweet_notification => :environment do
+  puts "Sending Tweet send_last_jobs_summary"
+  TwitterService.new.send_job_detail_tweet
+  puts "done."
+end
