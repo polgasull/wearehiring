@@ -38,7 +38,7 @@ class TwitterService
     💰 #{ (job.salary_from.nil? || job.salary_from == 0) ? 'A consultar' : (job.salary_from.to_s + '-' + job.salary_to.to_s) } €
     https://www.wearehiring.io/ofertas-empleo-digital/#{job.slug}
 
-    ##{ skills.collect(&:internal_name).join(' #') }
+    ##{ job.skills.collect(&:internal_name).join(' #') }
     END
     client = Twitter::REST::Client.new do |config| 
       config.consumer_key = ENV['TWITTER_CONSUMER_KEY'] 

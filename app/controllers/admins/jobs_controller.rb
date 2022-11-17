@@ -51,9 +51,9 @@ module Admins
       @job.expiry_date = DateTime.now() + 60.days
     
       if @job.save
+        DiscordService.new.job_alert_webhook @job
         TwitterService.new.send_tweet @job
         TwitterService.new.send_job_detail_tweet @job
-        DiscordService.new.job_alert_webhook @job
         ModelMailer.new_job_scrapping(current_user, @job).deliver_later if @job.external_mail.present?
         redirect_to_response(t('jobs.messages.job_created'), @job) 
       else 

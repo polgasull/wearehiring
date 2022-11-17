@@ -19,6 +19,6 @@ end
 
 task :send_last_jobs_tweet_notification => :environment do
   puts "Sending Tweet send_last_jobs_summary"
-  TwitterService.new.send_job_detail_tweet
+  TwitterService.new.send_last_jobs_summary
   puts "done."
 end

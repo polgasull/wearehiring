@@ -116,10 +116,10 @@ module Companies
     private
 
     def send_notifications(user, job)
+      ModelMailer.new_job(user, job).deliver_later
+      DiscordService.new.job_alert_webhook job
       TwitterService.new.send_tweet job
       TwitterService.new.send_job_detail_tweet @job
-      DiscordService.new.job_alert_webhook job
-      ModelMailer.new_job(user, job).deliver_later
     end
 
     def inscriptions_list(job)
