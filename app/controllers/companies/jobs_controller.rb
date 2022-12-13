@@ -148,7 +148,7 @@ module Companies
     end
 
     def check_free_jobs_limit
-      if current_user.free_jobs_active.count >= 10
+      if current_user.free_jobs_active.count >= 5
         redirect_back_response(t('jobs.messages.free_jobs_limit'), false)
       end
     end
