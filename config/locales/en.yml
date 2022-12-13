@@ -258,7 +258,7 @@ en:
       job_deleted: "Job was successfully deleted"
       job_not_deleted: "Job was not able to be deleted"
       job_expired: "Sorry Job has expired"
-      free_jobs_limit: "You have reached the maximum of 10 Free Jobs live. End or wait for one to expire so you can post more."
+      free_jobs_limit: "You have reached the maximum of 5 Free Jobs live. End or wait for one to expire so you can post more."
     summary:
       thanks_title: "Your Job is posted successfully"
       job: "Job summary"

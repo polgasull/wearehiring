@@ -260,7 +260,7 @@ es:
       job_deleted: "Oferta eliminada satisfactoriamente"
       job_not_deleted: "No se pudo eliminar la oferta"
       job_expired: "Lo sentimos la oferta ha expirado"
-      free_jobs_limit: "Has alcanzado el máximo de 10 Jobs Free activos. Finaliza o espera a que expire alguno para poder publicar más."
+      free_jobs_limit: "Has alcanzado el máximo de 5 Jobs Free activos. Finaliza o espera a que expire alguno para poder publicar más."
     summary:
       thanks_title: "¡Tu Job se ha publicado correctamente!"
       job: "Resumen de tu publicación"
