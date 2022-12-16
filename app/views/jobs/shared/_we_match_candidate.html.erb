@@ -1,7 +1,7 @@
 <%= form_for :inscription, url: path, remote: true, id: "add-inscription-form-#{user.id}" do |f| %>
   <%= f.hidden_field :added_by_company, value: true %>
-  <div class="box mt2">
-    <div class="columns">
+  <div class="box radius-20 mt2">
+    <div class="columns is-vcentered">
       <div class="column is-1">
         <figure class="image is-48x48">
           <%= image_tag(asset_path('unknown_user.png') , alt: "Candidato ideal para tu empresa", class: 'is-rounded') %>
@@ -10,18 +10,18 @@
       <div class="column is-3">
         <%= user.current_position.present? ?  user.current_position : content_tag(:span, 'Posición no especificada', class: 'has-text-grey-light') %>
       </div>
-      <div class="column is-1">
+      <div class="column is-2">
         <%= user.experience.present? ? user.experience : content_tag(:span, 'Experiencia no especificada', class: 'has-text-grey-light') %>
       </div>
-      <div class="column is-2">
+      <div class="column is-1">
         <%= flag_icon(user.resident_country_code) %> <%= user.resident_country_code %>
       </div>
       <div class="column is-3">
-        <% user.skills.take(6).each do |skill| %>
-          <span class='tag is-success is-normal'> <%= skill.name %> </span>
+        <% user.skills.take(3).each do |skill| %>
+          <span class='tag is-normal'> <%= skill.name %> </span>
         <% end %>  
       </div>
-      <div class="column is-2">
+      <div class="column is-2 has-text-centered">
         <% if user.is_already_inscribed(job) %>
           <div class="is-outline card-footer-item profile-added">
             <span class="mr2"> ¡<%= t('added') %>! </span>

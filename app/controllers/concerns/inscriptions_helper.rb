@@ -13,7 +13,7 @@ module InscriptionsHelper
       user.update!(resident_country: Geocoder.search(user.current_sign_in_ip).first.country)
       user.update!(resident_country_code: Geocoder.search(user.current_sign_in_ip).first.country_code)
       user.update!(resident_postal_code: Geocoder.search(user.current_sign_in_ip).first.postal_code)
-    end
+    end if !added_by_company
     
     if @inscription.save
       if (job.is_free_price? && job.inscriptions.count >= 15)

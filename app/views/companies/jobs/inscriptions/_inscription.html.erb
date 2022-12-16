@@ -1,7 +1,12 @@
 <div class="box radius-20 is-relative">    
   <% if inscription.recommended? %>
-    <div class="card-ribbon">
+    <div class="card-ribbon inscription-ribbon">
       <span><%= icon('fas', 'star') %></span>
+    </div>
+  <% end %>
+  <% if inscription.added_by_company? %>
+    <div class="card-ribbon we-match-ribbon">
+      <span><%= icon('fas', 'gem') %></span>
     </div>
   <% end %>
   <div class="columns is-vcentered">
@@ -30,6 +35,11 @@
       <% end %>
       <span class="has-text-weight-bold"> <%= t('inscriptions.current_job') %>: </span> <%= inscription.user.current_position.present? ? inscription.user.current_position : content_tag(:span, 'Sin especificar', class: 'has-text-grey-lighter') %> <br>
       <span class="has-text-weight-bold"> <%= t('inscriptions.experience') %>: </span> <%= inscription.user.experience.present? ? inscription.user.experience : content_tag(:span, 'Sin especificar', class: 'has-text-grey-lighter') %>
+      <div class="mt1">
+        <% inscription.user.skills.take(3).each do |skill| %>
+          <span class='tag is-normal'> <%= skill.name %> </span>
+        <% end %>
+      </div>
     </div>
     <div class="column is-1">
       <%= link_to companies_job_inscription_path(inscription.job_id, inscription.id), target: "_blank", class: 'button' do %>

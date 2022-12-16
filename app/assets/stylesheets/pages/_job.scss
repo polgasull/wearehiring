@@ -83,3 +83,28 @@
     margin-top: 16px;
   }
 }
+
+.blurred-section {
+  filter: blur(5px);
+}
+
+.over-blurred-message {
+  z-index: 99999;
+  position: absolute;
+  width: 100%;
+  max-width: 500px;
+  font-size: 18px;
+  font-weight: bold;
+  top: 40%;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.job-we-match-container {
+  background: $light_gray;
+  padding: 32px;
+  border-radius: 20px;
+  border: 2px solid $dark;
+}

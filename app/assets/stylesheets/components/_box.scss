@@ -1,3 +1,7 @@
+.box {
+  border: 1px solid #e3e3e3;
+}
+
 .box-link {
   position: relative;
   text-decoration: none;
@@ -88,6 +92,20 @@
     top: 15px;
     transform: rotate(-45deg);
     z-index: 1;
+  }
+
+  &.inscription-ribbon {
+    span {
+      background-color: $gold;
+      color: $black;
+    }
+  }
+
+  &.we-match-ribbon {
+    span {
+      background-color: $light_gray;
+      color: $blue;
+    }
   }
 
   &::before,

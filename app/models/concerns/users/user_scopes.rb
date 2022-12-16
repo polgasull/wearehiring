@@ -10,8 +10,10 @@ module Users
         where('LOWER(users.name) LIKE :query OR 
               LOWER(users.email) LIKE :query OR 
               LOWER(users.current_position) LIKE :query OR
+              LOWER(users.experience) LIKE :query OR
               LOWER(skills.name) LIKE :query OR
-              LOWER(users.location) LIKE :query',
+              LOWER(users.location) LIKE :query OR
+              LOWER(users.resident_country_code) LIKE :query',
               query: "%#{query.downcase}%")
       }
     

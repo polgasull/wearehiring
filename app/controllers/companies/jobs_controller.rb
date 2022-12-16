@@ -76,9 +76,8 @@ module Companies
       @finalists_count = @job.inscriptions.where(status: [2]).count
       @inscriptions_country_codes = inscriptions_country_code(@job)
       @inscriptions = inscriptions_list(@job)
-      @inscriptions_count = @job.inscriptions.where(added_by_company: false).count
-      @we_match_inscriptions = @job.inscriptions.where(added_by_company: true).order(status: :desc)
-      @we_match_inscriptions_count = @we_match_inscriptions.count
+      @inscriptions_count ||= @job.inscriptions.count
+      @we_match_inscriptions_count ||= @job.inscriptions.where(added_by_company: true).count
   
       respond_to do |format|
         format.js
@@ -124,9 +123,9 @@ module Companies
 
     def inscriptions_list(job)
       if job.is_free_price?
-        job.inscriptions.where(added_by_company: false).first(15)
+        job.inscriptions.first(15)
       else
-        job.inscriptions.where(added_by_company: false).filter_by(params).order(status: :desc)
+        job.inscriptions.filter_by(params).order(status: :desc)
       end
     end
 
