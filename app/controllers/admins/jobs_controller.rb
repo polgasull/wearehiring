@@ -18,22 +18,21 @@ module Admins
     def show
       return redirect_to_response(t('not_found'), root_path, false) unless @job
       if params[:search_users]
-        @matching_candidates = @job.show_filtered_matching_candidates(@job.skills, params[:search_users])
+        @matching_candidates ||= @job.show_filtered_matching_candidates(@job.skills, params[:search_users])
         respond_to do |format|
           format.js { render partial: 'jobs/shared/we_match_search_results'}
         end
       else 
-        @matching_candidates = @job.show_matching_candidates(@job.skills)
+        @matching_candidates ||= @job.show_matching_candidates(@job.skills)
       end
   
-      @discardeds_count = @job.inscriptions.where(status: [0]).count
-      @in_process_count = @job.inscriptions.where(status: [1]).count
-      @finalists_count = @job.inscriptions.where(status: [2]).count
-      @inscriptions = @job.inscriptions.where(added_by_company: false).filter_by(params).order(status: :desc)
-      @inscriptions_country_codes = inscriptions_country_code(@job)
-      @inscriptions_count = @inscriptions.count
-      @we_match_inscriptions = @job.inscriptions.where(added_by_company: true).order(status: :desc)
-      @we_match_inscriptions_count = @we_match_inscriptions.count
+      @discardeds_count ||= @job.inscriptions.where(status: [0]).count
+      @in_process_count ||= @job.inscriptions.where(status: [1]).count
+      @finalists_count ||= @job.inscriptions.where(status: [2]).count
+      @inscriptions ||= @job.inscriptions.filter_by(params).order(status: :desc)
+      @inscriptions_country_codes ||= inscriptions_country_code(@job)
+      @inscriptions_count ||= @inscriptions.count
+      @we_match_inscriptions_count ||= @job.inscriptions.where(added_by_company: true).count
   
       respond_to do |format|
         format.js
