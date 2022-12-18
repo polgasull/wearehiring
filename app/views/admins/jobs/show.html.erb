@@ -227,6 +227,10 @@
 <%= render partial: '/jobs/partials/deactivate_job_modal', locals: { job: @job, model: :admins } %>
 <%= render partial: '/jobs/shared/we_match_modal', locals: { job: @job, matching_candidates: @matching_candidates, model: 'admins' } if @job.open? && @matching_candidates.present? %>
 
+<div class="notification is-success is-light has-text-centered" id="notifySuccess" style="position: fixed; margin-left: auto; margin-right: auto; left: 25%; right: 25%; z-index: 99999; top: 65px; display: none;">
+  <%= t('candidate_updated_notified') %>
+</div>
+
 <%= content_for :footer do %>
   <script>
 

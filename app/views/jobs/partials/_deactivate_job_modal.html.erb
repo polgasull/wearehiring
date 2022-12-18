@@ -3,26 +3,24 @@
   <div class="modal-card">
     <header class="modal-card-head">
       <p class="modal-card-title"> Finalizar Publicación </p>
-      <button class="modal-close" aria-label="close"></button>
+      <button class="modal-close is-large" aria-label="close"></button>
     </header>
     <section class="modal-card-body has-text-centered">
-      <p class="has-text-weight-bold mb3"> 
+      <p class="is-size-4 has-text-weight-bold mb3">
         ¿Estás seguro? Esta acción no se puede deshacer 
       </p>
 
-      <p class="mb1"> <%= job.title %> </p>
-      <p class="mb3"> <%= job.location %> </p>
-
-      <p class="mb1"> 
-        El job ya no estará visible pero podrás seguir gestionando tus candidatos. 
+      <p class="is-size-4 mb3">
+        El job ya no estará visible pero podrás seguir gestionando tus candidatos
+        <%= icon('fas', 'check', class: 'has-text-success') %>
       </p>
 
-      <p class="mb1"> <%= icon('fas', 'user mr1') %> <%= @job.inscriptions.count %> inscritos </p>
+      <p class="is-size-4 mb2"> <%= icon('fas', 'user mr1') %> <%= @job.inscriptions.count %> inscritos </p>
     </section>
     <footer class="modal-card-foot justify-center">
     <%= simple_form_for([model, job], html: { multipart: true }) do |f| %>
       <%= f.hidden_field :open, value: false %>
-      <%= button_tag(type: 'submit', class: "button is-danger") do %>
+      <%= button_tag(type: 'submit', class: "button is-danger is-large") do %>
         <%= icon('fas', 'calendar-times mr2') %> <%= t('jobs.close') %>
       <% end %>
     <% end %>

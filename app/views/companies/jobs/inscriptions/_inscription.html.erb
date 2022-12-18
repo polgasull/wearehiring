@@ -59,17 +59,13 @@
   </div>
 </div>
 
-<div class="notification is-success is-light has-text-centered" id="notification-<%= inscription.id %>" style="position: fixed; z-index: 99999; margin-left: auto; margin-right: auto; left: 25%; right: 25%; top: 65px; display: none;">
-  <%= t('candidate_updated_notified') %>
-</div>
-
 <%= content_for :footer do %>
 
 <script>
   $(document).on('ajax:success', '#update-inscription-form-<%= inscription.id %>', function(event) {
     $selectValue = $(this).find('select').val()
     $(this).find('select').removeClass().addClass('inscription-status-' + $selectValue);
-    $('#notification-<%= inscription.id %>').fadeIn().delay(4000).fadeOut();
+    $('#notifySuccess').fadeIn().delay(4000).fadeOut();
   });
 </script>
 

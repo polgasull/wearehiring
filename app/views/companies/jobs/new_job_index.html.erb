@@ -45,7 +45,7 @@
             </article>
           <% end %>
           <div class="mtauto has-text-centered">
-            <%= link_to 'Publicar Job Free', free_new_companies_job_path, class: 'button is-success is-rounded', disabled: current_user.free_jobs_active.count >= 5 %>
+            <%= link_to 'Publicar Job FREE', free_new_companies_job_path, class: 'button primary is-rounded', disabled: current_user.free_jobs_active.count >= 5 %>
           </div>
         </div>
       </div>
@@ -77,12 +77,8 @@
             <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
             <p> <del> <%= t('until_15_candidates') %> </del> <span class="has-text-success ml1 has-text-weight-semibold"><%= t('unlimited_candidates') %> </span> </p>
           </div>
-          <div class="is-flex">
-            <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
-            <p> <%= t('download_candidates_excel') %> </p>
-          </div>
           <div class="mtauto has-text-centered">
-            <%= link_to 'Publicar Job Basic', new_companies_job_path(job_price: :basic), class: 'button is-success is-rounded' %>
+            <%= link_to 'Publicar Job BASIC', new_companies_job_path(job_price: :basic), class: 'button primary is-rounded' %>
           </div>
         </div>
       </div>
@@ -145,7 +141,7 @@
             <p> <%= icon('fas', 'plug ml2') %> </p>
           </div>
           <div class="mtauto has-text-centered">
-            <%= link_to 'Publicar Job Pro', new_companies_job_path, class: 'button is-success is-rounded' %>
+            <%= link_to 'Publicar Job PRO', new_companies_job_path, class: 'button primary is-rounded' %>
           </div>
         </div>
       </div>

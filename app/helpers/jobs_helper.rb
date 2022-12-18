@@ -8,7 +8,7 @@ module JobsHelper
 
   def job_expired(job)
     if (!job.open?) 
-      "<span class='tag is-danger'> #{t('jobs.expired')} </span>".html_safe
+      "<span class='tag is-danger is-large is-flex'> #{t('jobs.expired')} </span>".html_safe
     else 
       (job.expiry_date.to_date - Date.today).to_i
     end
