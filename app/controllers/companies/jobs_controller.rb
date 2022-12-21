@@ -76,7 +76,7 @@ module Companies
       @finalists_count ||= @job.inscriptions.where(status: [2]).count
       @inscriptions_country_codes ||= inscriptions_country_code(@job)
       @inscriptions ||= inscriptions_list(@job)
-      @inscriptions_count ||= @job.inscriptions.count
+      @inscriptions_count ||= @inscriptions.count
       @we_match_inscriptions_count ||= @job.inscriptions.where(added_by_company: true).count
   
       respond_to do |format|

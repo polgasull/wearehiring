@@ -105,61 +105,70 @@
       </div>
     </div>
     <% if !@job.is_free_price? %>
-      <%= form_tag(companies_job_path(@job.id), method: :get, class: "mb3") do %>
-        <div class="is-flex is-justify-content-flex-end">
-          <div>
-            <div class="control has-icons-left">
-              <div class="select">
-                <%= select_tag :by_country_code, 
-                  options_for_select(@inscriptions_country_codes, params[:by_country_code]), 
-                  :include_blank => t('select.resident_country_code') %>
-              </div>
-              <span class="icon is-left">
-                <%= icon('fas', 'flag') %>
-              </span>
-            </div>
-          </div>
-          <div class="ml3">
-            <div class="control has-icons-left">
-              <div class="select">
-                <%= select_tag :by_experience, 
-                  options_for_select([ "0-2 años", "2-6 años", "6-10 años", "+10 años" ], params[:by_experience]), 
-                  :include_blank => "Años de experiencia" %>
-              </div>
-              <span class="icon is-left">
-                <%= icon('fas', 'graduation-cap') %>
-              </span>
-            </div>
-          </div>
-          <div class="ml3">
-            <div class="control has-icons-left">
-              <div class="select">
-                <%= select_tag :by_status, 
-                  options_for_select(Inscription.statuses.keys.map {|status, id| [t("inscriptions.#{status}"), status]}, params[:by_status]), 
-                  :include_blank => t('inscriptions.process_status') %>
-              </div>
-              <span class="icon is-left">
-                <%= icon('fas', 'clock') %>
-              </span>
-            </div>
-          </div>
-          <div class="ml3">
-            <div class="control has-icons-left">
-              <div class="select">
-                <%= select_tag :by_recommended, 
-                  options_for_select({ t('recommended_users') => true }, params[:by_recommended]), 
-                  :include_blank => t('inscriptions.by_recommended') %>
-              </div>
-              <span class="icon is-left">
-                <%= icon('fas', 'star') %>
-              </span>
-            </div>
-          </div>
-          <div>
-            <%= button_tag(t('apply_filters'), type: 'submit', class: "button is-text is-fullwidth", data: { disable_with: "<i class='fas fa-spinner fa-spin'></i>".html_safe }) %>
-          </div>
+      <div class="columns is-vcentered mb3">
+        <div class="column is-2">
+          <p>
+            <%= @inscriptions_count %> <%= @inscriptions_count == 1 ? t('result') : t('results') %>
+          </p>
         </div>
-      <% end %>
+        <div class="column is-10">
+          <%= form_tag(companies_job_path(@job.id), method: :get) do %>
+            <div class="is-flex is-justify-content-flex-end">
+              <div>
+                <div class="control has-icons-left">
+                  <div class="select">
+                    <%= select_tag :by_country_code, 
+                      options_for_select(@inscriptions_country_codes, params[:by_country_code]), 
+                      :include_blank => t('select.resident_country_code') %>
+                  </div>
+                  <span class="icon is-left">
+                    <%= icon('fas', 'flag') %>
+                  </span>
+                </div>
+              </div>
+              <div class="ml3">
+                <div class="control has-icons-left">
+                  <div class="select">
+                    <%= select_tag :by_experience, 
+                      options_for_select([ "0-2 años", "2-6 años", "6-10 años", "+10 años" ], params[:by_experience]), 
+                      :include_blank => "Años de experiencia" %>
+                  </div>
+                  <span class="icon is-left">
+                    <%= icon('fas', 'graduation-cap') %>
+                  </span>
+                </div>
+              </div>
+              <div class="ml3">
+                <div class="control has-icons-left">
+                  <div class="select">
+                    <%= select_tag :by_status, 
+                      options_for_select(Inscription.statuses.keys.map {|status, id| [t("inscriptions.#{status}"), status]}, params[:by_status]), 
+                      :include_blank => t('inscriptions.process_status') %>
+                  </div>
+                  <span class="icon is-left">
+                    <%= icon('fas', 'clock') %>
+                  </span>
+                </div>
+              </div>
+              <div class="ml3">
+                <div class="control has-icons-left">
+                  <div class="select">
+                    <%= select_tag :by_recommended, 
+                      options_for_select({ t('recommended_users') => true }, params[:by_recommended]), 
+                      :include_blank => t('inscriptions.by_recommended') %>
+                  </div>
+                  <span class="icon is-left">
+                    <%= icon('fas', 'star') %>
+                  </span>
+                </div>
+              </div>
+              <div>
+                <%= button_tag(t('apply_filters'), type: 'submit', class: "button is-dark is-fullwidth has-text-weight-bold", data: { disable_with: "<i class='fas fa-spinner fa-spin'></i>".html_safe }) %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
     <% else %>
       <div class="button is-static is-flex is-justify-content-flex-end is-align-items-center pa4 mb4">
         <div>
