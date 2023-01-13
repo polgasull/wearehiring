@@ -146,12 +146,12 @@
                 <p class="has-text-centered mt4">
                   <%= icon('fas', 'credit-card f1') %>
                   <strong class="has-text-success f1 ml2 job-price" id="price-displayed"> 299€ </strong>
-                  <span class="f1 ml2 discounted-price is-hidden"> <del> 316.94€ </del> <strong class="has-text-success" id="price-after-discount"></strong> </span>
+                  <span class="f1 ml2 discounted-price is-hidden"> <del> 340.86€ </del> <strong class="has-text-success" id="price-after-discount"></strong> </span>
                   <span class="has-text-success"> + <%= t('taxes') %> </span>
                 </p>
                 <p class="has-text-centered">
                   <%= icon('fas', 'info-circle') %>
-                  <small id="price-after-taxes"> 316.94€ </small> <small> <%= t('tax_included') %> </small>
+                  <small id="price-after-taxes"> 340.86€ </small> <small> <%= t('tax_included') %> </small>
                 </p>
                 <p class="has-text-centered">
                   <%= t('payments.monthly') %>
@@ -245,7 +245,7 @@
           $('.basic-badge').removeClass('is-hidden');
           $('.pro-badge').addClass('is-hidden');
           priceDisplayed.innerHTML = '99€';
-          priceAfterTaxes.innerHTML = '104.94€';
+          priceAfterTaxes.innerHTML = '112.86€';
           message.innerHTML = ''
           discountInput.css("background-color", '#FFFFFF')
           discountInput.removeClass('is-danger');
@@ -262,7 +262,7 @@
           $('.basic-badge').addClass('is-hidden');
           $('.pro-badge').removeClass('is-hidden');
           priceDisplayed.innerHTML = '299€';
-          priceAfterTaxes.innerHTML = '316.94€';
+          priceAfterTaxes.innerHTML = '340.86€';
           message.innerHTML = ''
           discountInput.css("background-color", '#FFFFFF')
           discountInput.removeClass('is-danger');
@@ -277,7 +277,7 @@
         if($.inArray(inputValue, coupon_names_array) !== -1) {
           var discountNumber = inputValue.match(/\d+/);
           var iva_tax = (299 - discountNumber) * 0.21
-          var irpf_tax = (299 - discountNumber) * 0.15
+          var irpf_tax = (299 - discountNumber) * 0.07
           $('.job-price').addClass('is-hidden');
           $('.discounted-price').removeClass('is-hidden');
           $('#error-message').removeClass('has-text-danger').addClass('has-text-success');
@@ -296,7 +296,7 @@
           discountInput.css("background-color", errorColorLight)
           message.innerHTML = "El código debe ser válido";
           priceAfterDiscount.innerHTML = "";
-          priceAfterTaxes.innerHTML = '316.94€';
+          priceAfterTaxes.innerHTML = '340.86€';
         }
       })
     });

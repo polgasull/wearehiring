@@ -12,7 +12,7 @@ module PaymentHelper
     card_last4 = params[:user][:card_last4]
     net_price = (price - discount)
     iva_tax = ((net_price * 0.0021) * 100).round
-    irpf_tax = ((net_price * 0.0015) * 100).round
+    irpf_tax = ((net_price * 0.0007) * 100).round
     price_after_taxes = net_price + iva_tax - irpf_tax
 
     charge = Stripe::Charge.create(
