@@ -33,7 +33,7 @@ class TalentHackersService
         job.partner_id = Partner.find_by(name: "Talent Hackers").id
         job.remote_ok = result["full_remote"]
         job.reference = "wah#{DateTime.now.year}#{SecureRandom.hex(3)}"
-        job.expiry_date = nil
+        job.expiry_date = DateTime.now() + 90.days
         job.open = true
         job.job_price_id = JobPrice.find_by(internal_name: 'free').id
         job.job_type_id = JobType.find_by(internal_name: 'full_time').id
