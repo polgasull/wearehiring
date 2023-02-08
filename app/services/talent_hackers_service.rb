@@ -25,7 +25,7 @@ class TalentHackersService
         job.description = result["description"]
         job.apply_url = "https://talenthackers.net/spots/#{result["area"]}/#{result["slug"]}?rid=#{TOKEN}"
         job.location = result["office_city"]
-        job.job_author = "We Are Hiring by Talent Hackers"
+        job.job_author = "Talent Hackers"
         job.created_at = Job.active.first.created_at - 1.day
         job.updated_at = result["updated"]
         job.salary_from = result["salary"].nil? ? 0 : result["salary"]["salary_min"]
