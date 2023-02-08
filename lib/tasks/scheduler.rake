@@ -22,3 +22,9 @@ task :send_last_jobs_tweet_notification => :environment do
   TwitterService.new.send_last_jobs_summary
   puts "done."
 end
+
+task :fetch_talent_hackers_jobs => :environment do
+  puts "Fetching talent hackers jobs"
+  Job.create_jobs_from_talent_hackers
+  puts "done."
+end

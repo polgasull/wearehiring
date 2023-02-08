@@ -31,6 +31,8 @@ class Job < ApplicationRecord
   scope :inactive, -> { where(open: false) }
 
   def is_expired?
+    return false if expiry_date.nil?
+
     expiry_date < Date.today
   end
 
@@ -116,5 +118,11 @@ class Job < ApplicationRecord
     define_method "is_#{job_type_name}_price?" do
       job_price&.internal_name == job_type_name
     end
+  end
+
+  def self.create_jobs_from_talent_hackers
+    talent_hackers_jobs = JSON.parse(TalentHackersService.new.fetch_jobs).with_indifferent_access
+    results = talent_hackers_jobs[:results]
+    TalentHackersService.new.create_jobs(results)
   end
 end
