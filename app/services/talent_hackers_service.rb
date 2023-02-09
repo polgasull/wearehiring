@@ -18,7 +18,7 @@ class TalentHackersService
   end
 
   def create_jobs(results)
-    results.take.each_with_index do |result, index|
+    results.each_with_index do |result, index|
       Job.where(url: result["slug"]).first_or_create do |job|
         # create job if it does not exist and assign other attributes
         job.title = result["title"]
