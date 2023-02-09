@@ -18,7 +18,7 @@ class TalentHackersService
   end
 
   def create_jobs(results)
-    results.map do |result|
+    results.take(3).each_with_index do |result, index|
       Job.where(url: result["slug"]).first_or_create do |job|
         # create job if it does not exist and assign other attributes
         job.title = result["title"]
@@ -26,7 +26,7 @@ class TalentHackersService
         job.apply_url = "https://talenthackers.net/spots/#{result["area"]}/#{result["slug"]}?rid=#{TOKEN}"
         job.location = result["office_city"]
         job.job_author = "Talent Hackers"
-        job.created_at = Job.active.first.created_at - 1.day
+        job.created_at = Job.active.first.created_at - (index + 2).hours
         job.updated_at = result["updated"]
         job.salary_from = result["salary"].nil? ? 0 : result["salary"]["salary_min"]
         job.salary_to = result["salary"].nil? ? 0 : result["salary"]["salary_max"]
