@@ -72,7 +72,7 @@
     <div class="columns">
       <div class="column has-text-centered">
         <% if job.partner.present? %>
-          <%= link_to "#{job.apply_url + '?rid=' + job.partner.token}", class: "button is-dark is-medium is-rounded", target: '_blank' do %>
+          <%= link_to job.apply_url, class: "button is-dark is-medium is-rounded", target: '_blank' do %>
             <%= t('i_want_this_job') %> <%= icon('fas', 'external-link-alt ml2') %>
           <% end %>
           <p class="mt3"> <small> Partnership con <%= job.partner.name %> </small> </p>
