@@ -32,7 +32,7 @@
             <% end %>
             <%= link_to current_user.profile_url, target: "_blank", class: 'button linkedin width-50 mt3' do %>
               <%= icon('fab', 'linkedin') %>
-            <% end %>
+            <% end if current_user.profile_url.present? %>
           </div>
         </div>
         <div class="column is-6 pl4">

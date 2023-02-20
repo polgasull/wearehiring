@@ -58,6 +58,14 @@
 
 <section class="section has-text-left-mobile section-bg-gray pv6">
 	<div class="container">
+    <div class="columns">
+      <div class="column has-text-centered mb5">
+        <h2 class="title is-3 title-touch"> 
+          <%= t('home_index.first_section_text_5') %> <br>
+          <span class="primary-color"> <%= t('home_index.first_section_text_6') %> </span>
+        </h2>
+      </div>
+    </div>
 		<div class="columns">
 			<div class="column has-text-left">
 				<p class="title is-3"> <%= t('last') %> <%= @jobs_count %> <%= t('digital_job_offers') %>	</p>
@@ -83,10 +91,10 @@
 	<div class="container is-max-widescreen">
 		<div class="columns">
 			<div class="column">
-				<p class="title is-2 has-text-weight-bold has-text-corporate">
+				<h3 class="title is-2 has-text-weight-bold has-text-corporate">
 					<%= t('home_index.first_section_text_1') %>, <br>
 					<%= t('home_index.first_section_text_2') %>
-				</p>
+				</h3>
 				<p class="is-size-5 mb3 has-text-weight-bold">
 					<%= t('home_index.first_section_text_3') %> <br>
 					<%= t('home_index.first_section_text_4') %>
@@ -119,9 +127,9 @@
 				<img src="<%=asset_path('undraw_community.svg')%>" width="400" height="400" class="is-blank" alt="Crear cuenta empresa y publicar empleo digital | Wearehiring.io">	
 			</div>
 			<div class="column">
-				<p class="title is-2 has-text-weight-bold has-text-corporate">
+				<h3 class="title is-2 has-text-weight-bold has-text-corporate">
           <%= t('home_index.second_section_text_1') %>
-				</p>
+				</h3>
 				<p class="is-size-5 mb3 has-text-weight-bold">
 					<%= t('home_index.second_section_text_2') %>
 				</p>
@@ -159,7 +167,7 @@
 								</figure>
 							</div>
 							<div class="media-content">
-								<p class="title is-4">Alex Lope</p>
+								<p class="title is-4">Ramón Bassols</p>
 								<p class="subtitle is-6">Fullstack developer - Emogg</p>
 							</div>
 						</div>
@@ -284,7 +292,7 @@
   <div class="container">
   	<div class="columns">
 			<div class="column has-text-centered">
-				<p class="title is-2 has-text-corporate"> <%= t('pricing')%> </p>
+				<h3 class="title is-2 has-text-corporate"> <%= t('pricing')%> </h3>
 			</div>
 		</div>
     <div class="columns mt4">
@@ -517,7 +525,7 @@
 
 <%= content_for :head do %>
 	<%= render "seo", 
-			title: 'Encuentra el mejor talento digital para tus equipos tech en We Are Hiring', 
-			description: 'En We Are Hiring agrupamos y damos visibilidad a los Jobs digitales más recientes. Accede a oportunidades de trabajo dentro del ecosistema tecnológico que encajen contigo.',
+			title: t('seo.home_title'), 
+			description: t('seo.home_description'),
 			image: image_url(asset_path('wah_red_logo.png')) %>
 <% end %>
