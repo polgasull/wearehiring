@@ -70,6 +70,7 @@ Rails.application.routes.draw do
 
   get '/como-funciona/empresas', to: 'how_it_works#companies', as: 'how_it_works_companies'
   get '/como-funciona/talento', to: 'how_it_works#talent', as: 'how_it_works_talent'
+  get '/sign-up-thanks', to: 'application#sign_up_thanks', as: 'sign_up_thanks'
   get '/pricing', to: 'pricing#index', as: 'pricing'
   get '/legal/aviso_legal', to: 'legal#legal_terms', as: 'legal_terms'
   get '/legal/politicas_privacidad', to: 'legal#privacy_policy', as: 'privacy_policy'
