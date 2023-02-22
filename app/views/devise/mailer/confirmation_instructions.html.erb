@@ -16,8 +16,21 @@
                     <p>Bienvenido <%= @email %> a Wearehiring!</p>
 
                     <p>Estás a 1 paso de confirmar tu cuenta accediendo al siguiente enlace:</p>
-
-                    <p><%= link_to 'Confirmar mi cuenta', confirmation_url(@resource, confirmation_token: @token) %></p>
+                    <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
+                      <tbody>
+                        <tr>
+                          <td align="left">
+                            <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                              <tbody>
+                                <tr>
+                                  <td> <%= link_to 'Confirmar mi cuenta', confirmation_url(@resource, confirmation_token: @token) %> </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </td>
                 </tr>
               </table>
@@ -33,7 +46,7 @@
           <table role="presentation" border="0" cellpadding="0" cellspacing="0">
             <tr>
               <td class="content-block">
-                <span class="apple-link">WeAreHiring Team</span>
+                <span class="apple-link">Equipo We Are Hiring</span>
                 <br> 
               </td>
             </tr>
