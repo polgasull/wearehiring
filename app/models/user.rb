@@ -12,7 +12,6 @@ class User < ApplicationRecord
   has_many :jobs
   has_many :inscriptions
   mount_uploader :picture_url, AvatarUploader
-  after_create :send_notification if Rails.env.production?
 
   attr_accessor :company
 
@@ -73,7 +72,7 @@ class User < ApplicationRecord
     jobs.active.where(job_price_id: 3)
   end
 
-  def send_notification
+  def after_confirmation
     if self.is_company?
       ModelMailer.welcome_company(self).deliver_later
       DiscordService.new.company_signup_alert_webhook(self)
