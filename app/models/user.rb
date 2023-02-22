@@ -4,7 +4,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable,
-         :rememberable, :validatable, :trackable, :omniauthable, :omniauth_providers => [:linkedin]
+         :rememberable, :validatable, :trackable, :confirmable, :omniauthable, :omniauth_providers => [:linkedin]
 
   belongs_to :user_type
   has_many :user_skills
@@ -90,6 +90,12 @@ class User < ApplicationRecord
       user.update!(resident_country: Geocoder.search(user.last_sign_in_ip).first.country)
       user.update!(resident_country_code: Geocoder.search(user.last_sign_in_ip).first.country_code)
       user.update!(resident_postal_code: Geocoder.search(user.last_sign_in_ip).first.postal_code)
+    end
+  end
+
+  def self.update_confirmed_at
+    User.all.each do |user|
+      user.update(confirmed_at: DateTime.now)
     end
   end
 end

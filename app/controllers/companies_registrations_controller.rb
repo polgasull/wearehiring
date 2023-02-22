@@ -32,6 +32,10 @@ class CompaniesRegistrationsController < Devise::RegistrationsController
     UserType.where(internal_name: 'company').first.id
   end
 
+  def after_inactive_sign_up_path_for(resource)
+    :sign_up_thanks
+  end
+
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(
       :sign_up, 

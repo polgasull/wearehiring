@@ -313,6 +313,8 @@ en:
   create_candidate_account: "Create candidate account"
   create_company_account: "Create company account"
   forgot_password: "Forgot your password?"
+  need_resend_confirmation_instructions: "Didn't receive confirmation instructions?"
+  resend_confirmation_instructions: "Resend confirmation instructions"
   already_account: "Already an account?"
   dont_have_account: "¿Don't have an account?"
   go_to_jobs: "View current Jobs!"
