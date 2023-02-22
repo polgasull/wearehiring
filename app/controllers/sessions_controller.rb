@@ -13,5 +13,4 @@ class SessionsController < Devise::RegistrationsController
       redirect_back_response(t('devise.failure.user_not_found'), false)
     end
   end
-
 end

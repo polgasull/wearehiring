@@ -36,7 +36,21 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def after_inactive_sign_up_path_for(resource)
-    :sign_up_thanks
+    if params[:job_id].present?
+      find_job(params[:job_id])
+      Inscription.create(job_id: @job.id, user_id: @user.id)
+      DiscordService.new.inscription_alert_webhook(@user, @job, false)
+      job_path(@job.id)
+    else
+      :sign_up_thanks
+    end
+  end
+
+  def find_job(job_id)
+    @job = Job.find(job_id)
+
+    rescue ActiveRecord::RecordNotFound
+      redirect_to not_found_url
   end
 
   def configure_sign_up_params
