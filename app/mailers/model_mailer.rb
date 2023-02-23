@@ -93,7 +93,6 @@ class ModelMailer < ApplicationMailer
     attachments.inline["logo_black.png"] = File.read("#{Rails.root}/app/assets/images/logo_black.png")
     attachments.inline["twitter.png"] = File.read("#{Rails.root}/app/assets/images/twitter.png")
     attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
-    attachments.inline["WAH_ESCALERA.png"] = File.read("#{Rails.root}/app/assets/images/WAH_ESCALERA.png")
     mail( 
       :to => user.email,
       :subject => 'Bienvenid@s a We Are Hiring 🚀'
@@ -107,7 +106,6 @@ class ModelMailer < ApplicationMailer
     attachments.inline["twitter.png"] = File.read("#{Rails.root}/app/assets/images/twitter.png")
     attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
     attachments.inline["discord.png"] = File.read("#{Rails.root}/app/assets/images/discord.png")
-    attachments.inline["sky_is_the_limit.jpg"] = File.read("#{Rails.root}/app/assets/images/sky_is_the_limit.jpg")
     mail( 
       :to => user.email,
       :subject => 'Bienvenid@ a We Are Hiring 🚀' 
