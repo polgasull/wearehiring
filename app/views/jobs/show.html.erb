@@ -1,3 +1,20 @@
+<% if user_signed_in? && current_user.is_admin? %>
+  <section class="section">
+    <div class="container bg-light radius-8 ph4">
+      <div class="columns is-vcentered">
+        <div class="column">
+          <h3>Admin Panel</h3> 
+        </div>
+        <div class="column has-text-right">
+          <%= link_to edit_admins_job_path(@job), class: 'button is-info radius-8 ml3' do %>
+            <span> <%= t('jobs.edit') %> </span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>
+
 <%= render partial: "jobs/partials/job_information", locals: { job: @job } %>
 
 <% if @same_category_jobs.any? && !current_user&.is_recruiter %>

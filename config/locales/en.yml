@@ -260,6 +260,7 @@ en:
       job_not_deleted: "Job was not able to be deleted"
       job_expired: "Sorry Job has expired"
       free_jobs_limit: "You have reached the maximum of 5 Free Jobs live. End or wait for one to expire so you can post more."
+      unauthorized_to_edit: "Unauthorized to edit Job"
     summary:
       thanks_title: "Your Job is posted successfully"
       job: "Job summary"
@@ -406,6 +407,8 @@ en:
         apply_url: "Original Job link"
         job_author: "Company Name"
         profile_url: "Linkedin profile"
+        created_at: "Created at"
+        expiry_date: "Expiry date"
         new:
           username: 'Choose a user name'
     hints:

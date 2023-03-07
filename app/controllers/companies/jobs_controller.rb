@@ -29,6 +29,7 @@ module Companies
     end
 
     def edit
+      return redirect_back_response(t('jobs.messages.unauthorized_to_edit'), false) if @job.is_free_price?
     end
   
     def create
@@ -87,7 +88,13 @@ module Companies
     end
 
     def update
-      @job&.update(job_params) ? redirect_to_response(t('jobs.messages.job_updated'), companies_job_path(@job)) : redirect_back_response(t('jobs.messages.job_not_updated'), false)
+      return redirect_back_response(t('jobs.messages.job_not_updated'), false) if @job.is_free_price?
+      
+      if @job.update(job_params)
+        redirect_to_response(t('jobs.messages.job_updated'), companies_job_path(@job))
+      else
+        redirect_back_response(t('jobs.messages.job_not_updated'), false)
+      end
     end
 
     def edit_price

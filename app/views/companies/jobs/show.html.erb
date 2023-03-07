@@ -47,8 +47,12 @@
     <div class="box broken-white-bg radius-20 pa4">
       <div class="has-text-right mb3">
         <% if @job.open? %>
-          <%= link_to edit_companies_job_path(@job), class: 'button is-link' do %>
-            <%= icon('fas', 'edit mr1') %> <%= t('jobs.edit') %>
+          <% if @job.is_free_price? %>
+            <span class="button is-static"> <%= t('jobs.edit') %> <span class="tag is-warning ml2"> Basic / Pro </span>  <%= icon('fas', 'lock', class: 'ml2 is-size-4') %> </span>
+          <% else %>
+            <%= link_to edit_companies_job_path(@job), class: 'button is-link' do %>
+              <%= icon('fas', 'edit mr1') %> <%= t('jobs.edit') %>
+            <% end %>
           <% end %>
           <%= link_to job_path(@job), class: 'button ml3', target: '_blank' do %>
             <%= icon('fas', 'eye mr1') %> <%= t('show_job_post') %>

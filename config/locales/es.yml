@@ -262,6 +262,7 @@ es:
       job_not_deleted: "No se pudo eliminar la oferta"
       job_expired: "Lo sentimos la oferta ha expirado"
       free_jobs_limit: "Has alcanzado el máximo de 5 Jobs Free activos. Finaliza o espera a que expire alguno para poder publicar más."
+      unauthorized_to_edit: "No tienes permisos para poder editar el Job"
     summary:
       thanks_title: "¡Tu Job se ha publicado correctamente!"
       job: "Resumen de tu publicación"
@@ -410,6 +411,8 @@ es:
         job_author: "Nombre de la empresa"
         profile_url: "Perfil de Linkedin"
         discount_code: "Código descuento"
+        created_at: "Fecha creación"
+        expiry_date: "Fecha expiración"
         new:
           username: 'Elige un nombre de usuario'
     hints:
