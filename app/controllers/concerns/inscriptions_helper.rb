@@ -16,13 +16,14 @@ module InscriptionsHelper
     end if !added_by_company
     
     if @inscription.save
-      if (job.is_free_price? && job.inscriptions.count >= 15)
-        ModelMailer.new_candidate_hidden(job).deliver_later
-      else
-        ModelMailer.new_candidate(user, job).deliver_later
-      end
       ModelMailer.successfully_inscribed(user, job).deliver_later
       DiscordService.new.inscription_alert_webhook(user, job, added_by_company)
+
+      if (job.is_free_price? && job.inscriptions.count >= 15)
+        return redirect_to_response(t('inscriptions.messages.inscription_created'), route ? route : job)
+      end
+      
+      ModelMailer.new_candidate(user, job).deliver_later
       redirect_to_response(t('inscriptions.messages.inscription_created'), route ? route : job)
     else
       redirect_back_response(t('inscriptions.messages.inscription_not_created'), false)
