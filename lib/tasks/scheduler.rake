@@ -28,3 +28,9 @@ task :fetch_talent_hackers_jobs => :environment do
   Job.create_jobs_from_talent_hackers
   puts "done."
 end
+
+task :fetch_remote_ok_jobs => :environment do
+  puts "Fetching remote ok jobs"
+  Job.create_jobs_from_remote_ok
+  puts "done."
+end

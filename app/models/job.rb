@@ -125,4 +125,10 @@ class Job < ApplicationRecord
     results = talent_hackers_jobs[:results]
     TalentHackersService.new.create_jobs(results)
   end
+
+  def self.create_jobs_from_remote_ok
+    remote_ok_jobs = JSON.parse(RemoteOkService.new.fetch_jobs)
+    results = remote_ok_jobs
+    RemoteOkService.new.create_jobs(results)
+  end
 end

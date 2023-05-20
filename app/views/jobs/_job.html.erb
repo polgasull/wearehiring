@@ -62,7 +62,7 @@
       </div>
       <div class="column is-2 has-text-right is-vertical-center">
         <% if job.partner.present? %>
-          <%= image_tag(asset_path('talent-hackers-logo.png'), alt: "Job by TalentHackers", width: 160, height: 160) %>
+          <%= image_tag(asset_path("#{job.partner.name.parameterize}-logo.png"), alt: "Job by #{job.partner.name}", width: 160, height: 160) %>
         <% end %>
       </div>
     </div>
