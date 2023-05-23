@@ -89,7 +89,7 @@ Rails.application.routes.draw do
   authenticated :user do
     root to: 'dashboard#index', as: nil
   end
-  root to: 'home#index'
+  root to: 'jobs#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   if Rails.env.production?
     constraints(host: /^(?!www\.)/i) do
