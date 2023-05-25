@@ -60,14 +60,14 @@
             <% end %> 
           </div>
           <% if job.partner.present? %>
-            <div class="column is-2 has-text-right">
-              <%= image_tag(asset_path("#{job.partner.name.parameterize}-logo.png"), alt: "Job by #{job.partner.name}", width: 160, height: 160) %>
+            <div class="column is-2 is-vertical-center is-justify-content-flex-end">
+              <span class="is-size-6 has-text-weight-bold"> By <%= job.partner.name %> </span> 
             </div>
           <% end %>
         </div>
       </div>
     </div>
-    <div class="ma4"></div>  
+    <div class="ma4"></div>
 
     <div class="columns">
       <div class="column has-text-centered">
@@ -75,7 +75,8 @@
           <%= link_to job.apply_url, class: "button is-dark is-medium is-rounded", target: '_blank' do %>
             <%= t('i_want_this_job') %> <%= icon('fas', 'external-link-alt ml2') %>
           <% end %>
-          <p class="mt3"> <small> Partnership con <%= job.partner.name %> </small> </p>
+          <p class="mt3"> <%= icon('fas', 'eye') %> <%= @unique_impressions %> visitas </p>
+          <p> <small> Partnership con <%= job.partner.name %> </small> </p>
         <% else %>
           <%= render partial: '/jobs/partials/submit_form', locals: { job: job, cta_text: 'i_want_this_job' } %>
         <% end %>
@@ -100,7 +101,8 @@
           <%= link_to job.apply_url, class: "button is-dark is-medium is-rounded" do %>
             <%= t('this_job_is_mine') %> <%= icon('fas', 'external-link-alt ml2') %>
           <% end %>
-          <p class="mt3"> <small> Partnership con <%= job.partner.name %> </small> </p>
+          <p class="mt3"> <%= icon('fas', 'eye') %> <%= @unique_impressions %> visitas </p>
+          <p> <small> Partnership con <%= job.partner.name %> </small> </p>
         <% else %>
           <%= render partial: '/jobs/partials/submit_form', locals: { job: job, cta_text: 'this_job_is_mine' } %>
         <% end %>

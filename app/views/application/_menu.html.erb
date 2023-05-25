@@ -1,64 +1,64 @@
 <% if user_signed_in? %>
 	<% if current_user.is_admin? %>
-	<div class="navbar-end">
-		<div class="navbar-item">
-			<%= link_to t('show_jobs'), 
-					jobs_path, 
-					class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(jobs_path)}" %>
-		</div>
-		<div class="navbar-item has-text-weight-bold ml3 f2">|</div>
-		<div class="navbar-item">
-			<%= link_to "New Job", 
-					new_admins_job_path, 
-					class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(new_admins_job_path)}" %>
-		</div>
-		<div class="navbar-item">
-			<%= link_to "Jobs", 
-					admins_jobs_path, 
-					class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(admins_jobs_path)}" %>		
-		</div>
-		<div class="navbar-item">
-			<%= link_to "Users", 
-					admins_users_path, 
-					class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(admins_users_path)}" %>		
-		</div>
-		<div class="navbar-item">
-			<%= link_to "Settings", 
-					admins_settings_path, 
-					class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(admins_settings_path)}" %>		
-		</div>
-		<div class="navbar-item">
-			<%= link_to "Blog", 
-					blog_posts_path, 
-					class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(blog_posts_path)}" %>		
-		</div>
-		<div class="navbar-item has-text-left">
-			<div class="dropdown navbar-item is-right" id="profileDropdown">
-				<div class="dropdown-trigger">
-					<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-						<span><%= icon('fas', 'cog') %></span>
-						<span class="icon is-small">
-							<i class="fas fa-angle-down" aria-hidden="true"></i>
-						</span>
-					</button>
-				</div>
-				<div class="dropdown-menu" id="dropdown-menu" role="menu">
-					<div class="dropdown-content">
-						<%= link_to edit_user_registration_path, class: "dropdown-item" do %>
-							<span class="icon is-small"> <%= icon('fas', 'key') %> </span>
-							<span> <%= t('edit_password') %> </span>
-						<% end %>
-					</div>
-					<div class="dropdown-content">
-						<%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do %>
-							<span class="icon is-small"><%= icon('fas', 'sign-out-alt') %></span>
-							<span> <%= t('logout') %> </span>
-						<% end %>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <%= link_to t('show_jobs'), 
+            jobs_path, 
+            class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(jobs_path)}" %>
+      </div>
+      <div class="navbar-item has-text-weight-bold ml3 f2">|</div>
+      <div class="navbar-item">
+        <%= link_to "New Job", 
+            new_admins_job_path, 
+            class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(new_admins_job_path)}" %>
+      </div>
+      <div class="navbar-item">
+        <%= link_to "Jobs", 
+            admins_jobs_path, 
+            class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(admins_jobs_path)}" %>		
+      </div>
+      <div class="navbar-item">
+        <%= link_to "Users", 
+            admins_users_path, 
+            class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(admins_users_path)}" %>		
+      </div>
+      <div class="navbar-item">
+        <%= link_to "Settings", 
+            admins_settings_path, 
+            class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(admins_settings_path)}" %>		
+      </div>
+      <div class="navbar-item">
+        <%= link_to "Blog", 
+            blog_posts_path, 
+            class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(blog_posts_path)}" %>		
+      </div>
+      <div class="navbar-item has-text-left">
+        <div class="dropdown navbar-item is-right" id="profileDropdown">
+          <div class="dropdown-trigger">
+            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+              <span><%= icon('fas', 'cog') %></span>
+              <span class="icon is-small">
+                <i class="fas fa-angle-down" aria-hidden="true"></i>
+              </span>
+            </button>
+          </div>
+          <div class="dropdown-menu" id="dropdown-menu" role="menu">
+            <div class="dropdown-content">
+              <%= link_to edit_user_registration_path, class: "dropdown-item" do %>
+                <span class="icon is-small"> <%= icon('fas', 'key') %> </span>
+                <span> <%= t('edit_password') %> </span>
+              <% end %>
+            </div>
+            <div class="dropdown-content">
+              <%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do %>
+                <span class="icon is-small"><%= icon('fas', 'sign-out-alt') %></span>
+                <span> <%= t('logout') %> </span>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 	<% end %>
 
 	<% if current_user.is_candidate? %>
@@ -172,12 +172,12 @@
 			<%= link_to t('pricing'), pricing_path, class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(pricing_path)}" %>
 		</div>
 		<div class="navbar-item">
-      <%= link_to t('login'), new_user_session_path, 
-          class: "navbar-item text-uppercase f6 button is-rounded is-link #{ 'is-outlined' unless current_page?(new_user_session_path)}" %>
+      <%= link_to t('jobs.post_job'), new_company_registration_path, 
+          class: "navbar-item text-uppercase f6 button primary" %>
 		</div>
 		<div class="navbar-item">
-      <%= link_to t('create_account'), new_user_registration_path, 
-          class: "navbar-item text-uppercase f6 button is-rounded is-dark #{ 'is-outlined' unless current_page?(new_user_registration_path) || current_page?(new_company_registration_path)}" %>
+      <%= link_to t('login'), new_user_session_path, 
+          class: "navbar-item text-uppercase f6 button is-rounded is-link #{ 'is-outlined' unless current_page?(new_user_session_path)}" %>
 		</div>
 	</div>
 <% end %>

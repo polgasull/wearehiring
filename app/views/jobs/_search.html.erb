@@ -1,10 +1,11 @@
 <%= form_tag(jobs_path, method: :get) do %>
-  <div class="columns is-vertical-center">
-    <div class="column is-3-desktop is-8-mobile">
+  <div class="columns is-vertical-center is-multiline">
+    <div class="column is-9-desktop is-9-tablet is-12-mobile">
       <div class="control has-icons-left">
-        <input 
-          type="text" 
-          class="input" 
+        <input
+          type="text"
+          id="search"
+          class="input searchbar is-large"
           placeholder="<%=t('search_placeholder')%>" 
           name="search_for" 
           value="<%=params[:search_for] ? params[:search_for] : ''%>">
@@ -13,44 +14,8 @@
         </span>
       </div>
     </div>
-    <div class="column is-hidden-touch">
-      <div class="control has-icons-left">
-        <div class="select">
-          <%= select_tag :by_category, 
-            options_from_collection_for_select(Category.all, :id, :name, params[:by_category].to_i), 
-            :include_blank => t('select.category') %>
-        </div>
-        <span class="icon is-left">
-          <%= icon('fas', 'puzzle-piece') %>
-        </span>
-      </div>
-    </div>
-    <div class="column is-hidden-touch">
-      <div class="control has-icons-left">
-        <div class="select">
-          <%= select_tag :by_job_type, 
-            options_from_collection_for_select(JobType.all, :id, :name, params[:by_job_type].to_i), 
-            :include_blank => t('select.job_type') %>
-        </div>
-        <span class="icon is-left">
-          <%= icon('fas', 'clock') %>
-        </span>
-      </div>      
-    </div>
-    <div class="column is-hidden-touch">
-      <div class="control has-icons-left">
-        <div class="select">
-          <%= select_tag :by_level, 
-            options_from_collection_for_select(Level.all, :id, :name, params[:by_level].to_i), 
-            :include_blank => t('select.level') %>
-        </div>
-        <span class="icon is-left">
-          <%= icon('fas', 'graduation-cap') %>
-        </span>
-      </div>      
-    </div>
-    <div class="column has-text-right">
-      <%= button_tag(t('search'), type: 'submit', class: "button is-success is-fullwidth", data: { disable_with: "<i class='fas fa-spinner fa-spin'></i>".html_safe }) %>
+    <div class="column is-3-desktop is-3-tablet is-12-mobile has-text-right">
+      <%= button_tag(t('search'), type: 'submit', class: "button primary is-fullwidth is-large", data: { disable_with: "<i class='fas fa-spinner fa-spin'></i>".html_safe }) %>
     </div>
   </div>
   <div class="columns">
@@ -59,6 +24,6 @@
       <%= label_tag :is_remote do %>
         <%= t('show_remote_jobs_only') %>
       <% end %>
-    </div>  
+    </div>
   </div>
 <% end %>

@@ -5,6 +5,8 @@ require "rails/all"
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
+impressionist_dir = Gem::Specification.find_by_name('impressionist').gem_dir
+require File.join(impressionist_dir, '/app/controllers/impressionist_controller.rb')
 
 module JobApp
   class Application < Rails::Application

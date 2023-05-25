@@ -1,48 +1,67 @@
 <section class="hero mb3 mt3 search-hero">
   <div class="hero-body">
     <div class="container">
-      <div class="columns is-marginless">
+      <div class="columns has-text-centered">
         <div class="column">
           <h1 class="title">
             <%= t('jobs_index.title_part_1') %> <span class="has-text-corporate"> <%= t('jobs_index.title_part_2').downcase %> </span>
           </h1>
         </div>
       </div>
-      <div class="columns is-marginless">
-        <div class="column">
+      <div class="columns">
+        <div class="column is-three-fifths is-offset-one-fifth">
           <%= render 'search' %>
         </div>
-      </div>      
+      </div>
     </div>
   </div>
 </section>
 
-<section class="section pb6 pt2 section-bg-gray">
-  <div class="container">
-    <div class="columns">
-      <div class="column mt2">
-        <span><b> <%= @jobs_count %> <%= t('jobs.published_jobs') %> </b></span>
-      </div>
-      <div class="column has-text-right is-hidden-touch">
-        <div class="dropdown is-hoverable">
-          <div class="dropdown-trigger">
-            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
-              <span> <%= params[:sort_by] ? t(params[:sort_by]) : t('sort_by') %> </span>
-              <span class="icon is-small">
-                <i class="fas fa-angle-down" aria-hidden="true"></i>
-              </span>
-            </button>
-          </div>
-          <div class="dropdown-menu" id="dropdown-menu4" role="menu">
-            <div class="dropdown-content">
-              <%= link_to t('oldest'), jobs_path(sort_by: "oldest"), class: "dropdown-item" %>
-              <%= link_to t('newest'), jobs_path(sort_by: "newest"), class: "dropdown-item" %>
-              <%= link_to t('by_title'), jobs_path(sort_by: "by_title"), class: "dropdown-item" %>
+<%= form_tag(jobs_path, id: 'jobFiltersForm', method: :get) do %>
+  <section class="section pb6 pt2 section-bg-gray">
+    <div class="container">
+      <div class="columns">
+        <div class="column mt2">
+          <span><b> <%= @jobs_count %> <%= t('jobs.published_jobs') %> </b></span>
+        </div>
+        <div class="column is-hidden-touch is-narrow">
+          <div class="control has-icons-left">
+            <div class="select">
+              <%= select_tag :by_category,
+                options_from_collection_for_select(Category.all, :id, :name, params[:by_category].to_i), 
+                :include_blank => t('select.category'), class: 'select-filter' %>
             </div>
+            <span class="icon is-left">
+              <%= icon('fas', 'puzzle-piece') %>
+            </span>
+          </div>
+        </div>
+        <div class="column is-hidden-touch is-narrow">
+          <div class="control has-icons-left">
+            <div class="select">
+              <%= select_tag :by_job_type,
+                options_from_collection_for_select(JobType.all, :id, :name, params[:by_job_type].to_i), 
+                :include_blank => t('select.job_type'), class: 'select-filter' %>
+            </div>
+            <span class="icon is-left">
+              <%= icon('fas', 'clock') %>
+            </span>
+          </div>
+        </div>
+        <div class="column is-hidden-touch is-narrow">
+          <div class="control has-icons-left">
+            <div class="select">
+              <%= select_tag :by_level,
+                options_from_collection_for_select(Level.all, :id, :name, params[:by_level].to_i), 
+                :include_blank => t('select.level'), class: 'select-filter' %>
+            </div>
+            <span class="icon is-left">
+              <%= icon('fas', 'graduation-cap') %>
+            </span>
           </div>
         </div>
       </div>
-    </div>
+    <% end %>
 
     <div class="boxes-wrapper" id="pagination-list">
       <%= render partial: "job", collection: @jobs %>
@@ -61,4 +80,13 @@
 			title: t('seo.jobs_title'), 
 			description: t('seo.jobs_description'),
       image: image_url(asset_path('wah_red_logo.png')) %>
+<% end %>
+
+<%= content_for :footer do %>
+  <%= javascript_include_tag "jobs/typewriter.js" %>
+  <script>
+    $('.select-filter').change(function() {
+      $('#jobFiltersForm').submit();
+    });
+  </script>
 <% end %>

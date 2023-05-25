@@ -15,7 +15,7 @@
     class: 'button is-rounded primary is-large shadow mv3 modal-button',
     'data-target': 'candidateSignupModal',
     'aria-haspopup': 'true',
-    disabled: !@job.open?) do %>
+    disabled: !job.open?) do %>
       <%= t(cta_text) %> 
   <% end %>
 <% end %>
@@ -32,10 +32,12 @@
       <%= f.submit t(cta_text), class: "button is-rounded primary is-large shadow mv3 #{'require-user-info' unless minimum_profile(current_user)}" %>
     <% end %>      
   <% end %>
-<% end %>      
+<% end %>
+
+<p> <%= icon('fas', 'eye') %> <%= @unique_impressions %> visitas </p>
 
 <% if @inscriptions_count.zero? %>
   <p> ¡Sé de los primeros en aplicar! </p>
 <% else %>
-  <p> <%= @inscriptions_count %> se han inscrito a esta oferta </p>
+  <p> <%= icon('fas', 'check-square', class: 'has-text-primary is-size-4') %> <%= @inscriptions_count %> se han inscrito a esta oferta </p>
 <% end %>
