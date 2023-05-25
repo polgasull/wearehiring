@@ -4,13 +4,8 @@ class JobsController < ApplicationController
   before_action :set_job, only: [:show]
 
   def index
-    if params[:sort_by]
-      @jobs = Job.active.order_list(params[:sort_by]).page(params[:page]).per(10)
-      @jobs_count = Job.active.count
-    else 
-      @jobs = Job.active.order('created_at DESC').filter_by(params).page(params[:page]).per(10)
-      @jobs_count = Job.active.filter_by(params).count
-    end
+    @jobs = Job.active.order('created_at DESC').filter_by(params).page(params[:page]).per(10)
+    @jobs_count = Job.active.filter_by(params).count
 
     respond_to do |format|
       format.html
