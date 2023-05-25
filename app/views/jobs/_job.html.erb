@@ -1,4 +1,5 @@
-<%= link_to job do %>
+<% job_url = job.partner.present? ? job_path(job, source: job.partner.name.parameterize) : job %>
+<%= link_to job_url do %>
   <div class="box radius-20 box-link">
     <% if job.created_at.to_date > 7.days.ago %>
       <div class="card-ribbon">
@@ -60,11 +61,11 @@
           <span class='tag is-danger my-tag'> <%= t('inscribed') %> </span>
         <% end %>
       </div>
-      <div class="column is-2 has-text-right is-vertical-center">
-        <% if job.partner.present? %>
-          <%= image_tag(asset_path("#{job.partner.name.parameterize}-logo.png"), alt: "Job by #{job.partner.name}", width: 160, height: 160) %>
-        <% end %>
-      </div>
+      <% if job.partner.present? %>
+        <div class="column is-2 is-vertical-center is-justify-content-flex-end">
+          <span class="is-size-6 has-text-weight-bold"> By <%= job.partner.name %> </span> 
+        </div>
+      <% end %>
     </div>
   </div>
 <% end %>

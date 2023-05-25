@@ -20,6 +20,9 @@ class JobsController < ApplicationController
     return redirect_to_response(t('not_found'), root_path, false) unless @job
     @inscriptions_count = @job.inscriptions.count
     @same_category_jobs = Job.active.same_category(@job).order('created_at DESC').take(3)
+    impressionist(@job)
+    @impressions = @job.impressionist_count
+    @unique_impressions = @job.impressionist_count(filter: :session_hash)
   end
 
   def thanks
@@ -33,7 +36,7 @@ class JobsController < ApplicationController
   private
 
   def set_job
-    @job = Job.active.find(params[:id])
+    @job = Job.friendly.active.find(params[:id])
 
     rescue ActiveRecord::RecordNotFound
       redirect_to not_found_url

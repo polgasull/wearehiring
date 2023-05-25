@@ -255,6 +255,8 @@ GEM
     http_parser.rb (0.6.0)
     i18n (1.9.1)
       concurrent-ruby (~> 1.0)
+    impressionist (2.0.0)
+      nokogiri (~> 1)
     invisible_captcha (2.0.0)
       rails (>= 5.0)
     io-wait (0.2.1)
@@ -527,6 +529,7 @@ DEPENDENCIES
   friendly_id (~> 5.3)
   geocoder
   groupdate
+  impressionist
   invisible_captcha
   jbuilder (~> 2.5)
   jquery-rails (~> 4.4)

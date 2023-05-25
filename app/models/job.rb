@@ -2,6 +2,7 @@ class Job < ApplicationRecord
   extend FilterBy
   extend FriendlyId
   include Jobs::JobScopes
+  is_impressionable
 
   belongs_to :user
   belongs_to :category
