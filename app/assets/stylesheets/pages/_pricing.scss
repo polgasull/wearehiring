@@ -1,5 +1,5 @@
 .pricing-page-wrapper {
-  background: linear-gradient(to bottom, #F9F9F9 50%, transparent 0);
+  background: linear-gradient(to bottom, #F9F9F9 30%, transparent 0);
 }
 
 .pricing-box {
@@ -8,8 +8,23 @@
 }
 
 .headline {
+  padding: 24px 0;
 
   p.subtitle {
     margin: 0;
   }
+}
+
+.pricing-price-title {
+  font-size: 8rem;
+}
+
+@media(max-width: 768px) {
+  .pricing-price-title {
+    font-size: 4rem;
+  }
+}
+
+.pricing-price-box {
+  border: 2px solid #37D1B2;
 }

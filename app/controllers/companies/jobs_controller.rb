@@ -42,23 +42,12 @@ module Companies
       if params[:job][:avatar].nil? && job_last
         @job.avatar = job_last.avatar
       end
-
-      unless @job.is_free_price?
-        coupon = Coupon.find_by_name(@job.discount_code)
-        discount = (coupon.present? && @job.is_pro_price?) ? coupon.value : 0
-        stripe_process(@job.job_price.value, discount)
-      end
   
       if @job.save
-        send_notifications(current_user, @job)
-        redirect_to_response(t('jobs.messages.job_created'), thanks_jobs_path) 
-      else 
-        redirect_back_response(t('jobs.messages.job_not_created'), false)
+        redirect_to stripe_checkout_companies_job_url(@job)
+      else
+        render :new
       end
-
-      rescue Stripe::CardError => e
-        flash.alert = e.message
-        render action: :new
     end
 
     def show
@@ -101,6 +90,25 @@ module Companies
       @coupon_names = Coupon.select(:name).map(&:name)
     end
 
+    def stripe_checkout
+      @job = current_user.jobs.find(params[:id])
+    
+      session = Stripe::Checkout::Session.create(
+        payment_method_types: ['card'],
+        line_items: [{
+          name: @job.title,
+          amount: 34086,
+          currency: 'eur',
+          quantity: 1
+        }],
+        success_url: success_companies_jobs_url,
+        cancel_url: cancel_companies_jobs_url,
+        locale: 'es'
+      )
+    
+      redirect_to session.url
+    end
+
     def update_price
       coupon = Coupon.find_by_name(params[:job][:discount_code])
       discount = coupon.present? ? coupon.value : 0
@@ -117,6 +125,18 @@ module Companies
       rescue Stripe::CardError => e
         flash.alert = e.message
         render action: :edit_price
+    end
+
+    def success
+      # Retrieve and update the job based on the Stripe session or payment intent
+      # Handle any post-payment success logic here
+      redirect_to thanks_jobs_path
+    end
+    
+    def cancel
+      # Handle any post-payment cancellation logic here
+      flash[:alert] = t('payment_canceled')
+      redirect_to new_companies_job_path
     end
 
     private

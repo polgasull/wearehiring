@@ -426,10 +426,10 @@ en:
   last: "Last"
   digital_job_offers: "Digital job offers"
   seo:
-    jobs_title: "WeAreHiring.io - Find Your Dream Tech Job Today"
-    jobs_description: "WeAreHiring.io is the top job search platform for tech talent. Browse and apply to the latest tech job openings in your field. Our user-friendly platform makes it easy to find and apply to your dream job. Start your job search now!"
-    home_title: "WeAreHiring.io - Post Your Tech Job Openings Today"
-    home_description: "WeAreHiring.io is the best job posting platform for tech companies. Post your job openings and connect with top tech talent today. Easy to use and manage job postings. Start hiring now!"
+    jobs_title: "Digital Job Opportunities | WeAreHiring.io"
+    jobs_description: "Discover a wide range of digital job openings at WeAreHiring.io. Find your dream job in the digital industry and start your career today."
+    home_title: "Digital Job Opportunities | WeAreHiring.io"
+    home_description: "Discover a wide range of digital job openings at WeAreHiring.io. Find your dream job in the digital industry and start your career today."
     company_signup: "Post Your Tech Jobs and Connect with Top Talent | WeAreHiring.io"
     company_signup_description: "Sign up with WeAreHiring.io to post your job openings and connect with top tech talent. Our platform makes it easy to manage your job postings and find the right candidates for your company. Start hiring today!"
     candidate_signup: "Find Your Dream Tech Job Today | WeAreHiring.io"
@@ -773,7 +773,7 @@ en:
   show_job_post: "Show job post"
   jobs_index:
     title_part_1: "Show all"
-    title_part_2: "Digital tech offers"
+    title_part_2: "digital job opportunities"
   we_match:
     active: "Active"
     inactive: "Inactive"
@@ -807,3 +807,4 @@ en:
   result: "Result"
   results: "Results"
   apply_at_wearehiring: "Apply at WeAreHiring.io"
+  payment_cancelled: "Payment was canceled."

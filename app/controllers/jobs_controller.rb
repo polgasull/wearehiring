@@ -4,7 +4,7 @@ class JobsController < ApplicationController
   before_action :set_job, only: [:show]
 
   def index
-    @jobs = Job.active.order('created_at DESC').filter_by(params).page(params[:page]).per(10)
+    @jobs = Job.active.order('created_at DESC').filter_by(params).page(params[:page]).per(15)
     @jobs_count = Job.active.filter_by(params).count
 
     respond_to do |format|

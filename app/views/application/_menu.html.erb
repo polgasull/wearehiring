@@ -113,6 +113,14 @@
 
 	<% if current_user.is_company? %>
 		<div class="navbar-end">
+    	<div class="navbar-item">
+        <%= link_to t('show_jobs'), 
+            jobs_path, 
+            class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(jobs_path)}" %>
+      </div>
+      <div class="navbar-item">
+      	<%= link_to t('pricing'), pricing_path, class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(pricing_path)}" %>
+      </div>
 			<div class="navbar-item">
 				<%= link_to new_job_index_companies_jobs_path, 
 					class: "button text-uppercase f6 is-dark has-text-weight-bold" do %>
@@ -172,8 +180,10 @@
 			<%= link_to t('pricing'), pricing_path, class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(pricing_path)}" %>
 		</div>
 		<div class="navbar-item">
-      <%= link_to t('jobs.post_job'), new_company_registration_path, 
-          class: "navbar-item text-uppercase f6 button primary" %>
+      <%= link_to new_company_registration_path, 
+          class: "navbar-item text-uppercase f6 button primary" do %>
+          <%= t('jobs.post_job') %> <%= icon('fas', 'bullhorn ml2') %>
+      <% end %>
 		</div>
 		<div class="navbar-item">
       <%= link_to t('login'), new_user_session_path, 

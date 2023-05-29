@@ -19,14 +19,20 @@
     <%= render "gtm_iframe" if (Rails.env.production?) %>
 
     <% if flash[:notice] %>
-      <div class="notification is-success global-notification">
-        <p class="notice"> <%= notice %> </p>
+      <div class="notification is-notice global-notification">
+        <p class="notice">
+          <%= icon('fas', 'check-circle', class: 'has-text-primary') %>
+          <%= notice %> 
+        </p>
       </div>
     <% end %>
 
     <% if flash[:alert] %>
-      <div class="notification is-danger global-notification">
-        <p class="alert"><%= alert %></p>
+      <div class="notification is-alert global-notification">
+        <p class="alert">
+          <%= icon('fas', 'exclamation-triangle', class: 'has-text-danger') %>
+          <%= alert %>
+        </p>
       </div>
     <% end %>
     <div id="mainWrapper">
