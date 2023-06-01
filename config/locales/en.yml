@@ -808,3 +808,5 @@ en:
   results: "Results"
   apply_at_wearehiring: "Apply at WeAreHiring.io"
   payment_cancelled: "Payment was canceled."
+  stripe_climate: "We'll donate 1% to remove CO₂ from the atmosphere"
+  job_views: "Views"

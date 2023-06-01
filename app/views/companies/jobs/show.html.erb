@@ -25,11 +25,6 @@
           </div>
           <div class="is-size-2 has-text-weight-bold"> <%= job_expired(@job) %> </div>
         </div>
-        <div class="column is-2">
-          <%= link_to edit_price_companies_job_path(id: @job.id), class: 'button upgrade-button radius-8 bigger ml3' do %>
-            <span> <%= t('upgrade_this_job') %> </span>
-          <% end unless @job.is_pro_price? || !@job.open? %>
-        </div>
       </div>
     </div>
   </div>
@@ -71,6 +66,12 @@
     <p class="title is-4"> <%= t('manage_candidates') %> </p>
     <div class="info-tiles">
       <div class="tile has-text-centered mb4">
+        <div class="tile is-parent">
+          <article class="tile is-child box">
+            <p class="title"> <%= @job.impressionist_count(filter: :session_hash) %> </p>
+            <p class="subtitle"><%= icon('fas', 'eye') %> <%= t('job_views') %> </p>
+          </article>
+        </div>
         <div class="tile is-parent">
           <article class="tile is-child box">
             <p class="title"> <%= @job.inscriptions.count %> </p>
@@ -167,7 +168,7 @@
                 </div>
               </div>
               <div>
-                <%= button_tag(t('apply_filters'), type: 'submit', class: "button is-dark is-fullwidth has-text-weight-bold", data: { disable_with: "<i class='fas fa-spinner fa-spin'></i>".html_safe }) %>
+                <%= button_tag(t('apply_filters'), type: 'submit', class: "button is-dark is-fullwidth has-text-weight-bold ml3", data: { disable_with: "<i class='fas fa-spinner fa-spin'></i>".html_safe }) %>
               </div>
             </div>
           <% end %>
@@ -274,31 +275,31 @@
       </div>
     </div>
     <% if @job.is_pro_price? %>
-      <div class="columns">
-        <div class="column"></div>
-        <div class="column is-6">
-          <%= form_tag([:companies, @job], method: :get, remote: true) do %>
-            <div class="field is-grouped">
-              <p class="control is-expanded has-icons-left">
-                <input
-                  type="text" 
-                  class="input" 
-                  placeholder="<%=t('search_we_match_placeholder')%>" 
-                  name="search_users" 
-                  value="<%=params[:search_users] ? params[:search_users] : ''%>">
-                <span class="icon is-small is-left">
-                  <%= icon('fas', 'search') %>
-                </span>
-              </p>
-              <p class="control">
-                <%= button_tag(t('search'), type: 'submit', class: "button is-dark", data: { disable_with: "<i class='fas fa-spinner fa-spin'></i>".html_safe }) %>
-              </p>
-            </div>
-          <% end %>
+      <% if @job.open? %>
+        <div class="columns">
+          <div class="column"></div>
+          <div class="column is-6">
+            <%= form_tag([:companies, @job], method: :get, remote: true) do %>
+              <div class="field is-grouped">
+                <p class="control is-expanded has-icons-left">
+                  <input
+                    type="text" 
+                    class="input" 
+                    placeholder="<%=t('search_we_match_placeholder')%>" 
+                    name="search_users" 
+                    value="<%=params[:search_users] ? params[:search_users] : ''%>">
+                  <span class="icon is-small is-left">
+                    <%= icon('fas', 'search') %>
+                  </span>
+                </p>
+                <p class="control">
+                  <%= button_tag(t('search'), type: 'submit', class: "button is-dark", data: { disable_with: "<i class='fas fa-spinner fa-spin'></i>".html_safe }) %>
+                </p>
+              </div>
+            <% end %>
+          </div>
         </div>
-      </div>
-      <div class="mt4">
-        <% if @job.open? %>
+        <div class="mt4">
           <% if @matching_candidates.any? %>
             <div id="we-match-results">
               <% @matching_candidates.each do |user| %>
@@ -314,12 +315,12 @@
               <p class="is-size-5"> <%= t('we_match_info_text_5') %> </p>
             </div>
           <% end %>
-        <% else %>
-          <div class="has-text-centered">
-            <%= content_tag(:span, 'Job Finalizado. No es posible añadir más candidatos', class: 'is-size-5') %>
-          </div>
-        <% end %>
-      </div>
+        </div>
+      <% else %>
+        <div class="mt4 has-text-centered">
+          <%= content_tag(:span, 'Job Finalizado. No es posible añadir más candidatos', class: 'is-size-5') %>
+        </div>
+      <% end %> 
     <% else %>
       <%= render partial: 'companies/jobs/inscriptions/blurred_we_match_users', locals: { job: @job } %>
     <% end %>

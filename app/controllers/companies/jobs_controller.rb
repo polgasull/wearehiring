@@ -15,7 +15,9 @@ module Companies
       @total_inscriptions = current_user.total_inscriptions_sum(@jobs)
     end
 
-    def new_job_index; end
+    def new_job_index
+      redirect_to new_companies_job_path
+    end
 
     def new
       @job_last = current_user.jobs.last
@@ -24,8 +26,7 @@ module Companies
     end
 
     def free
-      @job_last = current_user.jobs.last
-      @job = current_user.jobs.build
+      redirect_to new_companies_job_path
     end
 
     def edit
@@ -38,6 +39,8 @@ module Companies
   
       @job.reference = "wah#{DateTime.now.year}#{SecureRandom.hex(3)}"
       @job.expiry_date = DateTime.now() + 60.days
+      @job.job_price_id = JobPrice.find_by(internal_name: 'pro').id
+      @job.open = false
   
       if params[:job][:avatar].nil? && job_last
         @job.avatar = job_last.avatar
@@ -87,7 +90,7 @@ module Companies
     end
 
     def edit_price
-      @coupon_names = Coupon.select(:name).map(&:name)
+      redirect_to edit_companies_job_path
     end
 
     def stripe_checkout
@@ -96,14 +99,16 @@ module Companies
       session = Stripe::Checkout::Session.create(
         payment_method_types: ['card'],
         line_items: [{
-          name: @job.title,
-          amount: 34086,
-          currency: 'eur',
-          quantity: 1
+          price: ENV['STRIPE_PRICE_ID'],
+          quantity: 1,
+          tax_rates: [ENV['STRIPE_TAX_ID']],
         }],
-        success_url: success_companies_jobs_url,
+        mode: 'payment',
+        success_url: success_companies_jobs_url(@job),
         cancel_url: cancel_companies_jobs_url,
-        locale: 'es'
+        locale: 'es',
+        allow_promotion_codes: true,
+        billing_address_collection: :required
       )
     
       redirect_to session.url
@@ -127,7 +132,8 @@ module Companies
         render action: :edit_price
     end
 
-    def success
+    def success(job)
+      @job.update!(open: true)
       # Retrieve and update the job based on the Stripe session or payment intent
       # Handle any post-payment success logic here
       redirect_to thanks_jobs_path

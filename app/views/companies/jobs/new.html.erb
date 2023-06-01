@@ -1,22 +1,16 @@
+<div class="container">
+  <article class="message is-warning">
+    <div class="message-body has-text-centered">
+      Aprovecha el código descuento <strong> HIRINGTECH10 </strong> y ahorra un 10% en tus publicaciones ¡Happy Hiring!
+    </div>
+  </article>
+</div>
+
 <section class="section">
   <div class="container">
     <div class="columns">
       <div class="column is-8 is-offset-2">
         <h1 class="title is-3"> <%= t('jobs.post_job') %> <%= t('instantly_exclamation') %> </h1>
-        <p class="subtitle is-4"> 
-          <%= t('job_post_type') %>
-          <% if params[:job_price] == 'basic' %>
-            <span class="tag is-large has-text-weight-bold basic-badge"> Basic </span>
-            <span class="tag is-large is-dark has-text-weight-bold has-text-white pro-badge is-hidden"> 
-              Pro <%= icon('fas', 'star ml2 has-text-warning') %> 
-            </span>
-          <% else %>
-            <span class="tag is-large has-text-weight-bold basic-badge is-hidden"> Basic </span>
-            <span class="tag is-large is-dark has-text-weight-bold has-text-white pro-badge"> 
-              Pro <%= icon('fas', 'star ml2 has-text-warning') %> 
-            </span>
-          <% end %>
-        </p>
         <%= render 'form', job: @job, edit_page: false %>
       </div>
     </div>

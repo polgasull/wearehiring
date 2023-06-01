@@ -75,7 +75,7 @@
           <%= link_to job.apply_url, class: "button is-dark is-medium is-rounded", target: '_blank' do %>
             <%= t('i_want_this_job') %> <%= icon('fas', 'external-link-alt ml2') %>
           <% end %>
-          <p class="mt3"> <%= icon('fas', 'eye') %> <%= @unique_impressions %> visitas </p>
+          <p class="mt3"> <%= icon('fas', 'eye') %> <%= @unique_impressions %> <%= t('job_views') %> </p>
           <p> <small> Partnership con <%= job.partner.name %> </small> </p>
         <% else %>
           <%= render partial: '/jobs/partials/submit_form', locals: { job: job, cta_text: 'i_want_this_job' } %>
@@ -101,7 +101,7 @@
           <%= link_to job.apply_url, class: "button is-dark is-medium is-rounded" do %>
             <%= t('this_job_is_mine') %> <%= icon('fas', 'external-link-alt ml2') %>
           <% end %>
-          <p class="mt3"> <%= icon('fas', 'eye') %> <%= @unique_impressions %> visitas </p>
+          <p class="mt3"> <%= icon('fas', 'eye') %> <%= @unique_impressions %> <%= t('job_views') %> </p>
           <p> <small> Partnership con <%= job.partner.name %> </small> </p>
         <% else %>
           <%= render partial: '/jobs/partials/submit_form', locals: { job: job, cta_text: 'this_job_is_mine' } %>

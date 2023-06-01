@@ -54,7 +54,7 @@
     <% end %>
     <% if current_user.is_company? %>
       <div class="navbar-brand">
-        <%= link_to t('jobs.post_job'), new_job_index_companies_jobs_path, class: "navbar-item #{ 'active' if current_page?(new_companies_job_path)}" %>
+        <%= link_to t('jobs.post_job'), new_companies_job_path, class: "navbar-item #{ 'active' if current_page?(new_companies_job_path)}" %>
       </div>
       <div class="navbar-brand">
         <%= link_to t('my_jobs'), companies_jobs_path(current_user), class: "navbar-item #{ 'active' if current_page?(companies_jobs_path(current_user)) }" %>
