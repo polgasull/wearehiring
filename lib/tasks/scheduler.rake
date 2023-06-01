@@ -34,3 +34,9 @@ task :fetch_remote_ok_jobs => :environment do
   Job.create_jobs_from_remote_ok
   puts "done."
 end
+
+task :send_active_random_job_notification => :environment do
+  puts "Sending Tweet send_active_random_job_notification"
+  Job.send_active_random_job_tweet_notification
+  puts "done."
+end

@@ -132,4 +132,9 @@ class Job < ApplicationRecord
     results = remote_ok_jobs
     RemoteOkService.new.create_jobs(results)
   end
+
+  def self.send_active_random_job_tweet_notification
+    job = Job.active.where.not(salary_to: nil).or(Job.active.where.not(salary_to: 0)).sample
+    TwitterService.new.send_job_detail_tweet(job)
+  end
 end
