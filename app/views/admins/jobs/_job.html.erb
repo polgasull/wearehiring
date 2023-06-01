@@ -17,6 +17,9 @@
       <%= job.skills.map(&:name).to_sentence %>
     </td>
     <td>
+      <%= job.impressionist_count(filter: :session_hash) %>
+    </td>
+    <td>
     <%= link_to admins_job_path(job.id) do %>
       <%= job_inscriptions_counter(job) %>
     <% end %>

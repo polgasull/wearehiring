@@ -48,6 +48,10 @@ module Jobs
       scope :same_category, -> (job) {
         where('jobs.category_id = ? AND jobs.id != ?', job.category_id, job.id)
       }
+
+      scope :by_active, -> (value) {
+        where(open: value)
+      }
     end
   end
 end

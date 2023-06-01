@@ -108,3 +108,12 @@
   border-radius: 20px;
   border: 2px solid $dark;
 }
+
+.jobs-company-logos img {
+  filter: grayscale(100%);
+  transition: filter 0.3s;
+}
+
+.jobs-company-logos img:hover {
+  filter: grayscale(0%);
+}

@@ -28,3 +28,11 @@
 .pricing-price-box {
   border: 2px solid #37D1B2;
 }
+
+.pricing-company-logos img {
+  transition: filter 0.3s;
+}
+
+.pricing-company-logos img:hover {
+  filter: grayscale(100%);
+}

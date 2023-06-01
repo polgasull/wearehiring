@@ -1,21 +1,31 @@
-<section class="hero mb3 mt3 search-hero">
-  <div class="hero-body">
-    <div class="container">
-      <div class="columns has-text-centered">
-        <div class="column">
-          <h1 class="title">
-            <%= t('jobs_index.title_part_1') %> <span class="has-text-corporate"> <%= t('jobs_index.title_part_2').downcase %> </span>
-          </h1>
-        </div>
+<section class="section">
+  <div class="container">
+    <div class="columns has-text-centered">
+      <div class="column">
+        <h1 class="title">
+          <%= t('jobs_index.title_part_1') %> <span class="has-text-corporate"> <%= t('jobs_index.title_part_2').downcase %> </span>
+        </h1>
       </div>
-      <div class="columns">
-        <div class="column is-three-fifths is-offset-one-fifth">
-          <%= render 'search' %>
-        </div>
+    </div>
+    <div class="columns">
+      <div class="column is-three-fifths is-offset-one-fifth">
+        <%= render 'search' %>
       </div>
     </div>
   </div>
 </section>
+
+<div class="container mb2 has-text-centered jobs-company-logos">
+  <div class="columns is-vcentered pr5 pl5">
+    <% @last_jobs_with_logo.each do |job| %>
+      <div class="column">
+        <%= link_to jobs_path(search_for: job.job_author) do %>
+          <%= image_tag(job.avatar_url(:thumb), alt: "Empleo de #{job.title} en #{job.job_author}", width: 65, height: 65) %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
 
 <%= form_tag(jobs_path, id: 'jobFiltersForm', method: :get) do %>
   <section class="section pb6 pt2 section-bg-gray">

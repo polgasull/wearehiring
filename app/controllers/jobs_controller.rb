@@ -6,6 +6,7 @@ class JobsController < ApplicationController
   def index
     @jobs = Job.active.order('created_at DESC').filter_by(params).page(params[:page]).per(15)
     @jobs_count = Job.active.filter_by(params).count
+    @last_jobs_with_logo = Job.active.where.not(avatar: nil).uniq(&:job_author).last(7)
 
     respond_to do |format|
       format.html

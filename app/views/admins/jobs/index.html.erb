@@ -8,12 +8,22 @@
   <%= form_for admins_jobs_path, method: :get do |f| %>
     <div class="columns is-vertical-center">
       <div class="column">
-      <input 
-        type="text" 
-        class="input" 
-        placeholder="<%=t('search')%>" 
-        name="search_my_jobs" 
-        value="<%= params[:search_my_jobs] ? params[:search_my_jobs] : '' %>">
+        <input 
+          type="text" 
+          class="input" 
+          placeholder="<%=t('search')%>" 
+          name="search_my_jobs" 
+          value="<%= params[:search_my_jobs] ? params[:search_my_jobs] : '' %>">
+      </div>
+      <div class="column">
+        <div class="control has-icons-left">
+          <div class="select">
+            <%= select_tag :by_active, options_for_select([["Active", true], ["Inactive", false]]), :include_blank => 'All' %>
+          </div>
+          <span class="icon is-left">
+            <%= icon('fas', 'toggle-on') %>
+          </span>
+        </div>
       </div>
       <div class="column has-text-left">
         <%= f.submit t('search'), class: "button is-dark" %>
@@ -42,6 +52,7 @@
             <td><%= t('jobs.company') %></td>
             <td><%= t('jobs.position') %></td>
             <td>Skills</td>
+            <td>Visits</td>
             <td><%= t('jobs.candidates') %></td>
             <td>Estado</td>
             <td><%= t('simple_form.labels.defaults.apply_url') %></td>
@@ -55,6 +66,7 @@
             <td><%= t('jobs.company') %></td>
             <td><%= t('jobs.position') %></td>
             <td>Skills</td>
+            <td>Visits</td>
             <td><%= t('jobs.candidates') %></td>
             <td>Estado</td>
             <td><%= t('simple_form.labels.defaults.apply_url') %></td>
