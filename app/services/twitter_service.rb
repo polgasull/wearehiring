@@ -60,7 +60,7 @@ class TwitterService
     💰 #{ (job.salary_to.nil? || job.salary_to == 0) ? 'A consultar' : (job.salary_from.to_s + '-' + job.salary_to.to_s) } €
     https://www.wearehiring.io/ofertas-empleo-digital/#{job.slug}
 
-    ##{ job.skills.collect(&:internal_name).join(' #').camelize }
+    ##{ job.skills.collect.limit(3).(&:internal_name).join(' #').camelize }
     END
 
     tweet(message)
