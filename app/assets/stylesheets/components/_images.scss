@@ -1,7 +1,11 @@
 .crop {
-  max-height: 300px; 
+  height: 300px; 
   overflow: hidden;
   margin: 0;
+
+  @media (max-width: 768px) {
+    height: 200px;
+  }
 
   img {
     width: 100%;
