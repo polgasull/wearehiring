@@ -15,10 +15,7 @@ class JobsController < ApplicationController
   end
 
   def show
-    if request.path != job_path(@job)
-      return redirect_to @job, :status => :moved_permanently
-    end
-    return redirect_to_response(t('not_found'), root_path, false) unless @job
+    return redirect_to_response(t('not_found'), jobs_path, false) unless @job
     @inscriptions_count = @job.inscriptions.count
     @same_category_jobs = Job.active.same_category(@job).order('created_at DESC').take(3)
     if session.id.present?
@@ -39,9 +36,9 @@ class JobsController < ApplicationController
   private
 
   def set_job
-    @job = Job.friendly.active.find(params[:id])
+    @job = Job.friendly.find(params[:id])
 
     rescue ActiveRecord::RecordNotFound
-      redirect_to not_found_url
+      redirect_to @job, :status => :moved_permanently
   end
 end
