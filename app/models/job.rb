@@ -134,7 +134,7 @@ class Job < ApplicationRecord
   end
 
   def self.send_random_active_job_tweet_notification
-    job = Job.active.where.not(salary_to: nil).or(Job.active.where.not(salary_to: 0)).sample
+    job = Job.active.where.not(salary_to: [nil, 0]).sample
     TwitterService.new.send_job_detail_tweet(job)
   end
 end

@@ -1,5 +1,5 @@
 class ModelMailer < ApplicationMailer
-  default :from => '"Wearehiring.io" <hello@wearehiring.io>'
+  default :from => 'Wearehiring.io <hello@wearehiring.io>'
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
@@ -10,7 +10,7 @@ class ModelMailer < ApplicationMailer
     @user = user
     @job = job
 
-    attachments.inline["logo_black.png"] = File.read("#{Rails.root}/app/assets/images/logo_black.png")
+    attachments.inline["WEH_LOGO_PNG_vertical_red.png"] = File.read("#{Rails.root}/app/assets/images/WEH_LOGO_PNG_vertical_red.png")
     attachments.inline["twitter.png"] = File.read("#{Rails.root}/app/assets/images/twitter.png")
     attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
     mail( 
@@ -24,12 +24,12 @@ class ModelMailer < ApplicationMailer
     @job = job
 
     attachments.inline["user_circle.png"] = File.read("#{Rails.root}/app/assets/images/user_circle.png")
-    attachments.inline['WEH_LOGO_PNG_vertical_red.png'] = File.read("#{Rails.root}/app/assets/images/WEH_LOGO_PNG_vertical_red.png")
+    attachments.inline["WEH_LOGO_PNG_vertical_red.png"] = File.read("#{Rails.root}/app/assets/images/WEH_LOGO_PNG_vertical_red.png")
     attachments.inline["twitter.png"] = File.read("#{Rails.root}/app/assets/images/twitter.png")
     attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
     mail( 
       :to => @job.user.email,
-      :subject => "✅ Nuevo candidato para #{@job.title}" 
+      :subject => t('notifiers.new_candidate_subject', job_title: @job.title)
     )  
   end
 
@@ -57,7 +57,7 @@ class ModelMailer < ApplicationMailer
     attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
     mail( 
       :to => @user.email,
-      :subject => "Has aplicado para #{@job.title} en #{job.remote_ok? ? '(Remoto)' : job.location}"
+      :subject => t('notifiers.applied_to_title', job_title: @job.title, job_location: @job.location)
     )  
   end
 
@@ -84,7 +84,7 @@ class ModelMailer < ApplicationMailer
     attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
     mail(
       :to => @inscription.user.email,
-      :subject => "Tu estado en el proceso de #{@job.title} ha cambiado a #{@inscription.status}"
+      :subject => t('notifiers.status_update_title', job_title: @job.title, inscription_status: t("inscriptions.#{@inscription.status}"))
     )
   end
 
@@ -96,7 +96,7 @@ class ModelMailer < ApplicationMailer
     attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
     mail( 
       :to => user.email,
-      :subject => 'Bienvenid@s a We Are Hiring 🚀'
+      :subject => t('notifiers.welcome_wah')
     )  
   end
 
@@ -109,7 +109,7 @@ class ModelMailer < ApplicationMailer
     attachments.inline["discord.png"] = File.read("#{Rails.root}/app/assets/images/discord.png")
     mail( 
       :to => user.email,
-      :subject => 'Bienvenid@ a We Are Hiring 🚀' 
+      :subject => t('notifiers.welcome_wah') 
     )  
   end
 

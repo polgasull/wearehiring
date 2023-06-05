@@ -53,7 +53,7 @@
                   </div>
                   <div class="column is-2 has-text-right">
                     <span class="tag is-size-7 is-light">
-                      <%= inscription.status.present? ? t("inscriptions.#{inscription.status}") : 'Inscrito' %> 
+                      <%= inscription.status.present? ? t("inscriptions.#{inscription.status}") : t('inscriptions.inscribed') %> 
                     </span>
                   </div>
                   <div class="column has-text-right is-3">
@@ -101,7 +101,7 @@
                   <%= image_tag(current_user.picture_url_url(:thumb), alt: "Imagen usuario del perfil de Linkedin | Wearehiring.io") %>
                   </div>
                 <% end %>
-                Completar Mi Perfil
+                <%= t('complete_profile') %>
               <% end %>
             </div>
           </div>

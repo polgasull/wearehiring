@@ -1,4 +1,4 @@
-<span class="preheader"> Tu solicitud para <%= @job.title %> se ha enviado correctamente</span>
+<span class="preheader"> <%= t('notifiers.successfully_inscribed_job', job_title: @job.title) %> </span>
 <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
   <tr>
     <td>&nbsp;</td>
@@ -14,15 +14,14 @@
               <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                 <tr>
                   <td>
-                    <h2> <strong> Hola, <%= @user.name %>  </strong> </h2>
-                    <h3> Tu solicitud se ha enviado correctamente </h3>
+                    <h2> <strong> <%= t('hello') %>, <%= @user.name %>  </strong> </h2>
+                    <h3> <%= t('notifiers.successfully_inscribed') %> </h3>
                     <p> <%= @job.title %> </p>
                     <p> <%= @job.job_author %> </p>
                     <p> <%= @job.location %> </p>
                     <hr>
-                    <p> Recibirás un email en caso que tu estado en el proceso cambie. </p>
-                    <p> También puedes seguir el proceso en la plataforma. </p>
-                    <p> Actualiza tu perfil con la información más detallada posible para destacar y aumentar un 76% las posibilidades de ser contactado </p>
+                    <p> <%= t('notifiers.receive_process_update_email') %> </p>
+                    <p> <strong> <%= t('notifiers.update_profile_possibilities') %> </strong>  </p>
                     <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
                       <tbody>
                         <tr>
@@ -30,7 +29,7 @@
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                               <tbody>
                                 <tr>
-                                  <td> <%= link_to '¡Ver más Jobs!', jobs_url %> </td>
+                                  <td> <%= link_to t('complete_profile'), edit_user_registration_url %> </td>
                                 </tr>
                               </tbody>
                             </table>
@@ -38,7 +37,7 @@
                         </tr>
                       </tbody>
                     </table>
-                    <p> ¡Te deseamos mucha suerte! </p>
+                    <p> <%= t('notifiers.good_luck') %> </p>
                   </td>
                 </tr>
               </table>
@@ -54,17 +53,17 @@
           <table role="presentation" border="0" cellpadding="0" cellspacing="0">
             <tr>
               <td class="content-block">
-                <span class="apple-link">¡Síguenos en RRSS!</span>
+                <span class="apple-link"><%= t('notifiers.follow_us') %></span>
                 <br> 
                 <a href="https://twitter.com/WeAreHiring_io" target="_blank">
-                  <%= image_tag(attachments['twitter.png'].url) %>      
-                </a>  
+                  <%= image_tag(attachments['twitter.png'].url, width: 32, height: 32) %>      
+                </a>
                 <a href="https://www.linkedin.com/company/we-are-hiring-digital-talent-place" target="_blank">
-                  <%= image_tag(attachments['linkedin.png'].url) %>
+                  <%= image_tag(attachments['linkedin.png'].url, width: 32, height: 32) %>
                 </a>
                 <a href="https://discord.gg/feMXMacM9w" target="_blank">
-                  <%= image_tag(attachments['discord.png'].url) %>
-                </a>  
+                  <%= image_tag(attachments['discord.png'].url, width: 32, height: 32) %>
+                </a>
               </td>
             </tr>
             <tr>

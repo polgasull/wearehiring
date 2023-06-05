@@ -139,7 +139,7 @@
             <div class="column">
               <div class="">
                 <p> <%= inscription.job.job_author %> </p>
-                <p> <%= inscription.status.present? ? t("inscriptions.#{inscription.status}") : 'Inscrito' %> </p>
+                <p> <%= inscription.status.present? ? t("inscriptions.#{inscription.status}") : t('inscriptions.inscribed') %> </p>
                 <p> <%= icon('fas', 'star') if inscription.recommended? %> </p>
                 <p> <%= link_to 'Ver job', admins_job_path(inscription.job.id) %> </p>
               </div>

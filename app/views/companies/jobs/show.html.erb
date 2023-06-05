@@ -11,14 +11,7 @@
             <%= "#{t('job_offer_h1')} #{@job.title} en #{@job.remote_ok? ? "Remoto" : @job.location}" %>
           </p>
         </div>
-        <div class="column is-3 is-flex is-align-items-center">
-          <div class="is-size-6 has-text-right has-text-weight-bold mr2">
-            <span> Tipo de </span> <br>
-            <span> publicación </span>
-          </div>
-          <div class="is-size-2 has-text-weight-bold"> <%= @job.job_price&.internal_name.upcase %>  </div>
-        </div>
-        <div class="column is-2 is-flex is-align-items-center">
+        <div class="column is-3 is-flex is-align-items-center is-justify-content-end">
           <div class="is-size-6 has-text-right has-text-weight-bold mr2"> 
             <span> <%= t('days') %>  </span> <br>
             <span> <%= t('remaining').downcase %>  </span>

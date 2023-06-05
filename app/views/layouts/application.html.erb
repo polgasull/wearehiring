@@ -6,8 +6,6 @@
     <%= render "structured_data" %>
     <link rel='icon' href='<%= asset_path('favicon.ico') %>' type='image/x-icon'/ >
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %>
-    <%= stylesheet_link_tag 'https://unpkg.com/aos@2.3.1/dist/aos.css' %>
     <%= stylesheet_link_tag 'application' %>
     <%= tag :meta, name: "stripe-public-key", content: Figaro.env.stripe_publishable_key %>
     <%= javascript_include_tag 'application', "https://js.stripe.com/v3/" %>
@@ -44,7 +42,6 @@
       <%= render "cookies_eu/consent_banner"%>
     </div>
     
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <%= yield :footer %>
 
   </body>

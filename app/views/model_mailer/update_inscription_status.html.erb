@@ -14,20 +14,21 @@
               <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                 <tr>
                   <td>
-                    <h2> <strong> <strong> Hola, <%= @inscription.user.name %> </strong> </strong> </h2>
+                    <h2> <strong> <%= t('hello') %>, <%= @inscription.user.name %> </strong> </h2>
+                    <p> <%= t('notifiers.status_update_title', job_title: @job.title, inscription_status: t("inscriptions.#{@inscription.status}")) %> </p>
                     <% if @inscription.discarded? %>
-                      <h3> ¡No dejes de intentarlo! </h3>
-                      <p> Lo sentimos, has sido descartado para el proceso de <%= @job.title %> con <%= @job.job_author %> </p>
+                      <h3> <%= t('notifiers.not_give_up') %> </h3>
+                      <p> <%= t('notifiers.discarded_apologies', job_title: @job.title, job_author: @job.job_author) %> </p>
                     <% end %>
                     <% if @inscription.in_process? %>
-                      <h3> ¡Tu perfil ha generado interés! </h3>
-                      <p> Estás dentro del proceso de selección para el puesto de <%= @job.title %> </p>
-                      <p> Pronto alguien de <%= @job.job_author %> se pondrá en contacto contigo para darte más instrucciones </p>
+                      <h3> <%= t('notifiers.profile_interesting') %> </h3>
+                      <p> <%= t('notifiers.in_the_process', job_title: @job.title) %> </p>
+                      <p> <%= t('notifiers.receive_contact_soon', job_author: @job.job_author ) %> </p>
                     <% end %>
                     <% if @inscription.finalist? %>
-                      <h3> ¡Estás a un solo paso! </h3>
-                      <p> Eres finalista para el puesto de <%= @job.title %> </p>
-                      <p> Pronto alguien de <%= @job.job_author %> se pondrá en contacto contigo para darte más instrucciones </p>
+                      <h3> <%= t('notifiers.finalist_claim') %> </h3>
+                      <p> <%= t('notifiers.in_the_final', job_title: @job.title) %> </p>
+                      <p> <%= t('notifiers.receive_contact_soon', job_author: @job.job_author) %> </p>
                     <% end %>
                     <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
                       <tbody>
@@ -36,7 +37,7 @@
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                               <tbody>
                                 <tr>
-                                  <td> <%= link_to 'Entrar en We Are Hiring', root_url %> </td>
+                                  <td> <%= link_to t('notifiers.go_to_web'), root_url %> </td>
                                 </tr>
                               </tbody>
                             </table>
@@ -59,16 +60,16 @@
           <table role="presentation" border="0" cellpadding="0" cellspacing="0">
             <tr>
               <td class="content-block">
-                <span class="apple-link">¡Síguenos en RRSS!</span>
+                <span class="apple-link"> <%= t('notifiers.follow_us') %> </span>
                 <br> 
                 <a href="https://twitter.com/WeAreHiring_io" target="_blank">
-                  <%= image_tag(attachments['twitter.png'].url) %>      
+                  <%= image_tag(attachments['twitter.png'].url, width: 32, height: 32) %>      
                 </a>  
                 <a href="https://www.linkedin.com/company/we-are-hiring-digital-talent-place" target="_blank">
-                  <%= image_tag(attachments['linkedin.png'].url) %>
-                </a>
+                  <%= image_tag(attachments['linkedin.png'].url, width: 32, height: 32) %>
+                </a>    
                 <a href="https://discord.gg/feMXMacM9w" target="_blank">
-                  <%= image_tag(attachments['discord.png'].url) %>
+                  <%= image_tag(attachments['discord.png'].url, width: 32, height: 32) %>
                 </a>
               </td>
             </tr>

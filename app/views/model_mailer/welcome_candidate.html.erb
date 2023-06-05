@@ -13,42 +13,39 @@
               <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                 <tr>
                   <td>
-                    <h2> Hola <%= @user.name %>, 🙂 </h2>
+                    <h2> <%= t('hello') %> <%= @user.name %>, 🙂 </h2>
                     <p> 
-                      Enhorabuena ya eres parte de una de las comunidades de profesionales digitales más activas del momento.
+                      <%= t('notifiers.congratulations_candidate_signup') %>
                     </p>
                     <p>
                      <strong>
-                      ¿Cómo funcionamos?
+                        <%= t('notifiers.how_wah_works') %>
                      </strong>
                     </p>
                     <ul>
-                      <li> Aplica por tu cuenta </li>
-                      <li> Trabajamos por ti a través de WE MATCH </li>
+                      <li> <%= t('notifiers.apply_your_own') %> </li>
+                      <li> <%= t('notifiers.choose_we_match') %> </li>
                     </ul>
                     <br>
                     <p>
                      <strong>
-                      ¿Qué es WE MATCH?
+                        <%= t('notifiers.what_is_we_match') %>
                      </strong>
                     </p>
                     <p>
-                      Nuestro sistema de matching propondrá tu perfil a las empresas que publiquen Jobs y encajen con tus habilidades. 
-                      ¡No busques trabajo, haz que el trabajo venga a ti!
+                      <%= t('notifiers.we_match_candidate_explained_1') %> <br>
+                      <%= t('notifiers.we_match_candidate_explained_2') %>
                     </p>
                     <p>
                      <strong>
-                      Para activar We Match debes rellenar tu perfil ✅ ✍️
+                        <%= t('notifiers.we_match_candidate_explained_3') %>
                      </strong>
                     </p>
                     <p>
-                      Puedes aplicar por tu cuenta igualmente 🎯
+                      <%= t('notifiers.update_profile_possibilities') %> 
                     </p>
                     <p>
-                      Al completar tu perfil tus probabilidades de ser contactado aumentan un 76% 😉
-                    </p>
-                    <p>
-                      Nuestro equipo de expertos revisará y recomendará tu perfil a las empresas 🌟
+                      <%= t('notifiers.wah_review_profile') %>
                     </p>
                     <br>
                     <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
@@ -58,7 +55,7 @@
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                               <tbody>
                                 <tr>
-                                  <td style="text-align: center;"> <%= link_to '¡Empezar ahora!', "https://www.wearehiring.io" %> </td>
+                                  <td style="text-align: center;"> <%= link_to t('apply_now'), "https://www.wearehiring.io" %> </td>
                                 </tr>
                               </tbody>
                             </table>
@@ -74,7 +71,7 @@
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                               <tbody>
                                 <tr>
-                                  <td style="text-align: center;"> <%= link_to '¡Únete a nuestro Discord!', "https://discord.gg/feMXMacM9w" %> </td>
+                                  <td style="text-align: center;"> <%= link_to t('join_discord'), "https://discord.gg/feMXMacM9w" %> </td>
                                 </tr>
                               </tbody>
                             </table>
@@ -83,8 +80,9 @@
                       </tbody>
                     </table>
                     <br>
-                    <p> ¡Muchas gracias! </p>
-                    <p> Estamos a tu disposición para cualquier duda o consulta </p>
+                    <p> <%= t('notifiers.many_thanks') %></p>
+                    <p> <%= t('notifiers.at_your_disposal') %> </p>
+                    <p> <%= t('notifiers.team_wah') %> </p>
                   </td>
                 </tr>
               </table>
@@ -100,7 +98,7 @@
           <table role="presentation" border="0" cellpadding="0" cellspacing="0">
             <tr>
               <td class="content-block">
-                <span class="apple-link">¡Síguenos en RRSS!</span>
+                <span class="apple-link"><%= t('notifiers.follow_us') %></span>
                 <br> 
                 <a href="https://twitter.com/WeAreHiring_io" target="_blank">
                   <%= image_tag(attachments['twitter.png'].url, width: 32, height: 32) %>      

@@ -1,4 +1,4 @@
-<span class="preheader"> Tu Job <%= @job.title %> está despertando mucho interés </span>
+<span class="preheader"> <%= t('notifiers.jobs_interest', job_title: @job.title) %> </span>
 <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
   <tr>
     <td>&nbsp;</td>
@@ -14,9 +14,15 @@
               <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                 <tr>
                   <td>
-                    <h2> Tu Job <%= @job.title %> está despertando mucho interés </h2>
-                    <p> Candidatos inscritos actualmente: <%= @job.inscriptions.count %> </p><br>
-                    <p> <strong> <%= @user.name %> acaba de aplicar a tu oferta. </strong> </p>
+                    <h2> <%= t('notifiers.jobs_interest', job_title: @job.title) %> </h2>
+                    <p> <strong> <%= t('summary.job') %> </strong> </p>
+                    <p>
+                      <%= t('job_views') %>: <%= @job.impressionist_count(filter: :session_hash) %> </p>
+                    <p>
+                      <%= t('inscriptions.inscribeds') %>: <%= @job.inscriptions.count %>
+                    </p><br>
+                    <p> <strong> <%= t('notifiers.new_candidate') %> </strong> </p>
+                    <p> <strong> <%= @user.name %> <%= t('notifiers.applied_to_offer') %> </strong> </p>
                     <% if @user.picture_url.file.nil? %>
                       <p>
                         <%= image_tag(attachments['user_circle.png'].url, width: 50, height: 50) %>
@@ -29,20 +35,22 @@
                     <p> <%= @user.name %> </p>
                     <p> <%= @user.email %> </p>
                     <p> <%= @user.phone %> </p>
-                    <p> <%= link_to 'Ver perfil de Linkedin', @user.profile_url, target: "_blank" %></p>
+                    <% if @user.profile_url.present? %>
+                      <p> <%= link_to 'Ver perfil de Linkedin', @user.profile_url, target: "_blank" %> </p>
+                    <% end %>
                     <hr>
-                    <p> Gestiona cada candidato indicándoles si están: </p>
+                    <p> <%= t('notifiers.update_process') %> </p>
                     <ul>
-                      <li>Descartados</li>
-                      <li>Finalistas</li>
-                      <li>En proceso</li>
+                      <li> <%= t('inscriptions.discardeds') %> </li>
+                      <li> <%= t('inscriptions.in_process') %> </li>
+                      <li> <%= t('inscriptions.finalists') %> </li>
                     </ul>
-                    <p> Recibirán un email avisándoles de la fase en la que se encuentran. </p>
+                    <p> <%= t('notifiers.will_receive_mail_notification') %> </p>
                     <hr>
-                    <p> <strong> ¿Quieres más candidatos de forma instantánea? </strong> </p>
-                    <p> <strong> Si tu Job es PRO puedes usar WE MATCH </strong> </p>
-                    <p> En cada oferta te mostraremos candidatos de nuestra base de datos que encajen con tus requisitos </p>
-                    <p> Añádelos a tu proceso de selección y empieza con las entrevistas hoy mismo </p>
+                    <p> <strong> <%= t('notifiers.do_you_want_more_candidates') %> </strong> </p>
+                    <p> <strong> <%= t('notifiers.use_we_match') %> </strong> </p>
+                    <p> <%= t('notifiers.we_match_1') %></p>
+                    <p> <%= t('notifiers.we_match_2') %> </p>
                     <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
                       <tbody>
                         <tr>
@@ -50,7 +58,7 @@
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                               <tbody>
                                 <tr>
-                                  <td> <%= link_to '¡Ver mi Job!', @job %> </td>
+                                  <td> <%= link_to t('go_to_job'), @job %> </td>
                                 </tr>
                               </tbody>
                             </table>
@@ -74,7 +82,7 @@
           <table role="presentation" border="0" cellpadding="0" cellspacing="0">
             <tr>
               <td class="content-block">
-                <span class="apple-link">¡Síguenos en RRSS!</span>
+                <span class="apple-link"> <%= t('follow_us') %> </span>
                 <br> 
                 <a href="https://twitter.com/WeAreHiring_io" target="_blank">
                   <%= image_tag(attachments['twitter.png'].url) %>      
@@ -86,7 +94,7 @@
             </tr>
             <tr>
               <td class="content-block">
-                <%= image_tag(attachments['logo_black.png'].url, width: 100, height: 100) %>
+                <%= image_tag(attachments['WEH_LOGO_PNG_vertical_red.png'].url, width: 100, height: 100) %>
               </td>
             </tr>
           </table>

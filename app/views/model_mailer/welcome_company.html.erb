@@ -13,79 +13,59 @@
               <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                 <tr>
                   <td>
-                    <p> Hola <%= @user.last_name %>, </p>
+                    <p> <%= t('hello') %>,  <%= @user.last_name %>, </p>
                     <p>
-                      Es un placer que una empresa como <%= @user.name %> se haya unido a nosotros. 
+                      <%= t('notifiers.company_pleasure', company_name: @user.name) %>
                     </p>
                     <p>
                      <strong>
-                      ¿Cómo funcionamos?
+                      <%= t('notifiers.how_we_work') %>
                      </strong>
                     </p>
                     <p>
-                      <strong> 1. Nuestra comunidad de talento digital </strong>
+                      <strong> 1. <%= t('notifiers.our_talent_community') %> </strong>
                     </p>
                     <p>
-                      Disponemos de más de 10.000 perfiles verificados. <br>
-                      Para cada candidato que aplica a vuestros Jobs garantizamos la siguiente información: <br>
-                    </p>
-                    <ul>
-                      <li> 👩‍💻 Nombre </li>
-                      <li> ✉️ Email </li>
-                      <li> 📞 Teléfono </li>
-                      <li> 🏡 Lugar de residencia </li>
-                      <li> 🌐 Perfil de Linkedin </li>
-                    </ul>
-                    <p>
-                      <strong> 2. Pricing: Publicar tu primer Job ¡Es gratis! </strong>
-                    </p>
-                    <p>
-                      <strong> FREE </strong> - 0€ por Job (max 5 jobs free simultáneos) 
+                      <%= t('notifiers.registered_users_community_claim') %> <br>
+                      <%= t('notifiers.cross_platforms_community_claim') %> <br>
+                      <%= t('notifiers.google_for_jobs_community_claim') %> <br>
+                      <%= t('notifiers.audience_community_claim') %> <br>
+                      <%= t('notifiers.apply_info_community_claim') %> <br>
                     </p>
                     <ul>
-                      <li>Duración 60 días</li>
-                      <li>Gestión estado del proceso de selección</li>
-                      <li>Notificación a tiempo real</li>
-                      <li>Compartir Job</li>
-                      <li>Hasta 15 candidatos</li>
+                      <li> 👩‍💻 <%= t('users.name') %> </li>
+                      <li> ✉️ <%= t('users.email') %> </li>
+                      <li> 📞 <%= t('users.phone') %> </li>
+                      <li> 🏡 <%= t('users.location_residence') %> </li>
+                      <li> 🌐 <%= t('users.profile_url') %> </li>
                     </ul>
                     <p>
-                      <strong> BASIC </strong> - 99€ por Job 
+                      <strong> 2. <%= t('notifiers.pricing_title') %> </strong>
                     </p>
                     <ul>
-                      <li>Duración 60 días</li>
-                      <li>Gestión estado del proceso de selección</li>
-                      <li>Notificación a tiempo real</li>
-                      <li>Compartir Job</li>
-                      <li>Nº Candidatos ilimitado</li>
+                      <li> <%= t('pricing_index.pricing_feature_1') %> </li>
+                      <li> <%= t('pricing_index.pricing_feature_6') %> 💎</li>
+                      <li> <%= t('pricing_index.pricing_feature_7') %> 🌟</li>
+                      <li> <%= t('pricing_index.pricing_feature_8') %> 📢</li>
+                      <li> <%= t('pricing_index.pricing_feature_9') %> ⚡️</li>
+                      <li> <%= t('pricing_index.pricing_feature_10') %> 🔌</li>
                     </ul>
                     <p>
-                      <strong> PRO </strong> - 299€ por Job 
+                      <%= t('plus_feature') %>:
                     </p>
                     <ul>
-                      <li>Duración 60 días</li>
-                      <li>Gestión estado del proceso de selección</li>
-                      <li>Notificación a tiempo real</li>
-                      <li>Compartir Job</li>
-                      <li>Nº Candidatos ilimitado</li>
-                      <li>Descargar candidatos en excel</li>
+                      <li> <%= t('download_candidates_excel') %>  </li>
+                      <li> <%= t('pricing_index.pricing_feature_2') %> </li>
+                      <li> <%= t('pricing_index.pricing_feature_3') %> </li>
+                      <li> <%= t('pricing_index.pricing_feature_4') %> </li>
+                      <li> <%= t('pricing_index.pricing_feature_5') %> </li>
                     </ul>
                     <p>
-                      Y además con PRO:
-                    </p>
-                    <ul>
-                      <li>We match 💎</li>
-                      <li>Candidato recomendado 🌟</li>
-                      <li>Difusión comunidad 📢</li>
-                      <li>Acciones de Marketing ⚡️</li>
-                      <li>Integración con audiencia 🔌</li>
-                    </ul>
-                    <p>
-                     <strong> 3. Nuestro motor más potente: We Match </strong>
+                     <strong> 3. <%= t('notifiers.we_match_title') %> </strong>
                     </p>
                     <p>
-                      WeMatch es una herramienta que te ofrece al instante los mejores candidatos de nuestra comunidad que encajan con tu oferta. <br>
-                      Aparecerán dentro del panel de gestión de tu Job y podrás añadirlos para aumentar tu pool de candidatos.
+                      <%= t('notifiers.we_match_1') %> <br>
+                      <%= t('notifiers.we_match_2') %>
                     </p>
                     <br>
                     <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
@@ -95,7 +75,7 @@
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                               <tbody>
                                 <tr>
-                                  <td style="text-align: center;"> <%= link_to '¡Publicar Job!', "https://www.wearehiring.io" %> </td>
+                                  <td style="text-align: center;"> <%= link_to t('jobs.post_job'), "https://www.wearehiring.io" %> </td>
                                 </tr>
                               </tbody>
                             </table>
@@ -104,9 +84,9 @@
                       </tbody>
                     </table>
                     <br>
-                    <p> Quedamos a vuestra disposición para cualquier duda o consulta. </p>
-                    <p> Muchas Gracias </p>
-                    <p> Equipo WAH </p>
+                    <p> <%= t('notifiers.at_your_disposal') %> </p>
+                    <p> <%= t('notifiers.many_thanks') %>  </p>
+                    <p> <%= t('notifiers.team_wah') %> </p>
                   </td>
                 </tr>
               </table>
@@ -122,7 +102,7 @@
           <table role="presentation" border="0" cellpadding="0" cellspacing="0">
             <tr>
               <td class="content-block">
-                <span class="apple-link">¡Síguenos en RRSS!</span>
+                <span class="apple-link"> <%= t('notifiers.follow_us') %> </span>
                 <br> 
                 <a href="https://twitter.com/WeAreHiring_io" target="_blank">
                   <%= image_tag(attachments['twitter.png'].url) %>      
