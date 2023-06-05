@@ -6,11 +6,9 @@
           <div>
             <ol>
               <li><%= link_to t('show_jobs'), jobs_path %> </li>
-              <% unless user_signed_in? %>
-                <li><%= link_to t('pricing'), pricing_path %></li>
-                <li><%= link_to t('for_talent'), how_it_works_talent_path %></li>
-                <li><%= link_to t('for_companies'), how_it_works_companies_path %></li>
-              <% end %>
+              <li><%= link_to t('pricing'), pricing_path %></li>
+              <li><%= link_to t('for_talent'), how_it_works_talent_path %></li>
+              <li><%= link_to t('for_companies'), how_it_works_companies_path %></li>
               <li><%= link_to t('blog'), blog_posts_path %></li>
               <li>
               	<%= link_to "https://discord.gg/feMXMacM9w" do %>

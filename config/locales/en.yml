@@ -431,7 +431,7 @@ en:
     jobs_title: "Ver todas las ofertas de empleo digital en Wearehiring.io"
     jobs_description: "Encuentra todas las ofertas de empleo digital: Marketing Digital, DevOps, Desarrollo de Software, UX/UI, Data, Product Manager, Cyberseguridad... ¡Aplica o publica tu Job ahora!"
     home_title: "Encuentra todas ofertas de empleo digital en Wearehiring.io"
-    home_description: "WeAreHiring.io es una plataforma de empleo digital que conecta a empresas con talento digital cualificado. Busca tu oportunidad digital o publica ofertas y encuentra los mejores candidatos para tu empresa hoy mismo."
+    home_description: "WeAreHiring.io es una plataforma de empleo digital que agrupa ofertas de Marketing Digital, DevOps, Desarrollo de Software, UX/UI, Data, Product Manager, Cyberseguridad... Publica tu empleo digital o aplica ahora!"
     company_signup: "Publica tus ofertas de empleo digital y conecta con el mejor talento | Wearehiring.io"
     company_signup_description: "Regístrate en Wearehiring.io para publicar tus ofertas de empleo digital y conectar con el mejor talento. Nuestra plataforma facilita la gestión de tus ofertas digitales y te ayuda a encontrar a los candidatos adecuados para tu empresa. ¡Comienza a contratar hoy mismo!"
     candidate_signup: "Regístrate como candidato y encuentra tu empleo digital | Wearehiring.io"
@@ -811,3 +811,6 @@ en:
   payment_cancelled: "Payment was canceled."
   stripe_climate: "We'll donate 1% to remove CO₂ from the atmosphere"
   job_views: "Views"
+  notifiers:
+    jobs_interest:  "Tu Job %{job_title} está despertando mucho interés"
+  know_all_the_advantages: "Know all the advantages"

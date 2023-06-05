@@ -1,4 +1,4 @@
-<section class="section pv6">
+<section class="section">
 	<div class="container claim is-max-widescreen">
 		<div class="columns is-vcentered">
 			<div class="column is-5-desktop has-text-centered-mobile">
@@ -6,22 +6,38 @@
 
 				<div class="mv5"></div>
 				<%= form_tag(jobs_path, method: :get) do %>
-					<div class="home-search">
-						<div class="home-search-icon">
-							<%= icon('fas', 'search') %>
-						</div>
-						<input
-							type="text"
-							class="home-search-input"
-							placeholder="<%= t('search_job') %>"
-							name="search_for"
-							value="<%=params[:search_for] ? params[:search_for] : ''%>">
-						<%= button_tag(t('search'), type: 'submit', class: "home-search-button", data: { disable_with: "<i class='fas fa-spinner fa-spin'></i>".html_safe }) %>
-					</div>
+          <div class="columns is-vertical-center is-multiline">
+            <div class="column is-9-desktop is-9-tablet is-12-mobile">
+              <div class="control has-icons-left">
+                <input
+                  type="text"
+                  id="search"
+                  class="input searchbar is-large"
+                  placeholder="<%=t('search_placeholder')%>" 
+                  name="search_for" 
+                  value="<%=params[:search_for] ? params[:search_for] : ''%>">
+                <span class="icon is-small is-left">
+                  <%= icon('fas', 'search') %>
+                </span>
+              </div>
+            </div>
+            <div class="column is-3-desktop is-3-tablet is-12-mobile has-text-right">
+              <%= button_tag(t('search'), type: 'submit', class: "button primary is-fullwidth is-large", data: { disable_with: "<i class='fas fa-spinner fa-spin'></i>".html_safe }) %>
+            </div>
+          </div>
 				<% end %>
 
-				<p class="mt3">
-					<%= t('example') %>: <span class="tag is-light mr3"> Backend </span> <span class="tag is-light mr3"> Rails </span> <span class="tag is-light"> Remoto </span>
+				<p class="mt3 search-category-tags">
+					<%= t('example') %>:
+          <%= link_to jobs_path(search_for: 'backend') do %>
+            <span class="tag is-light mr3"> Backend </span>
+          <% end %>
+          <%= link_to jobs_path(search_for: 'javascript') do %>
+            <span class="tag is-light mr3"> Javascript </span>
+          <% end %>
+          <%= link_to jobs_path(search_for: 'remoto') do %>
+            <span class="tag is-light mr3"> Remoto </span>
+          <% end %>
 				</p>
  			</div>
 			<div class="column is-7-desktop">
@@ -32,25 +48,25 @@
 </section>
 
 <section class="section">
-	<div class="container">
+	<div class="container is-max-widescreen"">
 		<div class="columns has-text-centered is-flex-desktop is-align-items-center">
 			<div class="column">
 				<%= image_tag(asset_path('emogg_logo.png'), width: 60, height: 60, alt: 'Emogg - We Are Hiring partner') %>
 			</div>
 			<div class="column">
-				<%= image_tag(asset_path('by_evolution_logo.png'), width: 100, height: 100, alt: 'ByEvolution - We Are Hiring partner') %>
+				<%= image_tag(asset_path('t_systems_logo.png'), width: 100, height: 100, alt: 'TSystems - We Are Hiring partner') %>
 			</div>
 			<div class="column">
 				<%= image_tag(asset_path('dnv_logo.png'), width: 80, height: 80, alt: 'DNV - We Are Hiring partner') %>
 			</div>
 			<div class="column">
-				<%= image_tag(asset_path('t_systems_logo.png'), width: 100, height: 100, alt: 'TSystems - We Are Hiring partner') %>
-			</div>
-			<div class="column">
 				<%= image_tag(asset_path('madeofgenes_logo.png'), width: 100, height: 100, alt: 'MadeOfGenes - We Are Hiring partner') %>
 			</div>
 			<div class="column">
-        <%= image_tag(asset_path('gartner_logo.png'), width: 100, height: 100, alt: 'Gartner - We Are Hiring partner') %>
+				<%= image_tag(asset_path('logo_vicio.png'), width: 100, height: 100, alt: 'Vicio - We Are Hiring partner') %>
+			</div>
+			<div class="column">
+        <%= image_tag(asset_path('logo_quasar_dynamics.png'), width: 100, height: 100, alt: 'Quasar dynamics - We Are Hiring partner') %>
       </div>
 		</div>
 	</div>
@@ -288,218 +304,206 @@
 <div class="mt6 is-hidden-touch"></div>
 <div class="mt3 is-hidden-desktop"></div>
 
-<section class="section">
-  <div class="container">
-  	<div class="columns">
-			<div class="column has-text-centered">
-				<h3 class="title is-2 has-text-corporate"> <%= t('pricing')%> </h3>
-			</div>
-		</div>
-    <div class="columns mt4">
-      <div class="column">
-        <div class="box radius-20 full-height is-flex is-flex-direction-column">
-          <p class="title is-3 has-text-centered">
-            Free
+  <section class="section">
+    <div class="container">
+      <div class="headline container has-text-centered pt2">
+        <div class="mb4">
+          <h1 class="title is-3">
+            <%= t('pricing_index.title_1') %>
+          </h1>
+          <p class="subtitle">
+            Consigue aumentar tu alcance por un precio imbatible.
           </p>
-          <p class="has-text-centered">
-            <span class="title is-3 has-text-success"> 0€ </span> <br>
-            <span class="has-text-weight-semibold"> por Job </span>
-          </p>
-          <p class="has-text-grey mt4 mb3"> <%= t('included') %>: </p>
-          <div class="is-flex">
-            <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
-            <p> <%= t('pricing_index.pricing_feature_1') %> </p>
-          </div>
-          <div class="is-flex">
-            <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
-            <p> <%= t('pricing_index.pricing_feature_2') %> </p>
-          </div>
-          <div class="is-flex">
-            <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
-            <p> <%= t('pricing_index.pricing_feature_3') %> </p>
-          </div>
-          <div class="is-flex">
-            <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
-            <p> <%= t('pricing_index.pricing_feature_4') %> </p>
-          </div>
-          <div class="is-flex">
-            <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
-            <p> <%= t('until_15_candidates') %> </p>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column">
+          <div class="box radius-20 full-height is-flex is-flex-direction-column pricing-price-box">
+            <div class="columns is-vcentered">
+              <div class="column">
+                <p class="has-text-grey mt4 mb3"> <%= t('included') %>: </p>
+                <div class="is-flex">
+                  <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
+                  <p class="has-text-weight-semibold"> <%= t('pricing_index.subtitle_1') %> </p>         
+                </div>
+                <div class="is-flex">
+                  <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
+                  <p class="has-text-weight-semibold"> <%= t('pricing_index.pricing_feature_1') %> </p>         
+                </div>
+                <div class="is-flex">
+                  <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
+                  <p class="has-text-weight-semibold"> <%= t('pricing_index.pricing_feature_6') %> </p>
+                  <p> <%= icon('fas', 'gem has-text-info ml2') %> </p>
+                  <p class="ml2 has-text-weight-semibold"> ¡No esperes a que los candidatos apliquen! </p>
+                </div>
+                <div class="is-flex">
+                  <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
+                  <p class="has-text-weight-semibold"> <%= t('pricing_index.pricing_feature_7') %> </p>
+                  <p> <%= icon('fas', 'star has-text-warning ml2') %> </p>
+                </div>
+                <div class="is-flex">
+                  <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
+                  <p class="has-text-weight-semibold"> <%= t('pricing_index.pricing_feature_8') %> </p>
+                  <p> <%= icon('fas', 'bullhorn has-text-corporate ml2') %> </p>
+                </div>
+                <div class="is-flex">
+                  <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
+                  <p class="has-text-weight-semibold"> <%= t('pricing_index.pricing_feature_9') %> </p>
+                  <p> <%= icon('fas', 'bolt has-text-warning ml2') %> </p>
+                </div>
+                <div class="is-flex mb4">
+                  <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
+                  <p class="has-text-weight-semibold"> <%= t('pricing_index.pricing_feature_10') %> </p>
+                  <p> <%= icon('fas', 'plug ml2') %> </p>
+                  <p> <%= icon('fab', 'google ml2') %> </p>
+                </div>
+                <p class="has-text-grey mt3 mb3"> <%= t('plus_feature') %>: </p>
+                <div class="is-flex">
+                  <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
+                  <p> <%= t('pricing_index.pricing_feature_2') %> </p>
+                </div>
+                <div class="is-flex">
+                  <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
+                  <p> <%= t('pricing_index.pricing_feature_3') %> </p>
+                </div>
+                <div class="is-flex">
+                  <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
+                  <p> <%= t('pricing_index.pricing_feature_4') %> </p>
+                </div>
+                <div class="is-flex">
+                  <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
+                  <p> <%= t('download_candidates_excel') %> </p>
+                </div>
+              </div>
+              <div class="column has-text-centered">
+                <p class="">
+                  <span class="title pricing-price-title"> 299€ </span> /
+                  <span class="has-text-weight-semibold"> por Job </span>
+                </p>
+                <p class="is-vertical-center is-justify-content-center">
+                  <span class="has-text-weight-light is-italic"> 
+                    340.86€ con tasas incluidas
+                  </span>
+                </p>
+                <div class="mb3 is-hidden-tablet"></div>
+                <p class="is-vertical-center is-justify-content-center">
+                  <%= image_tag(asset_path('stipe_climate.svg'), height: 20, width: 20, class: 'mr1') %>
+                  <span class="has-text-weight-light is-italic">
+                    <%= t('stripe_climate') %>
+                  </span>
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="column">
-        <div class="box radius-20 full-height is-flex is-flex-direction-column">
-          <p class="title is-3 has-text-centered">
-            Basic
-          </p>
-          <p class="has-text-centered">
-            <span class="title is-3 has-text-success"> 99€ + IVA </span> <br>
-            <span class="has-text-weight-semibold"> por Job </span>
-          </p>
-          <p class="has-text-grey mt4 mb3"> <%= t('included') %>: </p>
-          <div class="is-flex">
-            <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
-            <p> <%= t('pricing_index.pricing_feature_1') %> </p>
-          </div>
-          <div class="is-flex">
-            <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
-            <p> <%= t('pricing_index.pricing_feature_2') %> </p>
-          </div>
-          <div class="is-flex">
-            <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
-            <p> <%= t('pricing_index.pricing_feature_3') %> </p>
-          </div>
-          <div class="is-flex">
-            <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
-            <p> <%= t('pricing_index.pricing_feature_4') %> </p>
-          </div>
-          <div class="is-flex">
-            <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
-            <p> <del> <%= t('until_15_candidates') %> </del> <span class="has-text-success ml1 has-text-weight-semibold"><%= t('unlimited_candidates') %></span> </p>
-          </div>
-        </div>
-      </div>
-      <div class="column">
-        <div class="box radius-20 full-height is-flex is-flex-direction-column">
-          <p class="title is-3 has-text-centered">
-            Pro
-          </p>
-          <p class="has-text-centered">
-            <span class="title is-3 has-text-success"> 299€ + IVA </span> <br>
-            <span class="has-text-weight-semibold"> por Job </span>
-          </p>
-          <p class="has-text-grey mt4 mb3"> <%= t('included') %>: </p>
-          <div class="is-flex">
-            <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
-            <p> <%= t('pricing_index.pricing_feature_1') %> </p>
-          </div>
-          <div class="is-flex">
-            <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
-            <p> <%= t('pricing_index.pricing_feature_2') %> </p>
-          </div>
-          <div class="is-flex">
-            <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
-            <p> <%= t('pricing_index.pricing_feature_3') %> </p>
-          </div>
-          <div class="is-flex">
-            <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
-            <p> <%= t('pricing_index.pricing_feature_4') %> </p>
-          </div>
-          <div class="is-flex">
-            <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
-            <p> <del> <%= t('until_15_candidates') %> </del> <span class="has-text-success ml1 has-text-weight-semibold"><%= t('unlimited_candidates') %></span> </p>
-          </div>
-          <div class="is-flex">
-            <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
-            <p> <%= t('download_candidates_excel') %> </p>
-          </div>
-          <p class="has-text-grey mt3 mb3"> <%= t('plus_feature') %>: </p>
-          <div class="is-flex">
-            <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
-            <p class="has-text-weight-semibold"> <%= t('pricing_index.pricing_feature_6') %> </p>
-            <p> <%= icon('fas', 'gem has-text-info ml2') %> </p>
-          </div>
-          <div class="is-flex">
-            <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
-            <p class="has-text-weight-semibold"> <%= t('pricing_index.pricing_feature_7') %> </p>
-            <p> <%= icon('fas', 'star has-text-warning ml2') %> </p>
-          </div>
-          <div class="is-flex">
-            <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
-            <p class="has-text-weight-semibold"> <%= t('pricing_index.pricing_feature_8') %> </p>
-            <p> <%= icon('fas', 'bullhorn has-text-corporate ml2') %> </p>
-          </div>
-          <div class="is-flex">
-            <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
-            <p class="has-text-weight-semibold"> <%= t('pricing_index.pricing_feature_9') %> </p>
-            <p> <%= icon('fas', 'bolt has-text-warning ml2') %> </p>
-          </div>
-          <div class="is-flex mb4">
-            <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
-            <p class="has-text-weight-semibold"> <%= t('pricing_index.pricing_feature_10') %> </p>
-            <p> <%= icon('fas', 'plug ml2') %> </p>
-          </div>
+      <div class="columns mt5">
+        <div class="column has-text-centered">
+          <%= link_to pricing_path, class: 'button is-rounded primary is-large shadow' do %>
+            <%= t('know_all_the_advantages') %>
+            <%= icon('fas', 'rocket', class: 'ml1') %>
+          <% end %>
         </div>
       </div>
     </div>
-  </div>
-  <div class="columns mt5">
-    <div class="column has-text-centered">
-      <%= link_to t('payments.post_job'), pricing_path, class: 'button is-rounded primary is-large shadow' %>
-    </div>
-  </div>
-</section>
+  </section>
 
 <div class="mt6 is-hidden-touch"></div>
 <div class="mt3 is-hidden-desktop"></div>
 
-<section class="section section-bg-gray pv6">
-	<div class="container">
-		<div class="columns">
-			<div class="column has-text-centered">
-				<p class="title is-2 has-text-corporate"> <%= t('home_index.our_partners') %> </p>
-			</div>
-		</div>
-		<div class="box mt4 pv5">
-			<div class="columns is-vertical-center has-text-centered">
-				<div class="column">
-					<%= image_tag(asset_path('UIC.png'), width: 80, height: 80, alt: 'UIC - We Are Hiring partner') %>
-				</div>
-				<div class="column">
-					<%= image_tag(asset_path('codehouse_academy.png'), width: 80, height: 80, alt: 'Codehouse Academy - We Are Hiring partner') %>
-				</div>
-				<div class="column">
-					<%= image_tag(asset_path('inesdi.jpg'), width: 80, height: 80, alt: 'Inesdi - We Are Hiring partner') %>
-				</div>
-				<div class="column">
-					<%= image_tag(asset_path('ironhack.png'), width: 60, height: 60, alt: 'Ironhack - We Are Hiring partner') %>
-				</div>
-			</div>
-			<div class="columns is-vertical-center has-text-centered">
-				<div class="column">
-					<%= image_tag(asset_path('lets_coder.png'), width: 80, height: 80, alt: 'Lets Coder - We Are Hiring partner') %>
-				</div>
-				<div class="column">
-					<%= image_tag(asset_path('esade.png'), width: 80, height: 80, alt: 'Esade - We Are Hiring partner') %>
-				</div>
-				<div class="column">
-					<%= image_tag(asset_path('BAU.png'), width: 80, height: 80, alt: 'BAU - We Are Hiring partner') %>
-				</div>
-				<div class="column">
-					<%= image_tag(asset_path('BTS.png'), width: 80, height: 80, alt: 'BTS - We Are Hiring partner') %>
-				</div>
-			</div>
-			<div class="columns is-vertical-center has-text-centered">
-				<div class="column">
-					<%= image_tag(asset_path('esdi.png'), width: 80, height: 80, alt: 'ESDI - We Are Hiring partner') %>
-				</div>
-				<div class="column">
-					<%= image_tag(asset_path('KEEPCODING.png'), width: 80, height: 80, alt: 'KEEPCODING - We Are Hiring partner') %>
-				</div>
-				<div class="column">
-					<%= image_tag(asset_path('la_salle.png'), width: 80, height: 80, alt: 'La Salle - We Are Hiring partner') %>
-				</div>
-				<div class="column">
-					<%= image_tag(asset_path('upc.png'), width: 80, height: 80, alt: 'UPC - We Are Hiring partner') %>
-				</div>
-			</div>
-			<div class="columns is-vertical-center has-text-centered">
-				<div class="column">
-					<%= image_tag(asset_path('elisava.png'), width: 80, height: 80, alt: 'ELISAVA - We Are Hiring partner') %>
-				</div>
-				<div class="column">
-					<%= image_tag(asset_path('epitech.jpg'), width: 80, height: 80, alt: 'EPITECH - We Are Hiring partner') %>
-				</div>
-				<div class="column">
-					<%= image_tag(asset_path('gse_bcn.jpg'), width: 80, height: 80, alt: 'GSE BCN - We Are Hiring partner') %>
-				</div>
-				<div class="column">
-					<%= image_tag(asset_path('IEBS.png'), width: 80, height: 80, alt: 'IEBS - We Are Hiring partner') %>
-				</div>
-			</div>
-		</div>
-	</div>
+<section class="section pv6">
+  <div class="container">
+    <div class="columns">
+      <div class="column has-text-centered">
+        <p class="title is-2 has-text-corporate"> <%= t('companies_trust_us') %> </p>
+      </div>
+    </div>
+    <div class="box mt4 pv5 pricing-company-logos">
+      <div class="columns is-vertical-center has-text-centered">
+        <div class="column">
+          <%= link_to 'https://emogg.com/', target: '_blank' do %>
+            <%= image_tag(asset_path('emogg_logo.png'), width: 100, height: 100, alt: 'Emogg - We Are Hiring partner') %>
+          <% end %>
+        </div>
+        <div class="column">
+          <%= link_to 'https://www.ganasdevicio.com/', target: '_blank' do %>
+            <%= image_tag(asset_path('logo_vicio.png'), width: 100, height: 100, alt: 'Vicio - We Are Hiring partner') %>
+          <% end %>
+        </div>
+        <div class="column">
+          <%= link_to 'https://quasardynamics.com/', target: '_blank' do %>
+            <%= image_tag(asset_path('logo_quasar_dynamics.png'), width: 100, height: 100, alt: 'Quasar Dynamics - We Are Hiring partner') %>
+          <% end %>
+        </div>
+      </div>
+      <div class="columns is-vertical-center has-text-centered">
+        <div class="column">
+          <%= link_to 'https://www.t-systems.com/es/es', target: '_blank' do %>
+            <%= image_tag(asset_path('t_systems_logo.png'), width: 100, height: 100, alt: 'TSystems - We Are Hiring partner') %>
+          <% end %>
+        </div>
+        <div class="column">
+          <%= link_to 'https://madeofgenes.com/', target: '_blank' do %>
+            <%= image_tag(asset_path('madeofgenes_logo.png'), width: 100, height: 100, alt: 'MadeOfGenes - We Are Hiring partner') %>
+          <% end %>
+        </div>
+        <div class="column">
+          <%= link_to 'https://www.gartner.es/es', target: '_blank' do %>
+            <%= image_tag(asset_path('gartner_logo.png'), width: 100, height: 100, alt: 'Gartner - We Are Hiring partner') %>
+          <% end %>
+        </div>
+      </div>
+      <div class="columns is-vertical-center has-text-centered">
+        <div class="column">
+          <%= link_to 'https://emogg.com/', target: '_blank' do %>
+            <%= image_tag(asset_path('nuo_planet.jpg'), width: 100, height: 100, alt: 'Nuo - We Are Hiring partner') %>
+          <% end %>
+        </div>
+        <div class="column">
+          <%= link_to 'https://nuoplanet.com/', target: '_blank' do %>
+            <%= image_tag(asset_path('dnv_logo.png'), width: 100, height: 100, alt: 'DNV - We Are Hiring partner') %>
+          <% end %>
+        </div>
+        <div class="column">
+          <%= link_to 'https://belender.eu/', target: '_blank' do %>
+            <%= image_tag(asset_path('belender_logo.png'), width: 100, height: 100, alt: 'Belender EU - We Are Hiring partner') %>
+          <% end %>
+        </div>
+      </div>
+      <div class="columns is-vertical-center has-text-centered">
+        <div class="column">
+          <%= link_to 'https://www.housell.com/', target: '_blank' do %>
+            <%= image_tag(asset_path('logo_housell.png'), width: 100, height: 100, alt: 'Housell - We Are Hiring partner') %>
+          <% end %>
+        </div>
+        <div class="column">
+          <%= link_to 'https://www.turijobs.com/', target: '_blank' do %>
+            <%= image_tag(asset_path('logo_turijobs.png'), width: 100, height: 100, alt: 'Turijobs - We Are Hiring partner') %>
+          <% end %>
+        </div>
+        <div class="column">
+          <%= link_to 'https://www.mobilots.com/es/', target: '_blank' do %>
+            <%= image_tag(asset_path('logo_mobilots.png'), width: 100, height: 100, alt: 'Talent Hackers - We Are Hiring partner') %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column has-text-centered">
+        <h2 class="title is-3"> Quiero encontrar talento digital: </h2>
+        <% url = user_signed_in? ? new_companies_job_path :  new_company_registration_path %>
+        <%= link_to url, 
+            class: "button primary is-large is-rounded" do %>
+            <%= t('jobs.post_job') %> <%= icon('fas', 'bullhorn ml2') %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </section>
 
 <div class="mt6 is-hidden-touch"></div>
@@ -528,4 +532,8 @@
 			title: t('seo.home_title'), 
 			description: t('seo.home_description'),
 			image: image_url(asset_path('wah_red_logo.png')) %>
+<% end %>
+
+<%= content_for :footer do %>
+  <%= javascript_include_tag "jobs/typewriter.js" %>
 <% end %>

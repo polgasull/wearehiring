@@ -2,11 +2,18 @@
   font-size: 3.6rem;
 }
 
+.search-category-tags {
+  .tag:hover {
+    background-color: #cc0022;
+    color: white;
+  }
+}
+
 @media (max-width: 768px) {
 	.claim {
 
 		h1.title-touch {
-			font-size: 2rem;
+			font-size: 2.5rem;
       text-align: center;
 		}
 	}
