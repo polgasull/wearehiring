@@ -56,9 +56,9 @@
     <meta name="robots" content="noindex">
   <% end %>
   <%= render "seo", 
-      title: "#{t('job_offer_h1')} #{ @job.title } #{t('at')} #{ @job.job_author } #{t('at')} #{ @job.location } | WeAreHiring.io", 
-      description: "#{ @job.job_author } #{t('is_looking_for_one').downcase} #{ @job.title } #{t('at')} #{ @job.location }. #{t('apply_at_wearehiring')}",
-      image: @job.avatar.file.nil? ? image_url(asset_path('wah_red_logo.png')) : image_url(@job.avatar_url(:thumb), alt: "#{t('job_offer_h1')} #{@job.title} #{t('at')} #{@job.job_author}") %>
+      title: "#{t('seo.job_offer_h1')} #{ @job.title } #{t('at')} #{ @job.job_author } #{t('at')} #{ @job.location } | Wearehiring.io", 
+      description: "#{ @job.job_author } #{t('seo.is_looking_for_one').downcase} #{ @job.title } #{t('at')} #{ @job.location }. #{t('seo.apply_at_wearehiring')}",
+      image: @job.avatar.file.nil? ? image_url(asset_path('WEH_LOGO_PNG_vertical_red.png')) : image_url(@job.avatar_url(:thumb), alt: "#{t('seo.job_offer_h1')} #{@job.title} #{t('at')} #{@job.job_author}") %>
 
   <% if @job.open? %>
     <%= render partial: "/jobs/partials/job_posting_structured_data", locals: { job: @job } %>

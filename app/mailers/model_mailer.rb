@@ -24,7 +24,7 @@ class ModelMailer < ApplicationMailer
     @job = job
 
     attachments.inline["user_circle.png"] = File.read("#{Rails.root}/app/assets/images/user_circle.png")
-    attachments.inline["logo_black.png"] = File.read("#{Rails.root}/app/assets/images/logo_black.png")
+    attachments.inline['WEH_LOGO_PNG_vertical_red.png'] = File.read("#{Rails.root}/app/assets/images/WEH_LOGO_PNG_vertical_red.png")
     attachments.inline["twitter.png"] = File.read("#{Rails.root}/app/assets/images/twitter.png")
     attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
     mail( 
@@ -33,11 +33,12 @@ class ModelMailer < ApplicationMailer
     )  
   end
 
+  # Deactivated: this was sent to free jobs.
   def new_candidate_hidden(job)
     @job = job
 
     attachments.inline["user_circle.png"] = File.read("#{Rails.root}/app/assets/images/user_circle.png")
-    attachments.inline["logo_black.png"] = File.read("#{Rails.root}/app/assets/images/logo_black.png")
+    attachments.inline['WEH_LOGO_PNG_vertical_red.png'] = File.read("#{Rails.root}/app/assets/images/WEH_LOGO_PNG_vertical_red.png")
     attachments.inline["twitter.png"] = File.read("#{Rails.root}/app/assets/images/twitter.png")
     attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
     mail( 
