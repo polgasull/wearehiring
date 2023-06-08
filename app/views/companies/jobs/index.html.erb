@@ -45,21 +45,17 @@
     <div class="columns mb3">
       <div class="column">
         <%= form_for companies_jobs_path(current_user), method: :get do |f| %>
-          <div class="columns">
-            <div class="column is-4 is-offset-8">
-              <div class="field has-addons is-pulled-right">
-                <div class="control">
-                  <input 
-                    type="text" 
-                    class="input" 
-                    placeholder="<%=t('search')%>" 
-                    name="search_my_jobs" 
-                    value="<%=params[:search_my_jobs] ? params[:search_my_jobs] : ''%>">
-                </div>
-                <div class="control">
-                  <%= f.submit t('search'), class: "button is-dark" %>
-                </div>
-              </div>
+          <div class="field has-addons">
+            <div class="control">
+              <input 
+                type="text" 
+                class="input" 
+                placeholder="<%=t('search')%>" 
+                name="search_my_jobs" 
+                value="<%=params[:search_my_jobs] ? params[:search_my_jobs] : ''%>">
+            </div>
+            <div class="control">
+              <%= f.submit t('search'), class: "button is-dark" %>
             </div>
           </div>
         <% end %>
