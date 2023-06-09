@@ -7,7 +7,7 @@
             <%= t('pricing_index.title_1') %>
           </h1>
           <p class="subtitle">
-            Consigue aumentar tu alcance por un precio imbatible.
+            <%= t('pricing_index.subtitle_3') %>
           </p>
         </div>
       </div>
@@ -29,7 +29,7 @@
                   <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
                   <p class="has-text-weight-semibold"> <%= t('pricing_index.pricing_feature_6') %> </p>
                   <p> <%= icon('fas', 'gem has-text-info ml2') %> </p>
-                  <p class="ml2 has-text-weight-semibold"> ¡No esperes a que los candidatos apliquen! </p>
+                  <p class="ml2 has-text-weight-semibold"> <%= t('dont_wait_candidates_apply') %> </p>
                 </div>
                 <div class="is-flex">
                   <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
@@ -73,11 +73,11 @@
               <div class="column has-text-centered">
                 <p class="">
                   <span class="title pricing-price-title"> 299€ </span> /
-                  <span class="has-text-weight-semibold"> por Job </span>
+                  <span class="has-text-weight-semibold"> <%= t('pricing_index.per_job') %> </span>
                 </p>
                 <p class="is-vertical-center is-justify-content-center">
                   <span class="has-text-weight-light is-italic"> 
-                    340.86€ con tasas incluidas
+                    340.86€ <%= t('tax_included') %>
                   </span>
                 </p>
                 <div class="mb3 is-hidden-tablet"></div>
@@ -103,7 +103,7 @@
         <div class="column has-text-centered">
           <p class="has-text-weight-bold is-size-3 mb3">
             <%= icon('fas', 'lock') %>
-            Tu pago seguro con Stripe. 
+            <%= t('payment_safe_with_stripe') %>
           </p>
           <img src="<%=asset_path('powered-stripe.svg')%>" width="120" height="120" class="is-blank" alt="Crear cuenta empresa y publicar empleo digital | Wearehiring.io">			
         </div>
@@ -116,7 +116,7 @@
       <div class="columns">
         <div class="column has-text-centered">
           <p class="title is-3">
-            Información [del candidato] mínima garantizada:
+            <%= t('minimum_guaranteed_candidate_information') %>:
           </p>
         </div>
       </div>
@@ -124,31 +124,31 @@
         <div class="column has-text-centered">
           <div class="box">
             <%= icon('fas', 'user') %>
-            <p> Nombre </p>
+            <p> <%= t('inscriptions.name') %> </p>
           </div>
         </div>
         <div class="column has-text-centered">
           <div class="box">
             <%= icon('fas', 'envelope') %>
-            <p> Email </p>
+            <p> <%= t('inscriptions.email') %> </p>
           </div>
         </div>
         <div class="column has-text-centered">
           <div class="box">
             <%= icon('fas', 'phone') %>
-            <p> Teléfono </p>
+            <p> <%= t('inscriptions.phone') %> </p>
           </div>
         </div>
         <div class="column has-text-centered">
           <div class="box">
             <%= icon('fas', 'home') %>
-            <p> Lugar de residencia </p>
+            <p> <%= t('inscriptions.residence') %> </p>
           </div>
         </div>
         <div class="column has-text-centered">
           <div class="box">
             <%= icon('fab', 'linkedin') %>
-            <p> Perfil de Linkedin </p>
+            <p> <%= t('inscriptions.linkedin_url') %> </p>
           </div>
         </div>
       </div>
@@ -159,7 +159,7 @@
     <div class="container">
       <div class="columns">
         <div class="column has-text-centered">
-          <p class="title is-3"> Encuentra lo que buscas: </p>
+          <p class="title is-3"> <%= t('find_what_you_are_looking_for') %>: </p>
         </div>
       </div>
       <div class="columns has-text-centered">
@@ -167,14 +167,14 @@
           <div class="box pv5">
             <%= icon('fas', 'eye', class: 'is-size-3') %> <br>
             <p class="is-size-3"> +50 <%= t('job_views') %> </p>
-            <p class="is-size-3"> garantizadas </p>
+            <p class="is-size-3"> <%= t('guaranteed') %> </p>
           </div>
         </div>
         <div class="column is-5-desktop">
           <div class="box pv5">
             <%= icon('fas', 'check-circle', class: 'has-text-success is-size-3') %> <br>
-            <p class="is-size-3"> +20 aplicantes </p>
-            <p class="is-size-3"> verificados </p>
+            <p class="is-size-3"> +20 <%= t('applicants') %> </p>
+            <p class="is-size-3"> <%= t('verified') %> </p>
           </div>
         </div>
       </div>
@@ -185,7 +185,7 @@
     <div class="container">
       <div class="columns">
         <div class="column has-text-centered">
-          <p class="title is-3"> Audiencia: </p>
+          <p class="title is-3"> <%= t('audience') %>: </p>
         </div>
       </div>
       <div class="columns is-vertical-center has-text-centered">
@@ -193,7 +193,7 @@
           <div class="box pv5">
             <%= icon('fas', 'bullhorn', class: 'is-size-1') %> <br>
             <p class="is-size-1"> +100.000 </p>
-            <p class="is-size-3"> perfiles digitales </p>
+            <p class="is-size-3"> <%= t('digital_profiles') %> </p>
           </div>
         </div>
       </div>
@@ -207,7 +207,7 @@
           <p class="is-size-1"> 
             <%= icon('fas', 'network-wired', class: 'is-size-1') %> +35 
           </p>
-          <p class="is-size-3"> publicaciones cruzadas en portales especializados y minas de talento </p>
+          <p class="is-size-3"> <%= t('cross_postings_on_specialized_portals_and_talent_pools') %> </p>
         </div>
       </div>
     </div>
@@ -217,7 +217,7 @@
     <div class="container">
       <div class="columns">
         <div class="column has-text-centered">
-          <p class="title is-3"> Distribuido en Google for Jobs: </p>
+          <p class="title is-3"> <%= t('distributed_on_google_for_jobs') %>: </p>
         </div>
       </div>
       <div class="columns is-vertical-center has-text-centered">
@@ -314,7 +314,7 @@
     <div class="container">
       <div class="columns">
         <div class="column has-text-centered">
-          <h2 class="title is-3"> Quiero encontrar talento digital: </h2>
+          <h2 class="title is-3"> <%= t('i_want_digital_talent') %>: </h2>
           <% url = user_signed_in? ? new_companies_job_path :  new_company_registration_path %>
           <%= link_to url, 
               class: "button primary is-large" do %>
