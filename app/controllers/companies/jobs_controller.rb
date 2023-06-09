@@ -136,13 +136,25 @@ module Companies
       @job.update!(open: true)
       # Retrieve and update the job based on the Stripe session or payment intent
       # Handle any post-payment success logic here
-      redirect_to thanks_jobs_path
+      redirect_to companies_job_thanks_path(@job)
     end
     
     def cancel
       # Handle any post-payment cancellation logic here
       flash[:alert] = t('payment_canceled')
       redirect_to new_companies_job_path
+    end
+
+    def thanks
+      redirect_to root_path unless current_user.jobs.any?
+
+      job = current_user.jobs.find(params[:id])
+
+      if job.present?
+        @job = job
+      else 
+        @job = current_user.jobs.last
+      end
     end
 
     private

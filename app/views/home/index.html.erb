@@ -5,7 +5,7 @@
 				<%= render 'claim' %>
 
 				<div class="mv5"></div>
-				<%= form_tag(jobs_path, method: :get) do %>
+				<%= form_tag(alternate_locale_url('jobs', 'index'), method: :get) do %>
           <div class="columns is-vertical-center is-multiline">
             <div class="column is-9-desktop is-9-tablet is-12-mobile">
               <div class="control has-icons-left">
@@ -29,13 +29,13 @@
 
 				<p class="mt3 search-category-tags">
 					<%= t('example') %>:
-          <%= link_to jobs_path(search_for: 'backend') do %>
+          <%= link_to alternate_locale_url('jobs', 'index', {search_for: 'backend'}) do %>
             <span class="tag is-light mr3"> Backend </span>
           <% end %>
-          <%= link_to jobs_path(search_for: 'javascript') do %>
+          <%= link_to alternate_locale_url('jobs', 'index', {search_for: 'javascript'}) do %>
             <span class="tag is-light mr3"> Javascript </span>
           <% end %>
-          <%= link_to jobs_path(search_for: 'remoto') do %>
+          <%= link_to alternate_locale_url('jobs', 'index', {search_for: 'remoto'}) do %>
             <span class="tag is-light mr3"> Remoto </span>
           <% end %>
 				</p>
@@ -94,7 +94,9 @@
 		</div>
 		<div class="columns">
 			<div class="column has-text-centered">
-				<%= link_to t('show_all_jobs'), jobs_path, class: 'button is-rounded primary is-large shadow' %>
+				<%= link_to t('show_all_jobs'),
+            alternate_locale_url('jobs', 'index'), rel: 'alternate', hreflang: I18n.locale.to_s,
+            class: 'button is-rounded primary is-large shadow' %>
 			</div>
 		</div>
 	</div>
@@ -120,7 +122,7 @@
 					<%= t('home_index.first_section_text_6') %>
 				</p>
 				<p class="mt3">
-					<%= link_to how_it_works_talent_path, class: 'button is-rounded shadow' do %>
+					<%= link_to talent_how_it_works_path, class: 'button is-rounded shadow' do %>
             <span><%= t('for_talent') %></span> <%= icon('fas', 'arrow-right', class: 'ml3') %>
           <% end %>
 				</p>
@@ -289,7 +291,7 @@
 					<%= t('home_index.fourth_section_text_3') %>
 				</p>
 				<p class="mt3">
-        	<%= link_to how_it_works_companies_path, class: 'button is-rounded is-dark shadow' do %>
+        	<%= link_to companies_how_it_works_path, class: 'button is-rounded is-dark shadow' do %>
             <span><%= t('for_companies') %></span> <%= icon('fas', 'arrow-right', class: 'ml3') %>
           <% end %>
 				</p>

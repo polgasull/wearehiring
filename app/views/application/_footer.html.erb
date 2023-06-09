@@ -5,10 +5,10 @@
         <div class="column is-3-desktop">
           <div>
             <ol>
-              <li><%= link_to t('show_jobs'), jobs_path %> </li>
+              <li><%= link_to t('show_jobs'), alternate_locale_url('jobs', 'index'), rel: 'alternate', hreflang: I18n.locale.to_s %> </li>
               <li><%= link_to t('pricing'), pricing_path %></li>
-              <li><%= link_to t('for_talent'), how_it_works_talent_path %></li>
-              <li><%= link_to t('for_companies'), how_it_works_companies_path %></li>
+              <li><%= link_to t('for_talent'), talent_how_it_works_path %></li>
+              <li><%= link_to t('for_companies'), companies_how_it_works_path %></li>
               <li><%= link_to t('blog'), blog_posts_path %></li>
               <li>
               	<%= link_to "https://discord.gg/feMXMacM9w" do %>

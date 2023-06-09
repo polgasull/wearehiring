@@ -27,14 +27,6 @@ class JobsController < ApplicationController
     @unique_impressions = @job.impressionist_count(filter: :session_hash)
   end
 
-  def thanks
-    if current_user.jobs.any?
-      @job = current_user.jobs.last
-    else 
-      redirect_to root_path
-    end
-  end
-
   private
 
   def set_job

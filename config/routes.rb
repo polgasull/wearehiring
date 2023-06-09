@@ -30,6 +30,7 @@ Rails.application.routes.draw do
 
   namespace :companies do
     resources :jobs do
+      get :thanks
       get :free, on: :new
       get :edit_price, on: :member
       patch :update_price, on: :member
@@ -49,9 +50,14 @@ Rails.application.routes.draw do
     resources :user_profiles, only: [:show, :update]
   end
 
-  resources :jobs, path: 'ofertas-empleo-digital', only: [:index, :show] do
-    collection do
-      get :thanks, path: 'gracias-por-publicar'
+  localized do
+    resources :jobs, only: [:index, :show]
+
+    resources :how_it_works, only: [] do
+      collection do
+        get :companies
+        get :talent
+      end
     end
   end
     
@@ -71,8 +77,6 @@ Rails.application.routes.draw do
     post "companies", to: "companies_registrations#create", as: "company_registration"
   end
 
-  get '/como-funciona/empresas', to: 'how_it_works#companies', as: 'how_it_works_companies'
-  get '/como-funciona/talento', to: 'how_it_works#talent', as: 'how_it_works_talent'
   get '/sign-up-thanks', to: 'application#sign_up_thanks', as: 'sign_up_thanks'
   get '/pricing', to: 'pricing#index', as: 'pricing'
   get '/legal/aviso_legal', to: 'legal#legal_terms', as: 'legal_terms'

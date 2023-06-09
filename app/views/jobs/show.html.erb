@@ -40,7 +40,7 @@
         <%= render partial: "job", collection: @same_category_jobs %>
       </div>
       <div class="has-text-centered">
-        <%= link_to t("show_more_jobs"), jobs_path(by_category: @job.category_id), class: 'button is-rounded primary is-large shadow' %>
+        <%= link_to t("show_more_jobs"), alternate_locale_url('jobs', 'index', {by_category: @job.category_id}), class: 'button is-rounded primary is-large shadow' %>
       </div>	
     </div>
   </section>

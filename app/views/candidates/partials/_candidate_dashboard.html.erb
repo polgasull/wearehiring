@@ -68,8 +68,8 @@
                 <%= image_tag(asset_path('job_search.svg'), size: 100) %>
                 <p class="mb2"> No te has inscrito a ningún Job </p>
                   <%= link_to t('show_jobs'), 
-                    jobs_path, 
-                    class: "button text-uppercase f6 is-primary has-text-weight-bold" %>
+                      alternate_locale_url('jobs', 'index'), rel: 'alternate', hreflang: I18n.locale.to_s, 
+                      class: "button text-uppercase f6 is-primary has-text-weight-bold" %>
               </div>
             <% end %>
           </div>

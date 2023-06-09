@@ -876,3 +876,11 @@ en:
   digital_profiles: "digital profiles"
   cross_postings_on_specialized_portals_and_talent_pools: "Cross-Postings on Specialized Portals and Talent Pools"
   distributed_on_google_for_jobs: "Distributed on Google for Jobs"
+  thanks_for_signup: "Thank you for signing up!"
+  email_confirm_sended: "A message with a confirmation link has been sent to your email address."
+  routes:
+    jobs: 'digital-job-offers'
+    thanks: 'thanks-for-posting'
+    how_it_works: 'how-it-works'
+    companies: 'companies'
+    talent: 'talent'

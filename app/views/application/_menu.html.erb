@@ -3,8 +3,8 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <%= link_to t('show_jobs'), 
-            jobs_path, 
-            class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(jobs_path)}" %>
+            alternate_locale_url('jobs', 'index'), rel: 'alternate', hreflang: I18n.locale.to_s,
+            class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(alternate_locale_url('jobs', 'index'))}" %>
       </div>
       <div class="navbar-item has-text-weight-bold ml3 f2">|</div>
       <div class="navbar-item">
@@ -65,8 +65,8 @@
 		<div class="navbar-end">
 			<div class="navbar-item">
 				<%= link_to t('show_jobs'), 
-						jobs_path, 
-						class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(jobs_path)}" %>
+						alternate_locale_url('jobs', 'index'), rel: 'alternate', hreflang: I18n.locale.to_s, 
+						class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(alternate_locale_url('jobs', 'index'))}" %>
 			</div>
 			<div class="navbar-item has-text-weight-bold ml3 f2">|</div>
 			<div class="navbar-item">
@@ -115,8 +115,8 @@
 		<div class="navbar-end">
     	<div class="navbar-item">
         <%= link_to t('show_jobs'), 
-            jobs_path, 
-            class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(jobs_path)}" %>
+            alternate_locale_url('jobs', 'index'), rel: 'alternate', hreflang: I18n.locale.to_s,
+            class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(alternate_locale_url('jobs', 'index'))}" %>
       </div>
       <div class="navbar-item">
       	<%= link_to t('pricing'), pricing_path, class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(pricing_path)}" %>
@@ -165,8 +165,8 @@
 	<div class="navbar-end">
 		<div class="navbar-item">
 			<%= link_to t('show_jobs'), 
-					jobs_path, 
-					class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(jobs_path)}" %>
+					alternate_locale_url('jobs', 'index'), rel: 'alternate', hreflang: I18n.locale.to_s, 
+					class: "navbar-item text-uppercase f6 #{ 'active' if alternate_locale_url('jobs', 'index')}" %>
 		</div>
 		<div class="navbar-item">
 			<%= link_to t('pricing'), pricing_path, class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(pricing_path)}" %>

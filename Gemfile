@@ -54,6 +54,7 @@ gem "sprockets-rails"
 gem 'stripe', '~> 5.28'
 gem 'uglifier', '>= 1.3.0'
 gem 'redis'
+gem 'route_translator'
 gem 'sidekiq'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
