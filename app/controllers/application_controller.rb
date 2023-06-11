@@ -5,10 +5,8 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   protect_from_forgery with: :exception
 
-  DEFAULT_LOCALE = :en
-
   def set_locale
-    I18n.locale = extract_locale || DEFAULT_LOCALE
+    I18n.locale = extract_locale || I18n.default_locale
   end
 
   # def validate_is_candidate!

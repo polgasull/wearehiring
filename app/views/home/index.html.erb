@@ -314,7 +314,7 @@
             <%= t('pricing_index.title_1') %>
           </h1>
           <p class="subtitle">
-            Consigue aumentar tu alcance por un precio imbatible.
+            <%= t('pricing_index.subtitle_3') %>
           </p>
         </div>
       </div>
@@ -336,7 +336,7 @@
                   <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
                   <p class="has-text-weight-semibold"> <%= t('pricing_index.pricing_feature_6') %> </p>
                   <p> <%= icon('fas', 'gem has-text-info ml2') %> </p>
-                  <p class="ml2 has-text-weight-semibold"> ¡No esperes a que los candidatos apliquen! </p>
+                  <p class="ml2 has-text-weight-semibold"> <%= t('dont_wait_candidates_apply') %> </p>
                 </div>
                 <div class="is-flex">
                   <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
@@ -380,11 +380,11 @@
               <div class="column has-text-centered">
                 <p class="">
                   <span class="title pricing-price-title"> 299€ </span> /
-                  <span class="has-text-weight-semibold"> por Job </span>
+                  <span class="has-text-weight-semibold"> <%= t('pricing_index.per_job') %> </span>
                 </p>
                 <p class="is-vertical-center is-justify-content-center">
                   <span class="has-text-weight-light is-italic"> 
-                    340.86€ con tasas incluidas
+                    340.86€ <%= t('tax_included') %>
                   </span>
                 </p>
                 <div class="mb3 is-hidden-tablet"></div>
@@ -497,7 +497,7 @@
   <div class="container">
     <div class="columns">
       <div class="column has-text-centered">
-        <h2 class="title is-3"> Quiero encontrar talento digital: </h2>
+        <h2 class="title is-3"> <%= t('i_want_digital_talent') %>: </h2>
         <% url = user_signed_in? ? new_companies_job_path :  new_company_registration_path %>
         <%= link_to url, 
             class: "button primary is-large is-rounded" do %>

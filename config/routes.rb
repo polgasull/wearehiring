@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     resources :coupons, only: [:update, :create]
     resources :partners, only: [:update, :create]
     resources :job_prices, only: [:update, :create]
+    resources :dashboards, only: [:index]
   end
 
   namespace :companies do
@@ -40,6 +41,7 @@ Rails.application.routes.draw do
       get :stripe_checkout, on: :member
       resources :inscriptions, only: [:index, :create, :update, :show]
     end
+    resources :dashboards, only: [:index]
   end
 
   namespace :candidates do
@@ -48,6 +50,7 @@ Rails.application.routes.draw do
     end
     resources :inscriptions, only: [:index]
     resources :user_profiles, only: [:show, :update]
+    resources :dashboards, only: [:index]
   end
 
   localized do
@@ -90,12 +93,14 @@ Rails.application.routes.draw do
     get "/422", to: "application#unacceptable", as: "unacceptable"
     get "/500", to: "application#internal_server_error", as: "internal_server_error"
   end
-  get "/jobs/:id", to: redirect("/ofertas-empleo-digital/%{id}")
-  get "/jobs", to: redirect("/ofertas-empleo-digital")
 
-  authenticated :user do
-    root to: 'dashboard#index', as: nil
-  end
+  get "/jobs/:id", to: redirect("/digital-jobs/%{id}", status: 301)
+  get "/jobs", to: redirect("/digital-jobs", status: 301)
+  get '/ofertas-empleo-digital/:id', to: redirect("/es/ofertas-empleo-digital/%{id}", status: 301)
+  get '/ofertas-empleo-digital', to: redirect('/es/ofertas-empleo-digital', status: 301)
+  get '/como-funciona/empresas', to: redirect("/es/como-funciona/empresas", status: 301)
+  get '/como-funciona/talento', to: redirect('/es/como-funciona/talento', status: 301)
+
   root to: 'home#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   if Rails.env.production?

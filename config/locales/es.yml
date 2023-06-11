@@ -870,7 +870,7 @@ es:
     wah_review_profile: "Nuestro equipo de expertos revisará y recomendará tu perfil a las empresas 🌟"
     welcome_wah: "Bienvenid@ a Wearehiring.io 🚀"
     new_candidate_subject: "✅ Nuevo candidato para %{job_title}"
-  know_all_the_advantages: "Conoce todas las ventajas"
+  know_all_the_advantages: "Ver las ventajas"
   complete_profile: "Completar mi perfil"
   join_discord: "Únete a discord"
   dont_wait_candidates_apply: "¡No esperes a que los candidatos apliquen!"
@@ -893,3 +893,6 @@ es:
     how_it_works: 'como-funciona'
     companies: 'empresas'
     talent: 'talento'
+  incomplete: 'Incompleto'
+  increase: 'Aumenta'
+  contact_possibilities: 'las posibilidades de ser contactado'

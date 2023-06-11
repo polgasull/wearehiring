@@ -39,6 +39,11 @@
           class: "navbar-item #{ 'active' if current_page?(alternate_locale_url('jobs', 'index'))}" %>
       </div>
       <div class="navbar-brand">
+        <%= link_to candidates_dashboards_path, class: "navbar-item #{ 'active' if current_page?(candidates_dashboards_path)}" do %>
+          <span> Dashboard </span>
+        <% end %>
+      </div>
+      <div class="navbar-brand">
         <%= link_to (t('my_inscriptions') + " (#{current_user.inscriptions.count})"), 
           candidates_inscriptions_path(current_user), 
           class: "navbar-item #{ 'active' if current_page?(candidates_inscriptions_path(current_user)) }" %>

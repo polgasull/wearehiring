@@ -40,6 +40,10 @@
 	.dropdown .dropdown-content:hover {
 		background: whitesmoke;
 	}
+
+  .dropdown .button {
+    border: none;
+  }
 }
 
 .header.signed-header {
@@ -108,4 +112,20 @@
 		color: $white;
 		height: 2px;
 	}
+}
+
+.avatar-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #F0F0F0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar-letter {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333333;
 }

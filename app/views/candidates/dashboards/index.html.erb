@@ -2,13 +2,6 @@
   <div class="container">
     <div class="columns"> 
       <div class="column">
-        <h1 class="title">
-            Hola, <%= current_user.name %>
-        </h1>
-      </div>
-    </div>
-    <div class="columns mt5"> 
-      <div class="column">
         <nav class="level">
           <div class="level-item has-text-centered">
             <div>
@@ -116,59 +109,14 @@
           <% end %>
           <article class="message mt3">
             <div class="message-body <%= 'has-text-grey-light' if !current_user.visible? %>">
-              <strong> Nuestro sistema de matching </strong> propondrá tu perfil a las empresas que publiquen Jobs y cumplan tus requisitos.
-              <p class="mt2"> Puedes aplicar por tu cuenta o esperar a que las empresas te añadan a sus procesos de selección. <%= icon('far','smile-wink')%> </p>
-              <p class="mt2"><strong> Cuanto más completes tu perfil, más posibilidades de ¡Match! </strong> </p>
-              <p class="mt2"> ¡No busques trabajo, haz que el trabajo venga a ti! </p>
+              <strong> <%= t('we_match.info_text_1') %> </strong> <%= t('we_match.info_text_2').downcase %>
+              <p class="mt2"> <%= t('we_match.info_text_3') %> <%= icon('far','smile-wink') %> </p>
+              <p class="mt2"><strong> <%= t('we_match.info_text_4') %> </strong> </p>
+              <p class="mt2"> <%= t('we_match.info_text_5') %> </p>
             </div>
           </article>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <h1 class="title"> Últimos Jobs publicados </h1>
-    <div id="jobs-carousel" class="carousel">
-      <% @jobs.each do |job| %>
-        <div class="card">
-          <div class="card-content">
-            <div class="media">
-              <div class="media-left">
-                <figure class="image is-48x48">
-                  <% if job.avatar.file.nil? %>
-                    <%= icon('far', 'image') %>
-                  <% else %>
-                    <%= image_tag(job.avatar_url(:thumb)) %>
-                  <% end %>
-                </figure>
-              </div>
-              <div class="media-content">
-                <p class="title is-6"><%= job.title %></p>
-                <p class="subtitle is-7"><%= job.location %> </p>
-              </div>
-            </div>
-            <div class="content">
-              <span> 
-                <% if job.remote_ok? %>
-                  <%= icon('fas', 'wifi') %> <%= t('remote') %> 
-                <% end %>
-              </span>
-              <% job.skills.take(4).each do |skill| %>
-                <span class='tag is-success is-normal'> <%= skill.name %> </span>
-              <% end %>
-              <div class="">
-                <% if user_inscribed_to(job) %>
-                  <span class="tag is-light inscribed-tag"> <%= t('inscribed') %> </span>
-                <% end %>
-                <%= link_to "Ver Job", job, class: "button is-small is-link is-rounded" %>
-              </div>
-            </div>
-          </div>
-        </div>
-      <% end %>
     </div>
   </div>
 </section>
@@ -178,20 +126,3 @@
     <%= render 'candidate_how_it_works' %>
   </div>
 </section>
-
-<%= content_for :head do %>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css">
-<% end %>
-
-<%= content_for :footer do %>
-  <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
-  <script>
-    $(document).ready(function() {     
-      bulmaCarousel.attach('#jobs-carousel', {
-        slidesToScroll: 1,
-        slidesToShow: 4,
-        pagination: false,
-      });
-    });
-  </script>
-<% end %>
