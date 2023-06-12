@@ -2,12 +2,6 @@
 	<% if current_user.is_admin? %>
     <div class="navbar-end">
       <div class="navbar-item">
-        <%= link_to t('show_jobs'), 
-            jobs_path, 
-            class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(jobs_path)}" %>
-      </div>
-      <div class="navbar-item has-text-weight-bold ml3 f2">|</div>
-      <div class="navbar-item">
         <%= link_to "New Job", 
             new_admins_job_path, 
             class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(new_admins_job_path)}" %>
@@ -44,6 +38,12 @@
           </div>
           <div class="dropdown-menu" id="dropdown-menu" role="menu">
             <div class="dropdown-content">
+              <%= link_to admins_dashboards_path, class: "dropdown-item" do %>
+                <span class="icon is-small"><%= icon('fas', 'chart-line') %></span>
+                <span> Dashboard </span>
+              <% end %>
+            </div>
+            <div class="dropdown-content">
               <%= link_to edit_user_registration_path, class: "dropdown-item" do %>
                 <span class="icon is-small"> <%= icon('fas', 'key') %> </span>
                 <span> <%= t('edit_password') %> </span>
@@ -63,42 +63,55 @@
 
 	<% if current_user.is_candidate? %>
 		<div class="navbar-end">
-			<div class="navbar-item">
-				<%= link_to t('show_jobs'), 
-						jobs_path, 
-						class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(jobs_path)}" %>
-			</div>
-			<div class="navbar-item has-text-weight-bold ml3 f2">|</div>
-			<div class="navbar-item">
-				<%= link_to (t('my_inscriptions') + " (#{current_user.inscriptions.count})"), 
-						candidates_inscriptions_path(current_user), 
-						class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(candidates_inscriptions_path(current_user))}" %>
-			</div>
-			<div class="navbar-item">
-				<%= link_to candidates_user_profile_path(current_user), 
-							class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(candidates_user_profile_path(current_user)) }" do %> 
-					<% if current_user.picture_url.file.nil? %>
-						<%= icon('far', 'user-circle mr1') %>
-					<% else %>
-						<div class="rounded-image size-25 mr1" style="box-shadow: none;">
-							<%= image_tag(current_user.picture_url_url(:thumb), alt: "Imagen usuario del perfil de Linkedin | Wearehiring.io") %>
-						</div>
-					<% end %>
-					<%= t('my_profile') %>
-					<%= content_tag(:span, "¡completar!", class: 'tag is-danger ml2') if !profile_is_completed(current_user) %>
-				<% end %>
-			</div>
+      <div class="navbar-item">
+        <% if !profile_is_completed(current_user) %>
+          <article class="message is-warning">
+            <div class="message-body">
+              <%= link_to candidates_user_profile_path(current_user) do %>
+                <%= t('feature_candidate_2') %> <%= icon('fas', 'arrow-right') %>
+              <% end %>
+            </div>
+          </article>
+        <% end %>
+      </div>
 			<div class="navbar-item has-text-left">
 				<div class="dropdown navbar-item is-right" id="profileDropdown">
 					<div class="dropdown-trigger">
 						<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-							<span><%= icon('fas', 'cog') %></span>
+							<% if current_user.picture_url.file.nil? %>
+                <div class="avatar-circle mr2">
+                  <span class="avatar-letter"><%= current_user.name[0].upcase %></span>
+                </div>
+              <% else %>
+                <div class="rounded-image size-25 mr1" style="box-shadow: none;">
+                  <%= image_tag(current_user.picture_url_url(:thumb), alt: "Imagen usuario del perfil de Linkedin | Wearehiring.io") %>
+                </div>
+              <% end %>
 							<span class="icon is-small">
 								<i class="fas fa-angle-down" aria-hidden="true"></i>
 							</span>
 						</button>
 					</div>
 					<div class="dropdown-menu" id="dropdown-menu" role="menu">
+            <div class="dropdown-content">
+            	<%= link_to candidates_user_profile_path(current_user), class: "dropdown-item" do %>
+                <span class="icon is-small"><%= icon('fas', 'user') %></span>
+                <%= t('my_profile') %>
+                <%= content_tag(:span, t('incomplete'), class: 'tag is-danger ml2') if !profile_is_completed(current_user) %>
+              <% end %>
+            </div>
+            <div class="dropdown-content">
+              <%= link_to candidates_dashboards_path, class: "dropdown-item" do %>
+                <span class="icon is-small"><%= icon('fas', 'chart-line') %></span>
+                <span> Dashboard </span>
+              <% end %>
+            </div>
+            <div class="dropdown-content">
+              <%= link_to candidates_inscriptions_path(current_user), class: "dropdown-item" do %>
+                <span class="icon is-small"> <%= icon('fas', 'file-signature') %> </span>
+                <span> <%= t('my_inscriptions') %> (<%= current_user.inscriptions.count %>) </span> 
+              <% end %>
+            </div>
 						<div class="dropdown-content">
 							<%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do %>
 								<span class="icon is-small"><%= icon('fas', 'sign-out-alt') %></span>
@@ -113,11 +126,6 @@
 
 	<% if current_user.is_company? %>
 		<div class="navbar-end">
-    	<div class="navbar-item">
-        <%= link_to t('show_jobs'), 
-            jobs_path, 
-            class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(jobs_path)}" %>
-      </div>
       <div class="navbar-item">
       	<%= link_to t('pricing'), pricing_path, class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(pricing_path)}" %>
       </div>
@@ -127,23 +135,31 @@
 					<%= t('jobs.post_job') %> <%= icon('fas', 'bullhorn ml2') %>
 				<% end %>
 			</div>
-			<div class="navbar-item has-text-weight-bold ml3 f2">|</div>
-			<div class="navbar-item">
-				<%= link_to t('my_jobs'), 
-						companies_jobs_path(current_user), 
-						class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(companies_jobs_path(current_user))}" %>
-			</div>
 			<div class="navbar-item has-text-left">
 				<div class="dropdown is-right" id="profileDropdown">
 					<div class="dropdown-trigger">
 						<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-							<span><%= icon('fas', 'cog') %></span>
+							<div class="avatar-circle mr2">
+                <span class="avatar-letter"><%= current_user.name[0].upcase %></span>
+              </div>
 							<span class="icon is-small">
 								<i class="fas fa-angle-down" aria-hidden="true"></i>
 							</span>
 						</button>
 					</div>
 					<div class="dropdown-menu" id="dropdown-menu" role="menu">
+            <div class="dropdown-content">
+              <%= link_to companies_jobs_path(current_user), class: "dropdown-item #{ 'active' if current_page?(companies_jobs_path(current_user))}" do %>
+                 <span class="icon is-small"><%= icon('fas', 'briefcase') %> </span>
+                 <span> <%= t('my_jobs') %> </span>
+              <% end %>
+            </div>
+            <div class="dropdown-content">
+              <%= link_to companies_dashboards_path, class: "dropdown-item" do %>
+                <span class="icon is-small"><%= icon('fas', 'chart-line') %></span>
+                <span> Dashboard </span>
+              <% end %>
+            </div>
 						<div class="dropdown-content">
 							<%= link_to edit_user_registration_path, class: "dropdown-item" do %>
 								<span class="icon is-small"> <%= icon('fas', 'key') %> </span>
@@ -163,11 +179,6 @@
 	<% end %>
 <% else %>
 	<div class="navbar-end">
-		<div class="navbar-item">
-			<%= link_to t('show_jobs'), 
-					jobs_path, 
-					class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(jobs_path)}" %>
-		</div>
 		<div class="navbar-item">
 			<%= link_to t('pricing'), pricing_path, class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(pricing_path)}" %>
 		</div>

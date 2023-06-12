@@ -1,20 +1,24 @@
-xml.instruct! :xml, version: '1.0'
-xml.tag! 'urlset', 'xmlns' => "http://www.sitemaps.org/schemas/sitemap/0.9" do
+xml.instruct! :xml, version: '1.0', encoding: 'UTF-8'
+xml.tag! 'urlset',
+    'xmlns:xsi' => 'http://www.w3.org/2001/XMLSchema-instance',
+    'xsi:schemaLocation' => 'http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-strict.xsd',
+    'xmlns' => 'http://www.sitemaps.org/schemas/sitemap/0.9',
+    'xmlns:xhtml' => 'http://www.w3.org/TR/xhtml11/xhtml11_schema.html' do
 
   xml.tag! 'url' do
     xml.tag! 'loc', root_url
   end
 
   xml.tag! 'url' do
-    xml.tag! 'loc', jobs_url
+    xml.tag! 'loc', talent_how_it_works_url
+    xml.tag! 'xhtml:link', rel: 'alternate', hreflang: 'es', href: talent_how_it_works_es_url
+    xml.tag! 'xhtml:link', rel: 'alternate', hreflang: 'en', href: talent_how_it_works_en_url
   end
 
   xml.tag! 'url' do
-    xml.tag! 'loc', how_it_works_talent_url
-  end
-
-  xml.tag! 'url' do
-    xml.tag! 'loc', how_it_works_companies_url
+    xml.tag! 'loc', companies_how_it_works_url
+    xml.tag! 'xhtml:link', rel: 'alternate', hreflang: 'es', href: companies_how_it_works_es_url
+    xml.tag! 'xhtml:link', rel: 'alternate', hreflang: 'en', href: companies_how_it_works_en_url
   end
 
   xml.tag! 'url' do
@@ -29,6 +33,8 @@ xml.tag! 'urlset', 'xmlns' => "http://www.sitemaps.org/schemas/sitemap/0.9" do
     xml.tag! 'url' do
       xml.tag! 'loc', job_url(job)
       xml.lastmod job.updated_at.strftime("%F")
+      xml.tag! 'xhtml:link', rel: 'alternate', hreflang: 'es', href: job_es_url(job)
+      xml.tag! 'xhtml:link', rel: 'alternate', hreflang: 'en', href: job_en_url(job)  
     end
   end
 

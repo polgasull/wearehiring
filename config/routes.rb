@@ -26,10 +26,12 @@ Rails.application.routes.draw do
     resources :coupons, only: [:update, :create]
     resources :partners, only: [:update, :create]
     resources :job_prices, only: [:update, :create]
+    resources :dashboards, only: [:index]
   end
 
   namespace :companies do
     resources :jobs do
+      get :thanks
       get :free, on: :new
       get :edit_price, on: :member
       patch :update_price, on: :member
@@ -39,6 +41,7 @@ Rails.application.routes.draw do
       get :stripe_checkout, on: :member
       resources :inscriptions, only: [:index, :create, :update, :show]
     end
+    resources :dashboards, only: [:index]
   end
 
   namespace :candidates do
@@ -47,14 +50,22 @@ Rails.application.routes.draw do
     end
     resources :inscriptions, only: [:index]
     resources :user_profiles, only: [:show, :update]
+    resources :dashboards, only: [:index]
   end
 
-  resources :jobs, path: 'ofertas-empleo-digital', only: [:index, :show] do
-    collection do
-      get :thanks, path: 'gracias-por-publicar'
+  localized do
+    resources :jobs, only: [:show]
+
+    resources :how_it_works, only: [] do
+      collection do
+        get :companies
+        get :talent
+      end
     end
+
+    resources :about_us, only: [:index]
   end
-    
+
   namespace :blog, path: '/' do
     resources :posts, path: 'blog' do
       resources :comments, only: [:create, :destroy]
@@ -71,8 +82,6 @@ Rails.application.routes.draw do
     post "companies", to: "companies_registrations#create", as: "company_registration"
   end
 
-  get '/como-funciona/empresas', to: 'how_it_works#companies', as: 'how_it_works_companies'
-  get '/como-funciona/talento', to: 'how_it_works#talent', as: 'how_it_works_talent'
   get '/sign-up-thanks', to: 'application#sign_up_thanks', as: 'sign_up_thanks'
   get '/pricing', to: 'pricing#index', as: 'pricing'
   get '/legal/aviso_legal', to: 'legal#legal_terms', as: 'legal_terms'
@@ -86,13 +95,15 @@ Rails.application.routes.draw do
     get "/422", to: "application#unacceptable", as: "unacceptable"
     get "/500", to: "application#internal_server_error", as: "internal_server_error"
   end
-  get "/jobs/:id", to: redirect("/ofertas-empleo-digital/%{id}")
-  get "/jobs", to: redirect("/ofertas-empleo-digital")
 
-  authenticated :user do
-    root to: 'dashboard#index', as: nil
-  end
-  root to: 'home#index'
+  get "/jobs/:id", to: redirect("/digital-jobs/%{id}", status: 301)
+  get "/jobs", to: redirect("/", status: 301)
+  get '/ofertas-empleo-digital/:id', to: redirect("/es/ofertas-empleo-digital/%{id}", status: 301)
+  get '/ofertas-empleo-digital', to: redirect('/', status: 301)
+  get '/como-funciona/empresas', to: redirect("/es/como-funciona/empresas", status: 301)
+  get '/como-funciona/talento', to: redirect('/es/como-funciona/talento', status: 301)
+
+  root to: 'jobs#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   if Rails.env.production?
     constraints(host: /^(?!www\.)/i) do

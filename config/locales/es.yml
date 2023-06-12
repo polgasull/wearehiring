@@ -870,7 +870,7 @@ es:
     wah_review_profile: "Nuestro equipo de expertos revisará y recomendará tu perfil a las empresas 🌟"
     welcome_wah: "Bienvenid@ a Wearehiring.io 🚀"
     new_candidate_subject: "✅ Nuevo candidato para %{job_title}"
-  know_all_the_advantages: "Conoce todas las ventajas"
+  know_all_the_advantages: "Ver las ventajas"
   complete_profile: "Completar mi perfil"
   join_discord: "Únete a discord"
   dont_wait_candidates_apply: "¡No esperes a que los candidatos apliquen!"
@@ -885,3 +885,15 @@ es:
   digital_profiles: "perfiles digitales"
   cross_postings_on_specialized_portals_and_talent_pools: "publicaciones cruzadas en portales especializados y minas de talento"
   distributed_on_google_for_jobs: "Distribuido en Google for Jobs"
+  thanks_for_signup: "¡Gracias por registrarte!"
+  email_confirm_sended: "Se ha enviado un mensaje con un enlace de confirmación a tu dirección de correo electrónico."
+  routes:
+    jobs: 'ofertas-empleo-digital'
+    thanks: 'gracias-por-publicar'
+    how_it_works: 'como-funciona'
+    companies: 'empresas'
+    talent: 'talento'
+    about_us: 'sobre-nosotros'
+  incomplete: 'Incompleto'
+  increase: 'Aumenta'
+  contact_possibilities: 'las posibilidades de ser contactado'

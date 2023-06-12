@@ -5,34 +5,46 @@
 				<a href="<%=root_path%>" class="is-vertical-center">
           <% if current_page?(root_url) %>
             <h1 class="mt1"> 
-              <%= image_tag asset_path('logo_black.png'), alt: "Encuentra todas ofertas de empleo digital en We Are Hiring" %>
+              <%= image_tag asset_path('logo_black.png'), alt: t('seo.jobs_title') %>
             </h1>
           <% else %>
-            <%= image_tag asset_path('logo_black.png'), alt: "Encuentra todas ofertas de empleo digital en We Are Hiring" %>
+            <%= image_tag asset_path('logo_black.png'), alt: t('seo.jobs_title') %>
           <% end %>
 				</a>
+        <a role="button" class="navbar-burger open-menu is-flex is-align-items-center is-hidden-desktop" aria-label="menu" aria-expanded="false">
+          <% if user_signed_in? %>
+            <% if current_user.picture_url.file.nil? %>
+              <div class="avatar-circle mr2">
+                <span class="avatar-letter"><%= current_user.name[0].upcase %></span>
+              </div>
+            <% else %>
+              <div class="rounded-image size-40 mr1" style="box-shadow: none;">
+                <%= image_tag(current_user.picture_url_url(:thumb), alt: "Imagen usuario del perfil de Linkedin | Wearehiring.io") %>
+              </div>
+            <% end %>
+          <% else %>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          <% end %>
+        </a>
 			</div>
-			<a role="button" class="navbar-burger open-menu" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-				<span aria-hidden="true"></span>
-				<span aria-hidden="true"></span>
-				<span aria-hidden="true"></span>
-			</a>
 			<div class="is-hidden-touch is-vertical-center">
 				<%= render "menu" %>
 			</div>
 		</div>
 	</nav>
 </header>
-<% if current_user && current_user.phone.blank? && current_user.is_candidate? && browser.device.mobile? %>
+<% if current_user && !profile_is_completed(current_user) && current_user.is_candidate? && browser.device.mobile? %>
 	<div class="has-background-warning">
 		<div class="container">
 			<div class="columns is-vertical-center pv2 is-marginless">
 				<div class="column">
-					<span class="f6"> <strong>Aumenta</strong> las posibilidades de ser contactado. </span>
+					<span class="f6"> <strong> <%= t('increase') %> </strong> <%= t('conntact_possibilities') %>. </span>
 				</div>
 				<div class="column is-3 has-text-right">
 					<%= link_to edit_user_registration_path, class: "button is-rounded primary f6" do %> 
-							Completa tu perfil <%= icon('fas', 'arrow-right pl2') %>
+							<%= t('feature_candidate_2') %> <%= icon('fas', 'arrow-right pl2') %>
 					<% end %>
 				</div>
 			</div>
@@ -41,7 +53,7 @@
 <% end %>
 <div id="mySidenav" class="sidenav">
 	<a href="<%=root_path%>" class="mobile-menu-logo">
-		<img src="<%=asset_path('logo_black.png')%>" alt="Ofertas de empleo digital para equipos tech - Wearehiring.io" width="100" height="50">
+		<img src="<%=asset_path('logo_black.png')%>" alt="<%= t('seo.jobs_title') %>" width="100" height="50">
 	</a>
 	<div class="close-menu">
 		<span><img class="back-menu-logo" src="<%=asset_path('Back.svg')%>" alt="back-menu"></span>

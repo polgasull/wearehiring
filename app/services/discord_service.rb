@@ -33,7 +33,7 @@ class DiscordService
           #{ job.job_price.name }
         END
 
-        embed.url = "https://www.wearehiring.io/ofertas-empleo-digital/#{job.slug}"
+        embed.url = "https://www.wearehiring.io/digital-jobs/#{job.slug}"
         embed.timestamp = Time.now
       end
     end
@@ -51,7 +51,7 @@ class DiscordService
           #{ job.job_author } upgraded job to #{ job.job_price.name }
         END
 
-        embed.url = "https://www.wearehiring.io/ofertas-empleo-digital/#{job.slug}"
+        embed.url = "https://www.wearehiring.io/digital-jobs/#{job.slug}"
         embed.timestamp = Time.now
       end
     end
@@ -104,7 +104,7 @@ class DiscordService
           El estado de #{ inscription.user.name } ha cambiado a #{ inscription.status }
         END
 
-        embed.url = "https://www.wearehiring.io/ofertas-empleo-digital/#{job.slug}"
+        embed.url = "https://www.wearehiring.io/digital-jobs/#{job.slug}"
         embed.timestamp = Time.now
       end
     end
@@ -124,7 +124,7 @@ class DiscordService
           #{ candidate.name } #{ is_we_match ? we_match_sentence : inscribed_sentence } #{ job.title }
         END
 
-        embed.url = "https://www.wearehiring.io/ofertas-empleo-digital/#{job.slug}"
+        embed.url = "https://www.wearehiring.io/digital-jobs/#{job.slug}"
         embed.timestamp = Time.now
       end
     end

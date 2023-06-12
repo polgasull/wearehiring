@@ -25,7 +25,7 @@ class Job < ApplicationRecord
   friendly_id :title_location_author_reference, use: [:slugged, :history, :finders]
 
   def title_location_author_reference
-    "Empleo de #{title} en #{location} #{job_author} #{reference}"
+    "#{title} #{location} #{job_author} #{reference}"
   end
 
   scope :active, -> { where(open: true) }

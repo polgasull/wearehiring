@@ -27,18 +27,10 @@ class JobsController < ApplicationController
     @unique_impressions = @job.impressionist_count(filter: :session_hash)
   end
 
-  def thanks
-    if current_user.jobs.any?
-      @job = current_user.jobs.last
-    else 
-      redirect_to root_path
-    end
-  end
-
   private
 
   def set_job
-    @job = Job.friendly.find(params[:id])
+    @job = Job.find(params[:id])
 
     rescue ActiveRecord::RecordNotFound
       redirect_to not_found_url

@@ -2,11 +2,6 @@
 	<% if user_signed_in? %>
 		<% if current_user.is_admin? %>
       <div class="navbar-brand">
-        <%= link_to t('show_jobs'), 
-            jobs_path, 
-            class: "navbar-item #{ 'active' if current_page?(jobs_path)}" %>
-      </div>
-      <div class="navbar-brand">
         <%= link_to "New Job", 
             new_admins_job_path, 
             class: "navbar-item #{ 'active' if current_page?(new_admins_job_path)}" %>
@@ -31,10 +26,15 @@
             blog_posts_path, 
             class: "navbar-item #{ 'active' if current_page?(blog_posts_path)}" %>		
       </div>
+      <div class="navbar-brand">
+        <%= link_to t('logout'), destroy_user_session_path, method: :delete, class: "navbar-item" %>
+      </div>
     <% end %>
     <% if current_user.is_candidate? %>
       <div class="navbar-brand">
-       <%= link_to t('show_jobs'), jobs_path, class: "navbar-item #{ 'active' if current_page?(jobs_path)}" %>
+        <%= link_to candidates_dashboards_path, class: "navbar-item #{ 'active' if current_page?(candidates_dashboards_path)}" do %>
+          <span> Dashboard </span>
+        <% end %>
       </div>
       <div class="navbar-brand">
         <%= link_to (t('my_inscriptions') + " (#{current_user.inscriptions.count})"), 
@@ -70,9 +70,6 @@
       </div>
     <% end %>
   <% else %>
-    <div class="navbar-brand">
-      <%= link_to t('show_jobs'), jobs_path, class: "navbar-item #{ 'active' if current_page?(jobs_path)}" %>
-    </div>
     <div class="navbar-brand">
       <%= link_to t('pricing'), pricing_path, class: "navbar-item #{ 'active' if current_page?(pricing_path)}" %>
     </div>

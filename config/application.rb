@@ -21,7 +21,7 @@ module JobApp
     config.application_name = 'Job App'
 
     config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    config.i18n.default_locale = :es
+    config.i18n.default_locale = :en
     config.assets.initialize_on_precompile = false
     config.serve_static_assets = true
     config.exceptions_app = self.routes

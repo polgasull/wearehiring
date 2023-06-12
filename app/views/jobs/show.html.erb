@@ -18,11 +18,11 @@
 <% if @job.open? %>
   <%= render partial: "jobs/partials/job_information", locals: { job: @job } %>
 <% else %>
-  <section class="section">
+  <section class="section mt5 mb5">
     <div class="container has-text-centered">
       <h1 class="f2">
-        <p> ¡Lo sentimos! <%= icon('fas', 'sad-tear') %> </p> 
-        <p> La oferta de empleo <%= @job.title %> en <%= @job.location %> a finalizado </p>
+        <p> ¡We're sorry! <%= icon('fas', 'sad-tear') %> </p> 
+        <p> The Job <%= @job.title %> en <%= @job.location %> has expired </p>
       </h1>
     </div>
   </section>
@@ -40,7 +40,7 @@
         <%= render partial: "job", collection: @same_category_jobs %>
       </div>
       <div class="has-text-centered">
-        <%= link_to t("show_more_jobs"), jobs_path(by_category: @job.category_id), class: 'button is-rounded primary is-large shadow' %>
+        <%= link_to t("show_more_jobs"), root_path(by_category: @job.category_id), class: 'button is-rounded primary is-large shadow' %>
       </div>	
     </div>
   </section>

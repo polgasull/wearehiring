@@ -39,7 +39,7 @@ class TwitterService
     #WEAREHIRING 📢
 
     Estamos buscando a un/a #{job.title} en #{job.remote_ok? ? '(Remoto)' : job.location}
-    https://www.wearehiring.io/ofertas-empleo-digital/#{job.slug}
+    https://www.wearehiring.io/digital-jobs/#{job.slug}
 
     #OfertaDeEmpleo #JobAlert #Empleos #Hiring
     @jobquire
@@ -58,7 +58,7 @@ class TwitterService
     En #{job.job_author} están buscando 👀 a un/a #{job.title} en #{job.remote_ok? ? '(Remoto)' : job.location}
     🥷 #{job.level.name} de experiencia
     💰 #{ (job.salary_to.nil? || job.salary_to == 0) ? 'A consultar' : (job.salary_from.to_s + '-' + job.salary_to.to_s) } €
-    https://www.wearehiring.io/ofertas-empleo-digital/#{job.slug}
+    https://www.wearehiring.io/digital-jobs/#{job.slug}
 
     ##{ job.skills.limit(3).collect(&:internal_name).join(' #').camelize }
     END
@@ -77,13 +77,13 @@ class TwitterService
     Consulta nuestros 3 últimos jobs 👇
 
     👀 #{Job.active.last(3).third.title}
-    https://www.wearehiring.io/ofertas-empleo-digital/#{Job.active.last(3).third.slug}
+    https://www.wearehiring.io/digital-jobs/#{Job.active.last(3).third.slug}
 
     👀 #{Job.active.last(3).second.title}
-    https://www.wearehiring.io/ofertas-empleo-digital/#{Job.active.last(3).second.slug}
+    https://www.wearehiring.io/digital-jobs/#{Job.active.last(3).second.slug}
 
     👀 #{Job.active.last(3).first.title}
-    https://www.wearehiring.io/ofertas-empleo-digital/#{Job.active.last(3).first.slug}
+    https://www.wearehiring.io/digital-jobs/#{Job.active.last(3).first.slug}
 
     #JobAlert
     END

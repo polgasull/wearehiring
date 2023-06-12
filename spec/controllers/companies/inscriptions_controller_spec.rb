@@ -12,7 +12,7 @@ RSpec.describe Candidates::InscriptionsController, type: :controller do
     end
 
     it 'routes correctly' do
-      expect(post: "/ofertas-empleo-digital/#{job.friendly_id}/inscriptions").to route_to('inscriptions#create', job_id: job.friendly_id)
+      expect(post: "/digital-jobs/#{job.friendly_id}/inscriptions").to route_to('inscriptions#create', job_id: job.friendly_id)
     end
 
     context 'successful' do
@@ -32,7 +32,7 @@ RSpec.describe Candidates::InscriptionsController, type: :controller do
 
       it 'redirects to job page' do
         create_inscription
-        expect(response).to redirect_to("/ofertas-empleo-digital/#{job.friendly_id}")
+        expect(response).to redirect_to("/digital-jobs/#{job.friendly_id}")
       end
     end
 
