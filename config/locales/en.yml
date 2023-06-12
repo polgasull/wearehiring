@@ -368,8 +368,8 @@ en:
   profile: "Profile"
   my_profile: "My profile"
   you_have_inscribed: "You have inscribed to"
-  show_all_jobs: "Show all Jobs"
-  show_all_posts: "Show all Posts"
+  show_all_jobs: "See all Jobs"
+  show_all_posts: "See all Posts"
   go_to_job: "View Job"
   manage_job: "Gestionar mi Job"
   showing_10_of: "Showing 10 of"
@@ -442,7 +442,7 @@ en:
     talent_description: "Learn how to find your ideal digital job on Wearehiring.io. Our platform facilitates the search and application for the latest digital jobs. Start your job search now and find your next opportunity!"
     companies_title: "Post your digital jobs and find digital talent on Wearehiring.io"
     companies_description: "Learn how to post your digital jobs on Wearehiring.io and connect with talent. Our platform facilitates the management of your digital jobs and helps you find the right candidates for your company. Start hiring today!"
-    show_all_digital_offers: "Show all digital jobs"
+    show_all_digital_offers: "See all digital jobs"
   you_posted: "You posted"
   welcome: "Welcome"
   apply_and_create: "Apply and create account"
@@ -775,7 +775,7 @@ en:
   we_match_info_text_5: "Currently there are no open profiles to be contacted in our database for these requirements"
   show_job_post: "Show job post"
   jobs_index:
-    title_part_1: "Show all"
+    title_part_1: "Explore all"
     title_part_2: "digital job opportunities"
   we_match:
     active: "Active"
