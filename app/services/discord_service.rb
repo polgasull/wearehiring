@@ -26,7 +26,7 @@ class DiscordService
     client.execute do |builder|
       builder.add_embed do |embed|
         embed.thumbnail = Discordrb::Webhooks::EmbedThumbnail.new(url: job.avatar_url(:thumb))
-        embed.title = "#{job.titl} e#{job.job_author} - #{job.location}"
+        embed.title = "#{job.title} e#{job.job_author} - #{job.location}"
         embed.description = "#{ (job.salary_from.nil? || job.salary_from == 0) ? '' : job.salary_from } € - #{ (job.salary_to.nil? || job.salary_to == 0) ? '' : job.salary_to  } €"
         embed.add_field(name: 'Category', value: job.category.name, inline: true)
         embed.url = "https://www.wearehiring.io/digital-jobs/#{job.slug}"
@@ -135,7 +135,7 @@ class DiscordService
       jobs.each do |job|
         builder.add_embed do |embed|
           embed.thumbnail = Discordrb::Webhooks::EmbedThumbnail.new(url: job.avatar_url(:thumb))
-          embed.title = "#{job.titl} e#{job.job_author} - #{job.location}"
+          embed.title = "#{job.title} e#{job.job_author} - #{job.location}"
           embed.description = "Salary: #{job.salary_from} € - #{job.salary_to} €"
           embed.add_field(name: 'Category', value: job.category.name, inline: true)
           embed.url = "https://www.wearehiring.io/digital-jobs/#{job.slug}"
