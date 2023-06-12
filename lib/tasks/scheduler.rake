@@ -34,3 +34,9 @@ task :send_random_active_job_notification => :environment do
   Job.send_random_active_job_tweet_notification
   puts "done."
 end
+
+task :send_last_jobs_alert => :environment do
+  puts "Sending Alert (normally at discord) send_last_jobs_alert_with_salary"
+  Job.send_last_jobs_with_salary
+  puts "done."
+end

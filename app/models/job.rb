@@ -137,4 +137,9 @@ class Job < ApplicationRecord
     job = Job.active.where.not(salary_to: [nil, 0]).sample
     TwitterService.new.send_job_detail_tweet(job)
   end
+
+  def self.send_last_jobs_with_salary
+    jobs = Job.active.where.not(salary_to: [nil, 0]).last(10)
+    DiscordService.new.last_jobs_alert_webhook(jobs)
+  end
 end
