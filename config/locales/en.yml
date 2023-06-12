@@ -425,7 +425,7 @@ en:
   last: "Last"
   digital_job_offers: "Digital jobs"
   seo:
-    job_offer_h1: "Job Offer"
+    job_offer_h1: "Job"
     is_looking_for_one: "Is looking for a"
     apply_at_wearehiring: "Apply for this job at Wearehiring.io"
     jobs_title: "View all digital jobs at Wearehiring.io"
@@ -436,7 +436,7 @@ en:
     company_signup_description: "Sign up on Wearehiring.io to post your digital jobs and connect with the best talent. Our platform facilitates the management of your digital Jobs and helps you find the right candidates for your company. Start hiring today!"
     candidate_signup: "Sign up as a candidate and find your digital job | Wearehiring.io"
     candidate_signup_description: "Sign up on Wearehiring.io to find your ideal digital job. Our platform facilitates the search and application for the latest digital jobs. Start your job search now and find your next opportunity!"
-    pricing_title: "Post your digital job offer on Wearehiring.io from £299"
+    pricing_title: "Post your digital job on Wearehiring.io from £299"
     pricing_description: "Increase your reach with Wearehiring.io. Marketing actions included, Google for jobs, an audience of over 100,000 verified profiles. Start posting your digital jobs today!"
     talent_title: "Find your digital job with Wearehiring.io"
     talent_description: "Learn how to find your ideal digital job on Wearehiring.io. Our platform facilitates the search and application for the latest digital jobs. Start your job search now and find your next opportunity!"
@@ -615,7 +615,7 @@ en:
   go_back_to_inscriptions: "Go back to inscribeds"
   go_back_to_job: "Go back to Job"
   successfully_updated: "Successfully updated"
-  job_offer_h1: "Job offer"
+  job_offer_h1: "Job"
   show_remote_jobs_only: "Show Remote Jobs only"
   searching_by: "Searching by"
   feature_candidate_1: "Apply yourself"
@@ -626,7 +626,7 @@ en:
   feature_candidate_text_3: "Apart from the Jobs where you apply yourself, our matching system will propose your profile to companies that publish Jobs and match your skills. Don't look for a job, make the job come to you!"
   feature_candidate_4: "Notification of your status in the process"
   feature_candidate_text_4: "You will receive real-time notifications on your mobile, tablet or computer via email of the status of your application within the selection process"
-  feature_company_1: "Post your job offer"
+  feature_company_1: "Post your job"
   feature_company_text_1: "Give visibility to your Jobs by publishing them instantly on our platform. Simple one-step process. Indicate the skills required for a higher percentage of success."
   feature_company_2: "Use We Match"
   feature_company_text_2: "Apart from those registered on their own, our matching system will propose candidates from our database open to a selection process and who fit your Job. Add them and start the interviews without delay."
@@ -697,7 +697,7 @@ en:
     third_section_text_2: "Smart solutions to make your search and management easier"
     third_section_text_3: "The We Are Hiring Community"
     third_section_text_4: "Our Digital Tech Talent Place solution where you can develop the selection process directly"
-    third_section_text_5: "WeMatch tool that instantly brings you the best candidates from our community that match your offer"
+    third_section_text_5: "WeMatch tool that instantly brings you the best candidates from our community that match your Job"
     third_section_text_6: "Marketing actions and automatic dissemination integrated with our audience"
     third_section_text_7: "Star Candidates: Save time! We highlight the most interesting candidates for your position"
     fifth_section_text_1: "We are obsessed"
@@ -768,7 +768,7 @@ en:
   add: "Add"
   added: "Added"
   finalized_job_question: "Job finalized?"
-  we_match_info_text_1: "Those candidates match the job offer you posted."
+  we_match_info_text_1: "Those candidates match the job you posted."
   we_match_info_text_2: "You can add them and contact them for your selection process."
   we_match_info_text_3: "extra candidates found"
   we_match_info_text_4: "found"
@@ -815,12 +815,12 @@ en:
   notifiers:
     jobs_interest:  "Your Job %{job_title} is generating a lot of interest"
     candidates_actually_inscribeds: "Candidatos inscritos actualmente: %{inscriptions_count}"
-    applied_to_offer: "just applied to your job offer"
+    applied_to_offer: "just applied to your job"
     update_process: "Manage candidates by updating their status in the process:"
     will_receive_mail_notification: "They will receive an email notifying them of the phase they are in."
     do_you_want_more_candidates: "Do you want more candidates instantly?"
     use_match: "Use WE MATCH"
-    we_match_1: "For each offer, we will show you candidates from our database that match your requirements."
+    we_match_1: "For each job, we will show you candidates from our database that match your requirements."
     we_match_2: "Add them to your selection process and start interviews today."
     new_candidate: "New candidate"
     follow_us: "Follow us!"
@@ -884,6 +884,7 @@ en:
     how_it_works: 'how-it-works'
     companies: 'companies'
     talent: 'talent'
+    about_us: 'about-us'
   incomplete: 'Incomplete'
   increase: 'Increase'
   contact_possibilities: 'your options to be contacted'

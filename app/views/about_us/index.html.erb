@@ -5,7 +5,7 @@
 				<%= render 'claim' %>
 
 				<div class="mv5"></div>
-				<%= form_tag(alternate_locale_url('jobs', 'index'), method: :get) do %>
+				<%= form_tag(root_path, method: :get) do %>
           <div class="columns is-vertical-center is-multiline">
             <div class="column is-9-desktop is-9-tablet is-12-mobile">
               <div class="control has-icons-left">
@@ -29,13 +29,13 @@
 
 				<p class="mt3 search-category-tags">
 					<%= t('example') %>:
-          <%= link_to alternate_locale_url('jobs', 'index', {search_for: 'backend'}) do %>
+          <%= link_to root_path(search_for: 'backend') do %>
             <span class="tag is-light mr3"> Backend </span>
           <% end %>
-          <%= link_to alternate_locale_url('jobs', 'index', {search_for: 'javascript'}) do %>
+          <%= link_to root_path(search_for: 'javascript') do %>
             <span class="tag is-light mr3"> Javascript </span>
           <% end %>
-          <%= link_to alternate_locale_url('jobs', 'index', {search_for: 'remoto'}) do %>
+          <%= link_to root_path(search_for: 'remoto') do %>
             <span class="tag is-light mr3"> Remoto </span>
           <% end %>
 				</p>
@@ -95,7 +95,7 @@
 		<div class="columns">
 			<div class="column has-text-centered">
 				<%= link_to t('show_all_jobs'),
-            alternate_locale_url('jobs', 'index'), rel: 'alternate', hreflang: I18n.locale.to_s,
+            root_path,
             class: 'button is-rounded primary is-large shadow' %>
 			</div>
 		</div>

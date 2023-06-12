@@ -30,7 +30,7 @@ class JobsController < ApplicationController
   private
 
   def set_job
-    @job = Job.friendly.find(params[:id])
+    @job = Job.find(params[:id])
 
     rescue ActiveRecord::RecordNotFound
       redirect_to not_found_url

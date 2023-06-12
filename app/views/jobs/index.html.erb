@@ -19,7 +19,7 @@
   <div class="columns is-vcentered pr5 pl5">
     <% @last_jobs_with_logo.each do |job| %>
       <div class="column">
-        <%= link_to alternate_locale_url('jobs', 'index', { search_for: job.job_author }) do %>
+        <%= link_to root_path(search_for: job.job_author) do %>
           <%= image_tag(job.avatar_url(:thumb), alt: "#{job.title} - #{job.job_author}", width: 65, height: 65) %>
         <% end %>
       </div>
@@ -27,7 +27,7 @@
   </div>
 </div>
 
-<%= form_tag(alternate_locale_url('jobs', 'index'), id: 'jobFiltersForm', method: :get) do %>
+<%= form_tag(root_path, id: 'jobFiltersForm', method: :get) do %>
   <section class="section pb6 pt2 section-bg-gray">
     <div class="container">
       <div class="columns">

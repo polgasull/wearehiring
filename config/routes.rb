@@ -54,7 +54,7 @@ Rails.application.routes.draw do
   end
 
   localized do
-    resources :jobs, only: [:index, :show]
+    resources :jobs, only: [:show]
 
     resources :how_it_works, only: [] do
       collection do
@@ -62,8 +62,10 @@ Rails.application.routes.draw do
         get :talent
       end
     end
+
+    resources :about_us, only: [:index]
   end
-    
+
   namespace :blog, path: '/' do
     resources :posts, path: 'blog' do
       resources :comments, only: [:create, :destroy]
@@ -95,13 +97,13 @@ Rails.application.routes.draw do
   end
 
   get "/jobs/:id", to: redirect("/digital-jobs/%{id}", status: 301)
-  get "/jobs", to: redirect("/digital-jobs", status: 301)
+  get "/jobs", to: redirect("/", status: 301)
   get '/ofertas-empleo-digital/:id', to: redirect("/es/ofertas-empleo-digital/%{id}", status: 301)
-  get '/ofertas-empleo-digital', to: redirect('/es/ofertas-empleo-digital', status: 301)
+  get '/ofertas-empleo-digital', to: redirect('/', status: 301)
   get '/como-funciona/empresas', to: redirect("/es/como-funciona/empresas", status: 301)
   get '/como-funciona/talento', to: redirect('/es/como-funciona/talento', status: 301)
 
-  root to: 'home#index'
+  root to: 'jobs#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   if Rails.env.production?
     constraints(host: /^(?!www\.)/i) do

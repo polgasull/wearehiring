@@ -51,7 +51,7 @@
                   </div>
                   <div class="column has-text-right is-3">
                     <%= link_to inscription.job, class: "button is-small is-link is-rounded" do %>
-                      Ver Job
+                      See Job
                     <% end %>
                   </div>
                 </div>
@@ -59,16 +59,16 @@
             <% else %>
               <div class="has-text-centered mt3">
                 <%= image_tag(asset_path('job_search.svg'), size: 100) %>
-                <p class="mb2"> No te has inscrito a ningún Job </p>
+                <p class="mb2"> Not inscribed to any job </p>
                   <%= link_to t('show_jobs'), 
-                      alternate_locale_url('jobs', 'index'), rel: 'alternate', hreflang: I18n.locale.to_s, 
+                      root_path, 
                       class: "button text-uppercase f6 is-primary has-text-weight-bold" %>
               </div>
             <% end %>
           </div>
           <footer class="card-footer">
             <%= link_to candidates_inscriptions_path(current_user), class: "card-footer-item" do %>
-              Ver todas
+              See all
             <% end %>
           </footer>
         </div>
@@ -78,11 +78,11 @@
           <div class="columns">
             <div class="column">
               <p class="title is-4"> 
-                <%= icon('fas', 'rocket') %> We Match <span class="tag is-info is-light"> ¡Nuevo! </span> 
+                <%= icon('fas', 'rocket') %> We Match <span class="tag is-info is-light"> New! </span> 
               </p>
               <% if !current_user.visible? %>
-                <span class="tag is-danger">Desactivado </span> 
-                <span class="tag is-light"> ¡Pero no te preocupes puedes seguir aplicando por tu cuenta! </span>
+                <span class="tag is-danger"> Disabled </span> 
+                <span class="tag is-light"> ¡You can continue applying on your own! </span>
               <% end %>
             </div>
             <div class="column">

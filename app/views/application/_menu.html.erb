@@ -2,12 +2,6 @@
 	<% if current_user.is_admin? %>
     <div class="navbar-end">
       <div class="navbar-item">
-        <%= link_to t('show_jobs'), 
-            alternate_locale_url('jobs', 'index'), rel: 'alternate', hreflang: I18n.locale.to_s,
-            class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(alternate_locale_url('jobs', 'index'))}" %>
-      </div>
-      <div class="navbar-item has-text-weight-bold ml3 f2">|</div>
-      <div class="navbar-item">
         <%= link_to "New Job", 
             new_admins_job_path, 
             class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(new_admins_job_path)}" %>
@@ -45,7 +39,7 @@
           <div class="dropdown-menu" id="dropdown-menu" role="menu">
             <div class="dropdown-content">
               <%= link_to admins_dashboards_path, class: "dropdown-item" do %>
-                <span class="icon is-small"><%= icon('fas', 'tachometer-alt-slow') %></span>
+                <span class="icon is-small"><%= icon('fas', 'chart-line') %></span>
                 <span> Dashboard </span>
               <% end %>
             </div>
@@ -69,11 +63,6 @@
 
 	<% if current_user.is_candidate? %>
 		<div class="navbar-end">
-			<div class="navbar-item">
-				<%= link_to t('show_jobs'), 
-						alternate_locale_url('jobs', 'index'), rel: 'alternate', hreflang: I18n.locale.to_s, 
-						class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(alternate_locale_url('jobs', 'index'))}" %>
-			</div>
       <div class="navbar-item">
         <% if !profile_is_completed(current_user) %>
           <article class="message is-warning">
@@ -137,11 +126,6 @@
 
 	<% if current_user.is_company? %>
 		<div class="navbar-end">
-    	<div class="navbar-item">
-        <%= link_to t('show_jobs'), 
-            alternate_locale_url('jobs', 'index'), rel: 'alternate', hreflang: I18n.locale.to_s,
-            class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(alternate_locale_url('jobs', 'index'))}" %>
-      </div>
       <div class="navbar-item">
       	<%= link_to t('pricing'), pricing_path, class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(pricing_path)}" %>
       </div>
@@ -151,17 +135,13 @@
 					<%= t('jobs.post_job') %> <%= icon('fas', 'bullhorn ml2') %>
 				<% end %>
 			</div>
-			<div class="navbar-item has-text-weight-bold ml3 f2">|</div>
-			<div class="navbar-item">
-				<%= link_to t('my_jobs'), 
-						companies_jobs_path(current_user), 
-						class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(companies_jobs_path(current_user))}" %>
-			</div>
 			<div class="navbar-item has-text-left">
 				<div class="dropdown is-right" id="profileDropdown">
 					<div class="dropdown-trigger">
 						<button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-							<span><%= icon('fas', 'cog') %></span>
+							<div class="avatar-circle mr2">
+                <span class="avatar-letter"><%= current_user.name[0].upcase %></span>
+              </div>
 							<span class="icon is-small">
 								<i class="fas fa-angle-down" aria-hidden="true"></i>
 							</span>
@@ -169,8 +149,14 @@
 					</div>
 					<div class="dropdown-menu" id="dropdown-menu" role="menu">
             <div class="dropdown-content">
+              <%= link_to companies_jobs_path(current_user), class: "dropdown-item #{ 'active' if current_page?(companies_jobs_path(current_user))}" do %>
+                 <span class="icon is-small"><%= icon('fas', 'briefcase') %> </span>
+                 <span> <%= t('my_jobs') %> </span>
+              <% end %>
+            </div>
+            <div class="dropdown-content">
               <%= link_to companies_dashboards_path, class: "dropdown-item" do %>
-                <span class="icon is-small"><%= icon('fas', 'tachometer-alt-slow') %></span>
+                <span class="icon is-small"><%= icon('fas', 'chart-line') %></span>
                 <span> Dashboard </span>
               <% end %>
             </div>
@@ -193,11 +179,6 @@
 	<% end %>
 <% else %>
 	<div class="navbar-end">
-		<div class="navbar-item">
-			<%= link_to t('show_jobs'), 
-					alternate_locale_url('jobs', 'index'), rel: 'alternate', hreflang: I18n.locale.to_s, 
-					class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(alternate_locale_url('jobs', 'index'))}" %>
-		</div>
 		<div class="navbar-item">
 			<%= link_to t('pricing'), pricing_path, class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(pricing_path)}" %>
 		</div>
