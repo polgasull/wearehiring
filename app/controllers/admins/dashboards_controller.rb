@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Candidates
+module Admins
   class DashboardsController < Admins::AdminsController
 
     def index
