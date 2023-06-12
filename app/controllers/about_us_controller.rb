@@ -2,7 +2,7 @@
 
 class AboutUsController < ApplicationController
 
-  def about_us
+  def index
     @jobs = Job.active.order('created_at DESC').take(5);
     @jobs_count = Job.active.take(5).count
   end
