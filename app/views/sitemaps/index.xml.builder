@@ -7,8 +7,8 @@ xml.tag! 'urlset',
 
   xml.tag! 'url' do
     xml.tag! 'loc', root_url
-    xml.tag! 'xhtml:link', rel: 'alternate', hreflang: 'es', href: root_es_path
-    xml.tag! 'xhtml:link', rel: 'alternate', hreflang: 'en', href: root_en_path
+    xml.tag! 'xhtml:link', rel: 'alternate', hreflang: 'es', href: root_es_url
+    xml.tag! 'xhtml:link', rel: 'alternate', hreflang: 'en', href: root_en_url
   end
 
   xml.tag! 'url' do
