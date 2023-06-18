@@ -7,6 +7,8 @@ xml.tag! 'urlset',
 
   xml.tag! 'url' do
     xml.tag! 'loc', root_url
+    xml.tag! 'xhtml:link', rel: 'alternate', hreflang: 'es', href: root_es_path
+    xml.tag! 'xhtml:link', rel: 'alternate', hreflang: 'en', href: root_en_path
   end
 
   xml.tag! 'url' do
@@ -19,6 +21,12 @@ xml.tag! 'urlset',
     xml.tag! 'loc', companies_how_it_works_url
     xml.tag! 'xhtml:link', rel: 'alternate', hreflang: 'es', href: companies_how_it_works_es_url
     xml.tag! 'xhtml:link', rel: 'alternate', hreflang: 'en', href: companies_how_it_works_en_url
+  end
+
+  xml.tag! 'url' do
+    xml.tag! 'loc', about_us_url
+    xml.tag! 'xhtml:link', rel: 'alternate', hreflang: 'es', href: about_us_es_url
+    xml.tag! 'xhtml:link', rel: 'alternate', hreflang: 'en', href: about_us_en_url
   end
 
   xml.tag! 'url' do

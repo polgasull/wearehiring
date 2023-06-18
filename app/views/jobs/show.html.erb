@@ -52,9 +52,6 @@
 <div class="mnegative"></div>
 
 <%= content_for :head do %>
-  <% unless @job.open? %>
-    <meta name="robots" content="noindex">
-  <% end %>
   <%= render "seo", 
       title: "#{t('seo.job_offer_h1')} #{ @job.title } #{t('at')} #{ @job.job_author } #{t('at')} #{ @job.location } | Wearehiring.io", 
       description: "#{ @job.job_author } #{t('seo.is_looking_for_one').downcase} #{ @job.title } #{t('at')} #{ @job.location }. #{t('seo.apply_at_wearehiring')}",
@@ -62,7 +59,11 @@
 
   <% if @job.open? %>
     <%= render partial: "/jobs/partials/job_posting_structured_data", locals: { job: @job } %>
+  <% else %>
+    <meta name="robots" content="noindex">
   <% end %>
+
+  <%= tag(:link, rel: 'canonical', href: url_for(@job)) %>
 <% end %>
 
 <%= content_for :footer do %>

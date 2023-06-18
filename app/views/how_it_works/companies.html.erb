@@ -276,4 +276,6 @@
 			title: t('seo.companies_title'), 
 			description: t('seo.companies_description'),
 			image: image_url(asset_path('wah_red_logo.png')) %>
+
+  <%= tag(:link, rel: 'canonical', href: url_for()) %>
 <% end %>

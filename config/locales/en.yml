@@ -478,14 +478,14 @@ en:
       user_deleted: "User was successfully deleted"
       user_not_deleted: "User was not able to be deleted"
     inscriptions:
-      any_inscribeds: "Aquí te mostraremos los Jobs dónde hayas aplicado recientemente"
-      any_discardeds: "Aquí te mostraremos los Jobs descartados"
-      any_in_process: "Aquí te mostraremos los Jobs dónde estés en proceso de selección"
-      any_finalists: "Aquí te mostraremos los Jobs dónde estés cómo finalista"
-      jobs_inscribeds: "Inscrito"
-      jobs_discardeds: "Descartado pero ¡No dejes de intentarlo!"
-      jobs_in_process: "En proceso"
-      jobs_finalists: "Finalista"
+      any_inscribeds: "Here we will show you the Jobs you have recently applied to"
+      any_discardeds: "Here we will show you the discarded Jobs"
+      any_in_process: "Here we will show you the Jobs where you are in the selection process"
+      any_finalists: "Here we will show you the Jobs where you are a finalist"
+      jobs_inscribeds: "Inscribed"
+      jobs_discardeds: "Discarded, but don't give up!"
+      jobs_in_process: "In process"
+      jobs_finalists: "Finalist"
   posts: 
     blog: "Blog"
     all_posts: "View all Posts"
@@ -539,7 +539,7 @@ en:
       category_not_deleted: "Category was not able to be deleted"
   job_types:
     title: "Tipos de Contrato"
-    name: "Nombre"
+    name: "Name"
     internal_name: "Identificador"
     messages:
       job_type_created: "Job Type created successfully"
@@ -879,6 +879,7 @@ en:
   thanks_for_signup: "Thank you for signing up!"
   email_confirm_sended: "A message with a confirmation link has been sent to your email address."
   routes:
+    root_path: '/'
     jobs: 'digital-jobs'
     thanks: 'thanks-for-posting'
     how_it_works: 'how-it-works'

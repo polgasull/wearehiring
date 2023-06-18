@@ -64,6 +64,8 @@ Rails.application.routes.draw do
     end
 
     resources :about_us, only: [:index]
+
+    root to: 'jobs#index'
   end
 
   namespace :blog, path: '/' do
@@ -103,7 +105,6 @@ Rails.application.routes.draw do
   get '/como-funciona/empresas', to: redirect("/es/como-funciona/empresas", status: 301)
   get '/como-funciona/talento', to: redirect('/es/como-funciona/talento', status: 301)
 
-  root to: 'jobs#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   if Rails.env.production?
     constraints(host: /^(?!www\.)/i) do
