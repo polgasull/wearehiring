@@ -53,21 +53,6 @@ Rails.application.routes.draw do
     resources :dashboards, only: [:index]
   end
 
-  localized do
-    resources :jobs, only: [:show]
-
-    resources :how_it_works, only: [] do
-      collection do
-        get :companies
-        get :talent
-      end
-    end
-
-    resources :about_us, only: [:index]
-
-    root to: 'jobs#index'
-  end
-
   namespace :blog, path: '/' do
     resources :posts, path: 'blog' do
       resources :comments, only: [:create, :destroy]
@@ -112,5 +97,22 @@ Rails.application.routes.draw do
         URI.parse(request.url).tap { |uri| uri.host = "www.#{uri.host}" }.to_s
       }
     end
+  end
+
+  root to: redirect(path: '/es', status: 301), constraints: ->(req) { req.path == '/' && I18n.locale == :es }
+
+  localized do
+    resources :jobs, only: [:show]
+
+    resources :how_it_works, only: [] do
+      collection do
+        get :companies
+        get :talent
+      end
+    end
+
+    resources :about_us, only: [:index]
+
+    root to: 'jobs#index'
   end
 end
