@@ -106,7 +106,7 @@ module Companies
         mode: 'payment',
         success_url: success_companies_jobs_url(@job),
         cancel_url: cancel_companies_jobs_url,
-        locale: 'es',
+        locale: I18n.locale.to_s,
         allow_promotion_codes: true,
         billing_address_collection: :required
       )
