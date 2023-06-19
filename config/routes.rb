@@ -86,7 +86,7 @@ Rails.application.routes.draw do
   get "/jobs/:id", to: redirect("/digital-jobs/%{id}", status: 301)
   get "/jobs", to: redirect("/", status: 301)
   get '/ofertas-empleo-digital/:id', to: redirect("/es/ofertas-empleo-digital/%{id}", status: 301)
-  get '/ofertas-empleo-digital', to: redirect('/', status: 301)
+  get '/ofertas-empleo-digital', to: redirect('/es', status: 301)
   get '/como-funciona/empresas', to: redirect("/es/como-funciona/empresas", status: 301)
   get '/como-funciona/talento', to: redirect('/es/como-funciona/talento', status: 301)
 
@@ -98,8 +98,6 @@ Rails.application.routes.draw do
       }
     end
   end
-
-  root to: redirect(path: '/es', status: 301), constraints: ->(req) { req.path == '/' && I18n.locale == :es }
 
   localized do
     resources :jobs, only: [:show]
@@ -115,4 +113,10 @@ Rails.application.routes.draw do
 
     root to: 'jobs#index'
   end
+
+  # Redirect root URL to /es for users with :es locale
+  get '/', to: redirect { |params, request|
+    locale = request.env['HTTP_ACCEPT_LANGUAGE']&.scan(/^[a-z]{2}/)&.first
+    locale == 'es' ? '/es' : '/'
+  }
 end

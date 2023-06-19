@@ -1,4 +1,4 @@
-<%= link_to job do %>
+<%= link_to url_for(controller: 'jobs', action: 'show', id: job.id, locale: I18n.locale.to_s), hreflang: I18n.locale.to_s, rel: 'alternate' do %>
   <div class="box radius-20 box-link">
     <% if job.created_at.to_date > 7.days.ago %>
       <div class="card-ribbon">

@@ -76,7 +76,7 @@
             <%= t('i_want_this_job') %> <%= icon('fas', 'external-link-alt ml2') %>
           <% end %>
           <p class="mt3"> <%= icon('fas', 'eye') %> <%= @unique_impressions %> <%= t('job_views') %> </p>
-          <p> <small> Partnership con <%= job.partner.name %> </small> </p>
+          <p> <small> Partnership with <%= job.partner.name %> </small> </p>
         <% else %>
           <%= render partial: '/jobs/partials/submit_form', locals: { job: job, cta_text: 'i_want_this_job' } %>
         <% end %>
@@ -102,7 +102,7 @@
             <%= t('this_job_is_mine') %> <%= icon('fas', 'external-link-alt ml2') %>
           <% end %>
           <p class="mt3"> <%= icon('fas', 'eye') %> <%= @unique_impressions %> <%= t('job_views') %> </p>
-          <p> <small> Partnership con <%= job.partner.name %> </small> </p>
+          <p> <small> Partnership with <%= job.partner.name %> </small> </p>
         <% else %>
           <%= render partial: '/jobs/partials/submit_form', locals: { job: job, cta_text: 'this_job_is_mine' } %>
         <% end %>
@@ -110,7 +110,7 @@
     </div>
     <div class="columns mt4 is-hidden-touch">
       <div class="column has-text-centered">
-        <p> Compartir Job: </p>
+        <p> <%= t('share') %> Job: </p>
         <%= social_share_button_tag("#{job.title} en #{job.location}", :image => asset_path('wah_red_logo.png'), :allow_sites => %w(whatsapp_app twitter linkedin email)) %>
       </div>
     </div>

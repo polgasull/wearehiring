@@ -7,6 +7,9 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     I18n.locale = extract_locale || I18n.default_locale
+    if request.path == '/' && I18n.locale == :es
+      redirect_to root_path(locale: I18n.locale.to_s)
+    end
   end
 
   # def validate_is_candidate!
