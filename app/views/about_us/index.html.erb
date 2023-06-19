@@ -122,7 +122,7 @@
 					<%= t('home_index.first_section_text_6') %>
 				</p>
 				<p class="mt3">
-					<%= link_to talent_how_it_works_path, class: 'button is-rounded shadow' do %>
+					<%= link_to url_for(controller: 'how_it_works', action: 'talent', locale: I18n.locale.to_s), hreflang: I18n.locale.to_s, rel: 'alternate' do %>
             <span><%= t('for_talent') %></span> <%= icon('fas', 'arrow-right', class: 'ml3') %>
           <% end %>
 				</p>
@@ -291,7 +291,7 @@
 					<%= t('home_index.fourth_section_text_3') %>
 				</p>
 				<p class="mt3">
-        	<%= link_to companies_how_it_works_path, class: 'button is-rounded is-dark shadow' do %>
+          <%= link_to url_for(controller: 'how_it_works', action: 'companies', locale: I18n.locale.to_s), hreflang: I18n.locale.to_s, rel: 'alternate' do %>
             <span><%= t('for_companies') %></span> <%= icon('fas', 'arrow-right', class: 'ml3') %>
           <% end %>
 				</p>

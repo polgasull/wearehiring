@@ -20,7 +20,7 @@
     <% @last_jobs_with_logo.each do |job| %>
       <div class="column">
         <%= link_to root_path(search_for: job.job_author) do %>
-          <%= image_tag(job.avatar_url(:thumb), alt: "#{job.title} - #{job.job_author}", width: 65, height: 65) %>
+          <%= image_tag(job.avatar_url(:thumb), alt: t('seo.digital_job_offer_alt', title: job.title, job_author: job.job_author), width: 65, height: 65) %>
         <% end %>
       </div>
     <% end %>

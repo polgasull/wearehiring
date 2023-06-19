@@ -425,6 +425,7 @@ en:
   last: "Last"
   digital_job_offers: "Digital jobs"
   seo:
+    digital_job_offer_alt: "Digital job %{title} at %{job_author}"
     job_offer_h1: "Job"
     is_looking_for_one: "Is looking for a"
     apply_at_wearehiring: "Apply for this job at Wearehiring.io"
@@ -890,3 +891,4 @@ en:
   increase: 'Increase'
   contact_possibilities: 'your options to be contacted'
   share: 'Share'
+  about_us: 'About us'

@@ -7,9 +7,9 @@
             <ol>
               <li><%= link_to t('pricing'), pricing_path %></li>
               <% unless user_signed_in? %>
-                <li><%= link_to t('for_talent'), talent_how_it_works_path %></li>
-                <li><%= link_to t('for_companies'), companies_how_it_works_path %></li>
-                <li><%= link_to 'About us', about_us_path %></li>
+                <li><%= link_to t('for_talent'), url_for(controller: 'how_it_works', action: 'talent', locale: I18n.locale.to_s), hreflang: I18n.locale.to_s, rel: 'alternate' %> </li>
+                <li><%= link_to t('for_companies'), url_for(controller: 'how_it_works', action: 'companies', locale: I18n.locale.to_s), hreflang: I18n.locale.to_s, rel: 'alternate' %> </li>
+                <li><%= link_to t('About us'), url_for(controller: 'about_us', action: 'index', locale: I18n.locale.to_s), hreflang: I18n.locale.to_s, rel: 'alternate' %> </li>
               <% end %>
               <li><%= link_to t('blog'), blog_posts_path %></li>
               <li>

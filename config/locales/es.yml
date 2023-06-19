@@ -429,6 +429,7 @@ es:
   last: "Últimas"
   digital_job_offers: "Ofertas de empleo digital"
   seo:
+    digital_job_offer_alt: "Oferta de empleo digital %{title} en %{job_author}"
     job_offer_h1: "Oferta de empleo"
     is_looking_for_one: "Está buscando un/a"
     apply_at_wearehiring: "Aplica a este empleo en Wearehiring.io"
@@ -899,3 +900,4 @@ es:
   increase: 'Aumenta'
   contact_possibilities: 'las posibilidades de ser contactado'
   share: 'Compartir'
+  about_us: 'Sobre nosotros'

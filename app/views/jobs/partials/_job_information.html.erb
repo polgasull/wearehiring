@@ -15,9 +15,9 @@
       <div class="column is-2 is-vertical-center justify-center">
         <figure class="image rounded-image size-120">
           <% if job.avatar.file.nil? %>
-            <%= image_tag(asset_path('wah_red_logo.png'), alt: "Empleo de #{job.title} en #{job.job_author}") %>
+            <%= image_tag(asset_path('wah_red_logo.png'), alt: t('seo.digital_job_offer_alt', title: job.title, job_author: job.job_author)) %>
           <% else %>
-            <%= image_tag(job.avatar_url(:thumb), alt: "Empleo de #{job.title} en #{job.job_author}") %>
+            <%= image_tag(job.avatar_url(:thumb), alt: t('seo.digital_job_offer_alt', title: job.title, job_author: job.job_author)) %>
           <% end %>
         </figure>
       </div>
