@@ -21,6 +21,18 @@ class User < ApplicationRecord
     end
   end
 
+  def is_ambassador_company?
+    ambassador == true
+  end
+
+  def self.candidates
+    joins(:user_type).where(user_types: { internal_name: 'candidate' })
+  end
+
+  def self.companies
+    joins(:user_type).where(user_types: { internal_name: 'company' })
+  end
+
   def is_already_inscribed(job)
     inscriptions.any? {|u| u[:job_id] == job.id}
   end

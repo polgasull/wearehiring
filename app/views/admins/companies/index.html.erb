@@ -1,0 +1,72 @@
+<section class="section pv2">
+  <div class="container is-fluid">
+    <div class="columns">
+      <div class="column"> 
+        <p> Companies: <%= @count %> </p>
+        <%= form_for admins_companies_path, method: :get, html: {class: "mt3"} do |f| %>
+          <div class="columns is-vertical-center">
+            <div class="column">
+              <input 
+                type="text" 
+                class="input" 
+                placeholder="<%=t('search')%>" 
+                name="search_users" 
+                value="<%= params[:search_users] ? params[:search_users] : '' %>">
+            </div>
+            <div class="column has-text-left">
+              <%= f.submit t('search'), class: "button is-dark" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="column has-text-right">
+        <%= link_to admins_companies_path(format: :xlsx), class: 'button is-success pl3' do %>
+          <%= icon('fas', 'file-download pr2') %> Download
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section pb5">
+  <div class="container is-fluid">
+    <div class="table-container">
+      <table class="table is-striped">
+        <thead> 
+          <tr>
+            <td>ID</td>
+            <td><%= t('users.name') %></td>
+            <td> Contact Name </td>
+            <td><%= t('users.email') %></td>
+            <td>Jobs</td>
+            <td>User type</td>
+            <td>Is Ambassador?</td>
+            <td><%= t('save') %></td>
+          </tr>
+        </thead>
+        <tfoot> 
+          <tr>
+            <td>ID</td>
+            <td><%= t('users.name') %></td>
+            <td> Contact Name </td>
+            <td><%= t('users.email') %></td>
+            <td>Jobs</td>
+            <td>User type</td>
+            <td>Is Ambassador?</td>
+            <td><%= t('save') %></td>
+          </tr>
+        </tfoot>
+        <tbody>
+          <%= render partial: 'company', collection: @companies %>
+        </tbody>
+      </table>
+    </div>
+    <div class="container is-fluid">
+      <div class="columns is-centered mt3">
+        <div class="column is-half-desktop">
+          <%= paginate @companies %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

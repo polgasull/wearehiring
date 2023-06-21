@@ -2,12 +2,11 @@
   <div class="container is-fluid">
     <div class="columns">
       <div class="column"> 
-        <p> Candidatos: <%= @candidates_count %> </p>
-        <p> Empresas: <%= @companies_count %> </p>
-        <p class="has-text-success"> Candidatos que mostramos a las empresas como We Match: <%= (@candidates_count - @candidates_without_skills) %> </p>
-        <p class="has-text-warning"> Candidatos pendientes de rellenar skills: <%= @candidates_without_skills %> </p>
-        <p class="has-text-danger"> Candidatos que NO quieren aparecer como We Match: <%= @candidates_not_visible %> </p>
-        <%= form_for admins_users_path, method: :get, html: {class: "mt3"} do |f| %>
+        <p> Candidates: <%= @count %> </p>
+        <p class="has-text-warning"> Without skills: <%= @without_skills %> </p>
+        <p class="has-text-success"> We Match activated: <%= (@count - @without_skills) %> </p>
+        <p class="has-text-danger">  We Match deactivated: <%= @not_visible %> </p>
+        <%= form_for admins_candidates_path, method: :get, html: {class: "mt3"} do |f| %>
           <div class="columns is-vertical-center">
             <div class="column">
               <input 
@@ -17,11 +16,6 @@
                 name="search_users" 
                 value="<%= params[:search_users] ? params[:search_users] : '' %>">
             </div>
-            <div class="select">
-              <%= select_tag :by_user_type, 
-                options_from_collection_for_select(UserType.all, :id, :name, params[:by_user_type].to_i), 
-                :include_blank => t('select.user_type') %>
-            </div>
             <div class="column has-text-left">
               <%= f.submit t('search'), class: "button is-dark" %>
             </div>
@@ -29,14 +23,9 @@
         <% end %>
       </div>
       <div class="column has-text-right">
-        <%= link_to admins_users_path(format: :xlsx), class: 'button is-success pl3' do %>
-          <%= icon('fas', 'file-download pr2') %> Descargar Candidatos
+        <%= link_to admins_candidates_path(format: :xlsx), class: 'button is-success pl3' do %>
+          <%= icon('fas', 'file-download pr2') %> Download
         <% end %>
-        <div class="mt3">
-          <%= link_to companies_report_admins_users_path(format: :xlsx), class: 'button is-success pl3' do %>
-            <%= icon('fas', 'file-download pr2') %> Descargar Empresas
-          <% end %>
-        </div>
       </div>
     </div>
   </div>
@@ -51,7 +40,6 @@
             <td>ID</td>
             <td><%= t('users.image') %></td>
             <td><%= t('users.name') %></td>
-            <td> P.Contacto </td>
             <td><%= t('users.phone') %></td>
             <td><%= t('users.email') %></td>
             <td><%= t('users.profile_url') %></td>
@@ -60,8 +48,8 @@
             <td>Residencia</td>
             <td>Exp</td>
             <td><%= t('users.user_type') %></td>
-            <td>Jobs</td>
             <td><%= t('inscribed') %></td>
+            <td>User type</td>
             <td><%= t('save') %></td>
           </tr>
         </thead>
@@ -78,20 +66,20 @@
             <td>Residencia</td>
             <td>Exp</td>
             <td><%= t('users.user_type') %></td>
-            <td>Jobs</td>
             <td><%= t('inscribed') %></td>
+            <td>User type</td>
             <td><%= t('save') %></td>
           </tr>
         </tfoot>
         <tbody>
-            <%= render @users %>
+          <%= render partial: 'candidate', collection: @candidates %>
         </tbody>
       </table>
     </div>
     <div class="container is-fluid">
       <div class="columns is-centered mt3">
         <div class="column is-half-desktop">
-          <%= paginate @users %>
+          <%= paginate @candidates %>
         </div>
       </div>
     </div>

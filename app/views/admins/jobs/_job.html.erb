@@ -8,6 +8,10 @@
     </td>
     <td>
       <%= job.job_author %>
+      <% if job.user.is_ambassador_company? %>
+        <br>
+        <span class="tag is-black"> Ambassador </span>
+      <% end %>
     </td>
     <td>
       <%= link_to job.title, admins_job_path(job.id) %> <br>

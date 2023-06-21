@@ -388,6 +388,7 @@ en:
   share_with: "Share with"
   exp_level: "Experience level"
   posting: "Posting"
+  posting_your_job: "Posting your Job"
   enter_for_edit: "Enter for edit"
   simple_form:
     labels:
@@ -549,6 +550,17 @@ en:
       job_type_not_updated: "Job Type was not able to be updated"
       job_type_deleted: "Job Type was successfully deleted"
       job_type_not_deleted: "Job Type was not able to be deleted"
+  user_types:
+    title: "User Types"
+    name: "Name"
+    internal_name: "Id"
+    messages:
+      user_type_created: "User Type created successfully"
+      user_type_not_created: "User Type was not able to be created"
+      user_type_updated: "User Type was successfully updated"
+      user_type_not_updated: "User Type was not able to be updated"
+      user_type_deleted: "User Type was successfully deleted"
+      user_type_not_deleted: "User Type was not able to be deleted"
   levels:
     title: "Niveles"
     name: "Nombre"
@@ -892,3 +904,12 @@ en:
   contact_possibilities: 'your options to be contacted'
   share: 'Share'
   about_us: 'About us'
+  ambassadors:
+    ambassador_help: "As ambassador you can help us"
+    posting_at_least_1_time_a_month: "Posting at least 1 time a month"
+    updating_candidate_process_status: "Updating candidate process status through the platform"
+    use_of_we_match_2_0: "Using We Match 2.0"
+    taking_a_look_to_recommended_candidates: "Taking a look to recommended candidates"
+    sharing_job_link_on_social_media: "Sharing Job link on Social Media and Tagging @WeAreHiring"
+  discounts:
+    hiring_tech_10: "Take advantage of the discount code <strong>HIRINGTECH10</strong> and save 10% on your postings. Happy Hiring!"

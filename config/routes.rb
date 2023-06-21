@@ -13,14 +13,16 @@ Rails.application.routes.draw do
       resources :inscriptions, only: [:index, :create, :update, :show]
     end
     resources :users, only: [:index, :update, :show, :edit] do
-      get :companies_report, on: :collection
       member do
         get :inscriptions
       end
     end
+    resources :candidates
+    resources :companies
     resources :settings, only: [:index]
     resources :categories, only: [:update]
     resources :job_types, only: [:update]
+    resources :user_types, only: [:update]
     resources :levels, only: [:update]
     resources :skills, only: [:update, :create]
     resources :coupons, only: [:update, :create]

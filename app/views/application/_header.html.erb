@@ -11,7 +11,7 @@
             <%= image_tag asset_path('logo_black.png'), alt: t('seo.jobs_title') %>
           <% end %>
 				</a>
-        <a role="button" class="navbar-burger open-menu is-flex is-align-items-center is-hidden-desktop" aria-label="menu" aria-expanded="false">
+        <a role="button" class="navbar-mobile-open-menu open-menu is-flex is-align-items-center is-hidden-desktop" aria-label="menu" aria-expanded="false">
           <% if user_signed_in? %>
             <% if current_user.picture_url.file.nil? %>
               <div class="avatar-circle mr2">

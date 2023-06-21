@@ -1,0 +1,80 @@
+<%= simple_form_for(candidate, method: :patch, url: admins_candidate_path(candidate.id), html: { multipart: true }, remote: true) do |f| %>
+<tr class="is-size-7 user-table-row">
+  <td><%= candidate.id %></td>
+  <td>
+    <% if candidate.picture_url.file.nil? %>
+      <%= icon('far', 'user-circle', style: 'font-size: 30px') %>
+    <% else %>
+      <%= image_tag(candidate.picture_url_url(:thumb), size: 30, alt: "Imagen perfil usuario | Wearehiring.io") %>
+    <% end %>
+  </td>
+  <td>
+    <%= flag_icon(candidate.resident_country_code) %>
+    <%= link_to candidate.name, admins_candidate_path(candidate) %>
+  </td>
+  <td>
+    <%= f.input :phone,
+          label: false,
+          input_html: { class: "input f7" },
+          wrapper: false,
+          placeholder: t('users.phone') %>
+  </td>
+  <td><%= candidate.email %></td>
+  <td>
+    <%= f.input :profile_url,
+          label: false,
+          input_html: { class: "input f7" },
+          wrapper: false,
+          placeholder: t('users.profile_url') %>
+  </td>
+  <td>
+    <% if candidate.skills.exists? && candidate.visible? && candidate.location.present? && candidate.current_position.present? && candidate.experience.present? %>
+      <span class="tag is-success is-size-7"> ON </span>
+    <% end %>
+    <% if !candidate.visible? %>
+      <span class="tag is-danger is-size-7"> OFF </span>
+    <% end %>
+  </td>
+  <td>
+    <%= f.collection_select :skill_ids, Skill.all, :id, :name, {:prompt => "Please Select a Skill"}, { multiple: "multiple" } %>  
+  </td>
+  <td>
+    by IP: <br>
+    <%= candidate.resident_city %>, <%= candidate.resident_state %>, <%= candidate.resident_postal_code %>, <%= candidate.resident_country %>
+    <br><br>
+    by user: <br>
+    <%= candidate.location %>
+  </td>
+  <td>
+    <%= f.select :experience, 
+    options_for_select([ "0-2 años", "2-6 años", "6-10 años", "+10 años" ], candidate.experience),
+    {include_blank: 'Seleccionar' } %>
+  </td>
+  <td>
+    <%= candidate.user_type.name %>
+  </td>
+  <td>
+    <%= link_to candidate.inscriptions.count, inscriptions_admins_user_path(candidate.id), target: "_blank" %>
+  </td>
+  <td>
+    <%= f.collection_select :user_type_id, UserType.where(internal_name: ['company', 'candidate']), :id, :name %>
+  </td>
+  <td>
+    <%= f.submit t('save'), class: 'button is-success f6' %>
+  </td>
+</tr>
+<% end %>
+
+<%= content_for :footer do %>
+
+<script>
+  $(document).on('ajax:success', '#edit_user_<%= candidate.id %>', function(event) {
+    alert('Usuario actualizado correctamente')
+  });
+
+  $(document).on('ajax:error', '#edit_user_<%= candidate.id %>', function(event) {
+    alert('Ha ocurrido un problema al intentar guardar los cambios')
+  });
+</script>
+
+<% end %>

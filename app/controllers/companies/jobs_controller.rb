@@ -47,7 +47,12 @@ module Companies
       end
   
       if @job.save
-        redirect_to stripe_checkout_companies_job_url(@job)
+        if current_user.is_ambassador_company?
+          @job.update!(open: true)
+          redirect_to companies_job_thanks_path(@job)
+        else
+          redirect_to stripe_checkout_companies_job_url(@job)
+        end
       else
         render :new
       end
@@ -148,7 +153,7 @@ module Companies
     def thanks
       redirect_to root_path unless current_user.jobs.any?
 
-      job = current_user.jobs.find(params[:id])
+      job = current_user.jobs.find(params[:job_id])
 
       if job.present?
         @job = job

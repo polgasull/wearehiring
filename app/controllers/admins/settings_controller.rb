@@ -6,6 +6,7 @@ module Admins
     def index
       @categories = Category.all.order("id ASC")
       @job_types  = JobType.all.order("id ASC")
+      @user_types = UserType.all.order("id ASC")
       @levels     = Level.all.order("id ASC")
       @skills     = Skill.all.order("id ASC")
       @coupons    = Coupon.all.order("id ASC")

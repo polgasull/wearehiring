@@ -1,10 +1,12 @@
-<div class="container">
-  <article class="message is-warning">
-    <div class="message-body has-text-centered">
-      Aprovecha el código descuento <strong> HIRINGTECH10 </strong> y ahorra un 10% en tus publicaciones ¡Happy Hiring!
-    </div>
-  </article>
-</div>
+<% unless current_user.is_ambassador_company? %>
+  <div class="container">
+    <article class="message is-warning">
+      <div class="message-body has-text-centered">
+        <%= t('discounts.hiring_tech_10').html_safe %>
+      </div>
+    </article>
+  </div>
+<% end %>
 
 <section class="section">
   <div class="container">

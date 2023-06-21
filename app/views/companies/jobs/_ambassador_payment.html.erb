@@ -1,0 +1,87 @@
+
+<div class="columns card-box-secondary payment-box">
+  <div class="column">
+    <% if !@job.persisted? %>
+      <h4 class="subtitle is-4"> <%= t('included') %> </h4>
+
+      <div class="is-light">
+        <div class="columns job-price-cards">
+          <div class="column">
+            <span class="job-price-details" aria-hidden="true">
+              <div class="is-flex is-justify-content-space-between">
+                <p> <%= t('pricing_index.pricing_feature_1') %> </p>
+                <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
+              </div>
+              <div class="is-flex is-justify-content-space-between">
+                <p> <%= t('pricing_index.pricing_feature_2') %> </p>
+                <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
+              </div>
+              <div class="is-flex is-justify-content-space-between">
+                <p> <%= t('pricing_index.pricing_feature_3') %> </p>
+                <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
+              </div>
+              <div class="is-flex is-justify-content-space-between">
+                <p> <%= t('pricing_index.pricing_feature_4') %> </p>
+                <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
+              </div>
+              <div class="is-flex is-justify-content-space-between">
+                <p> <%= t('pricing_index.pricing_feature_5') %> </p>
+                <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
+              </div>
+              <div class="is-flex is-justify-content-space-between">
+                <p> <%= t('download_candidates_excel') %> </p>
+                <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
+              </div>
+              <div class="is-flex is-justify-content-space-between">
+                <p> <%= t('pricing_index.pricing_feature_6') %> </p>
+                <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
+              </div>
+              <div class="is-flex is-justify-content-space-between">
+                <p> <%= t('pricing_index.pricing_feature_7') %></p>
+                <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
+              </div>
+              <div class="is-flex is-justify-content-space-between">
+                <p> <%= t('pricing_index.pricing_feature_8') %> </p>
+                <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
+              </div>
+              <div class="is-flex is-justify-content-space-between">
+                <p> <%= t('pricing_index.pricing_feature_9') %> </p>
+                <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
+              </div>
+              <div class="is-flex is-justify-content-space-between">
+                <p> <%= t('pricing_index.pricing_feature_10') %> </p>
+                <p> <%= icon('fas', 'check-circle has-text-success') %> </p>
+              </div>
+            </span>
+          </div>
+        </div>
+        <span class="block mb4"></span>
+        <h4 class="subtitle is-4"> <%= t('ambassadors.ambassador_help') %>: </h4>
+        <div>
+          <div class="is-flex is-justify-content-space-between mb2">
+            <p> <%= t('ambassadors.posting_at_least_1_time_a_month') %> </p>
+          </div>
+          <div class="is-flex is-justify-content-space-between mb2">
+            <p> <%= t('ambassadors.updating_candidate_process_status') %> </p>
+          </div>
+          <div class="is-flex is-justify-content-space-between mb2">
+            <p> <%= t('ambassadors.use_of_we_match_2_0') %> </p>
+          </div>
+          <div class="is-flex is-justify-content-space-between mb2">
+            <p> <%= t('ambassadors.taking_a_look_to_recommended_candidates') %> </p>
+          </div>
+          <div class="is-flex is-justify-content-space-between">
+            <p> <%= t('ambassadors.sharing_job_link_on_social_media') %> </p>
+          </div>
+        </div>
+        <span class="block mb4"></span>
+      </div>
+    <% end %>
+    <div class="has-text-centered">
+      <%= f.submit t('jobs.post_job'), class: "button is-rounded is-large primary mt3", data: { disable_with: t('posting_your_job') } %>
+    </div>
+    <div class="has-text-centered mt5">
+      <%= icon('fas', 'crown', class: 'is-size-1') %>
+    </div>
+  </div>
+</div>

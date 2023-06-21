@@ -1,0 +1,43 @@
+<%= simple_form_for(company, method: :patch, url: admins_company_path(company.id), html: { multipart: true }, remote: true) do |f| %>
+  <tr class="is-size-7 user-table-row">
+    <td><%= company.id %></td>
+    <td>
+      <%= flag_icon(company.resident_country_code) %>
+      <%= company.name %>
+    </td>
+    <td>
+      <%= f.input :last_name,
+            label: false,
+            input_html: { class: "input f7" },
+            wrapper: false,
+            placeholder: 'P. Contacto' %>
+    <td>
+      <%= company.email %>
+    </td>
+    <td>
+      <%= company.jobs.count %>
+    </td>
+    <td>
+      <%= f.collection_select :user_type_id, UserType.where(internal_name: ['company', 'candidate']), :id, :name %>
+    </td>
+    <td>
+      <%= f.check_box :ambassador %>
+    <td>
+      <%= f.submit t('save'), class: 'button is-success f6' %>
+    </td>
+  </tr>
+<% end %>
+
+<%= content_for :footer do %>
+
+<script>
+  $(document).on('ajax:success', '#edit_user_<%= company.id %>', function(event) {
+    alert('Usuario actualizado correctamente')
+  });
+
+  $(document).on('ajax:error', '#edit_user_<%= company.id %>', function(event) {
+    alert('Ha ocurrido un problema al intentar guardar los cambios')
+  });
+</script>
+
+<% end %>

@@ -1,0 +1,16 @@
+<%= simple_form_for(user_type, method: :patch, url: admins_user_type_path(user_type.id), html: { multipart: true }) do |f| %>
+  <div class="columns is-vertical-center listrow">
+    <div class="column has-text-centered">
+      <%= user_type.id %>
+    </div>
+    <div class="column">
+      <%= f.input :name, label: false, input_html: { class: "input is-size-7" }, wrapper: false, placeholder: t('categories.name') %>
+    </div>
+    <div class="column">
+      <%= user_type.internal_name %>
+    </div>
+    <div class="column">
+      <%= f.submit t('save'), class: 'button is-info is-size-7' %>
+    </div>
+  </div>
+<% end %>

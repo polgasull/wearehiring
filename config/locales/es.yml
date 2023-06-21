@@ -391,6 +391,7 @@ es:
   share_with: "Comparte con"
   exp_level: "Nivel de experiencia"
   posting: "Publicando"
+  posting_your_job: "Publicando tu Job"
   enter_for_edit: "Entra para editar"
   simple_form:
     labels:
@@ -554,6 +555,17 @@ es:
       job_type_not_updated: "No se pudo actualizar el Tipo de Contrato"
       job_type_deleted: "Tipo de Contrato eliminado satisfactoriamente"
       job_type_not_deleted: "No se pudo eliminar el Tipo de Contrato"
+  user_types:
+    title: "Tipos de Usuario"
+    name: "Nombre"
+    internal_name: "Identificador"
+    messages:
+      user_type_created: "Tipo de Usuario creado satisfactoriamente"
+      user_type_not_created: "No se pudo crear el Tipo de Usuario"
+      user_type_updated: "Tipo de Usuario actualizado satisfactoriamente"
+      user_type_not_updated: "No se pudo actualizar el Tipo de Usuario"
+      user_type_deleted: "Tipo de Usuario eliminado satisfactoriamente"
+      user_type_not_deleted: "No se pudo eliminar el Tipo de Usuario"
   levels:
     title: "Niveles"
     name: "Nombre"
@@ -901,3 +913,12 @@ es:
   contact_possibilities: 'las posibilidades de ser contactado'
   share: 'Compartir'
   about_us: 'Sobre nosotros'
+  ambassadors:
+    ambassador_help: "Como Ambassador nos puedes ayudar"
+    posting_at_least_1_time_a_month: "Publicando al menos 1 vez al mes"
+    updating_candidate_process_status: "Actualizando el estado del proceso de los candidatos a través de la plataforma"
+    use_of_we_match_2_0: "Usando We Match 2.0"
+    taking_a_look_to_recommended_candidates: "Revisando candidatos recomendados"
+    sharing_job_link_on_social_media: "Compartiendo enlaces de empleo en redes sociales y etiquetando @WeAreHiring"
+  discounts:
+    hiring_tech_10: "Aprovecha el código descuento <strong>HIRINGTECH10</strong> y ahorra un 10% en tus publicaciones. ¡Happy Hiring!"

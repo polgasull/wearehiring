@@ -1,4 +1,4 @@
-<%= simple_form_for(@user, method: :patch, url: admins_user_path(@user.id), html: { multipart: true }) do |f| %>
+<%= simple_form_for(@candidate, method: :patch, url: admins_candidate_path(@candidate.id), html: { multipart: true }) do |f| %>
 <section class="section">
   <div class="container">
     <div class="columns is-vcentered mb3">
@@ -11,7 +11,7 @@
         </article>
       </div>
       <div class="column has-text-right">
-        <%= link_to admins_user_path(@user), class: 'button' do %>
+        <%= link_to admins_candidate_path(@candidate), class: 'button' do %>
           <%= icon('fas', 'eye', class: 'mr2') %> <%= t('view_profile') %>
         <% end %>
       </div>
@@ -20,10 +20,10 @@
       <div class="columns pa3">
         <div class="column is-2">
           <div class="rounded-image m-auto size-120">
-            <% if @user.picture_url.file.nil? %>
+            <% if @candidate.picture_url.file.nil? %>
               <%= image_tag(asset_path('user_male_avatar.svg')) %>
             <% else %>
-              <%= image_tag(@user.picture_url_url(:thumb), alt: "Imagen perfil usuario | Wearehiring.io") %>
+              <%= image_tag(@candidate.picture_url_url(:thumb), alt: "Imagen perfil usuario | Wearehiring.io") %>
             <% end %>
           </div>
           <div class="file justify-center is-small mt4">
@@ -43,7 +43,7 @@
         <div class="column is-4 with-right-border is-flex is-flex-direction-column is-justify-content-space-between">
           <div class="field">
             <%= f.label :name, class: 'has-text-weight-bold' %>
-            <%= content_tag(:span, nil, class: 'dot-notification') if @user.name.blank? %>
+            <%= content_tag(:span, nil, class: 'dot-notification') if @candidate.name.blank? %>
             <div class="control mt2">
               <%= f.input :name, 
                 input_html: { class: "input" }, 
@@ -55,7 +55,7 @@
           <div class="field mt4">
             <%= f.label :current_position, class: 'label has-text-weight-bold' do %>
               <%= t('users.current_position_or_wanted') %>
-              <%= content_tag(:span, nil, class: 'dot-notification') if @user.current_position.blank? %>
+              <%= content_tag(:span, nil, class: 'dot-notification') if @candidate.current_position.blank? %>
             <% end %>
             <div class="control">
               <%= f.input :current_position, 
@@ -68,9 +68,9 @@
           <div class="field mt4">
             <%= f.label :phone, class: 'label has-text-weight-bold' do %>
               <%= t('users.phone') %>
-              <%= content_tag(:span, nil, class: 'dot-notification') if @user.phone.blank? %>
+              <%= content_tag(:span, nil, class: 'dot-notification') if @candidate.phone.blank? %>
             <% end %>
-            <% if @user.phone.blank? %>
+            <% if @candidate.phone.blank? %>
               <span class="f6 primary-color"> Añade tu <strong class="primary-color"> teléfono </strong> y aumenta las posibilidades de ser contactado </span>
             <% end %>
             <div class="control has-icons-left">
@@ -88,7 +88,7 @@
           <div class="field mt4">
             <label class="label has-text-weight-bold"> <%= t('email') %> </label>
             <div class="control has-icons-left">
-              <p class="input" disabled> <%= @user.email %> </p>
+              <p class="input" disabled> <%= @candidate.email %> </p>
               <span class="icon is-small is-left">
                 <%= icon('fas', 'phone') %>
               </span>
@@ -97,7 +97,7 @@
           <div class="field mt4">
             <%= f.label :profile_url, class: 'label has-text-weight-bold' do %>
               <%= t('users.profile_url') %>
-              <%= content_tag(:span, nil, class: 'dot-notification') if @user.profile_url.blank? %>
+              <%= content_tag(:span, nil, class: 'dot-notification') if @candidate.profile_url.blank? %>
             <% end %>
             <div class="control has-icons-left">
               <%= f.input :profile_url, 
@@ -115,7 +115,7 @@
           <div class="field">
             <%= f.label :location, class: 'label has-text-weight-bold' do %>
               Lugar de residencia habitual
-              <%= content_tag(:span, nil, class: 'dot-notification') if @user.location.blank? %>
+              <%= content_tag(:span, nil, class: 'dot-notification') if @candidate.location.blank? %>
             <% end %>
             <div class="control has-icons-left">
               <%= f.input :location, 
@@ -132,17 +132,17 @@
           <div class="field mt4">
             <%= f.label :experience, class: 'label has-text-weight-bold' do %>
               Años de experiencia        
-              <%= content_tag(:span, nil, class: 'dot-notification') if @user.experience.blank? %>
+              <%= content_tag(:span, nil, class: 'dot-notification') if @candidate.experience.blank? %>
             <% end %>
             <div class="select is-rounded">
               <%= f.select :experience, 
-                options_for_select([ "0-2 años", "2-6 años", "6-10 años", "+10 años" ], @user.experience),
+                options_for_select([ "0-2 años", "2-6 años", "6-10 años", "+10 años" ], @candidate.experience),
                 {include_blank: 'Seleccionar' } %>
             </div>
           </div>
           <div class="field mt4">
             <strong> <%= t('users.salary_expectation') %> </strong>  
-            <%= content_tag(:span, nil, class: 'dot-notification') if @user.salary_from.blank? && @user.salary_to.blank?  %>
+            <%= content_tag(:span, nil, class: 'dot-notification') if @candidate.salary_from.blank? && @candidate.salary_to.blank?  %>
           </div>
           <div class="columns">
             <div class="column is-one-quarter-desktop">
@@ -180,7 +180,7 @@
             <div class="field">
               <%= f.label :skills_ids, class: 'label has-text-weight-bold' do %>
                 <%= t('skills.candidate_title') %>
-                <%= content_tag(:span, nil, class: 'dot-notification') if @user.skills.empty? %>
+                <%= content_tag(:span, nil, class: 'dot-notification') if @candidate.skills.empty? %>
               <% end %>
               <div class="control">
                 <small> <%= t('skills.job_subtitle') %> </small>
@@ -290,7 +290,7 @@
       <div class="column is-3">
         <div class="box">
           <p class="is-size-5 has-text-weight-bold">
-            <% if @user.visible? %>
+            <% if @candidate.visible? %>
               <%= icon('fas', 'rocket', class: 'mr2') %> We Match <span class="tag is-success is-light"> <%= t('we_match.active') %> </span>
             <% else %>
               <%= icon('fas', 'rocket', class: 'mr2') %> We Match <span class="tag is-danger is-light"> <%= t('we_match.inactive') %> </span>

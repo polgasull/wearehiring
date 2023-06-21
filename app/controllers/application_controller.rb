@@ -25,10 +25,6 @@ class ApplicationController < ActionController::Base
     redirect_to root_path unless current_user.is_company? && current_user.is_admin?
   end
 
-  def validate_is_company!
-    redirect_to root_path unless current_user.is_company?
-  end
-
   def not_found
     render status: 404
   end

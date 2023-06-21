@@ -1,5 +1,5 @@
 
-<% %w[categories job_types levels].each do |settings| %>
+<% %w[user_types categories job_types levels].each do |settings| %>
   <div class="container mb5 is-size-7">
     <div class="columns has-text-centered">
       <div class="column">
@@ -19,39 +19,6 @@
     <% end %>
   </div>
 <% end %>
-
-<div class="container mb5 is-size-7">
-  <div class="columns has-text-centered">
-    <div class="column">
-      <p class="title f4"> <%= t("skills.title") %> </p>
-    </div>
-  </div>
-
-  <div class="columns has-text-centered listhead">
-    <div class="column"> <%= t("skills.id") %> </div>
-    <div class="column"> <%= t("skills.name") %> </div>
-    <div class="column"> <%= t("skills.internal_name") %> </div>
-    <div class="column"></div>
-  </div>
-
-  <%= simple_form_for(Skill.new, method: :post, url: admins_skills_path, html: { multipart: true }) do |f| %>
-    <div class="columns is-vertical-center listrow">
-      <div class="column"></div>
-      <div class="column">
-        <%= f.input :name, label: false, input_html: { class: "input is-size-7" }, wrapper: false, placeholder: t('skills.name') %>
-      </div>
-      <div class="column">
-        <%= f.input :internal_name, label: false, input_html: { class: "input is-size-7" }, wrapper: false, placeholder: t('skills.internal_name') %>
-      </div>
-      <div class="column">
-        <%= f.submit t('create'), class: 'button is-primary is-size-7' %>
-      </div>
-    </div>
-  <% end %>
-  <% @skills.each do |skill| %>
-    <%= render partial: "/admins/settings/skill", locals: { skill: skill } %>
-  <% end %>
-</div>
 
 <div class="container mb5 is-size-7">
   <div class="columns has-text-centered">
@@ -154,5 +121,38 @@
   <% end %>
   <% @job_prices.each do |job_price| %>
     <%= render partial: "/admins/settings/job_price", locals: { job_price: job_price } %>
+  <% end %>
+</div>
+
+<div class="container mb5 is-size-7">
+  <div class="columns has-text-centered">
+    <div class="column">
+      <p class="title f4"> <%= t("skills.title") %> </p>
+    </div>
+  </div>
+
+  <div class="columns has-text-centered listhead">
+    <div class="column"> <%= t("skills.id") %> </div>
+    <div class="column"> <%= t("skills.name") %> </div>
+    <div class="column"> <%= t("skills.internal_name") %> </div>
+    <div class="column"></div>
+  </div>
+
+  <%= simple_form_for(Skill.new, method: :post, url: admins_skills_path, html: { multipart: true }) do |f| %>
+    <div class="columns is-vertical-center listrow">
+      <div class="column"></div>
+      <div class="column">
+        <%= f.input :name, label: false, input_html: { class: "input is-size-7" }, wrapper: false, placeholder: t('skills.name') %>
+      </div>
+      <div class="column">
+        <%= f.input :internal_name, label: false, input_html: { class: "input is-size-7" }, wrapper: false, placeholder: t('skills.internal_name') %>
+      </div>
+      <div class="column">
+        <%= f.submit t('create'), class: 'button is-primary is-size-7' %>
+      </div>
+    </div>
+  <% end %>
+  <% @skills.each do |skill| %>
+    <%= render partial: "/admins/settings/skill", locals: { skill: skill } %>
   <% end %>
 </div>
