@@ -15,8 +15,8 @@
           name="search_my_jobs" 
           value="<%= params[:search_my_jobs] ? params[:search_my_jobs] : '' %>">
       </div>
-      <div class="column">
-        <div class="control has-icons-left">
+      <div class="column is-flex">
+        <div class="control has-icons-left mr3">
           <div class="select">
             <%= select_tag :by_active, options_for_select([["Active", true], ["Inactive", false]]), :include_blank => 'All' %>
           </div>
@@ -24,8 +24,6 @@
             <%= icon('fas', 'toggle-on') %>
           </span>
         </div>
-      </div>
-      <div class="column has-text-left">
         <%= f.submit t('search'), class: "button is-dark" %>
       </div>
     </div>
@@ -34,7 +32,7 @@
 </section>
 
 <section class="section pb5">
-  <div class="container">
+  <div class="container is-fullhd">
     <div class="columns">
       <div class="column mt2">
         <span class="tag is-light"><b> <%= @jobs_count %> <%= t('jobs.total') %> </b></span>
@@ -54,9 +52,13 @@
             <td>Skills</td>
             <td>Visits</td>
             <td><%= t('jobs.candidates') %></td>
-            <td>Estado</td>
+            <td>Status</td>
+            <td>Created at</td>
+            <td>Expire at</td>
             <td><%= t('simple_form.labels.defaults.apply_url') %></td>
-            <td>Acciones</td>
+            <td>Posted</td>
+            <td>Edit</td>
+            <td>Save</td>
           </tr>
         </thead>
         <tfoot> 
@@ -68,9 +70,13 @@
             <td>Skills</td>
             <td>Visits</td>
             <td><%= t('jobs.candidates') %></td>
-            <td>Estado</td>
+            <td>Status</td>
+            <td>Created at</td>
+            <td>Expire at</td>
             <td><%= t('simple_form.labels.defaults.apply_url') %></td>
-            <td>Acciones</td>
+            <td>Posted</td>
+            <td>Edit</td>
+            <td>Save</td>
           </tr>
         </tfoot>
         <tbody>

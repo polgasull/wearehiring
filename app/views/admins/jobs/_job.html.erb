@@ -26,6 +26,11 @@
     </td>
     <td>
       <strong> <%= job_expired(job) %> </strong>
+    </td>
+    <td>
+      <%= f.date_field :created_at %>
+    </td>
+    <td>
       <%= f.date_field :expiry_date %>
     </td>
     <td>
@@ -33,9 +38,12 @@
     </td>
     <td>
       <%= f.select :open, options_for_select([ true, false], job.open) %>
-      <%= f.submit t('save'), class: 'mr2' %>
-
-      <%= link_to 'editar', edit_admins_job_path(job.id) %>
+    </td>
+    <td>
+      <%= link_to 'editar', edit_admins_job_path(job.id), class: 'button is-info' %>
+    </td>
+    <td>
+      <%= f.submit t('save'), class: 'button is-success mr2' %>
     </td>
   </tr>
 <% end %>
