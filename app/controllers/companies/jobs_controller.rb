@@ -49,6 +49,7 @@ module Companies
       if @job.save
         if current_user.is_ambassador_company?
           @job.update!(open: true)
+          send_notifications(current_user, @job)
           redirect_to companies_job_thanks_path(@job)
         else
           redirect_to stripe_checkout_companies_job_url(@job)
@@ -141,6 +142,7 @@ module Companies
       @job.update!(open: true)
       # Retrieve and update the job based on the Stripe session or payment intent
       # Handle any post-payment success logic here
+      send_notifications(current_user, job)
       redirect_to companies_job_thanks_path(@job)
     end
     
@@ -167,7 +169,6 @@ module Companies
     def send_notifications(user, job)
       DiscordService.new.job_alert_webhook job
       TwitterService.new.send_tweet job
-      TwitterService.new.send_job_detail_tweet @job
       ModelMailer.new_job(user, job).deliver_later
     end
 
