@@ -8,40 +8,48 @@ xml.tag! 'urlset',
   xml.tag! 'url' do
     xml.tag! 'loc', root_es_url
     xml.tag! 'xhtml:link', rel: 'alternate', hreflang: 'en', href: root_en_url
+    xml.tag! 'xhtml:link', rel: 'alternate', hreflang: 'es', href: root_es_url
   end
 
   xml.tag! 'url' do
     xml.tag! 'loc', root_en_url
+    xml.tag! 'xhtml:link', rel: 'alternate', hreflang: 'en', href: root_en_url
     xml.tag! 'xhtml:link', rel: 'alternate', hreflang: 'es', href: root_es_url
   end
 
   xml.tag! 'url' do
     xml.tag! 'loc', talent_how_it_works_es_url
     xml.tag! 'xhtml:link', rel: 'alternate', hreflang: 'en', href: talent_how_it_works_en_url
+    xml.tag! 'xhtml:link', rel: 'alternate', hreflang: 'es', href: talent_how_it_works_es_url
   end
 
   xml.tag! 'url' do
     xml.tag! 'loc', talent_how_it_works_en_url
+    xml.tag! 'xhtml:link', rel: 'alternate', hreflang: 'en', href: talent_how_it_works_en_url
     xml.tag! 'xhtml:link', rel: 'alternate', hreflang: 'es', href: talent_how_it_works_es_url
   end
 
   xml.tag! 'url' do
     xml.tag! 'loc', companies_how_it_works_es_url
     xml.tag! 'xhtml:link', rel: 'alternate', hreflang: 'en', href: companies_how_it_works_en_url
+    xml.tag! 'xhtml:link', rel: 'alternate', hreflang: 'es', href: companies_how_it_works_es_url
   end
 
   xml.tag! 'url' do
     xml.tag! 'loc', companies_how_it_works_en_url
+    xml.tag! 'xhtml:link', rel: 'alternate', hreflang: 'en', href: companies_how_it_works_en_url
     xml.tag! 'xhtml:link', rel: 'alternate', hreflang: 'es', href: companies_how_it_works_es_url
   end
 
   xml.tag! 'url' do
     xml.tag! 'loc', about_us_es_url
     xml.tag! 'xhtml:link', rel: 'alternate', hreflang: 'en', href: about_us_en_url
+    xml.tag! 'xhtml:link', rel: 'alternate', hreflang: 'es', href: about_us_es_url
   end
 
   xml.tag! 'url' do
     xml.tag! 'loc', about_us_en_url
+    xml.tag! 'xhtml:link', rel: 'alternate', hreflang: 'en', href: about_us_en_url
     xml.tag! 'xhtml:link', rel: 'alternate', hreflang: 'es', href: about_us_es_url
   end
 
@@ -58,6 +66,7 @@ xml.tag! 'urlset',
       xml.tag! 'loc', job_es_url(job)
       xml.lastmod job.updated_at.strftime("%F")
       xml.tag! 'xhtml:link', rel: 'alternate', hreflang: 'en', href: job_en_url(job)  
+      xml.tag! 'xhtml:link', rel: 'alternate', hreflang: 'es', href: job_es_url(job)  
     end
   end
 
@@ -65,6 +74,7 @@ xml.tag! 'urlset',
     xml.tag! 'url' do
       xml.tag! 'loc', job_en_url(job)
       xml.lastmod job.updated_at.strftime("%F")
+      xml.tag! 'xhtml:link', rel: 'alternate', hreflang: 'en', href: job_en_url(job)  
       xml.tag! 'xhtml:link', rel: 'alternate', hreflang: 'es', href: job_es_url(job)  
     end
   end

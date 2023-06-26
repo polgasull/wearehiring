@@ -278,10 +278,12 @@
 			image: image_url(asset_path('wah_red_logo.png')) %>
 
   <% if I18n.locale == :es %>
-    <%= tag(:link, rel: 'alternate', href: companies_how_it_works_en_url, hreflang: :en) %>
     <%= tag(:link, rel: 'canonical', href: companies_how_it_works_es_url) %>
-  <% else %>
+    <%= tag(:link, rel: 'alternate', href: companies_how_it_works_en_url, hreflang: :en) %>
     <%= tag(:link, rel: 'alternate', href: companies_how_it_works_es_url, hreflang: :es) %>
+  <% else %>
     <%= tag(:link, rel: 'canonical', href: companies_how_it_works_en_url) %>
+    <%= tag(:link, rel: 'alternate', href: companies_how_it_works_en_url, hreflang: :en) %>
+    <%= tag(:link, rel: 'alternate', href: companies_how_it_works_es_url, hreflang: :es) %>
   <% end %>
 <% end %>

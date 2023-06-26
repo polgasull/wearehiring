@@ -64,11 +64,13 @@
   <% end %>
 
   <% if I18n.locale == :es %>
-    <%= tag(:link, rel: 'alternate', href: job_en_url(@job), hreflang: :en) %>
     <%= tag(:link, rel: 'canonical', href: job_es_url(@job)) %>
-  <% else %>
+    <%= tag(:link, rel: 'alternate', href: job_en_url(@job), hreflang: :en) %>
     <%= tag(:link, rel: 'alternate', href: job_es_url(@job), hreflang: :es) %>
+  <% else %>
     <%= tag(:link, rel: 'canonical', href: job_en_url(@job)) %>
+    <%= tag(:link, rel: 'alternate', href: job_en_url(@job), hreflang: :en) %>
+    <%= tag(:link, rel: 'alternate', href: job_es_url(@job), hreflang: :es) %>
   <% end %>
 <% end %>
 
