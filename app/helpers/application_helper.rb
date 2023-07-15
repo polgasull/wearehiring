@@ -21,4 +21,12 @@ module ApplicationHelper
 
     url_for(merged_options)
   end
+
+  def formatted_price(price)
+    if @user_country_code == "GB"
+      content_tag(:span, "£#{price}")
+    else
+      content_tag(:span, "#{price} €")
+    end
+  end
 end

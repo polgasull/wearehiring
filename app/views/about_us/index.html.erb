@@ -129,7 +129,7 @@
 			</div>
       <div class="column mv3 is-hidden-desktop"></div>
 			<div class="column">
-				<img src="<%=asset_path('undraw_navigation.svg')%>" width="400" height="400" class="is-blank" alt="Crear cuenta empresa y publicar empleo digital | Wearehiring.io">		
+				<img src="<%=asset_path('undraw_navigation.svg')%>" width="400" height="400" class="is-blank" alt="<%= t('home_index.first_section_text_1') %> | Wearehiring.io">		
 			</div>
 		</div>
 	</div>
@@ -142,7 +142,7 @@
 	<div class="container is-max-widescreen">
 		<div class="columns">
 			<div class="column is-hidden-touch">
-				<img src="<%=asset_path('undraw_community.svg')%>" width="400" height="400" class="is-blank" alt="Crear cuenta empresa y publicar empleo digital | Wearehiring.io">	
+				<img src="<%=asset_path('undraw_community.svg')%>" width="400" height="400" class="is-blank" alt="<%= t('home_index.second_section_text_1') %> | Wearehiring.io">	
 			</div>
 			<div class="column">
 				<h3 class="title is-2 has-text-weight-bold has-text-corporate">
@@ -157,7 +157,7 @@
 				</p>
 			</div>
       <div class="column is-hidden-desktop mt4">
-				<img src="<%=asset_path('undraw_community.svg')%>" width="400" height="400" class="is-blank" alt="Crear cuenta empresa y publicar empleo digital | Wearehiring.io">	
+				<img src="<%=asset_path('undraw_community.svg')%>" width="400" height="400" class="is-blank" alt="<%= t('home_index.second_section_text_1') %> | Wearehiring.io">	
 			</div>
 		</div>
 	</div>
@@ -265,7 +265,7 @@
 				</p>
 			</div>
 			<div class="column">
-				<img src="<%=asset_path('undraw_maker_launch.svg')%>" width="400" height="400" class="is-blank" alt="Crear cuenta empresa y publicar empleo digital | Wearehiring.io">			
+				<img src="<%=asset_path('undraw_maker_launch.svg')%>" width="400" height="400" class="is-blank" alt="<%= t('home_index.third_section_text_1') %> | Wearehiring.io">			
 			</div>
 		</div>
 	</div>
@@ -278,7 +278,7 @@
 	<div class="container is-max-widescreen">
 		<div class="columns">
 			<div class="column is-hidden-touch">
-				<img src="<%=asset_path('undraw_order_confirmed.svg')%>" width="400" height="400" class="is-blank" alt="Crear cuenta empresa y publicar empleo digital | Wearehiring.io">			
+				<img src="<%=asset_path('undraw_order_confirmed.svg')%>" width="400" height="400" class="is-blank" alt="<%= t('home_index.fourth_section_text_1') %> | Wearehiring.io">			
 			</div>
 			<div class="column">
 				<p class="title is-2 has-text-weight-bold has-text-corporate">
@@ -297,7 +297,7 @@
 				</p>
 			</div>
       <div class="column is-hidden-desktop">
-				<img src="<%=asset_path('undraw_order_confirmed.svg')%>" width="400" height="400" class="is-blank" alt="Crear cuenta empresa y publicar empleo digital | Wearehiring.io">			
+				<img src="<%=asset_path('undraw_order_confirmed.svg')%>" width="400" height="400" class="is-blank" alt="<%= t('home_index.fourth_section_text_1') %> | Wearehiring.io">			
 			</div>
 		</div>
 	</div>
@@ -379,12 +379,12 @@
               </div>
               <div class="column has-text-centered">
                 <p class="">
-                  <span class="title pricing-price-title"> 299€ </span> /
+                  <span class="title pricing-price-title"> <%= formatted_price('299') %> </span> /
                   <span class="has-text-weight-semibold"> <%= t('pricing_index.per_job') %> </span>
                 </p>
                 <p class="is-vertical-center is-justify-content-center">
                   <span class="has-text-weight-light is-italic"> 
-                    340.86€ <%= t('tax_included') %>
+                    <%= formatted_price('340.86') %> <%= t('tax_included') %>
                   </span>
                 </p>
                 <div class="mb3 is-hidden-tablet"></div>

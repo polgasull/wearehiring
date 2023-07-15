@@ -278,7 +278,7 @@
                 <input name="job[job_price_id]" class="radio-card" type="radio" id="job_job_price_id_3" value="3" checked>
                 <span class="job-price-details">
                   <span class="job-price-type">Free</span>
-                  <span class="job-price-cost">0€</span>
+                  <span class="job-price-cost"><%=formatted_price('0') %></span>
                   <div class="is-flex">
                     <p> <%= icon('fas', 'check has-text-success mr2') %> </p>
                     <p> <%= t('pricing_index.pricing_feature_1') %> </p>
@@ -305,7 +305,7 @@
           </div>
           <p class="has-text-centered mt4">
             <%= icon('fas', 'credit-card f1') %>
-            <strong class="has-text-success f1 ml2 job-price" id="price-displayed"> 0€ </strong>
+            <strong class="has-text-success f1 ml2 job-price" id="price-displayed"> <%= formatted_price('0') %> </strong>
           </p>
           <p class="has-text-centered">
             <%= t('payments.monthly') %>

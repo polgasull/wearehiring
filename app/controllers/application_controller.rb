@@ -3,6 +3,7 @@
 class ApplicationController < ActionController::Base
   include ResponseHelper
   before_action :set_locale
+  before_action :set_currency
   protect_from_forgery with: :exception
 
   def set_locale
@@ -49,6 +50,11 @@ class ApplicationController < ActionController::Base
     end
 
     root_path
+  end
+
+  def set_currency
+    user_location = request.location
+    @user_country_code = user_location&.country_code || 'EU'
   end
 
   private

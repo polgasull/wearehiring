@@ -72,12 +72,12 @@
               </div>
               <div class="column has-text-centered">
                 <p class="">
-                  <span class="title pricing-price-title"> 299€ </span> /
+                  <span class="title pricing-price-title"> <%= formatted_price('299') %> </span> /
                   <span class="has-text-weight-semibold"> <%= t('pricing_index.per_job') %> </span>
                 </p>
                 <p class="is-vertical-center is-justify-content-center">
                   <span class="has-text-weight-light is-italic"> 
-                    340.86€ <%= t('tax_included') %>
+                    <%= formatted_price('340.86') %> <%= t('tax_included') %>
                   </span>
                 </p>
                 <div class="mb3 is-hidden-tablet"></div>

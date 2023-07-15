@@ -111,7 +111,11 @@
             hint: t('forms.from'),
             wrapper: false %>
           <span class="icon is-small is-left">
-            <%= icon('fas', 'euro-sign') %>
+            <% if @user_country_code == "GB" %>
+              <%= icon('fas', 'pound-sign') %>
+            <% else %>
+              <%= icon('fas', 'euro-sign') %>
+            <% end %>
           </span>
         </div>
       </div>
@@ -127,7 +131,11 @@
             hint: t('forms.to'),
             wrapper: false %>
           <span class="icon is-small is-left">
-            <%= icon('fas', 'euro-sign') %>
+            <% if @user_country_code == "GB" %>
+              <%= icon('fas', 'pound-sign') %>
+            <% else %>
+              <%= icon('fas', 'euro-sign') %>
+            <% end %>
           </span>
         </div>
       </div>

@@ -37,7 +37,6 @@ Rails.application.routes.draw do
       get :free, on: :new
       get :edit_price, on: :member
       patch :update_price, on: :member
-      get :new_job_index, path: 'publicar-job', on: :collection
       get :success, on: :collection
       get :cancel, on: :collection
       get :stripe_checkout, on: :member

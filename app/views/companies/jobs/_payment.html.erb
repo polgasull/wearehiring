@@ -66,12 +66,12 @@
         </div>
         <p class="has-text-centered mt4">
           <%= icon('fas', 'credit-card f1') %>
-          <strong class="has-text-success f1 ml2 job-price"> 299€ </strong>
+          <strong class="has-text-success f1 ml2 job-price"> <%= formatted_price('299') %></strong>
           <span class="has-text-success"> + <%= t('taxes') %> </span>
         </p>
         <p class="has-text-centered">
           <%= icon('fas', 'info-circle') %>
-          <small id="price-after-taxes"> 340.86€ </small> <small> <%= t('tax_included') %> </small>
+          <small id="price-after-taxes"> <%= formatted_price('340.86') %> </small> <small> <%= t('tax_included') %> </small>
         </p>
         <p class="has-text-centered is-vertical-center is-justify-content-center">
           <%= image_tag(asset_path('stipe_climate.svg'), height: 20, width: 20, class: 'mr1') %>
