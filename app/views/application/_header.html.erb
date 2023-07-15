@@ -1,7 +1,7 @@
 <header class="header mb4">
 	<nav class="navbar" role="navigation" aria-label="main navigation">
 		<div class="container is-justify-content-space-between">
-			<div class="navbar-brand">
+			<div class="navbar-brand is-justify-content-space-between">
 				<a href="<%= url_for(controller: '/jobs', action: 'index', locale: I18n.locale.to_s) %>" class="is-vertical-center" hreflang="<%= I18n.locale.to_s %>" rel='alternate'>
           <% if current_page?(url_for(controller: '/jobs', action: 'index', locale: I18n.locale.to_s)) %>
             <h1 class="mt1">
@@ -11,23 +11,27 @@
             <%= image_tag asset_path('logo_black.png'), alt: t('seo.jobs_title') %>
           <% end %>
 				</a>
-        <a role="button" class="navbar-mobile-open-menu open-menu is-flex is-align-items-center is-hidden-desktop" aria-label="menu" aria-expanded="false">
+        <div class="is-hidden-desktop">
           <% if user_signed_in? %>
-            <% if current_user.picture_url.file.nil? %>
-              <div class="avatar-circle mr2">
-                <span class="avatar-letter"><%= current_user.name[0].upcase %></span>
-              </div>
-            <% else %>
-              <div class="rounded-image size-40 mr1" style="box-shadow: none;">
-                <%= image_tag(current_user.picture_url_url(:thumb), alt: "Imagen usuario del perfil de Linkedin | Wearehiring.io") %>
-              </div>
-            <% end %>
+            <a role="button" class="navbar-mobile-open-menu open-menu is-flex is-align-items-center" aria-label="menu" aria-expanded="false">
+              <% if current_user.picture_url.file.nil? %>
+                <div class="avatar-circle mr2">
+                  <span class="avatar-letter"><%= current_user.name[0].upcase %></span>
+                </div>
+              <% else %>
+                <div class="rounded-image size-40 mr1" style="box-shadow: none;">
+                  <%= image_tag(current_user.picture_url_url(:thumb), alt: "Imagen usuario del perfil de Linkedin | Wearehiring.io") %>
+                </div>
+              <% end %>
+            </a>
           <% else %>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
+            <a role="button" class="navbar-mobile-open-menu open-menu is-flex is-align-items-center navbar-burger" aria-label="menu" aria-expanded="false">
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
           <% end %>
-        </a>
+        </div>
 			</div>
 			<div class="is-hidden-touch is-vertical-center">
 				<%= render "menu" %>
