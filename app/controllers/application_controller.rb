@@ -39,16 +39,34 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    current_user.transaction do
+    begin
+      location_info = Geocoder.search(current_user.current_sign_in_ip).first
+  
+      current_user.transaction do
+        current_user.update!(
+          resident_city: location_info.city,
+          resident_state: location_info.state,
+          resident_country: location_info.country,
+          resident_country_code: location_info.country_code,
+          resident_postal_code: location_info.postal_code
+        )
+      end
+    rescue Geocoder::OverQueryLimitError => e
+      sleep(5)
+  
+      Rails.logger.error("Geocoder request limit exceeded: #{e.message}")
+  
       current_user.update!(
-        resident_city: Geocoder.search(current_user.current_sign_in_ip).first.city,
-        resident_state: Geocoder.search(current_user.current_sign_in_ip).first.state,
-        resident_country: Geocoder.search(current_user.current_sign_in_ip).first.country,
-        resident_country_code: Geocoder.search(current_user.current_sign_in_ip).first.country_code,
-        resident_postal_code: Geocoder.search(current_user.current_sign_in_ip).first.postal_code
+        resident_city: '',
+        resident_state: '',
+        resident_country: '',
+        resident_country_code: '',
+        resident_postal_code: ''
       )
+    else
+      Rails.logger.info("User resident information updated successfully.")
     end
-
+  
     root_path
   end
 
