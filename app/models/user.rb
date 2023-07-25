@@ -108,14 +108,6 @@ class User < ApplicationRecord
         sleep(5)
     
         Rails.logger.error("Geocoder request limit exceeded: #{e.message}")
-    
-        user.update!(
-          resident_city: '',
-          resident_state: '',
-          resident_country: '',
-          resident_country_code: '',
-          resident_postal_code: ''
-        )
       else
         Rails.logger.info("User resident information updated successfully.")
       end
