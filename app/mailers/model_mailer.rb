@@ -20,6 +20,8 @@ class ModelMailer < ApplicationMailer
   end
 
   def new_candidate(user, job)
+    return false if @job.inscriptions.count > 100
+
     @user = user
     @job = job
 
