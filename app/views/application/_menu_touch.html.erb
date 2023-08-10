@@ -8,13 +8,18 @@
       </div>
       <div class="navbar-brand">
         <%= link_to "Jobs", 
-            admins_jobs_path, 
+            admins_jobs_path,
             class: "navbar-item #{ 'active' if current_page?(admins_jobs_path)}" %>		
       </div>
       <div class="navbar-brand">
-        <%= link_to "Users", 
-            admins_users_path, 
-            class: "navbar-item #{ 'active' if current_page?(admins_users_path)}" %>		
+        <%= link_to "Candidates", 
+            admins_candidates_path, 
+            class: "navbar-item #{ 'active' if current_page?(admins_candidates_path)}" %>		
+      </div>
+      <div class="navbar-brand">
+        <%= link_to "Companies", 
+            admins_companies_path, 
+            class: "navbar-item #{ 'active' if current_page?(admins_companies_path)}" %>		
       </div>
       <div class="navbar-brand">
         <%= link_to "Settings", 
