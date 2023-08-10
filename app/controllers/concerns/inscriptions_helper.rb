@@ -6,26 +6,6 @@ module InscriptionsHelper
     return redirect_back_response(t('already_inscribed'), false) if user.is_already_inscribed(job)
       
     @inscription = job.inscriptions.build(job_id: job.id, user_id: user.id, added_by_company: added_by_company)
-
-    begin
-      location_info = Geocoder.search(user.last_sign_in_ip).first
-      
-      user.transaction do
-        user.update!(
-          resident_city: location_info.city,
-          resident_state: location_info.state,
-          resident_country: location_info.country,
-          resident_country_code: location_info.country_code,
-          resident_postal_code: location_info.postal_code
-        )
-      end if !added_by_company
-    rescue Geocoder::OverQueryLimitError => e
-      sleep(5)
-  
-      Rails.logger.error("Geocoder request limit exceeded: #{e.message}")
-    else
-      Rails.logger.info("User resident information updated successfully.")
-    end
     
     if @inscription.save
       ModelMailer.successfully_inscribed(user, job).deliver_later
