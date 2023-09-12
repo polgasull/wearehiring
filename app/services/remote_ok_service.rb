@@ -24,12 +24,12 @@ class RemoteOkService
         job.title = result["position"]
         job.description = result["description"]
         job.apply_url = result["apply_url"]
-        job.location = result["location"]
+        job.location = result["location"].present? : result["location"] : "Remote"
         job.job_author = result["company"]
         job.created_at = Job.active.first.created_at - (index + 2).hours
         job.updated_at = result["date"]
-        job.salary_from = result["salary_min"].nil? ? 0 : result["salary_min"]
-        job.salary_to = result["salary_max"].nil? ? 0 : result["salary_max"]
+        job.salary_from = result["salary_min"].present? ? result["salary_min"] : 0
+        job.salary_to = result["salary_max"].present? ? result["salary_max"] : 0
         job.partner_id = Partner.find_by(name: "Remote Ok").id
         job.remote_ok = true
         job.reference = "wah#{DateTime.now.year}#{SecureRandom.hex(3)}"
