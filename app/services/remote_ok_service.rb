@@ -24,7 +24,7 @@ class RemoteOkService
         job.title = result["position"]
         job.description = result["description"]
         job.apply_url = result["apply_url"]
-        job.location = result["location"].present? : result["location"] : "Remote"
+        job.location = result["location"].present? ? result["location"] : "Remote"
         job.job_author = result["company"]
         job.created_at = Job.active.first.created_at - (index + 2).hours
         job.updated_at = result["date"]
