@@ -7,6 +7,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Rails.logger.info("Seeding started at #{Time.now}")
+
 Category.where(internal_name: "web_development").first_or_create(name: "Web development", internal_name: "web_development")
 Category.where(internal_name: "design").first_or_create(name: "Design", internal_name: "design")
 Category.where(internal_name: "product").first_or_create(name: "Product", internal_name: "product")
@@ -28,6 +30,10 @@ Level.where(internal_name: "senior").first_or_create(name: "Senior", internal_na
 UserType.where(internal_name: "candidate").first_or_create(name: "Candidate", internal_name: "candidate")
 UserType.where(internal_name: "company").first_or_create(name: "Company", internal_name: "company")
 UserType.where(internal_name: "admin").first_or_create(name: "Admin", internal_name: "admin")
+
+JobPrice.where(internal_name: "free").first_or_create(name: "Free", internal_name: "free")
+JobPrice.where(internal_name: "basic").first_or_create(name: "Basic", internal_name: "basic")
+JobPrice.where(internal_name: "pro").first_or_create(name: "Pro", internal_name: "pro")
 
 Skill.where(internal_name: "javascript").first_or_create(name: "Javascript", internal_name: "javascript")
 Skill.where(internal_name: "java").first_or_create(name: "Java", internal_name: "java")
@@ -53,7 +59,7 @@ location = [
   "Boston, MA"
 ]
 
-50.times do
+10.times do
   User.create(email: Faker::Internet.email,
               name: Faker::Name.name,
               last_name: Faker::Name.last_name,
@@ -67,18 +73,19 @@ location = [
               salary_to: Faker::Number.number(digits: 5),
               password: "12345678", 
               user_type_id: 1,
+              confirmed_at: Time.now
             )
 end
 
-User.where(email: "candidate@email.com").first_or_create(name: "Pol Candidate", password: "12345678", user_type_id: 1)
-User.where(email: "company@email.com").first_or_create(name: "Pol Company", password: "12345678", user_type_id: 2)
-User.where(email: "admin2@email.com").first_or_create(name: "Pol Admin", password: "12345678", user_type_id: 3)
+User.where(email: "candidate@email.com").first_or_create(name: "Pol Candidate", password: "12345678", user_type_id: 1, confirmed_at: Time.now)
+User.where(email: "company@email.com").first_or_create(name: "Pol Company", password: "12345678", user_type_id: 2, confirmed_at: Time.now)
+User.where(email: "admin@email.com").first_or_create(name: "Pol Admin", password: "12345678", user_type_id: 3, confirmed_at: Time.now)
 
-10.times do 
-  User.create(email: Faker::Internet.email, password: "123456", user_type_id: 2)
+5.times do 
+  User.create(email: Faker::Internet.email, name: Faker::Company.name, last_name: Faker::Name.name, password: "12345678", user_type_id: 2, confirmed_at: Time.now)
 end
 
-50.times do 
+15.times do 
   sleep 0.4
   Job.create(reference: "wah#{DateTime.now.year}#{SecureRandom.hex(3)}",
             title: Faker::Job.title,
@@ -94,6 +101,9 @@ end
             user_id: rand(1..10),
             category_id: rand(1..7),
             job_type_id: rand(1..3),
-            level_id: rand(1..3)
+            level_id: rand(1..3),
+            job_price_id: rand(1..3)
           )
 end
+
+Rails.logger.info("Seeding finished at #{Time.now}")
