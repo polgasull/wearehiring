@@ -56,14 +56,14 @@ Rails.application.routes.draw do
 
   resources :jobs, path: 'digital-jobs', only: [:show]
 
-  resources :how_it_works, only: [] do
+  resources :how_it_works, path: 'how-it-works', only: [] do
     collection do
       get :companies
       get :talent
     end
   end
 
-  resources :about_us, only: [:index]
+  resources :about_us, path: 'about-us', only: [:index]
   
   namespace :blog, path: '/' do
     resources :posts, path: 'blog' do
@@ -102,6 +102,7 @@ Rails.application.routes.draw do
   get '/ofertas-empleo-digital', to: redirect('/', status: 301)
   get '/como-funciona/empresas', to: redirect("/how-it-works/companies", status: 301)
   get '/como-funciona/talento', to: redirect('/how-it-works/talent', status: 301)
+  get '/sobre-nosotros', to: redirect('/about-us', status: 301)
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   if Rails.env.production?
