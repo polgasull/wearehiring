@@ -114,10 +114,4 @@ Rails.application.routes.draw do
 
     root to: 'jobs#index'
   end
-
-  # Redirect root URL to /es for users with :es locale
-  get '/', to: redirect { |params, request|
-    locale = request.env['HTTP_ACCEPT_LANGUAGE']&.scan(/^[a-z]{2}/)&.first
-    locale == 'es' ? '/es' : '/'
-  }
 end

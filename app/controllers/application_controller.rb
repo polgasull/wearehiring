@@ -7,10 +7,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def set_locale
-    I18n.locale = extract_locale || I18n.default_locale
-    if request.path == '/' && I18n.locale == :es
-      redirect_to root_path(locale: I18n.locale.to_s)
-    end
+    I18n.locale = I18n.default_locale
   end
 
   # def validate_is_candidate!
@@ -45,13 +42,5 @@ class ApplicationController < ActionController::Base
   def set_currency
     user_location = request.location
     @user_country_code = user_location&.country_code || 'EU'
-  end
-
-  private
-
-  def extract_locale
-    parsed_locale = request.env['HTTP_ACCEPT_LANGUAGE']&.scan(/^[a-z]{2}/)&.first
-    available_locales = I18n.available_locales.map(&:to_s)
-    parsed_locale && available_locales.include?(parsed_locale) ? parsed_locale.to_sym : nil
   end
 end

@@ -90,7 +90,7 @@ class Job < ApplicationRecord
 
     job_skills.each do |skill|
       skill.users.where(visible: true)
-                 .where(resident_country_code: 'ES')
+                 .where(resident_country_code: ['ES', 'GB', 'IT', 'UK', 'PT', 'FR'])
                  .where.not(current_position: [nil, ""])
                  .where(experience: ["2-6 años", "6-10 años", "+10 años"]).each do |user|
         candidates << user if candidates.exclude?(user)
@@ -105,7 +105,7 @@ class Job < ApplicationRecord
     
     job_skills.each do |skill|
       skill.users.search_users(search_params).where(visible: true)
-                                             .where(resident_country_code: 'ES')
+                                             .where(resident_country_code: ['ES', 'GB', 'IT', 'UK', 'PT', 'FR'])
                                              .where.not(current_position: [nil, ""])
                                              .where(experience: ["2-6 años", "6-10 años", "+10 años"]).each do |user|
         candidates << user if candidates.exclude?(user)
