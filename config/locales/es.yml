@@ -900,14 +900,6 @@ es:
   distributed_on_google_for_jobs: "Distribuido en Google for Jobs"
   thanks_for_signup: "¡Gracias por registrarte!"
   email_confirm_sended: "Se ha enviado un mensaje con un enlace de confirmación a tu dirección de correo electrónico."
-  routes:
-    root_path: '/es'
-    jobs: 'ofertas-empleo-digital'
-    thanks: 'gracias-por-publicar'
-    how_it_works: 'como-funciona'
-    companies: 'empresas'
-    talent: 'talento'
-    about_us: 'sobre-nosotros'
   incomplete: 'Incompleto'
   increase: 'Aumenta'
   contact_possibilities: 'las posibilidades de ser contactado'

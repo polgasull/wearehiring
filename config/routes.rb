@@ -54,6 +54,17 @@ Rails.application.routes.draw do
     resources :dashboards, only: [:index]
   end
 
+  resources :jobs, path: 'digital-jobs', only: [:show]
+
+  resources :how_it_works, only: [] do
+    collection do
+      get :companies
+      get :talent
+    end
+  end
+
+  resources :about_us, only: [:index]
+  
   namespace :blog, path: '/' do
     resources :posts, path: 'blog' do
       resources :comments, only: [:create, :destroy]
@@ -77,19 +88,20 @@ Rails.application.routes.draw do
   get '/legal/politicas_cookies', to: 'legal#cookies_policy', as: 'cookies_policy'
   get '/sitemap.xml' => 'sitemaps#index', defaults: { format: 'xml' }
   get "/robots.:format", to: "home#robots"
-
+  
   if Rails.env.production?
     get "/404", to: "application#not_found", as: "not_found"
     get "/422", to: "application#unacceptable", as: "unacceptable"
     get "/500", to: "application#internal_server_error", as: "internal_server_error"
   end
-
+  
+  # handle old urls
   get "/jobs/:id", to: redirect("/digital-jobs/%{id}", status: 301)
   get "/jobs", to: redirect("/", status: 301)
-  get '/ofertas-empleo-digital/:id', to: redirect("/es/ofertas-empleo-digital/%{id}", status: 301)
-  get '/ofertas-empleo-digital', to: redirect('/es', status: 301)
-  get '/como-funciona/empresas', to: redirect("/es/como-funciona/empresas", status: 301)
-  get '/como-funciona/talento', to: redirect('/es/como-funciona/talento', status: 301)
+  get '/ofertas-empleo-digital/:id', to: redirect("/digital-jobs/%{id}", status: 301)
+  get '/ofertas-empleo-digital', to: redirect('/', status: 301)
+  get '/como-funciona/empresas', to: redirect("/how-it-works/companies", status: 301)
+  get '/como-funciona/talento', to: redirect('/how-it-works/talent', status: 301)
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   if Rails.env.production?
@@ -100,18 +112,5 @@ Rails.application.routes.draw do
     end
   end
 
-  localized do
-    resources :jobs, only: [:show]
-
-    resources :how_it_works, only: [] do
-      collection do
-        get :companies
-        get :talent
-      end
-    end
-
-    resources :about_us, only: [:index]
-
-    root to: 'jobs#index'
-  end
+  root to: 'jobs#index'
 end

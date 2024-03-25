@@ -6,19 +6,19 @@ xml.tag! 'urlset',
     'xmlns:xhtml' => 'http://www.w3.org/1999/xhtml' do
 
   xml.tag! 'url' do
-    xml.tag! 'loc', root_en_url
+    xml.tag! 'loc', root_url
   end
 
   xml.tag! 'url' do
-    xml.tag! 'loc', talent_how_it_works_en_url
+    xml.tag! 'loc', talent_how_it_works_url
   end
 
   xml.tag! 'url' do
-    xml.tag! 'loc', companies_how_it_works_en_url
+    xml.tag! 'loc', companies_how_it_works_url
   end
 
   xml.tag! 'url' do
-    xml.tag! 'loc', about_us_en_url
+    xml.tag! 'loc', about_us_url
   end
 
   xml.tag! 'url' do
@@ -31,7 +31,7 @@ xml.tag! 'urlset',
 
   @jobs.each do |job|
     xml.tag! 'url' do
-      xml.tag! 'loc', job_en_url(job)
+      xml.tag! 'loc', job_url(job)
       xml.lastmod job.updated_at.strftime("%F")
     end
   end

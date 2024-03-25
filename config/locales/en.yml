@@ -891,14 +891,6 @@ en:
   distributed_on_google_for_jobs: "Distributed on Google for Jobs"
   thanks_for_signup: "Thank you for signing up!"
   email_confirm_sended: "A message with a confirmation link has been sent to your email address."
-  routes:
-    root_path: '/'
-    jobs: 'digital-jobs'
-    thanks: 'thanks-for-posting'
-    how_it_works: 'how-it-works'
-    companies: 'companies'
-    talent: 'talent'
-    about_us: 'about-us'
   incomplete: 'Incomplete'
   increase: 'Increase'
   contact_possibilities: 'your options to be contacted'
