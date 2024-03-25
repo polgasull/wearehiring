@@ -2,8 +2,8 @@
 	<nav class="navbar" role="navigation" aria-label="main navigation">
 		<div class="container is-justify-content-space-between">
 			<div class="navbar-brand is-justify-content-space-between">
-				<a href="<%= url_for(controller: '/jobs', action: 'index', locale: I18n.locale.to_s) %>" class="is-vertical-center" hreflang="<%= I18n.locale.to_s %>" rel='alternate'>
-          <% if current_page?(url_for(controller: '/jobs', action: 'index', locale: I18n.locale.to_s)) %>
+				<a href="<%= url_for(controller: '/jobs', action: 'index') %>" class="is-vertical-center" hreflang="<%= I18n.locale.to_s %>" rel='alternate'>
+          <% if current_page?(url_for(controller: '/jobs', action: 'index')) %>
             <h1 class="mt1">
               <%= image_tag asset_path('logo_black.png'), alt: t('seo.jobs_title') %>
             </h1>
