@@ -8,10 +8,10 @@
       <%= simple_form_for(user, method: :patch, url: candidates_user_profile_path(user.id), html: { multipart: true }) do |f| %>
         <section class="modal-card-body">
           <p class="has-text-weight-bold"> 
-            Para conseguir este job, 
+            To get this job, 
           </p>
           <p class="has-text-weight-bold mb3"> 
-            <%= job.job_author %> necesita que rellenes esto 👇
+            <%= job.job_author %> would really appreciate this info 👇
           </p>
           <div class="column">
             <div class="field">
@@ -73,7 +73,7 @@
                   label: false,
                   wrapper: false, 
                   required: true,
-                  hint: "Solo las empresas donde apliques verán tu teléfono", 
+                  hint: "Only companies who you apply to will see your phone number.", 
                   input_html: { class: "input #{user.phone.blank? ? 'is-danger' : 'is-success'}" }, 
                   placeholder: "+34 666555444" %>
                 <span class="icon is-small is-left">

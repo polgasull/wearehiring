@@ -30,14 +30,14 @@
             <% if @user.picture_url.file.nil? %>
               <%= image_tag(asset_path('user_male_avatar.svg')) %>
             <% else %>
-              <%= image_tag(@user.picture_url_url(:thumb), alt: "Imagen perfil usuario | Wearehiring.io") %>
+              <%= image_tag(@user.picture_url_url(:thumb), alt: "User profile image | Wearehiring.io") %>
             <% end %>
           </div>
         </div>
         <div class="column is-4 with-right-border is-flex is-flex-direction-column is-justify-content-space-between">
           <% if @inscription.recommended? %>
             <p> 
-              <span class="tag is-warning is-medium"> <%= icon('fas', 'star', class: 'mr1') %> Recomendado </span>
+              <span class="tag is-warning is-medium"> <%= icon('fas', 'star', class: 'mr1') %> Recommended </span>
             </p>
           <% end %>
           <p class="is-size-3 has-text-weight-bold"> <%= @user.name %> </p>
@@ -46,7 +46,7 @@
           <p> <%= icon('fas', 'envelope') %> <%= @user.email %> </p>
           <div class="is-flex">
             <%= mail_to @user.email, class: 'button width-150 mr3 mt3' do %>
-              <span>Contactar</span> <%= icon('far', 'paper-plane ml2') %> 
+              <span>Contact</span> <%= icon('far', 'paper-plane ml2') %> 
             <% end %>
             <%= link_to @user.profile_url, target: "_blank", class: 'button linkedin width-50 mt3' do %>
               <%= icon('fab', 'linkedin') %>
@@ -57,10 +57,10 @@
           <div class="columns">
             <div class="column">
               <div>
-                <%= content_tag(:span, 'Lugar de residencia habitual', class: 'has-text-weight-bold') %>:
+                <%= content_tag(:span, 'Residence', class: 'has-text-weight-bold') %>:
               </div>
               <div class="mt2">
-                <%= content_tag(:span, 'Años de experiencia', class: 'has-text-weight-bold') %>:
+                <%= content_tag(:span, 'Years of experience', class: 'has-text-weight-bold') %>:
               </div>
               <div class="mt2">
                 <%= content_tag(:span, t('users.salary_expectation'), class: 'has-text-weight-bold') %>:

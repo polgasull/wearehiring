@@ -34,7 +34,7 @@
           <p> <%= icon('fas', 'phone') %> <%= @candidate.phone %> </p>
           <div class="is-flex">
             <%= mail_to @candidate.email, class: 'button width-150 mr3 mt3' do %>
-              <span>Contactar</span> <%= icon('far', 'paper-plane ml2') %> 
+              <span>Contact</span> <%= icon('far', 'paper-plane ml2') %> 
             <% end %>
             <%= link_to @candidate.profile_url, target: '_blank', class: 'button linkedin width-50 mt3' do %>
               <%= icon('fab', 'linkedin') %>

@@ -50,7 +50,7 @@ Rails.application.routes.draw do
       resources :inscriptions, only: [:create]
     end
     resources :inscriptions, only: [:index]
-    resources :user_profiles, only: [:show, :update]
+    resources :user_profiles, only: [:show, :update, :destroy]
     resources :dashboards, only: [:index]
   end
 

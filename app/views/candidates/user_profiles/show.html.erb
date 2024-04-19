@@ -17,7 +17,7 @@
             <% if current_user.picture_url.file.nil? %>
               <%= image_tag(asset_path('user_male_avatar.svg')) %>
             <% else %>
-              <%= image_tag(current_user.picture_url_url(:thumb), alt: "Imagen perfil usuario | Wearehiring.io") %>
+              <%= image_tag(current_user.picture_url_url(:thumb), alt: "User profile image | Wearehiring.io") %>
             <% end %>
           </div>
         </div>
@@ -39,10 +39,10 @@
           <div class="columns">
             <div class="column">
               <div>
-                <%= content_tag(:span, 'Lugar de residencia habitual', class: 'has-text-weight-bold') %>:
+                <%= content_tag(:span, 'Residence', class: 'has-text-weight-bold') %>:
               </div>
               <div class="mt2">
-                <%= content_tag(:span, 'Años de experiencia', class: 'has-text-weight-bold') %>:
+                <%= content_tag(:span, 'Years of experience', class: 'has-text-weight-bold') %>:
               </div>
               <div class="mt2">
                 <%= content_tag(:span, t('users.salary_expectation'), class: 'has-text-weight-bold') %>:
@@ -50,10 +50,10 @@
             </div>
             <div class="column">
               <div>
-                <%= current_user.location.present? ? content_tag(:span, current_user.location) : content_tag(:span, 'Ciudad/País', class: 'has-text-grey-lighter') %>
+                <%= current_user.location.present? ? content_tag(:span, current_user.location) : content_tag(:span, 'City/Country', class: 'has-text-grey-lighter') %>
               </div>
               <div class="mt2">
-                <%= current_user.experience.present? ? content_tag(:span, current_user.experience) : content_tag(:span, 'X años', class: 'has-text-grey-lighter') %>
+                <%= current_user.experience.present? ? content_tag(:span, current_user.experience) : content_tag(:span, 'X years', class: 'has-text-grey-lighter') %>
               </div>
               <div class="mt2">
                 <% if current_user.salary_from.present? && current_user.salary_to.present? %>
@@ -134,6 +134,16 @@
             </div>
           </article>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section pt2">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <%= link_to "Delete my account", candidates_user_profile_path(current_user), class: "button is-danger", method: :delete, data: {confirm: "Are you sure? All data including your inscriptins will be deleted permanently"}  %>
       </div>
     </div>
   </div>

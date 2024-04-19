@@ -20,6 +20,15 @@ module Candidates
       end
     end
 
+    def destroy
+      current_user.inscriptions.destroy_all
+      if current_user.destroy
+        redirect_back_response(t('successfully_updated'))
+      else
+        redirect_back_response(t('users.messages.user_not_deleted'), false)
+      end
+    end
+
     private
 
     def user_params
