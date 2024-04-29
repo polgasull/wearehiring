@@ -262,9 +262,9 @@
         data: { disable_with: 'Editando...' } %>
     </div>
   <% else %>
-    <% if current_user.is_ambassador_company? %>
+    <% if current_user.jobs.empty? %>
       <div>
-        <%= render 'ambassador_payment', f: f %>
+        <%= render 'free_payment', f: f %>
       </div>
     <% else %>
       <%= render 'payment', f: f %>

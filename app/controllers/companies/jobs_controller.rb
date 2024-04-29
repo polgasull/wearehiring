@@ -47,7 +47,7 @@ module Companies
       end
   
       if @job.save
-        if current_user.is_ambassador_company?
+        if current_user.jobs.count == 1
           @job.update!(open: true)
           send_notifications(current_user, @job)
           redirect_to companies_job_thanks_path(@job)
@@ -139,11 +139,11 @@ module Companies
     end
 
     def success(job)
-      @job.update!(open: true)
+      job.update!(open: true)
       # Retrieve and update the job based on the Stripe session or payment intent
       # Handle any post-payment success logic here
       send_notifications(current_user, job)
-      redirect_to companies_job_thanks_path(@job)
+      redirect_to companies_job_thanks_path(job)
     end
     
     def cancel

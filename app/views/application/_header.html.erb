@@ -39,37 +39,39 @@
 		</div>
 	</nav>
 </header>
-<% if current_user && !profile_is_completed(current_user) && current_user.is_candidate? && browser.device.mobile? %>
-	<div class="has-background-warning">
-		<div class="container">
-			<div class="columns is-vertical-center pv2 is-marginless">
-				<div class="column">
-					<span class="f6"> <strong> <%= t('increase') %> </strong> <%= t('contact_possibilities') %>. </span>
-				</div>
-				<div class="column is-3 has-text-right">
-					<%= link_to edit_user_registration_path, class: "button is-rounded primary f6" do %> 
-							<%= t('feature_candidate_2') %> <%= icon('fas', 'arrow-right pl2') %>
-					<% end %>
-				</div>
-			</div>
-		</div>
-	</div>
-<% end %>
-<% unless current_user && current_user.is_candidate? %>
-  <div class="has-background-success">
-    <div class="container">
-      <div class="columns is-vertical-center pv2 is-marginless">
-        <div class="column">
-          <span class="f5"> <%= t('discounts.hiring_boost_code').html_safe %> </span>
-        </div>
-        <div class="column is-3 has-text-right">
-          <%= link_to new_company_registration_path, class: "button is-rounded primary f6" do %> 
-            <span class="has-text-weight-bold">I'm Hiring! </span> <%= icon('fas', 'arrow-right pl2') %>
-          <% end %>
+<% if user_signed_in? %>
+  <% if !profile_is_completed(current_user) && current_user.is_candidate? && browser.device.mobile? %>
+    <div class="has-background-warning">
+      <div class="container">
+        <div class="columns is-vertical-center pv2 is-marginless">
+          <div class="column">
+            <span class="f6"> <strong> <%= t('increase') %> </strong> <%= t('contact_possibilities') %>. </span>
+          </div>
+          <div class="column is-3 has-text-right">
+            <%= link_to edit_user_registration_path, class: "button is-rounded primary f6" do %> 
+                <%= t('feature_candidate_2') %> <%= icon('fas', 'arrow-right pl2') %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  <% end %>
+  <% if current_user.jobs.any? && current_user.is_company? %>
+    <div class="has-background-success">
+      <div class="container">
+        <div class="columns is-vertical-center pv2 is-marginless">
+          <div class="column">
+            <span class="f5"> <%= t('discounts.hiring_boost_code').html_safe %> </span>
+          </div>
+          <div class="column is-3 has-text-right">
+            <%= link_to new_company_registration_path, class: "button is-rounded primary f6" do %> 
+              <span class="has-text-weight-bold">I'm Hiring! </span> <%= icon('fas', 'arrow-right pl2') %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 <% end %>
 <div id="mySidenav" class="sidenav">
 	<a href="<%=root_path%>" class="mobile-menu-logo">

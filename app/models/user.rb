@@ -21,10 +21,6 @@ class User < ApplicationRecord
     end
   end
 
-  def is_ambassador_company?
-    ambassador == true
-  end
-
   def self.candidates
     joins(:user_type).where(user_types: { internal_name: 'candidate' })
   end
