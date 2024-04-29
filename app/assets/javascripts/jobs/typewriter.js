@@ -53,14 +53,14 @@ $(document).ready(function() {
   // Start typing
   function run() {
     let phrases = [
-        "Frontend Developer",
-        "UX Design",
+        "Blockchain Engineer",
+        "Web3",
+        "UX Designer",
+        "Ruby on rails",
+        "Remote",
         "Javascript",
-        "Product Manager",
-        "Barcelona",
-        "Software Engineer",
-        "Data Analysis",
-        "Cybersecurity"
+        "AWS",
+        "Product Owner"
     ];
 
     printPhrases(phrases, $('#search'));
