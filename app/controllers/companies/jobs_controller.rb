@@ -23,7 +23,7 @@ module Companies
       @job_last = current_user.jobs.last
       @job = current_user.jobs.build
       @coupon_names = Coupon.select(:name).map(&:name)
-      @is_first_job = @job.new_record? && current_user.jobs.count == 1
+      @is_first_job = current_user.jobs.empty? || current_user.jobs.first.id.blank?
     end
 
     def free
