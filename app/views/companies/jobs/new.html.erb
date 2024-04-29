@@ -3,7 +3,7 @@
     <div class="columns">
       <div class="column is-8 is-offset-2">
         <h1 class="title is-3"> <%= t('jobs.post_job') %> <%= t('instantly_exclamation') %> </h1>
-        <%= render 'form', job: @job, edit_page: false %>
+        <%= render 'form', job: @job, is_first_job: @is_first_job, job_last: @job_last, edit_page: false %>
       </div>
     </div>
   </div>

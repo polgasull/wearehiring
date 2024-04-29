@@ -23,6 +23,7 @@ module Companies
       @job_last = current_user.jobs.last
       @job = current_user.jobs.build
       @coupon_names = Coupon.select(:name).map(&:name)
+      @is_first_job = @job.new_record? && current_user.jobs.count == 1
     end
 
     def free
@@ -30,6 +31,7 @@ module Companies
     end
 
     def edit
+      @job_last = current_user.jobs.last
       return redirect_back_response(t('jobs.messages.unauthorized_to_edit'), false) if @job.is_free_price?
     end
   

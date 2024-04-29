@@ -11,7 +11,7 @@
     <div class="columns">
       <div class="column is-8 is-offset-2">
         <h1 class="title is-3"> <%= t('jobs.edit_job') %> </h1>
-        <%= render 'form', job: @job, edit_page: true %>
+        <%= render 'form', job: @job, is_first_job: nil, job_last: @job_last, edit_page: true %>
       </div>
     </div>
   </div>

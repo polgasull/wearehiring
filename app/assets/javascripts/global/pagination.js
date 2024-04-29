@@ -3,7 +3,7 @@ $(document).ready(function() {
     var url;
     url = $('#pagination a').attr('href');
     if (url && $(window).scrollTop() + $(window).height() > $(document).height() - 700) {
-      $('#pagination').text("Cargando...");
+      $('#pagination').text("Loading...");
       $('#pagination-loader').show();
       setTimeout(function () {
         return $.getScript(url);

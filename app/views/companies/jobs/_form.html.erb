@@ -1,4 +1,4 @@
-<%= simple_form_for([:companies, @job], html: { multipart: true, id: :job_payment_form }) do |f| %>
+<%= simple_form_for([:companies, job], html: { multipart: true, id: :job_payment_form }) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
@@ -67,7 +67,7 @@
             placeholder: 'Barcelona', 
             label: false, 
             required: true,
-            hint: 'Ejemplos: "Málaga", "Barcelona", "Madrid", "Remote"',
+            hint: 'Examples: "Berlin", "Barcelona", "Madrid", "Remote"',
             wrapper: false %>
           <span class="icon is-small is-left">
             <%= icon('fas', 'map-marker-alt') %>
@@ -93,7 +93,7 @@
       <article class="message is-success mt2">
         <div class="message-body">
           <%= icon('fas', 'smile', class: 'mr1') %>
-          Las empresas que añaden el salario tienen un <strong> 67% más de candidatos </strong> 
+          Companies that add the salary get <strong> 67% more candidates </strong>
         </div>
       </article>
     </div>
@@ -228,7 +228,7 @@
               <span class="file-cta">
                 <span class="file-icon"> <%= icon('fas', 'upload') %> </span>
                 <span class="file-label"> 
-                  <% if @job_last && @job_last.avatar.file.present? %>
+                  <% if job_last && job_last.avatar.file.present? %>
                     <%= t('jobs.change_image') %>
                   <% else %>
                     <%= t('jobs.upload_image') %>
@@ -243,9 +243,9 @@
     </div>
     <div class="column">
       <output id="list">
-        <% if @job_last && @job_last.avatar.file.present? %>
+        <% if job_last && job_last.avatar.file.present? %>
           <div class="rounded-image size-150" id="prevImage">
-            <%= image_tag(@job_last.avatar_url(:thumb)) %>
+            <%= image_tag(job_last.avatar_url(:thumb)) %>
           </div>
         <% end %>
       </output>
@@ -259,13 +259,11 @@
       <%= f.submit t('jobs.edit_job'), 
         class: "button is-rounded is-large is-success mt3", 
         id: "submitJobButton", 
-        data: { disable_with: 'Editando...' } %>
+        data: { disable_with: 'Updating...' } %>
     </div>
   <% else %>
-    <% if current_user.jobs.empty? %>
-      <div>
-        <%= render 'free_payment', f: f %>
-      </div>
+    <% if is_first_job %>
+      <%= render 'free_payment', f: f %>
     <% else %>
       <%= render 'payment', f: f %>
     <% end %>
