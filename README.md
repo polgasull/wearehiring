@@ -26,7 +26,7 @@ Welcome to the official repository for [WeAreHiring.io](https://www.wearehiring.
 1. **Clone the Repository**
 
 ```bash
-  git clone https://github.com/yourusername/wearehiring.io.git
+  git clone https://github.com/yourusername/wearehiring.git
   cd wearehiring.io
 ```
 
