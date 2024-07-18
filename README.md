@@ -92,6 +92,8 @@ We welcome contributions from the community! To contribute:
 4. Push your changes to your forked repository.
 5. Create a pull request to the main repository.
 
+![www wearehiring io_about-us](https://github.com/user-attachments/assets/f84cb6f7-2d76-438e-b42e-bacc26604064)
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
