@@ -32,8 +32,8 @@ class ApijobsService
         job.apply_url = result["url"]
         job.location = result["city"].present? ? result["city"] : "Remote"
         job.job_author = result["hiringOrganizationName"].present? ? result["hiringOrganizationName"] : result["websiteName"]
-        job.created_at = Time.parse(job['created_at'])
-        job.updated_at = Time.parse(job['created_at'])
+        job.created_at = Time.parse(result['created_at'])
+        job.updated_at = Time.parse(result['created_at'])
         job.salary_from = result["baseSalaryValueMinValue"].present? ? result["baseSalaryValueMinValue"] : 0
         job.salary_to = result["baseSalaryValueMaxValue"].present? ? result["baseSalaryValueMaxValue"] : 0
         job.partner_id = Partner.find_by(name: "ApiJobs").id
