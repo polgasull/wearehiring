@@ -136,7 +136,11 @@ class Job < ApplicationRecord
   def self.create_jobs_from_apijobs
     apijobs_jobs = JSON.parse(ApijobsService.new.fetch_jobs)
     results = apijobs_jobs
-    ApijobsService.new.create_jobs(results)
+    if results["ok"]
+      ApijobsService.new.create_jobs(results["hits"])
+    else
+      puts "Error fetching jobs from ApiJobs"
+    end
   end
 
   def self.send_random_active_job_tweet_notification
