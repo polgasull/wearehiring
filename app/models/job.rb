@@ -134,9 +134,9 @@ class Job < ApplicationRecord
   end
 
   def self.create_jobs_from_apijobs
-    apijobs_jobs = JSON.parse(ApiJobsService.new.fetch_jobs)
+    apijobs_jobs = JSON.parse(ApijobsService.new.fetch_jobs)
     results = apijobs_jobs
-    ApiJobsService.new.create_jobs(results)
+    ApijobsService.new.create_jobs(results)
   end
 
   def self.send_random_active_job_tweet_notification

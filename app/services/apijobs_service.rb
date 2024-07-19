@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ApiJobsService
+class ApijobsService
 
   def initialize
     @base_url = "https://api.apijobs.dev/v1"
