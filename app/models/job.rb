@@ -133,6 +133,12 @@ class Job < ApplicationRecord
     RemoteOkService.new.create_jobs(results)
   end
 
+  def self.create_jobs_from_apijobs
+    apijobs_jobs = JSON.parse(ApiJobsService.new.fetch_jobs)
+    results = apijobs_jobs
+    ApiJobsService.new.create_jobs(results)
+  end
+
   def self.send_random_active_job_tweet_notification
     job = Job.active.where.not(salary_to: [nil, 0]).sample
     TwitterService.new.send_job_detail_tweet(job)
