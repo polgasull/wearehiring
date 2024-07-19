@@ -17,22 +17,24 @@ class ApijobsService
       )
     
     query = "Software data product developer frontend backend design ux ui"
-    response = conn.post("/job/search", { q: query, country: "Spain" }.to_json)
+    response = conn.post("/job/search", { q: query}.to_json)
     response.body
   end
 
   def create_jobs(results)
     results.each_with_index do |result, index|
+      next unless result['hiringOrganizationLogo'].present? && result['hiringOrganizationName'].present? && result['baseSalaryValueMinValue'].present?
+
       @job = Job.where(reference: "wah#{DateTime.now.year}#{result["id"]}").first_or_create do |job|
         # create job if it does not exist and assign other attributes
         job.title = result["title"]
         job.description = result["description"]
         job.apply_url = result["url"]
         job.location = result["city"].present? ? result["city"] : "Remote"
-        job.job_author = result["hiringOrganizationName"].present? ? result["hiringOrganizationName"] : result["websiteName"]
-        job.created_at = Job.active.first.created_at - (index + 2).hours
-        job.updated_at = Job.active.first.created_at - (index + 2).hours
-        job.salary_from = result["baseSalaryValueMinValue"].present? ? result["baseSalaryValueMinValue"] : 0
+        job.job_author = result["hiringOrganizationName"].present?
+        job.created_at = Time.parse(job['created_at'])
+        job.updated_at = Time.parse(job['created_at'])
+        job.salary_from = result["baseSalaryValueMinValue"]
         job.salary_to = result["baseSalaryValueMaxValue"].present? ? result["baseSalaryValueMaxValue"] : 0
         job.partner_id = Partner.find_by(name: "ApiJobs").id
         job.remote_ok = result["city"].present? ? false : true
@@ -43,7 +45,7 @@ class ApijobsService
         job.job_type_id = JobType.find_by(internal_name: 'full_time').id
         job.level_id = Level.find_by(internal_name: 'intermediate').id
         job.category_id = Category.find_by(internal_name: 'web_development').id
-        job.remote_avatar_url = result["hiringOrganizationLogo"].present? ? result["hiringOrganizationLogo"] : @default_logo
+        job.remote_avatar_url = result["hiringOrganizationLogo"]
         job.url = result["websiteUrl"]
         job.user_id = User.where(user_type_id: 3).first.id
       end
