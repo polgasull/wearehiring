@@ -23,7 +23,7 @@ class ApijobsService
 
   def create_jobs(results)
     results.each_with_index do |result, index|
-      next unless result['hiringOrganizationLogo'].present? && result['hiringOrganizationName'].present? && result['baseSalaryValueMinValue'].present?
+      next unless result['hiringOrganizationLogo'].present?
 
       @job = Job.where(reference: "wah#{DateTime.now.year}#{result["id"]}").first_or_create do |job|
         # create job if it does not exist and assign other attributes
@@ -31,10 +31,10 @@ class ApijobsService
         job.description = result["description"]
         job.apply_url = result["url"]
         job.location = result["city"].present? ? result["city"] : "Remote"
-        job.job_author = result["hiringOrganizationName"].present?
+        job.job_author = result["hiringOrganizationName"].present? ? result["hiringOrganizationName"] : result["websiteName"]
         job.created_at = Time.parse(job['created_at'])
         job.updated_at = Time.parse(job['created_at'])
-        job.salary_from = result["baseSalaryValueMinValue"]
+        job.salary_from = result["baseSalaryValueMinValue"].present? ? result["baseSalaryValueMinValue"] : 0
         job.salary_to = result["baseSalaryValueMaxValue"].present? ? result["baseSalaryValueMaxValue"] : 0
         job.partner_id = Partner.find_by(name: "ApiJobs").id
         job.remote_ok = result["city"].present? ? false : true
