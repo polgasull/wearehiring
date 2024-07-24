@@ -28,8 +28,6 @@ class RemoteOkService
         job.apply_url = result["apply_url"]
         job.location = result["location"].present? ? result["location"] : "Remote"
         job.job_author = result["company"]
-        job.created_at = Time.parse(result['date'])
-        job.updated_at = Time.parse(result['date'])
         job.salary_from = result["salary_min"].present? ? result["salary_min"] : 0
         job.salary_to = result["salary_max"].present? ? result["salary_max"] : 0
         job.partner_id = Partner.find_by(name: "Remote Ok").id
