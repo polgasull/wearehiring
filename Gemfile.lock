@@ -314,9 +314,9 @@ GEM
       timeout
     netrc (0.11.0)
     nio4r (2.5.8)
-    nokogiri (1.13.1-x86_64-darwin)
+    nokogiri (1.16.5-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.13.1-x86_64-linux)
+    nokogiri (1.16.5-x86_64-linux)
       racc (~> 1.4)
     oauth (1.1.0)
       oauth-tty (~> 1.0, >= 1.0.1)
@@ -350,7 +350,7 @@ GEM
     public_suffix (4.0.6)
     puma (5.6.8)
       nio4r (~> 2.0)
-    racc (1.6.0)
+    racc (1.8.0)
     rack (2.2.8.1)
     rack-protection (2.1.0)
       rack
