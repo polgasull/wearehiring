@@ -4,9 +4,9 @@
 			<div class="navbar-brand is-justify-content-space-between">
 				<a href="<%= url_for(controller: '/jobs', action: 'index') %>" class="is-vertical-center" hreflang="<%= I18n.locale.to_s %>" rel='alternate'>
           <% if current_page?(url_for(controller: '/jobs', action: 'index')) %>
-            <h1 class="mt1">
+            <div class="mt1">
               <%= image_tag asset_path('logo_black.png'), alt: t('seo.jobs_title') %>
-            </h1>
+            </div>
           <% else %>
             <%= image_tag asset_path('logo_black.png'), alt: t('seo.jobs_title') %>
           <% end %>

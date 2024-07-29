@@ -117,7 +117,7 @@
                 input_html: { class: "input" }, 
                 placeholder: 'Barcelona', 
                 label: false, 
-                hint: 'Ejemplos: "Málaga", "Barcelona", "Madrid", "Remote"',
+                hint: 'Examples: "London", "Barcelona", "California", "Remote"',
                 wrapper: false %>
               <span class="icon is-small is-left">
                 <%= icon('fas', 'map-marker-alt') %>
@@ -131,7 +131,7 @@
             <% end %>
             <div class="select is-rounded">
               <%= f.select :experience, 
-                options_for_select([ "0-2 años", "2-6 años", "6-10 años", "+10 años" ], current_user.experience),
+                options_for_select([ "0-2 years", "2-6 years", "6-10 years", "+10 years" ], current_user.experience),
                 {include_blank: 'Seleccionar' } %>
             </div>
           </div>

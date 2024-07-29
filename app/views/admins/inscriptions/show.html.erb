@@ -80,7 +80,7 @@
                 <%= content_tag(:span, 'Lugar de residencia habitual', class: 'has-text-weight-bold') %>:
               </div>
               <div class="mt2">
-                <%= content_tag(:span, 'Años de experiencia', class: 'has-text-weight-bold') %>:
+                <%= content_tag(:span, 'Years of experience', class: 'has-text-weight-bold') %>:
               </div>
               <div class="mt2">
                 <%= content_tag(:span, t('users.salary_expectation'), class: 'has-text-weight-bold') %>:
@@ -91,7 +91,7 @@
                 <%= @user.location.present? ? content_tag(:span, @user.location) : content_tag(:span, 'Ciudad/País', class: 'has-text-grey-lighter') %>
               </div>
               <div class="mt2">
-                <%= @user.experience.present? ? content_tag(:span, @user.experience) : content_tag(:span, 'X años', class: 'has-text-grey-lighter') %>
+                <%= @user.experience.present? ? content_tag(:span, @user.experience) : content_tag(:span, 'X years', class: 'has-text-grey-lighter') %>
               </div>
               <div class="mt2">
                 <% if @user.salary_from.present? && @user.salary_to.present? %>

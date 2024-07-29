@@ -76,7 +76,7 @@
                 <% end %>
               </div>
               <div class="mt2">
-                <%= @user.experience.present? ? content_tag(:span, @user.experience) : content_tag(:span, 'X años', class: 'has-text-grey-lighter') %>
+                <%= @user.experience.present? ? content_tag(:span, @user.experience) : content_tag(:span, 'X years', class: 'has-text-grey-lighter') %>
               </div>
               <div class="mt2">
                 <% if @user.salary_from.present? && @user.salary_to.present? %>

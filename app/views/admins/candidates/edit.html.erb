@@ -131,12 +131,12 @@
           </div>
           <div class="field mt4">
             <%= f.label :experience, class: 'label has-text-weight-bold' do %>
-              Años de experiencia        
+              Years of Experience        
               <%= content_tag(:span, nil, class: 'dot-notification') if @candidate.experience.blank? %>
             <% end %>
             <div class="select is-rounded">
               <%= f.select :experience, 
-                options_for_select([ "0-2 años", "2-6 años", "6-10 años", "+10 años" ], @candidate.experience),
+                options_for_select([ "0-2 years", "2-6 years", "6-10 years", "+10 years" ], @candidate.experience),
                 {include_blank: 'Seleccionar' } %>
             </div>
           </div>
