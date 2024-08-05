@@ -35,6 +35,12 @@ task :fetch_apijobs_jobs => :environment do
   puts "done."
 end
 
+task :fetch_timup_jobs => :environment do
+  puts "Fetching timup jobs"
+  Job.create_jobs_from_timup
+  puts "done."
+end
+
 task :send_random_active_job_notification => :environment do
   puts "Sending Tweet send_random_active_job_notification"
   Job.send_random_active_job_tweet_notification

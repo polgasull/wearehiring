@@ -143,6 +143,16 @@ class Job < ApplicationRecord
     end
   end
 
+  def self.create_jobs_from_timup
+    timup_jobs = JSON.parse(TimupService.new.fetch_jobs)
+    results = timup_jobs
+    if results["count"].present?
+      TimupService.new.create_jobs(results["results"])
+    else
+      puts "Error fetching jobs from ApiJobs"
+    end
+  end
+
   def self.send_random_active_job_tweet_notification
     job = Job.active.where.not(salary_to: [nil, 0]).sample
     TwitterService.new.send_job_detail_tweet(job)
