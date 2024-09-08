@@ -16,7 +16,7 @@ class ApijobsService
         }
       )
     
-    query = "Software data product developer frontend backend design ux ui"
+    query = "Software"
     response = conn.post("/job/search", { q: query}.to_json)
     response.body
   end
