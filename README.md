@@ -20,6 +20,7 @@ Welcome to the official repository for [WeAreHiring.io](https://www.wearehiring.
 - PostgreSQL (version 14 or later)
 - Node.js (version 14 or later)
 - Yarn (version 1.22.10 or later)
+- Heroku Stack 24
 
 ### Installation
 
