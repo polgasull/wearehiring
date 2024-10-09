@@ -92,7 +92,7 @@ class Job < ApplicationRecord
       skill.users.where(visible: true)
                  .where(resident_country_code: ['ES', 'GB', 'IT', 'UK', 'PT', 'FR'])
                  .where.not(current_position: [nil, ""])
-                 .where(experience: ["2-6 años", "6-10 años", "+10 años"]).each do |user|
+                 .where(experience: ["2-6 years", "6-10 years", "+10 years"]).each do |user|
         candidates << user if candidates.exclude?(user)
       end
     end
@@ -107,7 +107,7 @@ class Job < ApplicationRecord
       skill.users.search_users(search_params).where(visible: true)
                                              .where(resident_country_code: ['ES', 'GB', 'IT', 'UK', 'PT', 'FR'])
                                              .where.not(current_position: [nil, ""])
-                                             .where(experience: ["2-6 años", "6-10 años", "+10 años"]).each do |user|
+                                             .where(experience: ["2-6 years", "6-10 years", "+10 years"]).each do |user|
         candidates << user if candidates.exclude?(user)
       end
     end
@@ -131,6 +131,26 @@ class Job < ApplicationRecord
     remote_ok_jobs = JSON.parse(RemoteOkService.new.fetch_jobs)
     results = remote_ok_jobs
     RemoteOkService.new.create_jobs(results)
+  end
+
+  def self.create_jobs_from_apijobs
+    apijobs_jobs = JSON.parse(ApijobsService.new.fetch_jobs)
+    results = apijobs_jobs
+    if results["ok"]
+      ApijobsService.new.create_jobs(results["hits"])
+    else
+      puts "Error fetching jobs from ApiJobs"
+    end
+  end
+
+  def self.create_jobs_from_timup
+    timup_jobs = JSON.parse(TimupService.new.fetch_jobs)
+    results = timup_jobs
+    if results["count"].present?
+      TimupService.new.create_jobs(results["results"])
+    else
+      puts "Error fetching jobs from ApiJobs"
+    end
   end
 
   def self.send_random_active_job_tweet_notification

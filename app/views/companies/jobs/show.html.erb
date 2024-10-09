@@ -128,8 +128,8 @@
                 <div class="control has-icons-left">
                   <div class="select">
                     <%= select_tag :by_experience, 
-                      options_for_select([ "0-2 años", "2-6 años", "6-10 años", "+10 años" ], params[:by_experience]), 
-                      :include_blank => "Años de experiencia" %>
+                      options_for_select([ "0-2 years", "2-6 years", "6-10 years", "+10 years" ], params[:by_experience]), 
+                      :include_blank => "years of experience" %>
                   </div>
                   <span class="icon is-left">
                     <%= icon('fas', 'graduation-cap') %>
@@ -254,13 +254,13 @@
         </div>
         <div>
           <p class="title is-4"> We Match </p>
-          <p class="subtitle is-5"> Hay <span class="has-text-corporate"> <%= @matching_candidates.count %> candidatos </span> que encajan con esta oferta </p>
+          <p class="subtitle is-5"> Hay <span class="has-text-corporate"> <%= @matching_candidates.count %> candidates </span> matching this job offer </p>
         </div>
       </div>
       <div class="column is-3 is-flex is-align-items-center">
         <div class="is-size-6 has-text-right has-text-weight-bold mr2">
-          <p> Candidatos añadidos </p>
-          <p> vía We Match </p>
+          <p> Added candidates </p>
+          <p> through We Match </p>
         </div>
         <div class="is-size-2 has-text-weight-bold">
           <%= @we_match_inscriptions_count %>
@@ -311,7 +311,7 @@
         </div>
       <% else %>
         <div class="mt4 has-text-centered">
-          <%= content_tag(:span, 'Job Finalizado. No es posible añadir más candidatos', class: 'is-size-5') %>
+          <%= content_tag(:span, 'Job expired, not possible to add more candidates', class: 'is-size-5') %>
         </div>
       <% end %> 
     <% else %>

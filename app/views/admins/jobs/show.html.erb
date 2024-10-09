@@ -2,7 +2,7 @@
   <div class="container">
     <article class="message is-warning">
       <div class="message-header">
-        <h1> Estás como ADMIN </h1>
+        <div> Estás como ADMIN </div>
       </div>
       <div class="message-body">
         Esto es aproximadamente lo que <strong> ve la empresa </strong>. Puedes editarlo sin problemas, pero con responsabilidad 👀. <br>
@@ -139,8 +139,8 @@
               <div class="control has-icons-left">
                 <div class="select">
                   <%= select_tag :by_experience, 
-                    options_for_select([ "0-2 años", "2-6 años", "6-10 años", "+10 años" ], params[:by_experience]), 
-                    :include_blank => "Años de experiencia" %>
+                    options_for_select([ "0-2 years", "2-6 years", "6-10 years", "+10 years" ], params[:by_experience]), 
+                    :include_blank => "Years of experience" %>
                 </div>
                 <span class="icon is-left">
                   <%= icon('fas', 'graduation-cap') %>
