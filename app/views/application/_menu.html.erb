@@ -49,12 +49,6 @@
               <% end %>
             </div>
             <div class="dropdown-content">
-              <%= link_to edit_user_registration_path, class: "dropdown-item" do %>
-                <span class="icon is-small"> <%= icon('fas', 'key') %> </span>
-                <span> <%= t('edit_password') %> </span>
-              <% end %>
-            </div>
-            <div class="dropdown-content">
               <%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do %>
                 <span class="icon is-small"><%= icon('fas', 'sign-out-alt') %></span>
                 <span> <%= t('logout') %> </span>
@@ -165,12 +159,6 @@
                 <span> Dashboard </span>
               <% end %>
             </div>
-						<div class="dropdown-content">
-							<%= link_to edit_user_registration_path, class: "dropdown-item" do %>
-								<span class="icon is-small"> <%= icon('fas', 'key') %> </span>
-								<span> <%= t('edit_password') %> </span>
-							<% end %>
-						</div>
 						<div class="dropdown-content">
 							<%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do %>
 								<span class="icon is-small"><%= icon('fas', 'sign-out-alt') %></span>
