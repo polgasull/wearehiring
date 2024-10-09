@@ -48,12 +48,6 @@
                 <span> Dashboard </span>
               <% end %>
             </div>
-            <div class="dropdown-content">
-              <%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do %>
-                <span class="icon is-small"><%= icon('fas', 'sign-out-alt') %></span>
-                <span> <%= t('logout') %> </span>
-              <% end %>
-            </div>
           </div>
         </div>
       </div>
@@ -111,12 +105,6 @@
                 <span> <%= t('my_inscriptions') %> (<%= current_user.inscriptions.count %>) </span> 
               <% end %>
             </div>
-						<div class="dropdown-content">
-							<%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do %>
-								<span class="icon is-small"><%= icon('fas', 'sign-out-alt') %></span>
-								<span> <%= t('logout') %> </span>
-							<% end %>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -159,12 +147,6 @@
                 <span> Dashboard </span>
               <% end %>
             </div>
-						<div class="dropdown-content">
-							<%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do %>
-								<span class="icon is-small"><%= icon('fas', 'sign-out-alt') %></span>
-								<span> <%= t('logout') %> </span>
-							<% end %>
-						</div>
 					</div>
 				</div>
 			</div>

@@ -31,9 +31,6 @@
             blog_posts_path, 
             class: "navbar-item #{ 'active' if current_page?(blog_posts_path)}" %>		
       </div>
-      <div class="navbar-brand">
-        <%= link_to t('logout'), destroy_user_session_path, method: :delete, class: "navbar-item" %>
-      </div>
     <% end %>
     <% if current_user.is_candidate? %>
       <div class="navbar-brand">
@@ -53,9 +50,6 @@
         <% end %>
       </div>
       <hr />
-      <div class="navbar-brand">
-        <%= link_to t('logout'), destroy_user_session_path, method: :delete, class: "navbar-item" %>
-      </div>
     <% end %>
     <% if current_user.is_company? %>
       <div class="navbar-brand">
@@ -65,9 +59,6 @@
         <%= link_to t('my_jobs'), companies_jobs_path(current_user), class: "navbar-item #{ 'active' if current_page?(companies_jobs_path(current_user)) }" %>
       </div>
       <hr />
-      <div class="navbar-brand">
-        <%= link_to t('logout'), destroy_user_session_path, method: :delete, class: "navbar-item" %>
-      </div>
     <% end %>
   <% else %>
     <div class="navbar-brand">
