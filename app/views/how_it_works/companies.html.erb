@@ -10,9 +10,6 @@
 				<p>
           <%= t('companies_index.we_are') %> <strong> <%= t('companies_index.talent_place') %> </strong> <%= t('companies_index.specialized') %> <strong> <%= t('companies_index.tech_teams') %> </strong>
 				</p>
-				<p class="mt4">
-					<%= link_to t('create_company_account'), new_company_registration_path, class: 'button is-rounded is-dark shadow' %>
-				</p>
 			</div>
 			<div class="column">
 				<img src="<%=asset_path('undraw_group_hangout.svg')%>" width="400" height="400" class="is-blank" alt="<%= t('create_company_account') %> | Wearehiring.io">			
@@ -263,9 +260,7 @@
 				<p>
 					<%= t('post_your_job_at_wah') %>
 				</p>
-				<p class="mt4">
-					<%= link_to t('post_now'), new_company_registration_path, class: 'button is-rounded primary is-large shadow' %>
-				</p>
+        <%= link_to t('join_we_are_hiring'), 'mailto:hello@wearehiring.io', class: 'button is-rounded primary is-large shadow' %>
 			</div>
 		</div>
 	</div>

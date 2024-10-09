@@ -8,18 +8,6 @@
       	<h2 class="title is-4 has-text-centered"> <%= t('join_we_are_hiring') %> </h2>
         <p class="title is-6 has-text-centered"> <%= t('talent_signup_subtitle') %> </p>
         <div class="tabs is-boxed is-fullwidth">
-          <ul>
-            <li class="is-active">
-              <%= link_to new_registration_path(resource_name) do %>
-                <%= icon('fas', 'user', class: 'mr2') %> <%= t('talent') %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to new_company_registration_path do %>
-                <%= icon('fas', 'building', class: 'mr2') %> <%= t('companies') %>
-              <% end %>
-            </li>
-          </ul>
         </div>
         <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= invisible_captcha %>

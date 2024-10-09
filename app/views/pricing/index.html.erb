@@ -315,11 +315,7 @@
       <div class="columns">
         <div class="column has-text-centered">
           <h2 class="title is-3"> <%= t('i_want_digital_talent') %>: </h2>
-          <% url = user_signed_in? ? new_companies_job_path :  new_company_registration_path %>
-          <%= link_to url, 
-              class: "button primary is-large" do %>
-              <%= t('jobs.post_job') %> <%= icon('fas', 'bullhorn ml2') %>
-          <% end %>
+          <%= link_to t('join_we_are_hiring'), 'mailto:hello@wearehiring.io', class: 'button is-rounded primary is-large shadow' %>
         </div>
       </div>
     </div>
