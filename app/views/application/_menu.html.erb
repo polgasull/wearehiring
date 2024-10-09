@@ -157,5 +157,9 @@
 		<div class="navbar-item">
 			<%= link_to t('pricing'), pricing_path, class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(pricing_path)}" %>
 		</div>
+    <li> </li>
+		<div class="navbar-item">
+      <%= link_to t('About us'), url_for(controller: '/about_us', action: 'index'), class: "navbar-item text-uppercase f6 #{ 'active' if current_page?(pricing_path)}" %>
+		</div>
 	</div>
 <% end %>
