@@ -53,9 +53,9 @@ class Job < ApplicationRecord
 
     free_jobs = Job.active.where(job_price_id: 3)
     free_jobs.each do |job|
-      if (job.inscriptions.count >= 15)
-        ModelMailer.upgrade_job_proposal(job).deliver_later
-      end
+      # if (job.inscriptions.count >= 15)
+      #   ModelMailer.upgrade_job_proposal(job).deliver_later
+      # end
     end
   end
 
@@ -140,6 +140,6 @@ class Job < ApplicationRecord
 
   def self.send_last_jobs_with_salary
     jobs = Job.active.where.not(salary_to: [nil, 0]).last(10)
-    DiscordService.new.last_jobs_alert_webhook(jobs)
+    # DiscordService.new.last_jobs_alert_webhook(jobs)
   end
 end

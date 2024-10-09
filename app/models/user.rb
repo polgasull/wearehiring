@@ -76,15 +76,15 @@ class User < ApplicationRecord
     jobs.active.where(job_price_id: 3)
   end
 
-  def after_confirmation
-    if self.is_company?
-      ModelMailer.welcome_company(self).deliver_later
-      DiscordService.new.company_signup_alert_webhook(self)
-    else
-      ModelMailer.welcome_candidate(self).deliver_later
-      DiscordService.new.candidate_signup_alert_webhook(self)
-    end
-  end
+  # def after_confirmation
+  #   if self.is_company?
+  #     ModelMailer.welcome_company(self).deliver_later
+  #     DiscordService.new.company_signup_alert_webhook(self)
+  #   else
+  #     ModelMailer.welcome_candidate(self).deliver_later
+  #     DiscordService.new.candidate_signup_alert_webhook(self)
+  #   end
+  # end
 
   def self.update_residence_info
     User.where(resident_country: [nil, ""]).last(25).each do |user|

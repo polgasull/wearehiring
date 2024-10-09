@@ -26,10 +26,10 @@ module Companies
     def update
       respond_to do |format|
         if @inscription.update(inscription_params)
-          if params[:inscription][:status].present?
-            ModelMailer.update_inscription_status(@inscription, @job).deliver_later
-            DiscordService.new.inscription_status_alert_webhook(@inscription, @job)
-          end
+          # if params[:inscription][:status].present?
+          #   ModelMailer.update_inscription_status(@inscription, @job).deliver_later
+          #   DiscordService.new.inscription_status_alert_webhook(@inscription, @job)
+          # end
           format.js
         else
           format.html { redirect_back_response(t('users.messages.user_not_updated'), false)  }

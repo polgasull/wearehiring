@@ -39,7 +39,7 @@ class RegistrationsController < Devise::RegistrationsController
     if params[:job_id].present?
       find_job(params[:job_id])
       Inscription.create(job_id: @job.id, user_id: resource.id)
-      DiscordService.new.inscription_alert_webhook(resource, @job, false)
+      # DiscordService.new.inscription_alert_webhook(resource, @job, false)
       job_path(@job.id)
     else
       :sign_up_thanks

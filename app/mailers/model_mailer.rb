@@ -55,7 +55,6 @@ class ModelMailer < ApplicationMailer
 
     attachments.inline["logo_black.png"] = File.read("#{Rails.root}/app/assets/images/logo_black.png")
     attachments.inline["twitter.png"] = File.read("#{Rails.root}/app/assets/images/twitter.png")
-    attachments.inline["discord.png"] = File.read("#{Rails.root}/app/assets/images/discord.png")
     attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
     mail( 
       :to => @user.email,
@@ -82,7 +81,6 @@ class ModelMailer < ApplicationMailer
 
     attachments.inline["logo_black.png"] = File.read("#{Rails.root}/app/assets/images/logo_black.png")
     attachments.inline["twitter.png"] = File.read("#{Rails.root}/app/assets/images/twitter.png")
-    attachments.inline["discord.png"] = File.read("#{Rails.root}/app/assets/images/discord.png")
     attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
     mail(
       :to => @inscription.user.email,
@@ -108,7 +106,6 @@ class ModelMailer < ApplicationMailer
     attachments.inline["logo_black.png"] = File.read("#{Rails.root}/app/assets/images/logo_black.png")
     attachments.inline["twitter.png"] = File.read("#{Rails.root}/app/assets/images/twitter.png")
     attachments.inline["linkedin.png"] = File.read("#{Rails.root}/app/assets/images/linkedin.png")
-    attachments.inline["discord.png"] = File.read("#{Rails.root}/app/assets/images/discord.png")
     mail( 
       :to => user.email,
       :subject => t('notifiers.welcome_wah') 

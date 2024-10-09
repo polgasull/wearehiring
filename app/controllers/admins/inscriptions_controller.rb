@@ -28,8 +28,8 @@ module Admins
       respond_to do |format|
         if @inscription.update(inscription_params)
           if params[:inscription][:status].present?
-            ModelMailer.update_inscription_status(@inscription, @job).deliver_later
-            DiscordService.new.inscription_status_alert_webhook(@inscription, @job)
+            # ModelMailer.update_inscription_status(@inscription, @job).deliver_later
+            # DiscordService.new.inscription_status_alert_webhook(@inscription, @job)
           end
           format.json { respond_with_bip(@inscription) }
           format.js

@@ -13,10 +13,7 @@
           <%= t('talent_index.first_section_text_2') %>
 				</p>
 				<p class="mt4">
-					<%= link_to t('create_account'), new_user_registration_path, class: 'button is-rounded primary shadow' %>
-					<%= link_to "https://discord.gg/feMXMacM9w", class: 'button is-rounded shadow' do %>
-						<%= icon('fab', 'discord', class: 'mr2') %> Discord 
-					<% end %>
+          <%= link_to t('join_we_are_hiring'), 'mailto:hello@wearehiring.io', class: 'button is-rounded primary is-large shadow' %>
 				</p>
 			</div>
       <div class="column mt3 is-hidden-desktop"></div>
@@ -98,11 +95,6 @@
 				<p>
           <%= t('talent_index.fourth_section_text_3') %> <br>
           <%= t('talent_index.fourth_section_text_4') %>
-				</p>
-				<p class="mt4">
-					<%= link_to "https://discord.gg/feMXMacM9w", class: 'button is-rounded shadow' do %>
-						<%= icon('fab', 'discord', class: 'mr2') %> Discord 
-					<% end %>
 				</p>
 			</div>
       <div class="column is-hidden-desktop">
@@ -193,7 +185,7 @@
 	</div>
   <div class="columns mt5">
     <div class="column has-text-centered">
-      <%= link_to t('join_we_are_hiring'), new_user_registration_path, class: 'button is-rounded primary is-large shadow' %>
+      <%= link_to t('join_we_are_hiring'), 'mailto:hello@wearehiring.io', class: 'button is-rounded primary is-large shadow' %>
     </div>
   </div>
 </section>
@@ -234,9 +226,6 @@
 					<%= link_to "https://www.linkedin.com/company/we-are-hiring-digital-talent-place", target: "_blank", class: 'button is-rounded shadow' do %>
 						<%= icon('fab', 'linkedin', class: 'mr2') %> Linkedin 
 					<% end %>					
-					<%= link_to "https://discord.gg/feMXMacM9w", target: "_blank", class: 'button is-rounded shadow' do %>
-						<%= icon('fab', 'discord', class: 'mr2') %> Discord 
-					<% end %>
 					<%= link_to "https://twitter.com/WeAreHiring_io", target: "_blank", class: 'button is-rounded shadow' do %>
 						<%= icon('fab', 'twitter', class: 'mr2') %> Twitter 
 					<% end %>

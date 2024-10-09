@@ -245,7 +245,7 @@
 	</div>
   <div class="columns mt5">
     <div class="column has-text-centered">
-      <%= link_to t('join_we_are_hiring'), new_user_registration_path, class: 'button is-rounded primary is-large shadow' %>
+      <%= link_to t('join_we_are_hiring'), 'mailto:hello@wearehiring.io', class: 'button is-rounded primary is-large shadow' %>
     </div>
   </div>
 </section>
@@ -498,11 +498,7 @@
     <div class="columns">
       <div class="column has-text-centered">
         <h2 class="title is-3"> <%= t('i_want_digital_talent') %>: </h2>
-        <% url = user_signed_in? ? new_companies_job_path :  new_company_registration_path %>
-        <%= link_to url, 
-            class: "button primary is-large is-rounded" do %>
-            <%= t('jobs.post_job') %> <%= icon('fas', 'bullhorn ml2') %>
-        <% end %>
+        <%= link_to t('join_we_are_hiring'), 'mailto:hello@wearehiring.io', class: 'button is-rounded primary is-large shadow' %>
       </div>
     </div>
   </div>
@@ -519,11 +515,8 @@
 			</div>
 		</div>
     <div class="columns mt3">
-      <div class="column has-text-right-desktop has-text-centered-touch">
-        <%= link_to t('im_talent'), new_user_registration_path, class: 'button is-rounded primary is-large shadow' %>
-      </div>
       <div class="column has-text-centered-touch">
-        <%= link_to t('search_talent'), new_company_registration_path, class: 'button is-rounded is-dark is-large shadow' %>
+        <%= link_to t('search_talent'), 'mailto:hello@wearehiring.io', class: 'button is-rounded primary is-large shadow' %>
       </div>
     </div>
   </div>

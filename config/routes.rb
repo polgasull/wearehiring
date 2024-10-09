@@ -71,15 +71,7 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :users, controllers: { 
-    omniauth_callbacks: 'users/omniauth_callbacks',
-    registrations: 'registrations'
-  }
-
-  devise_scope :user do
-    get "companies/sign_up", to: "companies_registrations#new", as: "new_company_registration"
-    post "companies", to: "companies_registrations#create", as: "company_registration"
-  end
+  devise_for :users, skip: [:sessions, :registrations]
 
   get '/sign-up-thanks', to: 'application#sign_up_thanks', as: 'sign_up_thanks'
   get '/pricing', to: 'pricing#index', as: 'pricing'

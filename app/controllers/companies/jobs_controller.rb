@@ -51,7 +51,7 @@ module Companies
       if @job.save
         if current_user.jobs.count == 1
           @job.update!(open: true)
-          send_notifications(current_user, @job)
+          # send_notifications(current_user, @job)
           redirect_to companies_job_thanks_path(@job)
         else
           redirect_to stripe_checkout_companies_job_url(@job)
@@ -129,7 +129,7 @@ module Companies
       stripe_process(job_price, discount)
 
       if @job.update(job_params)
-        DiscordService.new.job_upgrade_alert_webhook @job
+        # DiscordService.new.job_upgrade_alert_webhook @job
         redirect_to_response(t('jobs.messages.job_updated'), companies_job_path(@job)) 
       else
         redirect_back_response(t('jobs.messages.job_not_updated'), false)
@@ -144,7 +144,7 @@ module Companies
       job.update!(open: true)
       # Retrieve and update the job based on the Stripe session or payment intent
       # Handle any post-payment success logic here
-      send_notifications(current_user, job)
+      # send_notifications(current_user, job)
       redirect_to companies_job_thanks_path(job)
     end
     
@@ -169,9 +169,9 @@ module Companies
     private
 
     def send_notifications(user, job)
-      DiscordService.new.job_alert_webhook job
-      TwitterService.new.send_tweet job
-      ModelMailer.new_job(user, job).deliver_later
+      # DiscordService.new.job_alert_webhook job
+      # TwitterService.new.send_tweet job
+      # ModelMailer.new_job(user, job).deliver_later
     end
 
     def inscriptions_list(job)
